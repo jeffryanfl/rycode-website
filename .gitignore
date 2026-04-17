@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs / scratch
+*.log
+npm-debug.log*
+
+# Local-only artifacts (kept out of the deploy repo)
+og-image.html
+*.pdf.bak
+
+# Claude Code local session state
+.claude/

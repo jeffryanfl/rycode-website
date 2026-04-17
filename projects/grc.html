@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rycode GRC — a full governance, risk, and compliance platform built from scratch in vanilla HTML, CSS, and JavaScript. Case study by Jeff Ryan." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Rycode GRC — Case Study" />
+  <meta property="og:description" content="A full GRC platform built from scratch in vanilla code, no framework, no backend." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <title>Rycode GRC — Case Study</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="grc.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <!-- ===========================================================
+       HEADER / NAV  (same pattern as the landing page)
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../index.html" class="brand" aria-label="Rycode home">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-sub">26</span>Ry</span><span class="brand-text">code</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#systems">Systems</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="/grc/">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===========================================================
+         CASE STUDY HEADER
+         =========================================================== -->
+    <section class="case-hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">
+          <a href="../index.html#systems" class="back-link">← Back to systems</a>
+        </p>
+        <div class="case-meta reveal">
+          <span class="card-category">Systems</span>
+          <span class="card-status is-live">
+            <span class="live-dot" aria-hidden="true"></span> Live · v1.11.1
+          </span>
+        </div>
+        <h1 class="case-title reveal">Rycode GRC</h1>
+        <p class="case-lede reveal">A full governance, risk, and compliance platform — four interconnected registers, an executive enterprise profile, and a live 5×5 risk heat map. Built from scratch in one week of evenings and pre-dawn hours. No framework. No backend. Just the browser.</p>
+
+        <div class="case-cta reveal">
+          <a class="btn btn-primary" href="/grc/">Open the live app <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="https://github.com/jeffryanfl/rycode-grc" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         QUICK FACTS
+         =========================================================== -->
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <span class="stat-num" data-count="11">0</span>
+          <span class="stat-label">Versions shipped</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="9">0</span>
+          <span class="stat-label">Pages</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="4">0</span>
+          <span class="stat-label">Register modules</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         THE PROBLEM
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">The problem</p>
+        <h2 class="section-title reveal">GRC tools are heavy, slow, and rented.</h2>
+        <div class="case-prose reveal">
+          <p>Enterprise GRC platforms solve real problems, but they solve them behind six-figure license fees, multi-quarter implementations, and rigid data models. For small teams, nonprofits, and internal training — a sandbox you can pull up in a browser is often more useful than the real thing.</p>
+          <p>Rycode GRC is that sandbox. It demonstrates the full shape of an ERM program — risks, controls, business units, issues, a heat map, an executive profile — in a self-contained, zero-install environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         THE APPROACH
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">The approach</p>
+        <h2 class="section-title reveal">Vanilla everything. localStorage as the database.</h2>
+        <div class="case-prose reveal">
+          <p>Every design choice came from the same constraint: keep the stack small enough that one person can hold it entirely in their head. That ruled out frameworks, build tools, and hosted backends from day one.</p>
+          <p>Data lives in the browser's <code>localStorage</code>. Each record has an ID, a set of foreign keys to other records, and a migration path that runs at page load. Filters, charts, and cross-register lookups are all pure JavaScript over those in-memory arrays. It's not a production architecture — it's a pedagogical one, and that's the point.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         WHAT IT DOES
+         =========================================================== -->
+    <section class="section">
+      <div class="container">
+        <p class="section-eyebrow reveal">What it does</p>
+        <h2 class="section-title reveal">Nine pages, four registers, one shared data model.</h2>
+        <div class="feature-grid">
+          <div class="feature reveal">
+            <h3>Risk Register</h3>
+            <p>Full CRUD over risk records with inherent/residual scoring, status lifecycle (Emerging → Monitored → Closed), and click-to-filter charts.</p>
+          </div>
+          <div class="feature reveal">
+            <h3>Control Register</h3>
+            <p>Controls with effectiveness ratings, mapped to risks via reverse lookup. Powers a coverage heat map.</p>
+          </div>
+          <div class="feature reveal">
+            <h3>Business Unit Tree</h3>
+            <p>Hierarchical BU model with drill-through from BU → risk register, filtered by owner.</p>
+          </div>
+          <div class="feature reveal">
+            <h3>Issue Register</h3>
+            <p>Severity, status, and ownership tracking for open items arising from the risk and control reviews.</p>
+          </div>
+          <div class="feature reveal">
+            <h3>Enterprise Profile</h3>
+            <p>Nine-section executive rollup — posture, heat map, composition, controls, treatment impact, BU hotspots, watch list, top risks, open issues.</p>
+          </div>
+          <div class="feature reveal">
+            <h3>Risk Heat Map</h3>
+            <p>Full 5×5 grid with per-cell drill-through to the filtered risk list. Color-coded by the standard scoring formula.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         STACK
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Stack</p>
+        <h2 class="section-title reveal">Everything is a flat file.</h2>
+        <ul class="stack-list reveal">
+          <li><strong>HTML5</strong> — nine static pages, semantic where it matters.</li>
+          <li><strong>CSS3</strong> — one stylesheet, custom properties for the "Modern Navy" palette, no preprocessor.</li>
+          <li><strong>JavaScript (ES6+)</strong> — one <code>app.js</code> shared across pages, plus per-page init blocks.</li>
+          <li><strong>Chart.js 4.4</strong> — via CDN, no bundler.</li>
+          <li><strong>localStorage</strong> — five keys (<code>rycode_risks</code>, <code>rycode_controls</code>, <code>rycode_business_units</code>, <code>rycode_issues</code>, <code>rycode_unlocked</code>), each with an idempotent migration block.</li>
+          <li><strong>Netlify</strong> — deploy target, manual publish for deliberate releases.</li>
+          <li><strong>Git on main only</strong> — commit messages serve as the change log.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         VERSION HISTORY  (condensed)
+         =========================================================== -->
+    <section class="section">
+      <div class="container">
+        <p class="section-eyebrow reveal">Version history</p>
+        <h2 class="section-title reveal">Eleven releases, in order.</h2>
+        <div class="timeline reveal">
+          <div class="timeline-row"><span class="timeline-v">v1.7.0</span><span class="timeline-desc">Modern Navy palette + entrance animations.</span></div>
+          <div class="timeline-row"><span class="timeline-v">v1.8.0</span><span class="timeline-desc">Click-to-filter charts on all four registers.</span></div>
+          <div class="timeline-row"><span class="timeline-v">v1.8.3</span><span class="timeline-desc">Soft privacy — robots noindex and client-side password gate.</span></div>
+          <div class="timeline-row"><span class="timeline-v">v1.9.0</span><span class="timeline-desc">Risk status lifecycle with localStorage migration.</span></div>
+          <div class="timeline-row"><span class="timeline-v">v1.10.0</span><span class="timeline-desc">Enterprise Profile — posture, heat map, composition, controls, top 10.</span></div>
+          <div class="timeline-row"><span class="timeline-v">v1.10.1</span><span class="timeline-desc">Enterprise Profile phase two — treatment impact, BU hotspots, watch list, issues.</span></div>
+          <div class="timeline-row"><span class="timeline-v">v1.11.0</span><span class="timeline-desc">CSV export across all registers; centralized <code>escapeHtml</code>.</span></div>
+          <div class="timeline-row"><span class="timeline-v">v1.11.1</span><span class="timeline-desc">Terminology cleanup (BU → Business Unit); enum constants extracted.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         WHAT'S NEXT
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">What's next</p>
+        <h2 class="section-title reveal">Saved views, policies, coverage.</h2>
+        <div class="case-prose reveal">
+          <p>Next up: named filter combinations (Saved Views), a Policies module that closes the classic Policy → Control → Risk triangle, and a coverage heat map that shows which risks are covered versus naked.</p>
+          <p>The end goal is a full demo-ready GRC triangle that anyone — trainer, auditor, risk analyst learning the shape of the work — can open in a browser and play with for an afternoon.</p>
+        </div>
+        <div class="case-cta reveal">
+          <a class="btn btn-primary" href="/grc/">Open the live app <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="../index.html#systems">See other systems</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

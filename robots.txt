@@ -1,0 +1,12 @@
+# Rycode — robots.txt
+# Search engines are welcome to index the public surface of rycode.dev.
+# The /grc/ section proxies to a password-protected Netlify site; we
+# disallow it here as a belt-and-suspenders measure so the public URL
+# never surfaces in search results, even if a spider somehow reaches it.
+
+User-agent: *
+Allow: /
+Disallow: /grc/
+
+# Sitemap will live here once we generate one.
+# Sitemap: https://rycode.dev/sitemap.xml

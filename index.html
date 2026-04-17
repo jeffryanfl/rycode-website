@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rycode — built openly with AI. Systems, research, and dashboards shipped in vanilla HTML, CSS, and JavaScript by Jeff Ryan." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Rycode" />
+  <meta property="og:description" content="Built openly with AI. Shipped in vanilla code." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <title>Rycode — Built openly with AI.</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Swap no-js → js before paint so CSS can hide pre-animation states without a flash. -->
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <noscript>
+    <div class="noscript-banner">
+      JavaScript is required for typing effects, scroll reveals, and card animations. The static content below is fully readable without it.
+    </div>
+  </noscript>
+
+  <!-- ===========================================================
+       HEADER / NAV
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="#top" class="brand" aria-label="Rycode home">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-sub">26</span>Ry</span><span class="brand-text">code</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#systems">Systems</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#dashboards">Dashboards</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-cta" href="/grc/">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===========================================================
+         HERO
+         =========================================================== -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">Est. 2026 · Built openly with AI</p>
+        <h1 class="hero-title" id="heroTitle">Rycode</h1>
+        <p class="hero-tagline">
+          AI designs. I ship. The output is
+          <span class="type-target" id="typeTarget" aria-live="polite">systems.</span>
+        </p>
+        <div class="hero-cta">
+          <a href="#systems" class="btn btn-primary">Explore the work</a>
+          <a href="/grc/" class="btn btn-ghost">Enter GRC <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         STATS  (count-up on scroll)
+         =========================================================== -->
+    <section class="stats" aria-label="Rycode at a glance">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <span class="stat-num" data-count="1">0</span>
+          <span class="stat-label">Live system</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="3">0</span>
+          <span class="stat-label">Surfaces in motion</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="0">0</span>
+          <span class="stat-label">Frameworks used</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         MANIFESTO — wake-up callout. One belief, loud.
+         =========================================================== -->
+    <section class="section manifesto" aria-labelledby="manifestoTitle">
+      <div class="container">
+        <p class="section-eyebrow reveal">The new rule</p>
+        <h2 class="manifesto-title reveal" id="manifestoTitle">Everyone can build now.</h2>
+        <p class="manifesto-body reveal">
+          Technical experience used to be the gate. It isn't anymore. AI agents turn creativity and need into working software — fast, cheap, and small. The people who win the next decade aren't the ones with the deepest engineering background. They're the ones who notice problems worth solving and have the nerve to ship a fix.
+        </p>
+        <p class="manifesto-kicker reveal">
+          If you're still waiting for permission to build, you're already late.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         ABOUT
+         =========================================================== -->
+    <section id="about" class="section about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <p class="section-eyebrow reveal">About</p>
+        <h2 class="section-title reveal" id="aboutTitle">Where AI meets vanilla code.</h2>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>I'm Jeff — the builder behind Rycode. Rycode is my workshop for building real software out in the open, with AI as a creative collaborator rather than a crutch.</p>
+            <p>Every project here is designed, drafted, and debugged alongside AI — and then shipped by hand in vanilla HTML, CSS, and JavaScript. No frameworks. No build tools. Just the fundamentals, moving faster than they used to.</p>
+            <p>The goal is simple: change the narrative. AI is not a shortcut around the craft. It's a partner that makes the craft more ambitious.</p>
+          </div>
+          <aside class="about-card reveal">
+            <h3>Operating principles</h3>
+            <ul>
+              <li><strong>Build in the open.</strong> Each project ships live, even when rough.</li>
+              <li><strong>AI is a collaborator.</strong> Not a crutch, not a gimmick — a creative partner.</li>
+              <li><strong>Simple over clever.</strong> Readable code beats cute tricks.</li>
+              <li><strong>Zero frameworks.</strong> Vanilla HTML, CSS, and JavaScript, by choice.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         PRINCIPLES  (the "built with AI" transparency panel)
+         Sits between About and Systems. About raises the "how?",
+         this section answers it with four specific claims.
+         =========================================================== -->
+    <section id="principles" class="section principles" aria-labelledby="principlesTitle">
+      <div class="container">
+        <p class="section-eyebrow reveal">How it's built</p>
+        <h2 class="section-title reveal" id="principlesTitle">Four principles. Non-negotiable.</h2>
+        <p class="section-lead reveal">"Built openly with AI" sounds like a slogan. These four claims make it specific — and you can check the work.</p>
+
+        <div class="principle-grid">
+          <article class="principle-card reveal">
+            <p class="principle-num" aria-hidden="true">01</p>
+            <h3 class="principle-title">AI writes first. I decide what ships.</h3>
+            <p class="principle-body">Every line of code arrives as a suggestion. Nothing ships without a human read.</p>
+          </article>
+          <article class="principle-card reveal">
+            <p class="principle-num" aria-hidden="true">02</p>
+            <h3 class="principle-title">The stack is mine.</h3>
+            <p class="principle-body">No frameworks, no build tools, no surprise dependencies. When AI suggests React, the answer is no — by design.</p>
+          </article>
+          <article class="principle-card reveal">
+            <p class="principle-num" aria-hidden="true">03</p>
+            <h3 class="principle-title">When AI is wrong, I push back — in writing.</h3>
+            <p class="principle-body">The conversations behind this site include me telling AI to stop, rewrite, or simplify. The best version is usually the third draft, not the first.</p>
+          </article>
+          <article class="principle-card reveal">
+            <p class="principle-num" aria-hidden="true">04</p>
+            <h3 class="principle-title">Every bug gets debugged in the open.</h3>
+            <p class="principle-body">Fixes land in the next commit — no polished demos hiding broken code.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         SYSTEMS  (category section — grows as projects are added)
+         =========================================================== -->
+    <section id="systems" class="section projects-category" aria-labelledby="systemsTitle">
+      <div class="container">
+        <p class="section-eyebrow reveal">Systems</p>
+        <h2 class="section-title reveal" id="systemsTitle">Built to model real work.</h2>
+        <p class="section-lead reveal">Full-stack tools with their own data models and opinions about how something should work. Below is the flagship — more systems shipping this year.</p>
+
+        <div class="project-grid">
+          <article class="project-card tilt reveal" data-category="systems">
+            <header class="project-head">
+              <span class="card-category">Flagship</span>
+              <span class="card-status is-live" aria-label="Status: Live, version 1.11.1">
+                <span class="live-dot" aria-hidden="true"></span> Live · v1.11.1
+              </span>
+            </header>
+            <h3 class="project-title">Rycode GRC</h3>
+            <p class="project-desc">A full governance, risk, and compliance platform built from scratch — four interconnected registers, an executive enterprise profile, and a live 5×5 risk heat map. No framework, no backend — just browser storage and careful architecture.</p>
+            <ul class="tag-row" aria-label="Technologies">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Chart.js</li><li>localStorage</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-primary" href="projects/grc.html">Read the case study <span aria-hidden="true">→</span></a>
+              <a class="btn btn-ghost" href="/grc/">Open the app</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         RESEARCH  (category section — grows as projects are added)
+         =========================================================== -->
+    <section id="research" class="section projects-category" aria-labelledby="researchTitle">
+      <div class="container">
+        <p class="section-eyebrow reveal">Research</p>
+        <h2 class="section-title reveal" id="researchTitle">Deep reads, strong positions.</h2>
+        <p class="section-lead reveal">Long-form analyses and market breakdowns. The kind of work that earns its conclusions.</p>
+
+        <div class="project-grid">
+          <article class="project-card tilt reveal" data-category="research">
+            <header class="project-head">
+              <span class="card-category">Report</span>
+              <span class="card-status is-live" aria-label="Status: Live, version 1.0">
+                <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+              </span>
+            </header>
+            <h3 class="project-title">SaaSpocalypse 2026</h3>
+            <p class="project-desc">An emerging-risk briefing for risk, finance, and technology leaders: the structural collapse of generic seat-based SaaS, the Build-vs-Buy inversion, and why GRC is the one corner of the industry still growing. Interactive charts, a downloadable PDF, and a position.</p>
+            <ul class="tag-row" aria-label="Formats">
+              <li>Market analysis</li><li>Chart.js</li><li>Emerging risk</li><li>Long-form</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-primary" href="research/saaspocalypse/">Read the briefing <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         DASHBOARDS  (category section — grows as projects are added)
+         =========================================================== -->
+    <section id="dashboards" class="section projects-category" aria-labelledby="dashboardsTitle">
+      <div class="container">
+        <p class="section-eyebrow reveal">Dashboards</p>
+        <h2 class="section-title reveal" id="dashboardsTitle">Interaction is the explanation.</h2>
+        <p class="section-lead reveal">Live calculators and visualizations. Drag a slider, see the consequence, understand the model.</p>
+
+        <div class="project-grid">
+          <article class="project-card tilt reveal" data-category="dashboards">
+            <header class="project-head">
+              <span class="card-category">Calculator</span>
+              <span class="card-status is-live" aria-label="Status: Live, version 1.0">
+                <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+              </span>
+            </header>
+            <h3 class="project-title">Build vs. Buy</h3>
+            <p class="project-desc">An interactive calculator that pits the real cost of building software against the real cost of licensing SaaS. Drag seven sliders — seats, salary, team size, maintenance — and watch the two cumulative-cost curves meet. The year they cross is the year building pays off.</p>
+            <ul class="tag-row" aria-label="Technologies">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Chart.js</li><li>Interactive</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-primary" href="dashboards/build-vs-buy/">Open the calculator <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         CONTACT
+         =========================================================== -->
+    <section id="contact" class="section contact" aria-labelledby="contactTitle">
+      <div class="container">
+        <p class="section-eyebrow reveal">Contact</p>
+        <h2 class="section-title reveal" id="contactTitle">Good conversation is part of the work.</h2>
+        <p class="section-lead reveal">Reach out about building with AI, vanilla code, or what it looks like to ship small software in public.</p>
+        <div class="contact-links reveal">
+          <a class="btn btn-primary" href="mailto:fl.jeff.ryan@gmail.com">Email</a>
+          <a class="btn btn-ghost" href="https://github.com/jeffryanfl" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

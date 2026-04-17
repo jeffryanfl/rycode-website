@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SaaSpocalypse 2026 — an emerging-risk briefing on the collapse of generic seat-based SaaS, the Build-vs-Buy inversion, and the corner of the industry still growing. Part of Rycode." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="SaaSpocalypse 2026 — Rycode" />
+  <meta property="og:description" content="The emerging risk for risk, finance, and technology leaders." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>SaaSpocalypse 2026 — Rycode</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="saaspocalypse.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <noscript>
+    <div class="noscript-banner">
+      This briefing uses JavaScript for the interactive charts and toggles. The narrative below still reads cleanly — turn JS on for the full experience.
+    </div>
+  </noscript>
+
+  <!-- ===========================================================
+       HEADER / NAV  (same pattern as every other page)
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html" class="brand" aria-label="Rycode home">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-sub">26</span>Ry</span><span class="brand-text">code</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#systems">Systems</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="/grc/">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===========================================================
+         HERO  — audience-named lede + emerging risk pill
+         =========================================================== -->
+    <section class="case-hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">
+          <a href="../../index.html#research" class="back-link">← Back to research</a>
+        </p>
+        <div class="case-meta reveal">
+          <span class="card-category">Research</span>
+          <span class="card-status is-live">
+            <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+          </span>
+          <span class="risk-pill" aria-label="Framing: Emerging Risk, 2026">
+            Emerging Risk · 2026
+          </span>
+        </div>
+        <h1 class="case-title reveal">SaaSpocalypse 2026</h1>
+        <p class="case-lede reveal">
+          Generic seat-based SaaS (Software-as-a-Service) is structurally collapsing. AI agents drove it. This briefing maps the emerging risk for risk, finance, and technology leaders — the hardest-hit vendor categories, the shift from buying to building, and the one corner of the industry that is actually growing: Governance, Risk, and Compliance (GRC).
+        </p>
+        <div class="case-cta reveal">
+          <a class="btn btn-primary" href="saaspocalypse.pdf" download>
+            Download the full report (PDF)
+          </a>
+          <a class="btn btn-ghost" href="#executive-summary">Read the briefing</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         SECTION 1 — EXECUTIVE SUMMARY + KPI TILES
+         =========================================================== -->
+    <section class="section" id="executive-summary">
+      <div class="container">
+        <p class="section-eyebrow reveal">Executive summary</p>
+        <h2 class="section-title reveal">The shape of the shift, in three numbers.</h2>
+        <p class="section-lead reveal">
+          Generic workflow and CRM (Customer Relationship Management) vendors have lost hundreds of billions in market capitalization since January 2025. Enterprises are cutting per-user licenses and routing that spend into internal build budgets. One category — GRC — is running the other direction.
+        </p>
+
+        <div class="kpi-grid reveal">
+          <article class="kpi-tile is-loss">
+            <p class="kpi-eyebrow">Generic SaaS value destruction</p>
+            <p class="kpi-value">↘ $340B</p>
+            <p class="kpi-note">Market capitalization lost among the top 50 generic workflow and CRM providers since January 2025.</p>
+          </article>
+          <article class="kpi-tile is-loss">
+            <p class="kpi-eyebrow">Avg. seat-reduction intent</p>
+            <p class="kpi-value">− 62%</p>
+            <p class="kpi-note">Enterprise intent to reduce per-user software licenses in the upcoming renewal cycles.</p>
+          </article>
+          <article class="kpi-tile is-growth">
+            <p class="kpi-eyebrow">GRC SaaS growth</p>
+            <p class="kpi-value">+ 14%</p>
+            <p class="kpi-note">Counter-trend growth in specialized Governance, Risk, and Compliance platforms.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         SECTION 2 — VENDOR IMPACT (horizontal bar chart)
+         =========================================================== -->
+    <section class="section" id="impacted-vendors">
+      <div class="container">
+        <p class="section-eyebrow reveal">Impact analysis</p>
+        <h2 class="section-title reveal">Highest-impacted vendor categories.</h2>
+        <p class="section-lead reveal">
+          Projected 12-month change in recurring revenue, by vendor category. Platforms that act primarily as database front-ends or basic text routers are being displaced fastest. Categories with real-world integration, legal-liability transfer, or proprietary closed data remain insulated.
+        </p>
+
+        <div class="report-chart-wrap reveal">
+          <canvas id="vendorImpactChart" aria-label="Horizontal bar chart: projected 12-month revenue change by SaaS vendor category"></canvas>
+        </div>
+
+        <div class="report-callout-grid reveal">
+          <div class="report-callout is-warning">
+            <p class="callout-label">⚠ The vulnerable zone</p>
+            <p class="callout-body">Platforms acting primarily as database GUIs (Graphical User Interfaces) or basic text routers — helpdesks, simple CRMs, light project management — are being rapidly replaced by custom-prompted AI agents connecting directly to internal data lakes.</p>
+          </div>
+          <div class="report-callout is-safe">
+            <p class="callout-label">✓ The moat</p>
+            <p class="callout-body">Categories involving physical-world integration, strict legal liability transfer, or proprietary closed-source data networks remain highly insulated from the SaaSpocalypse.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         SECTION 3 — BUILD VS. BUY INVERSION (line chart + banner)
+         =========================================================== -->
+    <section class="section" id="build-vs-buy">
+      <div class="container">
+        <p class="section-eyebrow reveal">The paradigm inversion</p>
+        <h2 class="section-title reveal">The "Build vs. Buy" preference has flipped.</h2>
+        <p class="section-lead reveal">
+          Historically, companies bought SaaS because software engineering was expensive and slow. As of late 2025, AI coding agents collapsed the cost of producing functional software to near zero. The chart below tracks CIO (Chief Information Officer) preference when facing a new business requirement — and we have officially crossed the threshold where companies prefer to build proprietary, AI-maintained micro-apps over buying rigid SaaS subscriptions.
+        </p>
+
+        <div class="report-chart-wrap reveal">
+          <canvas id="buildBuyChart" aria-label="Line chart: CIO preference to buy third-party SaaS vs. build internal AI-assisted tooling, Q1 2024 to Q3 2026"></canvas>
+        </div>
+
+        <!-- CALCULATOR BANNER — full-width, prominent, on the graphic -->
+        <aside class="calc-banner reveal" aria-label="Build-vs-Buy calculator call-to-action">
+          <div class="calc-banner-inner">
+            <p class="calc-banner-eyebrow">Run the math for your team</p>
+            <h3 class="calc-banner-title">The chart above is the industry curve. Plug in your own numbers to find <em>your</em> break-even year.</h3>
+            <p class="calc-banner-body">Seats, per-seat license, engineering team size, salary, and a maintenance factor — seven sliders, one live chart. Drag them against your real environment and watch the two curves meet.</p>
+            <div class="calc-banner-cta">
+              <a class="btn btn-primary" href="../../dashboards/build-vs-buy/">Open the calculator <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </aside>
+
+        <div class="report-panel reveal">
+          <h3 class="report-panel-title">Why companies are turning away from vendors</h3>
+          <ul class="report-list">
+            <li>
+              <strong>The integration tax.</strong> Third-party SaaS creates data silos. Custom-built AI tools operate directly on a company's internal unified data fabric — no connector maintenance, no vendor-owned schema.
+            </li>
+            <li>
+              <strong>Feature bloat.</strong> Enterprises pay for 100% of a SaaS platform's features but use around 10%. AI coding agents let them generate exactly the 10% they actually need.
+            </li>
+            <li>
+              <strong>Seat-cost disconnect.</strong> Paying $150 per user per month for a CRM makes no sense when an internal AI agent can read and write the same database for pennies in compute cost.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         SECTION 4 — FINANCE & GRC DEEP DIVE
+         =========================================================== -->
+    <section class="section" id="finance-grc">
+      <div class="container">
+        <p class="section-eyebrow reveal">Sector deep dive</p>
+        <h2 class="section-title reveal">Financial industry and ERM / GRC.</h2>
+        <p class="section-lead reveal">
+          The Financial industry is a paradox inside the SaaSpocalypse. Banks and financial institutions are aggressively adopting the "build" posture using private, on-premise AI models to replace generic SaaS — yet at the same time they are <em>increasing</em> spend on Enterprise Risk Management (ERM) and Governance, Risk, and Compliance (GRC) vendors. The two tools below unpack both halves.
+        </p>
+
+        <div class="finance-grid reveal">
+
+          <!-- Left column: doughnut + year toggle -->
+          <article class="report-panel">
+            <header class="panel-header">
+              <h3 class="report-panel-title">Financial IT budget allocation</h3>
+              <div class="year-toggle" role="tablist" aria-label="Budget year">
+                <button type="button" class="year-btn is-active" data-year="2024" role="tab" aria-selected="true">2024</button>
+                <button type="button" class="year-btn" data-year="2026" role="tab" aria-selected="false">2026</button>
+              </div>
+            </header>
+            <div class="report-chart-wrap is-compact">
+              <canvas id="financeBudgetChart" aria-label="Doughnut chart: financial sector IT budget allocation by category"></canvas>
+            </div>
+            <p id="budgetInsightText" class="panel-insight">
+              2024 baseline — heavy reliance on generic multi-tenant cloud SaaS.
+            </p>
+          </article>
+
+          <!-- Right column: tabbed qualitative insight -->
+          <article class="report-panel">
+            <header class="tab-header" role="tablist" aria-label="Why sections">
+              <button type="button" class="tab-btn is-active" data-tab="finance-build" role="tab" aria-selected="true">
+                Why finance is building
+              </button>
+              <button type="button" class="tab-btn" data-tab="grc-survives" role="tab" aria-selected="false">
+                Why GRC vendors survive
+              </button>
+            </header>
+
+            <div class="tab-body">
+
+              <!-- Tab 1 — Finance is building -->
+              <div class="tab-pane is-active" id="finance-build" role="tabpanel">
+                <h4 class="tab-heading">The exodus from public-cloud SaaS</h4>
+                <p class="tab-lede">
+                  Financial institutions are turning away from generic vendors — CRMs like Salesforce, helpdesks like Zendesk, basic reporting tools — to build proprietary internal systems. Two drivers do most of the work:
+                </p>
+                <ul class="tab-list is-build">
+                  <li>
+                    <strong>Data sovereignty and privacy.</strong>
+                    Instead of routing Personally Identifiable Information (PII) and financial data through a third-party SaaS, banks run AI agents inside their own Virtual Private Clouds (VPCs). The data never leaves the perimeter.
+                  </li>
+                  <li>
+                    <strong>Bespoke reconciliation.</strong>
+                    Legacy mainframes and modern APIs (Application Programming Interfaces) are being bridged by AI coding agents that write custom, one-off ETL (Extract, Transform, Load) pipelines overnight — replacing expensive middleware SaaS.
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Tab 2 — GRC survives -->
+              <div class="tab-pane" id="grc-survives" role="tabpanel" hidden>
+                <h4 class="tab-heading is-grc">The "liability shield" of ERM / GRC</h4>
+                <p class="tab-lede">
+                  While generic SaaS is being replaced by internal code, specialized GRC platforms are <em>gaining</em> adoption. The moat is legal, not technical:
+                </p>
+                <ul class="tab-list is-grc">
+                  <li>
+                    <strong>The legal and audit moat.</strong>
+                    You cannot tell a regulator — the Securities and Exchange Commission (SEC) or the Financial Industry Regulatory Authority (FINRA) — "our AI agent audited our controls." Institutions buy GRC software because it provides a certified, external, cryptographically verifiable audit trail that regulators already trust.
+                  </li>
+                  <li>
+                    <strong>Regulatory network effects.</strong>
+                    GRC vendors update their frameworks continuously as global law shifts. An internal AI cannot easily track, interpret, and legally guarantee compliance with that shifting regulatory surface the way a dedicated vendor's legal-plus-engineering team can.
+                  </li>
+                </ul>
+                <p class="tab-insight">
+                  <strong>The insight:</strong> GRC vendors are safe not because their code is hard to write, but because the legal liability they absorb is too risky for institutions to internalize.
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         METHODOLOGY FOOTNOTE
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Methodology</p>
+        <h2 class="section-title reveal">What this briefing is — and isn't.</h2>
+        <div class="case-prose reveal">
+          <p><strong>What it is.</strong> A synthesized, conceptual model of the 2026 market shift — vendor-category impact, CIO preference data, and financial-sector budget allocation — built to explain an emerging risk to a non-technical audience of risk, finance, and technology leaders. The charts are illustrative of directional trends, not a specific vendor scorecard.</p>
+          <p><strong>What it isn't.</strong> A procurement recommendation, a financial forecast, or an endorsement of any named vendor. Numbers are composite estimates, not audited figures. Do not use this as the single input to a renewal or build-versus-buy decision.</p>
+          <p><strong>How to use it.</strong> As a conversation-starter for your next ERM committee, vendor risk review, or IT budget planning cycle. Pair it with the <a href="../../dashboards/build-vs-buy/">Build vs. Buy calculator</a> to pressure-test the economics on your own inputs.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         BACK TO ITEMS
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <div class="case-cta reveal">
+          <a class="btn btn-primary" href="saaspocalypse.pdf" download>Download the full report (PDF)</a>
+          <a class="btn btn-ghost" href="../../index.html#research">See other research</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <!-- Chart.js via CDN — same version as the calculator page. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Shared site behavior (header scroll, nav toggle, reveals). -->
+  <script src="../../script.js"></script>
+  <!-- Report logic — must load AFTER Chart.js is available. -->
+  <script src="saaspocalypse.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+/* ==================================================================
+   BUILD vs. BUY — build-vs-buy.css
+   Page-specific styles. Shares design tokens with ../../styles.css,
+   so colors, spacing, radii, and fonts all come from the :root vars
+   defined there. This file only adds what the calculator needs.
+
+   TABLE OF CONTENTS
+   -----------------
+   1. LAYOUT              (2-column grid: controls + results)
+   2. CONTROLS PANEL      (the left column — sliders + labels)
+   3. SLIDERS             (custom-styled range inputs)
+   4. RESULTS PANEL       (headline, chart, totals)
+   5. RESPONSIVE          (stack at <960px)
+   ================================================================== */
+
+
+/* ==================================================================
+   1. LAYOUT
+   ================================================================== */
+.calculator {
+  display: grid;
+  gap: var(--s-6);
+  align-items: start;
+  /* Mobile-first — single column, controls stacked above results. */
+  grid-template-columns: 1fr;
+}
+
+
+/* ==================================================================
+   2. CONTROLS PANEL
+   ================================================================== */
+.calc-controls {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--s-5);
+}
+
+.calc-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 var(--s-4);
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+/* A control-group bundles related sliders under a small section label
+   ("Buy", "Build") so the form reads as an argument, not a flat list. */
+.control-group {
+  margin-top: var(--s-5);
+  padding-top: var(--s-5);
+  border-top: 1px dashed var(--border);
+}
+.control-group:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.control-group-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin: 0 0 var(--s-4);
+}
+
+.control {
+  margin-bottom: var(--s-4);
+}
+.control:last-child { margin-bottom: 0; }
+
+.control label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-3);
+  font-size: var(--fs-small);
+  color: var(--text);
+  margin-bottom: var(--s-2);
+}
+.control-value {
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;  /* keeps numbers from jittering as they change */
+  white-space: nowrap;
+}
+
+
+/* ==================================================================
+   3. SLIDERS
+   Custom range inputs. Browsers split this into two pseudo-elements
+   (::-webkit- and ::-moz-) so we repeat the thumb + track styles for
+   each vendor. Thin gold thumb on a subtle track — matches the
+   "Coal & Forged Gold" palette without shouting.
+   ================================================================== */
+.control input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+  padding: 8px 0;  /* extra hit area for easier dragging */
+}
+
+/* WebKit (Safari, Chrome) track + thumb */
+.control input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 999px;
+}
+.control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin-top: -7px;  /* centers the thumb on the 4px track */
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--gold);
+  transition: transform 120ms var(--ease), box-shadow 120ms var(--ease);
+}
+.control input[type="range"]:hover::-webkit-slider-thumb,
+.control input[type="range"]:focus::-webkit-slider-thumb {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 1px var(--gold-hot), 0 0 18px rgba(255, 181, 71, 0.45);
+}
+
+/* Firefox track + thumb */
+.control input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 999px;
+}
+.control input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--gold);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--gold);
+  transition: transform 120ms var(--ease), box-shadow 120ms var(--ease);
+}
+.control input[type="range"]:hover::-moz-range-thumb,
+.control input[type="range"]:focus::-moz-range-thumb {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 1px var(--gold-hot), 0 0 18px rgba(255, 181, 71, 0.45);
+}
+
+.control input[type="range"]:focus-visible {
+  outline: 2px solid var(--gold-hot);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+
+/* ==================================================================
+   4. RESULTS PANEL
+   ================================================================== */
+.calc-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+/* Headline card — the big verdict ("Break-even: Year 3"). */
+.calc-headline {
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(255, 181, 71, 0.08), transparent 60%),
+    var(--surface);
+  border: 1px solid var(--border-hot);
+  border-radius: var(--radius-lg);
+  padding: var(--s-6) var(--s-5);
+  text-align: center;
+}
+.calc-headline-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-faint);
+  margin: 0 0 var(--s-2);
+}
+.calc-headline-value {
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+  background: linear-gradient(135deg, #ffb547 0%, #d4a84b 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+/* Chart container — fixed aspect so the chart has room to breathe
+   regardless of screen width. Chart.js handles its own responsiveness
+   inside this box via maintainAspectRatio: false + responsive: true. */
+.calc-chart-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--s-5);
+  position: relative;
+  /* aspect-ratio keeps the chart proportional without JS intervention. */
+  aspect-ratio: 16 / 9;
+  max-height: 460px;
+}
+.calc-chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Three small tiles below the chart: Total Buy / Total Build / Delta. */
+.calc-totals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-3);
+}
+.calc-total {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-4);
+}
+.calc-total-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin: 0 0 var(--s-2);
+}
+.calc-total-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+  color: var(--text);
+  word-break: break-word;
+}
+.calc-total.is-buy   .calc-total-value { color: #ffb547; }   /* same gold the "Buy" line uses in the chart */
+.calc-total.is-build .calc-total-value { color: #4ade80; }   /* same green the "Build" line uses */
+.calc-total.is-delta .calc-total-value { color: var(--text); font-size: 1.125rem; }
+
+
+/* ==================================================================
+   5. RESPONSIVE
+   Desktop gets the 2-column split once there's enough room for
+   360px of controls + a meaningful chart width beside them.
+   ================================================================== */
+@media (min-width: 960px) {
+  .calculator {
+    grid-template-columns: 360px 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .calc-totals { grid-template-columns: 1fr; }
+  .calc-chart-wrap { aspect-ratio: 4 / 3; }
+}
