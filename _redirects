@@ -1,13 +1,10 @@
 # Rycode — Netlify redirects
 # ---------------------------------------------------------------
-# Proxy /grc/* through to the Rycode GRC Netlify site. The `200!`
-# status is a rewrite (not a 3xx redirect) — the visitor's URL bar
-# still shows rycode.dev/grc/... while the content is fetched
-# from the origin.
+# The GRC case-study page links out to https://grc.rycode.dev/,
+# which is the GRC site's own custom domain on its own Netlify
+# project. We do NOT proxy /grc/* from here — Netlify's Pro
+# password-protection renders a login form that only works when
+# served from the origin's own domain, not through a rewrite.
 #
-# The GRC origin site is password-protected via Netlify Pro, so
-# the proxy will pass the auth prompt through to visitors.
-#
-# The GRC project is named "rycodegrc" in Netlify, so its default
-# subdomain is rycodegrc.netlify.app. If that changes, update below.
-/grc/*    https://rycodegrc.netlify.app/:splat    200!
+# This file is intentionally left without rules. Add redirects
+# below as the site grows.
