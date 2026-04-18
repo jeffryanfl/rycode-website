@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Grocery Swap Calculator — compare an existing SKU against a proposed replacement using penny profit, shrink, slotting, and cannibalization. Part of Rycode." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Grocery Swap Calculator — Rycode" />
+  <meta property="og:description" content="Shipped vs sold comparison for corporate grocery buyers. Penny profit after shrink, switching costs, and cannibalization." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>Grocery Swap Calculator — Rycode</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="grocery-swap-calc.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <noscript>
+    <div class="noscript-banner">
+      This calculator needs JavaScript to run the math. The input fields below are labeled — turn JS on to see live results.
+    </div>
+  </noscript>
+
+  <!-- ===========================================================
+       HEADER / NAV
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html" class="brand" aria-label="Rycode home">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-sub">26</span>Ry</span><span class="brand-text">code</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#systems">Systems</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="https://grc.rycode.dev/" target="_blank" rel="noopener">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===========================================================
+         HERO
+         =========================================================== -->
+    <section class="case-hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">
+          <a href="../../index.html#dashboards" class="back-link">← Back to dashboards</a>
+        </p>
+        <div class="case-meta reveal">
+          <span class="card-category">Dashboards</span>
+          <span class="card-status is-live">
+            <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+          </span>
+        </div>
+        <h1 class="case-title reveal">Grocery Swap Calculator</h1>
+        <p class="case-lede reveal">When a grocery buyer is considering a new SKU, "better margin" isn't the answer — shipped-vs-sold is. This calculator compares an existing product against a proposed replacement after shrink, slotting, transition costs, and cannibalization. It tells you whether to swap, hold, or that the payback's too slow.</p>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         INPUTS + LIVE RESULTS
+         =========================================================== -->
+    <section class="section gs-report">
+      <div class="container">
+
+        <!-- Two-column input panel ——————————————————————————————— -->
+        <div class="gs-inputs reveal">
+
+          <div class="gs-col gs-col--old">
+            <p class="gs-col-eyebrow gs-col-eyebrow--old">Current product</p>
+            <div class="gs-fields">
+              <div class="gs-field gs-field--full">
+                <label for="oldName">Product name</label>
+                <input id="oldName" type="text" value="Store brand 2% milk, 1 gal" />
+              </div>
+              <div class="gs-field">
+                <label for="oldCost">Unit cost ($)</label>
+                <input id="oldCost" type="number" step="0.01" min="0" value="2.20" />
+              </div>
+              <div class="gs-field">
+                <label for="oldRetail">Retail price ($)</label>
+                <input id="oldRetail" type="number" step="0.01" min="0" value="3.49" />
+              </div>
+              <div class="gs-field">
+                <label for="oldShipped">Weekly shipped</label>
+                <input id="oldShipped" type="number" step="1" min="0" value="100" />
+              </div>
+              <div class="gs-field">
+                <label for="oldSold">Weekly sold</label>
+                <input id="oldSold" type="number" step="1" min="0" value="92" />
+              </div>
+              <div class="gs-field">
+                <label for="oldMarkdown">Markdown rate (%)</label>
+                <input id="oldMarkdown" type="number" step="0.1" min="0" max="100" value="3" />
+              </div>
+              <div class="gs-field">
+                <label for="oldPromo">Promo allowance ($/unit)</label>
+                <input id="oldPromo" type="number" step="0.01" min="0" value="0.10" />
+              </div>
+            </div>
+          </div>
+
+          <div class="gs-col gs-col--new">
+            <p class="gs-col-eyebrow gs-col-eyebrow--new">Proposed replacement</p>
+            <div class="gs-fields">
+              <div class="gs-field gs-field--full">
+                <label for="newName">Product name</label>
+                <input id="newName" type="text" value="Organic 2% milk, 1 gal" />
+              </div>
+              <div class="gs-field">
+                <label for="newCost">Unit cost ($)</label>
+                <input id="newCost" type="number" step="0.01" min="0" value="3.10" />
+              </div>
+              <div class="gs-field">
+                <label for="newRetail">Retail price ($)</label>
+                <input id="newRetail" type="number" step="0.01" min="0" value="5.49" />
+              </div>
+              <div class="gs-field">
+                <label for="newShipped">Weekly shipped</label>
+                <input id="newShipped" type="number" step="1" min="0" value="60" />
+              </div>
+              <div class="gs-field">
+                <label for="newSold">Weekly sold</label>
+                <input id="newSold" type="number" step="1" min="0" value="56" />
+              </div>
+              <div class="gs-field">
+                <label for="newMarkdown">Markdown rate (%)</label>
+                <input id="newMarkdown" type="number" step="0.1" min="0" max="100" value="4" />
+              </div>
+              <div class="gs-field">
+                <label for="newPromo">Promo allowance ($/unit)</label>
+                <input id="newPromo" type="number" step="0.01" min="0" value="0.15" />
+              </div>
+              <div class="gs-field">
+                <label for="newSlotting">Slotting fee ($, one-time)</label>
+                <input id="newSlotting" type="number" step="100" min="0" value="15000" />
+              </div>
+              <div class="gs-field">
+                <label for="newTransition">Transition cost ($, one-time)</label>
+                <input id="newTransition" type="number" step="100" min="0" value="3000" />
+              </div>
+              <div class="gs-field">
+                <label for="newCannibal">Cannibalization (%)</label>
+                <input id="newCannibal" type="number" step="1" min="0" max="100" value="12" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Global inputs ——————————————————————————————— -->
+        <div class="gs-global reveal">
+          <div class="gs-field">
+            <label for="stores">Number of stores</label>
+            <input id="stores" type="number" step="1" min="1" value="200" />
+          </div>
+          <div class="gs-field">
+            <label for="scale">Volume unit</label>
+            <select id="scale">
+              <option value="per-store" selected>Units are per-store (weekly)</option>
+              <option value="chain">Units are chain-wide (weekly)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Export actions ——————————————————————————————— -->
+        <div class="gs-actions reveal">
+          <button type="button" class="gs-action-btn" id="exportCsv">Download CSV</button>
+          <button type="button" class="gs-action-btn" id="printReport">Print / PDF</button>
+        </div>
+
+        <!-- KPI tiles ——————————————————————————————— -->
+        <div class="gs-kpis reveal" aria-live="polite">
+          <div class="gs-kpi">
+            <p class="gs-kpi-label">Penny profit / unit</p>
+            <div class="gs-kpi-compare">
+              <span class="gs-kpi-old" id="kpiPennyOld">—</span>
+              <span class="gs-kpi-arrow" aria-hidden="true">→</span>
+              <span class="gs-kpi-new" id="kpiPennyNew">—</span>
+              <span class="gs-kpi-delta" id="kpiPennyDelta">—</span>
+            </div>
+            <span class="gs-kpi-formula" id="kpiPennyFormula">= retail − effective cost</span>
+          </div>
+
+          <div class="gs-kpi">
+            <p class="gs-kpi-label">Weekly gross profit</p>
+            <div class="gs-kpi-compare">
+              <span class="gs-kpi-old" id="kpiWeeklyOld">—</span>
+              <span class="gs-kpi-arrow" aria-hidden="true">→</span>
+              <span class="gs-kpi-new" id="kpiWeeklyNew">—</span>
+              <span class="gs-kpi-delta" id="kpiWeeklyDelta">—</span>
+            </div>
+            <span class="gs-kpi-formula" id="kpiWeeklyFormula">= penny × units sold × stores</span>
+          </div>
+
+          <div class="gs-kpi">
+            <p class="gs-kpi-label">Annual gross profit</p>
+            <div class="gs-kpi-compare">
+              <span class="gs-kpi-old" id="kpiAnnualOld">—</span>
+              <span class="gs-kpi-arrow" aria-hidden="true">→</span>
+              <span class="gs-kpi-new" id="kpiAnnualNew">—</span>
+              <span class="gs-kpi-delta" id="kpiAnnualDelta">—</span>
+            </div>
+            <span class="gs-kpi-formula" id="kpiAnnualFormula">= weekly × 52 (new adjusted for cannibalization)</span>
+          </div>
+
+          <div class="gs-kpi">
+            <p class="gs-kpi-label">Break-even shrink (new)</p>
+            <div class="gs-kpi-compare">
+              <span class="gs-kpi-new" id="kpiBreakeven">—</span>
+            </div>
+            <span class="gs-kpi-formula" id="kpiBreakevenFormula">shrink above which new stops beating old</span>
+          </div>
+        </div>
+
+        <!-- Verdict + caveats row ——————————————————————————————— -->
+        <div class="gs-verdict-row reveal">
+          <div class="gs-verdict" id="verdict">
+            <p class="gs-verdict-eyebrow">Recommendation</p>
+            <p class="gs-verdict-recommendation" id="verdictHeadline">—</p>
+            <p class="gs-verdict-rationale" id="verdictRationale">—</p>
+          </div>
+          <aside class="gs-caveats">
+            <p class="gs-caveats-title">What this calc doesn't model</p>
+            <ul>
+              <li>DC / warehouse handling costs — vary too much by retailer</li>
+              <li>Multi-year NPV — verdict is based on year-one delta only</li>
+              <li>Category-level cannibalization — single-SKU field is an approximation</li>
+              <li>Payment-term impact on working capital (net 30 vs 60 vs 90)</li>
+              <li>Shelf-space opportunity cost if the new product needs more facings</li>
+              <li>Contract minimums, exclusivity, or volume rebates</li>
+            </ul>
+          </aside>
+        </div>
+
+        <!-- The math worked out ——————————————————————————————— -->
+        <div class="gs-math reveal" aria-live="polite">
+          <p class="gs-math-eyebrow">The math worked out</p>
+          <h3 class="gs-math-title">Every number above traces back to your inputs. Here's the derivation.</h3>
+          <div class="gs-math-grid">
+            <div class="gs-math-col" id="mathOld">
+              <p class="gs-math-col-title" id="mathOldTitle">Current product</p>
+              <!-- Populated by JS. -->
+            </div>
+            <div class="gs-math-col" id="mathNew">
+              <p class="gs-math-col-title" id="mathNewTitle">Proposed replacement</p>
+              <!-- Populated by JS. -->
+            </div>
+          </div>
+          <div class="gs-math-summary" id="mathSummary">
+            <!-- Year-1 delta walk-through, populated by JS. -->
+          </div>
+        </div>
+
+        <!-- Sensitivity chart ——————————————————————————————— -->
+        <div class="gs-chart-card reveal">
+          <div class="gs-chart-head">
+            <p class="gs-chart-eyebrow">Sensitivity · Shrink</p>
+            <h3 class="gs-chart-title">How wrong can the shrink estimate be?</h3>
+            <p class="gs-chart-sub">Annual gross profit for each product as shrink varies from 0% to 20%. The vertical markers show your current shrink assumption for each product.</p>
+          </div>
+          <div class="gs-chart-wrap">
+            <canvas id="sensitivityChart" aria-label="Shrink sensitivity line chart"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         METHODOLOGY
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Methodology</p>
+        <h2 class="section-title reveal">How the verdict is calculated.</h2>
+        <div class="case-prose reveal">
+          <p><strong>The core insight.</strong> Grocery buyers at scale don't optimize for margin percent — they optimize for dollars. A 25% margin on a $4 organic item beats a 40% margin on a $1 store-brand item on <em>every</em> unit sold. "Penny profit" is the term of art: the dollars you keep per unit sold, after real-world costs.</p>
+
+          <p><strong>The formula chain.</strong> For each product:</p>
+          <ol>
+            <li><code>shrink % = (shipped − sold) / shipped</code> — the gap between what you bought and what you rang up</li>
+            <li><code>net cost = unit cost − promo allowance</code> — supplier dollars reduce your landed cost</li>
+            <li><code>effective cost = net cost ÷ (1 − shrink%)</code> — spread the shrink loss over the units that actually sold</li>
+            <li><code>effective retail = retail × (1 − markdown rate)</code> — average revenue after forced price cuts</li>
+            <li><code>penny profit = effective retail − effective cost</code></li>
+            <li><code>weekly gross = penny × units sold × stores</code> (or just × units sold if chain-wide)</li>
+            <li><code>annual gross = weekly × 52</code></li>
+          </ol>
+
+          <p><strong>Cannibalization adjustment.</strong> For the proposed replacement only, we reduce its annual gross by the cannibalization percentage. The logic: if 12% of new sales came at the expense of another SKU you already carry, only 88% is net-new revenue to the store. Simplification: we assume the cannibalized SKU had roughly equivalent profit per unit. In reality you'd model the specific cannibalized product separately — v2 territory.</p>
+
+          <p><strong>Switching cost.</strong> <code>slotting fee + transition cost</code>. These are one-time year-one expenses. The verdict subtracts them from the year-one delta. After year one they're gone, so if the per-unit math favors new, the multi-year picture favors new even more strongly.</p>
+
+          <p><strong>Verdict thresholds.</strong></p>
+          <ul>
+            <li><strong>SWITCH</strong> — year-one delta is positive after switching costs</li>
+            <li><strong>MARGINAL</strong> — year-one is negative but the ongoing annual advantage pays back switching costs within 24 months</li>
+            <li><strong>HOLD</strong> — either the new product loses on per-unit math, or payback is slower than 24 months</li>
+          </ul>
+
+          <p><strong>Break-even shrink.</strong> The shrink percentage on the new product above which it stops beating the old product on annual gross (at current inputs otherwise). If your real-world shrink exceeds this, your verdict flips. Useful sanity check against over-optimistic shrink assumptions on an unproven new item.</p>
+
+          <p><strong>What "iteration of the page" means.</strong> Every time any input changes, every number above recalculates and every formula in "The math worked out" rewrites with your new values. The caveats list doesn't change — those are structural limits of the model, not inputs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         BACK TO DASHBOARDS
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <div class="case-cta reveal">
+          <a class="btn btn-primary" href="../../index.html#dashboards">See other dashboards</a>
+          <a class="btn btn-ghost" href="../build-vs-buy/">Try Build vs. Buy</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <!-- Chart.js via CDN — same version the rest of the site uses. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Shared site behavior. -->
+  <script src="../../script.js"></script>
+  <!-- Dashboard logic — must load AFTER Chart.js is available. -->
+  <script src="grocery-swap-calc.js"></script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+/* ==================================================================
+   GROCERY SWAP CALCULATOR — grocery-swap-calc.css
+   Page-specific styles. Design tokens come from ../../styles.css.
+
+   TABLE OF CONTENTS
+   -----------------
+   1. INPUT PANEL          (two columns: old vs new)
+   2. GLOBAL INPUTS + ACTIONS
+   3. KPI TILES            (4 tiles with old → new → delta)
+   4. VERDICT + CAVEATS
+   5. MATH WORKED OUT      (full derivation)
+   6. SENSITIVITY CHART
+   7. RESPONSIVE
+   8. PRINT                (@media print)
+   ================================================================== */
+
+
+/* ==================================================================
+   1. INPUT PANEL
+   Two cards side by side. The NEW card gets a gold frame so the
+   eye treats it as the "challenger."
+   ================================================================== */
+.gs-inputs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.gs-col {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--s-5);
+}
+.gs-col--new {
+  border-color: var(--gold-dim);
+  background:
+    radial-gradient(70% 100% at 100% 0%, rgba(212, 168, 75, 0.06), transparent 60%),
+    var(--surface);
+}
+.gs-col-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin: 0 0 var(--s-4);
+}
+.gs-col-eyebrow--old { color: var(--text-faint); }
+.gs-col-eyebrow--new { color: var(--gold-hot); }
+
+.gs-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+}
+.gs-field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  margin-bottom: 6px;
+}
+.gs-field input,
+.gs-field select {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 160ms var(--ease), background 160ms var(--ease);
+}
+.gs-field input:hover,
+.gs-field select:hover { border-color: var(--border-hot); }
+.gs-field input:focus,
+.gs-field select:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--surface);
+}
+.gs-field--full { grid-column: 1 / -1; }
+
+
+/* ==================================================================
+   2. GLOBAL INPUTS + ACTIONS
+   ================================================================== */
+.gs-global {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--s-4);
+}
+
+.gs-actions {
+  display: flex;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-bottom: var(--s-5);
+}
+.gs-action-btn {
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-family: inherit;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 160ms var(--ease), background 160ms var(--ease), color 160ms var(--ease);
+}
+.gs-action-btn:hover {
+  border-color: var(--gold);
+  background: rgba(212, 168, 75, 0.08);
+  color: var(--gold-hot);
+}
+.gs-action-btn:focus-visible {
+  outline: 2px solid var(--gold-hot);
+  outline-offset: 3px;
+}
+
+
+/* ==================================================================
+   3. KPI TILES
+   ================================================================== */
+.gs-kpis {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+}
+.gs-kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gs-kpi-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.gs-kpi-compare {
+  display: flex;
+  gap: var(--s-2);
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-variant-numeric: tabular-nums;
+}
+.gs-kpi-old {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.gs-kpi-arrow {
+  color: var(--text-faint);
+  font-weight: 400;
+}
+.gs-kpi-new {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gold-hot);
+  letter-spacing: -0.01em;
+}
+.gs-kpi-delta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.gs-kpi-delta.is-positive {
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.35);
+}
+.gs-kpi-delta.is-negative {
+  background: rgba(248, 113, 113, 0.08);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+.gs-kpi-delta.is-neutral {
+  background: rgba(161, 161, 170, 0.08);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.gs-kpi-formula {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+}
+
+
+/* ==================================================================
+   4. VERDICT + CAVEATS
+   ================================================================== */
+.gs-verdict-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+  margin-bottom: var(--s-5);
+}
+
+.gs-verdict {
+  padding: var(--s-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(80% 120% at 0% 0%, rgba(212, 168, 75, 0.08), transparent 60%),
+    var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  justify-content: center;
+}
+.gs-verdict.is-switch    { border-color: rgba(74, 222, 128, 0.55); }
+.gs-verdict.is-marginal  { border-color: var(--gold); }
+.gs-verdict.is-hold      { border-color: rgba(113, 113, 122, 0.55); }
+
+.gs-verdict-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin: 0;
+}
+.gs-verdict-recommendation {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.gs-verdict.is-switch .gs-verdict-recommendation    { color: #4ade80; }
+.gs-verdict.is-marginal .gs-verdict-recommendation  { color: var(--gold-hot); }
+.gs-verdict.is-hold .gs-verdict-recommendation      { color: var(--text-muted); }
+
+.gs-verdict-rationale {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.gs-caveats {
+  padding: var(--s-5);
+  background: rgba(255, 181, 71, 0.04);
+  border: 1px solid rgba(255, 181, 71, 0.22);
+  border-radius: var(--radius-lg);
+}
+.gs-caveats-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin: 0 0 var(--s-3);
+}
+.gs-caveats ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--s-2);
+}
+.gs-caveats li {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+.gs-caveats li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--gold-dim);
+}
+
+
+/* ==================================================================
+   5. MATH WORKED OUT
+   ================================================================== */
+.gs-math {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--s-5);
+  margin-bottom: var(--s-5);
+}
+.gs-math-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin: 0 0 var(--s-2);
+}
+.gs-math-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0 0 var(--s-4);
+}
+.gs-math-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+.gs-math-col {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-4);
+}
+.gs-math-col-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 var(--s-3);
+  letter-spacing: -0.005em;
+}
+.gs-math-step {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  line-height: 1.55;
+}
+.gs-math-step:last-child { border-bottom: none; }
+.gs-math-label {
+  display: block;
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+.gs-math-formula { display: block; color: var(--text-muted); }
+.gs-math-substituted { display: block; color: var(--text-muted); }
+.gs-math-result {
+  display: block;
+  color: var(--gold-hot);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.gs-math-summary {
+  background: var(--bg);
+  border: 1px solid var(--gold-dim);
+  border-radius: var(--radius-md);
+  padding: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+.gs-math-summary-title {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 var(--s-2);
+}
+.gs-math-summary-line { color: var(--text-muted); }
+.gs-math-summary-line .result { color: var(--gold-hot); font-weight: 700; }
+
+
+/* ==================================================================
+   6. SENSITIVITY CHART
+   ================================================================== */
+.gs-chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  margin-bottom: var(--s-6);
+}
+.gs-chart-head { display: flex; flex-direction: column; gap: 4px; }
+.gs-chart-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin: 0;
+}
+.gs-chart-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+.gs-chart-sub {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: var(--s-2) 0 0;
+}
+.gs-chart-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+}
+.gs-chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* ==================================================================
+   7. RESPONSIVE
+   ================================================================== */
+@media (min-width: 520px) {
+  .gs-fields { grid-template-columns: 1fr 1fr; }
+  .gs-global { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 720px) {
+  .gs-inputs      { grid-template-columns: 1fr 1fr; }
+  .gs-math-grid   { grid-template-columns: 1fr 1fr; }
+  .gs-kpis        { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .gs-kpis         { grid-template-columns: repeat(4, 1fr); }
+  .gs-verdict-row  { grid-template-columns: 1.3fr 1fr; }
+}
+
+
+/* ==================================================================
+   8. PRINT — one-page comparison sheet
+   Hides nav, footer, the input editor, and export buttons. Keeps
+   verdict, KPIs, math, and caveats. Forces the dark theme to print
+   with background colors so the brand reads on paper.
+   ================================================================== */
+@media print {
+  /* Force background colors to print */
+  body, .gs-col, .gs-kpi, .gs-verdict, .gs-caveats, .gs-math, .gs-math-col, .gs-math-summary, .gs-chart-card {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Strip chrome */
+  .site-header,
+  .site-footer,
+  .nav,
+  .case-cta,
+  .gs-actions,
+  .hero-eyebrow,
+  .noscript-banner { display: none !important; }
+
+  /* Reveal animations shouldn't leave things invisible */
+  .reveal { opacity: 1 !important; transform: none !important; }
+
+  /* Compact layout */
+  .case-hero { padding: var(--s-4) 0 var(--s-3) !important; }
+  .section   { padding: var(--s-3) 0 !important; }
+  .container { max-width: 100% !important; padding: 0 var(--s-4) !important; }
+
+  /* Hide live inputs on print — the inputs are captured in the math section */
+  .gs-inputs, .gs-global { display: none !important; }
+
+  /* Keep block-level sections from splitting across pages awkwardly */
+  .gs-verdict-row, .gs-kpi, .gs-math-col, .gs-chart-card { break-inside: avoid; }
+
+  /* Show a small print header with date */
+  .gs-report::before {
+    content: "Grocery Swap Calculator · " attr(data-printed);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-tiny);
+    color: var(--text-faint);
+    margin-bottom: var(--s-3);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}
