@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Anatomy of a Deployment — an interactive map of how a website actually gets from a laptop to someone else's screen. Follow the package through every stop along the way. Part of Rycode." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Anatomy of a Deployment — Rycode" />
+  <meta property="og:description" content="An interactive walk through the 9 stops between saving a file and rendering a page. Part of the Anatomy Of series." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>Anatomy of a Deployment — Rycode</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="deployment.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <noscript>
+    <div class="noscript-banner">
+      This page works without JavaScript — but you need it turned on for the stops to expand when you click them.
+    </div>
+  </noscript>
+
+  <!-- ===========================================================
+       HEADER / NAV — mirrors the main site nav so this page feels
+       like part of rycode.dev, not a detached artifact.
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html" class="brand" aria-label="Rycode home">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-sub">26</span>Ry</span><span class="brand-text">code</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#systems">Systems</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../../index.html#anatomy">Anatomy Of</a></li>
+        <li><a href="../../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="https://grc.rycode.dev/" target="_blank" rel="noopener">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="a-main">
+
+    <!-- HERO -->
+    <header class="a-hero">
+      <p class="a-eyebrow">Anatomy Of</p>
+      <h1 class="a-title">Anatomy of a Deployment</h1>
+      <p class="a-intro">
+        The barriers to building your own tools are gone. Look around —
+        a problem you notice on your commute, an inefficiency at work, a
+        small thing that doesn't exist yet but should. Any of those is a
+        website, an app, or a tool waiting to be made. What's left is
+        craft: understanding what you're building, and how it actually
+        reaches the people who need it. This is a map of that journey.
+      </p>
+    </header>
+
+
+    <!-- PHASE 1 — AT YOUR DESK -->
+    <div class="a-phase">
+      <span class="a-phase-label">At Your Desk</span>
+      <span class="a-phase-sub">human-driven</span>
+    </div>
+
+    <div class="a-flow" role="tablist" aria-label="Stops on your laptop">
+      <button class="a-node" data-id="01" role="tab" aria-selected="false">
+        <span class="a-node-dot">01</span>
+        <span class="a-node-label">Claude<br>Code</span>
+      </button>
+      <button class="a-node" data-id="02" role="tab" aria-selected="false">
+        <span class="a-node-dot">02</span>
+        <span class="a-node-label">Your<br>Laptop</span>
+      </button>
+      <button class="a-node" data-id="03" role="tab" aria-selected="false">
+        <span class="a-node-dot">03</span>
+        <span class="a-node-label">Git</span>
+      </button>
+      <button class="a-node" data-id="04" role="tab" aria-selected="false">
+        <span class="a-node-dot">04</span>
+        <span class="a-node-label">git push</span>
+      </button>
+    </div>
+
+    <div class="a-border" aria-hidden="true">Out of your hands</div>
+
+
+    <!-- PHASE 2 — OUT IN THE WORLD -->
+    <div class="a-phase">
+      <span class="a-phase-label">Out in the World</span>
+      <span class="a-phase-sub">automated</span>
+    </div>
+
+    <div class="a-flow" role="tablist" aria-label="Stops out on the internet">
+      <button class="a-node" data-id="05" role="tab" aria-selected="false">
+        <span class="a-node-dot">05</span>
+        <span class="a-node-label">GitHub</span>
+      </button>
+      <button class="a-node" data-id="06" role="tab" aria-selected="false">
+        <span class="a-node-dot">06</span>
+        <span class="a-node-label">Netlify<br>Build</span>
+      </button>
+      <button class="a-node" data-id="07" role="tab" aria-selected="false">
+        <span class="a-node-dot">07</span>
+        <span class="a-node-label">Netlify<br>CDN</span>
+      </button>
+      <button class="a-node" data-id="08" role="tab" aria-selected="false">
+        <span class="a-node-dot">08</span>
+        <span class="a-node-label">DNS</span>
+      </button>
+      <button class="a-node" data-id="09" role="tab" aria-selected="false">
+        <span class="a-node-dot">09</span>
+        <span class="a-node-label">The<br>Browser</span>
+      </button>
+    </div>
+
+
+    <!-- DETAIL PANEL — one pane, content swaps on node click -->
+    <section class="a-detail" aria-live="polite" id="detail">
+      <div class="a-detail-body" id="detailBody">
+        <p class="a-detail-eyebrow">Stop 01</p>
+        <h2 class="a-detail-name">Claude Code</h2>
+        <p class="a-detail-tagline">Where ideas become code.</p>
+        <ul>
+          <li>Describe what you want in plain English — an AI assistant writes the code.</li>
+          <li>Runs on your laptop. Can read and write files directly in your project folder.</li>
+          <li>Not required for the pipeline — you could write the code by hand instead. It just speeds things up.</li>
+        </ul>
+        <p class="a-detail-note">In practice: this entire site was built using Claude Code.</p>
+      </div>
+    </section>
+
+
+    <!-- WHAT'S IN THE PACKAGE -->
+    <section class="a-package">
+      <div class="a-phase">
+        <span class="a-phase-label">What's in the Package?</span>
+        <span class="a-phase-sub">three files that make a website</span>
+      </div>
+
+      <div class="a-package-grid" role="tablist" aria-label="File types inside the package">
+        <button class="a-node" data-id="html" role="tab" aria-selected="false">
+          <span class="a-node-dot">H</span>
+          <span class="a-node-label">HTML</span>
+        </button>
+        <button class="a-node" data-id="css" role="tab" aria-selected="false">
+          <span class="a-node-dot">C</span>
+          <span class="a-node-label">CSS</span>
+        </button>
+        <button class="a-node" data-id="js" role="tab" aria-selected="false">
+          <span class="a-node-dot">J</span>
+          <span class="a-node-label">JavaScript</span>
+        </button>
+      </div>
+    </section>
+
+
+    <footer class="a-footer">
+      Part of <a href="../../index.html#anatomy">Anatomy Of</a> · rycode.dev
+    </footer>
+
+  </main>
+
+  <script src="deployment.js"></script>
+</body>
+</html>

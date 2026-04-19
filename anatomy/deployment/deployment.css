@@ -1,0 +1,379 @@
+/* ==================================================================
+   Anatomy of a Deployment — deployment.css
+   Page-specific styles. Design tokens are inherited from the site-wide
+   /styles.css, which loads first. This file only adds the anatomy
+   pieces that don't belong in the global stylesheet.
+
+   TABLE OF CONTENTS
+   -----------------
+   1.  LAYOUT          (main container, hero band)
+   2.  PHASE LABELS    (the "At Your Desk" / "Out in the World" tags)
+   3.  PIPELINE FLOW   (rows of nodes connected by a gold wire)
+   4.  NODE STATES     (hover, focus, active)
+   5.  BORDER CROSSING (divider between the two phase rows)
+   6.  DETAIL PANEL    (single pane that swaps content on click)
+   7.  PACKAGE GRID    (three file-type tiles at the bottom)
+   8.  FOOTER
+   9.  REDUCED MOTION
+   10. MOBILE          (breakpoint: 720px — flow goes vertical)
+   ================================================================== */
+
+
+/* ==================================================================
+   1. LAYOUT
+   ================================================================== */
+.a-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--s-8) var(--s-5) var(--s-9);
+}
+
+.a-hero {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--s-7);
+  margin-bottom: var(--s-8);
+}
+.a-eyebrow {
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  margin: 0 0 var(--s-3);
+}
+/* Local hero size — smaller than the site-wide --fs-hero, which is
+   sized for the homepage and would overwhelm this page. */
+.a-title {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--s-4);
+  font-weight: 700;
+}
+.a-intro {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 60ch;
+}
+
+
+/* ==================================================================
+   2. PHASE LABELS
+   ================================================================== */
+.a-phase {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.a-phase-label {
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  font-weight: 600;
+}
+.a-phase-sub {
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+}
+
+
+/* ==================================================================
+   3. PIPELINE FLOW — horizontal rows of nodes with connecting line
+   ================================================================== */
+.a-flow {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--s-6) var(--s-2) var(--s-4);
+  margin-bottom: var(--s-3);
+  gap: var(--s-2);
+}
+/* The gold "wire" behind the dots. Gradient fades at the ends so it
+   doesn't look like it's cut off — feels like a continuous pipeline. */
+.a-flow::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--s-6) + 1.5rem);
+  left: var(--s-6);
+  right: var(--s-6);
+  height: 1px;
+  background: linear-gradient(to right,
+    var(--border-hot) 0%,
+    var(--gold-dim) 50%,
+    var(--border-hot) 100%);
+  z-index: 0;
+}
+
+.a-node {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0 var(--s-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  text-align: center;
+}
+.a-node-dot {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-hot);
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  transition: transform 240ms var(--ease),
+              border-color 240ms var(--ease),
+              background 240ms var(--ease),
+              color 240ms var(--ease),
+              box-shadow 240ms var(--ease);
+}
+.a-node-label {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.3;
+  transition: color 240ms var(--ease);
+}
+
+
+/* ==================================================================
+   4. NODE STATES — hover, focus, active
+   ================================================================== */
+.a-node:hover .a-node-dot {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.a-node:hover .a-node-label {
+  color: var(--text);
+}
+
+.a-node:focus-visible { outline: none; }
+.a-node:focus-visible .a-node-dot {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.a-node.is-active .a-node-dot {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--bg);
+  box-shadow: 0 0 0 4px rgba(212, 168, 75, 0.15),
+              0 0 32px rgba(212, 168, 75, 0.35);
+  transform: translateY(-2px);
+}
+.a-node.is-active .a-node-label {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+
+/* ==================================================================
+   5. BORDER CROSSING — divider between the two phase rows
+   ================================================================== */
+.a-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-4);
+  margin: var(--s-4) 0 var(--s-5);
+  color: var(--gold-dim);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+.a-border::before,
+.a-border::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-hot), transparent);
+}
+
+
+/* ==================================================================
+   6. DETAIL PANEL — single pane, content swaps on node click
+   ================================================================== */
+.a-detail {
+  margin-top: var(--s-6);
+  padding: var(--s-6) var(--s-6) var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--border-hot);
+  border-radius: var(--radius-md);
+  min-height: 18rem;
+  position: relative;
+  box-shadow: 0 20px 60px -30px rgba(212, 168, 75, 0.2);
+}
+.a-detail-body {
+  transition: opacity 180ms var(--ease), transform 180ms var(--ease);
+}
+.a-detail.is-swapping .a-detail-body {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.a-detail-eyebrow {
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  margin: 0 0 var(--s-2);
+}
+.a-detail-name {
+  font-size: 1.625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--s-2);
+}
+/* Acronym expansion line under the name (e.g. "DOMAIN NAME SYSTEM"). */
+.a-detail-expansion {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  color: var(--gold-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 var(--s-3);
+}
+.a-detail-tagline {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0 0 var(--s-5);
+}
+
+.a-detail ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.a-detail li {
+  padding-left: var(--s-5);
+  position: relative;
+  color: var(--text);
+}
+.a-detail li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.a-detail-note {
+  margin: var(--s-5) 0 0;
+  padding-top: var(--s-4);
+  border-top: 1px dashed var(--border);
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+
+/* ==================================================================
+   7. PACKAGE GRID — three file-type tiles (HTML / CSS / JS)
+   These aren't sequential, so no connecting line between them.
+   ================================================================== */
+.a-package {
+  margin-top: var(--s-9);
+  padding-top: var(--s-7);
+  border-top: 1px solid var(--border);
+}
+.a-package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+  margin-top: var(--s-5);
+  padding-top: var(--s-5);
+}
+
+
+/* ==================================================================
+   8. FOOTER
+   ================================================================== */
+.a-footer {
+  margin-top: var(--s-9);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-tiny);
+  color: var(--text-faint);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.a-footer a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gold-dim);
+  transition: color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.a-footer a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+
+/* ==================================================================
+   9. REDUCED MOTION
+   ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .a-node-dot,
+  .a-node-label,
+  .a-detail-body {
+    transition: none !important;
+  }
+}
+
+
+/* ==================================================================
+   10. MOBILE — collapse horizontal flow into vertical stack
+   ================================================================== */
+@media (max-width: 720px) {
+  .a-main { padding: var(--s-6) var(--s-4) var(--s-8); }
+
+  .a-flow {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--s-4) 0;
+    gap: var(--s-4);
+  }
+  .a-flow::before {
+    top: var(--s-4);
+    bottom: var(--s-4);
+    left: 1.5rem;                /* half dot width, centers on the dots */
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(to bottom,
+      var(--border-hot) 0%,
+      var(--gold-dim) 50%,
+      var(--border-hot) 100%);
+  }
+  .a-node {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--s-4);
+    text-align: left;
+    width: 100%;
+  }
+  .a-node-dot { flex-shrink: 0; }
+  .a-node-label { font-size: var(--fs-body); }
+
+  .a-package-grid { grid-template-columns: 1fr; }
+}
