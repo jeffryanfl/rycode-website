@@ -45,6 +45,11 @@
 #                                  attributes from JS (e.g. CSS custom
 #                                  properties for tilt cards / charts)
 #   img-src 'self' data:         — own images + base64 data: URIs
+#   connect-src 'self' https://cdn.jsdelivr.net
+#                                — own origin + jsdelivr (the latter so
+#                                  the browser can fetch Chart.js's
+#                                  source map for DevTools; harmless
+#                                  but noisy in the console otherwise)
 #   frame-ancestors 'none'       — same as X-Frame-Options: DENY but
 #                                  newer / more granular
 #   object-src 'none'            — blocks <object>/<embed>/<applet>
@@ -53,7 +58,7 @@
 # ---------------------------------------------------------------
 
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-e2g5HkZP+fghbsY1m7moq4GopOo7zRRaAHNyQ2Q7oSI='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-e2g5HkZP+fghbsY1m7moq4GopOo7zRRaAHNyQ2Q7oSI='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cdn.jsdelivr.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
