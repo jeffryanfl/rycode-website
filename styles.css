@@ -234,46 +234,14 @@ h1, h2, h3 {
 
 .brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0;
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  align-items: center;
 }
-.brand:hover { color: var(--text); }
-/* Brand mark is styled like a periodic-table cell:
-   - "Ry" is the big symbol, centered
-   - "26" is the tiny "atomic number" in the corner (also a nod to Est. 2026)
-   The tile is slightly wider than tall to fit two letters without crowding. */
-.brand-mark {
-  position: relative;
-  display: inline-grid;
-  place-items: center;
-  width: 2em;
-  height: 1.7em;
-  margin-right: 0.2em;
-  padding: 0 0.15em;
-  background: var(--gold);
-  color: var(--bg);
-  border-radius: var(--radius-sm);
-  font-weight: 900;
-  font-size: 0.95em;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  transform: translateY(0.15em);
-  box-shadow: 0 6px 20px -6px rgba(212,168,75,0.5);
-}
-.brand-mark-sub {
-  position: absolute;
-  top: 3px;
-  left: 5px;
-  font-family: var(--font-mono);
-  font-size: 0.42em;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  color: rgba(10, 10, 10, 0.55);  /* subdued dark — present but not loud */
+/* Logo lockup: element mark + "code" wordmark, rendered from /logo.svg.
+   Height controls the whole lockup; width scales from the SVG viewBox (320×100). */
+.brand-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
 }
 
 .nav-links {

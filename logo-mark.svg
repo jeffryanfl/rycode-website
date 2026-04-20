@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Rycode">
-  <!-- Rycode favicon: periodic-table cell outline.
-       "26" = atomic number / Est. 2026. "Ry" = the symbol.
-       Matches /logo-mark.svg — single source of truth for the element mark. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Rycode element mark">
+  <!-- Rycode element mark: periodic-table cell outline.
+       "26" = atomic number / Est. 2026. "Ry" = the symbol. -->
   <rect x="4" y="4" width="92" height="92" rx="16" ry="16"
-        fill="none" stroke="#d4a84b" stroke-width="5"/>
+        fill="none" stroke="#d4a84b" stroke-width="3"/>
   <text x="13" y="25"
         font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', monospace"
         font-size="14" font-weight="600"
