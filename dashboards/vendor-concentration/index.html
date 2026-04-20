@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vendor Concentration Dashboard — build a stack, take a vendor offline, see the blast radius." />
+  <meta name="color-scheme" content="dark" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>Vendor Concentration — Rycode</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+
+  <style>
+  /* ==================================================================
+     PROTOTYPE-ONLY STYLES  (prefix: vcx-)
+     Safe to throw away. Nothing here ships.
+     ================================================================== */
+
+  /* Page shell */
+  .vcx-page { padding: var(--s-6) 0 var(--s-9); }
+  .vcx-eyebrow {
+    display: inline-block; font-family: var(--font-mono);
+    font-size: var(--fs-tiny); letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); padding: 4px 10px; border: 1px solid var(--gold-dim);
+    border-radius: 999px; margin-bottom: var(--s-4);
+  }
+  .vcx-intro { color: var(--text-muted); max-width: 65ch; }
+
+  /* ——— Metric bar ——— */
+  .vcx-metrics {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-3); margin: var(--s-6) 0;
+  }
+  .vcx-metric {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: var(--s-4);
+  }
+  .vcx-metric-label {
+    font-family: var(--font-mono); font-size: var(--fs-tiny);
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint);
+    margin: 0 0 var(--s-2);
+  }
+  .vcx-metric-value {
+    font-size: 1.75rem; font-weight: 700; color: var(--text); margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .vcx-metric-value.is-danger { color: #ef4444; }
+  .vcx-metric-sub {
+    font-size: var(--fs-tiny); color: var(--text-faint); margin: var(--s-1) 0 0;
+  }
+
+  /* ——— Vendor library ——— */
+  .vcx-section-title {
+    font-family: var(--font-mono); font-size: var(--fs-tiny);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); margin: var(--s-7) 0 var(--s-3);
+  }
+  .vcx-library {
+    display: flex; flex-wrap: wrap; gap: var(--s-2);
+    padding: var(--s-4); background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+  }
+  .vcx-chip {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: 7px 14px; background: var(--surface-2);
+    border: 1px solid var(--border); border-radius: 999px;
+    color: var(--text); font-size: var(--fs-small); cursor: pointer;
+    transition: all 0.12s ease;
+    font-family: var(--font-sans);
+  }
+  .vcx-chip:hover { border-color: var(--gold-dim); }
+  .vcx-chip:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .vcx-chip-count {
+    font-family: var(--font-mono); font-size: var(--fs-tiny);
+    color: var(--text-faint); padding: 2px 6px;
+    background: rgba(255,255,255,0.05); border-radius: 4px;
+  }
+  .vcx-chip.is-active {
+    background: rgba(212, 168, 75, 0.12);
+    border-color: var(--gold); color: var(--gold-hot);
+  }
+  .vcx-chip.is-active .vcx-chip-count { color: var(--gold-hot); background: rgba(212, 168, 75, 0.15); }
+  .vcx-chip.is-offline {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: #ef4444; color: #fca5a5;
+    text-decoration: line-through;
+  }
+  .vcx-chip-action {
+    display: none; font-size: 0.9em; color: var(--text-faint);
+    background: transparent; border: 0; cursor: pointer; padding: 0 4px;
+  }
+  .vcx-chip-action:hover { color: #ef4444; }
+  .vcx-chip.is-active .vcx-chip-action { display: inline; }
+  .vcx-library-hint {
+    margin: var(--s-3) 0 0; font-size: var(--fs-tiny);
+    color: var(--text-faint); font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+  }
+
+  /* ——— The grid ——— */
+  .vcx-grid {
+    margin: var(--s-5) 0;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: var(--s-4);
+  }
+  .vcx-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .vcx-row:last-child { border-bottom: 0; }
+  .vcx-row-label {
+    align-self: start;
+    font-weight: 600; font-size: var(--fs-small); color: var(--text);
+    padding-top: var(--s-2);
+  }
+  .vcx-row-label-sub {
+    display: block; font-family: var(--font-mono);
+    font-size: var(--fs-tiny); color: var(--text-faint);
+    margin-top: 2px; letter-spacing: 0.05em;
+  }
+  .vcx-cells {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--s-2);
+  }
+  .vcx-cell {
+    position: relative;
+    padding: var(--s-3) var(--s-3) var(--s-2);
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); min-height: 90px;
+    display: flex; flex-direction: column; gap: var(--s-2);
+    transition: all 0.15s ease;
+  }
+  .vcx-cell-label {
+    font-size: var(--fs-small); color: var(--text-muted);
+    line-height: 1.25; padding-right: 24px;
+  }
+  .vcx-cell-crit {
+    position: absolute; top: 6px; right: 8px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+    color: var(--text-faint); text-transform: uppercase;
+  }
+  .vcx-cell-vendors {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto;
+  }
+  .vcx-cell-vendor {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.04em; padding: 2px 6px;
+    background: rgba(212, 168, 75, 0.15);
+    color: var(--gold-hot); border-radius: 3px;
+    white-space: nowrap;
+    border: none; cursor: pointer;
+    transition: opacity 0.12s, background 0.12s;
+  }
+  .vcx-cell-vendor:hover { opacity: 0.6; text-decoration: line-through; }
+  .vcx-cell-vendor:focus-visible {
+    outline: 2px solid var(--gold-hot); outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vcx-cell-vendor { transition: none; }
+  }
+
+  /* Cell states */
+  .vcx-cell.is-covered-1 {
+    border-color: var(--gold); background: rgba(212, 168, 75, 0.08);
+  }
+  .vcx-cell.is-covered-1 .vcx-cell-label { color: var(--text); }
+  .vcx-cell.is-covered-1 .vcx-cell-crit { color: var(--gold-hot); }
+
+  .vcx-cell.is-covered-2 {
+    border-color: #84cc16;
+    background: rgba(132, 204, 22, 0.05);
+  }
+  .vcx-cell.is-covered-2 .vcx-cell-label { color: var(--text); }
+  .vcx-cell.is-covered-2 .vcx-cell-vendor {
+    background: rgba(132, 204, 22, 0.18); color: #a3e635;
+  }
+
+  .vcx-cell.is-covered-3plus {
+    border-color: #22c55e; background: rgba(34, 197, 94, 0.06);
+  }
+  .vcx-cell.is-covered-3plus .vcx-cell-label { color: var(--text); }
+  .vcx-cell.is-covered-3plus .vcx-cell-vendor {
+    background: rgba(34, 197, 94, 0.2); color: #86efac;
+  }
+
+  .vcx-cell.is-dark {
+    border-color: #ef4444; background: rgba(239, 68, 68, 0.12);
+    opacity: 0.85;
+  }
+  .vcx-cell.is-dark .vcx-cell-label {
+    color: #fca5a5; text-decoration: line-through;
+  }
+  .vcx-cell.is-dark .vcx-cell-vendor {
+    background: rgba(239, 68, 68, 0.2); color: #fca5a5;
+    text-decoration: line-through;
+  }
+  .vcx-cell.is-dark::after {
+    content: "DOWN"; position: absolute; bottom: 6px; right: 8px;
+    font-family: var(--font-mono); font-size: 9px; color: #ef4444;
+    letter-spacing: 0.2em; font-weight: 700;
+  }
+
+  /* Criticality badge coloring */
+  .vcx-cell-crit[data-crit="H"] { color: #ef4444; font-weight: 700; }
+  .vcx-cell-crit[data-crit="M"] { color: var(--gold-dim); }
+  .vcx-cell-crit[data-crit="L"] { color: var(--text-faint); }
+
+  /* Stack panel on the right of the metrics */
+  .vcx-legend {
+    display: flex; gap: var(--s-4); flex-wrap: wrap;
+    margin-top: var(--s-3);
+    font-family: var(--font-mono); font-size: var(--fs-tiny);
+    letter-spacing: 0.08em; color: var(--text-muted);
+  }
+  .vcx-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .vcx-legend-swatch {
+    width: 10px; height: 10px; border-radius: 2px;
+    border: 1px solid var(--border);
+  }
+  .vcx-legend-swatch.is-gold { background: var(--gold); border-color: var(--gold); }
+  .vcx-legend-swatch.is-lime { background: #84cc16; border-color: #84cc16; }
+  .vcx-legend-swatch.is-green { background: #22c55e; border-color: #22c55e; }
+  .vcx-legend-swatch.is-red { background: #ef4444; border-color: #ef4444; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .vcx-metrics { grid-template-columns: repeat(2, 1fr); }
+    .vcx-row { grid-template-columns: 1fr; }
+    .vcx-row-label { padding-top: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vcx-chip, .vcx-cell { transition: none; }
+  }
+  </style>
+</head>
+<body>
+
+  <noscript>
+    <div class="noscript-banner">This dashboard needs JavaScript to render the vendor grid.</div>
+  </noscript>
+
+  <!-- Site header (reused from main styles.css) -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html" class="brand" aria-label="Rycode home">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-sub">26</span>Ry</span><span class="brand-text">code</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#dashboards">Back to dashboards</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section vcx-page">
+      <div class="container">
+
+        <p class="vcx-eyebrow">Dashboard · interactive</p>
+        <h1 style="font-size: var(--fs-h2); margin: 0 0 var(--s-3);">
+          Vendor Concentration
+        </h1>
+        <p class="vcx-intro">
+          Pick vendors to build a stack. Toggle one "offline" to see the blast radius.
+          The story: a single vendor outage that darkens many critical cells IS vendor concentration.
+        </p>
+
+        <!-- ——— Top metrics ——— -->
+        <div class="vcx-metrics" aria-live="polite">
+          <div class="vcx-metric">
+            <p class="vcx-metric-label">Vendors in stack</p>
+            <p class="vcx-metric-value" id="mVendors">0</p>
+            <p class="vcx-metric-sub" id="mVendorsSub">of 37 available</p>
+          </div>
+          <div class="vcx-metric">
+            <p class="vcx-metric-label">Cells covered</p>
+            <p class="vcx-metric-value" id="mCovered">0</p>
+            <p class="vcx-metric-sub">of 30 total</p>
+          </div>
+          <div class="vcx-metric">
+            <p class="vcx-metric-label">Gaps</p>
+            <p class="vcx-metric-value" id="mGaps">30</p>
+            <p class="vcx-metric-sub">no coverage</p>
+          </div>
+          <div class="vcx-metric">
+            <p class="vcx-metric-label">Blast radius (outages)</p>
+            <p class="vcx-metric-value" id="mBlast">—</p>
+            <p class="vcx-metric-sub" id="mBlastSub">no vendors offline</p>
+          </div>
+        </div>
+
+        <div class="vcx-legend" aria-label="Cell color legend">
+          <span class="vcx-legend-item"><span class="vcx-legend-swatch is-gold"></span> Covered by 1 (concentrated)</span>
+          <span class="vcx-legend-item"><span class="vcx-legend-swatch is-lime"></span> Covered by 2</span>
+          <span class="vcx-legend-item"><span class="vcx-legend-swatch is-green"></span> Covered by 3+ (distributed)</span>
+          <span class="vcx-legend-item"><span class="vcx-legend-swatch is-red"></span> Dark (vendor offline)</span>
+        </div>
+
+        <!-- ——— Vendor library ——— -->
+        <p class="vcx-section-title">Vendor library · click to add · click again to simulate outage · click a vendor inside a cell to exclude that service</p>
+        <div class="vcx-library" id="library" role="group" aria-label="Vendor library">
+          <!-- chips populated by JS -->
+        </div>
+        <p class="vcx-library-hint">
+          Click a vendor → adds it to your stack (gold).
+          Click again → marks it offline (red, struck-through) → cells they cover go dark unless another active vendor backs them up.
+          Click again → removes the vendor entirely.
+        </p>
+
+        <!-- ——— Grid ——— -->
+        <p class="vcx-section-title">Capability grid · 10 function areas · 30 cells</p>
+        <div class="vcx-grid" id="grid" aria-label="Capability coverage grid">
+          <!-- rows populated by JS -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. Prototype — not for production.</span>
+    </div>
+  </footer>
+
+  <script>
+  /* ==================================================================
+     PROTOTYPE DATA + LOGIC
+     TABLE OF CONTENTS
+     -----------------
+     1. CELL TAXONOMY           (30 cells in 10 function areas)
+     2. VENDOR LIBRARY          (20 vendors with coverage arrays)
+     3. STATE                   (which vendors are active / offline)
+     4. RENDER — grid
+     5. RENDER — chips
+     6. RENDER — metrics
+     7. EVENT WIRING
+     ================================================================== */
+
+  /* 1. CELL TAXONOMY ————————————————————————————————————————————— */
+  const CELLS = [
+    // id, row, label, criticality (H/M/L)
+    ['compute',       'Infrastructure',       'Cloud compute',          'H'],
+    ['storage',       'Infrastructure',       'Cloud storage',          'H'],
+    ['networking',    'Infrastructure',       'Networking / CDN',       'H'],
+
+    ['sso',           'Identity & Access',    'SSO / IAM',              'H'],
+    ['directory',     'Identity & Access',    'Directory',              'H'],
+    ['endpoint',      'Identity & Access',    'Endpoint mgmt',          'M'],
+
+    ['warehouse',     'Data & Analytics',     'Data warehouse',         'M'],
+    ['bi',            'Data & Analytics',     'BI / reporting',         'M'],
+    ['etl',           'Data & Analytics',     'ETL / pipelines',        'M'],
+
+    ['scm',           'Developer Platform',   'Source control',         'H'],
+    ['cicd',          'Developer Platform',   'CI / CD',                'H'],
+    ['obs',           'Developer Platform',   'Observability',          'H'],
+
+    ['email',         'Collaboration',        'Email',                  'H'],
+    ['docs',          'Collaboration',        'Docs',                   'M'],
+    ['chat',          'Collaboration',        'Chat',                   'M'],
+    ['videoconf',     'Collaboration',        'Video conferencing',     'M'],
+
+    ['crm',           'Customer Systems',     'CRM',                    'H'],
+    ['helpdesk',      'Customer Systems',     'Support / helpdesk',     'M'],
+    ['marketing',     'Customer Systems',     'Marketing automation',   'L'],
+
+    ['erp',           'Finance & Ops',        'ERP / accounting',       'H'],
+    ['payments',      'Finance & Ops',        'Payments processing',    'H'],
+    ['procurement',   'Finance & Ops',        'Procurement',            'L'],
+
+    ['hcm',           'People (HR)',          'HCM / payroll',          'H'],
+    ['benefits',      'People (HR)',          'Benefits admin',         'L'],
+    ['ats',           'People (HR)',          'Recruiting / ATS',       'L'],
+
+    ['edr',           'Security',             'EDR / endpoint sec',     'H'],
+    ['siem',          'Security',             'SIEM / log mgmt',        'M'],
+    ['emailsec',      'Security',             'Email security',         'M'],
+
+    ['esign',         'Legal & Compliance',   'E-signature',            'M'],
+    ['grc',           'Legal & Compliance',   'GRC platform',           'L'],
+  ].map(([id, row, label, crit]) => ({ id, row, label, crit }));
+
+  const ROW_ORDER = [
+    'Infrastructure', 'Identity & Access', 'Data & Analytics',
+    'Developer Platform', 'Collaboration', 'Customer Systems',
+    'Finance & Ops', 'People (HR)', 'Security', 'Legal & Compliance',
+  ];
+
+  /* 2. VENDOR LIBRARY ———————————————————————————————————————————— */
+  const VENDORS = [
+    // Heavyweights — concentration risk candidates (multi-cell coverage)
+    { id: 'm365',       name: 'Microsoft 365',     covers: ['email','docs','chat','videoconf','sso','directory','endpoint','emailsec'] },
+    { id: 'aws',        name: 'AWS',               covers: ['compute','storage','networking','warehouse','cicd','obs'] },
+    { id: 'gworkspace', name: 'Google Workspace',  covers: ['email','docs','chat','videoconf','sso','directory'] },
+    { id: 'azure',      name: 'Azure',             covers: ['compute','storage','networking','sso','directory'] },
+    { id: 'workday',    name: 'Workday',           covers: ['hcm','benefits','ats','procurement','erp'] },
+    { id: 'oracle',     name: 'Oracle',            covers: ['erp','warehouse','hcm','compute'] },
+    { id: 'sap',        name: 'SAP',               covers: ['erp','hcm','procurement','warehouse'] },
+    { id: 'gcloud',     name: 'Google Cloud',      covers: ['compute','storage','networking','warehouse'] },
+    { id: 'cisco',      name: 'Cisco',             covers: ['networking','endpoint','videoconf','emailsec'] },
+    { id: 'paloalto',   name: 'Palo Alto Networks',covers: ['networking','edr','siem','emailsec'] },
+    { id: 'rippling',   name: 'Rippling',          covers: ['hcm','benefits','endpoint','directory'] },
+
+    // Mid-breadth (2–3 cells)
+    { id: 'salesforce', name: 'Salesforce',        covers: ['crm','helpdesk','marketing'] },
+    { id: 'servicenow', name: 'ServiceNow',        covers: ['helpdesk','grc','endpoint'] },
+    { id: 'github',     name: 'GitHub',            covers: ['scm','cicd','obs'] },
+    { id: 'databricks', name: 'Databricks',        covers: ['warehouse','etl','bi'] },
+    { id: 'cloudflare', name: 'Cloudflare',        covers: ['networking','sso','emailsec'] },
+    { id: 'adobe',      name: 'Adobe',             covers: ['docs','esign','marketing'] },
+    { id: 'atlassian',  name: 'Atlassian',         covers: ['docs','scm','helpdesk'] },
+    { id: 'hubspot',    name: 'HubSpot',           covers: ['crm','marketing','helpdesk'] },
+    { id: 'adp',        name: 'ADP',               covers: ['hcm','benefits','ats'] },
+    { id: 'datadog',    name: 'Datadog',           covers: ['obs','siem'] },
+    { id: 'okta',       name: 'Okta',              covers: ['sso','directory'] },
+    { id: 'crowdstrike',name: 'CrowdStrike',       covers: ['edr','siem'] },
+    { id: 'snowflake',  name: 'Snowflake',         covers: ['warehouse','bi'] },
+    { id: 'splunk',     name: 'Splunk',            covers: ['siem','obs'] },
+    { id: 'zscaler',    name: 'Zscaler',           covers: ['networking','emailsec'] },
+
+    // Focused — single-function vendors (the "non-concentration" baseline)
+    { id: 'slack',      name: 'Slack',             covers: ['chat'] },
+    { id: 'zoom',       name: 'Zoom',              covers: ['videoconf'] },
+    { id: 'stripe',     name: 'Stripe',            covers: ['payments'] },
+    { id: 'docusign',   name: 'DocuSign',          covers: ['esign'] },
+    { id: 'tableau',    name: 'Tableau',           covers: ['bi'] },
+    { id: 'sentinelone',name: 'SentinelOne',       covers: ['edr'] },
+    { id: 'zendesk',    name: 'Zendesk',           covers: ['helpdesk'] },
+    { id: 'proofpoint', name: 'Proofpoint',        covers: ['emailsec'] },
+    { id: 'archer',     name: 'Archer',            covers: ['grc'] },
+    { id: 'fivetran',   name: 'Fivetran',          covers: ['etl'] },
+    { id: 'greenhouse', name: 'Greenhouse',        covers: ['ats'] },
+  ];
+
+  /* 3. STATE ——————————————————————————————————————————————————— */
+  // A vendor can be in one of 3 states: 'off' (not in stack), 'active', 'offline'
+  // excluded[vendorId] = Set of cellIds that the user has manually excluded
+  // from this vendor's coverage (e.g. "we have Zscaler Networking, not Zscaler
+  // Email Security"). Cleared when the vendor is removed from the stack.
+  const state = {};
+  const excluded = {};
+  VENDORS.forEach(v => {
+    state[v.id] = 'off';
+    excluded[v.id] = new Set();
+  });
+
+  // Services this vendor actually contributes, after user exclusions.
+  function effectiveCovers(v) {
+    return v.covers.filter(id => !excluded[v.id].has(id));
+  }
+
+  /* 4. RENDER — GRID ———————————————————————————————————————————— */
+  function renderGrid() {
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+
+    // Compute coverage per cell given current state.
+    // A cell is "lit" by vendors that are 'active' (not offline).
+    // A cell is "dark" only if covered by >=1 offline vendor AND no active vendor covers it.
+    const activeVendors = VENDORS.filter(v => state[v.id] === 'active');
+    const offlineVendors = VENDORS.filter(v => state[v.id] === 'offline');
+
+    // Per cell, who covers it (active vs offline).
+    const activeByCell = {};    // cellId -> [vendor, vendor]
+    const offlineByCell = {};   // cellId -> [vendor, vendor]
+    CELLS.forEach(c => { activeByCell[c.id] = []; offlineByCell[c.id] = []; });
+    activeVendors.forEach(v => effectiveCovers(v).forEach(id => activeByCell[id].push(v)));
+    offlineVendors.forEach(v => effectiveCovers(v).forEach(id => offlineByCell[id].push(v)));
+
+    ROW_ORDER.forEach(rowName => {
+      const rowCells = CELLS.filter(c => c.row === rowName);
+      const row = document.createElement('div');
+      row.className = 'vcx-row';
+
+      const label = document.createElement('div');
+      label.className = 'vcx-row-label';
+      label.innerHTML = `${rowName}<span class="vcx-row-label-sub">${rowCells.length} cells</span>`;
+      row.appendChild(label);
+
+      const cells = document.createElement('div');
+      cells.className = 'vcx-cells';
+      rowCells.forEach(c => {
+        const active = activeByCell[c.id] || [];
+        const offline = offlineByCell[c.id] || [];
+        const lit = active.length;
+        const isDark = (lit === 0) && offline.length > 0;
+
+        const cell = document.createElement('div');
+        cell.className = 'vcx-cell';
+        if (isDark) {
+          cell.classList.add('is-dark');
+        } else if (lit === 1) {
+          cell.classList.add('is-covered-1');
+        } else if (lit === 2) {
+          cell.classList.add('is-covered-2');
+        } else if (lit >= 3) {
+          cell.classList.add('is-covered-3plus');
+        }
+
+        // Vendor chips inside the cell — show who covers (active) or who went down (dark).
+        // Each chip is a button: click it to exclude that vendor's coverage of THIS cell.
+        const vendorsToShow = isDark ? offline : active;
+        const vendorChips = vendorsToShow
+          .map(v => `<button type="button" class="vcx-cell-vendor" data-vendor="${v.id}" data-cell="${c.id}" aria-label="Exclude ${v.name} from ${c.label}" title="Click to exclude ${v.name} from ${c.label}">${v.name}</button>`)
+          .join('');
+
+        cell.innerHTML = `
+          <span class="vcx-cell-crit" data-crit="${c.crit}">${c.crit}</span>
+          <span class="vcx-cell-label">${c.label}</span>
+          ${vendorChips ? `<div class="vcx-cell-vendors" aria-label="${vendorsToShow.length} vendor${vendorsToShow.length>1?'s':''}">${vendorChips}</div>` : ''}
+        `;
+        cells.appendChild(cell);
+      });
+
+      row.appendChild(cells);
+      grid.appendChild(row);
+    });
+  }
+
+  /* 5. RENDER — CHIPS ——————————————————————————————————————————— */
+  function renderChips() {
+    const lib = document.getElementById('library');
+    lib.innerHTML = '';
+    VENDORS.forEach(v => {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'vcx-chip';
+      if (state[v.id] === 'active') chip.classList.add('is-active');
+      if (state[v.id] === 'offline') chip.classList.add('is-offline');
+      chip.setAttribute('data-vendor', v.id);
+      chip.setAttribute('aria-pressed', state[v.id] === 'active' ? 'true' : 'false');
+      const eff = effectiveCovers(v).length;
+      const countLabel = eff < v.covers.length ? `${eff}/${v.covers.length}` : `${v.covers.length}`;
+      chip.innerHTML = `
+        <span>${v.name}</span>
+        <span class="vcx-chip-count">${countLabel}</span>
+      `;
+      lib.appendChild(chip);
+    });
+  }
+
+  /* 6. RENDER — METRICS ———————————————————————————————————————— */
+  function renderMetrics() {
+    const activeVendors = VENDORS.filter(v => state[v.id] === 'active');
+    const offlineVendors = VENDORS.filter(v => state[v.id] === 'offline');
+
+    const covered = new Set();
+    activeVendors.forEach(v => effectiveCovers(v).forEach(id => covered.add(id)));
+
+    // Cells that are dark = covered by an offline vendor AND no active vendor covers them
+    const dark = new Set();
+    offlineVendors.forEach(v => {
+      effectiveCovers(v).forEach(id => {
+        if (!covered.has(id)) dark.add(id);
+      });
+    });
+
+    // Criticality-weighted dark count
+    let darkH = 0, darkM = 0, darkL = 0;
+    dark.forEach(id => {
+      const cell = CELLS.find(c => c.id === id);
+      if (cell.crit === 'H') darkH++;
+      else if (cell.crit === 'M') darkM++;
+      else darkL++;
+    });
+
+    const total = CELLS.length;
+
+    document.getElementById('mVendors').textContent = activeVendors.length + offlineVendors.length;
+    document.getElementById('mVendorsSub').textContent = 'of ' + VENDORS.length + ' available';
+    document.getElementById('mCovered').textContent = covered.size;
+    document.getElementById('mGaps').textContent = total - covered.size - dark.size;
+
+    const blastEl = document.getElementById('mBlast');
+    const blastSub = document.getElementById('mBlastSub');
+    if (offlineVendors.length === 0) {
+      blastEl.textContent = '—';
+      blastEl.classList.remove('is-danger');
+      blastSub.textContent = 'no vendors offline';
+    } else {
+      blastEl.textContent = `${dark.size} cells dark`;
+      blastEl.classList.add('is-danger');
+      const names = offlineVendors.map(v => v.name).join(', ');
+      blastSub.textContent = `${darkH}H · ${darkM}M · ${darkL}L · offline: ${names}`;
+    }
+  }
+
+  /* 7. EVENT WIRING ——————————————————————————————————————————— */
+  document.getElementById('library').addEventListener('click', (e) => {
+    const chip = e.target.closest('.vcx-chip');
+    if (!chip) return;
+    const id = chip.getAttribute('data-vendor');
+    // Cycle: off → active → offline → off
+    const current = state[id];
+    state[id] = current === 'off' ? 'active' : current === 'active' ? 'offline' : 'off';
+    // When a vendor leaves the stack entirely, drop any service exclusions.
+    if (state[id] === 'off') excluded[id].clear();
+    renderChips();
+    renderGrid();
+    renderMetrics();
+  });
+
+  // Click an inline vendor chip inside a cell to exclude that vendor's coverage
+  // of that one service (e.g. "we have Zscaler Networking but not Zscaler Email Security").
+  document.getElementById('grid').addEventListener('click', (e) => {
+    const btn = e.target.closest('.vcx-cell-vendor');
+    if (!btn) return;
+    const vendorId = btn.getAttribute('data-vendor');
+    const cellId = btn.getAttribute('data-cell');
+    excluded[vendorId].add(cellId);
+    renderChips();
+    renderGrid();
+    renderMetrics();
+  });
+
+  // Initial render
+  document.addEventListener('DOMContentLoaded', () => {
+    renderChips();
+    renderGrid();
+    renderMetrics();
+  });
+  </script>
+
+</body>
+</html>
