@@ -277,6 +277,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const signedMoney = v => (v > 0 ? '+' : '') + money(v);
   const signedMoneyBig = v => (v > 0 ? '+' : '') + moneyBig(v);
 
+  // escapeHtml — neutralizes any HTML special chars in user-typed strings
+  // before we interpolate them into an innerHTML template. The product
+  // name fields are free text, so without this a user could type something
+  // like <img src=x onerror=alert(1)> and the browser would execute it.
+  // Numbers from money()/pct() are safe and don't need this — they only
+  // ever produce digits, decimals, and currency symbols.
+  const escapeHtml = (s) => String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
   // Delta-pill helper: writes text + class for positive/negative/neutral.
   function setDelta(el, value, formatter) {
     if (value > 0)       { el.className = 'gs-kpi-delta is-positive'; el.textContent = formatter(value); }
@@ -426,9 +439,9 @@ document.addEventListener('DOMContentLoaded', () => {
     out.mathNewTitle.textContent = r.state.new.name;
 
     // Clear prior steps (preserve the title <p>)
-    out.mathOld.innerHTML = `<p class="gs-math-col-title">${r.state.old.name}</p>` +
+    out.mathOld.innerHTML = `<p class="gs-math-col-title">${escapeHtml(r.state.old.name)}</p>` +
       renderMathCol(r.state.old.name, r.state.old, r.old, false, r.state.scale, r.state.stores);
-    out.mathNew.innerHTML = `<p class="gs-math-col-title">${r.state.new.name}</p>` +
+    out.mathNew.innerHTML = `<p class="gs-math-col-title">${escapeHtml(r.state.new.name)}</p>` +
       renderMathCol(r.state.new.name, r.state.new, r.new, true, r.state.scale, r.state.stores);
 
     // Summary — year-1 delta walk.

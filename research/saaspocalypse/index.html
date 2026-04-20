@@ -313,8 +313,13 @@
     </div>
   </footer>
 
-  <!-- Chart.js via CDN — same version as the calculator page. -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Chart.js via CDN — same version as the calculator page.
+       integrity= is a Subresource Integrity (SRI) hash. The browser will
+       refuse to run the script if the file's content doesn't match this
+       hash, so a tampered CDN file can't silently take over the page. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+          integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g"
+          crossorigin="anonymous"></script>
   <!-- Shared site behavior (header scroll, nav toggle, reveals). -->
   <script src="../../script.js"></script>
   <!-- Report logic — must load AFTER Chart.js is available. -->

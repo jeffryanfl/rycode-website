@@ -1,0 +1,60 @@
+# Rycode — Netlify response headers
+# ---------------------------------------------------------------
+# Netlify reads this file at deploy time and attaches the listed
+# headers to every response that matches the path pattern.
+#
+# /* applies to every URL on the site.
+#
+# WHY THESE HEADERS?
+# ---------------------------------------------------------------
+# Content-Security-Policy (CSP) tells the browser exactly which
+# script/style/image sources it's allowed to load. If an attacker
+# ever managed to inject a <script src="evil.com"> tag into the
+# page, the browser would refuse to run it because evil.com isn't
+# on the allow-list. CSP is a containment policy — it doesn't stop
+# bugs, it just shrinks the blast radius when they happen.
+#
+# X-Content-Type-Options: nosniff
+#   Stops browsers from "guessing" a file is HTML/JS when the
+#   server said it was something else. Closes off a class of
+#   MIME-confusion attacks.
+#
+# X-Frame-Options: DENY
+#   Forbids any other site from loading rycode.dev in an <iframe>.
+#   Defeats clickjacking — where an attacker overlays your real
+#   page under their fake one and tricks users into clicking it.
+#
+# Referrer-Policy: strict-origin-when-cross-origin
+#   When a visitor clicks a link off rycode.dev, only the origin
+#   (https://rycode.dev) is sent in the Referer header — not the
+#   full URL. Limits information leakage to third parties.
+#
+# Permissions-Policy
+#   Explicitly tells the browser this site never needs camera,
+#   mic, or geolocation. Even if a future bug somehow tries to
+#   call those APIs, the browser will refuse.
+#
+# CSP NOTES — what's allowed and why
+# ---------------------------------------------------------------
+#   default-src 'self'           — by default, only load from rycode.dev
+#   script-src                   — scripts from rycode.dev + Chart.js on
+#                                  jsdelivr + the one inline bootstrap
+#                                  script (allowed by its sha256 hash)
+#   style-src 'self' 'unsafe-inline'
+#                                — needed because we set inline style
+#                                  attributes from JS (e.g. CSS custom
+#                                  properties for tilt cards / charts)
+#   img-src 'self' data:         — own images + base64 data: URIs
+#   frame-ancestors 'none'       — same as X-Frame-Options: DENY but
+#                                  newer / more granular
+#   object-src 'none'            — blocks <object>/<embed>/<applet>
+#   upgrade-insecure-requests    — auto-upgrades any stray http:// link
+#                                  to https:// before the request goes out
+# ---------------------------------------------------------------
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-e2g5HkZP+fghbsY1m7moq4GopOo7zRRaAHNyQ2Q7oSI='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
