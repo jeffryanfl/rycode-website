@@ -12,6 +12,7 @@
    4.  NODE STATES     (hover, focus, active)
    5.  BORDER CROSSING (divider between the two phase rows)
    6.  DETAIL PANEL    (single pane that swaps content on click)
+   6a. LEVEL 2         (technical disclosure inside the detail panel)
    7.  PACKAGE GRID    (three file-type tiles at the bottom)
    8.  FOOTER
    9.  REDUCED MOTION
@@ -287,6 +288,128 @@
 
 
 /* ==================================================================
+   6a. LEVEL 2 — technical disclosure inside the detail panel
+   Uses a native <details> element, so keyboard activation and
+   screen-reader announcements come free. Collapsed by default;
+   opens to reveal the technical bullets and an optional glossary.
+   ================================================================== */
+.a-technical {
+  margin-top: var(--s-5);
+  border-top: 1px dashed var(--gold-dim);
+  padding-top: var(--s-4);
+}
+
+/* The clickable label. We hide the browser's default disclosure
+   triangle and supply our own chevron so it matches the rest of
+   the page. */
+.a-technical-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  cursor: pointer;
+  list-style: none;                   /* Firefox */
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  user-select: none;
+  transition: color 180ms var(--ease);
+}
+.a-technical-summary::-webkit-details-marker { display: none; }   /* Safari */
+
+/* Our own chevron — rotates when the details is open. */
+.a-technical-summary::before {
+  content: "▸";
+  display: inline-block;
+  color: var(--gold-dim);
+  transition: transform 200ms var(--ease), color 200ms var(--ease);
+}
+.a-technical[open] .a-technical-summary::before {
+  transform: rotate(90deg);
+  color: var(--gold);
+}
+.a-technical-summary:hover { color: var(--gold-hot, var(--gold)); }
+.a-technical-summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* The body that appears when open. Gold left rail signals you're
+   reading deeper material — not a whole new section. */
+.a-technical-body {
+  margin-top: var(--s-4);
+  padding-left: var(--s-4);
+  border-left: 1px solid var(--border-hot);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+/* Technical bullets — slightly smaller than Level 1 bullets to
+   cue the reader that this is denser, more specific material. */
+.a-technical-bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.a-technical-bullets li {
+  padding-left: var(--s-4);
+  position: relative;
+  color: var(--text);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+.a-technical-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+/* Glossary — a <dl> rendered as a two-column grid. Terms are
+   chip-styled like inline code tokens to visually separate them
+   from their definitions. */
+.a-technical-glossary {
+  margin: var(--s-2) 0 0;
+  padding: var(--s-4);
+  background: rgba(212, 168, 75, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--s-4);
+  row-gap: var(--s-3);
+  font-size: var(--fs-small);
+}
+.a-technical-glossary dt {
+  font-family: var(--font-mono);
+  color: var(--gold);
+  font-size: calc(var(--fs-small) - 1px);
+  padding: 0.15rem 0.5rem;
+  background: rgba(212, 168, 75, 0.08);
+  border: 1px solid var(--border-hot);
+  border-radius: var(--radius-sm);
+  justify-self: start;
+  align-self: start;
+  white-space: nowrap;
+  margin: 0;
+}
+.a-technical-glossary dd {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+
+/* ==================================================================
    7. PACKAGE GRID — three file-type tiles (HTML / CSS / JS)
    These aren't sequential, so no connecting line between them.
    ================================================================== */
@@ -335,7 +458,9 @@
 @media (prefers-reduced-motion: reduce) {
   .a-node-dot,
   .a-node-label,
-  .a-detail-body {
+  .a-detail-body,
+  .a-technical-summary,
+  .a-technical-summary::before {
     transition: none !important;
   }
 }
@@ -376,4 +501,14 @@
   .a-node-label { font-size: var(--fs-body); }
 
   .a-package-grid { grid-template-columns: 1fr; }
+
+  /* Glossary: stack on narrow screens — term above definition — so
+     nothing gets squeezed into a too-thin column. */
+  .a-technical-glossary {
+    grid-template-columns: 1fr;
+    row-gap: var(--s-1);
+  }
+  .a-technical-glossary dt { margin-bottom: var(--s-1); }
+  .a-technical-glossary dd { margin-bottom: var(--s-2); }
+  .a-technical-glossary dd:last-child { margin-bottom: 0; }
 }

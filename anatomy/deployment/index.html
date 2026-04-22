@@ -15,8 +15,11 @@
   <meta name="twitter:image" content="../../og-image.png" />
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
   <title>Anatomy of a Deployment — Rycode</title>
+  <!-- ?v=2 is a cache-busting version string. Bump when styles.css or
+       deployment.css changes so returning visitors (and stubborn
+       browser caches) pick up the new file. -->
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="deployment.css" />
+  <link rel="stylesheet" href="deployment.css?v=2" />
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
@@ -171,6 +174,9 @@
 
   </main>
 
-  <script src="deployment.js"></script>
+  <!-- ?v=2 is a cache-busting version string. Bump when deployment.js
+       changes so the browser fetches a fresh copy instead of reusing
+       the cached one. -->
+  <script src="deployment.js?v=2"></script>
 </body>
 </html>
