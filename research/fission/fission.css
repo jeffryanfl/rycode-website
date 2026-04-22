@@ -1,0 +1,695 @@
+/* ==================================================================
+   FISSION: A TECHNICAL HISTORY — fission.css
+   Page-specific styles on top of ../../styles.css. Shares tokens
+   (--gold, --surface, --border, --s-*, etc.) so colors stay
+   consistent with the rest of Rycode.
+
+   WHY THIS FILE EXISTS
+   --------------------
+   The research paper reuses patterns from the SaaSpocalypse page
+   (case-hero, kpi-grid, risk-pill), but adds long-read features
+   that don't live anywhere else on the site yet: footnote links,
+   a sticky section nav, typeset data tables, an equation block,
+   and a print stylesheet for the browser "Save as PDF" workflow.
+
+   TABLE OF CONTENTS
+   -----------------
+   1. HERO          (case-hero, title, lede, meta, cta, back-link)
+   2. RISK PILL     (Technical History · 2026 chip)
+   3. KPI TILES     (three anchor stats under "At a glance")
+   4. CONTENTS LIST (five-part jump list on the main flow)
+   5. SECTION NAV   (sticky sidebar — desktop only, scroll-spy)
+   6. PROSE         (case-body / case-prose / subhead / microhead)
+   7. LISTS         (case-list bullets with gold rails)
+   8. DATA TABLES   (six tables across the paper)
+   9. EQUATION      (E = mc² display block)
+  10. ANATOMY CALLOUT  (crosslink to the upcoming Anatomy page)
+  11. FOOTNOTES    (sup.fn links in the prose)
+  12. REFERENCES   (the numbered list at the bottom)
+  13. PRINT        (browser print-to-PDF styling)
+  14. RESPONSIVE   (breakpoints + reduced-motion)
+   ================================================================== */
+
+
+/* ==================================================================
+   1. HERO
+   Same visual language as /projects/grc/ and SaaSpocalypse: soft
+   radial gold glow in the background, oversized gradient-clipped
+   title, short back-link above, meta row below.
+   ================================================================== */
+.case-hero {
+  position: relative;
+  padding: var(--s-9) 0 var(--s-7);
+  overflow: hidden;
+  isolation: isolate;
+}
+.case-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(50% 40% at 20% 10%, rgba(255, 181, 71, 0.10), transparent 70%),
+    radial-gradient(40% 30% at 90% 0%,  rgba(212, 168, 75, 0.08), transparent 70%);
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.back-link:hover { color: var(--gold); }
+
+.case-title {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: var(--s-4) 0 var(--s-5);
+  background: linear-gradient(180deg, #ffffff 0%, #a8a8a8 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.case-lede {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 70ch;
+  line-height: 1.55;
+  margin: 0 0 var(--s-6);
+}
+
+.case-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+.case-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+  flex-wrap: wrap;
+}
+
+
+/* ==================================================================
+   2. RISK PILL
+   Small chip next to the status — "Technical History · 2026". Same
+   shape as the SaaSpocalypse Emerging Risk pill so the two research
+   entries feel like siblings.
+   ================================================================== */
+.risk-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  background: rgba(212, 168, 75, 0.08);
+  border: 1px solid rgba(212, 168, 75, 0.35);
+  white-space: nowrap;
+}
+
+
+/* ==================================================================
+   3. KPI TILES
+   Three anchor stats under "At a glance". Same structure as
+   SaaSpocalypse; this page uses one .is-loss tile to flag the
+   arms-control vacuum (the rising-risk number).
+   ================================================================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+.kpi-tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.kpi-tile.is-loss { border-left: 3px solid #ffb547; }   /* gold-hot for risk */
+
+.kpi-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.kpi-value {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1;
+}
+.kpi-tile.is-loss .kpi-value { color: #ffb547; }
+.kpi-note {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+/* ==================================================================
+   4. CONTENTS LIST
+   Inline table of contents shown once at the top. Numbered roman
+   prefixes (I / II / III …) sit in a fixed-width column on the
+   left so the labels line up neatly.
+   ================================================================== */
+.contents-list {
+  list-style: none;
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-2);
+  max-width: 48rem;
+}
+.contents-list li { margin: 0; }
+.contents-list a {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 160ms var(--ease), background 160ms var(--ease);
+}
+.contents-list a:hover,
+.contents-list a:focus-visible {
+  border-color: var(--border-hot);
+  background: color-mix(in oklab, var(--surface) 85%, var(--gold-dim));
+  color: var(--text);
+}
+.contents-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+.contents-label {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+
+/* ==================================================================
+   5. SECTION NAV  (sticky sidebar)
+   A second copy of the contents list, positioned as a fixed rail
+   on the right side of the viewport. Hidden below 1280px because
+   there's not enough horizontal room for it without overlapping
+   the prose column.
+
+   The .is-active class is added by fission.js as the reader scrolls
+   past each section.
+   ================================================================== */
+.section-nav {
+  display: none;            /* hidden by default; shown at 1280px+ */
+  position: fixed;
+  top: 50%;
+  right: var(--s-5);
+  transform: translateY(-50%);
+  z-index: 5;
+  padding: var(--s-4) var(--s-4);
+  background: color-mix(in oklab, var(--surface) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  max-width: 14rem;
+}
+.section-nav-label {
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin: 0 0 var(--s-3);
+}
+.section-nav ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--s-2);
+}
+.section-nav a {
+  display: block;
+  font-size: var(--fs-tiny);
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-left: 2px solid transparent;
+  transition: color 160ms var(--ease), border-color 160ms var(--ease);
+}
+.section-nav a:hover,
+.section-nav a:focus-visible { color: var(--text); }
+.section-nav a.is-active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+}
+
+
+/* ==================================================================
+   6. PROSE
+   Narrower reading column for the body of the paper. Matches the
+   pattern from projects/grc.css but with extra subhead tiers so
+   the five-part structure is navigable.
+   ================================================================== */
+.case-body { max-width: 72ch; }
+
+.case-prose p {
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin: 0 0 var(--s-4);
+}
+.case-prose p:last-child { margin-bottom: 0; }
+
+.case-prose em {
+  color: var(--text);
+  font-style: italic;
+}
+.case-prose strong { color: var(--text); }
+
+/* Isotope notation ( <sup>235</sup>U ) — shrink and tighten so it
+   doesn't push the line-height around. */
+.case-prose sup {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.case-subhead {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin: var(--s-7) 0 var(--s-4);
+  line-height: 1.25;
+}
+/* Microhead is a smaller, mono, uppercase label used for sub-sections
+   inside Part III and Part IV (e.g. "Teller–Ulam configuration",
+   "Permissive Action Links"). Visually distinct from case-subhead so
+   the reader can see the nesting at a glance. */
+.case-microhead {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin: var(--s-5) 0 var(--s-3);
+}
+
+
+/* ==================================================================
+   7. LISTS  (case-list)
+   Gold-rail bullet list inside prose — same visual as the
+   report-list in saaspocalypse.css. Keeps the eye tracking the
+   left edge for multi-line items.
+   ================================================================== */
+.case-list {
+  list-style: none;
+  margin: 0 0 var(--s-5);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.case-list li {
+  padding-left: var(--s-4);
+  border-left: 2px solid rgba(212, 168, 75, 0.35);
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+
+/* ==================================================================
+   8. DATA TABLES
+   Six tables appear in the paper. They need to read cleanly in both
+   screen and print. Uses a <figure> wrap so the <caption> can sit
+   where it belongs (top, small, monospace) while the table itself
+   stays full-width.
+   ================================================================== */
+.data-table {
+  margin: var(--s-5) 0 var(--s-6);
+  padding: 0;
+  overflow-x: auto;       /* scroll on narrow screens instead of wrapping */
+  -webkit-overflow-scrolling: touch;
+}
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;       /* clip the radius against the inner cells */
+}
+.data-table caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  padding: 0 0 var(--s-3);
+}
+.data-table th,
+.data-table td {
+  padding: var(--s-3) var(--s-4);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+.data-table th {
+  background: color-mix(in oklab, var(--surface) 70%, var(--bg));
+  color: var(--text);
+  font-weight: 700;
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.data-table tbody tr:last-child td { border-bottom: 0; }
+.data-table tbody tr:hover td {
+  background: color-mix(in oklab, var(--surface) 92%, var(--gold-dim));
+}
+.data-table td { color: var(--text-muted); }
+/* Right-align numeric cells in the inventory table. */
+.data-table th.num,
+.data-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==================================================================
+   9. EQUATION BLOCK  (E = mc²)
+   Single-line display for the mass–energy equivalence formula.
+   Centered, serif-weight feel via the monospace stack so it feels
+   like an equation rather than a sentence.
+   ================================================================== */
+.equation {
+  font-family: var(--font-mono);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  margin: var(--s-5) 0 var(--s-6);
+  padding: var(--s-5);
+  background: color-mix(in oklab, var(--surface) 90%, var(--gold-dim));
+  border: 1px solid var(--border-hot);
+  border-radius: var(--radius-md);
+}
+.equation sup {
+  font-size: 0.6em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+
+/* ==================================================================
+  10. ANATOMY CROSSLINK CALLOUT
+   Lives inside Part III. Signals that the *interactive*
+   component-by-component walkthrough will live in the Anatomy Of
+   series once Phase 2 is built.
+   ================================================================== */
+.anatomy-callout {
+  margin: var(--s-5) 0 var(--s-6);
+  padding: var(--s-4) var(--s-5);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(255, 181, 71, 0.08), transparent 60%),
+    var(--surface);
+  border: 1px solid var(--border-hot);
+  border-radius: var(--radius-md);
+}
+.anatomy-callout-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin: 0 0 var(--s-2);
+}
+.anatomy-callout-body {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+.anatomy-callout-body a { white-space: nowrap; }
+
+
+/* ==================================================================
+  11. FOOTNOTES
+   Inline citations rendered as superscript numbers. Gold on hover,
+   dashed underline so they're visibly linkable without fighting the
+   prose. A title attribute (added by fission.js) turns into the
+   browser-native tooltip with the source title.
+   ================================================================== */
+sup.fn {
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 0.1em;
+}
+sup.fn a {
+  color: var(--gold);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 0 0.15em;
+  border-bottom: 1px dotted var(--gold-dim);
+  transition: color 160ms var(--ease), border-color 160ms var(--ease), background 160ms var(--ease);
+}
+sup.fn a:hover,
+sup.fn a:focus-visible {
+  color: var(--gold-hot);
+  border-bottom-color: var(--gold-hot);
+  background: rgba(212, 168, 75, 0.12);
+  border-radius: 3px;
+}
+
+/* When the reader clicks a footnote and lands on the target <li>,
+   flash the background gold-dim so it's obvious where they jumped. */
+.references li:target {
+  background: rgba(212, 168, 75, 0.10);
+  border-left-color: var(--gold-hot);
+}
+
+
+/* ==================================================================
+  12. REFERENCES
+   Numbered bibliography at the bottom. Each <li> has id="fn-N" so
+   footnotes can link straight to it.
+   ================================================================== */
+.references {
+  counter-reset: refnum;
+  list-style: none;
+  padding: 0;
+  margin: var(--s-5) 0 0;
+  display: grid;
+  gap: var(--s-2);
+}
+.references li {
+  counter-increment: refnum;
+  position: relative;
+  padding: var(--s-3) var(--s-3) var(--s-3) 3.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.5;
+  scroll-margin-top: var(--s-6);  /* don't wedge against the nav on jump */
+  transition: background 200ms var(--ease), border-color 200ms var(--ease);
+}
+.references li::before {
+  content: counter(refnum);
+  position: absolute;
+  left: var(--s-4);
+  top: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.references a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--gold-dim);
+  text-underline-offset: 3px;
+}
+.references a:hover { color: var(--gold-hot); }
+
+
+/* ==================================================================
+  13. PRINT  (browser "Save as PDF" workflow)
+   Priorities:
+     - Light background, dark text — saves ink and reads cleanly
+     - Hide chrome: header nav, sticky sidebar, download button,
+       skip-link, noscript banner
+     - Expand tables so nothing scrolls off the page
+     - Show the full URL after every link (useful in PDF)
+     - Avoid splitting a table / figure across a page break
+   ================================================================== */
+@media print {
+  @page { margin: 0.75in; }
+
+  html, body {
+    background: #ffffff !important;
+    color: #111 !important;
+    font-size: 11pt;
+  }
+
+  /* Kill the on-screen chrome that has no place in a PDF. */
+  .site-header,
+  .section-nav,
+  .skip-link,
+  .noscript-banner,
+  .case-cta,
+  .site-footer,
+  .anatomy-callout {
+    display: none !important;
+  }
+
+  main, .section, .case-hero {
+    padding: 0 !important;
+    background: none !important;
+  }
+  .case-hero::before { display: none; }
+  .container { max-width: none; padding: 0; }
+
+  /* Typography: solid black, no gradient text clip (prints as blank). */
+  h1, h2, h3, h4, h5, h6 {
+    color: #111 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    page-break-after: avoid;
+  }
+  .case-title {
+    -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+    color: #111 !important;
+    font-size: 24pt !important;
+  }
+  .case-lede { color: #222 !important; }
+  .section-title { font-size: 16pt; }
+  .case-subhead { font-size: 13pt; }
+  .section-eyebrow, .kpi-eyebrow, .contents-num, .anatomy-callout-eyebrow {
+    color: #555 !important;
+  }
+
+  p, li, td, th, caption {
+    color: #111 !important;
+  }
+
+  /* Tiles and callouts: flat borders, no dark fills. */
+  .kpi-tile,
+  .contents-list a,
+  .references li,
+  .data-table table,
+  .equation {
+    background: #fff !important;
+    border: 1px solid #bbb !important;
+    color: #111 !important;
+  }
+  .kpi-value { color: #111 !important; }
+  .risk-pill {
+    color: #111 !important;
+    background: #eee !important;
+    border-color: #888 !important;
+  }
+
+  /* Tables: make sure nothing is clipped or hidden. */
+  .data-table { overflow: visible !important; }
+  .data-table table { page-break-inside: avoid; }
+  .data-table th,
+  .data-table td { border-color: #bbb !important; }
+  .data-table th { background: #f3f3f3 !important; color: #111 !important; }
+  .data-table tbody tr:hover td { background: none !important; }
+
+  /* Equation: outline only. */
+  .equation {
+    color: #111 !important;
+    background: #fafafa !important;
+  }
+
+  /* Footnotes: keep them as a clear "[N]" next to the text. */
+  sup.fn a {
+    color: #111 !important;
+    border-bottom: 0 !important;
+    background: none !important;
+    text-decoration: none !important;
+  }
+
+  /* References: expose the URL so the PDF is self-contained. */
+  .references a::after {
+    content: " (" attr(href) ")";
+    color: #555;
+    font-size: 0.9em;
+    word-break: break-all;
+  }
+
+  /* Don't split a figure/table across a page; keep headings with the
+     following paragraph. */
+  figure, .data-table, .kpi-tile, .equation, .anatomy-callout {
+    page-break-inside: avoid;
+  }
+  .section-title, .case-subhead, .case-microhead {
+    page-break-after: avoid;
+  }
+}
+
+
+/* ==================================================================
+  14. RESPONSIVE + REDUCED MOTION
+   Desktop: KPI grid becomes three columns. Section nav appears at
+   1280px+ (narrower screens don't have room without overlapping).
+   ================================================================== */
+@media (min-width: 768px) {
+  .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1280px) {
+  .section-nav { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contents-list a,
+  sup.fn a,
+  .section-nav a,
+  .references li { transition: none; }
+}

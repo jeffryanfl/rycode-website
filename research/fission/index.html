@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fission: A Technical History — from Marie Curie to the 2026 strategic landscape. An engineering-minded history of atomic weaponry, framed as the highest-stakes risk management problem ever designed. Part of Rycode." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Fission: A Technical History — Rycode" />
+  <meta property="og:description" content="The physics, the engineering, the firing chain, the triad, and the 2026 strategic landscape — an open-source technical history of atomic weaponry." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>Fission: A Technical History — Rycode</title>
+  <!-- ?v=1 is a cache-busting version string. Bump when either stylesheet
+       changes so returning visitors pick up the new file. -->
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="fission.css?v=1" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <noscript>
+    <div class="noscript-banner">
+      This briefing uses JavaScript for footnote tooltips and the sticky section nav. The prose and citations below still read cleanly — turn JS on for the full experience.
+    </div>
+  </noscript>
+
+  <!-- ===========================================================
+       HEADER / NAV  (same pattern as every other page)
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html" class="brand" aria-label="Rycode home">
+        <img src="../../logo.svg" alt="" class="brand-logo" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#systems">Systems</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../../index.html#anatomy">Anatomy Of</a></li>
+        <li><a href="../../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="https://grc.rycode.dev/" target="_blank" rel="noopener">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top" tabindex="-1">
+
+    <!-- ===========================================================
+         HERO
+         =========================================================== -->
+    <section class="case-hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">
+          <a href="../../index.html#research" class="back-link">← Back to research</a>
+        </p>
+        <div class="case-meta reveal">
+          <span class="card-category">Research</span>
+          <span class="card-status is-live">
+            <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+          </span>
+          <span class="risk-pill" aria-label="Framing: Technical History, 2026">
+            Technical History · 2026
+          </span>
+        </div>
+        <h1 class="case-title reveal">Fission: A Technical History</h1>
+        <p class="case-lede reveal">
+          The technical evolution and strategic proliferation of atomic weaponry — from Marie Curie's 1896 discovery of radioactivity through the 2026 collapse of post–Cold War arms control. An engineering-minded walkthrough of the physics, the designs, the firing chain, and the delivery systems, framed as what it fundamentally is: the highest-stakes risk management problem humans have ever engineered.
+        </p>
+        <div class="case-cta reveal">
+          <a class="btn btn-primary" href="fission.pdf" download>
+            Download the full report (PDF)
+          </a>
+          <a class="btn btn-ghost" href="#at-a-glance">Read the briefing</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         AT A GLANCE — three anchor KPIs for immediate scale
+         =========================================================== -->
+    <section class="section" id="at-a-glance">
+      <div class="container">
+        <p class="section-eyebrow reveal">At a glance</p>
+        <h2 class="section-title reveal">The scale of the nuclear order, in three numbers.</h2>
+        <p class="section-lead reveal">
+          As of January 2026, nine states hold roughly twelve thousand warheads between them — and for the first time since 1972, the two largest arsenals face no legal cap.
+        </p>
+
+        <div class="kpi-grid reveal">
+          <article class="kpi-tile">
+            <p class="kpi-eyebrow">Global warhead inventory</p>
+            <p class="kpi-value">~12,241</p>
+            <p class="kpi-note">Across all nine nuclear-armed states as of January 2026, per the Federation of American Scientists (FAS) and the Stockholm International Peace Research Institute (SIPRI).</p>
+          </article>
+          <article class="kpi-tile">
+            <p class="kpi-eyebrow">Nuclear-armed states</p>
+            <p class="kpi-value">9</p>
+            <p class="kpi-note">Russia, United States, China, France, United Kingdom, India, Pakistan, Israel (presumed), and North Korea.</p>
+          </article>
+          <article class="kpi-tile is-loss">
+            <p class="kpi-eyebrow">Arms control vacuum</p>
+            <p class="kpi-value">Feb 2026</p>
+            <p class="kpi-note">New START expired with no successor. The first time since SALT I in 1972 that U.S. and Russian strategic arsenals are uncapped.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         CONTENTS — five-part jump list
+         =========================================================== -->
+    <section class="section" id="contents">
+      <div class="container">
+        <p class="section-eyebrow reveal">Contents</p>
+        <h2 class="section-title reveal">Five parts, one arc.</h2>
+        <ol class="contents-list reveal">
+          <li><a href="#genesis"><span class="contents-num">I</span><span class="contents-label">Genesis — physics becomes policy</span></a></li>
+          <li><a href="#physics"><span class="contents-num">II</span><span class="contents-label">The physics of fission</span></a></li>
+          <li><a href="#engineering"><span class="contents-num">III</span><span class="contents-label">Engineering a weapon</span></a></li>
+          <li><a href="#deployment"><span class="contents-num">IV</span><span class="contents-label">Deployment and control</span></a></li>
+          <li><a href="#present"><span class="contents-num">V</span><span class="contents-label">The present — a new arms race</span></a></li>
+          <li><a href="#references"><span class="contents-num">§</span><span class="contents-label">References</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         STICKY SIDEBAR NAV (desktop only; JS highlights active)
+         Hidden on narrow screens by CSS. Content is duplicative of
+         the Contents list above, but this sits in the reader's
+         peripheral vision during the long read.
+         =========================================================== -->
+    <aside class="section-nav" aria-label="Section navigation" id="sectionNav">
+      <p class="section-nav-label">Sections</p>
+      <ol>
+        <li><a href="#genesis">I · Genesis</a></li>
+        <li><a href="#physics">II · Physics</a></li>
+        <li><a href="#engineering">III · Engineering</a></li>
+        <li><a href="#deployment">IV · Deployment</a></li>
+        <li><a href="#present">V · Present</a></li>
+        <li><a href="#references">§ References</a></li>
+      </ol>
+    </aside>
+
+
+    <!-- ===========================================================
+         PART I — GENESIS
+         =========================================================== -->
+    <section class="section" id="genesis">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Part I</p>
+        <h2 class="section-title reveal">Genesis — physics becomes policy.</h2>
+        <div class="case-prose">
+
+          <p>The transition of nuclear physics from a theoretical academic pursuit to a dominant force in global military strategy began in the late 19th and early 20th centuries, culminating in the most intensive scientific mobilization in human history. The discovery of uranium by Martin Klaproth in 1789 provided the elemental foundation, but it was not until the late 1890s that Marie Curie identified the phenomenon of radioactivity — a term she coined to describe the electromagnetic particles emitted during the disintegration of unstable atoms.<sup class="fn"><a href="#fn-1">1</a></sup> This foundational work was expanded by Ernest Rutherford, whose 1911 atomic model posited a dense, positively charged nucleus surrounded by orbiting electrons, a discovery that shifted the focus of energy research toward the nucleus.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-2">2</a></sup></p>
+
+          <p>By the 1930s, the international scientific community had achieved a series of rapid breakthroughs. In 1933, Leo Szilard conceived the possibility of a self-sustaining nuclear chain reaction, and in 1934, Enrico Fermi unknowingly achieved the first instance of neutron splitting in uranium.<sup class="fn"><a href="#fn-1">1</a></sup> The definitive discovery of nuclear fission occurred in December 1938, when Otto Hahn and Fritz Strassmann successfully split a uranium nucleus — a process officially identified and named by Lise Meitner and Otto Frisch while they were in exile from Nazi Germany.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-3">3</a></sup> The realization that each fission event released not only massive amounts of energy but also additional neutrons capable of inducing further fissions led to the immediate understanding that a weapon of unprecedented power was technically feasible.<sup class="fn"><a href="#fn-3">3</a>, <a href="#fn-4">4</a></sup></p>
+
+          <p>The formalization of the United States' efforts was catalyzed by the Einstein–Szilard letter, sent to President Franklin D. Roosevelt in August 1939. The letter warned of the potential for Nazi Germany to construct &ldquo;extremely powerful bombs&rdquo; using the newly discovered fission process.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-3">3</a></sup> Roosevelt's subsequent formation of the Advisory Committee on Uranium eventually evolved into the Manhattan Engineer District (MED), or the Manhattan Project, established on August 13, 1942, under the military command of Brigadier General Leslie Groves.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-5">5</a></sup></p>
+
+          <h3 class="case-subhead">Strategic industrialization and the secret cities</h3>
+
+          <p>The Manhattan Project represented a unique fusion of military command, industrial capacity, and theoretical research. To manage the immense technical hurdles, General Groves established three primary sites, each dedicated to a critical aspect of the weaponization process. These sites functioned as &ldquo;secret cities,&rdquo; housing tens of thousands of workers who were often unaware of the project's true objective.<sup class="fn"><a href="#fn-3">3</a>, <a href="#fn-5">5</a></sup></p>
+
+          <figure class="data-table">
+            <table>
+              <caption>Table 1. The three primary Manhattan Project sites.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Site location</th>
+                  <th scope="col">Code name</th>
+                  <th scope="col">Primary technical mission</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Oak Ridge, Tennessee</td>
+                  <td>Site X</td>
+                  <td>Isotopic enrichment of uranium-235 from natural uranium</td>
+                </tr>
+                <tr>
+                  <td>Hanford, Washington</td>
+                  <td>Site W</td>
+                  <td>Production of plutonium-239 via neutron irradiation of uranium-238</td>
+                </tr>
+                <tr>
+                  <td>Los Alamos, New Mexico</td>
+                  <td>Project Y</td>
+                  <td>Central laboratory for weapons research, design, and assembly</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <p>At its peak, the project employed approximately 130,000 people and involved more than 30 sites across the United States.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-5">5</a></sup> The social structure of these sites reflected the era's complexities; for instance, more than 15,000 African Americans worked at the Tri-Cities and Oak Ridge locations, where they faced Jim Crow–era segregation and racism despite their essential contributions to the war effort.<sup class="fn"><a href="#fn-3">3</a></sup> The scientific breakthroughs were equally monumental, leading to the first human-controlled, self-sustaining nuclear chain reaction at the University of Chicago on December 2, 1942, in the CP-1 reactor overseen by Fermi and Szilard.<sup class="fn"><a href="#fn-1">1</a></sup> This success confirmed that plutonium could be produced in industrial quantities, providing the project with two distinct paths to a functional weapon: uranium-235 and plutonium-239.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-3">3</a></sup></p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         PART II — PHYSICS
+         =========================================================== -->
+    <section class="section" id="physics">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Part II</p>
+        <h2 class="section-title reveal">The physics of fission.</h2>
+        <div class="case-prose">
+
+          <p>The fundamental mechanism of a nuclear weapon is the rapid assembly of a supercritical mass of fissile material. Fission involves the splitting of a heavy nucleus, such as <sup>235</sup>U or <sup>239</sup>Pu, into smaller daughter fragments when struck by a neutron.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-6">6</a></sup> This process releases several hundred million electron volts (MeV) of energy per event, compared to the few electron volts released in chemical reactions.<sup class="fn"><a href="#fn-6">6</a></sup> The release of energy is governed by the conversion of mass into energy, a relationship described by the mass–energy equivalence formula:</p>
+
+          <p class="equation" aria-label="E equals m c squared">E = mc<sup>2</sup></p>
+
+          <p>In this context, the slight difference in mass between the original nucleus and the daughter fragments is converted into kinetic energy and gamma radiation.<sup class="fn"><a href="#fn-6">6</a></sup> For a detonation to occur, the material must reach a state of criticality. A <em>subcritical</em> mass is one in which the neutrons produced by fission escape or are absorbed without causing a subsequent fission at a sufficient rate to sustain the reaction.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-6">6</a></sup> A <em>critical</em> mass is the minimum amount of material needed for a self-sustaining reaction, while a <em>supercritical</em> mass results in an exponentially increasing rate of fission events, leading to a nuclear explosion.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-6">6</a>, <a href="#fn-7">7</a></sup></p>
+
+          <h3 class="case-subhead">Isotopic selection and fissile material synthesis</h3>
+
+          <p>Only specific isotopes are suitable for nuclear weaponry due to their &ldquo;wobbly&rdquo; nuclear structure and high fission cross-section.<sup class="fn"><a href="#fn-4">4</a></sup> The most common materials are uranium-235 (<sup>235</sup>U) and plutonium-239 (<sup>239</sup>Pu), though others have been explored experimentally.</p>
+
+          <figure class="data-table">
+            <table>
+              <caption>Table 2. Fissile isotopes suitable for weapons use.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Isotope</th>
+                  <th scope="col">Nature of material</th>
+                  <th scope="col">Critical mass (bare)</th>
+                  <th scope="col">Spontaneous fission rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Uranium-235</td>
+                  <td>Naturally occurring (0.7% in ore)</td>
+                  <td>~52 kg</td>
+                  <td>Very low</td>
+                </tr>
+                <tr>
+                  <td>Plutonium-239</td>
+                  <td>Synthetic (produced in reactors)</td>
+                  <td>~10 kg</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td>Uranium-233</td>
+                  <td>Synthetic (from thorium-232)</td>
+                  <td>~16 kg</td>
+                  <td>Low</td>
+                </tr>
+                <tr>
+                  <td>Neptunium-237</td>
+                  <td>Reactor by-product</td>
+                  <td>~60 kg</td>
+                  <td>Moderate</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <p>The synthesis of these materials requires vastly different industrial approaches. Uranium-235 must be separated from the more abundant uranium-238 (<sup>238</sup>U) through isotopic enrichment, a process that relies on the minute mass difference between the two isotopes.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-3">3</a></sup> Plutonium-239 is produced by placing <sup>238</sup>U in a nuclear reactor, where it absorbs a neutron to become <sup>239</sup>U, which then undergoes two beta decays to become <sup>239</sup>Pu.<sup class="fn"><a href="#fn-3">3</a>, <a href="#fn-6">6</a></sup> While <sup>239</sup>Pu is a superior fuel because of its small critical mass, it presents significant engineering challenges due to the presence of the contaminant isotope plutonium-240 (<sup>240</sup>Pu), which has a high spontaneous fission rate and can trigger a &ldquo;fizzle&rdquo; or pre-detonation.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-8">8</a></sup></p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         PART III — ENGINEERING
+         =========================================================== -->
+    <section class="section" id="engineering">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Part III</p>
+        <h2 class="section-title reveal">Engineering a weapon.</h2>
+        <div class="case-prose">
+
+          <p>The engineering of a nuclear device is focused on the rapid transition of a subcritical mass into a supercritical mass before the energy released by the initial fissions can blow the material apart.<sup class="fn"><a href="#fn-7">7</a>, <a href="#fn-9">9</a></sup> There are two primary mechanical methods used to achieve this: the gun-assembly design and the implosion design.</p>
+
+          <!-- Anatomy crosslink callout; the href lands on #anatomy for
+               now and will point at the Atomic Bomb anatomy page once
+               Phase 2 ships. -->
+          <aside class="anatomy-callout" aria-label="Related interactive">
+            <p class="anatomy-callout-eyebrow">Coming in Anatomy Of</p>
+            <p class="anatomy-callout-body">For an interactive, component-by-component walkthrough of the physics package — fission, pit, tamper, reflector, initiator, firing chain — an <em>Anatomy of an Atomic Bomb</em> page is in the works. <a href="../../index.html#anatomy">See the Anatomy Of series →</a></p>
+          </aside>
+
+          <h3 class="case-subhead">Gun-assembly mechanics</h3>
+
+          <p>The gun-assembly method is the simpler of the two designs and was used in the &ldquo;Little Boy&rdquo; bomb.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-4">4</a></sup> It consists of a high-strength steel tube with two subcritical masses of enriched uranium at opposite ends.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-9">9</a></sup> A conventional explosive propellant is used to fire the &ldquo;bullet&rdquo; mass into the &ldquo;target&rdquo; mass, creating a supercritical assembly upon impact.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-6">6</a></sup></p>
+
+          <p>The simplicity of this design makes it highly reliable but physically inefficient. It requires a large amount of fissile material — approximately 64 kg in the case of the Hiroshima bomb — and can only be used with uranium.<sup class="fn"><a href="#fn-9">9</a>, <a href="#fn-10">10</a></sup> It is unsuitable for plutonium because the high neutron background from <sup>240</sup>Pu would cause the chain reaction to start as the masses approach each other, leading to a pre-detonation that yields only a fraction of the intended energy.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-9">9</a></sup></p>
+
+          <h3 class="case-subhead">Implosion design and high-explosive lenses</h3>
+
+          <p>The implosion design is significantly more advanced and forms the basis for almost all modern nuclear weapons.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-9">9</a></sup> In this configuration, a subcritical sphere of fissile material, known as the &ldquo;pit,&rdquo; is surrounded by a shell of high explosives.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-6">6</a></sup> These explosives are arranged as &ldquo;lenses&rdquo; designed to focus the shockwave inward, compressing the pit to many times its normal density.<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-9">9</a></sup></p>
+
+          <p>Compression achieves supercriticality in two ways: first, by reducing the distance between nuclei, thereby increasing the probability of neutron–nucleus collisions; and second, by physically reducing the volume, which limits the number of neutrons that can escape the mass without causing a fission.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-6">6</a>, <a href="#fn-7">7</a></sup> The &ldquo;Fat Man&rdquo; bomb and the Trinity &ldquo;Gadget&rdquo; were implosion devices that utilized a <sup>239</sup>Pu core.<sup class="fn"><a href="#fn-1">1</a></sup> This design is much more efficient than the gun-type, using as little as 6 kg of plutonium to achieve yields in the 20-kiloton range.<sup class="fn"><a href="#fn-1">1</a>, <a href="#fn-11">11</a></sup></p>
+
+          <h3 class="case-subhead">Thermodynamic and neutronic components</h3>
+
+          <p>To maximize the efficiency of a fission explosion, several auxiliary components are integrated into the &ldquo;physics package&rdquo; of the weapon.</p>
+
+          <figure class="data-table">
+            <table>
+              <caption>Table 3. The physics package — core auxiliary components.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Component</th>
+                  <th scope="col">Material usually used</th>
+                  <th scope="col">Primary function</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tamper</td>
+                  <td>Uranium-238 or tungsten</td>
+                  <td>Provides inertia to hold the core together; reflects neutrons</td>
+                </tr>
+                <tr>
+                  <td>Reflector</td>
+                  <td>Beryllium</td>
+                  <td>Scatters escaping neutrons back into the fissile core</td>
+                </tr>
+                <tr>
+                  <td>Initiator</td>
+                  <td>Polonium/beryllium or ENG</td>
+                  <td>Provides a burst of neutrons at the peak of compression</td>
+                </tr>
+                <tr>
+                  <td>Radiation case</td>
+                  <td>Uranium or lead</td>
+                  <td>Channels X-rays in thermonuclear designs</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <p>The tamper serves a dual role: its high density provides inertial resistance, preventing the core from expanding for a few microseconds longer, while also acting as a neutron reflector.<sup class="fn"><a href="#fn-9">9</a>, <a href="#fn-12">12</a></sup> Beryllium is particularly valued as a reflector because it has a low probability of absorbing neutrons, allowing them to return to the fissile mass to continue the chain reaction.<sup class="fn"><a href="#fn-13">13</a>, <a href="#fn-14">14</a></sup></p>
+
+          <h3 class="case-subhead">The firing chain — SAFF and activation mechanisms</h3>
+
+          <p>The activation of a nuclear weapon involves a precisely timed sequence of events managed by the Safing, Arming, Fuzing, and Firing (SAFF) system, also known as the Warhead Electrical System (WES).<sup class="fn"><a href="#fn-15">15</a>, <a href="#fn-16">16</a></sup> The primary mission of the SAFF system is to ensure the weapon detonates at the intended time and location while remaining perfectly safe under all other conditions.<sup class="fn"><a href="#fn-15">15</a></sup></p>
+
+          <h3 class="case-subhead">Electronic switching and high-voltage detonation</h3>
+
+          <p>In an implosion weapon, the high-explosive lenses must be detonated with nanosecond-level simultaneity to ensure a symmetric compression.<sup class="fn"><a href="#fn-9">9</a>, <a href="#fn-15">15</a></sup> This requires high-voltage switching devices capable of delivering massive pulses of current.<sup class="fn"><a href="#fn-17">17</a></sup></p>
+
+          <p>Krytrons are gas-filled, cold-cathode trigger tubes designed for this purpose.<sup class="fn"><a href="#fn-17">17</a>, <a href="#fn-18">18</a></sup> They operate in an arc discharge mode, which allows them to switch voltages up to 5,000 volts and currents up to 3,000 amperes with very low jitter.<sup class="fn"><a href="#fn-17">17</a>, <a href="#fn-19">19</a></sup> A &ldquo;keep-alive&rdquo; electrode maintains a constant source of ionized plasma, allowing the tube to fire almost instantly when a trigger pulse is applied.<sup class="fn"><a href="#fn-17">17</a>, <a href="#fn-18">18</a></sup> Sprytrons — the vacuum versions of krytrons — are used in high-radiation environments where gas-filled tubes might be prone to accidental triggering.<sup class="fn"><a href="#fn-19">19</a>, <a href="#fn-20">20</a></sup></p>
+
+          <p>The electrical pulse from the firing set is delivered to detonators such as Exploding Bridgewires (EBW) or Exploding Foil Initiators (EFI).<sup class="fn"><a href="#fn-15">15</a>, <a href="#fn-19">19</a></sup> These detonators use the rapid vaporization of a metal conductor to create a shockwave that initiates the high explosives.<sup class="fn"><a href="#fn-15">15</a></sup> They are inherently safe because they require a very specific, high-power electrical signature to fire, making them immune to accidental activation by static electricity or radio waves.<sup class="fn"><a href="#fn-15">15</a></sup></p>
+
+          <h3 class="case-subhead">Modulated neutron initiators</h3>
+
+          <p>For the chain reaction to begin efficiently at the moment of maximum compression, a burst of neutrons must be injected into the supercritical mass.<sup class="fn"><a href="#fn-21">21</a>, <a href="#fn-22">22</a></sup> Early devices used the &ldquo;Urchin&rdquo; initiator — a beryllium sphere containing polonium-210.<sup class="fn"><a href="#fn-8">8</a>, <a href="#fn-21">21</a></sup> Upon implosion, the shockwave would crush the initiator, mixing the two materials and triggering an alpha–neutron reaction.<sup class="fn"><a href="#fn-8">8</a>, <a href="#fn-21">21</a></sup></p>
+
+          <p>Modern weapons utilize External Neutron Generators (ENGs), which are miniaturized particle accelerators located outside the pit.<sup class="fn"><a href="#fn-8">8</a>, <a href="#fn-21">21</a></sup> These devices collide deuterium and tritium ions to produce a burst of high-energy neutrons via fusion.<sup class="fn"><a href="#fn-21">21</a>, <a href="#fn-23">23</a></sup> ENGs allow for superior control over the timing of the neutron burst and have a longer shelf life than radioactive polonium initiators.<sup class="fn"><a href="#fn-8">8</a>, <a href="#fn-21">21</a></sup></p>
+
+          <h3 class="case-subhead">Thermonuclear weapons — the staged design</h3>
+
+          <p>The evolution of nuclear weaponry reached its zenith with the development of the thermonuclear or hydrogen bomb.<sup class="fn"><a href="#fn-24">24</a>, <a href="#fn-25">25</a></sup> These weapons rely on the fusion of light nuclei, typically isotopes of hydrogen like deuterium (<sup>2</sup>H) and tritium (<sup>3</sup>H), to release energy.<sup class="fn"><a href="#fn-4">4</a>, <a href="#fn-6">6</a>, <a href="#fn-12">12</a></sup> Fusion reactions release much more energy per unit mass than fission, and because there is no critical mass for fusion fuel, there is no theoretical limit to the yield of a thermonuclear weapon.<sup class="fn"><a href="#fn-25">25</a></sup></p>
+
+          <h4 class="case-microhead">The Teller–Ulam configuration</h4>
+
+          <p>Modern thermonuclear weapons utilize the Teller–Ulam staged design, which consists of a &ldquo;primary&rdquo; fission stage and a &ldquo;secondary&rdquo; fusion stage.<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-9">9</a>, <a href="#fn-12">12</a></sup></p>
+
+          <ul class="case-list">
+            <li><strong>The primary.</strong> Typically a boosted fission device.<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-7">7</a></sup> When it detonates, it releases a massive pulse of X-rays.<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-7">7</a></sup></li>
+            <li><strong>Radiation implosion.</strong> The X-rays are channeled by the weapon's case to fill the cavity surrounding the secondary.<sup class="fn"><a href="#fn-7">7</a>, <a href="#fn-12">12</a></sup> This radiation pressure, along with the plasma formed by the vaporization of material within the cavity, compresses the secondary stage.<sup class="fn"><a href="#fn-12">12</a></sup></li>
+            <li><strong>The secondary.</strong> Contains fusion fuel — usually lithium deuteride (<sup>6</sup>LiD) — and a fissile &ldquo;spark plug&rdquo; at its center.<sup class="fn"><a href="#fn-9">9</a>, <a href="#fn-12">12</a></sup> As the secondary is compressed, the spark plug reaches criticality and detonates, heating the fusion fuel from the inside.<sup class="fn"><a href="#fn-9">9</a>, <a href="#fn-12">12</a></sup></li>
+            <li><strong>Fusion reaction.</strong> Under extreme heat and pressure, the lithium in the fuel reacts with neutrons to create tritium, which then fuses with the deuterium.<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-25">25</a></sup></li>
+          </ul>
+
+          <p>This process results in a massive release of high-energy neutrons, which can also be used to trigger a third stage of fission in a surrounding blanket of <sup>238</sup>U — a design known as fission–fusion–fission.<sup class="fn"><a href="#fn-12">12</a>, <a href="#fn-26">26</a></sup></p>
+
+          <h4 class="case-microhead">Boosted fission weapons</h4>
+
+          <p>A significant advancement in nuclear design is the process of &ldquo;boosting.&rdquo;<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-7">7</a></sup> This involves placing a small amount of deuterium and tritium gas inside the hollow core of a fission pit.<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-7">7</a>, <a href="#fn-13">13</a></sup> As the fission reaction begins, the intense heat and pressure cause the D–T gas to undergo fusion.<sup class="fn"><a href="#fn-6">6</a></sup> While the energy from this fusion is minor compared to the total yield, it produces a flood of high-energy neutrons that significantly increase the percentage of the fissile material that fissions, effectively doubling the yield without increasing the weapon's size.<sup class="fn"><a href="#fn-6">6</a>, <a href="#fn-7">7</a>, <a href="#fn-13">13</a></sup></p>
+
+          <h3 class="case-subhead">Specialized and lesser-known devices</h3>
+
+          <h4 class="case-microhead">Enhanced radiation weapons (neutron bombs)</h4>
+
+          <p>The neutron bomb is a small thermonuclear weapon designed to maximize the release of high-energy neutrons while minimizing blast and thermal effects.<sup class="fn"><a href="#fn-25">25</a>, <a href="#fn-27">27</a></sup> By omitting the usual uranium blanket that would absorb neutrons and contribute to the blast, the device allows a large percentage of its energy to escape as prompt radiation.<sup class="fn"><a href="#fn-12">12</a>, <a href="#fn-27">27</a></sup> These weapons were intended for use against armored formations, where the neutrons would penetrate tank hulls to kill the crew while leaving nearby structures and civilian populations relatively unharmed.<sup class="fn"><a href="#fn-25">25</a>, <a href="#fn-27">27</a></sup></p>
+
+          <h4 class="case-microhead">Salted bombs and radiological warfare</h4>
+
+          <p>Salted weapons are designed to maximize radioactive fallout rather than explosive yield.<sup class="fn"><a href="#fn-26">26</a>, <a href="#fn-28">28</a></sup> This is achieved by incorporating an element into the weapon's casing that can be transmuted into a highly radioactive isotope by neutron bombardment.<sup class="fn"><a href="#fn-28">28</a>, <a href="#fn-29">29</a></sup></p>
+
+          <figure class="data-table">
+            <table>
+              <caption>Table 4. Salting agents and their strategic effects.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Salting agent</th>
+                  <th scope="col">Resulting isotope</th>
+                  <th scope="col">Half-life</th>
+                  <th scope="col">Strategic effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cobalt-59</td>
+                  <td>Cobalt-60</td>
+                  <td>5.27 years</td>
+                  <td>Long-term denial of territory; &ldquo;Doomsday&rdquo; potential</td>
+                </tr>
+                <tr>
+                  <td>Sodium-23</td>
+                  <td>Sodium-24</td>
+                  <td>15 hours</td>
+                  <td>Intense, short-term radioactive contamination</td>
+                </tr>
+                <tr>
+                  <td>Gold-197</td>
+                  <td>Gold-198</td>
+                  <td>2.7 days</td>
+                  <td>Medium-term radiological warfare</td>
+                </tr>
+                <tr>
+                  <td>Zinc-64</td>
+                  <td>Zinc-65</td>
+                  <td>244 days</td>
+                  <td>Intermediate territory contamination</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <p>The most infamous of these is the Cobalt Bomb, first proposed by Leo Szilard as a potential &ldquo;doomsday device.&rdquo;<sup class="fn"><a href="#fn-29">29</a>, <a href="#fn-30">30</a></sup> Cobalt-60 is a powerful gamma emitter with a half-life long enough to make an area uninhabitable for decades, yet intense enough to be lethal to anyone who emerges from shelter.<sup class="fn"><a href="#fn-29">29</a>, <a href="#fn-31">31</a></sup> While no nation is publicly known to have deployed a cobalt bomb, the concept remains a theoretical extreme of radiological warfare.<sup class="fn"><a href="#fn-29">29</a></sup></p>
+
+          <h4 class="case-microhead">Atomic demolition munitions and the W54</h4>
+
+          <p>The W54 warhead was the smallest nuclear weapon ever deployed by the United States, weighing only about 50 pounds with a yield ranging from 10 to 1,000 tons of TNT.<sup class="fn"><a href="#fn-32">32</a>, <a href="#fn-33">33</a></sup> It was used in the Davy Crockett recoilless rifle — a tactical weapon for infantry use — and in Special Atomic Demolition Munitions (SADM).<sup class="fn"><a href="#fn-13">13</a>, <a href="#fn-33">33</a>, <a href="#fn-34">34</a></sup> SADMs were designed to be carried by a two-man team and used to destroy key infrastructure behind enemy lines, such as bridges or dams.<sup class="fn"><a href="#fn-13">13</a>, <a href="#fn-33">33</a></sup></p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         PART IV — DEPLOYMENT AND CONTROL
+         =========================================================== -->
+    <section class="section" id="deployment">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Part IV</p>
+        <h2 class="section-title reveal">Deployment and control.</h2>
+        <div class="case-prose">
+
+          <p>The strategic employment of nuclear weapons is organized around the &ldquo;Nuclear Triad,&rdquo; a doctrine that ensures a credible retaliatory capability by diversifying the means of delivery.<sup class="fn"><a href="#fn-35">35</a>, <a href="#fn-36">36</a></sup></p>
+
+          <figure class="data-table">
+            <table>
+              <caption>Table 5. The three legs of the nuclear triad.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Triad leg</th>
+                  <th scope="col">Primary delivery vehicle</th>
+                  <th scope="col">Strategic strength</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Land-based</td>
+                  <td>ICBMs in hardened silos</td>
+                  <td>Highly responsive; can launch in minutes</td>
+                </tr>
+                <tr>
+                  <td>Sea-based</td>
+                  <td>SLBMs on stealth submarines</td>
+                  <td>Most survivable; nearly impossible to track</td>
+                </tr>
+                <tr>
+                  <td>Air-based</td>
+                  <td>Strategic bombers</td>
+                  <td>Flexible; can be recalled or redirected mid-flight</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <h3 class="case-subhead">Intercontinental ballistic missiles (ICBMs)</h3>
+
+          <p>ICBMs — such as the U.S. Minuteman III or the Russian Sarmat — are land-based missiles with ranges exceeding 5,500 kilometers.<sup class="fn"><a href="#fn-10">10</a>, <a href="#fn-37">37</a></sup> They are unique because the platform and the delivery vehicle are one and the same.<sup class="fn"><a href="#fn-36">36</a></sup> Modern ICBMs often use Multiple Independently Targetable Reentry Vehicles (MIRVs), allowing a single missile to deliver several warheads to different targets.<sup class="fn"><a href="#fn-11">11</a>, <a href="#fn-38">38</a></sup></p>
+
+          <h3 class="case-subhead">Submarine-launched ballistic missiles (SLBMs)</h3>
+
+          <p>SLBMs are carried by nuclear-powered ballistic missile submarines (SSBNs), such as the U.S. Ohio-class or the British Vanguard-class.<sup class="fn"><a href="#fn-36">36</a>, <a href="#fn-39">39</a></sup> Because these submarines can hide in the vast depths of the ocean, they are considered the most survivable leg of the triad.<sup class="fn"><a href="#fn-36">36</a>, <a href="#fn-38">38</a></sup> The U.S. currently maintains 14 Ohio-class submarines, with plans to replace them with the Columbia-class starting in 2031.<sup class="fn"><a href="#fn-36">36</a>, <a href="#fn-38">38</a></sup></p>
+
+          <h3 class="case-subhead">Strategic bombers and cruise missiles</h3>
+
+          <p>Air-launched systems include gravity bombs and cruise missiles carried by aircraft like the B-52H or the B-2A Spirit.<sup class="fn"><a href="#fn-10">10</a>, <a href="#fn-36">36</a></sup> Bombers serve as a visible &ldquo;show of force&rdquo; during crises.<sup class="fn"><a href="#fn-36">36</a></sup> Modern developments include long-range standoff (LRSO) cruise missiles and hypersonic glide vehicles (HGVs), designed to penetrate advanced air defense systems.<sup class="fn"><a href="#fn-36">36</a>, <a href="#fn-40">40</a>, <a href="#fn-41">41</a></sup></p>
+
+          <h3 class="case-subhead">Nuclear surety — safety and use control</h3>
+
+          <p>The existential risk posed by nuclear weapons has led to the development of the &ldquo;Surety&rdquo; framework, which combines safety, security, and use control.<sup class="fn"><a href="#fn-42">42</a></sup></p>
+
+          <h4 class="case-microhead">Permissive Action Links (PALs)</h4>
+
+          <p>A Permissive Action Link (PAL) is a security device integrated into the weapon's firing circuit that prevents arming or detonation without the insertion of a prescribed digital code.<sup class="fn"><a href="#fn-14">14</a>, <a href="#fn-43">43</a></sup> Early PALs were simple combination locks, but modern versions are sophisticated electronic systems that can permanently disable the weapon if tampered with.<sup class="fn"><a href="#fn-14">14</a>, <a href="#fn-43">43</a></sup> PALs ensure that no single person — even a high-ranking military officer — can detonate a weapon without authorization from the National Command Authority.<sup class="fn"><a href="#fn-14">14</a>, <a href="#fn-44">44</a></sup></p>
+
+          <h4 class="case-microhead">Isolation, incompatibility, and inoperability</h4>
+
+          <p>Nuclear safety is built on three core principles:<sup class="fn"><a href="#fn-16">16</a></sup></p>
+
+          <ul class="case-list">
+            <li><strong>Isolation.</strong> The detonators are kept within an &ldquo;exclusion zone&rdquo; and are physically isolated from electrical energy by an air gap or a non-conductive barrier.<sup class="fn"><a href="#fn-14">14</a>, <a href="#fn-16">16</a></sup></li>
+            <li><strong>Incompatibility.</strong> The arming signals are designed to be &ldquo;unique&rdquo; and complex, ensuring that accidental electrical shorts or lightning strikes cannot simulate the trigger.<sup class="fn"><a href="#fn-14">14</a>, <a href="#fn-16">16</a></sup></li>
+            <li><strong>Inoperability.</strong> &ldquo;Weaklinks&rdquo; are included in the firing set that are designed to fail if exposed to abnormal environments like fire or high acceleration, rendering the weapon inert before it can be accidentally triggered.<sup class="fn"><a href="#fn-14">14</a>, <a href="#fn-16">16</a></sup></li>
+          </ul>
+
+          <p>The &ldquo;two-man rule&rdquo; provides a human layer of security, requiring the simultaneous and coordinated action of two authorized individuals to perform any task related to the arming or launching of a weapon.<sup class="fn"><a href="#fn-14">14</a>, <a href="#fn-43">43</a>, <a href="#fn-45">45</a></sup></p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         PART V — THE PRESENT
+         =========================================================== -->
+    <section class="section" id="present">
+      <div class="container case-body">
+        <p class="section-eyebrow reveal">Part V</p>
+        <h2 class="section-title reveal">The present — a new arms race.</h2>
+        <div class="case-prose">
+
+          <p>As of early 2026, the global nuclear order is in a state of rapid flux, marked by the modernization of existing arsenals and the erosion of post–Cold War arms control regimes.<sup class="fn"><a href="#fn-39">39</a>, <a href="#fn-46">46</a>, <a href="#fn-47">47</a></sup></p>
+
+          <h3 class="case-subhead">Global nuclear inventories (January 2026 estimates)</h3>
+
+          <p>According to data from the Federation of American Scientists (FAS) and the Stockholm International Peace Research Institute (SIPRI), nine countries currently possess approximately 12,241 nuclear warheads.<sup class="fn"><a href="#fn-39">39</a>, <a href="#fn-46">46</a>, <a href="#fn-48">48</a></sup></p>
+
+          <figure class="data-table">
+            <table>
+              <caption>Table 6. Global nuclear inventories, January 2026 estimates (FAS / SIPRI).</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Country</th>
+                  <th scope="col" class="num">Total inventory</th>
+                  <th scope="col" class="num">Military stockpile</th>
+                  <th scope="col" class="num">Deployed warheads</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Russia</td>
+                  <td class="num">~5,459</td>
+                  <td class="num">~4,309</td>
+                  <td class="num">~1,718</td>
+                </tr>
+                <tr>
+                  <td>United States</td>
+                  <td class="num">~5,044</td>
+                  <td class="num">~3,748</td>
+                  <td class="num">~1,770</td>
+                </tr>
+                <tr>
+                  <td>China</td>
+                  <td class="num">~600</td>
+                  <td class="num">~600</td>
+                  <td class="num">~30 (est.)</td>
+                </tr>
+                <tr>
+                  <td>France</td>
+                  <td class="num">~290</td>
+                  <td class="num">~290</td>
+                  <td class="num">~280</td>
+                </tr>
+                <tr>
+                  <td>United Kingdom</td>
+                  <td class="num">~225</td>
+                  <td class="num">~225</td>
+                  <td class="num">~120</td>
+                </tr>
+                <tr>
+                  <td>India</td>
+                  <td class="num">~172</td>
+                  <td class="num">~172</td>
+                  <td class="num">0 (de-mated)</td>
+                </tr>
+                <tr>
+                  <td>Pakistan</td>
+                  <td class="num">~170</td>
+                  <td class="num">~170</td>
+                  <td class="num">0 (de-mated)</td>
+                </tr>
+                <tr>
+                  <td>Israel</td>
+                  <td class="num">~90</td>
+                  <td class="num">~90</td>
+                  <td class="num">0 (ambiguous)</td>
+                </tr>
+                <tr>
+                  <td>North Korea</td>
+                  <td class="num">~50</td>
+                  <td class="num">~50</td>
+                  <td class="num">Unknown</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <h3 class="case-subhead">Modernization and proliferation trends</h3>
+
+          <p>The period of post–Cold War reductions has effectively ended, replaced by a &ldquo;qualitative arms race.&rdquo;<sup class="fn"><a href="#fn-49">49</a>, <a href="#fn-50">50</a></sup> China is expanding its arsenal faster than any other state, constructing approximately 350 new ICBM silos and developing the H-20 stealth bomber.<sup class="fn"><a href="#fn-39">39</a>, <a href="#fn-46">46</a>, <a href="#fn-47">47</a></sup> Russia is in the final stages of a multi-decade modernization program to replace all Soviet-era systems and has conducted joint nuclear exercises with Belarus.<sup class="fn"><a href="#fn-39">39</a></sup></p>
+
+          <p>Regional tensions remain high, with North Korea continuing to test ICBMs and Iran categorized as a &ldquo;threshold state&rdquo; that could produce enough fissile material for a weapon within a very short timeframe if it chose to do so.<sup class="fn"><a href="#fn-40">40</a>, <a href="#fn-41">41</a>, <a href="#fn-51">51</a></sup> The New START Treaty — the last remaining bilateral agreement between the U.S. and Russia — expired in February 2026, and the lack of a successor agreement has removed all legal caps on the world's two largest strategic arsenals.<sup class="fn"><a href="#fn-39">39</a>, <a href="#fn-50">50</a>, <a href="#fn-51">51</a></sup></p>
+
+          <h3 class="case-subhead">Technical and ethical legacy of the atomic age</h3>
+
+          <p>The development of nuclear weapons was the foundational event of the &ldquo;Atomic Age&rdquo; — a period that determined the course of the Cold War and the structure of modern international relations.<sup class="fn"><a href="#fn-5">5</a></sup> The Manhattan Project demonstrated that original scientific discoveries could be translated into industrial-scale power with world-altering consequences.<sup class="fn"><a href="#fn-5">5</a></sup> Today, the Department of Energy continues to manage the legacy of the Manhattan Project through preservation efforts at Oak Ridge, Hanford, and Los Alamos — now part of the Manhattan Project National Historical Park.<sup class="fn"><a href="#fn-5">5</a></sup></p>
+
+          <p>The technical evolution from the crude gun-type &ldquo;Little Boy&rdquo; to modern MIRVed thermonuclear warheads reflects a mastery of the most fundamental forces of nature. However, the persistence of these weapons and the emergence of new technologies — such as artificial intelligence in command-and-control systems and hypersonic delivery vehicles — create a complex security environment where the margin for error is increasingly narrow.<sup class="fn"><a href="#fn-49">49</a>, <a href="#fn-52">52</a></sup> The ongoing modernization of these arsenals, coupled with the weakening of non-proliferation norms, ensures that nuclear weaponry remains the most significant technical and existential challenge of the 21st century.<sup class="fn"><a href="#fn-47">47</a>, <a href="#fn-53">53</a>, <a href="#fn-54">54</a></sup></p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         BACK TO RESEARCH
+         =========================================================== -->
+    <section class="section">
+      <div class="container case-body">
+        <div class="case-cta reveal">
+          <a class="btn btn-primary" href="../../index.html#research">See other research</a>
+          <a class="btn btn-ghost" href="../../index.html">Back to Rycode</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         REFERENCES
+         =========================================================== -->
+    <section class="section" id="references">
+      <div class="container">
+        <p class="section-eyebrow reveal">References</p>
+        <h2 class="section-title reveal">Sources.</h2>
+        <p class="section-lead reveal">Every claim in this briefing traces to a public source. Hover (or tap) any footnote number in the text to see the source title; click the number to jump here.</p>
+        <ol class="references reveal">
+          <li id="fn-1"><a href="https://www.nationalww2museum.org/war/articles/making-the-atomic-bomb-trinity-test" target="_blank" rel="noopener">&lsquo;Destroyer of Worlds&rsquo;: The Making of an Atomic Bomb</a> · The National WWII Museum</li>
+          <li id="fn-2"><a href="https://www.osti.gov/opennet/manhattan-project-history/Resources/sources.htm" target="_blank" rel="noopener">Manhattan Project: Sources and Notes</a> · OSTI (U.S. Department of Energy)</li>
+          <li id="fn-3"><a href="https://www.nps.gov/mapr/learn/manhattan-project.htm" target="_blank" rel="noopener">Manhattan Project National Historical Park</a> · U.S. National Park Service</li>
+          <li id="fn-4"><a href="https://physics.info/weapons/" target="_blank" rel="noopener">Nuclear Weapons</a> · The Physics Hypertextbook</li>
+          <li id="fn-5"><a href="https://www.energy.gov/lm/manhattan-project-background-information-and-preservation-work" target="_blank" rel="noopener">Manhattan Project Background Information and Preservation Work</a> · U.S. Department of Energy</li>
+          <li id="fn-6"><a href="https://www.acq.osd.mil/ncbdp/nm/NMHB2020rev/chapters/chapter13.html" target="_blank" rel="noopener">Basic Nuclear Physics and Weapons Effects</a> · NMHB 2020 (revised)</li>
+          <li id="fn-7"><a href="https://en.wikipedia.org/wiki/Nuclear_weapon_design" target="_blank" rel="noopener">Nuclear weapon design</a> · Wikipedia</li>
+          <li id="fn-8"><a href="https://www.theochem.ru.nl/~pwormer/Knowino/knowino.org/w/index6664-3.html?title=Neutron_generator&amp;stable=1" target="_blank" rel="noopener">Neutron generator</a> · Knowino</li>
+          <li id="fn-9"><a href="https://www.wisconsinproject.org/nuclear-weapons/" target="_blank" rel="noopener">Nuclear Weapons Primer</a> · Wisconsin Project</li>
+          <li id="fn-10"><a href="https://www.britannica.com/technology/ICBM" target="_blank" rel="noopener">ICBM — Intercontinental, Nuclear, Ballistic</a> · Britannica</li>
+          <li id="fn-11"><a href="https://en.wikipedia.org/wiki/Nuclear_weapon" target="_blank" rel="noopener">Nuclear weapon</a> · Wikipedia</li>
+          <li id="fn-12"><a href="https://www.britannica.com/technology/nuclear-weapon/Basic-two-stage-design" target="_blank" rel="noopener">Nuclear weapon — Fission, Fusion, Delivery</a> · Britannica</li>
+          <li id="fn-13"><a href="https://warfarehistorynetwork.com/article/military-weapons-the-davy-crockett-mobile-missile-launcher/" target="_blank" rel="noopener">Military Weapons: The Davy Crockett Mobile Missile Launcher</a> · Warfare History Network</li>
+          <li id="fn-14"><a href="https://nuclearweaponarchive.org/Usa/Weapons/Pal.html" target="_blank" rel="noopener">Principles of Nuclear Weapons Security and Safety</a> · Nuclear Weapon Archive</li>
+          <li id="fn-15"><a href="https://www.nuclearinfo.org/wp-content/uploads/2022/05/Appendix_F_Report_of_the_Fundamental_Classification_Policy_Review_Group_Safing_Arming_Fuzing__Firing_SAFF_System_Recommendations_pages_20_to_48_nd._compressed-1.pdf" target="_blank" rel="noopener">Appendix F — Fundamental Classification Policy Review Group, SAFF System</a> · Nuclear Information Service</li>
+          <li id="fn-16"><a href="https://www.cs.columbia.edu/~smb/nsam-160/671923.pdf" target="_blank" rel="noopener">The History of Nuclear Weapon Safety Devices</a> · Columbia University CS</li>
+          <li id="fn-17"><a href="https://en.wikipedia.org/wiki/Krytron" target="_blank" rel="noopener">Krytron</a> · Wikipedia</li>
+          <li id="fn-18"><a href="https://unterm.un.org/unterm2/view/fb4b015e-be38-4f7f-9b05-db7784e32ee4" target="_blank" rel="noopener">Krytron</a> · UNTERM (United Nations)</li>
+          <li id="fn-19"><a href="https://www.siliconinvestigations.com/KRYT/Krytron.html" target="_blank" rel="noopener">Krytron, Sprytron Pulse Power Switch Tube</a> · Silicon Investigations</li>
+          <li id="fn-20"><a href="https://lampes-et-tubes.info/rs/EG&amp;G_KRYTRONS.pdf" target="_blank" rel="noopener">EG&amp;G Krytrons</a> · Lampes &amp; Tubes</li>
+          <li id="fn-21"><a href="https://en.wikipedia.org/wiki/Modulated_neutron_initiator" target="_blank" rel="noopener">Modulated neutron initiator</a> · Wikipedia</li>
+          <li id="fn-22"><a href="https://www.osti.gov/opennet/manhattan-project-history/Science/BombDesign/initiators.html" target="_blank" rel="noopener">Bomb Design and Components — Initiators and Polonium</a> · OSTI</li>
+          <li id="fn-23"><a href="https://www.adelphitech.com/technical_overview.php" target="_blank" rel="noopener">Neutron Generator Technical Overview</a> · Adelphi Technology, Inc.</li>
+          <li id="fn-24"><a href="https://www.ebsco.com/research-starters/engineering/fission-and-thermonuclear-weapons" target="_blank" rel="noopener">Fission and Thermonuclear Weapons</a> · EBSCO Research Starters</li>
+          <li id="fn-25"><a href="https://www.pbs.org/newshour/nation/military-jan-june05-bombs_05-02" target="_blank" rel="noopener">Types of Nuclear Bombs</a> · PBS NewsHour</li>
+          <li id="fn-26"><a href="https://hdiac.dtic.mil/articles/understanding-the-effects-of-erws-and-salted-devices/" target="_blank" rel="noopener">Understanding the Effects of ERWs and Salted Devices</a> · HDIAC</li>
+          <li id="fn-27"><a href="https://www.atomicarchive.com/science/fusion/neutron-bomb.html" target="_blank" rel="noopener">The Neutron Bomb</a> · Atomic Archive</li>
+          <li id="fn-28"><a href="https://en.wikipedia.org/wiki/Salted_bomb" target="_blank" rel="noopener">Salted bomb</a> · Wikipedia</li>
+          <li id="fn-29"><a href="https://en.wikipedia.org/wiki/Cobalt_bomb" target="_blank" rel="noopener">Cobalt bomb</a> · Wikipedia</li>
+          <li id="fn-30"><a href="https://www.chemeurope.com/en/encyclopedia/Cobalt_bomb.html" target="_blank" rel="noopener">Cobalt bomb</a> · chemeurope.com</li>
+          <li id="fn-31"><a href="https://time.com/archive/6625052/science-fy-for-doomsday/" target="_blank" rel="noopener">Science: Fy for Doomsday</a> · TIME Archive</li>
+          <li id="fn-32"><a href="https://www.brookings.edu/the-davy-crockett/" target="_blank" rel="noopener">The Davy Crockett</a> · Brookings Institution</li>
+          <li id="fn-33"><a href="https://en.wikipedia.org/wiki/W54" target="_blank" rel="noopener">W54</a> · Wikipedia</li>
+          <li id="fn-34"><a href="https://en.wikipedia.org/wiki/Davy_Crockett_(nuclear_device)" target="_blank" rel="noopener">Davy Crockett (nuclear device)</a> · Wikipedia</li>
+          <li id="fn-35"><a href="https://en.wikipedia.org/wiki/Nuclear_weapons_delivery" target="_blank" rel="noopener">Nuclear weapons delivery</a> · Wikipedia</li>
+          <li id="fn-36"><a href="https://www.acq.osd.mil/ncbdp/nm/NMHB2020rev/docs/NMHB2020rev_Ch3.pdf" target="_blank" rel="noopener">Nuclear Delivery Systems</a> · acq.osd.mil (NMHB 2020, Ch. 3)</li>
+          <li id="fn-37"><a href="https://en.wikipedia.org/wiki/Intercontinental_ballistic_missile" target="_blank" rel="noopener">Intercontinental ballistic missile</a> · Wikipedia</li>
+          <li id="fn-38"><a href="https://www.war.gov/Multimedia/Experience/Americas-Nuclear-Triad/" target="_blank" rel="noopener">America's Nuclear Triad</a> · U.S. Department of War</li>
+          <li id="fn-39"><a href="https://fas.org/initiative/status-world-nuclear-forces/" target="_blank" rel="noopener">Status of World Nuclear Forces</a> · Federation of American Scientists</li>
+          <li id="fn-40"><a href="https://www.dni.gov/index.php/newsroom/press-releases/press-releases-2026/4142-pr-03-26" target="_blank" rel="noopener">DNI Gabbard Releases 2026 Annual Threat Assessment</a> · Office of the Director of National Intelligence</li>
+          <li id="fn-41"><a href="https://www.dia.mil/Portals/110/Images/News/Military_Powers_Publications/Nuclear_Challenges_2024.pdf" target="_blank" rel="noopener">Nuclear Challenges</a> · Defense Intelligence Agency</li>
+          <li id="fn-42"><a href="https://www.sandia.gov/fes/" target="_blank" rel="noopener">Firing and Embedded Systems (F&amp;ES)</a> · Sandia National Laboratories</li>
+          <li id="fn-43"><a href="https://en.wikipedia.org/wiki/Permissive_action_link" target="_blank" rel="noopener">Permissive action link</a> · Wikipedia</li>
+          <li id="fn-44"><a href="https://www.cs.columbia.edu/~smb/nsam-160/pal.html" target="_blank" rel="noopener">Permissive Action Links</a> · Columbia University CS</li>
+          <li id="fn-45"><a href="https://www.tandfonline.com/doi/pdf/10.1080/00963402.1991.11460025" target="_blank" rel="noopener">U.S. Nuclear Weapons Safety and Control Features</a> · Taylor &amp; Francis</li>
+          <li id="fn-46"><a href="https://www.sipri.org/sites/default/files/SIPRIYB25c06.pdf" target="_blank" rel="noopener">World Nuclear Forces</a> · SIPRI</li>
+          <li id="fn-47"><a href="https://www.sipri.org/media/press-release/2025/nuclear-risks-grow-new-arms-race-looms-new-sipri-yearbook-out-now" target="_blank" rel="noopener">Nuclear Risks Grow as New Arms Race Looms</a> · SIPRI press release</li>
+          <li id="fn-48"><a href="https://en.wikipedia.org/wiki/List_of_states_with_nuclear_weapons" target="_blank" rel="noopener">List of states with nuclear weapons</a> · Wikipedia</li>
+          <li id="fn-49"><a href="https://www.sipri.org/sites/default/files/2025-06/yb25_summary_en.pdf" target="_blank" rel="noopener">SIPRI Yearbook 2025 Summary</a> · SIPRI</li>
+          <li id="fn-50"><a href="https://fas.org/publication-term/sipri-yearbook/" target="_blank" rel="noopener">SIPRI Yearbook Archives</a> · Federation of American Scientists</li>
+          <li id="fn-51"><a href="https://www.armscontrol.org/factsheets/Nuclearweaponswhohaswhat" target="_blank" rel="noopener">Nuclear Weapons: Who Has What at a Glance</a> · Arms Control Association</li>
+          <li id="fn-52"><a href="https://www.fmprc.gov.cn/eng/zy/wjzc/202511/t20251127_11761656.html" target="_blank" rel="noopener">China's Arms Control, Disarmament, and Nonproliferation in the New Era</a> · Ministry of Foreign Affairs of the People's Republic of China</li>
+          <li id="fn-53"><a href="https://www.ifri.org/en/russia-iran-china-north-korea-nuclear-dimension-axis-upheaval" target="_blank" rel="noopener">Russia, Iran, China, North Korea: The Nuclear Dimension of the Axis of Upheaval</a> · IFRI</li>
+          <li id="fn-54"><a href="https://quincyinst.org/research/prospects-and-problems-for-reinvigorating-superpower-nuclear-cooperation/" target="_blank" rel="noopener">Prospects and Problems for Reinvigorating Superpower Nuclear Cooperation</a> · Quincy Institute</li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <!-- Shared site behavior (header scroll, nav toggle, reveals). -->
+  <script src="../../script.js"></script>
+  <!-- Page-specific behavior: footnote tooltips + sticky nav highlighting.
+       ?v=1 cache-bust — bump when fission.js changes. -->
+  <script src="fission.js?v=1"></script>
+</body>
+</html>
