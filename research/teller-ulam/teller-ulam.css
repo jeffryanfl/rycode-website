@@ -1,0 +1,338 @@
+/* ==================================================================
+   THE TELLER–ULAM TRICK — teller-ulam.css
+   Page-specific styles on top of ../../styles.css. Shares tokens
+   (--gold, --surface, --border, --s-*, etc.) with the rest of Rycode.
+
+   WHY THIS FILE EXISTS
+   --------------------
+   This page is a long-read explainer that pairs with the interactive
+   scrubber at /anatomy/teller-ulam/. Visually it's a sibling of the
+   Fission research paper — same hero, same prose column, same
+   footnote + references pattern — so most of what lives here is
+   ported straight from fission.css.
+
+   The only truly new piece is the .tool-banner, which is this page's
+   version of saaspocalypse's .calc-banner. Same visual pattern (a
+   full-width CTA card linking to the paired interactive tool), but
+   the name is changed because "calc" would be misleading — the
+   companion tool here is a scrubber, not a calculator.
+
+   TABLE OF CONTENTS
+   -----------------
+   1. HERO          (case-hero, title, lede, meta, cta, back-link)
+   2. RISK PILL     (Technical Explainer · 2026 chip)
+   3. PROSE         (case-body / case-prose / subhead / microhead)
+   4. LISTS         (case-list bullets with gold rails)
+   5. TOOL BANNER   (scrubber CTA card — sibling of .calc-banner)
+   6. FOOTNOTES     (sup.fn in-prose citations)
+   7. REFERENCES    (numbered bibliography at the bottom)
+   8. RESPONSIVE    (breakpoints + reduced-motion)
+   ================================================================== */
+
+
+/* ==================================================================
+   1. HERO
+   Same visual language as /research/fission/: soft radial gold
+   glow behind the title, oversized gradient-clipped headline,
+   short back-link above, meta row below.
+   ================================================================== */
+.case-hero {
+  position: relative;
+  padding: var(--s-9) 0 var(--s-7);
+  overflow: hidden;
+  isolation: isolate;
+}
+.case-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(50% 40% at 20% 10%, rgba(255, 181, 71, 0.10), transparent 70%),
+    radial-gradient(40% 30% at 90% 0%,  rgba(212, 168, 75, 0.08), transparent 70%);
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.back-link:hover { color: var(--gold); }
+
+.case-title {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: var(--s-4) 0 var(--s-5);
+  background: linear-gradient(180deg, #ffffff 0%, #a8a8a8 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.case-lede {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 70ch;
+  line-height: 1.55;
+  margin: 0 0 var(--s-6);
+}
+
+.case-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+.case-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+  flex-wrap: wrap;
+}
+
+
+/* ==================================================================
+   2. RISK PILL
+   Small chip next to the status — matches the Fission and
+   SaaSpocalypse pills so the three research entries feel like
+   siblings.
+   ================================================================== */
+.risk-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  background: rgba(212, 168, 75, 0.08);
+  border: 1px solid rgba(212, 168, 75, 0.35);
+  white-space: nowrap;
+}
+
+
+/* ==================================================================
+   3. PROSE
+   Narrower reading column for the body. Same tokens as
+   fission.css / projects/grc.css.
+   ================================================================== */
+.case-body { max-width: 72ch; }
+
+.case-prose p {
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin: 0 0 var(--s-4);
+}
+.case-prose p:last-child { margin-bottom: 0; }
+
+.case-prose em {
+  color: var(--text);
+  font-style: italic;
+}
+.case-prose strong { color: var(--text); }
+
+.case-subhead {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin: var(--s-7) 0 var(--s-4);
+  line-height: 1.25;
+}
+/* Microhead — smaller, monospace, gold, uppercase. Used for the
+   phase labels ("T = 0 ns · Device armed", etc.) so the five-phase
+   structure is visually obvious from a scroll-by. */
+.case-microhead {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin: var(--s-5) 0 var(--s-3);
+}
+
+
+/* ==================================================================
+   4. LISTS  (case-list)
+   Gold-rail bullet list for in-prose lists. Same visual as
+   fission.css / saaspocalypse report-list.
+   ================================================================== */
+.case-list {
+  list-style: none;
+  margin: 0 0 var(--s-5);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.case-list li {
+  padding-left: var(--s-4);
+  border-left: 2px solid rgba(212, 168, 75, 0.35);
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+
+/* ==================================================================
+   5. TOOL BANNER
+   Full-width CTA card linking to the paired interactive scrubber.
+   Visually identical to the SaaSpocalypse .calc-banner — gold radial
+   glow on top, centered headline, primary button. Renamed from
+   .calc-banner because the companion here is a scrubber tool, not
+   a calculator; a reader who read the class name would be confused.
+   ================================================================== */
+.tool-banner {
+  margin-top: var(--s-5);
+  border: 1px solid var(--border-hot, rgba(212, 168, 75, 0.45));
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(255, 181, 71, 0.10), transparent 60%),
+    var(--surface);
+  overflow: hidden;
+}
+.tool-banner-inner {
+  padding: var(--s-6) var(--s-5);
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.tool-banner-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin: 0 0 var(--s-2);
+}
+.tool-banner-title {
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text);
+  margin: 0 0 var(--s-3);
+}
+.tool-banner-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, #ffb547 0%, #d4a84b 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.tool-banner-body {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: 0 0 var(--s-4);
+  line-height: 1.6;
+}
+.tool-banner-cta .btn { min-width: 240px; }
+
+
+/* ==================================================================
+   6. FOOTNOTES
+   Inline citations rendered as superscript numbers. Gold on hover,
+   dotted underline so they're visibly linkable without fighting the
+   prose. A title attribute (added by teller-ulam.js) turns into the
+   browser-native tooltip with the source title.
+   ================================================================== */
+sup.fn {
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 0.1em;
+}
+sup.fn a {
+  color: var(--gold);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 0 0.15em;
+  border-bottom: 1px dotted var(--gold-dim);
+  transition: color 160ms var(--ease), border-color 160ms var(--ease), background 160ms var(--ease);
+}
+sup.fn a:hover,
+sup.fn a:focus-visible {
+  color: var(--gold-hot);
+  border-bottom-color: var(--gold-hot);
+  background: rgba(212, 168, 75, 0.12);
+  border-radius: 3px;
+}
+
+/* When the reader clicks a footnote and lands on the target <li>,
+   flash the background gold-dim so it's obvious where they jumped. */
+.references li:target {
+  background: rgba(212, 168, 75, 0.10);
+  border-left-color: var(--gold-hot);
+}
+
+
+/* ==================================================================
+   7. REFERENCES
+   Numbered bibliography at the bottom. Each <li> has id="fn-N" so
+   footnote callers can link straight to it.
+   ================================================================== */
+.references {
+  counter-reset: refnum;
+  list-style: none;
+  padding: 0;
+  margin: var(--s-5) 0 0;
+  display: grid;
+  gap: var(--s-2);
+}
+.references li {
+  counter-increment: refnum;
+  position: relative;
+  padding: var(--s-3) var(--s-3) var(--s-3) 3.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.5;
+  scroll-margin-top: var(--s-6);
+  transition: background 200ms var(--ease), border-color 200ms var(--ease);
+}
+.references li::before {
+  content: counter(refnum);
+  position: absolute;
+  left: var(--s-4);
+  top: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.references cite {
+  font-style: italic;
+  color: var(--text);
+}
+.references a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--gold-dim);
+  text-underline-offset: 3px;
+}
+.references a:hover { color: var(--gold-hot); }
+
+
+/* ==================================================================
+   8. RESPONSIVE + REDUCED MOTION
+   ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  sup.fn a,
+  .references li { transition: none; }
+}

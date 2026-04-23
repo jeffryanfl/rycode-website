@@ -1,0 +1,382 @@
+/* ==================================================================
+   Anatomy of the Teller–Ulam Sequence — teller-ulam.css
+   Page-specific styles. Design tokens are inherited from the
+   site-wide /styles.css, which loads first. This file adds only the
+   scrubber-specific pieces that don't belong in the global stylesheet.
+
+   TABLE OF CONTENTS
+   -----------------
+   1.  PAGE-SPECIFIC TOKENS  (hot reds / oranges for fireball states)
+   2.  LAYOUT                (page wrapper, legend, header)
+   3.  ANATOMY KEY CARD
+   4.  SCRUBBER CARD         (big SVG stage + time readout)
+   5.  CONTROLS              (slider, preset stops, play/reset)
+   6.  CAPTIONS              (stacked, cross-fade on phase change)
+   7.  DISTANCE BARS         (log-scale X-ray vs blast wave readout)
+   8.  SPEEDS TABLE          (footer reference)
+   9.  NOSCRIPT BANNER
+   10. REDUCED MOTION
+   ================================================================== */
+
+/* ==================================================================
+   1. PAGE-SPECIFIC TOKENS
+   The site-wide styles.css already defines gold/text/surface tokens.
+   The three below are specific to the fireball / "hot" states on
+   this page and don't belong in the global palette.
+   ================================================================== */
+:root {
+  --orange:     #ff7043;
+  --orange-hot: #ff8a5c;
+  --red:        #ff4040;
+}
+
+/* ==================================================================
+   2. LAYOUT
+   ================================================================== */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--s-7, 3rem) var(--s-5, 1.5rem) var(--s-9, 6rem);
+}
+
+    /* ---- page header ---- */
+    .hdr { margin-bottom: 2.5rem; }
+    .hdr .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 0.5rem;
+    }
+    .hdr h1 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .hdr p {
+      color: var(--text-muted);
+      max-width: 65ch;
+      margin: 0 0 0.5rem;
+    }
+
+    /* ---- legend chips ---- */
+    .legend {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-right: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .legend .sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .legend.xray .sw      { background: var(--gold); opacity: 0.6; }
+    .legend.blast .sw     { background: var(--orange); }
+    .legend.primary .sw   { background: var(--gold-dim); }
+    .legend.secondary .sw { background: var(--border); border: 1px solid var(--gold-dim); }
+
+    /* ---- anatomy key (same look as the static version) ---- */
+    .anatomy {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .anatomy h2 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 0.25rem;
+    }
+    .anatomy .sub { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 1rem; }
+    .anatomy svg { display: block; width: 100%; height: auto; }
+
+    /* ---- the scrubber card ---- */
+    .scrubber {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .scrubber-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px dashed var(--border-hot);
+    }
+    .time-display {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin: 0;
+    }
+    .time-display .val { font-weight: 700; color: var(--gold-hot); }
+    .phase-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .phase-label.is-active {
+      color: var(--gold-hot);
+      border-color: var(--gold-dim);
+    }
+
+    /* the diagram SVG */
+    svg.scrub-diagram {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+
+    /* ---- scrubber controls ---- */
+    .scrub-controls {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: var(--surface-2);
+      border-radius: 8px;
+    }
+
+    /* Slider: appearance reset so it looks the same cross-browser. */
+    .scrub-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      padding: 12px 0;
+    }
+    .scrub-slider::-webkit-slider-runnable-track {
+      height: 6px;
+      background: linear-gradient(90deg,
+        var(--gold-dim) 0%,
+        var(--gold-hot) 33%,
+        var(--orange) 100%);
+      border-radius: 999px;
+    }
+    .scrub-slider::-moz-range-track {
+      height: 6px;
+      background: linear-gradient(90deg,
+        var(--gold-dim) 0%,
+        var(--gold-hot) 33%,
+        var(--orange) 100%);
+      border-radius: 999px;
+    }
+    .scrub-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -7px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f4f4f5;
+      border: 2px solid var(--gold-hot);
+      box-shadow: 0 2px 8px rgba(255, 181, 71, 0.4);
+      cursor: pointer;
+    }
+    .scrub-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f4f4f5;
+      border: 2px solid var(--gold-hot);
+      cursor: pointer;
+    }
+    .scrub-slider:focus { outline: none; }
+    .scrub-slider:focus::-webkit-slider-thumb {
+      box-shadow: 0 0 0 4px rgba(255, 181, 71, 0.3);
+    }
+
+    /* Stop buttons under the slider (quick jumps) */
+    .scrub-stops {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .scrub-stops button {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex: 1;
+      min-width: 70px;
+    }
+    .scrub-stops button:hover {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+    }
+    .scrub-stops button.is-active {
+      border-color: var(--gold-hot);
+      color: var(--gold-hot);
+      background: rgba(255, 181, 71, 0.08);
+    }
+
+    /* Play/pause/reset */
+    .scrub-play {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+    .scrub-play button {
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .scrub-play button:hover {
+      background: rgba(212, 168, 75, 0.08);
+      border-color: var(--gold-hot);
+    }
+    .scrub-play button.is-playing {
+      color: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* ---- caption area: 5 captions stacked in grid, one active ---- */
+    .captions {
+      display: grid;
+      grid-template-areas: 'stack';
+      margin-top: 1.5rem;
+      min-height: 140px;
+    }
+    .caption {
+      grid-area: stack;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      color: var(--text-muted);
+      line-height: 1.6;
+      pointer-events: none;
+    }
+    .caption strong { color: var(--text); }
+    .caption.is-active { opacity: 1; pointer-events: auto; }
+
+    /* ---- live-updating distance bars ---- */
+    .bars {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--surface-2);
+      border-radius: 6px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 110px;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      margin-bottom: 0.45rem;
+    }
+    .bar-row:last-child { margin-bottom: 0; }
+    .bar-row .k { color: var(--text-faint); }
+    .bar-row .v { color: var(--text); text-align: right; font-weight: 600; }
+    .bar-row.x  .v { color: var(--gold); }
+    .bar-row.bw .v { color: var(--orange); }
+    .bar-track {
+      position: relative;
+      height: 8px;
+      background: #0a0a0a;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      width: 0;
+    }
+    .bar-fill.x  { background: linear-gradient(90deg, var(--gold-dim), var(--gold-hot)); }
+    .bar-fill.bw { background: linear-gradient(90deg, #aa3d18, var(--orange)); }
+    .bar-axis {
+      display: grid;
+      grid-template-columns: 120px 1fr 110px;
+      gap: 0.75rem;
+      margin-top: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-faint);
+    }
+    .bar-axis .ticks { display: flex; justify-content: space-between; }
+
+    /* ---- footer speed table ---- */
+    .speeds {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .speeds h2 {
+      font-size: 1rem;
+      margin: 0 0 1rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .speeds table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+    .speeds td, .speeds th {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .speeds th { color: var(--text-faint); font-weight: 400; }
+    .speeds td { color: var(--text); }
+    .speeds td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .speeds p {
+      margin: 1rem 0 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .noscript-banner {
+      background: var(--border-hot);
+      color: var(--gold);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .caption { transition: none; }
+      .phase-label { transition: none; }
+    }

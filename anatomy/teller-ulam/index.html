@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Anatomy of the Teller-Ulam sequence — an interactive scrubber that walks through the first 300 nanoseconds of a thermonuclear detonation, nanosecond by nanosecond. Part of the Anatomy Of series on Rycode." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Anatomy of the Teller-Ulam sequence — Rycode" />
+  <meta property="og:description" content="Drag the slider. Watch X-rays beat the blast wave by a factor of thousands. Part of the Anatomy Of series." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>Anatomy of the Teller-Ulam sequence — Rycode</title>
+  <!-- Site-wide design tokens and base typography first. Page-specific
+       overrides second — ?v=1 is a cache-bust; bump when the file
+       changes so returning visitors pick up the new version. -->
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="teller-ulam.css?v=1" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- ===========================================================
+       SITE HEADER / NAV — same pattern as every other Rycode page,
+       so this page feels like part of the site, not a detached demo.
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html" class="brand" aria-label="Rycode home">
+        <img src="../../logo.svg" alt="" class="brand-logo" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#systems">Systems</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../../index.html#anatomy">Anatomy Of</a></li>
+        <li><a href="../../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="https://grc.rycode.dev/" target="_blank" rel="noopener">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top" tabindex="-1" class="wrap">
+
+    <!-- ==========================================================
+         MASTER DEFS — hidden; reused by anatomy key + scrubber SVGs.
+         ========================================================== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <marker id="arrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0,0 L 10,5 L 0,10 Z" fill="#ffb547"/>
+        </marker>
+        <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0,0 L 10,5 L 0,10 Z" fill="#ff7043"/>
+        </marker>
+        <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M 0,0 L 10,5 L 0,10 Z" fill="#a1a1aa"/>
+        </marker>
+
+        <!-- HE lens wedges (12 segments, alternating opacity) -->
+        <g id="heLenses" fill="currentColor">
+          <polygon points="58,0 92,0 79.67,46 50.23,29" opacity="0.85"/>
+          <polygon points="50.23,29 79.67,46 46,79.67 29,50.23" opacity="0.55"/>
+          <polygon points="29,50.23 46,79.67 0,92 0,58" opacity="0.85"/>
+          <polygon points="0,58 0,92 -46,79.67 -29,50.23" opacity="0.55"/>
+          <polygon points="-29,50.23 -46,79.67 -79.67,46 -50.23,29" opacity="0.85"/>
+          <polygon points="-50.23,29 -79.67,46 -92,0 -58,0" opacity="0.55"/>
+          <polygon points="-58,0 -92,0 -79.67,-46 -50.23,-29" opacity="0.85"/>
+          <polygon points="-50.23,-29 -79.67,-46 -46,-79.67 -29,-50.23" opacity="0.55"/>
+          <polygon points="-29,-50.23 -46,-79.67 0,-92 0,-58" opacity="0.85"/>
+          <polygon points="0,-58 0,-92 46,-79.67 29,-50.23" opacity="0.55"/>
+          <polygon points="29,-50.23 46,-79.67 79.67,-46 50.23,-29" opacity="0.85"/>
+          <polygon points="50.23,-29 79.67,-46 92,0 58,0" opacity="0.55"/>
+        </g>
+
+        <radialGradient id="hotSpot" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="40%" stop-color="#ffb547" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#ffb547" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="fireballGrad" cx="30%" cy="50%" r="85%">
+          <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="12%"  stop-color="#fff2d6" stop-opacity="1"/>
+          <stop offset="35%"  stop-color="#ffb547" stop-opacity="1"/>
+          <stop offset="70%"  stop-color="#ff7043" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#b8391a" stop-opacity="0.95"/>
+        </radialGradient>
+      </defs>
+    </svg>
+
+
+    <!-- ==========================================================
+         PAGE HEADER
+         Eyebrow matches the "Anatomy Of" series; back-link points
+         to the companion long-form article in /research/, giving
+         readers who land here directly a route to the deeper prose.
+         ========================================================== -->
+    <header class="hdr">
+      <p class="eyebrow">
+        <a href="../../research/teller-ulam/" class="back-link">← Read the explainer</a>
+      </p>
+      <p class="eyebrow" style="margin-top:0.75rem;">Anatomy Of · Interactive scrubber</p>
+      <h1>Teller–Ulam sequence: X-rays vs. blast wave.</h1>
+      <p>
+        Drag the slider to scrub through the first 300 nanoseconds of a
+        thermonuclear detonation. Every visual attribute — case, primary,
+        secondary, fuel compression, blast-wave ring, motion arrows,
+        callouts, distance bars — is driven by a single time value, so the
+        sequence evolves continuously as you drag. If you want the
+        underlying physics explained in plain English before (or after)
+        you play with it, the
+        <a href="../../research/teller-ulam/">companion briefing</a>
+        walks through the process stage-by-stage with citations.
+      </p>
+      <p style="font-size:0.85rem; color:var(--text-faint); margin-top:0.75rem; max-width:65ch;">
+        <strong style="color:var(--text-muted);">Scale note:</strong>
+        the blast-front ring on the diagram is drawn exaggerated so it's
+        visible. Actual distances are in the bars below the diagram.
+      </p>
+      <p style="margin-top:1.25rem;">
+        <span class="legend primary"><span class="sw"></span> Primary (fission)</span>
+        <span class="legend secondary"><span class="sw"></span> Secondary (fusion)</span>
+        <span class="legend xray"><span class="sw"></span> X-ray front</span>
+        <span class="legend blast"><span class="sw"></span> Blast wave (matter)</span>
+      </p>
+    </header>
+
+    <noscript>
+      <div class="noscript-banner">
+        This scrubber requires JavaScript to animate. With JS disabled the
+        diagram shows the armed-device state (T = 0 ns).
+      </div>
+    </noscript>
+
+
+    <!-- ==========================================================
+         ANATOMY KEY (same as static preview)
+         ========================================================== -->
+    <section class="anatomy">
+      <h2>Anatomy key</h2>
+      <p class="sub">A Teller–Ulam thermonuclear device, cross-section. The diagram below references these parts by position only.</p>
+      <svg viewBox="0 0 1100 440" xmlns="http://www.w3.org/2000/svg" aria-label="Labeled cross-section of a Teller-Ulam thermonuclear device.">
+        <path d="M 288,125 L 987,125 A 28,28 0 0,1 1015,153 L 1015,267 A 28,28 0 0,1 987,295 L 288,295 A 112,112 0 1,1 288,125 Z"
+              fill="#0f0f0f" stroke="var(--gold-dim)" stroke-width="1.5"/>
+        <g transform="translate(215 210)" color="#8a6a2b"><use href="#heLenses"/></g>
+        <circle cx="215" cy="210" r="55" fill="#262626" stroke="#3a2f18" stroke-width="1"/>
+        <circle cx="215" cy="210" r="24" fill="#3a2f18" stroke="#8a6a2b" stroke-width="0.75"/>
+        <rect x="345" y="155" width="620" height="110" rx="55" ry="55" fill="#1a1a1a" stroke="#8a6a2b" stroke-width="1"/>
+        <rect x="370" y="175" width="570" height="70" rx="35" ry="35" fill="#262626" stroke="#3a2f18" stroke-width="0.75"/>
+        <rect x="620" y="200" width="70" height="20" rx="10" ry="10" fill="#3a2f18" stroke="#8a6a2b" stroke-width="0.75"/>
+
+        <g font-family="ui-monospace, Menlo" font-size="11" fill="#d4a84b" stroke="none" letter-spacing="1.5">
+          <line x1="148" y1="132" x2="148" y2="55" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="148" cy="132" r="2" fill="#71717a"/>
+          <text x="148" y="42" text-anchor="middle">HIGH-EXPLOSIVE LENSES</text>
+          <line x1="600" y1="125" x2="600" y2="55" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="600" cy="125" r="2" fill="#71717a"/>
+          <text x="600" y="42" text-anchor="middle">RADIATION CASE (URANIUM-LINED)</text>
+          <line x1="930" y1="150" x2="1000" y2="70" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="930" cy="150" r="2" fill="#71717a"/>
+          <text x="1000" y="57" text-anchor="middle">PUSHER (OUTER TAMPER)</text>
+          <line x1="500" y1="175" x2="500" y2="100" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="500" cy="175" r="2" fill="#71717a"/>
+          <text x="500" y="87" text-anchor="middle">LITHIUM DEUTERIDE FUEL</text>
+          <line x1="162" y1="210" x2="12" y2="210" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="162" cy="210" r="2" fill="#71717a"/>
+          <text x="6" y="200" text-anchor="start">URANIUM</text>
+          <text x="6" y="214" text-anchor="start">TAMPER</text>
+          <line x1="215" y1="234" x2="215" y2="335" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="215" cy="234" r="2" fill="#71717a"/>
+          <text x="215" y="350" text-anchor="middle">PLUTONIUM PIT</text>
+          <line x1="320" y1="295" x2="420" y2="350" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="320" cy="295" r="2" fill="#71717a"/>
+          <text x="420" y="365" text-anchor="middle">RADIATION CHANNEL (FOAM-FILLED)</text>
+          <line x1="655" y1="220" x2="655" y2="335" stroke="#71717a" stroke-width="0.75"/>
+          <circle cx="655" cy="220" r="2" fill="#71717a"/>
+          <text x="655" y="350" text-anchor="middle">FISSILE SPARK PLUG</text>
+          <text x="215" y="415" text-anchor="middle" font-size="12" fill="#a1a1aa" letter-spacing="3">PRIMARY</text>
+          <text x="805" y="415" text-anchor="middle" font-size="12" fill="#a1a1aa" letter-spacing="3">SECONDARY</text>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ==========================================================
+         INTERACTIVE SCRUBBER
+         One SVG, every element referenced by id so the JS can
+         update attributes as the slider moves.
+
+         Layer order matters (later = on top):
+           1. peanut case (always visible)
+           2. X-ray wash overlay (opacity-driven)
+           3. primary (HE lenses + tamper + pit + armed indicators)
+           4. blast wave ring (radius-driven)
+           5. secondary (pusher, fuel, spark plug capsule, hot spot)
+           6. motion arrow groups (window-gated opacity)
+           7. fireball overlay (fades in at end)
+           8. fireball extras (shock lines, ghost outlines, labels)
+           9. focus callouts (window-gated, stacked)
+         ========================================================== -->
+    <section class="scrubber" id="scrubberCard">
+      <div class="scrubber-head">
+        <p class="time-display">T = <span class="val" id="timeValue">0</span> ns</p>
+        <span class="phase-label" id="phaseLabel">Intact · armed</span>
+      </div>
+
+      <svg class="scrub-diagram" viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-label="Interactive cross-section of a Teller–Ulam device. Drag the slider below to scrub through time.">
+
+        <!-- 1. CASE OUTLINE (always visible) -->
+        <path id="caseOutline"
+              d="M 238,75 L 937,75 A 28,28 0 0,1 965,103 L 965,217 A 28,28 0 0,1 937,245 L 238,245 A 112,112 0 1,1 238,75 Z"
+              fill="#0f0f0f" stroke="var(--gold-dim)" stroke-width="1.5"/>
+
+        <!-- 2. X-RAY WASH (fades in 5-50 ns, holds, fades into fireball) -->
+        <path id="xrayWash"
+              d="M 238,75 L 937,75 A 28,28 0 0,1 965,103 L 965,217 A 28,28 0 0,1 937,245 L 238,245 A 112,112 0 1,1 238,75 Z"
+              fill="#ffb547" opacity="0"/>
+
+        <!-- 3. PRIMARY -->
+        <g id="heGroup" transform="translate(165 160)" color="#8a6a2b"><use href="#heLenses"/></g>
+        <circle id="tamper" cx="165" cy="160" r="55" fill="#262626" stroke="#3a2f18" stroke-width="1"/>
+        <circle id="pit"    cx="165" cy="160" r="24" fill="#3a2f18" stroke="#8a6a2b" stroke-width="0.75"/>
+        <!-- Armed indicators (visible only at t≈0) -->
+        <circle id="initiator"  cx="165" cy="160" r="4" fill="#ff4040" opacity="0.9"/>
+        <circle id="primedRing" cx="165" cy="160" r="92" fill="none" stroke="#ff4040"
+                stroke-width="0.6" opacity="0.35" stroke-dasharray="1 5"/>
+
+        <!-- 4. BLAST WAVE RING (radius grows with time, exaggerated scale) -->
+        <circle id="blastRing" cx="165" cy="160" r="0" fill="none"
+                stroke="#ff7043" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.85"/>
+
+        <!-- 5. SECONDARY -->
+        <rect id="secondaryPusher" x="345" y="105" width="620" height="110" rx="55"
+              fill="#1a1a1a" stroke="#8a6a2b" stroke-width="1"/>
+        <!-- ablation-skin overlay (glowing rim during implosion phase) -->
+        <rect id="ablationSkin" x="355" y="115" width="600" height="90" rx="45"
+              fill="none" stroke="#ffb547" stroke-width="1" stroke-dasharray="1 2" opacity="0"/>
+        <!-- fuel (compresses: x/y/w/h change over time, fill shifts dark → bright) -->
+        <rect id="fuel" x="370" y="125" width="570" height="70" rx="35"
+              fill="#262626" stroke="#3a2f18" stroke-width="0.75"/>
+        <!-- spark plug capsule (fades out as hot-spot takes over) -->
+        <rect id="sparkCapsule" x="620" y="150" width="70" height="20" rx="10"
+              fill="#3a2f18" stroke="#8a6a2b" stroke-width="0.75" opacity="1"/>
+        <!-- spark plug hot-spot (fades in at ignition) -->
+        <circle id="sparkHot" cx="655" cy="160" r="35" fill="url(#hotSpot)" opacity="0"/>
+
+        <!-- 6. MOTION ARROWS (all present; opacity window-gated per phase) -->
+        <g id="xrayArrows" stroke="#ffb547" stroke-width="1.5" fill="none" opacity="0">
+          <line x1="255" y1="130" x2="340" y2="130" marker-end="url(#arrowGold)"/>
+          <line x1="255" y1="160" x2="340" y2="160" marker-end="url(#arrowGold)"/>
+          <line x1="255" y1="190" x2="340" y2="190" marker-end="url(#arrowGold)"/>
+        </g>
+        <g id="ablationArrows" stroke="#ffb547" stroke-width="1.5" fill="none" opacity="0">
+          <line x1="500" y1="108" x2="500" y2="90"  marker-end="url(#arrowGold)"/>
+          <line x1="655" y1="108" x2="655" y2="90"  marker-end="url(#arrowGold)"/>
+          <line x1="810" y1="108" x2="810" y2="90"  marker-end="url(#arrowGold)"/>
+          <line x1="500" y1="212" x2="500" y2="230" marker-end="url(#arrowGold)"/>
+          <line x1="655" y1="212" x2="655" y2="230" marker-end="url(#arrowGold)"/>
+          <line x1="810" y1="212" x2="810" y2="230" marker-end="url(#arrowGold)"/>
+        </g>
+        <g id="compressArrows" stroke="#ff8a5c" stroke-width="1.5" fill="none" opacity="0">
+          <line x1="500" y1="128" x2="500" y2="138" marker-end="url(#arrowOrange)"/>
+          <line x1="810" y1="128" x2="810" y2="138" marker-end="url(#arrowOrange)"/>
+          <line x1="500" y1="192" x2="500" y2="182" marker-end="url(#arrowOrange)"/>
+          <line x1="810" y1="192" x2="810" y2="182" marker-end="url(#arrowOrange)"/>
+        </g>
+        <g id="ignitionLines" stroke="#ffffff" stroke-width="1" opacity="0">
+          <line x1="640" y1="145" x2="605" y2="115"/>
+          <line x1="670" y1="145" x2="705" y2="115"/>
+          <line x1="640" y1="175" x2="605" y2="205"/>
+          <line x1="670" y1="175" x2="705" y2="205"/>
+        </g>
+
+        <!-- 7. FIREBALL OVERLAY -->
+        <path id="fireballFill"
+              d="M 238,75 L 937,75 A 28,28 0 0,1 965,103 L 965,217 A 28,28 0 0,1 937,245 L 238,245 A 112,112 0 1,1 238,75 Z"
+              fill="url(#fireballGrad)" opacity="0"/>
+
+        <!-- 8. FIREBALL EXTRAS (shock lines, ghosts, labels) -->
+        <g id="fireballExtras" opacity="0">
+          <g stroke="#ff7043" stroke-width="1.5" opacity="0.5" stroke-linecap="round">
+            <line x1="20"  y1="160" x2="60"  y2="160"/>
+            <line x1="70"  y1="50"  x2="100" y2="80"/>
+            <line x1="70"  y1="270" x2="100" y2="240"/>
+            <line x1="980" y1="160" x2="940" y2="160"/>
+            <line x1="930" y1="50"  x2="900" y2="80"/>
+            <line x1="930" y1="270" x2="900" y2="240"/>
+            <line x1="500" y1="10"  x2="500" y2="45"/>
+            <line x1="500" y1="310" x2="500" y2="275"/>
+            <line x1="200" y1="30"  x2="230" y2="60"/>
+            <line x1="800" y1="30"  x2="770" y2="60"/>
+            <line x1="200" y1="290" x2="230" y2="260"/>
+            <line x1="800" y1="290" x2="770" y2="260"/>
+          </g>
+          <circle cx="165" cy="160" r="92" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.25" stroke-dasharray="2 3"/>
+          <circle cx="165" cy="160" r="24" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.25" stroke-dasharray="2 3"/>
+          <rect x="345" y="105" width="620" height="110" rx="55" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.25" stroke-dasharray="2 3"/>
+          <text x="500" y="150" text-anchor="middle" fill="#0a0a0a" font-size="22" font-family="ui-monospace, Menlo" letter-spacing="10" font-weight="700">FIREBALL</text>
+          <text x="500" y="172" text-anchor="middle" fill="#2a0a00" font-size="9" font-family="ui-monospace, Menlo" letter-spacing="3" font-weight="600">DEVICE STRUCTURE NO LONGER EXISTS</text>
+        </g>
+
+        <!-- 9. FOCUS CALLOUTS (stacked; each opacity-gated by its window) -->
+        <g id="calloutArmed" font-family="ui-monospace, Menlo" font-size="10" letter-spacing="2" opacity="1">
+          <text x="500" y="34" text-anchor="middle" fill="#ff4040">ARMED · T−0 · LENSES PRIMED · INITIATOR HOT</text>
+        </g>
+        <g id="calloutXrays" font-family="ui-monospace, Menlo" font-size="10" letter-spacing="2" opacity="0">
+          <line x1="500" y1="60" x2="500" y2="100" stroke="#ffb547" stroke-width="0.75" marker-end="url(#arrowGold)"/>
+          <text x="500" y="50" text-anchor="middle" fill="#ffb547">CASE TRAPS THE X-RAYS</text>
+        </g>
+        <g id="calloutAblation" font-family="ui-monospace, Menlo" font-size="10" letter-spacing="2" opacity="0">
+          <line x1="655" y1="55" x2="655" y2="82" stroke="#ffb547" stroke-width="0.75" marker-end="url(#arrowGold)"/>
+          <text x="655" y="45" text-anchor="middle" fill="#ffb547">TAMPER VAPORIZES — FUEL SQUEEZED INWARD</text>
+        </g>
+        <g id="calloutIgnition" font-family="ui-monospace, Menlo" font-size="10" letter-spacing="2" opacity="0">
+          <line x1="655" y1="55" x2="655" y2="115" stroke="#ffb547" stroke-width="0.75" marker-end="url(#arrowGold)"/>
+          <text x="655" y="45" text-anchor="middle" fill="#ffb547">SPARK PLUG IGNITES FUEL FROM INSIDE</text>
+        </g>
+        <g id="calloutTooLate" font-family="ui-monospace, Menlo" font-size="10" letter-spacing="2" opacity="0">
+          <text x="500" y="32" text-anchor="middle" fill="#ff7043">BLAST WAVE HAS FINALLY ARRIVED — TOO LATE</text>
+        </g>
+      </svg>
+
+      <!-- ----- Controls ----- -->
+      <div class="scrub-controls">
+        <input type="range" id="scrub" class="scrub-slider"
+               min="0" max="300" value="0" step="1"
+               aria-label="Time scrubber: drag to move through the detonation sequence from 0 to 300 nanoseconds."/>
+        <div class="scrub-stops" role="group" aria-label="Jump to a specific time">
+          <button data-t="0">T = 0</button>
+          <button data-t="10">10 ns</button>
+          <button data-t="50">50 ns</button>
+          <button data-t="100">100 ns</button>
+          <button data-t="300">300 ns</button>
+        </div>
+      </div>
+
+      <div class="scrub-play">
+        <button id="playBtn" aria-label="Play or pause the sequence animation">▶ Play sequence</button>
+        <button id="resetBtn" aria-label="Reset to T equals 0">↺ Reset</button>
+      </div>
+
+      <!-- ----- Captions (one active at a time; fade transitions) ----- -->
+      <div class="captions" id="captions" aria-live="polite">
+        <div class="caption" data-phase="intact">
+          <strong>Device intact.</strong> The fission primary (left), the fusion
+          secondary (right), and the radiation case surrounding both. Nothing
+          has happened yet — but the next 300 nanoseconds will destroy the
+          entire structure.
+        </div>
+        <div class="caption" data-phase="xray">
+          <strong>X-rays flood the case.</strong> The primary has released a
+          massive pulse of soft X-rays. They reflect off the uranium-lined
+          casing and fill the radiation channel in nanoseconds. The primary's
+          material blast wave has barely moved.
+        </div>
+        <div class="caption" data-phase="implosion">
+          <strong>Radiation implosion.</strong> The X-ray bath vaporizes the
+          secondary's outer pusher. Vaporized material rockets <em>outward</em>
+          (gold arrows); by Newton's third law, the rest of the secondary is
+          squeezed <em>inward</em> (orange arrows) at enormous pressure. The
+          fuel is visibly compressed.
+        </div>
+        <div class="caption" data-phase="ignition">
+          <strong>Fusion ignites.</strong> The spark plug has been squeezed to
+          supercriticality and fissioned, dumping heat and neutrons into the
+          now-compressed fuel. Lithium captures neutrons, produces tritium,
+          which fuses with deuterium. The primary's blast wave is still only
+          ~10 mm out — not even across the case.
+        </div>
+        <div class="caption" data-phase="toolate">
+          <strong>Too late.</strong> Only now — 300 nanoseconds after
+          detonation — has the primary's material blast wave expanded far
+          enough to reach where the secondary used to be. But the secondary
+          already fused 200 nanoseconds ago. The engineering trick worked:
+          photons beat matter to the scene.
+        </div>
+      </div>
+
+      <!-- ----- Live-updating distance bars ----- -->
+      <div class="bars">
+        <div class="bar-row x">
+          <span class="k">X-ray front</span>
+          <div class="bar-track"><div class="bar-fill x" id="xBar"></div></div>
+          <span class="v" id="xVal">0 mm</span>
+        </div>
+        <div class="bar-row bw">
+          <span class="k">Blast wave</span>
+          <div class="bar-track"><div class="bar-fill bw" id="bwBar"></div></div>
+          <span class="v" id="bwVal">0 mm</span>
+        </div>
+        <div class="bar-axis">
+          <span></span>
+          <span class="ticks"><span>1 mm</span><span>10</span><span>100</span><span>1,000</span><span>10,000</span><span>100,000</span></span>
+          <span></span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================
+         FOOTER speed table
+         ========================================================== -->
+    <aside class="speeds">
+      <h2>The two speeds</h2>
+      <table>
+        <thead>
+          <tr><th>Front</th><th>Approx. speed</th><th>In 100 ns, travels…</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>X-ray photons</td>      <td class="num">~300,000 km/s (c)</td><td class="num">30,000 mm (30 m)</td></tr>
+          <tr><td>Material blast wave</td><td class="num">~10–100 km/s</td>     <td class="num">1–10 mm</td></tr>
+          <tr><td><strong>Ratio</strong></td><td class="num"><strong>3,000 – 30,000 ×</strong></td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+      <p>
+        A real thermonuclear weapon is on the order of one to two meters long.
+        The X-ray front crosses it in a few nanoseconds; the mechanical blast
+        wave takes hundreds. Fusion ignition takes ~100 ns. The entire second
+        stage runs to completion in the gap.
+      </p>
+    </aside>
+
+
+    <!-- ==========================================================
+         BACK TO ANATOMY / RESEARCH
+         ========================================================== -->
+    <section class="section" style="margin-top: 3rem;">
+      <div class="case-cta">
+        <a class="btn btn-primary" href="../../research/teller-ulam/">Read the explainer <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="../../index.html#anatomy">See other anatomies</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       SITE FOOTER — same markup everywhere on rycode.dev.
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <!-- Shared site behavior (sticky header, nav toggle, reveals).
+       Loads before the page-specific script so anything page-local
+       can rely on globals set up in script.js. -->
+  <script src="../../script.js"></script>
+  <!-- Scrubber logic. All phase-driven rendering lives here. One
+       master state: t (time in nanoseconds, 0–300). Every visual
+       attribute is a pure function of t — change t, re-render
+       everything. ?v=1 cache-bust — bump when the file changes. -->
+  <script src="teller-ulam.js?v=1"></script>
+</body>
+</html>

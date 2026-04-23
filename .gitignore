@@ -15,5 +15,9 @@ npm-debug.log*
 og-image.html
 *.pdf.bak
 
+# Scratch / preview workspace — anything dropped in sandbox/ is
+# a work-in-progress file and should never reach the live site.
+sandbox/
+
 # Claude Code local session state
 .claude/
