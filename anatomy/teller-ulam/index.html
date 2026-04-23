@@ -104,7 +104,7 @@
          ========================================================== -->
     <header class="hdr">
       <p class="eyebrow">
-        <a href="../../research/teller-ulam/" class="back-link">← Read the explainer</a>
+        <a href="../../research/fission/" class="back-link">← Back to Fission: A Technical History</a>
       </p>
       <p class="eyebrow" style="margin-top:0.75rem;">Anatomy Of · Interactive scrubber</p>
       <h1>Teller–Ulam sequence: X-rays vs. blast wave.</h1>
@@ -115,9 +115,9 @@
         callouts, distance bars — is driven by a single time value, so the
         sequence evolves continuously as you drag. If you want the
         underlying physics explained in plain English before (or after)
-        you play with it, the
-        <a href="../../research/teller-ulam/">companion briefing</a>
-        walks through the process stage-by-stage with citations.
+        you play with it, scroll down to
+        <a href="#explainer">How the Teller–Ulam trick works</a> — the
+        process walked through stage-by-stage with citations.
       </p>
       <p style="font-size:0.85rem; color:var(--text-faint); margin-top:0.75rem; max-width:65ch;">
         <strong style="color:var(--text-muted);">Scale note:</strong>
@@ -429,11 +429,114 @@
 
 
     <!-- ==========================================================
-         BACK TO ANATOMY / RESEARCH
+         EXPLAINER
+         The long-form companion prose. Originally lived at
+         /research/teller-ulam/ as a separate article, collapsed
+         into this page on 04/23/2026 so a reader has one stop,
+         not two. The five phase subheads mirror the five caption
+         stops in the scrubber above, so a reader can scroll between
+         the two as a reading-plus-animation loop.
+
+         Footnote callers use <sup class="fn"><a href="#fn-N">N</a></sup>;
+         teller-ulam.js reads each reference <li>'s textContent and
+         sets it as the title= on the caller so hovering shows the
+         source inline without leaving the paragraph.
+         ========================================================== -->
+    <section class="explainer" id="explainer" aria-labelledby="explainerHeading">
+      <h2 id="explainerHeading">How the Teller–Ulam trick works</h2>
+      <p class="sub">An overview of the physics the scrubber animates.</p>
+
+      <h3>The core idea</h3>
+
+      <p>
+        A fission bomb is a blunt instrument. Compress a small sphere of plutonium to supercritical density, release a burst of neutrons, and the whole thing runs away into a fireball in a few microseconds. That is enough to level a city, but it is not enough to ignite hydrogen fusion. Fusion requires tens of millions of degrees and pressures that exist nowhere on Earth except at the center of a collapsing star. Simply stacking fusion fuel next to a fission primary does not get you there — the primary's mechanical blast wave reaches the fuel long before fusion conditions can form, and the fuel is scattered into the sky unburned. That is exactly what Edward Teller's original &ldquo;classical Super&rdquo; design assumed would work, and it is exactly why calculations at Los Alamos through the late 1940s kept showing that it did not.<sup class="fn"><a href="#fn-1">1</a></sup>
+      </p>
+
+      <p>
+        The insight that broke the stalemate was worked out between Stanislaw Ulam and Edward Teller in the first months of 1951.<sup class="fn"><a href="#fn-2">2</a></sup> Ignore the blast wave. Use the primary's <em>radiation</em> instead. When a fission weapon detonates, the overwhelming majority of the energy released in the first hundred nanoseconds travels outward as soft X-ray photons, not as material pressure. Those photons move at the speed of light. The material blast wave, in the same time window, is still crawling outward at a few tens of kilometers per second. Between the two, the photons have a head start measured in factors of thousands — and that head start is long enough to do real engineering work before the shock arrives to interrupt it.
+      </p>
+
+      <p>
+        The Teller–Ulam device is built around that head start. A heavy radiation case — typically lined with depleted uranium — surrounds both the fission primary and the fusion secondary. The primary fires, the case traps the X-ray pulse and re-radiates it inward, and the radiation bathes the secondary from all sides before any mechanical shock has arrived. The outer skin of the secondary's pusher vaporizes under the X-ray bath; the vaporized material rockets outward; by Newton's third law, the rest of the secondary is driven inward at tremendous pressure. That inward squeeze — not a chemical explosion, not a fission blast, but a radiation-driven implosion — is what compresses the fusion fuel to the conditions at which it will actually burn.<sup class="fn"><a href="#fn-3">3</a></sup>
+      </p>
+
+      <p>
+        The entire sequence is a race. The X-ray front has to flood the case, vaporize the pusher, compress the fuel, and ignite fusion before the primary's own blast wave reaches the secondary and blows it apart. That race happens in about three hundred nanoseconds. Every thermonuclear weapon in every arsenal on Earth — American, Russian, British, French, Chinese, Indian, Pakistani, North Korean — is a descendant of this single engineering idea.<sup class="fn"><a href="#fn-4">4</a></sup>
+      </p>
+
+      <h3>Phase-by-phase</h3>
+
+      <h4>T = 0 ns · Device armed</h4>
+      <p>
+        The gold wedges surrounding the primary's central sphere are high-explosive &ldquo;lenses&rdquo; — shaped charges arranged so that their individual shock waves converge into a single, uniform, spherically-symmetric shock aimed at the plutonium pit at the center. The pit is subcritical at rest: there is too little mass and too low a density for a self-sustaining chain reaction to start on its own. When the HE lenses detonate, they compress the pit to supercritical density in a few microseconds. At the moment of peak compression, a small internal neutron source — an &ldquo;initiator,&rdquo; sometimes called an <em>urchin</em> — releases a burst of neutrons on cue, so the chain reaction begins at the correct instant rather than whenever the first stray neutron happens to wander in. The red dot at the center of the scrubber diagram is that initiator.<sup class="fn"><a href="#fn-3">3</a></sup>
+      </p>
+
+      <h4>T = 10 ns · X-rays flood the case</h4>
+      <p>
+        The primary has fissioned. Its fireball is now in the tens of millions of degrees — hot enough that the overwhelming share of its emitted energy is in the soft X-ray band, not the visible or infrared. Those photons do not go straight out into the world. They go into the radiation case. The case is heavy, often steel or lead, and it is lined with depleted uranium; the uranium lining matters for two reasons. First, depleted uranium is opaque to soft X-rays, so very little escapes outward. Second, it re-radiates absorbed energy back inward, so the channel between the primary and the secondary fills with a uniform bath of radiation from all sides. The channel itself is packed with a low-density plastic foam whose only job is to hold the internal geometry in place during transport and handling; when the X-rays arrive, the foam vaporizes almost instantly and becomes part of the radiation-transport medium.<sup class="fn"><a href="#fn-3">3</a></sup>
+      </p>
+
+      <h4>T = 50 ns · Radiation implosion</h4>
+      <p>
+        The X-ray bath now hits the secondary's outer pusher, typically a shell of depleted uranium. The pusher's outer surface reaches temperatures that vaporize it in nanoseconds. The vaporized material jets outward at high velocity. By Newton's third law, the un-vaporized inner portion of the pusher is driven inward with equal and opposite force — this is called <em>radiation ablation</em>, and it is mechanically the same principle that makes a rocket engine work, except the propellant is the pusher itself. The inward pressure is enormous; in rough numbers, the fusion fuel is compressed by a factor of several hundred to one thousand in density.<sup class="fn"><a href="#fn-3">3</a></sup> The fuel itself is lithium deuteride — a chalky solid at room temperature, stable on the shelf, unremarkable to handle. Under radiation implosion it is squeezed into a pencil-thin line of ultra-dense material along the secondary's axis.
+      </p>
+
+      <h4>T = 100 ns · Fusion ignites</h4>
+      <p>
+        At the geometric center of the fuel is a slim rod of fissile material — plutonium or highly-enriched uranium — called the <em>spark plug</em>. When the radiation-implosion pressure compresses the surrounding fuel, it also compresses the spark plug, driving it to supercritical density. The spark plug fissions, from the inside out. That fission does two things at once: it dumps enormous heat into the surrounding fuel, raising it to fusion temperatures, and it floods the fuel with high-energy neutrons. The neutrons strike lithium-6 nuclei in the lithium deuteride and split them into tritium and helium-4. The fresh tritium fuses instantly with the deuterium already present, releasing the dominant share of the weapon's yield.<sup class="fn"><a href="#fn-3">3</a></sup> The architecture is elegant in a cold way: the spark plug is the match, the compressed fuel is the tinder, and lithium-6 is the factory that manufactures tritium on demand in the microseconds before it is consumed. No one has to stockpile or maintain tritium in the weapon — the neutrons from the spark plug make it at the instant it is needed.
+      </p>
+
+      <h4>T = 300 ns · The blast wave arrives, too late</h4>
+      <p>
+        By now the secondary has fused and is a fireball of its own. The primary's original mechanical blast wave — the slow cousin of the X-ray pulse — has finally expanded far enough to reach where the secondary used to be. But the secondary fused two hundred nanoseconds earlier. The engineering trick worked: photons got to the scene and did their job before matter could interfere. The entire device, primary and secondary and case, is now a single expanding fireball that will, over the next several seconds, grow into the characteristic mushroom cloud. The three hundred nanoseconds of choreography captured in the scrubber above are the nanoseconds on which the entire weapon depends.
+      </p>
+
+      <h3>Historical framing</h3>
+
+      <p>
+        Teller had been pushing for a hydrogen bomb since 1942, but his original &ldquo;Super&rdquo; design tried to use the primary's heat and shock directly to ignite fusion, and calculations through the late 1940s kept showing it would not work. In December 1950, while Los Alamos simulations were confirming that the Super was a dead end, Stanislaw Ulam had a different idea: use the primary's radiation, not its shock, to compress the secondary. Teller extended Ulam's mechanical-compression idea into radiation implosion, and the two co-authored a classified paper in March 1951 — &ldquo;On Heterocatalytic Detonations I: Hydrodynamic Lenses and Radiation Mirrors&rdquo; — that laid out the architecture still in use today.<sup class="fn"><a href="#fn-1">1</a></sup>
+        Twenty months later, on November 1, 1952, the United States detonated the first true thermonuclear device — codename &ldquo;Ivy Mike&rdquo; — on Elugelab Island in the Enewetak Atoll of the Pacific. The yield was 10.4 megatons, roughly seven hundred times the yield of the Hiroshima bomb. Elugelab ceased to exist.<sup class="fn"><a href="#fn-5">5</a></sup>
+      </p>
+
+      <p>
+        Everything above is publicly documented at the architectural level. The <em>specific</em> dimensions, material choices, yield parameters, and engineering tolerances of any actual weapon remain classified — every nuclear-armed state treats its own arsenal's specifics as a state secret. The principle itself is no longer secret, and has not been for decades, because the underlying physics is accessible to anyone who can read a college-level nuclear engineering textbook. For risk-management purposes the useful observation is this: the Teller–Ulam architecture is what sits underneath every strategic-deterrence posture on Earth. Reasoning about nuclear risk without understanding that a thermonuclear weapon is fundamentally a choreography problem — a race between two fronts moving at wildly different speeds — misses the engineering that makes the whole category possible.
+      </p>
+
+      <!-- ============================================================
+           REFERENCES
+           One <li> per unique source. Multiple footnote callers can
+           point at the same id; :target styling highlights whichever
+           one the reader just jumped to.
+           ============================================================ -->
+      <ol class="references" aria-label="References for this section">
+        <li id="fn-1">
+          Richard Rhodes. <cite>Dark Sun: The Making of the Hydrogen Bomb.</cite> Simon &amp; Schuster, 1995. Chapters 23–25 cover the failure of the classical Super and the Ulam–Teller collaboration of early 1951.
+        </li>
+        <li id="fn-2">
+          Kenneth W. Ford. <cite>Building the H Bomb: A Personal History.</cite> World Scientific, 2015. Ford was a graduate student at Los Alamos during the Ivy Mike calculations; his Chapter 4 dates the Ulam insight to December 1950.
+        </li>
+        <li id="fn-3">
+          Carey Sublette. <cite>Nuclear Weapons Frequently Asked Questions.</cite>
+          <a href="https://nuclearweaponarchive.org/Nwfaq/Nfaq0.html" target="_blank" rel="noopener">nuclearweaponarchive.org</a>.
+          The standard public-domain technical reference on weapon architecture; section 4.4 covers radiation implosion in detail.
+        </li>
+        <li id="fn-4">
+          Federation of American Scientists. <cite>Nuclear Weapon Design.</cite>
+          <a href="https://fas.org/nuke/intro/nuke/design.htm" target="_blank" rel="noopener">fas.org/nuke/intro/nuke/design.htm</a>.
+        </li>
+        <li id="fn-5">
+          U.S. Department of Energy, Nevada Operations Office. <cite>United States Nuclear Tests: July 1945 through September 1992.</cite> DOE/NV-209-REV 15, December 2000. The authoritative government record of test dates, locations, and yields; Ivy Mike is test number 36.
+        </li>
+      </ol>
+    </section>
+
+
+    <!-- ==========================================================
+         BACK TO FISSION / ANATOMY
          ========================================================== -->
     <section class="section" style="margin-top: 3rem;">
       <div class="case-cta">
-        <a class="btn btn-primary" href="../../research/teller-ulam/">Read the explainer <span aria-hidden="true">→</span></a>
+        <a class="btn btn-primary" href="../../research/fission/">← Back to Fission: A Technical History</a>
         <a class="btn btn-ghost" href="../../index.html#anatomy">See other anatomies</a>
       </div>
     </section>

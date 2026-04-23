@@ -16,6 +16,7 @@
    8.  SPEEDS TABLE          (footer reference)
    9.  NOSCRIPT BANNER
    10. REDUCED MOTION
+   11. EXPLAINER             (long-form prose + footnotes + references)
    ================================================================== */
 
 /* ==================================================================
@@ -375,6 +376,107 @@
       font-family: var(--font-mono);
       font-size: 0.85rem;
     }
+
+    /* ==================================================================
+       11. EXPLAINER  (long-form prose below the scrubber)
+       The research-style companion section. Same card shell as
+       .anatomy / .speeds above, with a max-width on children so the
+       prose lands at a ~72-character reading measure instead of
+       sprawling across the full wrap width.
+
+       This block was originally a separate page at /research/teller-ulam/,
+       collapsed into the anatomy page on 04/23/2026 so the reader
+       has one stop, not two.
+       ================================================================== */
+    .explainer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-top: 3rem;
+    }
+    .explainer > * { max-width: 72ch; }
+    .explainer h2 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 0.25rem;
+    }
+    .explainer .sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0 0 2rem;
+    }
+    .explainer h3 {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin: 2.5rem 0 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .explainer h3:first-of-type { margin-top: 0.5rem; }
+    .explainer h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 1.75rem 0 0.5rem;
+    }
+    .explainer p {
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin: 0 0 1rem;
+    }
+    .explainer p strong { color: var(--text); font-weight: 600; }
+    .explainer em { color: var(--text); font-style: italic; }
+
+    /* Footnote callers in the prose. Gold superscripts, underline on
+       hover, native title attribute (added by teller-ulam.js) carries
+       the full citation text so hovering shows it without leaving the
+       paragraph. */
+    .explainer sup.fn {
+      font-size: 0.7rem;
+      line-height: 0;
+      margin-left: 0.1em;
+    }
+    .explainer sup.fn a {
+      color: var(--gold);
+      text-decoration: none;
+      padding: 0 0.15em;
+    }
+    .explainer sup.fn a:hover { text-decoration: underline; }
+
+    /* References list at the bottom of the explainer. Monospace small
+       print; :target highlights whichever reference the reader just
+       jumped to via footnote click. */
+    .explainer .references {
+      margin: 2.5rem 0 0;
+      padding: 1.25rem 1.5rem 1.25rem 2.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      font-family: var(--font-mono);
+      line-height: 1.7;
+    }
+    .explainer .references li { margin-bottom: 0.6rem; }
+    .explainer .references li:target { color: var(--gold); }
+    .explainer .references cite {
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .explainer .references a {
+      color: var(--gold-dim);
+      text-decoration: none;
+    }
+    .explainer .references a:hover {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+
 
     @media (prefers-reduced-motion: reduce) {
       .caption { transition: none; }

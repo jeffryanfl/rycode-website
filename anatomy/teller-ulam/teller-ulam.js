@@ -386,4 +386,39 @@
       // Initial paint
       render(0);
 
+
+      // ==================================================================
+      // FOOTNOTE TOOLTIPS  (for the explainer section below the scrubber)
+      //
+      // In the prose, footnotes look like:
+      //   <sup class="fn"><a href="#fn-3">3</a></sup>
+      // Down in the references list, the matching reference looks like:
+      //   <li id="fn-3">Carey Sublette. <cite>Nuclear Weapons FAQ</cite>...</li>
+      //
+      // We want the tooltip to show the clean text of that <li> so hovering
+      // the footnote number shows the source without leaving the paragraph.
+      //
+      // textContent (not innerHTML) is used deliberately — it strips tags
+      // and keeps the tooltip text-only.
+      //
+      // This runs after the scrubber is wired up; it's a separate concern
+      // and nothing above depends on it. No harm if the explainer section
+      // doesn't exist (querySelectorAll returns an empty NodeList).
+      // ==================================================================
+      const footnoteLinks = document.querySelectorAll('sup.fn a[href^="#fn-"]');
+      footnoteLinks.forEach(function (link) {
+        const targetId = link.getAttribute('href').slice(1); // strip the '#'
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        // Collapse whitespace runs so the tooltip doesn't contain
+        // awkward line breaks copied from the HTML source.
+        const sourceText = target.textContent.replace(/\s+/g, ' ').trim();
+        link.setAttribute('title', sourceText);
+        link.setAttribute(
+          'aria-label',
+          'Footnote ' + link.textContent.trim() + ': ' + sourceText
+        );
+      });
+
     })();

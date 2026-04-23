@@ -447,7 +447,11 @@ h1, h2, h3 {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Two tiles: Live system + Surfaces in motion. Was a three-column
+     grid when there was also a "Frameworks used" tile; dropped because
+     a permanent zero doesn't carry information and the no-frameworks
+     claim is already made in the About and Principles sections. */
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--s-6);
   text-align: center;
 }
