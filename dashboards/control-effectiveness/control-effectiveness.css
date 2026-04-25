@@ -216,8 +216,16 @@
   outline-offset: 2px;
 }
 .ce-control-eff {
+  /* Fixed min-width sized to fit the widest possible readout
+     ("100% · Partially Effective") so the slider track never resizes
+     when the qualitative tier label changes width. Without this, the
+     block would shrink ~85px when crossing into "Effective" — the
+     slider would jump out from under the user's mouse and the value
+     would oscillate back across the threshold (a feedback loop the
+     user reads as "jitter"). The mobile breakpoint below resets this
+     so narrow screens stack cleanly without overflow. */
   display: flex; flex-direction: column;
-  min-width: 220px;
+  min-width: 340px;
 }
 .ce-control-eff-head {
   /* gap guarantees a minimum separation between the "Effectiveness"
