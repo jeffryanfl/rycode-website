@@ -220,7 +220,12 @@
   min-width: 220px;
 }
 .ce-control-eff-head {
+  /* gap guarantees a minimum separation between the "Effectiveness"
+     label and the value readout. Without it, longer values like
+     "95% · Effective" can fill the flex container and the
+     space-between distribution collapses to zero. */
   display: flex; justify-content: space-between; align-items: baseline;
+  gap: var(--s-3);
   font-family: var(--font-mono);
   font-size: var(--fs-tiny);
   letter-spacing: 0.1em;

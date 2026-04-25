@@ -120,6 +120,23 @@
   // the slider isn't just a naked digit. Standard ERM vocabulary.
   const SCALE_WORDS = ['', 'Very low', 'Low', 'Moderate', 'High', 'Very high'];
 
+  // Control-effectiveness tiers — the qualitative read of the
+  // percentage. Three bands map cleanly to the slider's step=5 grid:
+  //   0–33  → Ineffective         (7 stops: 0, 5, 10, 15, 20, 25, 30)
+  //   35–65 → Partially Effective (7 stops: 35, 40, 45, 50, 55, 60, 65)
+  //   70–100 → Effective          (7 stops: 70, 75, 80, 85, 90, 95, 100)
+  // Symmetric, and matches how an audit/risk practitioner labels a
+  // control: design exists vs. design is patchy vs. design works.
+  const effectivenessTier = (v) => {
+    if (v <= 33) return 'Ineffective';
+    if (v <= 66) return 'Partially Effective';
+    return 'Effective';
+  };
+
+  // What gets rendered inside the slider's right-hand readout.
+  // Mirrors how likelihood/impact reads ("4 · HIGH") for visual rhythm.
+  const effectivenessReadout = (v) => `${v}% · ${effectivenessTier(v)}`;
+
   // ----------------------------------------------------------------
   // 4. DOM REFS
   // ----------------------------------------------------------------
@@ -224,7 +241,7 @@
         <div class="ce-control-eff">
           <div class="ce-control-eff-head">
             <label for="ce-c-${riskIndex}-${controlIndex}">Effectiveness</label>
-            <span class="ce-control-eff-value" data-num="effectiveness">${control.effectiveness}%</span>
+            <span class="ce-control-eff-value" data-num="effectiveness">${effectivenessReadout(control.effectiveness)}</span>
           </div>
           <input
             type="range" class="ce-range"
@@ -296,7 +313,7 @@
     const row = card.querySelector(`[data-controls-for="${riskIndex}"] [data-control-index="${controlIndex}"]`);
     if (!row) return;
     row.querySelector('[data-num="effectiveness"]').textContent =
-      state.risks[riskIndex].controls[controlIndex].effectiveness + '%';
+      effectivenessReadout(state.risks[riskIndex].controls[controlIndex].effectiveness);
   }
 
   // ——— Chart ———————————————————————————————————————————————
