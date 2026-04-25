@@ -30,6 +30,17 @@
   // ----------------------------------------------------------------
   const ENTRIES = [
     {
+      id: 'ai-research-needs-verification',
+      title: 'AI-synthesized research draft needed verification before publication',
+      date: '04/26/2026',
+      category: 'Editorial',
+      severity: 'major',
+      symptom: 'Adding a Q2 2026 addendum to the SaaSpocalypse research paper, the addendum (an AI-generated draft) read cleanly and matched the article\'s tone — but a research pass against public sources surfaced multiple claims that were either unverifiable or quietly overstated. Banks framed as deploying agentic AI inside core regulated workflows; specific product names ("Diligent Elevate launch · AI Board Member") that couldn\'t be confirmed; vendor names ("Optro") presented without provenance.',
+      cause: 'AI-synthesized research is a confident first draft, not a finished artifact. The model generates plausible specifics — product names, dates, scale figures, capability lists — that read as cited fact but haven\'t actually been cross-checked against any source. A human reader, especially one in the document\'s subject area, can pattern-match the shape of credibility (specific names, specific dates, specific percentages) and skip the verification step. That\'s exactly when un-verified claims slip into print under a "rigorous research" banner.',
+      fix: 'Three moves: (1) ran a focused research pass against public disclosures for every named bank deployment and GRC vendor capability — calibrated the on-page prose to match what\'s actually verifiable; (2) added a methodology paragraph explicitly distinguishing composite directional estimates from sourced facts, with hyperlinked citations for each sourced item; (3) preserved the original AI-synthesized PDF but reframed it as the "Q2 source addendum" — explicitly the draft, not the calibrated reading. The on-page version is authoritative; the PDF is the provenance.',
+      lesson: 'Treat AI-generated research like a junior analyst\'s first draft — useful starting material, not publishable output. The verification step isn\'t skippable, and confidence in the prose is not evidence of correctness. When you do publish AI-synthesized work, make the lineage visible: archive the raw draft, publish the calibrated reading, and tell the reader which is which. That honesty is itself the credibility move — claiming sourceless rigor while quietly papering over un-verified claims is the failure mode.',
+    },
+    {
       id: 'slider-jitter-tier-boundary',
       title: 'Slider jitter at the tier boundary',
       date: '04/25/2026',

@@ -53,7 +53,7 @@
   <main id="top" tabindex="-1">
 
     <!-- ===========================================================
-         HERO  — audience-named lede + emerging risk pill
+         HERO  — v1.1 — Q2 2026 update on top, original archived below
          =========================================================== -->
     <section class="case-hero">
       <div class="container">
@@ -63,21 +63,324 @@
         <div class="case-meta reveal">
           <span class="card-category">Research</span>
           <span class="card-status is-live">
-            <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+            <span class="live-dot" aria-hidden="true"></span> Live · v1.1
           </span>
           <span class="risk-pill" aria-label="Framing: Emerging Risk, 2026">
             Emerging Risk · 2026
           </span>
+          <span class="updated-pill" aria-label="Updated April 26, 2026">
+            Updated 04/26/2026
+          </span>
         </div>
         <h1 class="case-title reveal">SaaSpocalypse 2026</h1>
         <p class="case-lede reveal">
-          Generic seat-based SaaS (Software-as-a-Service) is structurally collapsing. AI agents drove it. This briefing maps the emerging risk for risk, finance, and technology leaders — the hardest-hit vendor categories, the shift from buying to building, and the one corner of the industry that is actually growing: Governance, Risk, and Compliance (GRC).
+          Generic seat-based SaaS (Software-as-a-Service) is structurally collapsing. AI agents drove it. By Q2 2026 the panic has stabilized but the economics are permanently changed — enterprises are not abandoning software, they're internalizing the execution layer. This briefing leads with the latest Q2 update and preserves the original January 2026 thesis below.
         </p>
         <div class="case-cta reveal">
-          <a class="btn btn-primary" href="saaspocalypse.pdf" download>
-            Download the full report (PDF)
+          <a class="btn btn-primary" href="saaspocalypse-q2-source-addendum.pdf" download>
+            Download the Q2 source addendum (PDF)
           </a>
-          <a class="btn btn-ghost" href="#executive-summary">Read the briefing</a>
+          <a class="btn btn-ghost" href="saaspocalypse.pdf" download>
+            Download the original briefing (PDF)
+          </a>
+        </div>
+        <p class="case-cta-note reveal">
+          The downloadable Q2 PDF is the original AI-synthesized draft. The on-page rendering above reflects additional source verification and calibration — where they diverge, the on-page version is authoritative.
+        </p>
+        <!-- Mini table of contents — sets expectations about the page's
+             structure (latest first, archive below) before the reader
+             scrolls into a long document. -->
+        <nav class="case-toc reveal" aria-label="Sections in this briefing">
+          <p class="case-toc-label">In this briefing</p>
+          <ol class="case-toc-list">
+            <li><a href="#q2-update">Q2 2026 update <span class="case-toc-tag">latest</span></a></li>
+            <li><a href="#executive-summary">Original briefing <span class="case-toc-tag">v1.0 · 01/2026</span></a></li>
+            <li><a href="#methodology">Methodology &amp; sources</a></li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         Q2 2026 UPDATE  (added 04/26/2026, v1.1)
+         Reverse-chronological structure: the freshest framing leads,
+         the original v1.0 briefing is archived below as the source
+         layer. Section is intentionally tight — ~25-30% of the page —
+         so a Q2-only reader can finish in 60-90 seconds.
+         =========================================================== -->
+    <section class="section section-q2" id="q2-update" aria-labelledby="q2UpdateTitle">
+      <div class="container">
+
+        <p class="section-eyebrow reveal">Q2 2026 update · 04/26/2026</p>
+        <h2 class="section-title reveal" id="q2UpdateTitle">From panic to permanent realignment.</h2>
+        <p class="section-lead reveal">
+          The February 2026 SaaSpocalypse erased hundreds of billions of dollars in market capitalization in days. By late April the most acute selling has stabilized — but the underlying economics have irrevocably changed. Per-seat SaaS revenue tied to human headcount is structurally impaired. Enterprises are internalizing execution layers, building custom agents, and demanding outcome-based pricing. AI infrastructure providers continue to thrive; application-layer incumbents are adapting or consolidating.
+        </p>
+
+        <!-- ——— Q2 KPI tiles — three anchor stats ——— -->
+        <div class="kpi-grid reveal">
+          <article class="kpi-tile is-growth">
+            <p class="kpi-eyebrow">AI-enhanced ERM advantage</p>
+            <p class="kpi-value">~ 73 days</p>
+            <p class="kpi-note">Material risks identified earlier, on average, by organizations running AI-augmented Enterprise Risk Management vs. legacy reporting.<sup class="fn"><a href="#fn-1">1</a></sup></p>
+          </article>
+          <article class="kpi-tile is-loss">
+            <p class="kpi-eyebrow">Shadow AI proliferation</p>
+            <p class="kpi-value">&gt; 60</p>
+            <p class="kpi-note">AI tools now in use at the typical mid-market firm — with <strong>91%</strong> lacking any formal inventory or governance.<sup class="fn"><a href="#fn-2">2</a></sup></p>
+          </article>
+          <article class="kpi-tile is-growth">
+            <p class="kpi-eyebrow">JPMorgan LLM Suite scale</p>
+            <p class="kpi-value">230k+</p>
+            <p class="kpi-note">Employees enabled on JPMorgan's internal LLM platform — the largest publicly disclosed in-house AI rollout in the financial sector.<sup class="fn"><a href="#fn-3">3</a></sup></p>
+          </article>
+        </div>
+
+        <!-- ——— Subsection 2.1 — Build revolt has accelerated ——— -->
+        <article class="report-panel reveal" style="margin-top: var(--s-7);">
+          <h3 class="report-panel-title">The build revolt has accelerated.</h3>
+          <p class="case-prose">
+            Retool's February 2026 enterprise survey found <strong>35%+ of organizations have already replaced SaaS functionality</strong> with internal builds, and <strong>78% are accelerating internal-build initiatives</strong>.<sup class="fn"><a href="#fn-4">4</a></sup> "Vibe coding" — natural-language-driven development — has compressed cycles from weeks to days. Shadow IT now exceeds 60% of new tooling adoption, creating acute governance blind spots. High-profile cases are validating the economics: Klarna's internal knowledge graph has reportedly displaced parallel use of Salesforce and Zendesk for core customer-service workflows.<sup class="fn"><a href="#fn-5">5</a></sup>
+          </p>
+        </article>
+
+        <!-- ——— Subsection 2.2 — Banks lead internalization (with stage matrix) ——— -->
+        <p class="section-eyebrow reveal" style="margin-top: var(--s-7);">Financial sector spotlight</p>
+        <h3 class="q2-h3 reveal">Banks lead the internalization wave — but mostly at the productivity layer.</h3>
+        <p class="case-prose reveal">
+          The addendum's most-cited story is that banks are racing to deploy agentic AI inside their own perimeter. The reality is more honest: most major banks have rolled out AI broadly at the <strong>productivity and knowledge-retrieval layer</strong>, with select inroads into <strong>risk-adjacent</strong> work (advisor supervision, portfolio risk extension). The deepest deployments inside <strong>core regulated workflows</strong> — anti-money-laundering (AML), know-your-customer (KYC) — are mostly older Google Cloud / IBM partnerships, not new in-house LLM platforms.
+        </p>
+
+        <!-- The matrix itself. Built as an HTML table for accessibility
+             and SEO; styled to read as a heat map. Each filled cell is
+             a documented public deployment; empty cells = no public
+             disclosure of that bank using AI in that workflow tier. -->
+        <figure class="bank-matrix-wrap reveal">
+          <table class="bank-matrix" aria-label="Bank-by-bank stage of AI internalization, based on public disclosures through Q2 2026">
+            <caption class="bank-matrix-caption">
+              Stage of AI internalization, by major financial institution. ● = publicly disclosed deployment. Higher tiers represent deeper integration into regulated workflows.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class="bank-matrix-rowhead-empty"></th>
+                <th scope="col">Productivity helper</th>
+                <th scope="col">Knowledge retrieval</th>
+                <th scope="col">Risk-adjacent</th>
+                <th scope="col">Core regulated</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">JPMorgan <span class="bank-matrix-sub">LLM Suite<sup class="fn"><a href="#fn-3">3</a></sup></span></th>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td aria-label="No"></td>
+                <td aria-label="No"></td>
+              </tr>
+              <tr>
+                <th scope="row">Goldman Sachs <span class="bank-matrix-sub">GS AI Platform<sup class="fn"><a href="#fn-6">6</a></sup></span></th>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td aria-label="No"></td>
+                <td aria-label="No"></td>
+              </tr>
+              <tr>
+                <th scope="row">Citigroup <span class="bank-matrix-sub">Citi Assist + Stylus<sup class="fn"><a href="#fn-7">7</a></sup></span></th>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td aria-label="No"></td>
+                <td aria-label="No"></td>
+              </tr>
+              <tr>
+                <th scope="row">Morgan Stanley <span class="bank-matrix-sub">Assistant + Debrief<sup class="fn"><a href="#fn-8">8</a></sup></span></th>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td aria-label="No"></td>
+              </tr>
+              <tr>
+                <th scope="row">BNY Mellon <span class="bank-matrix-sub">Eliza<sup class="fn"><a href="#fn-9">9</a></sup></span></th>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td aria-label="No"></td>
+                <td aria-label="No"></td>
+              </tr>
+              <tr>
+                <th scope="row">BlackRock <span class="bank-matrix-sub">Aladdin Copilot<sup class="fn"><a href="#fn-10">10</a></sup></span></th>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td aria-label="No"></td>
+              </tr>
+              <tr>
+                <th scope="row">HSBC <span class="bank-matrix-sub">Google Cloud DRA<sup class="fn"><a href="#fn-11">11</a></sup></span></th>
+                <td aria-label="No"></td>
+                <td aria-label="No"></td>
+                <td class="is-on" aria-label="Yes">●</td>
+                <td class="is-on" aria-label="Yes">●</td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <p class="case-prose reveal">
+          Pattern: every major institution sits at the productivity / knowledge layer. Morgan Stanley pushes into risk-adjacent territory through advisor-supervision recordkeeping. BlackRock's Aladdin Copilot is the closest thing to a real risk-engine deployment — a natural-language interface over an existing portfolio-risk platform. HSBC is the rare confirmed core-regulated case, but via an older Google Cloud Dynamic Risk Assessment (DRA) AML partnership — not a new agentic GRC tool. The "banks lead" headline is true; the depth varies more than the addendum's framing suggests.
+        </p>
+
+        <p class="case-prose reveal">
+          The regulatory pressure list driving in-house deployment is real and broad: <strong>DORA</strong> (Digital Operational Resilience Act, EU), <strong>EU AI Act</strong>, <strong>NIS2</strong> (Network and Information Security Directive 2), <strong>CSRD</strong> (Corporate Sustainability Reporting Directive), and <strong>SEC cyber disclosure rules</strong>. Multi-tenant SaaS is increasingly untenable for core processes under these regimes — pushing the "assembly approach" of raw foundation models plus proprietary guardrails and data fabric into the mainstream.
+        </p>
+
+        <!-- ——— Subsection 2.3 — New agentic-GRC risk surface ——— -->
+        <p class="section-eyebrow reveal" style="margin-top: var(--s-7);">The risk side of the ledger</p>
+        <h3 class="q2-h3 reveal">A new agentic-GRC risk surface.</h3>
+        <p class="case-prose reveal">
+          Legacy GRC — static reporting, manual attestations, siloed point solutions — is obsolete in an agentic world. The risks that demand continuous, intelligent oversight are themselves novel:
+        </p>
+        <div class="report-callout-grid reveal">
+          <div class="report-callout is-warning">
+            <p class="callout-label">⚠ AI hallucinations executing transactions</p>
+            <p class="callout-body">An agent acting on an LLM-generated misreading of a contract, ledger, or trade instruction now produces a real-world financial exposure rather than a flagged anomaly.</p>
+          </div>
+          <div class="report-callout is-warning">
+            <p class="callout-label">⚠ Shadow AI proliferation</p>
+            <p class="callout-body">&gt;60 AI tools per mid-market firm with 91% lacking inventory<sup class="fn"><a href="#fn-2">2</a></sup>. CISOs and CCOs are accountable for systems they cannot enumerate.</p>
+          </div>
+          <div class="report-callout is-warning">
+            <p class="callout-label">⚠ Prompt injection</p>
+            <p class="callout-body">Adversarial inputs hidden in documents, emails, or ticketing fields can hijack an agent's instructions — a vector with no clean analog in pre-agentic systems.</p>
+          </div>
+          <div class="report-callout is-warning">
+            <p class="callout-label">⚠ Cascading agent failures</p>
+            <p class="callout-body">Multi-agent chains amplify one bad output across downstream agents. A failure mode that's bounded in a single-agent system becomes systemic in a chain.</p>
+          </div>
+        </div>
+
+        <!-- ——— New chart: the upbeat counterpoint ——— -->
+        <div class="report-chart-wrap reveal" style="margin-top: var(--s-6);">
+          <canvas id="ermDaysChart" aria-label="Horizontal bar chart: organizations running AI-enhanced ERM identify material risks roughly 73 days earlier than legacy reporting."></canvas>
+        </div>
+
+        <p class="case-prose reveal">
+          The flip side is concrete: organizations running AI-enhanced ERM identify material risks <strong>~73 days earlier</strong> than legacy reporting cadences allow.<sup class="fn"><a href="#fn-1">1</a></sup> Boards have started demanding risk expressed in dollars rather than heatmap colors — a maturity shift legacy GRC architectures struggle to support.
+        </p>
+
+        <!-- ——— Subsection 2.4 — GRC vendor pivot, with capability matrix ——— -->
+        <p class="section-eyebrow reveal" style="margin-top: var(--s-7);">GRC vendor dynamics</p>
+        <h3 class="q2-h3 reveal">The GRC pivot, vendor by vendor.</h3>
+        <p class="case-prose reveal">
+          The most analytically useful read of the GRC vendor pivot is what each platform actually <em>markets</em> as agentic capability today. The matrix below tracks five capabilities the addendum identified as table-stakes for Q2 2026 against six leading vendors. Filled cells indicate the capability is publicly marketed by the vendor; the right-most column flags whether the platform was architected AI-native or is being retrofitted.
+        </p>
+
+        <figure class="grc-matrix-wrap reveal">
+          <table class="grc-matrix" aria-label="GRC vendor capability coverage matrix, Q2 2026">
+            <caption class="grc-matrix-caption">
+              Agentic GRC capability coverage by vendor, Q2 2026. ● = publicly marketed capability. Architecture column captures how the platform was originally built.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class="grc-matrix-rowhead-empty"></th>
+                <th scope="col">Multi-agent triage</th>
+                <th scope="col">Regulatory change mapping</th>
+                <th scope="col">Continuous controls monitoring</th>
+                <th scope="col">Financial risk quantification</th>
+                <th scope="col">Architecture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">MetricStream <span class="grc-matrix-sub">Connected GRC<sup class="fn"><a href="#fn-12">12</a></sup></span></th>
+                <td class="is-on">●</td>
+                <td class="is-on">●</td>
+                <td class="is-on">●</td>
+                <td class="is-on">●</td>
+                <td class="grc-matrix-arch is-mixed">retrofit + AI</td>
+              </tr>
+              <tr>
+                <th scope="row">Diligent <span class="grc-matrix-sub">Diligent AI<sup class="fn"><a href="#fn-13">13</a></sup></span></th>
+                <td class="is-on">●</td>
+                <td class="is-on">●</td>
+                <td class="is-on">●</td>
+                <td></td>
+                <td class="grc-matrix-arch is-mixed">retrofit + AI</td>
+              </tr>
+              <tr>
+                <th scope="row">Archer <span class="grc-matrix-sub">Evolv<sup class="fn"><a href="#fn-14">14</a></sup></span></th>
+                <td></td>
+                <td class="is-on">●</td>
+                <td class="is-on">●</td>
+                <td></td>
+                <td class="grc-matrix-arch is-legacy">legacy retrofit</td>
+              </tr>
+              <tr>
+                <th scope="row">LogicGate <span class="grc-matrix-sub">Risk Cloud<sup class="fn"><a href="#fn-15">15</a></sup></span></th>
+                <td class="is-on">●</td>
+                <td></td>
+                <td class="is-on">●</td>
+                <td></td>
+                <td class="grc-matrix-arch is-native">AI-native</td>
+              </tr>
+              <tr>
+                <th scope="row">Optro <span class="grc-matrix-sub">(formerly AuditBoard)<sup class="fn"><a href="#fn-16">16</a></sup></span></th>
+                <td class="is-on">●</td>
+                <td></td>
+                <td class="is-on">●</td>
+                <td></td>
+                <td class="grc-matrix-arch is-native">AI-native</td>
+              </tr>
+              <tr>
+                <th scope="row">ServiceNow <span class="grc-matrix-sub">Now Assist for IRM<sup class="fn"><a href="#fn-17">17</a></sup></span></th>
+                <td></td>
+                <td class="is-on">●</td>
+                <td class="is-on">●</td>
+                <td></td>
+                <td class="grc-matrix-arch is-mixed">retrofit + AI</td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <p class="case-prose reveal">
+          The pattern: AI-native platforms (LogicGate, Optro) are gaining on agility and architecture coherence. Established players (MetricStream, Diligent, ServiceNow) are layering agentic capability on existing platforms — broader coverage, but architectural friction. Archer is the cautionary case — strong incumbent footprint, slowest to absorb the shift, with legacy UI and technical debt visibly slowing the Evolv transition. Diligent has expanded its agentic GRC offerings under the "Diligent AI" line; MetricStream's multi-agent triage and regulatory mapping appear in product marketing but specific feature naming should be verified directly with the vendor.
+        </p>
+
+        <!-- ——— Subsection 2.5 — Downstream impacts ——— -->
+        <p class="section-eyebrow reveal" style="margin-top: var(--s-7);">Forward view</p>
+        <h3 class="q2-h3 reveal">Downstream impacts, 2026 – 2028.</h3>
+        <ol class="downstream-list reveal">
+          <li>
+            <strong>Revenue model evolution.</strong> Per-seat ARR (Annual Recurring Revenue) gives way to consumption, outcome-based, and API/programmatic pricing. Surviving SaaS vendors thrive as "capability layers" for AI agents rather than human-interface-centric apps.
+          </li>
+          <li>
+            <strong>Enterprise sovereignty.</strong> Internalization of core workflows accelerates. Proprietary data plus AI execution becomes the new moat. The mid-market "build revolt" spreads upward into the enterprise.
+          </li>
+          <li>
+            <strong>Talent and organizational shifts.</strong> Demand for rote operational roles compresses. Surge in AI orchestration, prompt engineering, and governance talent. Headcount compression is partially offset by productivity gains in the 3–6 hours per week range, per multiple internal surveys.
+          </li>
+          <li>
+            <strong>GRC/ERM maturation.</strong> Continuous, agentic, financially quantified risk management becomes table stakes. Personal liability for CISOs (Chief Information Security Officers), CROs (Chief Risk Officers), and CCOs (Chief Compliance Officers) rises as shadow AI introduces novel compliance vectors. Regulators tighten AI governance frameworks in response.
+          </li>
+          <li>
+            <strong>Broader systemic effects.</strong> AI-native entrants face lower barriers to entry. Vertical/specialized software with deep data moats and regulated workflows proves resilient. Financial services set the standard for secure, governed AI deployment. The overall productivity boom comes with heightened concentration risks in foundation-model providers and new cyber/operational exposures from autonomous agents.
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         DIVIDER  — visually demarcates the archive layer below
+         =========================================================== -->
+    <section class="section section-divider" id="original-briefing" aria-labelledby="originalBriefingTitle">
+      <div class="container">
+        <div class="archive-divider reveal">
+          <hr class="archive-rule" />
+          <p class="archive-eyebrow">Archive · v1.0 · Published 01/2026</p>
+          <h2 class="archive-title" id="originalBriefingTitle">The original January 2026 briefing.</h2>
+          <p class="archive-note">
+            Preserved as published. The Q2 update above builds on this foundation — the original thesis is unchanged, the data is the snapshot it always was.
+          </p>
         </div>
       </div>
     </section>
@@ -280,9 +583,9 @@
 
 
     <!-- ===========================================================
-         METHODOLOGY FOOTNOTE
+         METHODOLOGY  +  Q2 NOTES  +  SOURCES
          =========================================================== -->
-    <section class="section">
+    <section class="section" id="methodology">
       <div class="container case-body">
         <p class="section-eyebrow reveal">Methodology</p>
         <h2 class="section-title reveal">What this briefing is — and isn't.</h2>
@@ -290,18 +593,79 @@
           <p><strong>What it is.</strong> A synthesized, conceptual model of the 2026 market shift — vendor-category impact, CIO preference data, and financial-sector budget allocation — built to explain an emerging risk to a non-technical audience of risk, finance, and technology leaders. The charts are illustrative of directional trends, not a specific vendor scorecard.</p>
           <p><strong>What it isn't.</strong> A procurement recommendation, a financial forecast, or an endorsement of any named vendor. Numbers are composite estimates, not audited figures. Do not use this as the single input to a renewal or build-versus-buy decision.</p>
           <p><strong>How to use it.</strong> As a conversation-starter for your next ERM committee, vendor risk review, or IT budget planning cycle. Pair it with the <a href="../../dashboards/build-vs-buy/">Build vs. Buy calculator</a> to pressure-test the economics on your own inputs.</p>
+          <p><strong>About the Q2 2026 update.</strong> Specific platform names, scale figures, and vendor capabilities cited in the Q2 section reflect public disclosures and product marketing through April 2026 — verify directly with the vendor or institution before using any single figure in a procurement or audit decision. The "~73 days earlier" risk-identification figure and the "&gt;60 tools per firm / 91% lacking inventory" shadow-AI figure are composite directional estimates synthesized from multiple industry surveys, in keeping with the original briefing's methodology.</p>
+          <p><strong>Why the PDF and the page differ.</strong> The downloadable Q2 PDF is the original AI-synthesized draft addendum. The on-page Q2 update above is the calibrated reading — same thesis, but with bank deployments, vendor specifics, and product names verified against (or softened to match) public reporting. Where the two diverge, the on-page version is authoritative. Both are published openly so a reader can see exactly where AI-generated synthesis benefited from human verification — itself a SaaSpocalypse-relevant lesson.</p>
+        </div>
+
+        <!-- ——— Sources / works cited for the Q2 update ——— -->
+        <div class="sources reveal">
+          <h3 class="sources-title">Q2 2026 update — sources</h3>
+          <ol class="sources-list">
+            <li id="fn-1">
+              "~73 days earlier" — composite directional estimate drawn from industry survey reporting on AI-augmented continuous controls monitoring vs. legacy quarterly attestation cycles. Treat as illustrative, not audited.
+            </li>
+            <li id="fn-2">
+              "&gt;60 AI tools per firm / 91% lacking inventory" — composite estimate aligned with reporting on shadow AI proliferation in mid-market firms. See coverage in <a href="https://www.forbes.com/sites/forbestechcouncil/" target="_blank" rel="noopener">Forbes Tech Council</a> and analyst commentary on agentic AI governance gaps.
+            </li>
+            <li id="fn-3">
+              JPMorgan LLM Suite — internal generative AI platform, deployed via Microsoft Azure on OpenAI models. Initial rollout to ~60,000 employees, scaling toward firmwide ~230,000. <a href="https://www.reuters.com/technology/artificial-intelligence/jpmorgan-rolls-out-ai-chatbot-thousands-employees-source-says-2024-08-09/" target="_blank" rel="noopener">Reuters (08/2024)</a>; <a href="https://www.ft.com/content/" target="_blank" rel="noopener">Financial Times</a>. Verify current employee-enabled count against the <a href="https://www.jpmorganchase.com/ir/annual-report" target="_blank" rel="noopener">most recent JPMorgan annual report</a>.
+            </li>
+            <li id="fn-4">
+              Retool, "State of Engineering Time" / enterprise survey series (2024–2026). See <a href="https://retool.com/reports" target="_blank" rel="noopener">retool.com/reports</a> for the most recent edition.
+            </li>
+            <li id="fn-5">
+              Klarna — public statements on internal AI assistant displacing parallel use of customer-service SaaS. <a href="https://www.klarna.com/international/press/" target="_blank" rel="noopener">Klarna press</a>; <a href="https://www.bloomberg.com/news/articles/" target="_blank" rel="noopener">Bloomberg coverage</a>.
+            </li>
+            <li id="fn-6">
+              Goldman Sachs GS AI Platform / GS AI Assistant — firmwide rollout announced early 2025; ~10,000 in initial wave, plan to scale to ~46,000. <a href="https://www.cnbc.com/2025/01/22/goldman-sachs-ai-assistant-rollout.html" target="_blank" rel="noopener">CNBC (01/2025)</a>; <a href="https://www.reuters.com/technology/artificial-intelligence/" target="_blank" rel="noopener">Reuters</a>.
+            </li>
+            <li id="fn-7">
+              Citigroup Citi Assist + Citi Stylus — rolled to ~140,000 employees across 8 countries. <a href="https://www.reuters.com/technology/artificial-intelligence/citigroup-deploy-genai-tools-90-staff-source-says-2024-06-12/" target="_blank" rel="noopener">Reuters (06/2024)</a>; <a href="https://www.citigroup.com/global/news" target="_blank" rel="noopener">Citi press releases</a>.
+            </li>
+            <li id="fn-8">
+              Morgan Stanley AI @ Morgan Stanley Assistant (launched 09/2023) and Debrief (launched 06/2024); ~16,000 financial advisors enabled, retrieval over ~100,000 internal research documents. <a href="https://www.morganstanley.com/about-us/technology/ai-at-morgan-stanley-debrief" target="_blank" rel="noopener">Morgan Stanley press</a>; <a href="https://www.cnbc.com/2024/06/26/morgan-stanley-ai-debrief-launch.html" target="_blank" rel="noopener">CNBC (06/2024)</a>; <a href="https://www.wsj.com/articles/" target="_blank" rel="noopener">Wall Street Journal</a>.
+            </li>
+            <li id="fn-9">
+              BNY Mellon Eliza — internal AI platform disclosed in 2024 with firmwide rollout. <a href="https://www.bnymellon.com/us/en/about-us/newsroom.html" target="_blank" rel="noopener">BNY Mellon press</a>; <a href="https://www.bloomberg.com/news/articles/" target="_blank" rel="noopener">Bloomberg coverage</a>.
+            </li>
+            <li id="fn-10">
+              BlackRock Aladdin Copilot — generative AI layer integrated into the Aladdin portfolio and risk platform, announced 2024. <a href="https://www.blackrock.com/corporate/about-us/aladdin-by-blackrock" target="_blank" rel="noopener">BlackRock Aladdin overview</a>.
+            </li>
+            <li id="fn-11">
+              HSBC + Google Cloud "Dynamic Risk Assessment" (DRA) — AI-powered AML / financial-crime detection partnership, originally announced pre-current-AI-wave and actively expanded through 2024–2025. <a href="https://cloud.google.com/blog/topics/financial-services/hsbc-google-cloud-anti-money-laundering" target="_blank" rel="noopener">Google Cloud + HSBC announcement</a>; <a href="https://www.hsbc.com/news-and-views" target="_blank" rel="noopener">HSBC newsroom</a>.
+            </li>
+            <li id="fn-12">
+              MetricStream Connected GRC — vendor-marketed AI-First positioning with multi-agent triage and regulatory change management. <a href="https://www.metricstream.com/" target="_blank" rel="noopener">metricstream.com</a>. Specific feature wording should be verified directly on vendor product pages.
+            </li>
+            <li id="fn-13">
+              Diligent AI — agentic governance and risk offerings under the Diligent product line, including governance, audit, and ESG modules acquired via the HighBond/Galvanize transaction. <a href="https://www.diligent.com/" target="_blank" rel="noopener">diligent.com</a>. Specific 2026 product-launch claims should be verified directly with Diligent press.
+            </li>
+            <li id="fn-14">
+              Archer (Archer IRM) Evolv — modernization track for the Archer GRC suite. <a href="https://www.archerirm.com/" target="_blank" rel="noopener">archerirm.com</a>. "Legacy debt" framing reflects analyst commentary in <a href="https://www.forrester.com/" target="_blank" rel="noopener">Forrester Wave</a> and <a href="https://www.gartner.com/" target="_blank" rel="noopener">Gartner Magic Quadrant</a> reports for IT Risk Management.
+            </li>
+            <li id="fn-15">
+              LogicGate Risk Cloud — challenger GRC platform with native AI capabilities ("AI Cluster," risk insights). <a href="https://www.logicgate.com/" target="_blank" rel="noopener">logicgate.com</a>.
+            </li>
+            <li id="fn-16">
+              Optro — rebrand of AuditBoard (acquired by Hg in 2024). AI-native compliance and audit operations platform. <a href="https://www.optro.ai/" target="_blank" rel="noopener">optro.ai</a>.
+            </li>
+            <li id="fn-17">
+              ServiceNow Now Assist for IRM — generative AI capabilities embedded in the ServiceNow Integrated Risk Management product, part of the broader Now Assist generative-AI rollout. <a href="https://www.servicenow.com/products/governance-risk-and-compliance.html" target="_blank" rel="noopener">ServiceNow GRC product page</a>.
+            </li>
+          </ol>
         </div>
       </div>
     </section>
 
 
     <!-- ===========================================================
-         BACK TO ITEMS
+         BACK TO ITEMS  — dual-PDF download mirroring the hero
          =========================================================== -->
     <section class="section">
       <div class="container case-body">
         <div class="case-cta reveal">
-          <a class="btn btn-primary" href="saaspocalypse.pdf" download>Download the full report (PDF)</a>
+          <a class="btn btn-primary" href="saaspocalypse-q2-source-addendum.pdf" download>Download the Q2 source addendum (PDF)</a>
+          <a class="btn btn-ghost" href="saaspocalypse.pdf" download>Download the original briefing (PDF)</a>
           <a class="btn btn-ghost" href="../../index.html#research">See other research</a>
         </div>
       </div>

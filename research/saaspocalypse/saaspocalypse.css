@@ -439,3 +439,359 @@
 @media (min-width: 1024px) {
   .finance-grid { grid-template-columns: 1fr 1fr; align-items: start; }
 }
+
+
+/* ==================================================================
+   11. Q2 2026 UPDATE — page-local additions for v1.1
+   All classes namespaced to avoid leaking into the original sections.
+   ================================================================== */
+
+/* ——— Provenance note under the dual-PDF CTA ——— */
+.case-cta-note {
+  margin-top: var(--s-3);
+  max-width: 65ch;
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ——— Updated pill in the hero meta row ——— */
+.updated-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.08);
+  color: #4ade80;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ——— Mini table of contents (in the hero) ——— */
+.case-toc {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--border);
+  max-width: 65ch;
+}
+.case-toc-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 var(--s-3);
+}
+.case-toc-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  gap: var(--s-2);
+  counter-reset: toc;
+}
+.case-toc-list li {
+  counter-increment: toc;
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+.case-toc-list li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+.case-toc-list a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.case-toc-list a:hover {
+  color: var(--gold-hot);
+  border-bottom-color: var(--gold-dim);
+}
+.case-toc-tag {
+  display: inline-block;
+  margin-left: var(--s-2);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ——— Q2 update section — section eyebrow gets a small treatment so
+    the reader can clearly tell "you're in the new section" ——— */
+.section-q2 .section-title { color: var(--text); }
+.section-q2 .section-eyebrow {
+  color: #4ade80;            /* live-green to signal "fresh" */
+}
+
+/* H3 inside the Q2 section — slightly smaller than the section title
+   but bigger than the report-panel-title style. */
+.q2-h3 {
+  font-size: 1.5rem;
+  margin: var(--s-3) 0 var(--s-3);
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* ——— Bank stage matrix ——— */
+.bank-matrix-wrap,
+.grc-matrix-wrap {
+  margin: var(--s-5) 0;
+  padding: 0;
+  /* Allow horizontal scroll on narrow viewports rather than crushing
+     the table. The caption explains what's there for screen readers. */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.bank-matrix,
+.grc-matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  /* Ensure table doesn't squeeze too tight on mobile — horizontal
+     scroll kicks in instead. */
+  min-width: 640px;
+}
+.bank-matrix-caption,
+.grc-matrix-caption {
+  caption-side: bottom;
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+  text-align: left;
+  padding: var(--s-3) var(--s-4);
+  border-top: 1px dashed var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+.bank-matrix th,
+.bank-matrix td,
+.grc-matrix th,
+.grc-matrix td {
+  padding: var(--s-3) var(--s-4);
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-small);
+}
+.bank-matrix tbody tr:last-child th,
+.bank-matrix tbody tr:last-child td,
+.grc-matrix tbody tr:last-child th,
+.grc-matrix tbody tr:last-child td {
+  border-bottom: none;
+}
+.bank-matrix thead th,
+.grc-matrix thead th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+/* Row labels — bank/vendor names on the left */
+.bank-matrix tbody th,
+.grc-matrix tbody th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+}
+.bank-matrix-sub,
+.grc-matrix-sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  margin-top: 2px;
+  text-transform: none;
+}
+/* Filled cells — gold dot signals "yes" */
+.bank-matrix td.is-on,
+.grc-matrix td.is-on {
+  color: var(--gold);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.bank-matrix-rowhead-empty,
+.grc-matrix-rowhead-empty { background: transparent; }
+
+/* GRC architecture column — small categorical badge */
+.grc-matrix-arch {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.grc-matrix-arch.is-native  { color: #4ade80; }   /* AI-native */
+.grc-matrix-arch.is-mixed   { color: var(--gold); }
+.grc-matrix-arch.is-legacy  { color: #ffb547; }
+
+/* ——— Downstream impacts — clean numbered list ——— */
+.downstream-list {
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: downstream;
+  display: grid;
+  gap: var(--s-3);
+}
+.downstream-list li {
+  counter-increment: downstream;
+  position: relative;
+  padding: var(--s-4) var(--s-5) var(--s-4) calc(var(--s-7) + 12px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.downstream-list li::before {
+  content: counter(downstream);
+  position: absolute;
+  left: var(--s-4); top: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold);
+  width: var(--s-5);
+  text-align: center;
+}
+.downstream-list strong { color: var(--text); }
+
+/* ——— Archive divider between Q2 and original sections ——— */
+.section-divider {
+  padding-top: var(--s-7);
+  padding-bottom: var(--s-3);
+}
+.archive-divider {
+  text-align: center;
+  max-width: 65ch;
+  margin: 0 auto;
+}
+.archive-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 var(--s-5);
+}
+.archive-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 var(--s-3);
+}
+.archive-title {
+  font-size: 1.75rem;
+  color: var(--text-muted);  /* slightly de-emphasized vs. Q2 H2s */
+  margin: 0 0 var(--s-3);
+}
+.archive-note {
+  color: var(--text-faint);
+  font-size: var(--fs-small);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ——— Footnote callers (sup.fn) and references list ——— */
+sup.fn {
+  font-size: 0.65em;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 1px;
+}
+sup.fn a {
+  color: var(--gold);
+  text-decoration: none;
+  padding: 0 2px;
+  border-radius: 3px;
+  transition: background 0.12s ease;
+}
+sup.fn a:hover { background: rgba(212, 168, 75, 0.15); }
+sup.fn a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.sources {
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--border);
+}
+.sources-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 var(--s-4);
+}
+.sources-list {
+  margin: 0;
+  padding: 0 0 0 var(--s-5);
+  counter-reset: refnum;
+}
+.sources-list li {
+  counter-increment: refnum;
+  list-style: none;
+  position: relative;
+  padding: var(--s-2) 0 var(--s-2) var(--s-4);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.55;
+  border-bottom: 1px dashed transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.sources-list li::before {
+  content: counter(refnum) ".";
+  position: absolute;
+  left: -1.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+/* Highlight the source row when its hash is the current target —
+   so a reader who clicks a footnote caller is visually anchored. */
+.sources-list li:target {
+  background: rgba(212, 168, 75, 0.08);
+  border-color: var(--gold-dim);
+  border-radius: 6px;
+  padding-left: var(--s-4);
+}
+.sources-list a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim);
+}
+.sources-list a:hover {
+  color: var(--gold-hot);
+  border-bottom-color: var(--gold-hot);
+}
+
+/* ——— Reduced motion override for the new components ——— */
+@media (prefers-reduced-motion: reduce) {
+  .case-toc-list a,
+  sup.fn a,
+  .sources-list li,
+  .sources-list a { transition: none !important; }
+}

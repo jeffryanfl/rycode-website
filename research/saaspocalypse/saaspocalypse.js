@@ -345,4 +345,82 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => setTab(btn.dataset.tab));
   });
 
+
+  // ================================================================
+  // 6. CHART 4 — ERM DAYS-EARLIER (Q2 2026 update, v1.1)
+  // Single-data-point comparison: legacy ERM baseline vs. AI-enhanced
+  // ERM identifying material risks ~73 days earlier. The chart's
+  // narrative job is to give the addendum's most concrete benefit
+  // figure visual weight against an otherwise risk-heavy section.
+  // ================================================================
+  const ermCanvas = document.getElementById('ermDaysChart');
+  if (ermCanvas && typeof Chart !== 'undefined') {
+    new Chart(ermCanvas, {
+      type: 'bar',
+      data: {
+        labels: ['Legacy ERM (quarterly attestations)', 'AI-enhanced ERM (continuous monitoring)'],
+        datasets: [{
+          label: 'Days earlier vs. legacy baseline',
+          data: [0, 73],
+          backgroundColor: [palette.textFaint, palette.gold],
+          borderColor:     [palette.textFaint, palette.goldHot],
+          borderWidth: 1,
+          borderRadius: 4,
+          barThickness: 36,
+        }],
+      },
+      options: {
+        ...commonOptions,
+        indexAxis: 'y',
+        plugins: {
+          ...commonOptions.plugins,
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Material risks identified earlier with AI-enhanced ERM (~73 days)',
+            color: palette.text,
+            font: { size: 14, weight: '600' },
+            padding: { top: 4, bottom: 16 },
+          },
+          tooltip: {
+            ...commonOptions.plugins.tooltip,
+            callbacks: {
+              label: (ctx) => `${ctx.parsed.x} days earlier`,
+            },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            suggestedMax: 90,
+            grid:   { color: palette.grid, drawBorder: false },
+            ticks:  { color: palette.textSoft, callback: (v) => v + 'd' },
+            title:  { display: true, text: 'Days earlier than legacy baseline', color: palette.textSoft },
+          },
+          y: {
+            grid:  { display: false },
+            ticks: { color: palette.text, font: { size: 12 } },
+          },
+        },
+      },
+    });
+  }
+
+
+  // ================================================================
+  // 7. FOOTNOTE TOOLTIPS (Q2 2026 update, v1.1)
+  // Each <sup class="fn"><a href="#fn-N">N</a></sup> caller gets the
+  // full source text as a native browser tooltip, so a reader can
+  // skim citations on hover without scrolling to the sources list.
+  // The anchor click still jumps to the source row, which is
+  // visually highlighted by the :target selector in CSS.
+  // ================================================================
+  document.querySelectorAll('sup.fn a[href^="#fn-"]').forEach((link) => {
+    const target = document.getElementById(link.getAttribute('href').slice(1));
+    if (!target) return;
+    const text = target.textContent.replace(/\s+/g, ' ').trim();
+    link.setAttribute('title', text);
+    link.setAttribute('aria-label', 'Footnote ' + link.textContent.trim() + ': ' + text);
+  });
+
 });
