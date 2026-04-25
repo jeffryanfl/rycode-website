@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Control Effectiveness & Residual Risk — an interactive ERM calculator. Select risks, assign controls, watch residual risk drop in real time. Part of Rycode." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Control Effectiveness & Residual Risk — Rycode" />
+  <meta property="og:description" content="Slide control effectiveness. Watch residual risk drop." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <title>Control Effectiveness & Residual Risk — Rycode</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="control-effectiveness.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <noscript>
+    <div class="noscript-banner">
+      This calculator needs JavaScript to update the chart and scores as you move the sliders. Turn JS on for the full experience.
+    </div>
+  </noscript>
+
+  <!-- ===========================================================
+       HEADER / NAV  (same pattern as the rest of the site)
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html" class="brand" aria-label="Rycode home">
+        <img src="../../logo.svg" alt="" class="brand-logo" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#systems">Systems</a></li>
+        <li><a href="../../index.html#research">Research</a></li>
+        <li><a href="../../index.html#anatomy">Anatomy Of</a></li>
+        <li><a href="../../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="https://grc.rycode.dev/" target="_blank" rel="noopener">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top" tabindex="-1">
+
+    <!-- ===========================================================
+         HERO
+         =========================================================== -->
+    <section class="case-hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">
+          <a href="../../index.html#dashboards" class="back-link">← Back to dashboards</a>
+        </p>
+        <div class="case-meta reveal">
+          <span class="card-category">Dashboards · GRC</span>
+          <span class="card-status is-live">
+            <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+          </span>
+        </div>
+        <h1 class="case-title reveal">Control Effectiveness &amp; Residual Risk</h1>
+        <p class="case-lede reveal">Add the risks. Add the controls. Slide each control's effectiveness and watch residual risk fall — for one risk, or for the whole framework.</p>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         CALCULATOR
+         =========================================================== -->
+    <section class="section">
+      <div class="container">
+
+        <!-- ——— Portfolio summary ——————————————————————————— -->
+        <section class="ce-summary reveal" aria-label="Portfolio summary">
+          <div class="ce-stat">
+            <p class="ce-stat-label">Portfolio inherent</p>
+            <p class="ce-stat-value" id="ceInherentTotal" aria-live="polite">0</p>
+            <p class="ce-stat-sub">Sum of likelihood × impact across every risk.</p>
+          </div>
+          <div class="ce-stat">
+            <p class="ce-stat-label">Portfolio residual</p>
+            <p class="ce-stat-value" id="ceResidualTotal" aria-live="polite">0</p>
+            <p class="ce-stat-sub">What's left after every control is applied.</p>
+          </div>
+          <div class="ce-stat">
+            <p class="ce-stat-label">Reduction</p>
+            <p class="ce-stat-value ce-stat-value--accent" id="ceReductionPct" aria-live="polite">0%</p>
+            <p class="ce-stat-sub">How much of the inherent risk your controls remove.</p>
+          </div>
+        </section>
+
+        <!-- ——— Chart ——————————————————————————————————————— -->
+        <section class="ce-chart-wrap reveal" aria-labelledby="ceChartHeading">
+          <header class="ce-section-head">
+            <h2 id="ceChartHeading">Inherent vs residual, by risk</h2>
+            <div class="ce-export" role="group" aria-label="Export the chart">
+              <button type="button" class="ce-btn ce-btn--ghost" data-export="png">Export PNG</button>
+              <button type="button" class="ce-btn ce-btn--ghost" data-export="csv">Export CSV</button>
+            </div>
+          </header>
+          <div class="ce-chart">
+            <canvas id="ceChart" role="img" aria-label="Horizontal bar chart comparing each risk's inherent score (gray) and residual score (gold)."></canvas>
+          </div>
+          <!-- Screen-reader fallback: Chart.js renders to canvas, which is opaque to AT.
+               This table mirrors the chart and is updated by the same render loop. -->
+          <table class="ce-sr-table" id="ceChartTable" aria-label="Chart data, in table form">
+            <caption>Inherent and residual risk by risk</caption>
+            <thead>
+              <tr><th scope="col">Risk</th><th scope="col">Inherent</th><th scope="col">Residual</th><th scope="col">Reduction</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <!-- ——— Risk cards ——————————————————————————————————— -->
+        <section class="ce-cards-wrap" aria-labelledby="ceCardsHeading">
+          <header class="ce-section-head">
+            <h2 id="ceCardsHeading">Risks &amp; controls</h2>
+            <div class="ce-toolbar">
+              <button type="button" class="ce-btn ce-btn--ghost" id="ceAddRisk">+ Add risk</button>
+              <button type="button" class="ce-btn ce-btn--ghost" id="ceReset">Reset to defaults</button>
+            </div>
+          </header>
+          <div id="ceRiskList" class="ce-risk-list" aria-live="polite"></div>
+        </section>
+
+        <!-- ——— Explainer / teaching block —————————————————— -->
+        <section class="ce-explainer">
+          <h2>How this calculator thinks about risk.</h2>
+
+          <h3>The math, in one paragraph</h3>
+          <p>
+            Each risk is scored on the standard 5×5 ERM heat map: <strong>likelihood (1–5) × impact (1–5)</strong> gives an inherent score from 1 to 25. Each control on that risk has an <strong>effectiveness percentage</strong> (0–100%). Residual risk is computed multiplicatively — that is, each control acts independently on what's left after the previous control:
+          </p>
+          <p class="ce-eqn">
+            residual = inherent × ∏ (1 − effectiveness<sub>i</sub> / 100)
+          </p>
+          <p>
+            Three controls at 60% effectiveness each leave <strong>0.4 × 0.4 × 0.4 = 6.4%</strong> of the original risk — not zero, even though the percentages would naively add to 180%. That's the practitioner's default and the conservative read.
+          </p>
+
+          <h3>Where the model is honest, and where it isn't</h3>
+          <ul>
+            <li><strong>Honest:</strong> defense-in-depth almost never zeroes risk out. Multiplicative residual reflects that.</li>
+            <li><strong>Simplification:</strong> controls are assumed to act <em>independently</em>. In reality they often correlate (two controls run by the same team that loses budget at the same time, for instance). Real GRC platforms handle this with control families and dependency mapping; this calculator does not.</li>
+            <li><strong>Simplification:</strong> a control here belongs to one risk. In practice a single control (say MFA) reduces several risks. That's a many-to-many model — possible, but a much bigger lift. v1 keeps controls owned by their parent risk.</li>
+          </ul>
+
+          <h3>What the export gives you</h3>
+          <p>
+            <strong>Export PNG</strong> writes the chart exactly as drawn, on the dark surface, suitable for slides or a status report. <strong>Export CSV</strong> writes the underlying rows — risk name, inherent, residual, reduction — for analysis in Excel, Sheets, or a real GRC system.
+          </p>
+
+          <h3>Security &amp; privacy note</h3>
+          <p>
+            Everything you type stays in your browser tab. Nothing is sent to a server, written to disk, or saved across reloads. Refresh the page and you're back to the three example risks. If you want persistence, that's a deliberate next step — not a silent default.
+          </p>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===========================================================
+       FOOTER  (same pattern as the rest of the site)
+       =========================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <!-- Chart.js via CDN — same version & SRI hash the other dashboards use.
+       integrity= is a Subresource Integrity check: the browser refuses to
+       execute the file if its content doesn't match this hash, so a tampered
+       CDN can't silently take over the page. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+          integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g"
+          crossorigin="anonymous"></script>
+  <!-- Shared site behavior (header scroll, nav toggle, reveals). -->
+  <script src="../../script.js"></script>
+  <!-- Calculator logic — must load AFTER Chart.js is available. -->
+  <script src="control-effectiveness.js"></script>
+</body>
+</html>

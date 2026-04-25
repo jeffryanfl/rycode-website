@@ -1,0 +1,417 @@
+/* ==================================================================
+   CONTROL EFFECTIVENESS & RESIDUAL RISK — page-scoped styles
+   All classes are prefixed `.ce-` so nothing here can leak into
+   another dashboard or get accidentally inherited.
+   ================================================================== */
+
+/* ------------------------------------------------------------------
+   1. SHARED TOKENS LOCAL TO THIS PAGE
+   The risk-color tokens are scoped to this file. They're not in
+   styles.css because the rest of the site doesn't think in heat-map
+   colors — they belong to this dashboard's vocabulary.
+   ------------------------------------------------------------------ */
+:root {
+  --ce-inherent: #6b7280;     /* slate-500 — neutral "before" gray */
+  --ce-residual: var(--gold); /* the page's accent, "after" */
+  --ce-track:    rgba(255,255,255,0.08);
+  --ce-good:     #4ade80;     /* green-400, used only for the reduction % */
+}
+
+/* ------------------------------------------------------------------
+   2. PAGE LAYOUT — summary, chart, cards, explainer
+   ------------------------------------------------------------------ */
+
+/* ——— Portfolio summary (3 big numbers) ——— */
+.ce-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+  margin-bottom: var(--s-7);
+}
+.ce-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-5);
+}
+.ce-stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 var(--s-2);
+}
+.ce-stat-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 var(--s-2);
+  font-variant-numeric: tabular-nums;
+}
+.ce-stat-value--accent { color: var(--ce-good); }
+.ce-stat-sub {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 32ch;
+}
+
+@media (max-width: 768px) {
+  .ce-summary { grid-template-columns: 1fr; }
+}
+
+/* ——— Section headers (chart and cards both use this row) ——— */
+.ce-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin: var(--s-7) 0 var(--s-3);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--border);
+}
+.ce-section-head h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--text);
+}
+
+/* ——— Chart ——— */
+.ce-chart-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-4) var(--s-5) var(--s-5);
+  margin-bottom: var(--s-7);
+}
+.ce-chart-wrap .ce-section-head { margin-top: 0; }
+.ce-chart {
+  position: relative;
+  /* Min height so an empty canvas still reserves space and avoids layout shift. */
+  min-height: 280px;
+  padding-top: var(--s-3);
+}
+
+/* Screen-reader-only data table (mirrors the chart). Hidden visually,
+   exposed to assistive tech because canvas is opaque to AT. */
+.ce-sr-table {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* ——— Cards container ——— */
+.ce-cards-wrap {
+  margin-bottom: var(--s-7);
+}
+.ce-risk-list {
+  display: grid;
+  gap: var(--s-4);
+}
+
+/* ——— Individual risk card ——— */
+.ce-risk {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-5);
+  transition: border-color 0.15s ease;
+}
+.ce-risk:focus-within { border-color: var(--gold-dim); }
+
+.ce-risk-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s-3);
+  align-items: start;
+  margin-bottom: var(--s-4);
+}
+.ce-risk-name {
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom-color: var(--border);
+  color: var(--text);
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: var(--s-2) 0;
+  font-family: inherit;
+}
+.ce-risk-name:hover { border-bottom-color: var(--gold-dim); }
+.ce-risk-name:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-bottom-color: transparent;
+}
+
+.ce-risk-scores {
+  display: flex;
+  gap: var(--s-3);
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ce-score {
+  display: flex; flex-direction: column; align-items: flex-end;
+  color: var(--text-faint);
+}
+.ce-score-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.ce-score--inherent .ce-score-num { color: var(--ce-inherent); }
+.ce-score--residual .ce-score-num { color: var(--ce-residual); }
+
+/* ——— Inherent likelihood/impact sliders block ——— */
+.ce-inherent-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+  padding: var(--s-3) 0 var(--s-4);
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: var(--s-4);
+}
+@media (max-width: 480px) {
+  .ce-inherent-block { grid-template-columns: 1fr; }
+}
+
+/* ——— Controls list ——— */
+.ce-controls-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 var(--s-3);
+}
+.ce-control-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s-3);
+  align-items: center;
+  padding: var(--s-2) 0;
+}
+.ce-control-name {
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(255,255,255,0.06);
+  color: var(--text);
+  font-size: var(--fs-base);
+  padding: var(--s-1) 0;
+  font-family: inherit;
+}
+.ce-control-name:hover { border-bottom-color: var(--gold-dim); }
+.ce-control-name:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.ce-control-eff {
+  display: flex; flex-direction: column;
+  min-width: 220px;
+}
+.ce-control-eff-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+.ce-control-eff-value {
+  color: var(--gold);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 600px) {
+  .ce-control-row { grid-template-columns: 1fr; }
+  .ce-control-eff { min-width: 0; }
+}
+
+.ce-card-actions {
+  display: flex; gap: var(--s-2); justify-content: flex-end;
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px dashed var(--border);
+}
+
+/* ------------------------------------------------------------------
+   3. SLIDER STYLING (range inputs)
+   Range inputs need vendor-prefixed pseudo-elements for the track
+   and thumb because there is still no cross-browser standard. The
+   appearance:none reset + manual pseudo-element styling is the only
+   way to get a consistent look across Chromium/Safari/Firefox.
+   ------------------------------------------------------------------ */
+.ce-slider {
+  display: block;
+  width: 100%;
+}
+.ce-slider-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.ce-slider-value {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.ce-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 26px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+.ce-range::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--ce-track);
+  border-radius: 2px;
+}
+.ce-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px; height: 18px;
+  background: var(--gold);
+  border: 2px solid var(--bg, #0d0d0f);
+  border-radius: 50%;
+  margin-top: -7px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.ce-range:hover::-webkit-slider-thumb,
+.ce-range:focus::-webkit-slider-thumb {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(212, 168, 75, 0.18);
+}
+
+/* Firefox */
+.ce-range::-moz-range-track {
+  height: 4px;
+  background: var(--ce-track);
+  border-radius: 2px;
+}
+.ce-range::-moz-range-thumb {
+  width: 18px; height: 18px;
+  background: var(--gold);
+  border: 2px solid var(--bg, #0d0d0f);
+  border-radius: 50%;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.ce-range:hover::-moz-range-thumb,
+.ce-range:focus::-moz-range-thumb {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(212, 168, 75, 0.18);
+}
+
+.ce-range:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------
+   4. BUTTONS (page-local, smaller than the global .btn)
+   ------------------------------------------------------------------ */
+.ce-btn {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-tiny);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease;
+}
+.ce-btn:hover { border-color: var(--gold-dim); color: var(--gold-hot); }
+.ce-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.ce-btn--ghost { background: transparent; }
+.ce-btn--danger { color: var(--text-faint); }
+.ce-btn--danger:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.5); }
+
+.ce-toolbar { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+.ce-export { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+
+/* ------------------------------------------------------------------
+   5. EXPLAINER (long-form prose under the calculator)
+   ------------------------------------------------------------------ */
+.ce-explainer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-5) var(--s-6);
+  margin-top: var(--s-7);
+}
+.ce-explainer > * { max-width: 72ch; }
+.ce-explainer h2 {
+  font-size: 1.5rem;
+  margin: 0 0 var(--s-4);
+  color: var(--text);
+}
+.ce-explainer h3 {
+  font-size: 1rem;
+  margin: var(--s-5) 0 var(--s-2);
+  color: var(--gold);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--s-2);
+}
+.ce-explainer p {
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 0 var(--s-3);
+}
+.ce-explainer ul {
+  color: var(--text-muted);
+  line-height: 1.65;
+  padding-left: 1.25rem;
+}
+.ce-explainer li { margin-bottom: var(--s-2); }
+.ce-explainer .ce-eqn {
+  font-family: var(--font-mono);
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--gold-dim);
+  padding: var(--s-3) var(--s-4);
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------------
+   6. REDUCED MOTION — kill all transitions
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .ce-risk,
+  .ce-btn,
+  .ce-range::-webkit-slider-thumb,
+  .ce-range::-moz-range-thumb {
+    transition: none !important;
+  }
+  .ce-range:hover::-webkit-slider-thumb,
+  .ce-range:focus::-webkit-slider-thumb,
+  .ce-range:hover::-moz-range-thumb,
+  .ce-range:focus::-moz-range-thumb {
+    transform: none;
+  }
+}
