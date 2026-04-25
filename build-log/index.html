@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Build Log — a running library of bugs caught while building this site. Every entry has the symptom, the cause, the fix, and the lesson worth banking. Part of Rycode." />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Build Log — Rycode" />
+  <meta property="og:description" content="Bugs caught, causes found, lessons banked." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <title>Build Log — Rycode</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="build-log.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <noscript>
+    <div class="noscript-banner">
+      The Build Log uses JavaScript to filter and switch between entries. Turn JS on for the full experience — the entries themselves are documented below for accessibility.
+    </div>
+  </noscript>
+
+  <!-- ===========================================================
+       HEADER / NAV
+       =========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="../index.html" class="brand" aria-label="Rycode home">
+        <img src="../logo.svg" alt="" class="brand-logo" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#systems">Systems</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#anatomy">Anatomy Of</a></li>
+        <li><a href="../index.html#build-log">Build Log</a></li>
+        <li><a href="../index.html#dashboards">Dashboards</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="https://grc.rycode.dev/" target="_blank" rel="noopener">Enter GRC</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top" tabindex="-1">
+
+    <!-- ===========================================================
+         HERO
+         =========================================================== -->
+    <section class="case-hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">
+          <a href="../index.html#build-log" class="back-link">← Back to home</a>
+        </p>
+        <div class="case-meta reveal">
+          <span class="card-category">Field journal</span>
+          <span class="card-status is-live">
+            <span class="live-dot" aria-hidden="true"></span> Live · v1.0
+          </span>
+        </div>
+        <h1 class="case-title reveal">Build Log</h1>
+        <p class="case-lede reveal">Every bug caught while building this site, with the symptom, the cause, the fix, and the lesson worth banking. Filter by category, click an entry to study it.</p>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         APP — toolbar + two-pane (list / detail)
+         =========================================================== -->
+    <section class="section">
+      <div class="container">
+
+        <!-- Toolbar: filter chips + meta counts ——————————————— -->
+        <div class="bl-toolbar reveal">
+          <div class="bl-chips" id="blChips" role="group" aria-label="Filter entries by category">
+            <!-- Filter chips rendered by build-log.js -->
+          </div>
+          <p class="bl-counts" id="blCounts" aria-live="polite">Loading…</p>
+        </div>
+
+        <!-- Two-pane study view ———————————————————————————————— -->
+        <div class="bl-panes reveal">
+          <aside class="bl-list" aria-label="Entries">
+            <ol id="blList" class="bl-list-inner">
+              <!-- Entry rows rendered by build-log.js -->
+            </ol>
+          </aside>
+          <article class="bl-detail" id="blDetail" aria-live="polite">
+            <!-- Selected entry rendered by build-log.js -->
+          </article>
+        </div>
+
+        <!-- Explainer / how to read this ————————————————————— -->
+        <section class="bl-explainer">
+          <h2>How to read this log.</h2>
+
+          <h3>Why this exists</h3>
+          <p>
+            A bug fixed silently is a lesson left on the floor. This page is a running library of the real engineering issues hit while building this site — so the next time the same shape of problem shows up, the answer is already on the shelf. Every entry has the same four parts:
+          </p>
+          <ul>
+            <li><strong>Symptom</strong> — what you actually saw or experienced. The thing that made you say "wait, that's wrong."</li>
+            <li><strong>Cause</strong> — what was actually happening underneath. Almost always not what the symptom suggests.</li>
+            <li><strong>Fix</strong> — the change that resolved it.</li>
+            <li><strong>Lesson</strong> — the generalizable pattern. The part you bank for next time.</li>
+          </ul>
+
+          <h3>How to add a new entry</h3>
+          <p>
+            Open <code>build-log/build-log.js</code> and append an object to the <code>ENTRIES</code> array at the top of the file. The array is the only source of truth — the page renders from it. Every field is required except <code>severity</code>, which defaults to <code>minor</code>. Date format is MM/DD/YYYY.
+          </p>
+
+          <h3>Categories used so far</h3>
+          <p>
+            <strong>CSS layout</strong> — anything Grid, Flexbox, sizing, or visual reflow. <strong>JS state</strong> — bugs in the data model, render loop, or event wiring. <strong>Git workflow</strong> — anything about commits, branches, pushes, or what's actually shipped. <strong>Deployment</strong> — issues that only showed up in production or in the deploy pipeline. <strong>Accessibility</strong> — keyboard, focus, ARIA, screen-reader behavior. <strong>Security</strong> — anything where the wrong input could do harm. <strong>Performance</strong> — render speed, asset size, layout thrash. <strong>Tooling</strong> — bugs in the local dev loop, preview, or build process. <strong>Information architecture</strong> — page exists / can it be found / does it link where users expect.
+          </p>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===========================================================
+       FOOTER
+       =========================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-inner">
+      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
+      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+    </div>
+  </footer>
+
+  <!-- Shared site behavior (header scroll, nav toggle, reveals). -->
+  <script src="../script.js"></script>
+  <script src="build-log.js"></script>
+</body>
+</html>
