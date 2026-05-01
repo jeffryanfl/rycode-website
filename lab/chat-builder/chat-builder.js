@@ -711,15 +711,29 @@
       throw new Error(`This file is ${mb}MB. Maximum supported is 30MB. Try a smaller image.`);
     }
 
-    // 4. Decode via a hidden <img>. Errors here mean format support
-    //    or file integrity, not size. Show a message that doesn't
-    //    point fingers at HEIC if the file claims to be JPEG/PNG.
-    const blobUrl = URL.createObjectURL(file);
+    // 4. Read the file to a data: URL via FileReader.
+    //
+    //    Why not URL.createObjectURL(file) like the previous version?
+    //    Blob URLs are blocked by the site's Content Security Policy
+    //    (img-src doesn't include blob:). Data URLs are explicitly
+    //    allowed. The end result is identical for our use case — we
+    //    just need an in-memory reference the <img> tag can decode —
+    //    and data URLs are also more portable. Trade-off: slightly
+    //    more memory while we hold both the original and the
+    //    compressed copy. Acceptable for screenshot use.
+    let inputDataUrl;
+    try {
+      inputDataUrl = await readFileAsDataURL(file);
+    } catch (err) {
+      throw new Error(
+        `Could not read the file "${file.name}". It may be corrupted or your browser denied file access.`
+      );
+    }
+
     let img;
     try {
-      img = await loadImage(blobUrl);
+      img = await loadImage(inputDataUrl);
     } catch (err) {
-      URL.revokeObjectURL(blobUrl);
       const claimedFormat = file.type || 'unknown';
       throw new Error(
         'The browser couldn\'t decode this image. ' +
@@ -729,23 +743,30 @@
       );
     }
 
-    try {
-      const scale = img.width > MAX_W ? MAX_W / img.width : 1;
-      const w = Math.round(img.width * scale);
-      const h = Math.round(img.height * scale);
-      const canvas = document.createElement('canvas');
-      canvas.width = w; canvas.height = h;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, w, h);
-      const dataUrl = canvas.toDataURL('image/jpeg', QUALITY);
-      console.log('[chat-builder] upload success:', {
-        outputSizeKB: Math.round(dataUrl.length * 0.75 / 1024),  // rough base64 → bytes
-        outputDimensions: w + 'x' + h,
-      });
-      return dataUrl;
-    } finally {
-      URL.revokeObjectURL(blobUrl);
-    }
+    const scale = img.width > MAX_W ? MAX_W / img.width : 1;
+    const w = Math.round(img.width * scale);
+    const h = Math.round(img.height * scale);
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    const dataUrl = canvas.toDataURL('image/jpeg', QUALITY);
+    console.log('[chat-builder] upload success:', {
+      outputSizeKB: Math.round(dataUrl.length * 0.75 / 1024),
+      outputDimensions: w + 'x' + h,
+    });
+    return dataUrl;
+  }
+
+  // FileReader-based file → data URL. Promise-wrapped because the
+  // FileReader API is event-callback only and we want to await it.
+  function readFileAsDataURL(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload  = () => resolve(reader.result);
+      reader.onerror = () => reject(reader.error || new Error('FileReader failed'));
+      reader.readAsDataURL(file);
+    });
   }
   function loadImage(src) {
     return new Promise((resolve, reject) => {

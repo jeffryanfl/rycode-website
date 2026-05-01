@@ -30,6 +30,17 @@
   // ----------------------------------------------------------------
   const ENTRIES = [
     {
+      id: 'csp-blocked-blob-urls',
+      title: 'CSP blocked blob: URLs and broke every image upload',
+      date: '05/01/2026',
+      category: 'Security',
+      severity: 'major',
+      symptom: 'On the Chat Builder, every image upload failed in production with the misleading "browser couldn\'t decode this image" error — even for plain JPEG and PNG files that decoded fine on localhost. The console showed the actual error: <code>Loading the image \'blob:https://rycode.dev/...\' violates the following Content Security Policy directive: "img-src \'self\' data:"</code>.',
+      cause: 'Two layers. First, the upload pipeline used <code>URL.createObjectURL(file)</code> to create a temporary <code>blob:</code> URL as an intermediate step before re-encoding the image to a smaller data URL via canvas. Blob URLs and data URLs serve the same purpose for this use case. Second, the site\'s CSP (in /_headers) had <code>img-src \'self\' data:</code> — a strict policy that allowed data URLs and same-origin images but NOT blob URLs. The browser silently blocked the blob, the <code>&lt;img&gt;</code> load failed, and the catch path showed a generic "couldn\'t decode" message that pointed at file format. Wrong cause, wrong fix, hours of misleading error messages. localhost didn\'t reproduce the bug because the dev server wasn\'t serving the CSP header.',
+      fix: 'Two complementary changes. (1) Rewrote the upload pipeline to use <code>FileReader.readAsDataURL()</code> instead of <code>URL.createObjectURL()</code> — the same end result (an in-memory image reference for canvas to draw) but using data URLs throughout, which are already CSP-allowed. This works regardless of CSP configuration. (2) Added a per-path CSP override at <code>/lab/*</code> in /_headers that allows <code>img-src \'self\' data: https:</code>, scoped to just the side-project sandbox. The main site keeps its strict policy. Future side projects under /lab can accept arbitrary image URLs without weakening the rest of the site.',
+      lesson: 'Three things. <strong>One:</strong> CSPs are environment-specific gotchas. localhost doesn\'t serve them, production does — anything that touches restricted directives won\'t reveal the bug until deploy. Test image/script/style features against the same headers production will serve. <strong>Two:</strong> when you tighten a CSP, every later feature has to live within the policy. Tools that need broader source allowances (image hosts, embeds, third-party widgets) need their own CSP scope via per-path headers — don\'t loosen the global policy to fix one corner. <strong>Three:</strong> error messages should distinguish "permission denied by policy" from "couldn\'t decode the bytes." Generic catch blocks turn distinct failure modes into the same surface text. The user spent real time chasing a format problem that was actually a security policy.',
+    },
+    {
       id: 'heic-upload-misleading-error',
       title: 'HEIC photos failed to upload — and the error blamed the wrong thing',
       date: '05/01/2026',
