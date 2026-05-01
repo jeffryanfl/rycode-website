@@ -352,7 +352,7 @@
         ${urlInput}
         <label class="cb-field">
           <span class="cb-field-label">Or upload from your device</span>
-          <input type="file" class="cb-input cb-input-file" accept="image/jpeg,image/png,image/webp,image/gif" data-field="imageFile" />
+          <input type="file" class="cb-input cb-input-file" accept="image/jpeg,image/jpg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif" data-field="imageFile" />
           <span class="cb-field-hint">JPEG, PNG, WebP, or GIF. iPhone HEIC photos won't display in browsers — switch your camera to "Most Compatible" or convert via Preview first.</span>
         </label>
         <label class="cb-field">
@@ -669,13 +669,25 @@
   // browsers cannot decode) needs an actionable message, not a
   // misleading "try a smaller file."
   async function fileToCompressedDataURL(file) {
-    const MAX_W = 800;
-    const QUALITY = 0.85;
+    // Smaller defaults than v2 — cuts the per-image storage cost by
+    // ~40%, giving more headroom before localStorage quota kicks in.
+    // 720px is still plenty sharp for screenshot mockups.
+    const MAX_W = 720;
+    const QUALITY = 0.78;
     const MAX_INPUT_BYTES = 30 * 1024 * 1024;  // 30MB hard ceiling
 
+    // Diagnostic info — logged on every upload so when something
+    // fails, the console shows exactly what was attempted. Cheap
+    // observability that pays for itself the first time it helps.
+    console.log('[chat-builder] upload attempt:', {
+      name: file.name,
+      type: file.type || '(empty)',
+      sizeBytes: file.size,
+      sizeMB: (file.size / 1024 / 1024).toFixed(2),
+    });
+
     // 1. Format check — HEIC/HEIF (iPhone default since iOS 11).
-    //    Browsers other than Safari can't decode HEIC client-side
-    //    without a polyfill. Reject early with a useful message.
+    //    Browsers other than Safari can't decode HEIC client-side.
     if (/heic|heif/i.test(file.type) || /\.heic$|\.heif$/i.test(file.name)) {
       throw new Error(
         'iPhone HEIC photos can\'t be displayed by browsers. Two fixes: ' +
@@ -685,26 +697,35 @@
       );
     }
 
-    // 2. Reasonable upper bound on input size. Anything bigger usually
-    //    means something went wrong upstream (e.g. a video file
-    //    masquerading via image/* picker on some Android browsers).
+    // 2. Empty / 0-byte files — happens occasionally with corrupt
+    //    downloads or interrupted transfers. Decoding a 0-byte file
+    //    would throw a confusing "image load failed" without naming
+    //    the actual cause.
+    if (file.size === 0) {
+      throw new Error('That file appears to be empty (0 bytes). It may have been corrupted during transfer — try a fresh copy.');
+    }
+
+    // 3. Reasonable upper bound on input size.
     if (file.size > MAX_INPUT_BYTES) {
       const mb = (file.size / 1024 / 1024).toFixed(1);
       throw new Error(`This file is ${mb}MB. Maximum supported is 30MB. Try a smaller image.`);
     }
 
-    // 3. Try to decode it via a hidden <img>. If the browser can't,
-    //    that's where unsupported formats fail. Distinguish that
-    //    failure from a genuine size error.
+    // 4. Decode via a hidden <img>. Errors here mean format support
+    //    or file integrity, not size. Show a message that doesn't
+    //    point fingers at HEIC if the file claims to be JPEG/PNG.
     const blobUrl = URL.createObjectURL(file);
     let img;
     try {
       img = await loadImage(blobUrl);
     } catch (err) {
       URL.revokeObjectURL(blobUrl);
+      const claimedFormat = file.type || 'unknown';
       throw new Error(
-        'The browser couldn\'t decode this image. This usually means an ' +
-        'unsupported format (HEIC, RAW, or similar). Try saving it as JPEG or PNG first.'
+        'The browser couldn\'t decode this image. ' +
+        `(File: "${file.name}", reported as ${claimedFormat}.) ` +
+        'This usually means a corrupted file or a format the browser doesn\'t support. ' +
+        'Try opening the image in Preview/Photos and re-exporting as JPEG.'
       );
     }
 
@@ -716,7 +737,12 @@
       canvas.width = w; canvas.height = h;
       const ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0, w, h);
-      return canvas.toDataURL('image/jpeg', QUALITY);
+      const dataUrl = canvas.toDataURL('image/jpeg', QUALITY);
+      console.log('[chat-builder] upload success:', {
+        outputSizeKB: Math.round(dataUrl.length * 0.75 / 1024),  // rough base64 → bytes
+        outputDimensions: w + 'x' + h,
+      });
+      return dataUrl;
     } finally {
       URL.revokeObjectURL(blobUrl);
     }
@@ -781,13 +807,21 @@
   function save() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      save._warned = false;  // recovered — allow a future warning
     } catch (err) {
-      // Quota error is most likely from too many large images.
-      // Tell the user once; from then on persistence will silently
-      // fail until they free space.
-      if (err && err.name === 'QuotaExceededError' && !save._warned) {
+      // Quota errors usually mean accumulated image data URLs have
+      // pushed past the browser's localStorage cap (5–10MB). Tell the
+      // user explicitly what the cause is and what to do, only once
+      // per accumulating session.
+      if (err && (err.name === 'QuotaExceededError' || err.code === 22) && !save._warned) {
         save._warned = true;
-        alert('Browser storage is full. Your conversation will keep working in this tab, but won\'t survive a reload until you delete some messages.');
+        const imgCount = state.messages.filter((m) => m.type === 'image' && m.imageUrl).length;
+        alert(
+          'Browser storage is full — your conversation has more saved images ' +
+          `than will fit (currently ${imgCount} image${imgCount === 1 ? '' : 's'}). ` +
+          'Your chat keeps working in this tab, but won\'t survive a reload. ' +
+          'To free space: delete some image messages, or click Reset to start fresh.'
+        );
       } else {
         console.warn('Chat builder: could not save', err);
       }
