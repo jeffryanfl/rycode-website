@@ -243,7 +243,7 @@
       const url = m.imageUrl && m.imageUrl.trim() ? m.imageUrl.trim() : '';
       const imgTag = url
         ? `<img class="cb-bubble-image" src="${esc(url)}" alt="" onerror="this.style.background='#3a4a52';this.removeAttribute('src');" />`
-        : '<div class="cb-bubble-image" role="img" aria-label="image placeholder"></div>';
+        : '<div class="cb-bubble-image cb-bubble-image-placeholder" role="img" aria-label="image placeholder"></div>';
       inner += imgTag;
       if (m.text) inner += `<span class="cb-bubble-caption">${esc(m.text)}</span>`;
     } else {

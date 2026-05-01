@@ -593,15 +593,25 @@ textarea.cb-input {
   line-height: 1;
 }
 
-/* Image messages — image sits at the top of the bubble, caption below */
+/* Image messages — image sits at the top of the bubble, caption below.
+   We size by max-width and let height follow the image's natural
+   aspect ratio so tall portraits and wide landscapes both render in
+   full, no cropping. WhatsApp itself does the same — image bubbles
+   grow to fit the photo rather than forcing a fixed thumbnail. */
 .cb-bubble-image {
   display: block;
   width: 260px;
   max-width: 100%;
+  height: auto;
   border-radius: 6px;
   margin: -3px -5px 4px -7px;  /* slight overhang inside the padded bubble */
   background: #2a3942;
-  object-fit: cover;
+}
+
+/* When no image source is set yet (the user just added an image
+   message but hasn't pasted/uploaded), the placeholder div needs an
+   explicit size since it has no intrinsic dimensions. */
+.cb-bubble-image-placeholder {
   aspect-ratio: 4 / 3;
 }
 .cb-bubble-caption { white-space: pre-wrap; }
