@@ -12,7 +12,7 @@
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
   <title>Chat Builder · Lab — Rycode</title>
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="chat-builder.css?v=5" />
+  <link rel="stylesheet" href="chat-builder.css?v=6" />
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body class="cb-body">
@@ -59,8 +59,20 @@
             <input type="text" id="cbGroupName" class="cb-input" maxlength="40" placeholder="e.g. Family, Lake Trip 2026" />
           </label>
 
+          <!-- Platform selector — WhatsApp / Instagram / iMessage.
+               Independent of theme; six total looks. -->
+          <label class="cb-field">
+            <span class="cb-field-label">Platform</span>
+            <select id="cbPlatform" class="cb-input">
+              <option value="whatsapp">WhatsApp</option>
+              <option value="instagram">Instagram</option>
+              <option value="imessage">iMessage</option>
+            </select>
+          </label>
+
           <!-- Status line — shows "online" or "last seen at..." for 1:1
-               chats; shows the member preview (auto) for groups. -->
+               chats; shows the member preview (auto) for groups. iMessage
+               doesn't display this line at all. -->
           <label class="cb-field" id="cbStatusField">
             <span class="cb-field-label" id="cbStatusFieldLabel">Status / "last seen" line</span>
             <input type="text" id="cbContactStatus" class="cb-input" value="online" maxlength="60" />
@@ -134,23 +146,24 @@
             </div>
           </div>
 
-          <!-- WhatsApp header (back arrow / avatar / name+status / call icons) -->
+          <!-- Chat header — structure stays uniform across platforms,
+               CSS repositions per data-platform. The right-side icons
+               are populated by JS so each platform can show its own
+               (WhatsApp: video/voice/menu, Instagram: video/voice/info,
+               iMessage: just info). -->
           <div class="cb-chat-header">
             <button type="button" class="cb-icon-btn cb-back" aria-hidden="true" tabindex="-1">
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="14 4 7 11 14 18"/></svg>
             </button>
-            <div class="cb-avatar" id="cbHeaderAvatar"><span class="cb-avatar-initials">S</span></div>
-            <div class="cb-chat-header-text">
-              <p class="cb-chat-name" id="cbChatName">Sam</p>
-              <p class="cb-chat-status" id="cbChatStatus">online</p>
+            <div class="cb-chat-header-main">
+              <div class="cb-avatar" id="cbHeaderAvatar"><span class="cb-avatar-initials">S</span></div>
+              <div class="cb-chat-header-text">
+                <p class="cb-chat-name" id="cbChatName">Sam</p>
+                <p class="cb-chat-status" id="cbChatStatus">online</p>
+              </div>
             </div>
-            <div class="cb-chat-header-icons" aria-hidden="true">
-              <!-- Video call -->
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 7 20 4 20 18 14 15"/><rect x="2" y="5" width="13" height="12" rx="2"/></svg>
-              <!-- Voice call -->
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3 L7 3 L8.5 7 L6.5 8.5 C7.5 11 9 13 11.5 14 L13 12 L17 13.5 L17 16 C17 17 16 18 15 18 C8 18 4 14 4 7 C4 6 5 5 6 5 Z"/></svg>
-              <!-- Menu -->
-              <svg width="6" height="22" viewBox="0 0 6 22" fill="currentColor"><circle cx="3" cy="5" r="1.6"/><circle cx="3" cy="11" r="1.6"/><circle cx="3" cy="17" r="1.6"/></svg>
+            <div class="cb-chat-header-icons" id="cbHeaderIcons" aria-hidden="true">
+              <!-- Icons rendered by chat-builder.js per platform -->
             </div>
           </div>
 
@@ -202,6 +215,6 @@
     <button type="button" class="cb-reaction-pick" data-emoji="💯">💯</button>
   </div>
 
-  <script src="chat-builder.js?v=5"></script>
+  <script src="chat-builder.js?v=6"></script>
 </body>
 </html>

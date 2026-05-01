@@ -30,6 +30,17 @@
   // ----------------------------------------------------------------
   const ENTRIES = [
     {
+      id: 'additive-vs-versioned-schema',
+      title: 'Additive schema changes don\'t need a storage version bump',
+      date: '05/01/2026',
+      category: 'JS state',
+      severity: 'minor',
+      symptom: 'Adding Instagram and iMessage to the Chat Builder meant introducing a new <code>platform</code> field on <code>state.settings</code>. The instinct from a prior bug — "always bump the storage key when the schema changes" — would say to go from <code>chat-builder.v2</code> to <code>v3</code>, which would force-reset every existing user\'s saved conversation just to add a single field. That felt wrong.',
+      cause: 'Conflating two different kinds of schema change. The earlier v1 → v2 bump was for the group-chat refactor: <code>sender: \'me\' | \'them\'</code> became <code>sender: \'me\' | participantId</code>. Old <code>\'them\'</code> values were no longer valid under the new model — loading them silently broke the app. <em>That</em> was a semantic change to existing fields. Adding a brand-new <code>platform</code> field is different: old data simply doesn\'t have it, and "doesn\'t have it" is a state the new code can handle (default to WhatsApp). Nothing about the existing data became invalid.',
+      fix: 'In the load() function, when a stored conversation lacks the platform field, default it to <code>\'whatsapp\'</code> and proceed. No version bump, no reset. Existing conversations continue to work, now rendered as WhatsApp by default. The user can switch them to Instagram or iMessage with a single dropdown change.',
+      lesson: 'Two kinds of schema change, two different responses. <strong>Additive</strong> changes (new optional field, new enum value, new array) — the new code handles missing data with a default. No version bump. <strong>Semantic</strong> changes (a field\'s meaning shifts, an enum\'s allowed values restrict, two fields merge) — old data is now invalid under the new code. Bump the version and reset, or write an explicit migration. Asking "is the old data still valid under the new model?" is the right test. If yes: additive, no bump. If no: semantic, bump or migrate. Bumping when you don\'t need to is just gratuitous data loss.',
+    },
+    {
       id: 'csp-blocked-blob-urls',
       title: 'CSP blocked blob: URLs and broke every image upload',
       date: '05/01/2026',

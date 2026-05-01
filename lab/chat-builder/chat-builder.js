@@ -72,6 +72,7 @@
     const sam = defaultParticipant('Sam', 0);
     return {
       settings: {
+        platform:      'whatsapp',  // whatsapp | instagram | imessage
         groupName:     '',          // unused for 1:1; required for groups
         contactStatus: 'online',
         theme:         'dark',
@@ -107,6 +108,7 @@
   // ----------------------------------------------------------------
   // 3. DOM REFS
   // ----------------------------------------------------------------
+  const $platform       = document.getElementById('cbPlatform');
   const $groupNameField = document.getElementById('cbGroupNameField');
   const $groupName      = document.getElementById('cbGroupName');
   const $statusField    = document.getElementById('cbStatusField');
@@ -118,6 +120,7 @@
   const $chatNameOut    = document.getElementById('cbChatName');
   const $chatStatusOut  = document.getElementById('cbChatStatus');
   const $headerAvatar   = document.getElementById('cbHeaderAvatar');
+  const $headerIcons    = document.getElementById('cbHeaderIcons');
   const $phone          = document.getElementById('cbPhone');
   const $surface        = document.getElementById('cbChatSurface');
   const $msgList        = document.getElementById('cbMessageList');
@@ -159,10 +162,31 @@
 
   // ——— Header preview ————————————————————————————————————
 
+  // Platform-specific header icons. Different platforms reach for
+  // different right-side affordances; rather than CSS-hide the unused
+  // ones, we just swap the SVG block per platform.
+  const HEADER_ICONS = {
+    whatsapp: `
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 7 20 4 20 18 14 15"/><rect x="2" y="5" width="13" height="12" rx="2"/></svg>
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3 L7 3 L8.5 7 L6.5 8.5 C7.5 11 9 13 11.5 14 L13 12 L17 13.5 L17 16 C17 17 16 18 15 18 C8 18 4 14 4 7 C4 6 5 5 6 5 Z"/></svg>
+      <svg width="6" height="22" viewBox="0 0 6 22" fill="currentColor"><circle cx="3" cy="5" r="1.6"/><circle cx="3" cy="11" r="1.6"/><circle cx="3" cy="17" r="1.6"/></svg>
+    `,
+    instagram: `
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3 L7 3 L8.5 7 L6.5 8.5 C7.5 11 9 13 11.5 14 L13 12 L17 13.5 L17 16 C17 17 16 18 15 18 C8 18 4 14 4 7 C4 6 5 5 6 5 Z"/></svg>
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 7 20 4 20 18 14 15"/><rect x="2" y="5" width="13" height="12" rx="2"/></svg>
+    `,
+    imessage: `
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="9"/><line x1="11" y1="9.5" x2="11" y2="15.5"/><circle cx="11" cy="6.5" r="0.8" fill="currentColor"/></svg>
+    `,
+  };
+
   function renderSettingsPreview() {
     const s = state.settings;
+    $phone.dataset.platform = s.platform || 'whatsapp';
     $phone.dataset.theme = s.theme;
+    $phone.classList.toggle('cb-is-group', isGroup());
     $statusTimeOut.textContent = s.statusBarTime || '';
+    $headerIcons.innerHTML = HEADER_ICONS[s.platform] || HEADER_ICONS.whatsapp;
 
     if (isGroup()) {
       // Group mode: group name in header; member list as the status
@@ -210,31 +234,58 @@
       $surface.innerHTML = '<p class="cb-empty" style="color:inherit;opacity:0.5;">No messages yet — add one with the buttons on the left.</p>';
       return;
     }
+    // Find the last outgoing ("me") message — Instagram and iMessage
+    // show a single "Seen" / "Read" status only after that one bubble,
+    // not on every outgoing message like WhatsApp does.
+    const lastMeIdx = (() => {
+      for (let i = state.messages.length - 1; i >= 0; i--) {
+        if (state.messages[i].sender === 'me') return i;
+      }
+      return -1;
+    })();
+
     let html = '';
     let lastSender = null;
     state.messages.forEach((m, idx) => {
       if (idx === 0) html += '<div class="cb-day-sep">Today</div>';
       const grouped = (m.sender === lastSender);
-      html += renderBubbleHTML(m, grouped);
+      html += renderBubbleHTML(m, grouped, idx === lastMeIdx);
       lastSender = m.sender;
     });
     $surface.innerHTML = html;
     $surface.scrollTop = $surface.scrollHeight;
   }
 
-  function renderBubbleHTML(m, grouped) {
+  function renderBubbleHTML(m, grouped, isLastMeMsg) {
+    const platform = state.settings.platform || 'whatsapp';
     const me = m.sender === 'me';
     const fromClass = me ? 'cb-from-me' : 'cb-from-them';
     const tailClass = grouped ? '' : ' cb-tailed';
     const hasRxn    = m.reactions && m.reactions.length > 0;
 
-    // In group chats, incoming bubbles get a sender-name label at the
-    // top, color-coded per participant — same as real WhatsApp.
+    // Sender attribution in group chats:
+    //   WhatsApp / Instagram → colored name above the first bubble
+    //                          in a sender's run
+    //   iMessage             → small avatar on the LEFT of the first
+    //                          bubble (CSS reveals it for iMessage and
+    //                          hides the name; opposite for the others)
+    // We render BOTH and let CSS pick which to show, so the same DOM
+    // works across all three platforms.
     let senderLabel = '';
-    if (!me && isGroup() && !grouped) {
+    let avatarSlot  = '';
+    if (!me && isGroup()) {
       const p = getParticipant(m.sender);
       if (p) {
-        senderLabel = `<span class="cb-bubble-sender" style="color:${esc(p.color)}">${esc(p.name || 'Unknown')}</span>`;
+        const showAttribution = !grouped;
+        if (showAttribution) {
+          senderLabel = `<span class="cb-bubble-sender" style="color:${esc(p.color)}">${esc(p.name || 'Unknown')}</span>`;
+          const initials = (p.initials || '').trim() || deriveInitials(p.name);
+          avatarSlot = `<span class="cb-bubble-avatar-slot is-shown" style="background:${esc(p.color)}">${esc(initials)}</span>`;
+        } else {
+          // Empty placeholder slot keeps subsequent bubbles aligned
+          // under the first bubble's avatar (iMessage layout).
+          avatarSlot = '<span class="cb-bubble-avatar-slot is-hidden"></span>';
+        }
       }
     }
 
@@ -250,6 +301,9 @@
       inner += `<span class="cb-bubble-text">${esc(m.text || ' ')}</span>`;
     }
 
+    // In-bubble meta (time + read tick). WhatsApp shows ✓✓ next to
+    // the timestamp; CSS hides the tick on Instagram and iMessage,
+    // which use a separate "Seen" / "Read" line below the last bubble.
     const tickHTML = me ? '<span class="cb-read-tick" aria-label="Read">✓✓</span>' : '';
     inner += `<span class="cb-bubble-meta">
                 <span class="cb-bubble-meta-time">${esc(m.time || '')}</span>
@@ -266,6 +320,21 @@
       rxnHTML = `<span class="cb-rxn-bubble">${parts.join('')}</span>`;
     }
 
+    // Status-after row — used by Instagram ("Seen") and iMessage
+    // ("Read 9:41" / "Delivered"). Sits below the last "me" bubble
+    // only. CSS hides it for WhatsApp.
+    let statusAfter = '';
+    if (me && isLastMeMsg) {
+      const igLabel = 'Seen';
+      const imLabel = 'Read ' + (m.time || '');
+      statusAfter = `
+        <div class="cb-bubble-status-after" data-platform-status>
+          <span class="cb-status-ig">${esc(igLabel)}</span>
+          <span class="cb-status-im">${esc(imLabel)}</span>
+        </div>
+      `;
+    }
+
     const rowClasses = [
       'cb-bubble-row',
       fromClass,
@@ -275,11 +344,13 @@
 
     return `
       <div class="${rowClasses}" data-msg-id="${esc(m.id)}">
+        ${avatarSlot}
         <div class="cb-bubble ${fromClass}${tailClass}">
           ${inner}
         </div>
         ${rxnHTML}
       </div>
+      ${statusAfter}
     `;
   }
 
@@ -422,6 +493,15 @@
   // ----------------------------------------------------------------
 
   // ——— Settings inputs (the static ones in the HTML) ———————
+  // Platform change re-themes the entire preview AND can affect what
+  // the chat surface renders (read-receipt placement, sender
+  // attribution mode), so it triggers a full surface re-render too.
+  $platform     .addEventListener('change', () => {
+    state.settings.platform = $platform.value;
+    renderSettingsPreview();
+    renderChatSurface();
+    save();
+  });
   $groupName    .addEventListener('input', () => { state.settings.groupName     = $groupName.value;     renderSettingsPreview(); save(); });
   $contactStatus.addEventListener('input', () => { state.settings.contactStatus = $contactStatus.value; renderSettingsPreview(); save(); });
   $statusTime   .addEventListener('input', () => { state.settings.statusBarTime = $statusTime.value;    renderSettingsPreview(); save(); });
@@ -855,6 +935,14 @@
       if (!raw) return null;
       const parsed = JSON.parse(raw);
       if (!parsed || !parsed.settings || !Array.isArray(parsed.messages) || !Array.isArray(parsed.participants)) return null;
+      // Forward-compat default — older saves (pre-multi-platform)
+      // didn't have a platform field. Treat them as WhatsApp so the
+      // existing conversation continues to render correctly without
+      // a forced reset. This is an *additive* schema change — old
+      // data is still valid under the new model. Contrast with the
+      // v1 → v2 sender-shape change, which actually broke the meaning
+      // of stored data and required a key bump.
+      if (!parsed.settings.platform) parsed.settings.platform = 'whatsapp';
       return parsed;
     } catch (err) {
       return null;
@@ -865,6 +953,7 @@
   // 8. BOOTSTRAP
   // ----------------------------------------------------------------
   function hydrateSettingsFields() {
+    $platform     .value = state.settings.platform      || 'whatsapp';
     $groupName    .value = state.settings.groupName     || '';
     $contactStatus.value = state.settings.contactStatus || '';
     $statusTime   .value = state.settings.statusBarTime || '';

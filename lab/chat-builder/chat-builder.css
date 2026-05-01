@@ -353,6 +353,16 @@ textarea.cb-input {
   gap: 10px;
   padding: 8px 12px 10px;
 }
+
+/* Wraps avatar + name+status as a single unit. Default layout is
+   row (WhatsApp/Instagram); iMessage swaps to column-centered. */
+.cb-chat-header-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
 .cb-icon-btn {
   background: transparent;
   border: none;
@@ -466,7 +476,7 @@ textarea.cb-input {
    ------------------------------------------------------------------ */
 
 /* ——— Dark theme (default) ——— */
-.cb-phone[data-theme="dark"] {
+.cb-phone[data-platform="whatsapp"][data-theme="dark"] {
   background: #0b141a;
   color: #e9edef;
 }
@@ -498,7 +508,7 @@ textarea.cb-input {
 .cb-phone[data-theme="dark"] .cb-rxn-bubble { background: #1d282f; border: 1px solid #2a3942; color: #e9edef; }
 
 /* ——— Light theme ——— */
-.cb-phone[data-theme="light"] {
+.cb-phone[data-platform="whatsapp"][data-theme="light"] {
   background: #efeae2;
   color: #111b21;
 }
@@ -549,8 +559,8 @@ textarea.cb-input {
   word-wrap: break-word;
   box-shadow: 0 1px 0.5px rgba(11,20,26,0.13);
 }
-/* Lead bubble in a sender's run gets the tail */
-.cb-bubble.cb-tailed::before {
+/* Lead bubble in a sender's run gets the tail — WhatsApp only. */
+.cb-phone[data-platform="whatsapp"] .cb-bubble.cb-tailed::before {
   content: '';
   position: absolute;
   top: 0;
@@ -558,13 +568,13 @@ textarea.cb-input {
   border-style: solid;
   border-width: 0 8px 8px 8px;
 }
-.cb-from-them .cb-bubble.cb-tailed { border-top-left-radius: 0; }
-.cb-from-them .cb-bubble.cb-tailed::before {
+.cb-phone[data-platform="whatsapp"] .cb-from-them .cb-bubble.cb-tailed { border-top-left-radius: 0; }
+.cb-phone[data-platform="whatsapp"] .cb-from-them .cb-bubble.cb-tailed::before {
   left: -8px;
   border-width: 0 8px 6px 0;
 }
-.cb-from-me .cb-bubble.cb-tailed   { border-top-right-radius: 0; }
-.cb-from-me .cb-bubble.cb-tailed::before {
+.cb-phone[data-platform="whatsapp"] .cb-from-me .cb-bubble.cb-tailed   { border-top-right-radius: 0; }
+.cb-phone[data-platform="whatsapp"] .cb-from-me .cb-bubble.cb-tailed::before {
   right: -8px;
   border-width: 0 0 6px 8px;
 }
@@ -824,4 +834,303 @@ textarea.cb-input {
   .cb-segmented span,
   .cb-add-reaction,
   .cb-reaction-pick { transition: none !important; }
+}
+
+
+/* ====================================================================
+   PLATFORM ADDITIONS — Instagram + iMessage
+   The existing rules under [data-platform="whatsapp"] handle WhatsApp.
+   Below: theme palettes, bubble styling, header layouts, read-receipt
+   placement, reaction positioning, and the cross-platform shared
+   defaults for the new elements (sender-label vs avatar-slot,
+   status-after row).
+   ==================================================================== */
+
+/* ——— Cross-platform defaults for new elements ———————————————— */
+
+/* Sender attribution: in a group chat, WhatsApp/Instagram show the
+   colored name above the first incoming bubble; iMessage shows a
+   small avatar to the LEFT of the bubble instead. We render both in
+   the DOM and let CSS pick which to display. */
+.cb-bubble-sender {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+}
+.cb-bubble-avatar-slot {
+  display: none;             /* hidden for WhatsApp + Instagram */
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  flex-shrink: 0;
+  margin-right: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.cb-bubble-avatar-slot.is-hidden { visibility: hidden; }
+
+/* Status-after row — only Instagram + iMessage. CSS decides which
+   inner span renders so the same DOM serves both. */
+.cb-bubble-status-after {
+  display: none;
+  font-size: 11px;
+  margin: 2px 8px 4px;
+  text-align: right;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+}
+.cb-bubble-status-after .cb-status-ig,
+.cb-bubble-status-after .cb-status-im { display: none; }
+
+
+/* ====================================================================
+   INSTAGRAM
+   ==================================================================== */
+
+/* ——— Instagram dark theme ——— */
+.cb-phone[data-platform="instagram"][data-theme="dark"] {
+  background: #000000;
+  color: #f5f5f5;
+}
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-status-bar { color: #f5f5f5; }
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-chat-header {
+  background: #000000;
+  color: #f5f5f5;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-chat-status { color: #a8a8a8; }
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-chat-surface {
+  background: #000000;
+}
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-bubble.cb-from-them { background: #262626; color: #f5f5f5; }
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-bubble-meta { color: rgba(245,245,245,0.55); }
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-day-sep { background: transparent; color: #a8a8a8; }
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-input-bar { background: #000000; }
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-input-pill {
+  background: #1c1c1c; color: #a8a8a8;
+  border: 1px solid #2c2c2c;
+}
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-rxn-bubble {
+  background: #262626; border: 2px solid #000; color: #f5f5f5;
+}
+.cb-phone[data-platform="instagram"][data-theme="dark"] .cb-bubble-status-after { color: #a8a8a8; }
+
+/* ——— Instagram light theme ——— */
+.cb-phone[data-platform="instagram"][data-theme="light"] {
+  background: #ffffff;
+  color: #0c0c0c;
+}
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-status-bar { color: #0c0c0c; }
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-chat-header {
+  background: #ffffff;
+  color: #0c0c0c;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-chat-status { color: #737373; }
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-chat-surface { background: #ffffff; }
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-bubble.cb-from-them { background: #efefef; color: #0c0c0c; }
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-bubble-meta { color: #737373; }
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-day-sep { background: transparent; color: #737373; }
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-input-bar { background: #ffffff; }
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-input-pill {
+  background: #ffffff; color: #737373;
+  border: 1px solid #dbdbdb;
+}
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-rxn-bubble {
+  background: #ffffff; border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px #dbdbdb; color: #0c0c0c;
+}
+.cb-phone[data-platform="instagram"][data-theme="light"] .cb-bubble-status-after { color: #737373; }
+
+/* ——— Instagram outgoing — the signature gradient ———
+   Same gradient on light + dark so the brand color reads in both. */
+.cb-phone[data-platform="instagram"] .cb-bubble.cb-from-me {
+  background: linear-gradient(45deg, #4f5bd5 0%, #962fbf 30%, #d62976 60%, #fa7e1e 90%, #feda75 100%);
+  color: #ffffff;
+}
+.cb-phone[data-platform="instagram"] .cb-bubble.cb-from-me .cb-bubble-meta { color: rgba(255,255,255,0.85); }
+
+/* ——— Instagram bubble shape — pill-rounded, no tails ——— */
+.cb-phone[data-platform="instagram"] .cb-bubble {
+  border-radius: 22px;
+  padding: 8px 14px 9px;
+  max-width: 75%;
+}
+
+/* ——— Instagram in-bubble ✓✓ ticks: hide (use status-after instead) ——— */
+.cb-phone[data-platform="instagram"] .cb-read-tick { display: none; }
+
+/* ——— Instagram status-after: show "Seen" ——— */
+.cb-phone[data-platform="instagram"] .cb-bubble-status-after { display: block; }
+.cb-phone[data-platform="instagram"] .cb-bubble-status-after .cb-status-ig { display: inline; }
+
+
+/* ====================================================================
+   IMESSAGE
+   ==================================================================== */
+
+/* ——— iMessage dark theme ——— */
+.cb-phone[data-platform="imessage"][data-theme="dark"] {
+  background: #000000;
+  color: #ffffff;
+}
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-status-bar { color: #ffffff; }
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-chat-header {
+  background: rgba(28, 28, 30, 0.78);
+  color: #ffffff;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-chat-status { color: #98989d; }
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-chat-surface { background: #000000; }
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-bubble.cb-from-them { background: #1c1c1e; color: #ffffff; }
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-bubble-meta { display: none; }  /* iMessage hides per-bubble timestamps */
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-day-sep { background: transparent; color: #98989d; }
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-input-bar { background: #000000; }
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-input-pill {
+  background: #1c1c1e; color: #8e8e93;
+  border: 0.5px solid #38383a;
+}
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-rxn-bubble {
+  background: #2c2c2e; border: 2px solid #000; color: #ffffff;
+}
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-bubble-status-after { color: #98989d; }
+.cb-phone[data-platform="imessage"][data-theme="dark"] .cb-input-mic { background: #38383a; }
+
+/* ——— iMessage light theme ——— */
+.cb-phone[data-platform="imessage"][data-theme="light"] {
+  background: #ffffff;
+  color: #000000;
+}
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-status-bar { color: #000000; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-chat-header {
+  background: rgba(248, 248, 248, 0.85);
+  color: #000000;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+}
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-chat-status { color: #8e8e93; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-chat-surface { background: #ffffff; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-bubble.cb-from-them { background: #e9e9eb; color: #000000; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-bubble-meta { display: none; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-day-sep { background: transparent; color: #8e8e93; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-input-bar { background: #ffffff; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-input-pill {
+  background: #ffffff; color: #c7c7cc;
+  border: 0.5px solid #c7c7cc;
+}
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-rxn-bubble {
+  background: #e9e9eb; border: 2px solid #fff;
+  box-shadow: 0 0 0 0.5px #c7c7cc; color: #000;
+}
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-bubble-status-after { color: #8e8e93; }
+.cb-phone[data-platform="imessage"][data-theme="light"] .cb-input-mic { background: #c7c7cc; }
+
+/* ——— iMessage outgoing — the iconic blue ——— */
+.cb-phone[data-platform="imessage"] .cb-bubble.cb-from-me {
+  background: #0b84ff;
+  color: #ffffff;
+}
+
+/* ——— iMessage bubble shape — heavy rounding + subtle "tear" corner
+       on the lead bubble in a sender's run.  No tail pseudo-element
+       like WhatsApp; the cornering itself is the visual cue. ——— */
+.cb-phone[data-platform="imessage"] .cb-bubble {
+  border-radius: 18px;
+  padding: 7px 12px 8px;
+  font-size: 16px;
+  line-height: 1.3;
+  max-width: 70%;
+}
+.cb-phone[data-platform="imessage"] .cb-from-me   .cb-bubble.cb-tailed { border-bottom-right-radius: 4px; }
+.cb-phone[data-platform="imessage"] .cb-from-them .cb-bubble.cb-tailed { border-bottom-left-radius: 4px; }
+
+/* ——— iMessage hides the in-bubble ✓✓ ticks; uses status-after row ——— */
+.cb-phone[data-platform="imessage"] .cb-read-tick { display: none; }
+
+/* ——— iMessage status-after: show "Read 9:41" ——— */
+.cb-phone[data-platform="imessage"] .cb-bubble-status-after { display: block; }
+.cb-phone[data-platform="imessage"] .cb-bubble-status-after .cb-status-im { display: inline; }
+
+/* ——— iMessage centered header layout ———
+   Avatar stacks above the name; both center themselves inside the
+   flex middle slot between the back arrow and info button. Letting
+   flex do the centering (rather than absolute positioning) keeps the
+   layout robust as the name/status text grows or shrinks. */
+.cb-phone[data-platform="imessage"] .cb-chat-header {
+  padding: 6px 14px 8px;
+  align-items: center;
+}
+.cb-phone[data-platform="imessage"] .cb-chat-header-main {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.cb-phone[data-platform="imessage"] .cb-avatar {
+  width: 30px; height: 30px;
+  font-size: 12px;
+}
+.cb-phone[data-platform="imessage"] .cb-chat-name {
+  font-size: 12.5px;
+  font-weight: 500;
+  margin-top: 2px;
+  white-space: normal;     /* allow long names to wrap rather than truncate */
+}
+.cb-phone[data-platform="imessage"] .cb-chat-status {
+  display: none;           /* hidden for 1:1 chats */
+  font-size: 10.5px;
+  color: inherit;
+  opacity: 0.6;
+}
+
+/* iMessage groups: show the member preview as the sub-line. */
+.cb-phone[data-platform="imessage"].cb-is-group .cb-chat-status { display: block; }
+
+/* ——— iMessage group attribution: avatar to the LEFT of the first
+       bubble in a sender's run, no name label above. ——— */
+.cb-phone[data-platform="imessage"] .cb-bubble-sender { display: none; }
+.cb-phone[data-platform="imessage"] .cb-from-them .cb-bubble-avatar-slot { display: inline-flex; }
+
+/* ——— iMessage tapback styling — same position as WhatsApp (bottom
+       corner of the row), but rounder and with a heavier outline so
+       the look reads as iMessage rather than WhatsApp. Real iOS
+       tapbacks sit at the top corner of the bubble itself; faking
+       that exact placement requires per-bubble positioning context.
+       Keeping consistent placement across platforms gives us the
+       right visual weight without the layout fragility. ——— */
+.cb-phone[data-platform="imessage"] .cb-rxn-bubble {
+  padding: 3px 7px;
+  font-size: 12px;
+  border-radius: 999px;
+}
+
+
+/* ====================================================================
+   CROSS-PLATFORM TWEAKS — keep things sensible
+   ==================================================================== */
+
+/* Status-bar font: WhatsApp uses a slightly heavier weight, the
+   others lighter. Subtle but reads more native per platform. */
+.cb-phone[data-platform="instagram"] .cb-status-bar,
+.cb-phone[data-platform="imessage"]  .cb-status-bar { font-weight: 500; }
+
+/* Day separator — Instagram + iMessage use a small uppercase label
+   centered above the conversation, not a pill. */
+.cb-phone[data-platform="instagram"] .cb-day-sep,
+.cb-phone[data-platform="imessage"]  .cb-day-sep {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: lowercase;
 }
