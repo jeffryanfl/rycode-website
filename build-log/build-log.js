@@ -30,6 +30,17 @@
   // ----------------------------------------------------------------
   const ENTRIES = [
     {
+      id: 'storage-key-versioning',
+      title: 'Versioning the storage key beats migrating in place',
+      date: '05/01/2026',
+      category: 'JS state',
+      severity: 'minor',
+      symptom: 'The Chat Builder shipped with a single-conversation data model: every message had <code>sender: \'me\' | \'them\'</code>. Adding group chat support meant that <code>sender</code> now had to be either <code>\'me\'</code> or a participant id — a fundamentally different shape. Existing localStorage data from v1 had <code>\'them\'</code> values that wouldn\'t resolve under the new model. Loading old data into the new code would have shown empty bubbles and a confused sender selector — silent corruption rather than a clean error.',
+      cause: 'Stored data is a tiny database with no migration framework. When the schema changes, the old shape is still on every existing user\'s machine. There are two ways to handle that — write code that detects v1 data and rewrites it into v2 shape (in-place migration), or change the storage key so v1 data is left dormant and v2 starts fresh. In-place migration sounds cleaner but it\'s where most data-loss bugs come from: you\'re writing once-run code that has to be perfect on data shapes you can\'t test ahead of time.',
+      fix: 'Bumped the localStorage key from <code>rycode.chat-builder.v1</code> to <code>rycode.chat-builder.v2</code>. Any existing v1 blob stays in the user\'s storage but is ignored — the v2 code only looks at the v2 key, doesn\'t find anything, falls back to fresh defaults. The user sees one reset to the seeded sample on first load post-upgrade, then v2 persistence works normally from then on.',
+      lesson: 'When you change the <em>shape</em> of stored data — not just adding a field, but changing what existing fields mean — version the storage key. <code>foo.v1</code> → <code>foo.v2</code>. The cost is a one-time fresh state for existing users; the benefit is no migration code, no hand-rolled compatibility logic, and no silent corruption when an unanticipated edge case slips through. If preserving existing data really matters, write an explicit one-time migration that runs once and writes v2-shaped data under the v2 key — but the default move is to version + reset.',
+    },
+    {
       id: 'ai-research-needs-verification',
       title: 'AI-synthesized research draft needed verification before publication',
       date: '04/26/2026',

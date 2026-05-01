@@ -52,19 +52,17 @@
         <section class="cb-settings" aria-labelledby="cbSettingsHeading">
           <h2 class="cb-section-heading" id="cbSettingsHeading">Settings</h2>
 
-          <div class="cb-grid-2">
-            <label class="cb-field">
-              <span class="cb-field-label">Their name</span>
-              <input type="text" id="cbContactName" class="cb-input" value="Sam" maxlength="40" />
-            </label>
-            <label class="cb-field">
-              <span class="cb-field-label">Their initials</span>
-              <input type="text" id="cbContactInitials" class="cb-input" value="" maxlength="2" placeholder="auto" />
-            </label>
-          </div>
+          <!-- Group name shows up only when there are 2+ participants;
+               JS shows/hides this row based on participant count. -->
+          <label class="cb-field" id="cbGroupNameField" hidden>
+            <span class="cb-field-label">Group name</span>
+            <input type="text" id="cbGroupName" class="cb-input" maxlength="40" placeholder="e.g. Family, Lake Trip 2026" />
+          </label>
 
-          <label class="cb-field">
-            <span class="cb-field-label">Status / "last seen" line</span>
+          <!-- Status line — shows "online" or "last seen at..." for 1:1
+               chats; shows the member preview (auto) for groups. -->
+          <label class="cb-field" id="cbStatusField">
+            <span class="cb-field-label" id="cbStatusFieldLabel">Status / "last seen" line</span>
             <input type="text" id="cbContactStatus" class="cb-input" value="online" maxlength="60" />
           </label>
 
@@ -80,6 +78,24 @@
               <span class="cb-field-label">Status bar time</span>
               <input type="text" id="cbStatusTime" class="cb-input" value="9:41" maxlength="6" />
             </label>
+          </div>
+        </section>
+
+        <!-- Participants block — 1 to N people. With 1 participant the
+             chat is a direct chat (header shows that person's name).
+             With 2+ it becomes a group chat (header shows the group
+             name + member preview, sender names appear above incoming
+             bubbles in their assigned color). -->
+        <section class="cb-participants" aria-labelledby="cbParticipantsHeading">
+          <header class="cb-section-head">
+            <h2 class="cb-section-heading" id="cbParticipantsHeading">Participants</h2>
+            <div class="cb-toolbar">
+              <button type="button" class="cb-btn" id="cbAddParticipant">+ Add person</button>
+            </div>
+          </header>
+          <p class="cb-section-hint" id="cbParticipantsHint">Add another person to turn this into a group chat.</p>
+          <div id="cbParticipantList" class="cb-participant-list">
+            <!-- Participant cards rendered by chat-builder.js -->
           </div>
         </section>
 
