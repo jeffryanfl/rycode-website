@@ -352,7 +352,8 @@
         ${urlInput}
         <label class="cb-field">
           <span class="cb-field-label">Or upload from your device</span>
-          <input type="file" class="cb-input cb-input-file" accept="image/*" data-field="imageFile" />
+          <input type="file" class="cb-input cb-input-file" accept="image/jpeg,image/png,image/webp,image/gif" data-field="imageFile" />
+          <span class="cb-field-hint">JPEG, PNG, WebP, or GIF. iPhone HEIC photos won't display in browsers — switch your camera to "Most Compatible" or convert via Preview first.</span>
         </label>
         <label class="cb-field">
           <span class="cb-field-label">Caption (optional)</span>
@@ -564,8 +565,15 @@
         msg.imageUrl = await fileToCompressedDataURL(file);
         renderAll();
       } catch (err) {
-        alert('Could not load that image. Try a smaller file.');
+        // Show the specific message thrown by the helper — HEIC vs
+        // generic decode vs size are all different problems with
+        // different fixes.
+        alert(err.message || 'Could not load that image.');
         console.warn(err);
+        // Reset the picker so picking the SAME file again refires
+        // the change event. Without this, a second attempt at the
+        // same file (after fixing it) would silently do nothing.
+        e.target.value = '';
       }
     }
   });
@@ -654,12 +662,53 @@
   // iPhone photo to ~80KB without obvious quality loss for screenshot
   // use. PNG with alpha would be larger; we sacrifice transparency
   // since chat photos basically never need it.
+  //
+  // The function throws DESCRIPTIVE errors (not generic "failed")
+  // because the call site shows the message to the user — and the
+  // most common failure (HEIC photos from iPhone, which most
+  // browsers cannot decode) needs an actionable message, not a
+  // misleading "try a smaller file."
   async function fileToCompressedDataURL(file) {
     const MAX_W = 800;
     const QUALITY = 0.85;
+    const MAX_INPUT_BYTES = 30 * 1024 * 1024;  // 30MB hard ceiling
+
+    // 1. Format check — HEIC/HEIF (iPhone default since iOS 11).
+    //    Browsers other than Safari can't decode HEIC client-side
+    //    without a polyfill. Reject early with a useful message.
+    if (/heic|heif/i.test(file.type) || /\.heic$|\.heif$/i.test(file.name)) {
+      throw new Error(
+        'iPhone HEIC photos can\'t be displayed by browsers. Two fixes: ' +
+        '(1) on your iPhone, Settings → Camera → Formats → "Most Compatible" ' +
+        'to save new photos as JPEG. ' +
+        '(2) for this photo, open it in Preview on Mac, then File → Export → JPEG.'
+      );
+    }
+
+    // 2. Reasonable upper bound on input size. Anything bigger usually
+    //    means something went wrong upstream (e.g. a video file
+    //    masquerading via image/* picker on some Android browsers).
+    if (file.size > MAX_INPUT_BYTES) {
+      const mb = (file.size / 1024 / 1024).toFixed(1);
+      throw new Error(`This file is ${mb}MB. Maximum supported is 30MB. Try a smaller image.`);
+    }
+
+    // 3. Try to decode it via a hidden <img>. If the browser can't,
+    //    that's where unsupported formats fail. Distinguish that
+    //    failure from a genuine size error.
     const blobUrl = URL.createObjectURL(file);
+    let img;
     try {
-      const img = await loadImage(blobUrl);
+      img = await loadImage(blobUrl);
+    } catch (err) {
+      URL.revokeObjectURL(blobUrl);
+      throw new Error(
+        'The browser couldn\'t decode this image. This usually means an ' +
+        'unsupported format (HEIC, RAW, or similar). Try saving it as JPEG or PNG first.'
+      );
+    }
+
+    try {
       const scale = img.width > MAX_W ? MAX_W / img.width : 1;
       const w = Math.round(img.width * scale);
       const h = Math.round(img.height * scale);
@@ -716,6 +765,9 @@
           });
           renderAll();
         } catch (err) {
+          // Surface the specific error so a user pasting a HEIC photo
+          // gets the same actionable message as the upload path.
+          alert(err.message || 'Could not paste that image.');
           console.warn('Paste image failed', err);
         }
         return;

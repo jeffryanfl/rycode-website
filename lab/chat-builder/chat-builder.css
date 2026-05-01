@@ -110,6 +110,16 @@
   text-transform: uppercase;
   color: #8a8a93;
 }
+/* Inline hint under a field label — used to flag the HEIC limitation
+   on the upload field and similar caveats. Smaller and dimmer than
+   field-label so it reads as guidance, not a control. */
+.cb-field-hint {
+  font-size: 11px;
+  color: #8a8a93;
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 4px;
+}
 
 .cb-input {
   width: 100%;

@@ -30,6 +30,17 @@
   // ----------------------------------------------------------------
   const ENTRIES = [
     {
+      id: 'heic-upload-misleading-error',
+      title: 'HEIC photos failed to upload — and the error blamed the wrong thing',
+      date: '05/01/2026',
+      category: 'Tooling',
+      severity: 'major',
+      symptom: 'On the Chat Builder, uploading a photo from an iPhone produced an alert that said "Could not load that image. Try a smaller file." The user reasonably interpreted that as a size problem, tried smaller copies, and kept hitting the same error. Other times the upload appeared to succeed but the image rendered as an empty placeholder.',
+      cause: 'Two compounding issues. (1) iPhones save photos in HEIC format by default since iOS 11. Most browsers — including Chrome on macOS — cannot decode HEIC client-side, so loading one into an <code>&lt;img&gt;</code> element silently fails. (2) The image-compression helper had a single generic catch block that surfaced "try a smaller file" for <em>any</em> failure during decode — wrong cause, wrong fix. The error message was actively misleading the user toward a size remedy when the actual problem was format support.',
+      fix: 'Three changes. (1) Detect HEIC up front by checking <code>file.type</code> and the filename extension, and throw a specific error message naming the format and offering two concrete fixes (iPhone Settings → Camera → Formats → "Most Compatible," or Preview export to JPEG). (2) Distinguish format failures from size failures in the catch path so each error reports the actual problem. (3) Add a visible inline hint under the upload field so users know about the HEIC limitation <em>before</em> they try, and tightened the file-picker <code>accept</code> attribute to <code>image/jpeg,image/png,image/webp,image/gif</code> so the OS picker filters out unsupported formats where it can.',
+      lesson: 'A misleading error is worse than no error. "Try a smaller file" sent the user on a chase the laws of physics couldn\'t solve. When you write a catch block, ask: <em>can my error message tell the user what to do next?</em> Generic "could not load" is a code smell. Surface the actual reason — format unsupported, network failure, quota exceeded — and where possible, name the fix. Bonus rule: when a feature has a known-common failure mode for a known-common user (iPhone users uploading photos), surface the warning <em>before</em> the failure happens, in the UI, not just in the error path.',
+    },
+    {
       id: 'storage-key-versioning',
       title: 'Versioning the storage key beats migrating in place',
       date: '05/01/2026',
