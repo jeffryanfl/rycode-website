@@ -30,6 +30,17 @@
   // ----------------------------------------------------------------
   const ENTRIES = [
     {
+      id: 'vapid-subject-needs-mailto',
+      title: 'VAPID subject needs a mailto: prefix or pushes silently fail',
+      date: '05/01/2026',
+      category: 'Tooling',
+      severity: 'minor',
+      symptom: 'Setting up Web Push for the family site, the natural-feeling thing to do is paste an email address into the <code>VAPID_SUBJECT</code> environment variable: <code>fl.jeff.ryan@gmail.com</code>. The function deploys cleanly, the public key embeds correctly, the subscription registers, but every <code>webpush.sendNotification</code> call rejects with a vague 400-class error from Apple/Google\'s push service. No notification ever reaches a phone.',
+      cause: 'The Web Push protocol (RFC 8292) requires the VAPID subject to be either a <code>mailto:</code> URL or an <code>https:</code> URL — not a bare email address. Push services use this field to reach the application owner if abuse complaints arrive; without a valid scheme, the JWT signature fails their validation. The <code>web-push</code> npm library passes the subject through with whatever you give it; the rejection happens at the push service, far from the code that set the value.',
+      fix: 'Prefix the email with <code>mailto:</code> in the env var: <code>mailto:fl.jeff.ryan@gmail.com</code>. Same fix for the <code>https:</code> case if you\'d rather use a website URL. The <code>web-push</code> library has a <code>setVapidDetails(subject, publicKey, privateKey)</code> call that will throw early on a malformed subject, but only if you opt into validation — which most people don\'t the first time they wire this up.',
+      lesson: 'Configuration values that look like a value (email address) but are actually a URL (<code>mailto:</code>) are a classic mismatch. The remedy is to know which fields take URLs in your tools and to check them up front. Specific to Web Push: <strong>VAPID_SUBJECT must be a URL with a scheme.</strong> More generally: when an env var spec asks for "an email address," read the protocol docs to see whether it actually wants the email-address-as-URL form, because the difference is invisible from the variable name and rejected silently downstream.',
+    },
+    {
       id: 'additive-vs-versioned-schema',
       title: 'Additive schema changes don\'t need a storage version bump',
       date: '05/01/2026',
