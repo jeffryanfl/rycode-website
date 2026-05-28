@@ -83,6 +83,9 @@ export default function App() {
   const [ddeOverrides, setDdeOverrides] = useState<Record<string, FieldRuntimeState>>({});
   const [circularError, setCircularError] = useState<{ message: string; path: string[] } | null>(null);
 
+  const [activeTab, setActiveTab] = useState<'SANDBOX' | 'MANUAL'>('SANDBOX');
+  const [manualSection, setManualSection] = useState<string>('field-types');
+
   // --- LOGGING HELPER ---
   const addLog = (
     phase: DiagnosticTelemetry['executionPhase'],
@@ -458,11 +461,296 @@ export default function App() {
 
   const activeRecord = records.get(activeRecordId)!;
 
+  const renderManual = () => {
+    const categories = [
+      { id: 'field-types', label: '1. Backend Field Types', icon: Database },
+      { id: 'calculations', label: '2. Formulas & Calculations', icon: Cpu },
+      { id: 'workflow', label: '3. Advanced Workflow (AWF)', icon: GitPullRequest },
+      { id: 'security', label: '4. RBAC & Record-Level Security', icon: Shield },
+      { id: 'pitfalls', label: '5. Expert Troubleshooting & Pitfalls', icon: AlertTriangle }
+    ];
+
+    return (
+      <div className="bg-neutral-900 border border-neutral-800 rounded-xl shadow-lg min-h-[600px] grid grid-cols-1 md:grid-cols-12 overflow-hidden animate-fadeIn">
+        {/* Manual Sidebar */}
+        <div className="md:col-span-3 border-r border-neutral-800 bg-neutral-950/40 p-4 flex flex-col gap-1.5">
+          <h3 className="font-mono text-xs font-bold text-neutral-400 px-3 uppercase tracking-wider mb-2">
+            Training Chapters
+          </h3>
+          {categories.map((cat) => {
+            const CatIcon = cat.icon;
+            const isActive = manualSection === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setManualSection(cat.id)}
+                className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-left text-xs font-mono font-medium transition-all cursor-pointer ${
+                  isActive
+                    ? 'bg-amber-500 text-neutral-950 shadow-md font-bold'
+                    : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40'
+                }`}
+              >
+                <CatIcon className="w-4 h-4" />
+                {cat.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Manual Content Area */}
+        <div className="md:col-span-9 p-6 overflow-y-auto max-h-[750px] flex flex-col gap-6">
+          {manualSection === 'field-types' && (
+            <div className="flex flex-col gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Backend Field Types & Data Schema</h2>
+                <p className="text-xs text-neutral-400 font-mono">CORE TAXONOMY STRUCTURES IN GRC SYSTEMS</p>
+              </div>
+              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
+                In enterprise GRC platforms like the Archer IRM backend, applications are structured dynamically around highly specialized field types. As an engineer, understanding the structural configurations, storage paradigms, and typical use cases for each field is critical for successful systems integration.
+              </p>
+
+              {/* Table or detailed view of field types */}
+              <div className="border border-neutral-800 rounded-lg overflow-hidden bg-neutral-950/50">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-neutral-800/60 font-mono text-amber-400 border-b border-neutral-800">
+                      <th className="p-3">Field Type</th>
+                      <th className="p-3">Storage & Schema Behavior</th>
+                      <th className="p-3">Engineering Checklist</th>
+                      <th className="p-3">Key Pitfalls</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-neutral-800/60 text-neutral-300">
+                    <tr>
+                      <td className="p-3 font-mono font-semibold text-neutral-100">TEXT</td>
+                      <td className="p-3">Stored as a standard database string block. Supports single-line or HTML rich-text rendering.</td>
+                      <td className="p-3">Verify max character restrictions and check formatting rules.</td>
+                      <td className="p-3 text-rose-400 font-mono font-semibold">Data truncation if bulk ingestion exceeds length constraints.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-mono font-semibold text-neutral-100">NUMERIC</td>
+                      <td className="p-3">Stored as fixed-point decimal or integer values. Supports dynamic formatting (currency, percent).</td>
+                      <td className="p-3">Ensure precision, scale, min/max limits align with mathematical requirements.</td>
+                      <td className="p-3 text-rose-400 font-mono font-semibold">Ingestion feeds carrying string suffixes ("% or $") trigger validation failures.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-mono font-semibold text-neutral-100">DATE_TIME</td>
+                      <td className="p-3">Unix epoch millisecond timestamp. Supports date-only and dynamic system offset calculations.</td>
+                      <td className="p-3">Always configure appropriate time zone offsets. Avoid hardcoded time ranges.</td>
+                      <td className="p-3 text-rose-400 font-mono font-semibold">Time zone drift during date comparisons in formulas.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-mono font-semibold text-neutral-100">VALUES_LIST</td>
+                      <td className="p-3">Linked key-value registry. Supports flat lists, hierarchical trees, and dynamic filters.</td>
+                      <td className="p-3">Enforce global list reuse. Build dynamic rules to filter valid values based on parent fields.</td>
+                      <td className="p-3 text-rose-400 font-mono font-semibold">Attempting to write an unregistered string via APIs triggers null insertion.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-mono font-semibold text-neutral-100">CROSS_REFERENCE</td>
+                      <td className="p-3">Relational link array (joins tables via link tables). Can bind records 1-to-many or many-to-many.</td>
+                      <td className="p-3">Determine if link cascade is enabled (e.g. deleting parent record deletes target links).</td>
+                      <td className="p-3 text-rose-400 font-mono font-semibold">RLS blockages. Target record RLS limits calculations referencing this link.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-mono font-semibold text-neutral-100">USER_GROUP</td>
+                      <td className="p-3">Specialized list referencing user/group account registries. Directly drives security.</td>
+                      <td className="p-3">Map to appropriate security groups. Use to feed dynamic RLS checks on records.</td>
+                      <td className="p-3 text-rose-400 font-mono font-semibold">Orphaned groups. Deleting a directory group breaks dynamic record routing.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-mono font-semibold text-neutral-100">CALCULATED</td>
+                      <td className="p-3">Evaluated dynamically. Calculation engine crawls a directed acyclic graph (DAG) to evaluate formula.</td>
+                      <td className="p-3">Keep referenced field maps clean. Verify all logic paths handle blank/null fields gracefully.</td>
+                      <td className="p-3 text-rose-400 font-mono font-semibold">Circular dependency loop. Instantly locks the system, aborting computations.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="bg-amber-500/5 border border-amber-500/20 p-4 rounded-lg flex flex-col gap-2">
+                <h4 className="text-xs font-mono font-bold text-amber-400 uppercase">Expert Tip: Field Type Selection</h4>
+                <p className="text-xs text-neutral-300 leading-relaxed font-mono">
+                  When designing GRC tables, always prefer **Values Lists** over **Text Fields** for status/categorical properties. Values Lists enforce strict validation at the schema level, accelerate query parsing in calculations, and allow for flawless Data-Driven Event logic (which cannot evaluate free-text strings reliably).
+                </p>
+              </div>
+            </div>
+          )}
+
+          {manualSection === 'calculations' && (
+            <div className="flex flex-col gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Calculations, Formulas, and DAG Dependencies</h2>
+                <p className="text-xs text-neutral-400 font-mono">THE COMPUTATIONAL HEART OF THE GRC PLATFORM</p>
+              </div>
+              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
+                Calculated fields in GRC architectures use custom mathematical, conditional, and string operators. Under the hood, the system parses all formulas, maps their input fields, and builds a **Directed Acyclic Graph (DAG)** to determine the correct order of execution.
+              </p>
+
+              <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 flex flex-col gap-3 font-mono text-xs">
+                <h3 className="font-bold text-amber-400">Common Formula Syntax Sheet</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-neutral-100 font-semibold">IF Logic:</span>
+                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">IF(FLD_INHERENT_IMPACT &gt; 4, 'High', 'Normal')</code>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-neutral-100 font-semibold">Relational Aggregations (X-Ref):</span>
+                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">SUM(FLD_CONTROLS_REF.FLD_CONTROL_SCORE)</code>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-neutral-100 font-semibold">Multiple Assertions:</span>
+                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">AND(FLD_STATUS == 'Active', FLD_SCORE &lt; 20)</code>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-neutral-100 font-semibold">Date Calculations:</span>
+                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">DATEADD(FLD_CREATE_DATE, 30, 'days')</code>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-neutral-100 mb-2">The Calculation DAG & Dynamic Re-calculations</h3>
+                <p className="text-xs text-neutral-300 leading-relaxed mb-3">
+                  When a user edits a field, the Recalculation Engine queues all downstream calculated fields. It crawls the DAG to evaluate dependent fields in a topological sort order. 
+                </p>
+                <div className="bg-neutral-950/40 border border-neutral-800 rounded-lg p-3 text-xs leading-relaxed font-mono">
+                  <span className="text-amber-400 font-bold block mb-1">Recalculation Sequence:</span>
+                  1. Field Edited (e.g. Likelihood) <br />
+                  2. Inherent Score Evaluated: <code className="bg-neutral-950 px-1 text-neutral-400">Likelihood * Impact</code> <br />
+                  3. Risk Rating Evaluated: <code className="bg-neutral-950 px-1 text-neutral-400">IF(Inherent Score &gt; 15, \'CRITICAL\', \'LOW\')</code> <br />
+                  4. Control Requirement Status Evaluated: <code className="bg-neutral-950 px-1 text-neutral-400">DDE triggers based on Risk Rating</code>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {manualSection === 'workflow' && (
+            <div className="flex flex-col gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Advanced Workflow (AWF) Systems</h2>
+                <p className="text-xs text-neutral-400 font-mono">AUTOMATED STATE TRANSITIONS & ROUTING</p>
+              </div>
+              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
+                Advanced Workflow (AWF) handles lifecycle management and transition gates. Instead of relying on manual field updates, AWF drives record states sequentially through visual maps, enforcing task assignments and conditional branch decisions.
+              </p>
+
+              <div className="bg-neutral-950/60 border border-neutral-800 rounded-lg p-4 flex flex-col gap-2.5 font-mono text-xs text-neutral-300">
+                <span className="text-amber-400 font-bold uppercase">Core Workflow Node Roster</span>
+                <ul className="list-disc list-inside flex flex-col gap-1.5">
+                  <li><strong className="text-neutral-100">START Node:</strong> The entry point when a record is initially created. Directs flow instantly to the initial workspace node.</li>
+                  <li><strong className="text-neutral-100">TASK Node:</strong> A manual interaction gate. Enforces specific user or security group actions (e.g., Approve, Reject).</li>
+                  <li><strong className="text-neutral-100">DECISION Node:</strong> A programmatic evaluator. Evaluates the active record fields and routes transitions automatically.</li>
+                  <li><strong className="text-neutral-100">END Node:</strong> The final operational state. Marks the active workflow instance as completed, freezing historical transitions.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-neutral-100 mb-2">Workflow Best Practices</h3>
+                <ul className="text-xs text-neutral-300 list-decimal list-inside leading-relaxed flex flex-col gap-2 font-mono">
+                  <li>Always configure explicit fallback targets on **Decision Nodes** to prevent routing deadlocks.</li>
+                  <li>Ensure security roles are properly defined for **Task Nodes** so that assigned users can locate, edit, and advance the record.</li>
+                  <li>Use dynamic telemetry logging to audit historical transition patterns and debug loop deadlocks.</li>
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {manualSection === 'security' && (
+            <div className="flex flex-col gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">RBAC & Record-Level Security (RLS)</h2>
+                <p className="text-xs text-neutral-400 font-mono">GRANULAR ACCESS CONTROLS & SECURITY INHERITANCE</p>
+              </div>
+              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
+                Enterprise GRC setups require strict multi-tenant and departmental security. Access control is split into two distinct, cascading logic blocks: Module Access (RBAC) and Record-Level Security (RLS).
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
+                <div className="bg-neutral-950/60 border border-neutral-800 p-4 rounded-lg">
+                  <h3 className="text-amber-400 font-bold mb-2">Module-Level Access (RBAC)</h3>
+                  <p className="leading-relaxed text-neutral-300">
+                    Static, role-based controls configured globally on structures (Applications/Sub-forms). Checks if the active user\'s roles match the structure\'s whitelist (e.g., CISO can access Audit Logs, but Ingestion Service cannot).
+                  </p>
+                </div>
+                <div className="bg-neutral-950/60 border border-neutral-800 p-4 rounded-lg">
+                  <h3 className="text-amber-400 font-bold mb-2">Record-Level Security (RLS)</h3>
+                  <p className="leading-relaxed text-neutral-300">
+                    Dynamic security evaluated at the record-instance level. The system compares the active user\'s ID and groups with custom fields (User/Group lists) on the specific record (e.g. IT Analyst can see IT Risk records, but Executive Board sees only Board reviews).
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-neutral-950 border border-neutral-800 p-4 rounded-lg flex flex-col gap-2">
+                <h3 className="text-sm font-semibold text-neutral-100 font-mono font-bold text-amber-400">Dynamic Security Inheritance (X-Ref Calculations)</h3>
+                <p className="text-xs text-neutral-300 leading-relaxed font-mono">
+                  This is one of the most critical aspects of GRC backend engineering:
+                  When calculated formulas query target fields through a **Cross-Reference**, the calculation engine evaluates RLS permissions on *every single target record* in real time!
+                  If a user does not have permission to view a target record, that record\'s data is silently filtered out of the calculation. 
+                </p>
+              </div>
+            </div>
+          )}
+
+          {manualSection === 'pitfalls' && (
+            <div className="flex flex-col gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Troubleshooting, Pitfalls, & Resolutions</h2>
+                <p className="text-xs text-neutral-400 font-mono">COMMON GRC ENGINEERING FAULT PROFILES</p>
+              </div>
+              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
+                As a GRC engineer, you will regularly deal with system errors, deadlocks, and data corruption. Here are the 4 main GRC failure profiles, their symptoms, causes, and exact engineering resolutions:
+              </p>
+
+              {/* Grid of the 4 break-fix scenario profiles */}
+              <div className="grid grid-cols-1 gap-4 font-mono text-xs">
+                <div className="border border-rose-500/20 bg-rose-500/5 p-4 rounded-lg flex flex-col gap-2">
+                  <h3 className="text-rose-400 font-bold">1. Circular Recalculation Loops</h3>
+                  <p className="text-neutral-300 leading-relaxed">
+                    <strong>Symptom:</strong> System freezes, CPU usage spikes, and calculations halt globally. <br />
+                    <strong>Cause:</strong> Two or more calculated fields reference each other, creating a circular graph cycle (e.g., Impact depends on Score, and Score depends on Impact). <br />
+                    <strong>Resolution:</strong> Map all calculation paths topologically. Break the loop by injecting a dynamic Data Driven Event (DDE) to override values, or refactor the formula to reference static fields.
+                  </p>
+                </div>
+
+                <div className="border border-amber-500/20 bg-amber-500/5 p-4 rounded-lg flex flex-col gap-2">
+                  <h3 className="text-amber-400 font-bold">2. Silent RLS Security Gaps</h3>
+                  <p className="text-neutral-300 leading-relaxed">
+                    <strong>Symptom:</strong> Dashboard aggregations (like SUM/COUNT) return 0 or incorrect low values for analysts, but correct values for admins. <br />
+                    <strong>Cause:</strong> Dynamic Record-Level Security filter excludes target records during Cross-Reference lookup. The calculation runs but silently ignores restricted data. <br />
+                    <strong>Resolution:</strong> Align user/group parameters. Grant appropriate inherited read permissions or configure the cross-referenced structure\'s RLS rules to allow visibility when specific key fields match.
+                  </p>
+                </div>
+
+                <div className="border border-blue-500/20 bg-blue-500/5 p-4 rounded-lg flex flex-col gap-2">
+                  <h3 className="text-blue-400 font-bold">3. Ingestion Data Feed Type Skews</h3>
+                  <p className="text-neutral-300 leading-relaxed">
+                    <strong>Symptom:</strong> Data feed imports fail, truncate inputs, or populate cells with null/blank fields. <br />
+                    <strong>Cause:</strong> Raw data values from external integrations (like CSVs or APIs) carry string wrappers (e.g. "5 - Critical") into strict numeric fields. <br />
+                    <strong>Resolution:</strong> Implement type coercion. Strip string elements via regular expression mapping before pushing data into numeric inputs, or use lookup matrices to translate text categories into strict backend index values.
+                  </p>
+                </div>
+
+                <div className="border border-violet-500/20 bg-violet-500/5 p-4 rounded-lg flex flex-col gap-2">
+                  <h3 className="text-violet-400 font-bold">4. AWF State Machine Deadlocks</h3>
+                  <p className="text-neutral-300 leading-relaxed">
+                    <strong>Symptom:</strong> A workflow button is clicked, but the record is thrown back into draft or enters a deadlock state where no transition buttons appear. <br />
+                    <strong>Cause:</strong> Conflicting DDE rules trigger on status changes, overriding dynamic values or freezing critical fields required for workflow routing. <br />
+                    <strong>Resolution:</strong> Insert state-aware condition parameters in your DDE rules. Ensure the rule only fires when the record is not in active workflow transitions.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-amber-500 selection:text-neutral-950 antialiased">
       
       {/* --- TOP TERMINAL HEADER --- */}
-      <header className="border-b border-neutral-800 bg-neutral-900/60 backdrop-blur px-6 py-4 flex items-center justify-between">
+      <header className="border-b border-neutral-800 bg-neutral-900/60 backdrop-blur px-6 py-4 flex items-center justify-between flex-wrap gap-4">
         <div className="flex items-center gap-3">
           <Cpu className="w-6 h-6 text-amber-500 animate-pulse" />
           <div>
@@ -471,6 +759,32 @@ export default function App() {
             </h1>
             <p className="text-xs text-neutral-400 font-mono">INTEGRATED RISK MANAGEMENT DIAGNOSTIC TERMINAL</p>
           </div>
+        </div>
+
+        {/* Dynamic Tab Switcher */}
+        <div className="flex items-center gap-1 bg-neutral-950 p-1 rounded-lg border border-neutral-800">
+          <button
+            onClick={() => setActiveTab('SANDBOX')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
+              activeTab === 'SANDBOX'
+                ? 'bg-amber-500 text-neutral-950 font-bold shadow'
+                : 'text-neutral-400 hover:text-neutral-200'
+            }`}
+          >
+            <Terminal className="w-3.5 h-3.5" />
+            Diagnostic Sandbox
+          </button>
+          <button
+            onClick={() => setActiveTab('MANUAL')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
+              activeTab === 'MANUAL'
+                ? 'bg-amber-500 text-neutral-950 font-bold shadow'
+                : 'text-neutral-400 hover:text-neutral-200'
+            }`}
+          >
+            <FileText className="w-3.5 h-3.5" />
+            GRC Field Types Manual
+          </button>
         </div>
 
         {/* User Role Simulation selection dropdown */}
@@ -503,7 +817,8 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      {activeTab === 'SANDBOX' ? (
+        <main className="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* --- SCENARIO SELECTOR PANEL (LEFT COLUMN) --- */}
         <section className="lg:col-span-4 flex flex-col gap-6" aria-labelledby="lobbyHeading">
@@ -1056,6 +1371,11 @@ export default function App() {
         </section>
 
       </main>
+      ) : (
+        <main className="max-w-7xl mx-auto p-6">
+          {renderManual()}
+        </main>
+      )}
 
       {/* FOOTER */}
       <footer className="border-t border-neutral-800 bg-neutral-950 py-6 mt-12 text-center text-xs text-neutral-500 font-mono">
