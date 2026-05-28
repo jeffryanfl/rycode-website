@@ -1,794 +1,409 @@
 import { useState, useEffect } from 'react';
 import {
-  Terminal,
-  Shield,
-  RotateCcw,
+  Cpu,
   Database,
-  User,
-  Users,
-  CheckCircle,
-  AlertTriangle,
-  FileText,
-  GitPullRequest,
+  Terminal,
   Settings,
-  Cpu
+  GitPullRequest,
+  Shield,
+  User,
+  RotateCcw
 } from 'lucide-react';
 
-import { checkCircularDependencies, FormulaEvaluator } from './engines/CalculationsEngine';
-import { DDEEngine } from './engines/DDEEngine';
-import type { DDERule, FieldRuntimeState } from './engines/DDEEngine';
-import { AWFEngine } from './engines/AWFEngine';
-import type { AWFInstanceState, DiagnosticTelemetry } from './engines/AWFEngine';
+import { FormulaEvaluator } from './engines/CalculationsEngine';
 import { RLSEngine } from './engines/RLSEngine';
 import type { RLSConfig } from './engines/RLSEngine';
 import {
-  BREAK_FIX_SCENARIOS,
   MOCK_USERS,
   APP_RISK_REGISTER,
   APP_CONTROL_REGISTER,
-  DEFAULT_DATABASE_RECORDS,
-  DEFAULT_AWF_WORKFLOW
+  DEFAULT_DATABASE_RECORDS
 } from './data/BreakFixScenarios';
-import type { BreakFixScenario } from './data/BreakFixScenarios';
 import type { Field, RecordPayload, SimulatedUserContext, Structure } from './types/SystemTaxonomyConfig';
 
 export default function App() {
-  // --- DATABASE & ENGINE STATES ---
+  // --- STATE REGISTRY ---
   const [currentUser, setCurrentUser] = useState<SimulatedUserContext>(MOCK_USERS.RISK_ANALYST);
+  const [records, setRecords] = useState<Map<string, RecordPayload>>(DEFAULT_DATABASE_RECORDS());
+  const [activeTab, setActiveTab] = useState<'FIELDS' | 'FEEDS' | 'DDE' | 'AWF' | 'SECURITY'>('FIELDS');
+  
+  // Selection states
+  const [selectedFieldId, setSelectedFieldId] = useState<string>('FLD_RISK_ID');
+  const [selectedFeedFieldId, setSelectedFeedFieldId] = useState<string>('FLD_INHERENT_IMPACT');
+  const [selectedDdeRuleId, setSelectedDdeRuleId] = useState<string>('Freeze_Audits_Draft');
+  const [selectedWfNodeId, setSelectedWfNodeId] = useState<string>('NODE_DRAFT');
+  
+  // Custom Playground States
+  const [feedInput, setFeedInput] = useState<string>('5 - Critical');
+  const [feedLogs, setFeedLogs] = useState<string[]>([]);
+  const [coercedValue, setCoercedValue] = useState<any>(null);
+  const [upsertMode, setUpsertMode] = useState<'UPSERT' | 'INSERT_ONLY' | 'UPDATE_ONLY'>('UPSERT');
+  
+  const [selectedFormula, setSelectedFormula] = useState<string>('BASIC');
+  const [formulaLogs, setFormulaLogs] = useState<string[]>([]);
+  const [formulaResult, setFormulaResult] = useState<any>(null);
+  
+  const [ddeTimelineLogs, setDdeTimelineLogs] = useState<string[]>([]);
+  const [securityCheckLog, setSecurityCheckLog] = useState<string[]>([]);
+  
+  // Engines reference configs
   const [structures] = useState<Map<string, Structure>>(
     new Map([
       ['APP_RISK_REGISTER', APP_RISK_REGISTER],
       ['APP_CONTROL_REGISTER', APP_CONTROL_REGISTER]
     ])
   );
-  
-  const [fields, setFields] = useState<Field[]>(APP_RISK_REGISTER.fields);
-  const [records, setRecords] = useState<Map<string, RecordPayload>>(DEFAULT_DATABASE_RECORDS());
+  const [fields] = useState<Field[]>([...APP_RISK_REGISTER.fields, ...APP_CONTROL_REGISTER.fields]);
   const [rlsConfigs, setRlsConfigs] = useState<Record<string, RLSConfig>>({
     APP_RISK_REGISTER: { isEnabled: false, allowIfFieldsEmpty: true },
     APP_CONTROL_REGISTER: { isEnabled: true, userFieldId: undefined, groupFieldId: 'FLD_ALLOWED_GROUPS', allowIfFieldsEmpty: true }
   });
-  const [ddeRules, setDdeRules] = useState<DDERule[]>([
-    {
-      id: 'Freeze_Audits_Draft',
-      name: 'Freeze_Audits_Draft',
-      triggerFieldIds: ['FLD_STATUS'],
-      conjunction: 'AND',
-      conditions: [{ fieldId: 'FLD_STATUS', operator: 'EQUALS', value: 'Under Review' }],
-      actions: [{ targetFieldId: 'FLD_STATUS', type: 'SET_VALUE', value: 'Draft' }]
-    }
-  ]);
-
-  // --- WORKFLOW STATE ---
-  const [workflow] = useState(DEFAULT_AWF_WORKFLOW());
-  const [wfState, setWfState] = useState<AWFInstanceState>({
+  
+  const [wfState, setWfState] = useState<{
+    recordId: string;
+    currentNodeId: string;
+    isCompleted: boolean;
+    history: { nodeId: string; timestamp: string }[];
+  }>({
     recordId: 'REC_RISK_01',
     currentNodeId: 'NODE_DRAFT',
     isCompleted: false,
     history: [{ nodeId: 'NODE_START', timestamp: new Date().toISOString() }]
   });
 
-  // --- UI CONTROL STATES ---
-  const [activeRecordId, setActiveRecordId] = useState<string>('REC_RISK_01');
-  const [activeStructureId, setActiveStructureId] = useState<string>('APP_RISK_REGISTER');
-  const [telemetryLogs, setTelemetryLogs] = useState<DiagnosticTelemetry[]>([]);
-  const [activeScenarioId, setActiveScenarioId] = useState<string | null>(null);
-  const [scenarioSuccess, setScenarioSuccess] = useState<boolean>(false);
-  
-  // Scenario 3 specific input
-  const [feedInput, setFeedInput] = useState<string>('5 - Critical');
-  const [feedTransformed, setFeedTransformed] = useState<string | null>(null);
+  // --- RE-CALCULATION PLAYGROUND TRIGGER ---
+  useEffect(() => {
+    runFormulaCalculation();
+  }, [selectedFormula, currentUser, records]);
 
-  // Field runtime overrides computed by DDE Engine
-  const [ddeOverrides, setDdeOverrides] = useState<Record<string, FieldRuntimeState>>({});
-  const [circularError, setCircularError] = useState<{ message: string; path: string[] } | null>(null);
+  // --- INGESTION RUN SIMULATION ---
+  const runIngestionSimulation = () => {
+    const logs: string[] = [];
+    logs.push(`[0.00ms] Ingestion Data Feed Pipeline initialized (Upsert Mode: ${upsertMode})`);
+    logs.push(`[1.20ms] Extracting payload column maps. Raw feed value: "${feedInput}"`);
 
-  const [activeTab, setActiveTab] = useState<'SANDBOX' | 'MANUAL'>('SANDBOX');
-  const [manualSection, setManualSection] = useState<string>('field-types');
+    // Coercion settings based on target
+    const targetField = fields.find(f => f.id === selectedFeedFieldId);
+    if (!targetField) {
+      logs.push(`[ERROR] Target Field definition "${selectedFeedFieldId}" not found in database metadata.`);
+      setFeedLogs(logs);
+      return;
+    }
 
-  // --- LOGGING HELPER ---
-  const addLog = (
-    phase: DiagnosticTelemetry['executionPhase'],
-    status: DiagnosticTelemetry['status'],
-    message: string,
-    details?: any,
-    errMessage?: string
-  ) => {
-    const log: DiagnosticTelemetry = {
-      id: 'TEL_' + Math.random().toString(36).substr(2, 9).toUpperCase(),
-      timestamp: new Date().toISOString().split('T')[1].slice(0, 12),
-      applicationContext: `${activeStructureId}_${activeRecordId}`,
-      executionPhase: phase,
-      status,
-      traceDetails: details || { evaluatedExpression: message },
-      errorMessage: errMessage
-    };
-    setTelemetryLogs((prev) => [log, ...prev].slice(0, 100)); // Cap at 100 logs
+    logs.push(`[2.50ms] Mapping column to Target Field: "${targetField.name}" [Type: ${targetField.type}]`);
+
+    let parsedVal: any = feedInput;
+
+    if (targetField.type === 'NUMERIC') {
+      logs.push(`[4.10ms] Executing regex type coercion: stripping text elements and formatting strings...`);
+      // Strip everything except numbers, decimal points, and negative signs
+      const numbersOnly = feedInput.replace(/[^0-9.-]/g, '');
+      parsedVal = numbersOnly ? Number(numbersOnly) : null;
+      
+      if (isNaN(parsedVal) || parsedVal === null) {
+        logs.push(`[WARNING] Coercion skewed: String "${feedInput}" could not be parsed to pure decimal. Defaulting to NULL.`);
+        parsedVal = null;
+      } else {
+        logs.push(`[SUCCESS] Value successfully coerced from string "${feedInput}" to float: ${parsedVal}`);
+      }
+    } 
+    else if (targetField.type === 'VALUES_LIST') {
+      logs.push(`[4.80ms] Executing Lookup Translation map: searching Option Registry for matching string key...`);
+      const options = APP_RISK_REGISTER.fields.find(f => f.id === 'FLD_STATUS')?.valuesListConfig?.options || [];
+      
+      // Look for fuzzy value matching
+      const matchedOption = options.find(opt => 
+        opt.value.toLowerCase() === feedInput.trim().toLowerCase() ||
+        feedInput.trim().toLowerCase().includes(opt.value.toLowerCase())
+      );
+
+      if (matchedOption) {
+        parsedVal = matchedOption.id;
+        logs.push(`[SUCCESS] Lookup Matched! String "${feedInput}" resolved to Values List Option ID: "${matchedOption.id}" (${matchedOption.value})`);
+      } else {
+        logs.push(`[CRITICAL_FAIL] Translation orphaned: No registered Values List Option matched "${feedInput}". Attempting SQL transaction with NULL.`);
+        parsedVal = null;
+      }
+    } 
+    else if (targetField.type === 'USER_GROUP') {
+      logs.push(`[5.20ms] Crawling Active Directory LDAP path: CN=Users,DC=GRM...`);
+      if (feedInput.toUpperCase().includes('ANALYST') || feedInput.toUpperCase().includes('SMITH')) {
+        parsedVal = [MOCK_USERS.RISK_ANALYST.id];
+        logs.push(`[SUCCESS] User account resolved: "${MOCK_USERS.RISK_ANALYST.username}"`);
+      } else if (feedInput.toUpperCase().includes('CISO') || feedInput.toUpperCase().includes('EXEC')) {
+        parsedVal = [MOCK_USERS.CISO.id];
+        logs.push(`[SUCCESS] User account resolved: "${MOCK_USERS.CISO.username}"`);
+      } else {
+        logs.push(`[WARNING] Directory query returned empty. User field saved as empty array.`);
+        parsedVal = [];
+      }
+    } else {
+      logs.push(`[5.50ms] Plain string insertion mapped directly.`);
+    }
+
+    setCoercedValue(parsedVal);
+
+    // Upsert database matching check
+    logs.push(`[7.20ms] Checking Key Field constraints. Evaluation key: "FLD_RISK_ID" == "REC_RISK_01"`);
+    const nextRecs = new Map(records);
+    const existingRec = nextRecs.get('REC_RISK_01')!;
+
+    if (upsertMode === 'UPDATE_ONLY' || upsertMode === 'UPSERT') {
+      logs.push(`[8.80ms] Key field found: Record "REC_RISK_01" exists in tblContent. Initiating UPDATE SQL transaction.`);
+      const updatedValues = { ...existingRec.values, [selectedFeedFieldId]: parsedVal };
+      nextRecs.set('REC_RISK_01', { ...existingRec, values: updatedValues });
+      setRecords(nextRecs);
+      logs.push(`[SUCCESS] SQL Commit completed. content_id: 1002, table: tblIV${targetField.type === 'VALUES_LIST' ? 'ValuesList' : targetField.type.charAt(0) + targetField.type.slice(1).toLowerCase()} updated.`);
+    } else {
+      logs.push(`[8.90ms] Ingestion blocked: INSERT mode skipped for duplicate matching key.`);
+    }
+
+    setFeedLogs(logs);
   };
 
-  // --- RE-EVALUATE COMPUTED VALUES ---
-  const evaluateEngineState = (currentRecs: Map<string, RecordPayload>, currentFields: Field[], rules: DDERule[], rls: Record<string, RLSConfig>) => {
-    const nextRecs = new Map(currentRecs);
-    const activeRec = nextRecs.get(activeRecordId);
-    if (!activeRec) return;
+  // --- FORMULA RUNNER & DAG CYCLING SIMULATION ---
+  const runFormulaCalculation = () => {
+    const logs: string[] = [];
+    const activeRec = records.get('REC_RISK_01')!;
+    const fieldsMap = new Map(fields.map(f => [f.id, f]));
+    
+    logs.push(`[0.00ms] Calculation Recalculation Engine triggered.`);
+    logs.push(`[1.00ms] Building Field Dependency Map (Directed Acyclic Graph) for formulas...`);
 
-    // 1. RLS ACCESS CHECK
-    const currentStruct = structures.get(activeRec.structureId)!;
-    const moduleAllowed = RLSEngine.evaluateModuleAccess(currentStruct, currentUser);
-    const recordAllowed = RLSEngine.evaluateRecordRLS(activeRec, currentStruct, currentUser, rls[activeRec.structureId]);
-
-    if (!moduleAllowed || !recordAllowed) {
-      addLog(
-        'ACCESS_CONTROL',
-        'WARNING',
-        `Record RLS restriction triggered. Visibility omitted for user ${currentUser.username}`
-      );
+    if (selectedFormula === 'CIRCULAR') {
+      logs.push(`[2.10ms] Dependency DAG added node: FLD_INHERENT_IMPACT depends on FLD_INHERENT_SCORE`);
+      logs.push(`[2.40ms] Dependency DAG added node: FLD_INHERENT_SCORE depends on FLD_INHERENT_IMPACT`);
+      logs.push(`[3.10ms] Initiating Depth-First Search (DFS) circular calculation loop auditing...`);
+      logs.push(`[3.90ms] Loop Tracker visiting: FLD_INHERENT_IMPACT`);
+      logs.push(`[4.20ms] Loop Tracker visiting: FLD_INHERENT_SCORE`);
+      logs.push(`[4.50ms] Loop Tracker visiting: FLD_INHERENT_IMPACT -> [VISITING STATE ENCOUNTERED]`);
+      
+      const cyclicPath = ['FLD_INHERENT_IMPACT', 'FLD_INHERENT_SCORE', 'FLD_INHERENT_IMPACT'];
+      logs.push(`[CRITICAL_FAIL] Circular Dependency Loop Detected! Aborting thread recursively: ${cyclicPath.join(' -> ')}`);
+      setFormulaResult('PARADOX_LOCK');
+      setFormulaLogs(logs);
       return;
     }
 
-    // 2. CHECK CIRCULAR DEPENDENCIES BEFORE CALCULATION RUN
-    const fieldsMap = new Map(currentFields.map((f) => [f.id, f]));
-    const circularPath = checkCircularDependencies(currentFields, fieldsMap);
-    
-    if (circularPath) {
-      const errMsg = `Circular dependency chain detected: ${circularPath.join(' -> ')}. Thread aborted.`;
-      setCircularError({ message: errMsg, path: circularPath });
-      addLog(
-        'CALCULATION_ENGINE',
-        'CRITICAL_FAIL',
-        'Calculation execution halted to prevent stack overflow.',
-        { currentTokens: { cyclePath: circularPath } },
-        errMsg
-      );
-      return;
-    } else {
-      setCircularError(null);
-    }
-
-    // 3. RUN DDE ENGINE (Data Driven Events)
-    const dde = new DDEEngine(rules);
-    const { fieldStates, logs: ddeLogs } = dde.evaluateRules(activeRec, currentFields);
-    setDdeOverrides(fieldStates);
-    
-    ddeLogs.forEach((logLine) => {
-      addLog('DATA_DRIVEN_EVENT', 'SUCCESS', logLine);
-    });
-
-    // Apply any value overrides forced by DDEs
-    const valuesWithOverrides = { ...activeRec.values };
-    Object.keys(fieldStates).forEach((fId) => {
-      if (fieldStates[fId].valueOverride !== undefined) {
-        valuesWithOverrides[fId] = fieldStates[fId].valueOverride;
-      }
-    });
-
-    // 4. RUN FORMULA CALCULATION ENGINE
+    // Configure evaluator respect to dynamic record visibility
     const evaluator = new FormulaEvaluator(
-      { ...activeRec, values: valuesWithOverrides },
-      nextRecs,
+      activeRec,
+      records,
       fieldsMap,
       (targetRec, user) => {
-        // Recursive RLS filter execution inside calculation lookups
         const targetStruct = structures.get(targetRec.structureId)!;
-        return RLSEngine.evaluateRecordRLS(
-          targetRec,
-          targetStruct,
-          user,
-          rls[targetRec.structureId]
-        );
+        return RLSEngine.evaluateRecordRLS(targetRec, targetStruct, user, rlsConfigs[targetRec.structureId]);
       },
       currentUser
     );
 
-    let calcApplied = false;
-    currentFields.forEach((field) => {
-      if (field.type === 'CALCULATED' && field.calculatedConfig) {
-        try {
-          const oldVal = valuesWithOverrides[field.id];
-          const calculatedVal = evaluator.evaluate(field.calculatedConfig.formula);
-          
-          if (calculatedVal !== oldVal) {
-            valuesWithOverrides[field.id] = calculatedVal;
-            calcApplied = true;
-            addLog(
-              'CALCULATION_ENGINE',
-              'SUCCESS',
-              `Evaluated Calculated Field [${field.id}]`,
-              {
-                evaluatedExpression: field.calculatedConfig.formula,
-                currentTokens: { oldValue: oldVal, newValue: calculatedVal }
-              }
-            );
-          }
-        } catch (err: any) {
-          addLog(
-            'CALCULATION_ENGINE',
-            'CRITICAL_FAIL',
-            `Failed to evaluate [${field.id}]`,
-            null,
-            err.message
-          );
-        }
-      }
-    });
+    let formula = '';
+    let expectedResult: any = null;
 
-    if (calcApplied || JSON.stringify(activeRec.values) !== JSON.stringify(valuesWithOverrides)) {
-      nextRecs.set(activeRecordId, {
-        ...activeRec,
-        values: valuesWithOverrides
+    if (selectedFormula === 'BASIC') {
+      formula = 'FLD_INHERENT_IMPACT * FLD_INHERENT_LIKELIHOOD';
+      logs.push(`[2.00ms] Compiling formula: "${formula}"`);
+      logs.push(`[2.80ms] Sorting dependencies: FLD_INHERENT_IMPACT (Value: ${activeRec.values.FLD_INHERENT_IMPACT}) & FLD_INHERENT_LIKELIHOOD (Value: ${activeRec.values.FLD_INHERENT_LIKELIHOOD})`);
+      expectedResult = evaluator.evaluate(formula);
+      logs.push(`[SUCCESS] Formula evaluation complete. Mathematical result: ${expectedResult}`);
+    } 
+    else if (selectedFormula === 'IF_COMP') {
+      formula = "IF(FLD_INHERENT_IMPACT > 4, 'CRITICAL', 'NORMAL')";
+      logs.push(`[2.00ms] Compiling conditional formula: "${formula}"`);
+      logs.push(`[2.60ms] Crawling dependency nodes: FLD_INHERENT_IMPACT == ${activeRec.values.FLD_INHERENT_IMPACT}`);
+      expectedResult = evaluator.evaluate(formula);
+      logs.push(`[SUCCESS] Conditions parsed. String result: "${expectedResult}"`);
+    } 
+    else if (selectedFormula === 'XREF_SUM') {
+      formula = 'SUM(FLD_CONTROLS_REF.FLD_CONTROL_SCORE)';
+      logs.push(`[2.00ms] Compiling cross-reference aggregation formula: "${formula}"`);
+      logs.push(`[2.90ms] Crawling relational join table tblIVXRef for active links...`);
+      
+      const linkedRecordIds = activeRec.values.FLD_CONTROLS_REF as string[] || [];
+      logs.push(`[3.50ms] Join pointers found: ${linkedRecordIds.length} target content IDs: [${linkedRecordIds.join(', ')}]`);
+      
+      // Perform security check logs
+      logs.push(`[4.20ms] Security check: Running Record-Level Security RLS evaluate on linked content IDs...`);
+      let visibleCount = 0;
+      let blockedCount = 0;
+
+      linkedRecordIds.forEach(id => {
+        const trgRec = records.get(id);
+        if (trgRec) {
+          const isAllowed = RLSEngine.evaluateRecordRLS(trgRec, APP_CONTROL_REGISTER, currentUser, rlsConfigs.APP_CONTROL_REGISTER);
+          if (isAllowed) {
+            visibleCount++;
+            logs.push(`  - Content ID "${id}": Visibility GRANTED for ${currentUser.roles[0]}`);
+          } else {
+            blockedCount++;
+            logs.push(`  - Content ID "${id}": Visibility DENIED (Blocked by RLS constraints)`);
+          }
+        }
       });
-      setRecords(nextRecs);
+
+      if (blockedCount > 0) {
+        logs.push(`[WARNING] RLS Security Ghost Active: ${blockedCount} records silently omitted from aggregation results!`);
+      }
+
+      expectedResult = evaluator.evaluate(formula);
+      logs.push(`[SUCCESS] Aggregations completed. Sum result: ${expectedResult}`);
     }
+
+    setFormulaResult(expectedResult);
+    setFormulaLogs(logs);
   };
 
-  // Run engine evaluations when states fluctuate
-  useEffect(() => {
-    evaluateEngineState(records, fields, ddeRules, rlsConfigs);
-  }, [currentUser, activeRecordId, activeStructureId, fields, ddeRules, rlsConfigs]);
+  // --- DDE RULE & AWF TIMELINE TRIGGER ---
+  const runDdeTimelineTest = (isResolved: boolean) => {
+    const logs: string[] = [];
+    logs.push(`[0.00ms] Action submit button clicked by user: "${currentUser.username}"`);
+    logs.push(`[1.10ms] AWF: Triggering active workflow step: "Draft State" -> NODE_DECISION`);
+    logs.push(`[2.20ms] Dynamic Rule evaluation: Scanning active DDE triggers...`);
 
-  // Check Scenario success states
-  useEffect(() => {
-    if (!activeScenarioId) {
-      setScenarioSuccess(false);
+    if (!isResolved) {
+      logs.push(`[3.20ms] DDE Rule 'Freeze_Audits_Draft' fired on state trigger.`);
+      logs.push(`[4.10ms] DDE Action executed: SET_VALUE FLD_STATUS = "Draft"`);
+      logs.push(`[5.30ms] Recalculation Engine ran: updated FLD_STATUS inside tblIVValuesList`);
+      logs.push(`[6.50ms] AWF: Evaluating workflow node Transition guard: Gate Evaluation`);
+      logs.push(`[7.20ms] AWF Rule check: Guard expects FLD_STATUS == "Approved". Current value: "Draft"`);
+      logs.push(`[CRITICAL_FAIL] AWF Routing Deadlock! Status override prevents node advancement. Record reverted to "Draft State".`);
+      setWfState(prev => ({ ...prev, currentNodeId: 'NODE_DRAFT' }));
+    } else {
+      logs.push(`[3.20ms] State-aware trigger check: AWF active transition state detected.`);
+      logs.push(`[4.00ms] DDE Rule 'Freeze_Audits_Draft' bypassed (DDE Audit Freeze Rule disabled for transition safety).`);
+      logs.push(`[5.10ms] AWF: Evaluating workflow node Transition guard: Gate Evaluation`);
+      logs.push(`[6.00ms] AWF Rule check: Guard expects FLD_STATUS == "Approved". Value matches!`);
+      logs.push(`[SUCCESS] AWF Node transitioned: "Draft State" -> "Approved End"`);
+      logs.push(`[SUCCESS] Workflow instance completed successfully.`);
+      setWfState(prev => ({
+        ...prev,
+        currentNodeId: 'NODE_APPROVED_END',
+        isCompleted: true,
+        history: [...prev.history, { nodeId: 'NODE_APPROVED_END', timestamp: new Date().toISOString() }]
+      }));
+    }
+
+    setDdeTimelineLogs(logs);
+  };
+
+  // --- SECURITY PATH GATE INSPECTOR ---
+  const runSecurityGateAudit = () => {
+    const logs: string[] = [];
+    const targetRec = records.get('REC_CTRL_01')!;
+    
+    logs.push(`[0.00ms] RLS Security gate audit requested for User ID: "${currentUser.id}"`);
+    logs.push(`[1.20ms] Active roles list: [${currentUser.roles.join(', ')}], Dynamic Groups: [${currentUser.groups.join(', ')}]`);
+    logs.push(`[2.50ms] Step 1: Evaluating Module-Level Access Control (RBAC)...`);
+    
+    const rbacAllowed = RLSEngine.evaluateModuleAccess(APP_CONTROL_REGISTER, currentUser, ['CISO', 'RISK_ANALYST']);
+    if (rbacAllowed) {
+      logs.push(`[PASS] RBAC Check passed. Role contains necessary structure clearance.`);
+    } else {
+      logs.push(`[BLOCK] RBAC Check failed. Role lacks metadata access to Control Application.`);
+      setSecurityCheckLog(logs);
       return;
     }
 
-    const currentRec = records.get('REC_RISK_01')!;
+    logs.push(`[3.90ms] Step 2: Evaluating dynamic Record-Level Security (RLS)...`);
+    logs.push(`[4.50ms] Reading RLS control field: "FLD_ALLOWED_GROUPS"`);
     
-    if (activeScenarioId === 'SCENARIO_1') {
-      // Scenario 1 Correct Fix: Allow GRP_IT_RISK group access on target control records
-      const c1 = records.get('REC_CTRL_01')!;
-      const c2 = records.get('REC_CTRL_02')!;
-      const c1Ok = (c1.values.FLD_ALLOWED_GROUPS as string[]).includes('GRP_IT_RISK');
-      const c2Ok = (c2.values.FLD_ALLOWED_GROUPS as string[]).includes('GRP_IT_RISK');
-      
-      // Also, sum calculation must return 80
-      const sumVal = currentRec.values.FLD_CONTROLS_SUM;
-      if (c1Ok && c2Ok && sumVal === 80) {
-        setScenarioSuccess(true);
-        addLog('ACCESS_CONTROL', 'SUCCESS', 'Scenario 1 Solved! RLS aligned and Calculation returns full sum values.');
-      }
-    } 
-    else if (activeScenarioId === 'SCENARIO_2') {
-      // Scenario 2 Correct Fix: Loop eliminated
-      if (!circularError) {
-        setScenarioSuccess(true);
-        addLog('CALCULATION_ENGINE', 'SUCCESS', 'Scenario 2 Solved! Circular dependency decoupled successfully.');
-      }
-    } 
-    else if (activeScenarioId === 'SCENARIO_3') {
-      // Scenario 3 Correct Fix: coercion mapped correctly (inherent impact is a number 5)
-      if (currentRec.values.FLD_INHERENT_IMPACT === 5 && feedTransformed === '5') {
-        setScenarioSuccess(true);
-        addLog('FIELD_VALIDATION', 'SUCCESS', 'Scenario 3 Solved! String severity mapped to Numeric 5 via feed transformation regex.');
-      }
-    } 
-    else if (activeScenarioId === 'SCENARIO_4') {
-      // Scenario 4 Correct Fix: deadlock rule deactivated (Freeze_Audits_Draft removed)
-      const ruleExists = ddeRules.some((r) => r.id === 'Freeze_Audits_Draft');
-      
-      // Additionally, workflow should successfully advance to Approved State
-      if (!ruleExists && wfState.currentNodeId === 'NODE_APPROVED_END') {
-        setScenarioSuccess(true);
-        addLog('STATE_TRANSITION', 'SUCCESS', 'Scenario 4 Solved! Conflicting DDE removed, workflow safely routed to Approved.');
-      }
-    }
-  }, [records, ddeRules, circularError, feedTransformed, wfState.currentNodeId]);
-
-  // --- MANUAL COMPONENT HANDLERS ---
-  const handleFieldChange = (fieldId: string, value: any) => {
-    // Prevent modification if DDE or calculated field locks it
-    if (ddeOverrides[fieldId]?.isReadOnly) return;
-    const f = fields.find((x) => x.id === fieldId);
-    if (f?.type === 'CALCULATED') return;
-
-    // Validate type bounds
-    if (f?.type === 'NUMERIC') {
-      const numVal = Number(value);
-      if (f.minValue !== undefined && numVal < f.minValue) {
-        addLog('FIELD_VALIDATION', 'WARNING', `Validation Warning: Field [${fieldId}] value ${numVal} below min bounds ${f.minValue}`);
-      }
-      if (f.maxValue !== undefined && numVal > f.maxValue) {
-        addLog('FIELD_VALIDATION', 'WARNING', `Validation Warning: Field [${fieldId}] value ${numVal} exceeds max bounds ${f.maxValue}`);
-      }
-    }
-
-    const nextRecs = new Map(records);
-    const rec = nextRecs.get(activeRecordId)!;
+    const recordGroups = targetRec.values.FLD_ALLOWED_GROUPS as string[] || [];
+    logs.push(`[5.10ms] Record permission whitelisted groups: [${recordGroups.join(', ')}]`);
     
-    nextRecs.set(activeRecordId, {
-      ...rec,
-      values: { ...rec.values, [fieldId]: value }
-    });
-
-    setRecords(nextRecs);
-    addLog('FIELD_VALIDATION', 'SUCCESS', `Modified field [${fieldId}] to '${value}'`);
-  };
-
-  const handleWfTransition = (action: 'APPROVE' | 'REJECT' | 'SUBMIT') => {
-    const rec = records.get(activeRecordId)!;
-    const engine = new AWFEngine(workflow);
-    const { newState, telemetry } = engine.processTransition(wfState, rec, action);
-
-    setWfState(newState);
-    
-    // Add telemetry log output
-    setTelemetryLogs((prev) => [telemetry, ...prev]);
-
-    if (telemetry.status === 'CRITICAL_FAIL') {
-      addLog('STATE_TRANSITION', 'CRITICAL_FAIL', `AWF Deadlock triggered! node expected conditions not matched.`);
+    const rlsPass = RLSEngine.evaluateRecordRLS(targetRec, APP_CONTROL_REGISTER, currentUser, rlsConfigs.APP_CONTROL_REGISTER);
+    if (rlsPass) {
+      logs.push(`[PASS] RLS Check passed. User groups intersect with record whitelists.`);
+      logs.push(`[SUCCESS] Security Clearance GRANTED. Record is fully visible in UI views.`);
     } else {
-      addLog(
-        'STATE_TRANSITION',
-        'SUCCESS',
-        `AWF Step: transitioned record to node '${newState.currentNodeId}'`
-      );
-    }
-  };
-
-  const loadScenario = (scenario: BreakFixScenario) => {
-    setActiveScenarioId(scenario.id);
-    setScenarioSuccess(false);
-    setTelemetryLogs([]);
-    
-    // Reset DB to defaults
-    let baseRecords = DEFAULT_DATABASE_RECORDS();
-    let baseFields = [...APP_RISK_REGISTER.fields];
-    let baseRls = {
-      APP_RISK_REGISTER: { isEnabled: false, allowIfFieldsEmpty: true },
-      APP_CONTROL_REGISTER: { isEnabled: true, userFieldId: undefined, groupFieldId: 'FLD_ALLOWED_GROUPS', allowIfFieldsEmpty: true }
-    };
-    let baseDdes: DDERule[] = [];
-
-    addLog('FIELD_VALIDATION', 'SUCCESS', `Lobby: Loading operational scenario '${scenario.name}'`);
-
-    if (scenario.id === 'SCENARIO_1') {
-      // Scenario 1: Setup restrictive GRP_EXEC_COM control groups
-      setCurrentUser(MOCK_USERS.RISK_ANALYST);
-      addLog('ACCESS_CONTROL', 'WARNING', scenario.symptom);
-    } 
-    else if (scenario.id === 'SCENARIO_2') {
-      // Scenario 2: Setup circular calc loop score ↔ impact
-      baseFields = baseFields.map((f) => {
-        if (f.id === 'FLD_INHERENT_IMPACT') {
-          return {
-            ...f,
-            type: 'CALCULATED' as any,
-            calculatedConfig: {
-              formula: 'FLD_INHERENT_SCORE * 2',
-              referencedFieldIds: ['FLD_INHERENT_SCORE']
-            }
-          };
-        }
-        return f;
-      });
-      addLog('CALCULATION_ENGINE', 'CRITICAL_FAIL', scenario.symptom);
-    } 
-    else if (scenario.id === 'SCENARIO_3') {
-      // Scenario 3: Setup ingestion data skew (CSV inputs)
-      setCurrentUser(MOCK_USERS.MOCK_FEED_SERVICE);
-      setFeedInput('5 - Critical');
-      setFeedTransformed(null);
-      
-      // Broken state: raw uncoerced string pushed directly into database value
-      const r = baseRecords.get('REC_RISK_01')!;
-      baseRecords.set('REC_RISK_01', {
-        ...r,
-        values: { ...r.values, FLD_INHERENT_IMPACT: '5 - Critical' }
-      });
-      addLog('FIELD_VALIDATION', 'CRITICAL_FAIL', scenario.symptom);
-    } 
-    else if (scenario.id === 'SCENARIO_4') {
-      // Scenario 4: Setup conflict DDE rule & WF State
-      setCurrentUser(MOCK_USERS.RISK_ANALYST);
-      
-      // Load Conflict DDE rule Freeze_Audits_Draft
-      baseDdes = [
-        {
-          id: 'Freeze_Audits_Draft',
-          name: 'Freeze_Audits_Draft',
-          triggerFieldIds: ['FLD_STATUS'],
-          conjunction: 'AND',
-          conditions: [{ fieldId: 'FLD_STATUS', operator: 'EQUALS', value: 'Under Review' }],
-          actions: [{ targetFieldId: 'FLD_STATUS', type: 'SET_VALUE', value: 'Draft' }]
-        }
-      ];
-
-      // Set record to 'Under Review' status
-      const r = baseRecords.get('REC_RISK_01')!;
-      baseRecords.set('REC_RISK_01', {
-        ...r,
-        values: { ...r.values, FLD_STATUS: 'Under Review' }
-      });
-
-      setWfState({
-        recordId: 'REC_RISK_01',
-        currentNodeId: 'NODE_DECISION',
-        isCompleted: false,
-        history: [{ nodeId: 'NODE_START', timestamp: new Date().toISOString() }]
-      });
-      addLog('STATE_TRANSITION', 'WARNING', scenario.symptom);
+      logs.push(`[BLOCK] RLS Check failed. User group not in whitelisted registry.`);
+      logs.push(`[DENIED] Security Clearance BLOCKED. Record is completely filtered out.`);
     }
 
-    setRecords(baseRecords);
-    setFields(baseFields);
-    setRlsConfigs(baseRls);
-    setDdeRules(baseDdes);
-  };
-
-  const applyFixOption = (option: any) => {
-    addLog('FIELD_VALIDATION', 'SUCCESS', `Trainer: Applying correction method: '${option.label}'`);
-    
-    const { fixedRecords, fixedRlsConfigs, fixedDdeRules, fixedFields, fixedIngestionData } = option.applyFix(
-      records,
-      rlsConfigs,
-      ddeRules,
-      fields,
-      feedInput
-    );
-
-    setRecords(fixedRecords);
-    setRlsConfigs(fixedRlsConfigs);
-    setDdeRules(fixedDdeRules);
-    setFields(fixedFields);
-    
-    if (fixedIngestionData !== undefined) {
-      setFeedTransformed(String(fixedIngestionData));
-    }
+    setSecurityCheckLog(logs);
   };
 
   const resetAll = () => {
-    setActiveScenarioId(null);
-    setScenarioSuccess(false);
-    setCurrentUser(MOCK_USERS.RISK_ANALYST);
     setRecords(DEFAULT_DATABASE_RECORDS());
-    setFields(APP_RISK_REGISTER.fields);
-    setRlsConfigs({
-      APP_RISK_REGISTER: { isEnabled: false, allowIfFieldsEmpty: true },
-      APP_CONTROL_REGISTER: { isEnabled: true, userFieldId: undefined, groupFieldId: 'FLD_ALLOWED_GROUPS', allowIfFieldsEmpty: true }
-    });
-    setDdeRules([]);
+    setFeedLogs([]);
+    setFormulaLogs([]);
+    setDdeTimelineLogs([]);
+    setSecurityCheckLog([]);
     setWfState({
       recordId: 'REC_RISK_01',
       currentNodeId: 'NODE_DRAFT',
       isCompleted: false,
       history: [{ nodeId: 'NODE_START', timestamp: new Date().toISOString() }]
     });
-    setTelemetryLogs([]);
-    setCircularError(null);
-    addLog('FIELD_VALIDATION', 'SUCCESS', 'Reset ApexGRM Engine state machine and databases to baseline.');
   };
 
-  const activeRecord = records.get(activeRecordId)!;
-
-  const renderManual = () => {
-    const categories = [
-      { id: 'field-types', label: '1. Backend Field Types', icon: Database },
-      { id: 'calculations', label: '2. Formulas & Calculations', icon: Cpu },
-      { id: 'workflow', label: '3. Advanced Workflow (AWF)', icon: GitPullRequest },
-      { id: 'security', label: '4. RBAC & Record-Level Security', icon: Shield },
-      { id: 'pitfalls', label: '5. Expert Troubleshooting & Pitfalls', icon: AlertTriangle }
-    ];
-
-    return (
-      <div className="bg-neutral-900 border border-neutral-800 rounded-xl shadow-lg min-h-[600px] grid grid-cols-1 md:grid-cols-12 overflow-hidden animate-fadeIn">
-        {/* Manual Sidebar */}
-        <div className="md:col-span-3 border-r border-neutral-800 bg-neutral-950/40 p-4 flex flex-col gap-1.5">
-          <h3 className="font-mono text-xs font-bold text-neutral-400 px-3 uppercase tracking-wider mb-2">
-            Training Chapters
-          </h3>
-          {categories.map((cat) => {
-            const CatIcon = cat.icon;
-            const isActive = manualSection === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setManualSection(cat.id)}
-                className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-left text-xs font-mono font-medium transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-amber-500 text-neutral-950 shadow-md font-bold'
-                    : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40'
-                }`}
-              >
-                <CatIcon className="w-4 h-4" />
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Manual Content Area */}
-        <div className="md:col-span-9 p-6 overflow-y-auto max-h-[750px] flex flex-col gap-6">
-          {manualSection === 'field-types' && (
-            <div className="flex flex-col gap-4">
-              <div>
-                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Backend Field Types & Data Schema</h2>
-                <p className="text-xs text-neutral-400 font-mono">CORE TAXONOMY STRUCTURES IN GRC SYSTEMS</p>
-              </div>
-              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
-                In enterprise GRC platforms like the Archer IRM backend, applications are structured dynamically around highly specialized field types. As an engineer, understanding the structural configurations, storage paradigms, and typical use cases for each field is critical for successful systems integration.
-              </p>
-
-              {/* Table or detailed view of field types */}
-              <div className="border border-neutral-800 rounded-lg overflow-hidden bg-neutral-950/50">
-                <table className="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr className="bg-neutral-800/60 font-mono text-amber-400 border-b border-neutral-800">
-                      <th className="p-3">Field Type</th>
-                      <th className="p-3">Storage & Schema Behavior</th>
-                      <th className="p-3">Engineering Checklist</th>
-                      <th className="p-3">Key Pitfalls</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-neutral-800/60 text-neutral-300">
-                    <tr>
-                      <td className="p-3 font-mono font-semibold text-neutral-100">TEXT</td>
-                      <td className="p-3">Stored as a standard database string block. Supports single-line or HTML rich-text rendering.</td>
-                      <td className="p-3">Verify max character restrictions and check formatting rules.</td>
-                      <td className="p-3 text-rose-400 font-mono font-semibold">Data truncation if bulk ingestion exceeds length constraints.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-mono font-semibold text-neutral-100">NUMERIC</td>
-                      <td className="p-3">Stored as fixed-point decimal or integer values. Supports dynamic formatting (currency, percent).</td>
-                      <td className="p-3">Ensure precision, scale, min/max limits align with mathematical requirements.</td>
-                      <td className="p-3 text-rose-400 font-mono font-semibold">Ingestion feeds carrying string suffixes ("% or $") trigger validation failures.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-mono font-semibold text-neutral-100">DATE_TIME</td>
-                      <td className="p-3">Unix epoch millisecond timestamp. Supports date-only and dynamic system offset calculations.</td>
-                      <td className="p-3">Always configure appropriate time zone offsets. Avoid hardcoded time ranges.</td>
-                      <td className="p-3 text-rose-400 font-mono font-semibold">Time zone drift during date comparisons in formulas.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-mono font-semibold text-neutral-100">VALUES_LIST</td>
-                      <td className="p-3">Linked key-value registry. Supports flat lists, hierarchical trees, and dynamic filters.</td>
-                      <td className="p-3">Enforce global list reuse. Build dynamic rules to filter valid values based on parent fields.</td>
-                      <td className="p-3 text-rose-400 font-mono font-semibold">Attempting to write an unregistered string via APIs triggers null insertion.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-mono font-semibold text-neutral-100">CROSS_REFERENCE</td>
-                      <td className="p-3">Relational link array (joins tables via link tables). Can bind records 1-to-many or many-to-many.</td>
-                      <td className="p-3">Determine if link cascade is enabled (e.g. deleting parent record deletes target links).</td>
-                      <td className="p-3 text-rose-400 font-mono font-semibold">RLS blockages. Target record RLS limits calculations referencing this link.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-mono font-semibold text-neutral-100">USER_GROUP</td>
-                      <td className="p-3">Specialized list referencing user/group account registries. Directly drives security.</td>
-                      <td className="p-3">Map to appropriate security groups. Use to feed dynamic RLS checks on records.</td>
-                      <td className="p-3 text-rose-400 font-mono font-semibold">Orphaned groups. Deleting a directory group breaks dynamic record routing.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-mono font-semibold text-neutral-100">CALCULATED</td>
-                      <td className="p-3">Evaluated dynamically. Calculation engine crawls a directed acyclic graph (DAG) to evaluate formula.</td>
-                      <td className="p-3">Keep referenced field maps clean. Verify all logic paths handle blank/null fields gracefully.</td>
-                      <td className="p-3 text-rose-400 font-mono font-semibold">Circular dependency loop. Instantly locks the system, aborting computations.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="bg-amber-500/5 border border-amber-500/20 p-4 rounded-lg flex flex-col gap-2">
-                <h4 className="text-xs font-mono font-bold text-amber-400 uppercase">Expert Tip: Field Type Selection</h4>
-                <p className="text-xs text-neutral-300 leading-relaxed font-mono">
-                  When designing GRC tables, always prefer **Values Lists** over **Text Fields** for status/categorical properties. Values Lists enforce strict validation at the schema level, accelerate query parsing in calculations, and allow for flawless Data-Driven Event logic (which cannot evaluate free-text strings reliably).
-                </p>
-              </div>
-            </div>
-          )}
-
-          {manualSection === 'calculations' && (
-            <div className="flex flex-col gap-4">
-              <div>
-                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Calculations, Formulas, and DAG Dependencies</h2>
-                <p className="text-xs text-neutral-400 font-mono">THE COMPUTATIONAL HEART OF THE GRC PLATFORM</p>
-              </div>
-              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
-                Calculated fields in GRC architectures use custom mathematical, conditional, and string operators. Under the hood, the system parses all formulas, maps their input fields, and builds a **Directed Acyclic Graph (DAG)** to determine the correct order of execution.
-              </p>
-
-              <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 flex flex-col gap-3 font-mono text-xs">
-                <h3 className="font-bold text-amber-400">Common Formula Syntax Sheet</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-neutral-100 font-semibold">IF Logic:</span>
-                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">IF(FLD_INHERENT_IMPACT &gt; 4, 'High', 'Normal')</code>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-neutral-100 font-semibold">Relational Aggregations (X-Ref):</span>
-                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">SUM(FLD_CONTROLS_REF.FLD_CONTROL_SCORE)</code>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-neutral-100 font-semibold">Multiple Assertions:</span>
-                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">AND(FLD_STATUS == 'Active', FLD_SCORE &lt; 20)</code>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-neutral-100 font-semibold">Date Calculations:</span>
-                    <code className="bg-neutral-900 px-2 py-1 rounded text-neutral-300">DATEADD(FLD_CREATE_DATE, 30, 'days')</code>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-sm font-semibold text-neutral-100 mb-2">The Calculation DAG & Dynamic Re-calculations</h3>
-                <p className="text-xs text-neutral-300 leading-relaxed mb-3">
-                  When a user edits a field, the Recalculation Engine queues all downstream calculated fields. It crawls the DAG to evaluate dependent fields in a topological sort order. 
-                </p>
-                <div className="bg-neutral-950/40 border border-neutral-800 rounded-lg p-3 text-xs leading-relaxed font-mono">
-                  <span className="text-amber-400 font-bold block mb-1">Recalculation Sequence:</span>
-                  1. Field Edited (e.g. Likelihood) <br />
-                  2. Inherent Score Evaluated: <code className="bg-neutral-950 px-1 text-neutral-400">Likelihood * Impact</code> <br />
-                  3. Risk Rating Evaluated: <code className="bg-neutral-950 px-1 text-neutral-400">IF(Inherent Score &gt; 15, \'CRITICAL\', \'LOW\')</code> <br />
-                  4. Control Requirement Status Evaluated: <code className="bg-neutral-950 px-1 text-neutral-400">DDE triggers based on Risk Rating</code>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {manualSection === 'workflow' && (
-            <div className="flex flex-col gap-4">
-              <div>
-                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Advanced Workflow (AWF) Systems</h2>
-                <p className="text-xs text-neutral-400 font-mono">AUTOMATED STATE TRANSITIONS & ROUTING</p>
-              </div>
-              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
-                Advanced Workflow (AWF) handles lifecycle management and transition gates. Instead of relying on manual field updates, AWF drives record states sequentially through visual maps, enforcing task assignments and conditional branch decisions.
-              </p>
-
-              <div className="bg-neutral-950/60 border border-neutral-800 rounded-lg p-4 flex flex-col gap-2.5 font-mono text-xs text-neutral-300">
-                <span className="text-amber-400 font-bold uppercase">Core Workflow Node Roster</span>
-                <ul className="list-disc list-inside flex flex-col gap-1.5">
-                  <li><strong className="text-neutral-100">START Node:</strong> The entry point when a record is initially created. Directs flow instantly to the initial workspace node.</li>
-                  <li><strong className="text-neutral-100">TASK Node:</strong> A manual interaction gate. Enforces specific user or security group actions (e.g., Approve, Reject).</li>
-                  <li><strong className="text-neutral-100">DECISION Node:</strong> A programmatic evaluator. Evaluates the active record fields and routes transitions automatically.</li>
-                  <li><strong className="text-neutral-100">END Node:</strong> The final operational state. Marks the active workflow instance as completed, freezing historical transitions.</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-sm font-semibold text-neutral-100 mb-2">Workflow Best Practices</h3>
-                <ul className="text-xs text-neutral-300 list-decimal list-inside leading-relaxed flex flex-col gap-2 font-mono">
-                  <li>Always configure explicit fallback targets on **Decision Nodes** to prevent routing deadlocks.</li>
-                  <li>Ensure security roles are properly defined for **Task Nodes** so that assigned users can locate, edit, and advance the record.</li>
-                  <li>Use dynamic telemetry logging to audit historical transition patterns and debug loop deadlocks.</li>
-                </ul>
-              </div>
-            </div>
-          )}
-
-          {manualSection === 'security' && (
-            <div className="flex flex-col gap-4">
-              <div>
-                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">RBAC & Record-Level Security (RLS)</h2>
-                <p className="text-xs text-neutral-400 font-mono">GRANULAR ACCESS CONTROLS & SECURITY INHERITANCE</p>
-              </div>
-              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
-                Enterprise GRC setups require strict multi-tenant and departmental security. Access control is split into two distinct, cascading logic blocks: Module Access (RBAC) and Record-Level Security (RLS).
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
-                <div className="bg-neutral-950/60 border border-neutral-800 p-4 rounded-lg">
-                  <h3 className="text-amber-400 font-bold mb-2">Module-Level Access (RBAC)</h3>
-                  <p className="leading-relaxed text-neutral-300">
-                    Static, role-based controls configured globally on structures (Applications/Sub-forms). Checks if the active user\'s roles match the structure\'s whitelist (e.g., CISO can access Audit Logs, but Ingestion Service cannot).
-                  </p>
-                </div>
-                <div className="bg-neutral-950/60 border border-neutral-800 p-4 rounded-lg">
-                  <h3 className="text-amber-400 font-bold mb-2">Record-Level Security (RLS)</h3>
-                  <p className="leading-relaxed text-neutral-300">
-                    Dynamic security evaluated at the record-instance level. The system compares the active user\'s ID and groups with custom fields (User/Group lists) on the specific record (e.g. IT Analyst can see IT Risk records, but Executive Board sees only Board reviews).
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-neutral-950 border border-neutral-800 p-4 rounded-lg flex flex-col gap-2">
-                <h3 className="text-sm font-semibold text-neutral-100 font-mono font-bold text-amber-400">Dynamic Security Inheritance (X-Ref Calculations)</h3>
-                <p className="text-xs text-neutral-300 leading-relaxed font-mono">
-                  This is one of the most critical aspects of GRC backend engineering:
-                  When calculated formulas query target fields through a **Cross-Reference**, the calculation engine evaluates RLS permissions on *every single target record* in real time!
-                  If a user does not have permission to view a target record, that record\'s data is silently filtered out of the calculation. 
-                </p>
-              </div>
-            </div>
-          )}
-
-          {manualSection === 'pitfalls' && (
-            <div className="flex flex-col gap-4">
-              <div>
-                <h2 className="text-xl font-bold text-amber-500 font-mono mb-1">Troubleshooting, Pitfalls, & Resolutions</h2>
-                <p className="text-xs text-neutral-400 font-mono">COMMON GRC ENGINEERING FAULT PROFILES</p>
-              </div>
-              <p className="text-sm text-neutral-300 leading-relaxed font-mono text-neutral-400 text-[11px]">
-                As a GRC engineer, you will regularly deal with system errors, deadlocks, and data corruption. Here are the 4 main GRC failure profiles, their symptoms, causes, and exact engineering resolutions:
-              </p>
-
-              {/* Grid of the 4 break-fix scenario profiles */}
-              <div className="grid grid-cols-1 gap-4 font-mono text-xs">
-                <div className="border border-rose-500/20 bg-rose-500/5 p-4 rounded-lg flex flex-col gap-2">
-                  <h3 className="text-rose-400 font-bold">1. Circular Recalculation Loops</h3>
-                  <p className="text-neutral-300 leading-relaxed">
-                    <strong>Symptom:</strong> System freezes, CPU usage spikes, and calculations halt globally. <br />
-                    <strong>Cause:</strong> Two or more calculated fields reference each other, creating a circular graph cycle (e.g., Impact depends on Score, and Score depends on Impact). <br />
-                    <strong>Resolution:</strong> Map all calculation paths topologically. Break the loop by injecting a dynamic Data Driven Event (DDE) to override values, or refactor the formula to reference static fields.
-                  </p>
-                </div>
-
-                <div className="border border-amber-500/20 bg-amber-500/5 p-4 rounded-lg flex flex-col gap-2">
-                  <h3 className="text-amber-400 font-bold">2. Silent RLS Security Gaps</h3>
-                  <p className="text-neutral-300 leading-relaxed">
-                    <strong>Symptom:</strong> Dashboard aggregations (like SUM/COUNT) return 0 or incorrect low values for analysts, but correct values for admins. <br />
-                    <strong>Cause:</strong> Dynamic Record-Level Security filter excludes target records during Cross-Reference lookup. The calculation runs but silently ignores restricted data. <br />
-                    <strong>Resolution:</strong> Align user/group parameters. Grant appropriate inherited read permissions or configure the cross-referenced structure\'s RLS rules to allow visibility when specific key fields match.
-                  </p>
-                </div>
-
-                <div className="border border-blue-500/20 bg-blue-500/5 p-4 rounded-lg flex flex-col gap-2">
-                  <h3 className="text-blue-400 font-bold">3. Ingestion Data Feed Type Skews</h3>
-                  <p className="text-neutral-300 leading-relaxed">
-                    <strong>Symptom:</strong> Data feed imports fail, truncate inputs, or populate cells with null/blank fields. <br />
-                    <strong>Cause:</strong> Raw data values from external integrations (like CSVs or APIs) carry string wrappers (e.g. "5 - Critical") into strict numeric fields. <br />
-                    <strong>Resolution:</strong> Implement type coercion. Strip string elements via regular expression mapping before pushing data into numeric inputs, or use lookup matrices to translate text categories into strict backend index values.
-                  </p>
-                </div>
-
-                <div className="border border-violet-500/20 bg-violet-500/5 p-4 rounded-lg flex flex-col gap-2">
-                  <h3 className="text-violet-400 font-bold">4. AWF State Machine Deadlocks</h3>
-                  <p className="text-neutral-300 leading-relaxed">
-                    <strong>Symptom:</strong> A workflow button is clicked, but the record is thrown back into draft or enters a deadlock state where no transition buttons appear. <br />
-                    <strong>Cause:</strong> Conflicting DDE rules trigger on status changes, overriding dynamic values or freezing critical fields required for workflow routing. <br />
-                    <strong>Resolution:</strong> Insert state-aware condition parameters in your DDE rules. Ensure the rule only fires when the record is not in active workflow transitions.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  };
+  const selectedField = fields.find(f => f.id === selectedFieldId) || fields[0];
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-amber-500 selection:text-neutral-950 antialiased">
       
-      {/* --- TOP TERMINAL HEADER --- */}
+      {/* --- TOP HEADER NAVIGATION --- */}
       <header className="border-b border-neutral-800 bg-neutral-900/60 backdrop-blur px-6 py-4 flex items-center justify-between flex-wrap gap-4">
         <div className="flex items-center gap-3">
           <Cpu className="w-6 h-6 text-amber-500 animate-pulse" />
           <div>
             <h1 className="text-lg font-bold tracking-tight text-neutral-100 font-mono">
-              ApexGRM Engine <span className="text-amber-500 font-normal">v2.6.0</span>
+              ApexGRM Studio <span className="text-amber-500 font-normal">v3.0.0</span>
             </h1>
-            <p className="text-xs text-neutral-400 font-mono">INTEGRATED RISK MANAGEMENT DIAGNOSTIC TERMINAL</p>
+            <p className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">GRC & ApexGRM IRM Engineering Companion</p>
           </div>
         </div>
 
-        {/* Dynamic Tab Switcher */}
-        <div className="flex items-center gap-1 bg-neutral-950 p-1 rounded-lg border border-neutral-800">
+        {/* Configuration Screen Tab Selectors */}
+        <div className="flex items-center gap-1 bg-neutral-950 p-1 rounded-lg border border-neutral-800 flex-wrap">
           <button
-            onClick={() => setActiveTab('SANDBOX')}
+            onClick={() => setActiveTab('FIELDS')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
-              activeTab === 'SANDBOX'
-                ? 'bg-amber-500 text-neutral-950 font-bold shadow'
-                : 'text-neutral-400 hover:text-neutral-200'
+              activeTab === 'FIELDS' ? 'bg-amber-500 text-neutral-950 font-bold shadow' : 'text-neutral-400 hover:text-neutral-200'
+            }`}
+          >
+            <Database className="w-3.5 h-3.5" />
+            Field Builder
+          </button>
+          <button
+            onClick={() => setActiveTab('FEEDS')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
+              activeTab === 'FEEDS' ? 'bg-amber-500 text-neutral-950 font-bold shadow' : 'text-neutral-400 hover:text-neutral-200'
             }`}
           >
             <Terminal className="w-3.5 h-3.5" />
-            Diagnostic Sandbox
+            Data Feeds
           </button>
           <button
-            onClick={() => setActiveTab('MANUAL')}
+            onClick={() => setActiveTab('DDE')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
-              activeTab === 'MANUAL'
-                ? 'bg-amber-500 text-neutral-950 font-bold shadow'
-                : 'text-neutral-400 hover:text-neutral-200'
+              activeTab === 'DDE' ? 'bg-amber-500 text-neutral-950 font-bold shadow' : 'text-neutral-400 hover:text-neutral-200'
             }`}
           >
-            <FileText className="w-3.5 h-3.5" />
-            GRC Field Types Manual
+            <Settings className="w-3.5 h-3.5" />
+            DDE Rules
+          </button>
+          <button
+            onClick={() => setActiveTab('AWF')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
+              activeTab === 'AWF' ? 'bg-amber-500 text-neutral-950 font-bold shadow' : 'text-neutral-400 hover:text-neutral-200'
+            }`}
+          >
+            <GitPullRequest className="w-3.5 h-3.5" />
+            AWF Designer
+          </button>
+          <button
+            onClick={() => setActiveTab('SECURITY')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
+              activeTab === 'SECURITY' ? 'bg-amber-500 text-neutral-950 font-bold shadow' : 'text-neutral-400 hover:text-neutral-200'
+            }`}
+          >
+            <Shield className="w-3.5 h-3.5" />
+            Access Control
           </button>
         </div>
 
-        {/* User Role Simulation selection dropdown */}
-        <div className="flex items-center gap-4">
+        {/* Global Controls */}
+        <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 bg-neutral-950/60 border border-neutral-800 rounded-lg px-3 py-1.5">
             <User className="w-4 h-4 text-amber-400" />
             <select
@@ -797,7 +412,6 @@ export default function App() {
                 const selectedRole = e.target.value;
                 const match = Object.values(MOCK_USERS).find((u) => u.roles.includes(selectedRole))!;
                 setCurrentUser(match);
-                addLog('ACCESS_CONTROL', 'SUCCESS', `User session changed to role '${selectedRole}'`);
               }}
               className="bg-transparent text-xs text-neutral-300 font-mono border-none outline-none focus:ring-0 cursor-pointer"
             >
@@ -809,577 +423,775 @@ export default function App() {
 
           <button
             onClick={resetAll}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold border border-neutral-700 hover:border-amber-500/50 hover:bg-amber-500/10 rounded-lg transition-colors cursor-pointer text-amber-500"
+            className="flex items-center gap-1 px-3 py-1.5 text-xs font-mono border border-neutral-700 hover:border-amber-500/50 hover:bg-amber-500/10 rounded-lg transition-colors cursor-pointer text-amber-500"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
+            <RotateCcw className="w-3 h-3" />
             Reset Sandbox
           </button>
         </div>
       </header>
 
-      {activeTab === 'SANDBOX' ? (
-        <main className="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      {/* --- SPLIT SCREEN WORKSPACE --- */}
+      <main className="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        {/* --- SCENARIO SELECTOR PANEL (LEFT COLUMN) --- */}
-        <section className="lg:col-span-4 flex flex-col gap-6" aria-labelledby="lobbyHeading">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 shadow-lg">
-            <h2 className="text-sm font-bold font-mono tracking-wider text-amber-500 uppercase mb-4" id="lobbyHeading">
-              Training Sandbox Scenarios
-            </h2>
+        {/* =======================================================
+             LEFT COLUMN: CONFIGURATION PORTAL (System Interface Representation)
+             ======================================================= */}
+        <section className="lg:col-span-6 flex flex-col gap-6" aria-label="GRC Configuration Portal">
+          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 shadow-lg flex flex-col gap-4">
             
-            <div className="flex flex-col gap-2.5">
-              {BREAK_FIX_SCENARIOS.map((scenario) => {
-                const isActive = activeScenarioId === scenario.id;
-                return (
-                  <button
-                    key={scenario.id}
-                    onClick={() => loadScenario(scenario)}
-                    className={`w-full text-left p-3.5 rounded-lg border transition-all cursor-pointer ${
-                      isActive
-                        ? 'border-amber-500 bg-amber-500/5 shadow-inner'
-                        : 'border-neutral-800 bg-neutral-950/40 hover:border-neutral-700'
-                    }`}
-                  >
-                    <div className="flex justify-between items-start mb-1">
-                      <span className="text-xs font-mono font-medium text-amber-400">{scenario.category}</span>
-                      {isActive && <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />}
-                    </div>
-                    <h3 className="text-sm font-semibold text-neutral-100">{scenario.name}</h3>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* ACTIVE SCENARIO PANEL */}
-          {activeScenarioId && (
-            <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 shadow-lg flex flex-col gap-4">
-              <div className="flex justify-between items-center border-b border-neutral-800 pb-3">
-                <h3 className="font-mono text-xs font-bold text-neutral-400">SCENARIO DIAGNOSTIC DATA</h3>
-                {scenarioSuccess ? (
-                  <span className="flex items-center gap-1 text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30 font-mono">
-                    <CheckCircle className="w-3.5 h-3.5" /> RESOLVED
+            {activeTab === 'FIELDS' && (
+              <div className="flex flex-col gap-4">
+                <div className="border-b border-neutral-800 pb-3 flex justify-between items-center">
+                  <h2 className="text-sm font-bold font-mono text-amber-500 uppercase tracking-wider">
+                    Application Field Builder
+                  </h2>
+                  <span className="text-[10px] text-neutral-400 font-mono bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
+                    Module: Risk Register
                   </span>
-                ) : (
-                  <span className="flex items-center gap-1 text-xs font-semibold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/30 font-mono">
-                    <AlertTriangle className="w-3.5 h-3.5 animate-bounce" /> SYSTEM ERROR
-                  </span>
-                )}
-              </div>
-
-              {/* Ingest text feed input for Scenario 3 */}
-              {activeScenarioId === 'SCENARIO_3' && (
-                <div className="bg-neutral-950/60 border border-neutral-800 rounded-lg p-3 flex flex-col gap-2">
-                  <label className="text-xs font-mono text-neutral-400">Data Feed Raw CSV Token</label>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={feedInput}
-                      onChange={(e) => setFeedInput(e.target.value)}
-                      disabled={scenarioSuccess}
-                      className="bg-neutral-900 border border-neutral-800 text-sm font-mono px-3 py-1.5 rounded-lg text-neutral-200 focus:outline-none focus:border-amber-500/50 w-full"
-                    />
-                    <button
-                      onClick={() => {
-                        addLog('FIELD_VALIDATION', 'WARNING', `Feed pipeline triggered. Ingesting raw token: "${feedInput}"`);
-                        // Force raw string injection to trigger the truncation error unless mapped
-                        const nextRecs = new Map(records);
-                        const r = nextRecs.get('REC_RISK_01')!;
-                        nextRecs.set('REC_RISK_01', {
-                          ...r,
-                          values: { ...r.values, FLD_INHERENT_IMPACT: feedInput }
-                        });
-                        setRecords(nextRecs);
-                      }}
-                      disabled={scenarioSuccess}
-                      className="px-3 py-1.5 text-xs bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-mono font-semibold rounded-lg transition-colors cursor-pointer"
-                    >
-                      Run Ingestion
-                    </button>
-                  </div>
                 </div>
-              )}
-
-              <div>
-                <h4 className="text-xs font-mono text-amber-400 mb-1">Operational Symptom:</h4>
-                <p className="text-xs text-neutral-300 bg-neutral-950/40 p-3 rounded-lg border border-neutral-800/80 leading-relaxed font-mono">
-                  {BREAK_FIX_SCENARIOS.find((s) => s.id === activeScenarioId)?.symptom}
+                <p className="text-xs text-neutral-400 leading-normal">
+                  Representing the metadata schema manager. Select a field inside the Application Layout to configure its properties and view things to consider down in the manual.
                 </p>
-              </div>
 
-              <div>
-                <h4 className="text-xs font-mono text-neutral-400 mb-2">Available Structural Corrections:</h4>
-                <div className="flex flex-col gap-2">
-                  {BREAK_FIX_SCENARIOS.find((s) => s.id === activeScenarioId)?.options.map((opt) => (
-                    <button
-                      key={opt.id}
-                      onClick={() => applyFixOption(opt)}
-                      disabled={scenarioSuccess}
-                      className={`text-left p-3 rounded-lg border text-xs transition-all flex flex-col gap-1 cursor-pointer ${
-                        scenarioSuccess
-                          ? 'border-neutral-800 bg-neutral-950/20 text-neutral-500'
-                          : 'border-neutral-800 bg-neutral-950 hover:border-neutral-700 text-neutral-200'
-                      }`}
-                    >
-                      <span className="font-semibold text-neutral-100">{opt.label}</span>
-                      <span className="text-neutral-400 leading-normal">{opt.description}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-        </section>
-
-        {/* --- MAIN OPERATIONAL TERM & SCHEMAS (MIDDLE/RIGHT COLUMN) --- */}
-        <section className="lg:col-span-8 flex flex-col gap-6" aria-label="Engine workspace">
-          
-          {/* VISUAL DIAGRAM PORTAL (SVG schemas) */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 shadow-lg flex flex-col gap-4">
-            <h2 className="text-sm font-bold font-mono tracking-wider text-amber-500 uppercase">
-              Relational Schema & Workflow Visualizer
-            </h2>
-            
-            {/* SVG visualization matching exactly node-based workflows and database schemas */}
-            <div className="bg-neutral-950 border border-neutral-800 rounded-xl h-64 relative overflow-hidden flex items-center justify-center">
-              
-              {/* Dynamic schema links */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                <defs>
-                  {/* Glowing neon markers */}
-                  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d4a84b" />
-                  </marker>
-                  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981" />
-                  </marker>
-                </defs>
-
-                {/* Workflow Transitions */}
-                <line x1="85" y1="130" x2="200" y2="130" stroke="#d4a84b" strokeWidth="1.5" markerEnd="url(#arrow)" />
-                <line x1="330" y1="130" x2="430" y2="130" stroke="#d4a84b" strokeWidth="1.5" markerEnd="url(#arrow)" />
-                
-                {/* Decision logic fork lines */}
-                <path d="M 500 130 C 560 130, 560 70, 620 70" stroke="#10b981" strokeWidth="1.5" markerEnd="url(#arrow-green)" fill="none" />
-                <path d="M 500 130 C 560 130, 560 190, 265 190 C 265 190, 265 160, 265 155" stroke="#ef4444" strokeWidth="1.5" markerEnd="url(#arrow)" fill="none" strokeDasharray="4" />
-
-                {/* Relational Cross-reference links */}
-                <path d="M 140 240 Q 300 280, 520 240" stroke="#a78bfa" strokeWidth="1.2" strokeDasharray="3" fill="none" />
-              </svg>
-
-              {/* Start Node */}
-              <div className="absolute left-[30px] top-[105px] flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full border border-neutral-700 bg-neutral-900 flex items-center justify-center text-xs font-bold font-mono text-neutral-400">
-                  Start
-                </div>
-              </div>
-
-              {/* Draft Task Node */}
-              <div className="absolute left-[200px] top-[105px] flex flex-col items-center">
-                <div className={`w-[130px] h-12 rounded-lg border flex flex-col items-center justify-center px-2 text-center ${
-                  wfState.currentNodeId === 'NODE_DRAFT'
-                    ? 'border-amber-500 bg-amber-500/10 text-amber-500 shadow-[0_0_10px_rgba(212,168,75,0.25)]'
-                    : 'border-neutral-700 bg-neutral-900 text-neutral-300'
-                }`}>
-                  <span className="text-xs font-bold">Draft State</span>
-                  <span className="text-[9px] font-mono text-neutral-400">Role: IT Risk Analyst</span>
-                </div>
-                {/* Pulsating record token inside active node */}
-                {wfState.currentNodeId === 'NODE_DRAFT' && (
-                  <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-500"></span>
+                {/* Field Builder Layout Mockup */}
+                <div className="bg-neutral-950 border border-neutral-850 p-4 rounded-lg flex flex-col gap-3 font-mono">
+                  <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1.5">
+                    Field Registry Setup Panel
                   </span>
-                )}
-              </div>
-
-              {/* Decision Node */}
-              <div className="absolute left-[430px] top-[105px] flex flex-col items-center">
-                <div className={`w-[140px] h-12 rounded-lg border flex flex-col items-center justify-center px-2 text-center ${
-                  wfState.currentNodeId === 'NODE_DECISION'
-                    ? 'border-amber-500 bg-amber-500/10 text-amber-500 shadow-[0_0_10px_rgba(212,168,75,0.25)]'
-                    : 'border-neutral-700 bg-neutral-900 text-neutral-300'
-                }`}>
-                  <span className="text-xs font-bold flex items-center gap-1"><Settings className="w-3.5 h-3.5 animate-spin" /> Gate Evaluation</span>
-                  <span className="text-[9px] font-mono text-neutral-400">Filter: [Status] == Approved</span>
-                </div>
-                {wfState.currentNodeId === 'NODE_DECISION' && (
-                  <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-500"></span>
-                  </span>
-                )}
-              </div>
-
-              {/* End Node */}
-              <div className="absolute left-[620px] top-[45px] flex flex-col items-center">
-                <div className={`w-[120px] h-12 rounded-lg border flex flex-col items-center justify-center px-2 text-center ${
-                  wfState.currentNodeId === 'NODE_APPROVED_END'
-                    ? 'border-emerald-500 bg-emerald-500/10 text-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.25)]'
-                    : 'border-neutral-700 bg-neutral-900 text-neutral-300'
-                }`}>
-                  <span className="text-xs font-bold">Approved & Active</span>
-                  <span className="text-[9px] font-mono text-neutral-400">State: Complete</span>
-                </div>
-                {wfState.currentNodeId === 'NODE_APPROVED_END' && (
-                  <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
-                  </span>
-                )}
-              </div>
-
-              {/* Cross-reference Target controls node representation */}
-              <div className="absolute left-[520px] top-[215px] flex flex-col items-center">
-                <div className="w-[180px] h-10 rounded border border-purple-500/30 bg-purple-500/5 text-purple-400 flex items-center justify-center text-xs font-mono gap-1.5">
-                  <Database className="w-3.5 h-3.5" /> APP_CONTROL_REGISTER
-                </div>
-              </div>
-
-              {/* Source Risk node representation */}
-              <div className="absolute left-[50px] top-[215px] flex flex-col items-center">
-                <div className="w-[180px] h-10 rounded border border-purple-500/30 bg-purple-500/5 text-purple-400 flex items-center justify-center text-xs font-mono gap-1.5">
-                  <Database className="w-3.5 h-3.5" /> APP_RISK_REGISTER
-                </div>
-              </div>
-
-            </div>
-
-            {/* Workflow controls */}
-            {activeStructureId === 'APP_RISK_REGISTER' && (
-              <div className="flex gap-3 justify-center bg-neutral-950 p-3.5 rounded-lg border border-neutral-800">
-                <span className="text-xs font-mono text-neutral-400 flex items-center gap-1">
-                  <GitPullRequest className="w-4 h-4 text-amber-500" /> AWF Transition Actions:
-                </span>
-                
-                <button
-                  onClick={() => handleWfTransition('SUBMIT')}
-                  disabled={wfState.currentNodeId !== 'NODE_DRAFT'}
-                  className="px-3.5 py-1 text-xs bg-neutral-900 border border-neutral-700 hover:border-amber-500 text-neutral-300 font-mono font-semibold rounded hover:bg-neutral-800 transition-colors disabled:opacity-30 disabled:border-neutral-800 disabled:hover:bg-transparent cursor-pointer"
-                >
-                  Submit For Review
-                </button>
-                <button
-                  onClick={() => handleWfTransition('APPROVE')}
-                  disabled={wfState.currentNodeId !== 'NODE_DECISION'}
-                  className="px-3.5 py-1 text-xs bg-neutral-900 border border-neutral-700 hover:border-emerald-500 text-emerald-500 font-mono font-semibold rounded hover:bg-emerald-500/5 transition-colors disabled:opacity-30 disabled:border-neutral-800 disabled:hover:bg-transparent cursor-pointer"
-                >
-                  Approve (Status == Approved)
-                </button>
-                <button
-                  onClick={() => handleWfTransition('REJECT')}
-                  disabled={wfState.currentNodeId !== 'NODE_DECISION'}
-                  className="px-3.5 py-1 text-xs bg-neutral-900 border border-neutral-700 hover:border-rose-500 text-rose-500 font-mono font-semibold rounded hover:bg-rose-500/5 transition-colors disabled:opacity-30 disabled:border-neutral-800 disabled:hover:bg-transparent cursor-pointer"
-                >
-                  Reject (Loopback)
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* CIRCULAR LOOP ALERTS */}
-          {circularError && (
-            <div className="bg-rose-950/80 border border-rose-500/40 text-rose-200 px-4 py-4 rounded-xl flex items-start gap-3 shadow-[0_0_15px_rgba(239,68,68,0.15)]">
-              <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5 animate-ping" />
-              <div>
-                <h4 className="font-bold text-sm tracking-wide font-mono uppercase text-rose-300">
-                  Critical Thread Aborted: Stack Loop Detected
-                </h4>
-                <p className="text-xs leading-relaxed font-mono mt-1">{circularError.message}</p>
-                <div className="flex gap-2 mt-3 items-center">
-                  <span className="text-[10px] uppercase tracking-wider font-semibold bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded font-mono">
-                    Thread Safety Lock
-                  </span>
-                  <span className="text-xs text-neutral-400 font-mono">
-                    Cycle path: {circularError.path.join(' ➔ ')}
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* ACTIVE RECORD DETAILS & FIELDS EDITOR */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 shadow-lg flex flex-col gap-4">
-            <div className="flex justify-between items-center border-b border-neutral-800 pb-3">
-              <div className="flex items-center gap-2">
-                <Database className="w-4 h-4 text-amber-500" />
-                <h2 className="text-sm font-bold font-mono text-neutral-100">
-                  Records Data Grid Explorer
-                </h2>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    setActiveStructureId('APP_RISK_REGISTER');
-                    setActiveRecordId('REC_RISK_01');
-                    setFields(APP_RISK_REGISTER.fields);
-                    addLog('FIELD_VALIDATION', 'SUCCESS', "Loaded Grid: 'APP_RISK_REGISTER'");
-                  }}
-                  className={`px-3 py-1 rounded text-xs font-mono font-semibold transition-colors cursor-pointer ${
-                    activeStructureId === 'APP_RISK_REGISTER'
-                      ? 'bg-amber-500 text-neutral-950'
-                      : 'bg-neutral-800 text-neutral-400 hover:bg-neutral-700'
-                  }`}
-                >
-                  APP_RISK_REGISTER
-                </button>
-                <button
-                  onClick={() => {
-                    setActiveStructureId('APP_CONTROL_REGISTER');
-                    setActiveRecordId('REC_CTRL_01');
-                    setFields(APP_CONTROL_REGISTER.fields);
-                    addLog('FIELD_VALIDATION', 'SUCCESS', "Loaded Grid: 'APP_CONTROL_REGISTER'");
-                  }}
-                  className={`px-3 py-1 rounded text-xs font-mono font-semibold transition-colors cursor-pointer ${
-                    activeStructureId === 'APP_CONTROL_REGISTER'
-                      ? 'bg-amber-500 text-neutral-950'
-                      : 'bg-neutral-800 text-neutral-400 hover:bg-neutral-700'
-                  }`}
-                >
-                  APP_CONTROL_REGISTER
-                </button>
-              </div>
-            </div>
-
-            {/* Select active Record inside structure */}
-            <div className="flex gap-2">
-              {Array.from(records.values())
-                .filter((r) => r.structureId === activeStructureId)
-                .map((r) => (
-                  <button
-                    key={r.id}
-                    onClick={() => {
-                      setActiveRecordId(r.id);
-                      if (r.structureId === 'APP_RISK_REGISTER') {
-                        setWfState((prev) => ({ ...prev, recordId: r.id }));
-                      }
-                      addLog('FIELD_VALIDATION', 'SUCCESS', `Focused record [${r.id}]`);
-                    }}
-                    className={`px-3.5 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
-                      activeRecordId === r.id
-                        ? 'border-amber-500/50 bg-amber-500/5 text-amber-500'
-                        : 'border-neutral-800 bg-neutral-950 text-neutral-400 hover:border-neutral-700'
-                    }`}
-                  >
-                    {r.values.FLD_RISK_ID || r.values.FLD_CONTROL_ID || r.id}
-                  </button>
-                ))}
-            </div>
-
-            {/* Render record fields list editor */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-neutral-950 p-4 rounded-xl border border-neutral-800/80">
-              {fields.map((field) => {
-                const isCalculated = field.type === 'CALCULATED';
-                const isReadOnly = field.isReadOnly || ddeOverrides[field.id]?.isReadOnly || isCalculated;
-                const isRequired = field.isRequired || ddeOverrides[field.id]?.isRequired;
-                const isHidden = field.isHidden || ddeOverrides[field.id]?.isHidden;
-                const val = activeRecord.values[field.id];
-
-                if (isHidden) return null;
-
-                return (
-                  <div key={field.id} className="flex flex-col gap-1.5 border-b border-neutral-900 pb-3 last:border-0 last:pb-0">
-                    <label className="flex items-center justify-between text-xs font-mono text-neutral-400">
-                      <span>
-                        {field.name}
-                        {isRequired && <span className="text-rose-500 ml-1 font-sans font-bold">*</span>}
-                      </span>
-                      <span className="text-[10px] text-neutral-500 bg-neutral-900 px-1.5 py-0.5 rounded">
-                        {field.type}
-                      </span>
-                    </label>
-
-                    {/* Numeric or Text field */}
-                    {field.type === 'TEXT' || field.type === 'NUMERIC' ? (
-                      <input
-                        type={field.type === 'NUMERIC' ? 'number' : 'text'}
-                        value={val !== undefined ? val : ''}
-                        onChange={(e) => handleFieldChange(field.id, field.type === 'NUMERIC' ? Number(e.target.value) : e.target.value)}
-                        disabled={isReadOnly}
-                        className={`bg-neutral-900 border text-sm font-mono px-3 py-2 rounded-lg text-neutral-200 focus:outline-none ${
-                          isReadOnly
-                            ? 'border-neutral-800 bg-neutral-950/60 text-neutral-500 cursor-not-allowed'
-                            : 'border-neutral-800 focus:border-amber-500/50'
-                        }`}
-                      />
-                    ) : null}
-
-                    {/* Calculated field */}
-                    {field.type === 'CALCULATED' ? (
-                      <div className="flex flex-col gap-1">
-                        <div className="bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm font-mono flex items-center justify-between">
-                          <span className="text-amber-500 font-bold">{val !== undefined ? String(val) : 'Null'}</span>
-                          {circularError && circularError.path.includes(field.id) ? (
-                            <span className="text-[9px] text-rose-400 bg-rose-500/10 border border-rose-500/30 px-1.5 py-0.5 rounded font-mono font-semibold">
-                              LOOP ERROR
-                            </span>
-                          ) : (
-                            <span className="text-[9px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-1.5 py-0.5 rounded font-mono font-semibold">
-                              COMPUTED
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-[9px] font-mono text-neutral-500 mt-0.5 block truncate">
-                          Formula: {field.calculatedConfig?.formula}
-                        </span>
-                      </div>
-                    ) : null}
-
-                    {/* Values List field */}
-                    {field.type === 'VALUES_LIST' ? (
-                      <select
-                        value={val || ''}
-                        onChange={(e) => handleFieldChange(field.id, e.target.value)}
-                        disabled={isReadOnly}
-                        className={`bg-neutral-900 border text-sm font-mono px-3 py-2 rounded-lg text-neutral-200 focus:outline-none cursor-pointer ${
-                          isReadOnly
-                            ? 'border-neutral-800 bg-neutral-950/60 text-neutral-500 cursor-not-allowed'
-                            : 'border-neutral-800 focus:border-amber-500/50'
+                  
+                  <div className="grid grid-cols-2 gap-2.5">
+                    {fields.map((f) => (
+                      <button
+                        key={f.id}
+                        onClick={() => setSelectedFieldId(f.id)}
+                        className={`text-left p-3 rounded-lg border text-xs flex flex-col gap-1 transition-all cursor-pointer ${
+                          selectedFieldId === f.id
+                            ? 'border-amber-500 bg-amber-500/5'
+                            : 'border-neutral-800/80 bg-neutral-900/50 hover:border-neutral-700'
                         }`}
                       >
-                        <option value="">-- Select --</option>
-                        {field.valuesListConfig?.options.map((opt) => (
-                          <option key={opt.id} value={opt.value}>
-                            {opt.value}
-                          </option>
-                        ))}
-                      </select>
-                    ) : null}
-
-                    {/* User / Group representation */}
-                    {field.type === 'USER_GROUP' ? (
-                      <div className="flex flex-wrap gap-1 bg-neutral-900 border border-neutral-800 rounded-lg p-2 min-h-10 text-xs font-mono">
-                        {Array.isArray(val) && val.length > 0 ? (
-                          val.map((item, idx) => (
-                            <span key={idx} className="bg-neutral-800 border border-neutral-700 px-2 py-0.5 rounded-md flex items-center gap-1">
-                              <Users className="w-3 h-3 text-amber-500" /> {item}
-                            </span>
-                          ))
-                        ) : (
-                          <span className="text-neutral-500 italic p-1">No group memberships mapped</span>
-                        )}
-                      </div>
-                    ) : null}
-
-                    {/* Cross-reference rendering */}
-                    {field.type === 'CROSS_REFERENCE' ? (
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex flex-wrap gap-1 bg-neutral-900 border border-neutral-800 rounded-lg p-2 min-h-10 text-xs font-mono">
-                          {Array.isArray(val) && val.length > 0 ? (
-                            val.map((item, idx) => {
-                              const targetRec = records.get(item);
-                              const targetLabel = targetRec
-                                ? targetRec.values.FLD_CONTROL_ID || targetRec.values.FLD_RISK_ID || item
-                                : item;
-                              
-                              // Check inherited RLS logic on target record
-                              const targetStruct = structures.get(targetRec?.structureId || '')!;
-                              const rlsAllowed = targetRec ? RLSEngine.evaluateRecordRLS(targetRec, targetStruct, currentUser, rlsConfigs[targetRec.structureId]) : true;
-
-                              return (
-                                <span
-                                  key={idx}
-                                  className={`border px-2 py-0.5 rounded-md flex items-center gap-1.5 font-semibold ${
-                                    rlsAllowed
-                                      ? 'bg-purple-500/10 border-purple-500/30 text-purple-400'
-                                      : 'bg-rose-500/10 border-rose-500/30 text-rose-400 line-through'
-                                  }`}
-                                  title={rlsAllowed ? 'RLS Access Granted' : 'Omitted: RLS Blocks Access'}
-                                >
-                                  <FileText className="w-3 h-3" /> {targetLabel}
-                                  {!rlsAllowed && <Shield className="w-3.5 h-3.5 text-rose-500" />}
-                                </span>
-                              );
-                            })
-                          ) : (
-                            <span className="text-neutral-500 italic p-1">No cross-referenced records mapped</span>
-                          )}
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* REAL-TIME TERMINAL CONSOLE LOGGER */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 shadow-lg flex flex-col gap-4">
-            <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
-              <div className="flex items-center gap-2 font-mono text-sm">
-                <Terminal className="w-4 h-4 text-amber-500" />
-                <h2 className="text-sm font-bold text-neutral-100 uppercase tracking-wider">
-                  Diagnostic Telemetry Log Output
-                </h2>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-[10px] font-mono text-neutral-400 bg-neutral-950 px-2 py-0.5 rounded flex items-center gap-1 border border-neutral-800">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" /> Connection Stable
-                </span>
-                <button
-                  onClick={() => setTelemetryLogs([])}
-                  className="text-xs text-neutral-400 hover:text-neutral-200 cursor-pointer font-mono font-semibold"
-                >
-                  Clear Console
-                </button>
-              </div>
-            </div>
-
-            {/* Simulated terminal viewport */}
-            <div className="bg-neutral-950 border border-neutral-800 rounded-xl p-4 h-56 overflow-y-auto font-mono text-xs flex flex-col gap-2.5 scrollbar-thin scrollbar-track-neutral-950 scrollbar-thumb-neutral-800">
-              {telemetryLogs.length === 0 ? (
-                <div className="text-neutral-600 italic py-10 text-center select-none font-mono">
-                  ApexGRM Diagnostic Interface. Awaiting simulation telemetries...
-                </div>
-              ) : (
-                telemetryLogs.map((log) => {
-                  let statusColor = 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
-                  if (log.status === 'WARNING') statusColor = 'text-amber-400 bg-amber-500/10 border-amber-500/20';
-                  if (log.status === 'CRITICAL_FAIL') statusColor = 'text-rose-400 bg-rose-500/10 border-rose-500/20';
-
-                  return (
-                    <div key={log.id} className="border-b border-neutral-900 pb-2.5 last:border-0 last:pb-0">
-                      <div className="flex flex-wrap gap-2 items-center justify-between mb-1.5">
-                        <div className="flex items-center gap-2">
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded border font-mono ${statusColor}`}>
-                            {log.status}
+                        <span className="font-semibold text-neutral-200">{f.name}</span>
+                        <div className="flex justify-between items-center w-full">
+                          <span className="text-[9px] text-neutral-500">{f.id}</span>
+                          <span className="text-[8px] bg-neutral-900 px-1 py-0.5 rounded text-amber-400 border border-neutral-800">
+                            {f.type}
                           </span>
-                          <span className="text-neutral-500 text-[10px] font-semibold font-mono">{log.timestamp}</span>
-                          <span className="text-neutral-400 font-bold font-mono">[{log.executionPhase}]</span>
                         </div>
-                        <span className="text-[10px] text-neutral-500 font-mono">Ctx: {log.applicationContext}</span>
-                      </div>
-                      
-                      {/* Detailed Trace */}
-                      <div className="text-neutral-300 font-mono leading-relaxed pl-1">
-                        {log.traceDetails.evaluatedExpression || log.errorMessage}
-                      </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                      {/* Diagnostic details dumps */}
-                      {log.traceDetails.currentTokens && (
-                        <pre className="text-[10px] text-neutral-500 bg-neutral-900/60 p-2 rounded mt-1.5 border border-neutral-900 overflow-x-auto leading-normal">
-                          {JSON.stringify(log.traceDetails.currentTokens, null, 2)}
-                        </pre>
-                      )}
+                {/* Selected Field Detail Property Form */}
+                <div className="bg-neutral-950/60 border border-neutral-800 p-4 rounded-lg flex flex-col gap-3 font-mono text-xs text-neutral-300">
+                  <span className="text-neutral-400 font-bold block border-b border-neutral-900 pb-1">
+                    Metadata Parameters for: {selectedField.name}
+                  </span>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-[10px] text-neutral-500">Validation Status</label>
+                      <div className="bg-neutral-900 px-2 py-1 rounded border border-neutral-800 text-[11px] flex items-center justify-between">
+                        <span>Required flag</span>
+                        <input type="checkbox" checked={selectedField.isRequired} readOnly className="rounded border-neutral-800 text-amber-500 focus:ring-0 cursor-not-allowed" />
+                      </div>
                     </div>
-                  );
-                })
-              )}
-            </div>
-          </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="text-[10px] text-neutral-500">Access Mode</label>
+                      <div className="bg-neutral-900 px-2 py-1 rounded border border-neutral-800 text-[11px] flex items-center justify-between">
+                        <span>Read-Only flag</span>
+                        <input type="checkbox" checked={selectedField.isReadOnly} readOnly className="rounded border-neutral-800 text-amber-500 focus:ring-0 cursor-not-allowed" />
+                      </div>
+                    </div>
+                    
+                    {selectedField.type === 'NUMERIC' && (
+                      <>
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[10px] text-neutral-500">Minimum Bounds</label>
+                          <input type="text" value={String(selectedField.minValue ?? 0)} disabled className="bg-neutral-900 px-2 py-1 rounded border border-neutral-800 text-neutral-400 cursor-not-allowed text-[11px]" />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[10px] text-neutral-500">Maximum Bounds</label>
+                          <input type="text" value={String(selectedField.maxValue ?? 100)} disabled className="bg-neutral-900 px-2 py-1 rounded border border-neutral-800 text-neutral-400 cursor-not-allowed text-[11px]" />
+                        </div>
+                      </>
+                    )}
 
+                    {selectedField.type === 'TEXT' && (
+                      <div className="flex flex-col gap-1 col-span-2">
+                        <label className="text-[10px] text-neutral-500">Maximum Character Length</label>
+                        <input type="text" value="250 (Varchar block)" disabled className="bg-neutral-900 px-2 py-1 rounded border border-neutral-800 text-neutral-400 cursor-not-allowed text-[11px]" />
+                      </div>
+                    )}
+
+                    {selectedField.type === 'CALCULATED' && (
+                      <div className="flex flex-col gap-1 col-span-2">
+                        <label className="text-[10px] text-neutral-500">Active Formula Expression</label>
+                        <code className="bg-neutral-900 px-2 py-1 rounded border border-neutral-800 text-neutral-200 text-[10px] overflow-x-auto whitespace-nowrap block">
+                          {selectedField.calculatedConfig?.formula}
+                        </code>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'FEEDS' && (
+              <div className="flex flex-col gap-4">
+                <div className="border-b border-neutral-800 pb-3 flex justify-between items-center">
+                  <h2 className="text-sm font-bold font-mono text-amber-500 uppercase tracking-wider">
+                    Data Feed Manager
+                  </h2>
+                  <span className="text-[10px] text-neutral-400 font-mono bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
+                    Integration Pipeline Setup
+                  </span>
+                </div>
+                <p className="text-xs text-neutral-400 leading-normal">
+                  Representing the GRC Data Feed mapping canvas. Choose a target field and simulate how raw un-mapped string data transforms through coercion and translation logic.
+                </p>
+
+                {/* Input Ingestion Form */}
+                <div className="bg-neutral-950 border border-neutral-850 p-4 rounded-lg flex flex-col gap-3 font-mono text-xs">
+                  <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1.5">
+                    Source Mapping Setup Screen
+                  </span>
+
+                  <div className="flex flex-col gap-3.5">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-neutral-400 font-semibold">1. Select Target Field Mapping</label>
+                      <select
+                        value={selectedFeedFieldId}
+                        onChange={(e) => setSelectedFeedFieldId(e.target.value)}
+                        className="bg-neutral-900 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 focus:outline-none focus:border-amber-500/50 cursor-pointer"
+                      >
+                        <option value="FLD_RISK_NAME">FLD_RISK_NAME (TEXT)</option>
+                        <option value="FLD_INHERENT_IMPACT">FLD_INHERENT_IMPACT (NUMERIC)</option>
+                        <option value="FLD_STATUS">FLD_STATUS (VALUES_LIST)</option>
+                        <option value="FLD_OWNER_GROUPS">FLD_OWNER_GROUPS (USER_GROUP)</option>
+                      </select>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex flex-col gap-1">
+                        <label className="text-neutral-400 font-semibold">2. Key Field Config</label>
+                        <div className="bg-neutral-900 px-3 py-2 rounded border border-neutral-800 flex items-center justify-between text-[11px]">
+                          <span>Key Field Upsert Check</span>
+                          <input type="checkbox" checked={selectedFeedFieldId === 'FLD_RISK_ID'} readOnly className="rounded border-neutral-800 text-amber-500 cursor-not-allowed" />
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <label className="text-neutral-400 font-semibold">3. Upsert Mode</label>
+                        <select
+                          value={upsertMode}
+                          onChange={(e) => setUpsertMode(e.target.value as any)}
+                          className="bg-neutral-900 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 focus:outline-none focus:border-amber-500/50 cursor-pointer"
+                        >
+                          <option value="UPSERT">UPSERT (Update or Insert)</option>
+                          <option value="INSERT_ONLY">INSERT ONLY</option>
+                          <option value="UPDATE_ONLY">UPDATE ONLY</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <label className="text-neutral-400 font-semibold">4. Enter Raw Source CSV String Value</label>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          value={feedInput}
+                          onChange={(e) => setFeedInput(e.target.value)}
+                          className="bg-neutral-900 border border-neutral-800 text-sm font-mono px-3 py-1.5 rounded-lg text-neutral-200 focus:outline-none focus:border-amber-500/50 w-full"
+                          placeholder="e.g. 5 - Critical"
+                        />
+                        <button
+                          onClick={runIngestionSimulation}
+                          className="px-4 py-1.5 text-xs bg-amber-500 hover:bg-amber-600 text-neutral-950 font-mono font-bold rounded-lg transition-colors cursor-pointer"
+                        >
+                          Run Ingest
+                        </button>
+                      </div>
+                      <div className="flex gap-2.5 mt-1 text-[9px] text-neutral-500 justify-between">
+                        <span>Try typing: "4" (for Numeric), "Review" (for Values List), or "Smith" (for User)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'DDE' && (
+              <div className="flex flex-col gap-4">
+                <div className="border-b border-neutral-800 pb-3 flex justify-between items-center">
+                  <h2 className="text-sm font-bold font-mono text-amber-500 uppercase tracking-wider">
+                    DDE Rules Editor
+                  </h2>
+                  <span className="text-[10px] text-neutral-400 font-mono bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
+                    UI Logic Builder
+                  </span>
+                </div>
+                <p className="text-xs text-neutral-400 leading-normal">
+                  Representing the Data Driven Events rule selector. Triggers rules dynamically based on criteria. Select a rule to explore DDE debug deadlocks and timelines in the companion.
+                </p>
+
+                {/* Rule Builder Visual Panel */}
+                <div className="bg-neutral-950 border border-neutral-850 p-4 rounded-lg flex flex-col gap-3.5 font-mono text-xs">
+                  <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1.5">
+                    Active Rule Whitelist
+                  </span>
+
+                  <div className="flex flex-col gap-2">
+                    <button
+                      onClick={() => setSelectedDdeRuleId('Freeze_Audits_Draft')}
+                      className={`text-left p-3 rounded-lg border text-xs flex flex-col gap-1 transition-all cursor-pointer ${
+                        selectedDdeRuleId === 'Freeze_Audits_Draft'
+                          ? 'border-amber-500 bg-amber-500/5'
+                          : 'border-neutral-850 bg-neutral-900/40 hover:border-neutral-700'
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="font-semibold text-neutral-200">Rule 1: Freeze_Audits_Draft (Deadlock Risk)</span>
+                        <span className="text-[8px] bg-rose-500/10 text-rose-400 border border-rose-500/30 px-1 py-0.5 rounded">Active</span>
+                      </div>
+                      <span className="text-[10px] text-neutral-400 mt-1">If Status == 'Under Review' &rarr; Set Status = 'Draft' (Forces Audit Lock)</span>
+                    </button>
+                  </div>
+
+                  <div className="border-t border-neutral-900 pt-3 flex flex-col gap-3">
+                    <span className="text-neutral-400 font-bold">Diagnose State Action Transition</span>
+                    <p className="text-[11px] text-neutral-400 leading-relaxed">
+                      AWF Node "Gate Evaluation" expects status to advance to "Approved" to route the record forward. However, Rule 1 resets status to "Draft" on save, causing a perpetual loop deadlock.
+                    </p>
+                    
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => runDdeTimelineTest(false)}
+                        className="px-3.5 py-1.5 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-lg transition-colors cursor-pointer"
+                      >
+                        Submit with Active DDE Rule
+                      </button>
+                      <button
+                        onClick={() => runDdeTimelineTest(true)}
+                        className="px-3.5 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-neutral-950 font-bold rounded-lg transition-colors cursor-pointer"
+                      >
+                        Submit with Transition Bypass
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'AWF' && (
+              <div className="flex flex-col gap-4">
+                <div className="border-b border-neutral-800 pb-3 flex justify-between items-center">
+                  <h2 className="text-sm font-bold font-mono text-amber-500 uppercase tracking-wider">
+                    Advanced Workflow Designer
+                  </h2>
+                  <span className="text-[10px] text-neutral-400 font-mono bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
+                    State Machine Visualizer
+                  </span>
+                </div>
+                <p className="text-xs text-neutral-400 leading-normal">
+                  Representing the AWF designer canvas. Dynamic nodes route record states based on evaluation guards. Click on nodes to load their checklists.
+                </p>
+
+                {/* SVG Visual Node map */}
+                <div className="bg-neutral-950 border border-neutral-850 rounded-lg p-3 relative h-56 flex items-center justify-center">
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                    <defs>
+                      <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d4a84b" />
+                      </marker>
+                    </defs>
+                    <line x1="60" y1="100" x2="140" y2="100" stroke="#d4a84b" strokeWidth="1.5" markerEnd="url(#arrow)" />
+                    <line x1="260" y1="100" x2="330" y2="100" stroke="#d4a84b" strokeWidth="1.5" markerEnd="url(#arrow)" />
+                    <path d="M 400 100 C 440 100, 440 50, 480 50" stroke="#10b981" strokeWidth="1.5" markerEnd="url(#arrow)" fill="none" />
+                    <path d="M 400 100 C 440 100, 440 150, 200 150 C 200 150, 200 130, 200 125" stroke="#ef4444" strokeWidth="1.5" markerEnd="url(#arrow)" fill="none" strokeDasharray="3" />
+                  </svg>
+
+                  {/* Start Node */}
+                  <button
+                    onClick={() => setSelectedWfNodeId('NODE_START')}
+                    className={`absolute left-[15px] top-[75px] w-12 h-12 rounded-full border flex items-center justify-center text-[10px] font-bold font-mono cursor-pointer ${
+                      selectedWfNodeId === 'NODE_START' ? 'border-amber-500 bg-amber-500/10 text-amber-500' : 'border-neutral-700 bg-neutral-900 text-neutral-400'
+                    }`}
+                  >
+                    Start
+                  </button>
+
+                  {/* Task Node */}
+                  <button
+                    onClick={() => setSelectedWfNodeId('NODE_DRAFT')}
+                    className={`absolute left-[140px] top-[75px] w-28 h-12 rounded-lg border flex flex-col items-center justify-center text-center cursor-pointer ${
+                      selectedWfNodeId === 'NODE_DRAFT' ? 'border-amber-500 bg-amber-500/10 text-amber-500' : 'border-neutral-700 bg-neutral-900 text-neutral-300'
+                    }`}
+                  >
+                    <span className="text-[10px] font-bold">Draft State</span>
+                    <span className="text-[8px] text-neutral-400 font-mono">assigned: IT Analyst</span>
+                  </button>
+
+                  {/* Decision Node */}
+                  <button
+                    onClick={() => setSelectedWfNodeId('NODE_DECISION')}
+                    className={`absolute left-[330px] top-[75px] w-20 h-12 rounded-lg border flex items-center justify-center text-center cursor-pointer ${
+                      selectedWfNodeId === 'NODE_DECISION' ? 'border-amber-500 bg-amber-500/10 text-amber-500' : 'border-neutral-700 bg-neutral-900 text-neutral-300'
+                    }`}
+                  >
+                    <span className="text-[10px] font-bold font-mono">Review Gate</span>
+                  </button>
+
+                  {/* End Node */}
+                  <button
+                    onClick={() => setSelectedWfNodeId('NODE_APPROVED_END')}
+                    className={`absolute left-[480px] top-[25px] w-16 h-12 rounded-lg border flex items-center justify-center text-center cursor-pointer ${
+                      selectedWfNodeId === 'NODE_APPROVED_END' ? 'border-amber-500 bg-amber-500/10 text-amber-500' : 'border-neutral-700 bg-neutral-900 text-neutral-300'
+                    }`}
+                  >
+                    <span className="text-[10px] font-bold font-mono">Approved</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'SECURITY' && (
+              <div className="flex flex-col gap-4">
+                <div className="border-b border-neutral-800 pb-3 flex justify-between items-center">
+                  <h2 className="text-sm font-bold font-mono text-amber-500 uppercase tracking-wider">
+                    Access Control Config
+                  </h2>
+                  <span className="text-[10px] text-neutral-400 font-mono bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
+                    RBAC / RLS Gates
+                  </span>
+                </div>
+                <p className="text-xs text-neutral-400 leading-normal">
+                  Representing structural security settings. Toggle dynamic RLS configs and inspect how target permissions block or grant access to database records.
+                </p>
+
+                {/* Security Config Form */}
+                <div className="bg-neutral-950 border border-neutral-850 p-4 rounded-lg flex flex-col gap-3.5 font-mono text-xs text-neutral-300">
+                  <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1.5">
+                    Structure-Level Security Parameters
+                  </span>
+
+                  <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-neutral-400 font-semibold">1. Module RBAC Whitelist Roles</label>
+                      <div className="bg-neutral-900 px-3 py-1.5 rounded border border-neutral-800 flex flex-wrap gap-1.5">
+                        <span className="bg-neutral-950 border border-neutral-800 px-2 py-0.5 rounded text-[10px]">CISO</span>
+                        <span className="bg-neutral-950 border border-neutral-800 px-2 py-0.5 rounded text-[10px]">RISK_ANALYST</span>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <label className="text-neutral-400 font-semibold">2. Record-Level Security RLS Configuration</label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-neutral-900 px-2.5 py-1.5 rounded border border-neutral-800 flex items-center justify-between text-[10px]">
+                          <span>RLS Active</span>
+                          <input
+                            type="checkbox"
+                            checked={rlsConfigs.APP_CONTROL_REGISTER.isEnabled}
+                            onChange={(e) => {
+                              setRlsConfigs({
+                                ...rlsConfigs,
+                                APP_CONTROL_REGISTER: { ...rlsConfigs.APP_CONTROL_REGISTER, isEnabled: e.target.checked }
+                              });
+                            }}
+                            className="rounded border-neutral-850 text-amber-500 cursor-pointer"
+                          />
+                        </div>
+                        <div className="bg-neutral-900 px-2.5 py-1.5 rounded border border-neutral-800 flex items-center justify-between text-[10px]">
+                          <span>Allow if Empty</span>
+                          <input type="checkbox" checked={rlsConfigs.APP_CONTROL_REGISTER.allowIfFieldsEmpty} readOnly className="rounded border-neutral-850 text-amber-500 cursor-not-allowed" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-neutral-900 pt-3 flex flex-col gap-2">
+                      <span className="text-neutral-400 font-bold">Dynamic Security Gate Auditor</span>
+                      <p className="text-[11px] text-neutral-400 leading-normal">
+                        Select a user role in the header and run the dynamic security auditor to trace RLS checks on the Control Register.
+                      </p>
+                      <button
+                        onClick={runSecurityGateAudit}
+                        className="w-full py-1.5 bg-amber-500 hover:bg-amber-600 text-neutral-950 font-bold font-mono rounded transition-colors cursor-pointer"
+                      >
+                        Execute Security Gate Audit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
+        </section>
+
+        {/* =======================================================
+             RIGHT COLUMN: THE GRC ENGINEERING COMPANION & MANUAL
+             ======================================================= */}
+        <section className="lg:col-span-6 flex flex-col gap-6" aria-label="GRC Engineering Companion">
+          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 shadow-lg flex flex-col gap-4">
+            
+            {activeTab === 'FIELDS' && (
+              <div className="flex flex-col gap-4 text-xs font-mono">
+                <div className="border-b border-neutral-800 pb-2 flex justify-between items-center">
+                  <h2 className="text-sm font-bold text-amber-500 uppercase tracking-wider">
+                    GRC Field Reference Card
+                  </h2>
+                  <span className="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded uppercase">
+                    Field ID: {selectedFieldId}
+                  </span>
+                </div>
+
+                {/* Schema database lookup mapping */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    1. GRC Backend EAV Blueprint
+                  </span>
+                  <div className="text-[11px] text-neutral-300 leading-normal flex flex-col gap-1 text-neutral-400">
+                    <div>
+                      <strong className="text-neutral-200">Metadata Registry:</strong> <code>tblFieldDefinition</code> row populated where <code>FieldTypeID = {
+                        selectedField.type === 'TEXT' ? '1' : selectedField.type === 'NUMERIC' ? '2' : selectedField.type === 'VALUES_LIST' ? '4' : '8'
+                      }</code>.
+                    </div>
+                    <div>
+                      <strong className="text-neutral-200">Data Storage Table:</strong> <code>tblIV{
+                        selectedField.type === 'VALUES_LIST' ? 'ValuesList' : selectedField.type === 'CROSS_REFERENCE' ? 'XRef' : selectedField.type.charAt(0) + selectedField.type.slice(1).toLowerCase()
+                      }</code> matches <code>ContentID</code> and <code>FieldID</code> columns.
+                    </div>
+                  </div>
+                </div>
+
+                {/* Adjusting pitfalls checklist */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-rose-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    2. Adjustment Pitfalls Checklist
+                  </span>
+                  <ul className="text-[10.5px] text-neutral-300 leading-relaxed list-disc list-inside flex flex-col gap-1">
+                    {selectedField.type === 'TEXT' && (
+                      <>
+                        <li><strong className="text-neutral-100">Length Reductions:</strong> Shrinking maxLength does not trim SQL tables instantly, but future saving attempts fail if records exceed the limit.</li>
+                        <li><strong className="text-neutral-100">Index Locks:</strong> Changing character configurations locks target SQL tables during indexing.</li>
+                      </>
+                    )}
+                    {selectedField.type === 'NUMERIC' && (
+                      <>
+                        <li><strong className="text-neutral-100">Decimal Scale Reductions:</strong> Reducing decimal precision (e.g. 4 to 2) permanently truncates database values on next save.</li>
+                        <li><strong className="text-neutral-100">Format String Skew:</strong> Ingesting files containing signs (`$`, `%`) crashes parsing logic unless clean decimals are coerced.</li>
+                      </>
+                    )}
+                    {selectedField.type === 'DATE_TIME' && (
+                      <>
+                        <li><strong className="text-neutral-100">Timezone Offset Drift:</strong> Calculating offsets between servers without explicit ISO 8601 formatting drifts dates by up to 24 hours.</li>
+                        <li><strong className="text-neutral-100">Date-Only Truncation:</strong> Converting a Date-Time field to Date-Only wipes all time logs.</li>
+                      </>
+                    )}
+                    {selectedField.type === 'VALUES_LIST' && (
+                      <>
+                        <li><strong className="text-neutral-100">Orphaned value list Option IDs:</strong> Deleting Value options leaves historic content rows pointing to NULL IDs (displays empty values in the UI).</li>
+                        <li><strong className="text-neutral-100">API value mapping friction:</strong> Direct text writes fail. Integrations must translate text strings to exact internal `OptionID` keys.</li>
+                      </>
+                    )}
+                    {selectedField.type === 'CROSS_REFERENCE' && (
+                      <>
+                        <li><strong className="text-neutral-100">Cascading purge:</strong> Enabling delete-cascades risk massive, accidental child-record purges during deletes.</li>
+                        <li><strong className="text-neutral-100">Security Omissions:</strong> Calculations running lookups over X-Refs silently fail if RLS filters block target records.</li>
+                      </>
+                    )}
+                    {selectedField.type === 'CALCULATED' && (
+                      <>
+                        <li><strong className="text-neutral-100">Circular Loops:</strong> Creating dependent loops locks the server CPU and halts calculations.</li>
+                        <li><strong className="text-neutral-100">Empty Field Handling:</strong> Ensure all equations contain fallback operators (e.g. IF or AND checks) to handle null values gracefully.</li>
+                      </>
+                    )}
+                    {!['TEXT', 'NUMERIC', 'DATE_TIME', 'VALUES_LIST', 'CROSS_REFERENCE', 'CALCULATED'].includes(selectedField.type) && (
+                      <li>Check schema parameters, indexing whitelists, and referential join constraints in metadata definition fields.</li>
+                    )}
+                  </ul>
+                </div>
+
+                {/* In-Manual Calculated DAG playroom (only for calculated fields) */}
+                {selectedField.type === 'CALCULATED' && (
+                  <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-2">
+                    <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                      3. Calculated Recalculation sort Playground
+                    </span>
+                    <div className="flex flex-col gap-2 font-mono text-xs">
+                      <div className="flex flex-col gap-1">
+                        <label className="text-[10px] text-neutral-500">Choose Formula to Compile</label>
+                        <select
+                          value={selectedFormula}
+                          onChange={(e) => setSelectedFormula(e.target.value)}
+                          className="bg-neutral-900 border border-neutral-800 rounded px-2 py-1 text-neutral-200 focus:outline-none focus:border-amber-500/50 cursor-pointer"
+                        >
+                          <option value="BASIC">Standard Multiplication (Inherent Score = Impact * Likelihood)</option>
+                          <option value="IF_COMP">IF String Comparison (Rating = IF Inherent Score &gt; 4)</option>
+                          <option value="XREF_SUM">X-Ref Aggregation Sum (SUM target scores respecting active RLS)</option>
+                          <option value="CIRCULAR">Circular Paradox Loop (Impact depends on Score & vice-versa)</option>
+                        </select>
+                      </div>
+
+                      <div className="bg-neutral-900/60 border border-neutral-850 p-2.5 rounded text-[10px] max-h-36 overflow-y-auto leading-relaxed flex flex-col gap-0.5 text-neutral-400">
+                        {formulaLogs.map((log, i) => (
+                          <div key={i} className={log.includes('CRITICAL_FAIL') ? 'text-rose-400 font-bold' : log.includes('SUCCESS') ? 'text-emerald-400 font-semibold' : ''}>
+                            {log}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="bg-neutral-950 p-2 rounded border border-neutral-800 text-[10px] flex justify-between items-center text-neutral-300 font-bold">
+                        <span>Evaluation Outcome:</span>
+                        <span className={formulaResult === 'PARADOX_LOCK' ? 'text-rose-400' : 'text-amber-400'}>
+                          {formulaResult === null ? 'NULL' : String(formulaResult)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+              </div>
+            )}
+
+            {activeTab === 'FEEDS' && (
+              <div className="flex flex-col gap-4 text-xs font-mono">
+                <div className="border-b border-neutral-800 pb-2">
+                  <h2 className="text-sm font-bold text-amber-500 uppercase tracking-wider">
+                    ETL Ingestion & Lookup Manual
+                  </h2>
+                </div>
+
+                {/* Ingestion feed details */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    1. Data Feed Lookup & Translations
+                  </span>
+                  <ul className="text-[10.5px] text-neutral-300 leading-relaxed list-disc list-inside flex flex-col gap-1">
+                    <li><strong className="text-neutral-100">Values List Matching:</strong> GRC feeds scan option registries. Attempting to insert raw strings (like `"5 - Critical"`) will fail to validate unless a translation map or regex strips characters, resolving matching Option IDs.</li>
+                    <li><strong className="text-neutral-100">AD Directory Syncing:</strong> Mappings referencing User/Group fields query AD registries. Ingestion pipelines look up Active Directory usernames or LDAP strings, writing matched account keys.</li>
+                    <li><strong className="text-neutral-100">Key Field Upserts:</strong> Target unique columns act as index guards. If the lookup key (like Risk ID) matches, the system updates EAV records. If no match occurs, a new record is inserted.</li>
+                  </ul>
+                </div>
+
+                {/* Diagnostics */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-rose-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    2. Ingestion Diagnostics & Checklists
+                  </span>
+                  <ul className="text-[10.5px] text-neutral-300 leading-relaxed list-decimal list-inside flex flex-col gap-1 text-neutral-450">
+                    <li>Confirm source CSV schemas match target column definition properties exactly.</li>
+                    <li>Verify numeric fields carry raw floats. Strip currency symbols (`$`) and commas.</li>
+                    <li>Align date formats to standard ISO 8601 UTC to prevent timezone drifts across geographical databases.</li>
+                  </ul>
+                </div>
+
+                {/* Ingestion run terminal logs */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-2">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    3. Live Ingestion Trace Log
+                  </span>
+                  <div className="bg-neutral-900/60 border border-neutral-850 p-2.5 rounded text-[10px] max-h-40 overflow-y-auto leading-relaxed flex flex-col gap-0.5 text-neutral-400">
+                    {feedLogs.length === 0 ? (
+                      <span className="text-neutral-500 italic">No feed executions recorded. Select your parameters and click "Run Ingest" in the builder portal.</span>
+                    ) : (
+                      feedLogs.map((log, i) => (
+                        <div key={i} className={log.includes('CRITICAL_FAIL') || log.includes('ERROR') ? 'text-rose-400 font-bold' : log.includes('SUCCESS') ? 'text-emerald-400 font-semibold' : ''}>
+                          {log}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                  {coercedValue !== null && (
+                    <div className="bg-neutral-950 p-2 rounded border border-neutral-800 text-[10px] flex justify-between items-center text-neutral-300 font-bold">
+                      <span>SQL Commit Value:</span>
+                      <span className="text-amber-400">{JSON.stringify(coercedValue)}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'DDE' && (
+              <div className="flex flex-col gap-4 text-xs font-mono">
+                <div className="border-b border-neutral-800 pb-2">
+                  <h2 className="text-sm font-bold text-amber-500 uppercase tracking-wider">
+                    DDE Diagnostics & Conflict Maps
+                  </h2>
+                </div>
+
+                {/* Troubleshooting guidelines */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-rose-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    1. Dynamic DDE Conflict Profiles
+                  </span>
+                  <div className="flex flex-col gap-2.5 leading-relaxed text-[10.5px]">
+                    <div className="border border-rose-500/10 bg-rose-500/5 p-2 rounded text-neutral-300">
+                      <strong className="text-rose-400 block mb-0.5">Profile A: Hidden Required Fields (Save Block)</strong>
+                      If one DDE rule makes a field hidden based on Condition A, while another rule makes it required based on Condition B, the record will fail to save (displays missing required field validations), while the user cannot edit it.
+                    </div>
+                    <div className="border border-amber-500/10 bg-amber-500/5 p-2 rounded text-neutral-300">
+                      <strong className="text-amber-400 block mb-0.5">Profile B: AWF Transition Deadlocks</strong>
+                      When an AWF step advances, the record status must match the transition guard. If a DDE rule triggers on status changes to force statuses back to Draft (e.g. audit freezes), it overrides the transition state, deadlocking the workflow.
+                    </div>
+                  </div>
+                </div>
+
+                {/* Checklist */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    2. DDE Diagnostics Checklist
+                  </span>
+                  <ul className="text-[10.5px] text-neutral-300 leading-relaxed list-disc list-inside flex flex-col gap-1 text-neutral-450">
+                    <li>Never trigger DDE `SET_VALUE` actions on calculated fields to avoid recalculation loops.</li>
+                    <li>Always evaluate rule ordering; the last executed DDE rule takes precedence in override conflicts.</li>
+                    <li>Verify that all required fields are whitelisted for visibility under every valid workflow stage.</li>
+                  </ul>
+                </div>
+
+                {/* DDE Trace Logs */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-2">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    3. Dynamic Execution Timeline Trace
+                  </span>
+                  <div className="bg-neutral-900/60 border border-neutral-850 p-2.5 rounded text-[10px] max-h-40 overflow-y-auto leading-relaxed flex flex-col gap-0.5 text-neutral-400">
+                    {ddeTimelineLogs.length === 0 ? (
+                      <span className="text-neutral-500 italic">No timelines recorded. Run transition tests in the rules editor panel.</span>
+                    ) : (
+                      ddeTimelineLogs.map((log, i) => (
+                        <div key={i} className={log.includes('CRITICAL_FAIL') ? 'text-rose-400 font-bold' : log.includes('SUCCESS') ? 'text-emerald-400 font-semibold' : ''}>
+                          {log}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'AWF' && (
+              <div className="flex flex-col gap-4 text-xs font-mono">
+                <div className="border-b border-neutral-800 pb-2 flex justify-between items-center">
+                  <div>
+                    <h2 className="text-sm font-bold text-amber-500 uppercase tracking-wider">
+                      AWF Lifecycle & Transition Gates
+                    </h2>
+                    <span className="text-[8px] text-neutral-400 font-mono block mt-0.5">Instance Node ID: {wfState.currentNodeId}</span>
+                  </div>
+                  <span className="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded uppercase">
+                    Selected Node: {selectedWfNodeId}
+                  </span>
+                </div>
+
+                {/* Node properties description */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    1. Selected Node Specifications
+                  </span>
+                  <div className="text-[11px] text-neutral-300 leading-normal flex flex-col gap-2">
+                    {selectedWfNodeId === 'NODE_START' && (
+                      <>
+                        <div><strong className="text-neutral-100">Node Type:</strong> START NODE</div>
+                        <p className="text-neutral-450 leading-relaxed">The gateway entry state. Generates new dynamic AWF instance records when transactional rows are inserted. Directs the record state instantly to initial task queues.</p>
+                      </>
+                    )}
+                    {selectedWfNodeId === 'NODE_DRAFT' && (
+                      <>
+                        <div><strong className="text-neutral-100">Node Type:</strong> MANUAL TASK NODE</div>
+                        <div><strong className="text-neutral-100">Assigned Profile:</strong> IT Risk Analyst (GRP_IT_RISK Group)</div>
+                        <p className="text-neutral-450 leading-relaxed">Halts calculation recs. Enforces explicit manual updates or button clearance clicks (e.g. Submit, Revert) before advancing transitions.</p>
+                      </>
+                    )}
+                    {selectedWfNodeId === 'NODE_DECISION' && (
+                      <>
+                        <div><strong className="text-neutral-100">Node Type:</strong> DECISION NODE</div>
+                        <div><strong className="text-neutral-100">Criteria Guard:</strong> <code>FLD_STATUS == "Approved"</code></div>
+                        <p className="text-neutral-450 leading-relaxed">Dynamic evaluator. Programmatically routes records based on field values list checks. Bypasses manual tasks and executes transition queries instantly.</p>
+                      </>
+                    )}
+                    {selectedWfNodeId === 'NODE_APPROVED_END' && (
+                      <>
+                        <div><strong className="text-neutral-100">Node Type:</strong> END STATE NODE</div>
+                        <p className="text-neutral-450 leading-relaxed">Operational completion boundary. Freezes transition pipelines and closes AWF tracking instances, completing the record lifecycle.</p>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* Troubleshooting node rules */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-rose-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    2. Workflow Deadlock Checklist
+                  </span>
+                  <ul className="text-[10.5px] text-neutral-300 leading-relaxed list-disc list-inside flex flex-col gap-1 text-neutral-450">
+                    <li><strong className="text-neutral-100">Decision Fallbacks:</strong> Always configure default target parameters on decision forks. An un-matched evaluation loops records or leaves them with empty next states.</li>
+                    <li><strong className="text-neutral-100">Transition Action Overrides:</strong> Verify that DDE logic triggers do not set values that violate transition guards on save.</li>
+                    <li><strong className="text-neutral-100">Security Assignment Drift:</strong> Check that assigned users have module-level RBAC role permissions to access and edit records in AWF task states.</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'SECURITY' && (
+              <div className="flex flex-col gap-4 text-xs font-mono">
+                <div className="border-b border-neutral-800 pb-2">
+                  <h2 className="text-sm font-bold text-amber-500 uppercase tracking-wider">
+                    RBAC & Dynamic RLS Security gates
+                  </h2>
+                </div>
+
+                {/* Inherent RLS aggregation manual (The Security Ghost) */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-rose-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    1. RLS calculation Omissions (The Security Ghost)
+                  </span>
+                  <p className="text-[10.5px] text-neutral-300 leading-relaxed">
+                    This is a critical GRC concept: When formulas run calculations referencing a **Cross-Reference** field, the database engine checks Record-Level Security permissions on *every single referenced target record* dynamically!
+                  </p>
+                  <p className="text-[10.5px] text-neutral-400 leading-relaxed mt-1">
+                    If target records are restricted to specific security groups (e.g. `GRP_EXEC_COM`), and the active user is not a member, the system **silently omits** those records from the calculation instead of throwing an error. A `SUM` or `COUNT` calculation will return incomplete totals, creating what looks like a logic bug but is actually a strict security restriction.
+                  </p>
+                </div>
+
+                {/* Security Diagnostic Checklist */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-1.5">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    2. Security Configuration Checklist
+                  </span>
+                  <ul className="text-[10.5px] text-neutral-300 leading-relaxed list-disc list-inside flex flex-col gap-1 text-neutral-450">
+                    <li><strong className="text-neutral-100">Module Access (RBAC):</strong> Enforces application-level access based on roles. User must pass RBAC before RLS is checked.</li>
+                    <li><strong className="text-neutral-100">Record Security (RLS):</strong> Compares active session user/groups list with record fields. Set fallback `allowIfFieldsEmpty = true` if empty assignments should default to public visibility.</li>
+                    <li><strong className="text-neutral-100">Calculation Alignment:</strong> Keep target cross-referenced applications whitelisted to necessary operational user groups to prevent incomplete calculation aggregates.</li>
+                  </ul>
+                </div>
+
+                {/* Security Gate execution logs */}
+                <div className="bg-neutral-950 border border-neutral-850 p-3 rounded-lg flex flex-col gap-2">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider block border-b border-neutral-900 pb-1 text-[10px]">
+                    3. Dynamic Security Gate Audit Trace
+                  </span>
+                  <div className="bg-neutral-900/60 border border-neutral-850 p-2.5 rounded text-[10px] max-h-40 overflow-y-auto leading-relaxed flex flex-col gap-0.5 text-neutral-400 font-mono">
+                    {securityCheckLog.length === 0 ? (
+                      <span className="text-neutral-500 italic">No security audits recorded. Click "Execute Security Gate Audit" in the configuration portal.</span>
+                    ) : (
+                      securityCheckLog.map((log, i) => (
+                        <div key={i} className={log.includes('BLOCK') || log.includes('DENIED') ? 'text-rose-400 font-bold' : log.includes('PASS') || log.includes('GRANTED') ? 'text-emerald-400 font-semibold' : ''}>
+                          {log}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
         </section>
 
       </main>
-      ) : (
-        <main className="max-w-7xl mx-auto p-6">
-          {renderManual()}
-        </main>
-      )}
 
-      {/* FOOTER */}
+      {/* --- FOOTER --- */}
       <footer className="border-t border-neutral-800 bg-neutral-950 py-6 mt-12 text-center text-xs text-neutral-500 font-mono">
-        <p>© 2026 Rycode. All rights reserved. · ApexGRM Engine Sandbox Mode</p>
+        <p>© 2026 Rycode. All rights reserved. · ApexGRM Configuration Studio Trainer Mode</p>
       </footer>
 
     </div>
