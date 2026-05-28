@@ -9,5 +9,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    outDir: '../apex-grm',
+    emptyOutDir: true,
+  },
 })
 
