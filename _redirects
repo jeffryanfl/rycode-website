@@ -8,3 +8,6 @@
 #
 # This file is intentionally left without rules. Add redirects
 # below as the site grows.
+
+/lab/apex-grm/* /lab/apex-grm/dist/:splat 200
+
