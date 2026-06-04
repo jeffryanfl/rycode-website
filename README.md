@@ -1,7 +1,6 @@
 # Rycode
 
-Personal coding portfolio and workshop for Jeff Ryan. Built openly with AI,
-shipped in vanilla HTML, CSS, and JavaScript — no frameworks, no build tools.
+Developer hub, systems models, and analytical briefings exploring complex global systems and emerging risks. Built with Astro, and serving interactive sub-apps and tools.
 
 **Live:** https://rycode.dev
 

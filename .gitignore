@@ -21,3 +21,8 @@ sandbox/
 
 # Claude Code local session state
 .claude/
+
+# Astro / Node dependencies and builds
+node_modules/
+.astro/
+dist/
