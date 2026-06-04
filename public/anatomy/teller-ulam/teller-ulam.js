@@ -14,17 +14,16 @@
         fireballExtrasOpacity: [[0, 0], [220, 0], [280, 1]],
 
         // Primary HE-lens color (interpolated R,G,B)
-        // 0x8a6a2b (dim) → 0xffb547 (hot) → back to dim → very dim in fireball
-        heColor: [[0, 0x8a6a2b], [8, 0xffb547], [80, 0xffb547], [200, 0x8a6a2b], [300, 0x4a3a1a]],
+        heColor: [[0, 0xfef3c7], [8, 0xffb547], [80, 0xffb547], [200, 0xe2e8f0], [300, 0xf1f5f9]],
 
         // Primary pit fill — gets white-hot during fission then cools
-        pitColor: [[0, 0x3a2f18], [8, 0xffb547], [60, 0xffb547], [200, 0xd4a84b], [300, 0x8a6a2b]],
+        pitColor: [[0, 0xbae6fd], [8, 0xffffff], [60, 0xffb547], [200, 0xfef3c7], [300, 0xe2e8f0]],
 
         // Primary pit stroke (matches cooling)
-        pitStroke: [[0, 0x8a6a2b], [8, 0xffffff], [60, 0xffb547], [200, 0x8a6a2b]],
+        pitStroke: [[0, 0x0284c7], [8, 0xffffff], [60, 0xffb547], [200, 0x94a3b8]],
 
         // Tamper fill (brightens mildly as primary fires)
-        tamperFill: [[0, 0x262626], [10, 0x8a6a2b], [80, 0x8a6a2b], [200, 0x333333]],
+        tamperFill: [[0, 0xe2e8f0], [10, 0xfff7ed], [80, 0xffedd5], [200, 0xcbd5e1]],
 
         // Armed indicators fade out the instant detonation begins
         armedOpacity: [[0, 1], [2, 0]],
@@ -40,12 +39,12 @@
         fuelY:      [[0, 125], [10, 125], [50, 140], [100, 150], [300, 150]],
         fuelHeight: [[0, 70],  [10, 70],  [50, 40],  [100, 20],  [300, 20]],
         // Fuel fill darkens→brightens (dense glowing plasma by ignition)
-        fuelFill: [[0, 0x262626], [30, 0x262626], [100, 0xff7043], [200, 0xff7043]],
+        fuelFill: [[0, 0xf8fafc], [30, 0xf0fdf4], [100, 0xff7043], [200, 0xff4500]],
 
         // Secondary pusher colors — darkens then illuminates under X-ray bath
-        pusherFill:       [[0, 0x1a1a1a], [30, 0x3a2f18], [100, 0x8a6a2b], [200, 0x8a6a2b]],
-        pusherStrokeCol:  [[0, 0x8a6a2b], [30, 0xffb547], [300, 0xffb547]],
-        pusherStrokeW:    [[0, 1], [30, 2.5], [300, 2.5]],
+        pusherFill:       [[0, 0xf1f5f9], [30, 0xffedd5], [100, 0xffa07a], [200, 0xff7043]],
+        pusherStrokeCol:  [[0, 0x94a3b8], [30, 0xffb547], [300, 0xff7043]],
+        pusherStrokeW:    [[0, 1], [30, 2], [300, 2]],
 
         // Ablation skin (dashed inner rim) visible during radiation implosion
         ablationOpacity: [[0, 0], [30, 0], [50, 0.7], [100, 0.7], [200, 0]],
@@ -185,7 +184,11 @@
         calloutIgnition: document.getElementById('calloutIgnition'),
         calloutTooLate:  document.getElementById('calloutTooLate'),
 
+        channelFoam:     document.getElementById('channelFoam'),
+        stageBoundary:   document.getElementById('stageBoundary'),
+
         captions:      document.querySelectorAll('.caption'),
+        labelGroups:   document.querySelectorAll('.svg-label-group'),
 
         xBar:          document.getElementById('xBar'),
         bwBar:         document.getElementById('bwBar'),
@@ -195,7 +198,7 @@
         slider:        document.getElementById('scrub'),
         playBtn:       document.getElementById('playBtn'),
         resetBtn:      document.getElementById('resetBtn'),
-        stopBtns:      document.querySelectorAll('.scrub-stops button')
+        stopBtns:      document.querySelectorAll('.scrub-timeline-stops button')
       };
 
       // ==================== RENDER ====================
@@ -217,6 +220,8 @@
         el.ablationSkin.setAttribute('opacity',  interp(t, K.ablationOpacity));
         el.sparkCapsule.setAttribute('opacity',  interp(t, K.sparkCapsuleOpacity));
         el.sparkHot.setAttribute('opacity',      interp(t, K.sparkHotOpacity));
+        el.channelFoam.setAttribute('opacity',   interp(t, [[0, 1], [8, 0]]));
+        el.stageBoundary.setAttribute('opacity', interp(t, [[0, 0.6], [220, 0.6], [280, 0]]));
 
         // ---- primary colors ----
         el.heGroup.setAttribute('color',    interpColor(t, K.heColor));
@@ -260,6 +265,16 @@
         el.captions.forEach(function (c) {
           if (c.dataset.phase === activePhase) c.classList.add('is-active');
           else c.classList.remove('is-active');
+        });
+
+        // ---- dynamic active phase labels ----
+        el.labelGroups.forEach(function (grp) {
+          const pg = grp.dataset.phaseGroup;
+          if (pg.indexOf(activePhase) !== -1) {
+            grp.classList.add('is-active');
+          } else {
+            grp.classList.remove('is-active');
+          }
         });
 
         // ---- distance bars + numeric readouts ----
