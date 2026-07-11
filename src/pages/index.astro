@@ -222,7 +222,7 @@ import Layout from '../layouts/Layout.astro';
           const cols = Math.floor(width / spacing) + 1;
           const rows = Math.floor(height / spacing) + 1;
 
-          ctx.font = '10px var(--font-mono)';
+          ctx.font = '10px "Geist Mono", Monaco, "Courier New", monospace';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -239,7 +239,7 @@ import Layout from '../layouts/Layout.astro';
               // Default drifting matrix background character (0 or 1)
               let char = (c + Math.floor(r + offset)) % 2 === 0 ? '0' : '1';
               let isHovered = false;
-              let alpha = 0.06; // Faint default opacity
+              let alpha = 0.22; // High-visibility default opacity
               let glow = 0;
 
               if (mouse.x !== null && mouse.y !== null) {
@@ -252,7 +252,7 @@ import Layout from '../layouts/Layout.astro';
                   isHovered = true;
                   decodedCellsCount++;
                   glow = 1 - dist / 130;
-                  alpha = 0.06 + glow * 0.70;
+                  alpha = 0.22 + glow * 0.68;
 
                   // Flip character rapidly when hovered
                   if (Math.random() > 0.45) {
