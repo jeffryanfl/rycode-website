@@ -177,15 +177,14 @@ import Layout from '../layouts/Layout.astro';
         let width = 0;
         let height = 0;
 
+        // Perform canvas sizing on resize event, never inside draw loop
         function resize() {
-          const rect = container.getBoundingClientRect();
-          if (canvas.width !== rect.width || canvas.height !== rect.height) {
-            width = canvas.width = rect.width;
-            height = canvas.height = rect.height;
-          }
+          width = canvas.width = container.clientWidth;
+          height = canvas.height = container.clientHeight;
         }
         
         resize();
+        window.addEventListener('resize', resize);
 
         const mouse = { x: null, y: null };
         const heroSection = document.querySelector('.hero');
@@ -206,8 +205,8 @@ import Layout from '../layouts/Layout.astro';
         const packetsEl = document.getElementById('hudPackets');
         let totalPackets = 14832;
 
-        // Dynamically increment processed packets
-        const intervalId = setInterval(() => {
+        // Ticker for packets processed
+        setInterval(() => {
           totalPackets += Math.floor(Math.random() * 3) + 1;
           if (packetsEl) packetsEl.textContent = totalPackets.toLocaleString();
         }, 1200);
@@ -216,15 +215,13 @@ import Layout from '../layouts/Layout.astro';
         const decodeChars = ['0', '1', 'ø', '+', 'x', 'a', 'f', '8', '3', 'e', '9', 'ø', '·'];
 
         function animate(time) {
-          resize();
-
           ctx.clearRect(0, 0, width, height);
 
           if (width > 0 && height > 0) {
             const cols = Math.floor(width / spacing) + 1;
             const rows = Math.floor(height / spacing) + 1;
 
-            ctx.font = '10px "Geist Mono", Monaco, "Courier New", monospace';
+            ctx.font = '10px Courier, monospace';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
 
@@ -238,10 +235,10 @@ import Layout from '../layouts/Layout.astro';
                 const x = c * spacing;
                 const y = r * spacing;
 
-                // Default drifting matrix background character (0 or 1)
+                // Drifting background characters (0 or 1)
                 let char = (c + Math.floor(r + offset)) % 2 === 0 ? '0' : '1';
                 let isHovered = false;
-                let alpha = 0.22; // High-visibility default opacity
+                let alpha = 0.22; // 22% default opacity (high contrast slate-grey visibility)
                 let glow = 0;
 
                 if (mouse.x !== null && mouse.y !== null) {
@@ -249,14 +246,14 @@ import Layout from '../layouts/Layout.astro';
                   const dy = y - mouse.y;
                   const dist = Math.hypot(dx, dy);
 
-                  // Decode radius
-                  if (dist < 130) {
+                  // Interact and decode when mouse is close
+                  if (dist < 135) {
                     isHovered = true;
                     decodedCellsCount++;
-                    glow = 1 - dist / 130;
-                    alpha = 0.22 + glow * 0.68;
+                    glow = 1 - dist / 135;
+                    alpha = 0.22 + glow * 0.68; // Scales up to 90% opacity
 
-                    // Flip character rapidly when hovered
+                    // Flip character rapidly
                     if (Math.random() > 0.45) {
                       char = decodeChars[Math.floor(Math.random() * decodeChars.length)];
                     }
