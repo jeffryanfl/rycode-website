@@ -87,11 +87,13 @@ const {
        =========================================================== -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>© {new Date().getFullYear()} Rycode. All rights reserved. · Sebring, FL</span>
-      <span>
-        <a href="/build-log/index.html" class="footer-link">Build Log</a> · 
-        <a href="/research/saaspocalypse/index.html" class="footer-link">Briefings</a>
-      </span>
+      <span>© {new Date().getFullYear()} Rycode. All rights reserved.</span>
+      {!hideNavLinks && (
+        <span>
+          <a href="/build-log/index.html" class="footer-link">Build Log</a> · 
+          <a href="/research/saaspocalypse/index.html" class="footer-link">Briefings</a>
+        </span>
+      )}
       <span>Built with Astro.</span>
     </div>
   </footer>
