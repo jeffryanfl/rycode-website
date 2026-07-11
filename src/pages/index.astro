@@ -163,116 +163,133 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('networkCanvas');
-    if (!canvas) return;
+  (() => {
+    function init() {
+      const canvas = document.getElementById('networkCanvas');
+      if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    const container = canvas.parentElement;
+      const ctx = canvas.getContext('2d');
+      const container = canvas.parentElement;
+      if (!container) return;
 
-    let width = canvas.width = container.offsetWidth;
-    let height = canvas.height = container.offsetHeight;
+      let width = 0;
+      let height = 0;
 
-    // Adjust canvas resolution dynamically on window resize
-    window.addEventListener('resize', () => {
-      width = canvas.width = container.offsetWidth;
-      height = canvas.height = container.offsetHeight;
-    });
-
-    const mouse = { x: null, y: null };
-    const heroSection = document.querySelector('.hero');
-
-    if (heroSection) {
-      heroSection.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-      });
-      heroSection.addEventListener('mouseleave', () => {
-        mouse.x = null;
-        mouse.y = null;
-      });
-    }
-
-    const activeNodesEl = document.getElementById('hudActiveNodes');
-    const packetsEl = document.getElementById('hudPackets');
-    let totalPackets = 14832;
-
-    // Dynamically increment processed packets
-    setInterval(() => {
-      totalPackets += Math.floor(Math.random() * 3) + 1;
-      if (packetsEl) packetsEl.textContent = totalPackets.toLocaleString();
-    }, 1200);
-
-    const spacing = 22; // Grid cell spacing
-    const decodeChars = ['0', '1', 'ø', '+', 'x', 'a', 'f', '8', '3', 'e', '9', 'ø', '·'];
-
-    function animate(time) {
-      ctx.clearRect(0, 0, width, height);
-
-      const cols = Math.floor(width / spacing) + 1;
-      const rows = Math.floor(height / spacing) + 1;
-
-      ctx.font = '10px var(--font-mono)';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-
-      let decodedCellsCount = 0;
+      function resize() {
+        const rect = container.getBoundingClientRect();
+        if (canvas.width !== rect.width || canvas.height !== rect.height) {
+          width = canvas.width = rect.width;
+          height = canvas.height = rect.height;
+        }
+      }
       
-      // Calculate a slow vertical drift offset based on time
-      const offset = Math.floor(time / 300);
+      resize();
 
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const x = c * spacing;
-          const y = r * spacing;
+      const mouse = { x: null, y: null };
+      const heroSection = document.querySelector('.hero');
 
-          // Default drifting matrix background character (0 or 1)
-          let char = (c + Math.floor(r + offset)) % 2 === 0 ? '0' : '1';
-          let isHovered = false;
-          let alpha = 0.06; // Faint default opacity
-          let glow = 0;
+      if (heroSection) {
+        heroSection.addEventListener('mousemove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+        });
+        heroSection.addEventListener('mouseleave', () => {
+          mouse.x = null;
+          mouse.y = null;
+        });
+      }
 
-          if (mouse.x !== null && mouse.y !== null) {
-            const dx = x - mouse.x;
-            const dy = y - mouse.y;
-            const dist = Math.hypot(dx, dy);
+      const activeNodesEl = document.getElementById('hudActiveNodes');
+      const packetsEl = document.getElementById('hudPackets');
+      let totalPackets = 14832;
 
-            // Decode radius
-            if (dist < 130) {
-              isHovered = true;
-              decodedCellsCount++;
-              glow = 1 - dist / 130;
-              alpha = 0.06 + glow * 0.70;
+      // Dynamically increment processed packets
+      setInterval(() => {
+        totalPackets += Math.floor(Math.random() * 3) + 1;
+        if (packetsEl) packetsEl.textContent = totalPackets.toLocaleString();
+      }, 1200);
 
-              // Flip character rapidly when hovered
-              if (Math.random() > 0.45) {
-                char = decodeChars[Math.floor(Math.random() * decodeChars.length)];
+      const spacing = 22; // Grid cell spacing
+      const decodeChars = ['0', '1', 'ø', '+', 'x', 'a', 'f', '8', '3', 'e', '9', 'ø', '·'];
+
+      function animate(time) {
+        resize();
+
+        ctx.clearRect(0, 0, width, height);
+
+        if (width > 0 && height > 0) {
+          const cols = Math.floor(width / spacing) + 1;
+          const rows = Math.floor(height / spacing) + 1;
+
+          ctx.font = '10px var(--font-mono)';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          let decodedCellsCount = 0;
+          
+          // Calculate a slow vertical drift offset based on time
+          const offset = Math.floor(time / 300);
+
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+              const x = c * spacing;
+              const y = r * spacing;
+
+              // Default drifting matrix background character (0 or 1)
+              let char = (c + Math.floor(r + offset)) % 2 === 0 ? '0' : '1';
+              let isHovered = false;
+              let alpha = 0.06; // Faint default opacity
+              let glow = 0;
+
+              if (mouse.x !== null && mouse.y !== null) {
+                const dx = x - mouse.x;
+                const dy = y - mouse.y;
+                const dist = Math.hypot(dx, dy);
+
+                // Decode radius
+                if (dist < 130) {
+                  isHovered = true;
+                  decodedCellsCount++;
+                  glow = 1 - dist / 130;
+                  alpha = 0.06 + glow * 0.70;
+
+                  // Flip character rapidly when hovered
+                  if (Math.random() > 0.45) {
+                    char = decodeChars[Math.floor(Math.random() * decodeChars.length)];
+                  }
+                }
               }
+
+              if (isHovered) {
+                ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
+                ctx.shadowColor = '#2563eb';
+                ctx.shadowBlur = glow * 8;
+              } else {
+                ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
+                ctx.shadowBlur = 0;
+              }
+
+              ctx.fillText(char, x, y);
             }
           }
 
-          if (isHovered) {
-            ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
-            ctx.shadowColor = '#2563eb';
-            ctx.shadowBlur = glow * 8;
-          } else {
-            ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
-            ctx.shadowBlur = 0;
+          // Update telemetry display
+          if (activeNodesEl) {
+            activeNodesEl.textContent = `${decodedCellsCount} cells`;
           }
-
-          ctx.fillText(char, x, y);
         }
-      }
 
-      // Update telemetry display
-      if (activeNodesEl) {
-        activeNodesEl.textContent = `${decodedCellsCount} cells`;
+        requestAnimationFrame(animate);
       }
 
       requestAnimationFrame(animate);
     }
 
-    requestAnimationFrame(animate);
-  });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 </script>
