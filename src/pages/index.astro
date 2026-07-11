@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
        HERO / WORKSTATION PORTAL
        =========================================================== -->
   <section class="hero" aria-labelledby="heroTitle">
-    <!-- Interactive Background Canvas -->
+    <!-- Interactive Background Matrix Grid Canvas -->
     <div class="canvas-container">
       <canvas id="networkCanvas"></canvas>
     </div>
@@ -36,11 +36,11 @@ import Layout from '../layouts/Layout.astro';
               <span class="hud-val active">ONLINE</span>
             </div>
             <div class="hud-row">
-              <span class="hud-label">COBALT_NODES</span>
-              <span class="hud-val">65 SECURE</span>
+              <span class="hud-label">MATRIX_GRID</span>
+              <span class="hud-val">ACTIVE</span>
             </div>
             <div class="hud-row">
-              <span class="hud-label">CURSOR_LINKS</span>
+              <span class="hud-label">DECODED_CELLS</span>
               <span class="hud-val" id="hudActiveNodes">0 active</span>
             </div>
             <div class="hud-row">
@@ -82,7 +82,7 @@ import Layout from '../layouts/Layout.astro';
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.75;
+    opacity: 0.85;
   }
 
   #networkCanvas {
@@ -179,38 +179,6 @@ import Layout from '../layouts/Layout.astro';
       height = canvas.height = container.offsetHeight;
     });
 
-    const particles = [];
-    const maxParticles = 65;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 1.5 + 1;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Bounce at boundaries
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.35)';
-        ctx.fill();
-      }
-    }
-
-    // Populate particle list
-    for (let i = 0; i < maxParticles; i++) {
-      particles.push(new Particle());
-    }
-
     const mouse = { x: null, y: null };
     const heroSection = document.querySelector('.hero');
 
@@ -230,66 +198,81 @@ import Layout from '../layouts/Layout.astro';
     const packetsEl = document.getElementById('hudPackets');
     let totalPackets = 14832;
 
-    // Dynamically increment processed packets to indicate live activity
+    // Dynamically increment processed packets
     setInterval(() => {
       totalPackets += Math.floor(Math.random() * 3) + 1;
       if (packetsEl) packetsEl.textContent = totalPackets.toLocaleString();
     }, 1200);
 
-    function animate() {
+    const spacing = 22; // Grid cell spacing
+    const decodeChars = ['0', '1', 'ø', '+', 'x', 'a', 'f', '8', '3', 'e', '9', 'ø', '·'];
+
+    function animate(time) {
       ctx.clearRect(0, 0, width, height);
+
+      const cols = Math.floor(width / spacing) + 1;
+      const rows = Math.floor(height / spacing) + 1;
+
+      ctx.font = '10px var(--font-mono)';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      let decodedCellsCount = 0;
       
-      let cursorConnectionsCount = 0;
+      // Calculate a slow vertical drift offset based on time
+      const offset = Math.floor(time / 300);
 
-      for (let i = 0; i < particles.length; i++) {
-        const p1 = particles[i];
-        p1.update();
-        p1.draw();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = c * spacing;
+          const y = r * spacing;
 
-        // Draw connections to the cursor
-        if (mouse.x !== null && mouse.y !== null) {
-          const dx = p1.x - mouse.x;
-          const dy = p1.y - mouse.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 180) {
-            cursorConnectionsCount++;
-            const alpha = (1 - dist / 180) * 0.25;
-            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.stroke();
+          // Default drifting matrix background character (0 or 1)
+          let char = (c + Math.floor(r + offset)) % 2 === 0 ? '0' : '1';
+          let isHovered = false;
+          let alpha = 0.06; // Faint default opacity
+          let glow = 0;
+
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = x - mouse.x;
+            const dy = y - mouse.y;
+            const dist = Math.hypot(dx, dy);
+
+            // Decode radius
+            if (dist < 130) {
+              isHovered = true;
+              decodedCellsCount++;
+              glow = 1 - dist / 130;
+              alpha = 0.06 + glow * 0.70;
+
+              // Flip character rapidly when hovered
+              if (Math.random() > 0.45) {
+                char = decodeChars[Math.floor(Math.random() * decodeChars.length)];
+              }
+            }
           }
-        }
 
-        // Draw inter-particle connections
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.hypot(dx, dy);
-
-          if (dist < 110) {
-            const alpha = (1 - dist / 110) * 0.12;
-            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
-            ctx.lineWidth = 0.8;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
+          if (isHovered) {
+            ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
+            ctx.shadowColor = '#2563eb';
+            ctx.shadowBlur = glow * 8;
+          } else {
+            ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
+            ctx.shadowBlur = 0;
           }
+
+          ctx.fillText(char, x, y);
         }
       }
 
-      // Update real-time active connections in the HUD card
+      // Update telemetry display
       if (activeNodesEl) {
-        activeNodesEl.textContent = `${cursorConnectionsCount} active`;
+        activeNodesEl.textContent = `${decodedCellsCount} cells`;
       }
 
       requestAnimationFrame(animate);
     }
 
-    animate();
+    requestAnimationFrame(animate);
   });
 </script>
