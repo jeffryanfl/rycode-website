@@ -4,21 +4,292 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Rycode — Under Development" hideNavLinks={true}>
   <!-- ===========================================================
-       HERO / MAINTENANCE
+       HERO / WORKSTATION PORTAL
        =========================================================== -->
   <section class="hero" aria-labelledby="heroTitle">
+    <!-- Interactive Background Canvas -->
+    <div class="canvas-container">
+      <canvas id="networkCanvas"></canvas>
+    </div>
+
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <p class="hero-eyebrow">Technology · Geopolitics · Finance</p>
-      <h1 class="hero-title" id="heroTitle">Rycode</h1>
-      <p class="hero-tagline">
-        Our public portal is currently offline for scheduled updates. Custom dashboards, risk models, and quantitative briefings are temporarily restricted.
-      </p>
-      <div class="hero-cta">
-        <span class="card-status is-live" aria-label="Status: Maintenance Mode Active" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
-          <span class="live-dot" aria-hidden="true"></span> Active Maintenance Mode
-        </span>
+      <div class="hero-grid">
+        <!-- Brand / Tagline Column -->
+        <div class="hero-text-block">
+          <p class="hero-eyebrow">Technology · Geopolitics · Finance</p>
+          <h1 class="hero-title" id="heroTitle">Rycode</h1>
+          <p class="hero-tagline">
+            An independent research lab and developer workshop exploring complex global systems. Our public interfaces, quantitative dashboards, and analytical briefings are currently undergoing scheduled system updates.
+          </p>
+        </div>
+
+        <!-- Telemetry Diagnostics Column -->
+        <div class="hud-container">
+          <div class="hud-card">
+            <h2 class="hud-title">
+              <span class="hud-pulse" aria-hidden="true"></span>
+              System Diagnostics
+            </h2>
+            <div class="hud-row">
+              <span class="hud-label">LAB_STATUS</span>
+              <span class="hud-val active">ONLINE</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">COBALT_NODES</span>
+              <span class="hud-val">65 SECURE</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">CURSOR_LINKS</span>
+              <span class="hud-val" id="hudActiveNodes">0 active</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">PACKETS_SECURED</span>
+              <span class="hud-val" id="hudPackets">14,832</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">PUBLIC_PORTAL</span>
+              <span class="hud-val restricted">RESTRICTED</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  /* Hero 2-column grid layout */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 968px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* Full-bleed background canvas container */
+  .canvas-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.75;
+  }
+
+  #networkCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Glassmorphic Telemetry Card */
+  .hud-card {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .hud-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Pulsing Cobalt Status Indicator */
+  .hud-pulse {
+    width: 8px;
+    height: 8px;
+    background: #2563eb;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+    animation: hud-pulse-anim 1.8s ease-out infinite;
+  }
+
+  @keyframes hud-pulse-anim {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
+    100% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+  }
+
+  .hud-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+    padding: 0.65rem 0;
+  }
+
+  .hud-row:last-child {
+    border-bottom: none;
+  }
+
+  .hud-label {
+    color: var(--text-faint);
+  }
+
+  .hud-val {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .hud-val.active {
+    color: #2563eb;
+  }
+
+  .hud-val.restricted {
+    color: #c2410c; /* Rust Red */
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('networkCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const container = canvas.parentElement;
+
+    let width = canvas.width = container.offsetWidth;
+    let height = canvas.height = container.offsetHeight;
+
+    // Adjust canvas resolution dynamically on window resize
+    window.addEventListener('resize', () => {
+      width = canvas.width = container.offsetWidth;
+      height = canvas.height = container.offsetHeight;
+    });
+
+    const particles = [];
+    const maxParticles = 65;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 1.5 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Bounce at boundaries
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(37, 99, 235, 0.35)';
+        ctx.fill();
+      }
+    }
+
+    // Populate particle list
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push(new Particle());
+    }
+
+    const mouse = { x: null, y: null };
+    const heroSection = document.querySelector('.hero');
+
+    if (heroSection) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      heroSection.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+    }
+
+    const activeNodesEl = document.getElementById('hudActiveNodes');
+    const packetsEl = document.getElementById('hudPackets');
+    let totalPackets = 14832;
+
+    // Dynamically increment processed packets to indicate live activity
+    setInterval(() => {
+      totalPackets += Math.floor(Math.random() * 3) + 1;
+      if (packetsEl) packetsEl.textContent = totalPackets.toLocaleString();
+    }, 1200);
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      
+      let cursorConnectionsCount = 0;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        p1.update();
+        p1.draw();
+
+        // Draw connections to the cursor
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = p1.x - mouse.x;
+          const dy = p1.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 180) {
+            cursorConnectionsCount++;
+            const alpha = (1 - dist / 180) * 0.25;
+            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+          }
+        }
+
+        // Draw inter-particle connections
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < 110) {
+            const alpha = (1 - dist / 110) * 0.12;
+            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Update real-time active connections in the HUD card
+      if (activeNodesEl) {
+        activeNodesEl.textContent = `${cursorConnectionsCount} active`;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  });
+</script>
