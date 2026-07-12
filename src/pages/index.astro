@@ -3,12 +3,15 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Rycode — Under Development" hideNavLinks={true}>
+  <!-- Full Screen Glitch Effect Overlay -->
+  <div class="glitch-overlay"></div>
+
   <!-- ===========================================================
        HERO / WORKSTATION PORTAL
        =========================================================== -->
   <section class="hero" aria-labelledby="heroTitle">
-    <!-- Interactive Background Matrix Grid Canvas -->
-    <div class="canvas-container">
+    <!-- Interactive Background Matrix Grid Canvas (fixed in viewport behind page) -->
+    <div class="viewport-matrix-container">
       <canvas id="networkCanvas"></canvas>
     </div>
 
@@ -24,7 +27,7 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <!-- Telemetry Diagnostics Column -->
+        <!-- Telemetry Diagnostics & Control Column -->
         <div class="hud-container">
           <div class="hud-card">
             <h2 class="hud-title">
@@ -37,11 +40,11 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div class="hud-row">
               <span class="hud-label">MATRIX_GRID</span>
-              <span class="hud-val">ACTIVE</span>
+              <span class="hud-val" id="hudMatrixStatus">ACTIVE</span>
             </div>
             <div class="hud-row">
-              <span class="hud-label">DECODED_CELLS</span>
-              <span class="hud-val" id="hudActiveNodes">0 active</span>
+              <span class="hud-label">HOVERED_GLYPHS</span>
+              <span class="hud-val" id="hudActiveNodes">0 cells</span>
             </div>
             <div class="hud-row">
               <span class="hud-label">PACKETS_SECURED</span>
@@ -50,6 +53,67 @@ import Layout from '../layouts/Layout.astro';
             <div class="hud-row">
               <span class="hud-label">PUBLIC_PORTAL</span>
               <span class="hud-val restricted">RESTRICTED</span>
+            </div>
+          </div>
+
+          <!-- Interactive Matrix Control HUD Console -->
+          <div class="matrix-console">
+            <h3>
+              <span style="display:inline-block; width:8px; height:8px; background:var(--gold-hot); border-radius:50%;"></span>
+              Matrix Control Panel
+            </h3>
+            
+            <!-- Speed Slider -->
+            <div class="control-group">
+              <label for="speedRange">Speed: <span class="val-display" id="speedVal">1.0x</span></label>
+              <input type="range" id="speedRange" class="matrix-range" min="0.1" max="3" step="0.1" value="1.0" aria-label="Matrix speed slider" />
+            </div>
+
+            <!-- Density Slider -->
+            <div class="control-group">
+              <label for="densityRange">Density: <span class="val-display" id="densityVal">60%</span></label>
+              <input type="range" id="densityRange" class="matrix-range" min="10" max="100" step="5" value="60" aria-label="Matrix density slider" />
+            </div>
+
+            <!-- Theme Color Selector -->
+            <div class="control-group">
+              <label>Color Palette</label>
+              <div class="btn-grid">
+                <button class="matrix-select-btn active" data-theme="blue" aria-label="Blue color theme">Cobalt</button>
+                <button class="matrix-select-btn" data-theme="gold" aria-label="Gold color theme">Gold</button>
+                <button class="matrix-select-btn" data-theme="green" aria-label="Green color theme">Green</button>
+                <button class="matrix-select-btn" data-theme="red" aria-label="Alert red color theme">Alert</button>
+              </div>
+            </div>
+
+            <!-- Glyph Selector -->
+            <div class="control-group">
+              <label>Glyph Mode</label>
+              <div class="btn-grid">
+                <button class="matrix-select-btn active" data-glyph="binary" aria-label="Binary glyphs mode">Bin</button>
+                <button class="matrix-select-btn" data-glyph="hex" aria-label="Hexadecimal glyphs mode">Hex</button>
+                <button class="matrix-select-btn" data-glyph="glyphs" aria-label="Standard matrix glyphs mode">Glyph</button>
+                <button class="matrix-select-btn" data-glyph="rycode" aria-label="Rycode glyphs mode">Ryc</button>
+              </div>
+            </div>
+
+            <!-- Interaction Mode Selector -->
+            <div class="control-group">
+              <label>Interaction Mode</label>
+              <div class="btn-grid-2">
+                <button class="matrix-select-btn active" data-mode="deflect" aria-label="Deflect interaction mode">Deflect</button>
+                <button class="matrix-select-btn" data-mode="decrypt" aria-label="Decrypt interaction mode">Decrypt</button>
+                <button class="matrix-select-btn" data-mode="glow" aria-label="Glow interaction mode">Glow</button>
+                <button class="matrix-select-btn" data-mode="shockwave" aria-label="Shockwave interaction mode">Shockwave</button>
+              </div>
+            </div>
+
+            <!-- System Glitch Button -->
+            <div class="control-group" style="margin-top: 1.25rem;">
+              <button id="glitchBtn" class="matrix-action-btn" aria-label="Trigger Matrix Glitch Override">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
+                Glitch Override
+              </button>
             </div>
           </div>
         </div>
@@ -73,18 +137,6 @@ import Layout from '../layouts/Layout.astro';
         grid-template-columns: 1fr;
         gap: 3rem;
       }
-    }
-
-    /* Full-bleed background canvas container */
-    .canvas-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.85;
     }
 
     #networkCanvas {
@@ -174,19 +226,78 @@ import Layout from '../layouts/Layout.astro';
         const container = canvas.parentElement;
         if (!container) return;
 
+        // Interactive States
+        let config = {
+          speed: 1.0,
+          density: 0.6,
+          theme: 'blue',
+          glyph: 'binary',
+          mode: 'deflect',
+          isGlitched: false
+        };
+
+        // Glyph Sets
+        const glyphSets = {
+          binary: ['0', '1'],
+          hex: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'],
+          glyphs: ['0', '1', 'ø', '+', 'x', '·', 'ｦ', 'ｧ', 'ｨ', 'ｩ', 'ｪ', 'ｫ', 'ｬ', 'ｭ', 'ｮ', 'ｯ', 'ｰ', 'ｱ', 'ｲ', 'ｳ', 'ｴ', 'ｵ', 'ｶ', 'ｷ', 'ｸ', 'ｹ', 'ｺ', 'ｻ', 'ｼ', 'ｽ', 'ｾ', 'ｿ'],
+          rycode: ['R', 'y', 'c', 'o', 'd', 'e', 'S', 'y', 's', 't', 'e', 'm', '0', '1', '·']
+        };
+
+        // Decryption Words (for hover reveal)
+        const decryptWords = ['RYCODE', 'SYSTEM', 'ONLINE', 'SECURE', 'ACCESS', 'QUANT', 'RISK', 'INTEGRITY'];
+
+        // Theme Colors (Light Mode tailored contrasting hexes)
+        const themeColors = {
+          blue: { main: '#2563eb', trail: 'rgba(37, 99, 235, alpha)', head: '#1e40af' },
+          gold: { main: '#d97706', trail: 'rgba(217, 119, 6, alpha)', head: '#b45309' },
+          green: { main: '#16a34a', trail: 'rgba(22, 163, 74, alpha)', head: '#15803d' },
+          red: { main: '#ea580c', trail: 'rgba(234, 88, 12, alpha)', head: '#c2410c' }
+        };
+
         let width = 0;
         let height = 0;
+        let columns = [];
+        const spacing = 18; // Column gap
+        const charHeight = 16;
 
-        // Perform canvas sizing on resize event, never inside draw loop
         function resize() {
           width = canvas.width = container.clientWidth;
           height = canvas.height = container.clientHeight;
+          setupColumns();
         }
-        
-        resize();
-        window.addEventListener('resize', resize);
 
-        const mouse = { x: null, y: null };
+        function getActiveGlyphs() {
+          return glyphSets[config.glyph] || glyphSets.binary;
+        }
+
+        // Initialize streams
+        function setupColumns() {
+          const colCount = Math.floor(width / spacing) + 1;
+          columns = [];
+          for (let i = 0; i < colCount; i++) {
+            columns.push({
+              x: i * spacing,
+              y: Math.random() * -height - 100,
+              speed: Math.random() * 2 + 1.5,
+              length: Math.floor(Math.random() * 25) + 15,
+              chars: [],
+              decryptedIndex: -1,
+              decryptedWord: '',
+              init() {
+                const glyphs = getActiveGlyphs();
+                this.chars = [];
+                for (let j = 0; j < this.length; j++) {
+                  this.chars.push(glyphs[Math.floor(Math.random() * glyphs.length)]);
+                }
+              }
+            });
+            columns[i].init();
+          }
+        }
+
+        // Mouse tracking
+        const mouse = { x: null, y: null, active: false };
         const heroSection = document.querySelector('.hero');
 
         if (heroSection) {
@@ -194,93 +305,284 @@ import Layout from '../layouts/Layout.astro';
             const rect = canvas.getBoundingClientRect();
             mouse.x = e.clientX - rect.left;
             mouse.y = e.clientY - rect.top;
+            mouse.active = true;
           });
           heroSection.addEventListener('mouseleave', () => {
             mouse.x = null;
             mouse.y = null;
+            mouse.active = false;
           });
         }
 
+        // Click shockwaves
+        let shockwaves = [];
+        if (heroSection) {
+          heroSection.addEventListener('click', (e) => {
+            if (config.mode === 'shockwave') {
+              const rect = canvas.getBoundingClientRect();
+              const clickX = e.clientX - rect.left;
+              const clickY = e.clientY - rect.top;
+              shockwaves.push({
+                x: clickX,
+                y: clickY,
+                radius: 0,
+                maxRadius: 350,
+                speed: 10
+              });
+            }
+          });
+        }
+
+        // Scroll velocity detection
+        let lastScrollY = window.scrollY;
+        let scrollVelocity = 0;
+        let scrollDirection = 1; // 1 = down, -1 = up
+
+        window.addEventListener('scroll', () => {
+          const currentScrollY = window.scrollY;
+          scrollVelocity = Math.min(Math.abs(currentScrollY - lastScrollY), 60);
+          scrollDirection = currentScrollY > lastScrollY ? 1 : -1;
+          lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        // HUD elements
         const activeNodesEl = document.getElementById('hudActiveNodes');
         const packetsEl = document.getElementById('hudPackets');
+        const speedValEl = document.getElementById('speedVal');
+        const densityValEl = document.getElementById('densityVal');
+        const glitchBtn = document.getElementById('glitchBtn');
+
         let totalPackets = 14832;
-
-        // Ticker for packets processed
         setInterval(() => {
-          totalPackets += Math.floor(Math.random() * 3) + 1;
+          totalPackets += Math.floor(Math.random() * 4) + 1;
           if (packetsEl) packetsEl.textContent = totalPackets.toLocaleString();
-        }, 1200);
+        }, 1100);
 
-        const spacing = 22; // Grid cell spacing
-        const decodeChars = ['0', '1', 'ø', '+', 'x', 'a', 'f', '8', '3', 'e', '9', 'ø', '·'];
+        // Wiring GUI Console Elements
+        const speedRange = document.getElementById('speedRange');
+        if (speedRange) {
+          speedRange.addEventListener('input', (e) => {
+            config.speed = parseFloat(e.target.value);
+            if (speedValEl) speedValEl.textContent = config.speed.toFixed(1) + 'x';
+          });
+        }
 
+        const densityRange = document.getElementById('densityRange');
+        if (densityRange) {
+          densityRange.addEventListener('input', (e) => {
+            config.density = parseFloat(e.target.value) / 100;
+            if (densityValEl) densityValEl.textContent = Math.round(config.density * 100) + '%';
+          });
+        }
+
+        // Helper to bind active class switching
+        function setupButtonToggles(selector, configKey, onUpdate) {
+          const buttons = document.querySelectorAll(selector);
+          buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              buttons.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              const val = btn.dataset[configKey];
+              config[configKey] = val;
+              if (onUpdate) onUpdate(val);
+            });
+          });
+        }
+
+        setupButtonToggles('.btn-grid button[data-theme]', 'theme', (val) => {
+          // Sync HUD color accent if needed, otherwise matches canvas theme
+        });
+
+        setupButtonToggles('.btn-grid button[data-glyph]', 'glyph', () => {
+          // Re-initialize columns character sets
+          columns.forEach(col => col.init());
+        });
+
+        setupButtonToggles('.btn-grid-2 button[data-mode]', 'mode');
+
+        // Glitch trigger
+        if (glitchBtn) {
+          glitchBtn.addEventListener('click', () => {
+            document.body.classList.add('glitch-active');
+            config.isGlitched = true;
+            
+            const matrixStatusEl = document.getElementById('hudMatrixStatus');
+            if (matrixStatusEl) {
+              matrixStatusEl.textContent = 'OVERRIDE';
+              matrixStatusEl.style.color = '#ef4444';
+            }
+
+            setTimeout(() => {
+              document.body.classList.remove('glitch-active');
+              config.isGlitched = false;
+              if (matrixStatusEl) {
+                matrixStatusEl.textContent = 'ACTIVE';
+                matrixStatusEl.style.color = '';
+              }
+            }, 350);
+          });
+        }
+
+        // Animation Loop
         function animate(time) {
           ctx.clearRect(0, 0, width, height);
 
-          if (width > 0 && height > 0) {
-            const cols = Math.floor(width / spacing) + 1;
-            const rows = Math.floor(height / spacing) + 1;
-
-            ctx.font = '10px Courier, monospace';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-
-            let decodedCellsCount = 0;
-            
-            // Calculate a slow vertical drift offset based on time
-            const offset = Math.floor(time / 300);
-
-            for (let r = 0; r < rows; r++) {
-              for (let c = 0; c < cols; c++) {
-                const x = c * spacing;
-                const y = r * spacing;
-
-                // Drifting background characters (0 or 1)
-                let char = (c + Math.floor(r + offset)) % 2 === 0 ? '0' : '1';
-                let isHovered = false;
-                let alpha = 0.22; // 22% default opacity (high contrast slate-grey visibility)
-                let glow = 0;
-
-                if (mouse.x !== null && mouse.y !== null) {
-                  const dx = x - mouse.x;
-                  const dy = y - mouse.y;
-                  const dist = Math.hypot(dx, dy);
-
-                  // Interact and decode when mouse is close
-                  if (dist < 135) {
-                    isHovered = true;
-                    decodedCellsCount++;
-                    glow = 1 - dist / 135;
-                    alpha = 0.22 + glow * 0.68; // Scales up to 90% opacity
-
-                    // Flip character rapidly
-                    if (Math.random() > 0.45) {
-                      char = decodeChars[Math.floor(Math.random() * decodeChars.length)];
-                    }
-                  }
-                }
-
-                if (isHovered) {
-                  ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
-                  ctx.shadowColor = '#2563eb';
-                  ctx.shadowBlur = glow * 8;
-                } else {
-                  ctx.fillStyle = `rgba(37, 99, 235, ${alpha})`;
-                  ctx.shadowBlur = 0;
-                }
-
-                ctx.fillText(char, x, y);
+          // Honor reduced motion preference
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (prefersReducedMotion) {
+            // Draw a subtle, static decorative grid pattern
+            ctx.fillStyle = 'rgba(37, 99, 235, 0.08)';
+            ctx.font = '10px monospace';
+            for (let x = 20; x < width; x += spacing * 2) {
+              for (let y = 20; y < height; y += charHeight * 2) {
+                ctx.fillText((x+y)%3 === 0 ? '1' : '0', x, y);
               }
             }
+            requestAnimationFrame(animate);
+            return;
+          }
 
-            // Update telemetry display
-            if (activeNodesEl) {
-              activeNodesEl.textContent = `${decodedCellsCount} cells`;
+          // Decay scroll velocity over time
+          scrollVelocity *= 0.95;
+          if (scrollVelocity < 0.1) scrollVelocity = 0;
+
+          // Render active shockwaves
+          shockwaves.forEach((wave, idx) => {
+            wave.radius += wave.speed;
+            if (wave.radius > wave.maxRadius) {
+              shockwaves.splice(idx, 1);
             }
+          });
+
+          const currentTheme = themeColors[config.theme] || themeColors.blue;
+          let cellHoverCount = 0;
+
+          ctx.font = '13px "Geist Mono", Courier, monospace';
+          ctx.textAlign = 'center';
+
+          // Loop columns
+          columns.forEach((col, cIdx) => {
+            // Density optimization: skip rendering some columns
+            if ((cIdx / columns.length) > config.density) {
+              return;
+            }
+
+            // Adjust fall speed based on scroll velocity and config speed
+            const speedMod = config.speed * col.speed + (scrollVelocity * 0.15 * scrollDirection);
+            col.y += speedMod;
+
+            // Reset column if it goes off bottom
+            if (col.y > height + col.length * charHeight) {
+              col.y = Math.random() * -150 - 50;
+              col.init();
+              col.decryptedIndex = -1;
+            }
+
+            // Render characters in the stream
+            for (let i = 0; i < col.length; i++) {
+              const charY = col.y - i * charHeight;
+
+              // Don't draw offscreen elements
+              if (charY < -20 || charY > height + 20) continue;
+
+              let charX = col.x;
+              let char = col.chars[i] || '0';
+              let color = currentTheme.main;
+              let alpha = (1 - i / col.length) * 0.8; // Stream head is brightest, tail fades
+              let glow = 0;
+
+              // Mouse Physics & Interactions
+              if (mouse.active && mouse.x !== null && mouse.y !== null) {
+                const dx = charX - mouse.x;
+                const dy = charY - mouse.y;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist < 150) {
+                  cellHoverCount++;
+                  glow = 1 - dist / 150;
+
+                  // 1. Deflect Mode (pushed sideways)
+                  if (config.mode === 'deflect') {
+                    const strength = (150 - dist) * 0.45;
+                    const angle = Math.atan2(dy, dx);
+                    charX += Math.cos(angle) * strength;
+                  }
+
+                  // 2. Decrypt Mode (unveils real words)
+                  if (config.mode === 'decrypt') {
+                    if (col.decryptedIndex === -1 && Math.random() < 0.05) {
+                      col.decryptedIndex = i;
+                      col.decryptedWord = decryptWords[Math.floor(Math.random() * decryptWords.length)];
+                    }
+                    if (col.decryptedIndex !== -1) {
+                      const offsetInWord = Math.floor((charY - (col.y - col.decryptedIndex * charHeight)) / charHeight);
+                      if (offsetInWord >= 0 && offsetInWord < col.decryptedWord.length) {
+                        char = col.decryptedWord[offsetInWord];
+                        color = '#1e3a8a'; // Darker blue contrast for decryption
+                        alpha = 1.0;
+                      }
+                    }
+                  }
+
+                  // 3. Glow Mode (increases glow intensity)
+                  if (config.mode === 'glow') {
+                    alpha = 0.3 + glow * 0.7;
+                  }
+                }
+              }
+
+              // Click Shockwave highlights
+              shockwaves.forEach(wave => {
+                const dx = charX - wave.x;
+                const dy = charY - wave.y;
+                const dist = Math.hypot(dx, dy);
+                const waveTolerance = 25;
+                if (Math.abs(dist - wave.radius) < waveTolerance) {
+                  // High contrast golden highlight in shockwave ring
+                  color = '#d97706';
+                  alpha = 1.0;
+                  glow = 1.2;
+                  char = getActiveGlyphs()[Math.floor(Math.random() * getActiveGlyphs().length)];
+                }
+              });
+
+              // Apply styles & glow shadow
+              ctx.save();
+              ctx.globalAlpha = alpha;
+
+              if (i === 0) {
+                // The leading head character is highlighted white/bright
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowColor = currentTheme.main;
+                ctx.shadowBlur = 10;
+              } else {
+                ctx.fillStyle = color;
+                if (glow > 0) {
+                  ctx.shadowColor = color;
+                  ctx.shadowBlur = glow * 10;
+                }
+              }
+
+              // Occasional character flicker/glitch
+              if (Math.random() < 0.015 && !config.isGlitched) {
+                char = getActiveGlyphs()[Math.floor(Math.random() * getActiveGlyphs().length)];
+              }
+
+              ctx.fillText(char, charX, charY);
+              ctx.restore();
+            }
+          });
+
+          // Telemetry details sync
+          if (activeNodesEl) {
+            activeNodesEl.textContent = `${cellHoverCount} cells`;
           }
 
           requestAnimationFrame(animate);
         }
+
+        resize();
+        window.addEventListener('resize', resize);
 
         requestAnimationFrame(animate);
       }
@@ -293,3 +595,4 @@ import Layout from '../layouts/Layout.astro';
     })();
   </script>
 </Layout>
+
