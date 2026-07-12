@@ -1,39 +1,11 @@
 (() => {
-  // Onscreen debug logging helper
-  const debugDiv = document.createElement('div');
-  debugDiv.style.position = 'fixed';
-  debugDiv.style.bottom = '10px';
-  debugDiv.style.left = '10px';
-  debugDiv.style.background = 'rgba(15, 23, 42, 0.9)';
-  debugDiv.style.color = '#38bdf8';
-  debugDiv.style.padding = '8px 12px';
-  debugDiv.style.borderRadius = '8px';
-  debugDiv.style.fontFamily = 'monospace';
-  debugDiv.style.fontSize = '11px';
-  debugDiv.style.zIndex = '99999';
-  debugDiv.style.pointerEvents = 'none';
-  debugDiv.style.border = '1px solid rgba(56, 189, 248, 0.2)';
-  document.body.appendChild(debugDiv);
-
-  function log(...args) {
-    debugDiv.textContent = args.join(' ');
-    console.log(...args);
-  }
-
   function init() {
-    log("Init called...");
     const canvas = document.getElementById('networkCanvas');
-    if (!canvas) {
-      log("Error: networkCanvas element not found!");
-      return;
-    }
+    if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     const container = canvas.parentElement;
-    if (!container) {
-      log("Error: parent element of canvas not found!");
-      return;
-    }
+    if (!container) return;
 
     // Interactive States
     let config = {
@@ -73,7 +45,7 @@
     function resize() {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-      log("Canvas size set:", width, "x", height);
+      console.log("Canvas size set:", width, "x", height);
       setupColumns();
     }
 
@@ -236,7 +208,7 @@
     function animate(time) {
       frameCount++;
       if (frameCount === 1) {
-        log("Matrix animate() loop started. Columns count:", columns.length, "Width:", width, "Height:", height);
+        console.log("Matrix animate() loop started. Columns count:", columns.length, "Width:", width, "Height:", height);
       }
       ctx.clearRect(0, 0, width, height);
 
