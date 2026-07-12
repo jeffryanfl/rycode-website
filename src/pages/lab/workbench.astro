@@ -1,0 +1,1518 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Rycode Workbench — Notes & Task Management" hideNavLinks={true}>
+  <!-- Google Sign-In SDK for Drive integration -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <div class="workbench-viewport">
+    
+    <!-- ===========================================================
+         WORKBENCH HEADER
+         =========================================================== -->
+    <header class="workbench-header">
+      <div class="header-left">
+        <a href="/" class="back-link" aria-label="Back to home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </a>
+        <div class="header-title-group">
+          <h1>Rycode Workbench</h1>
+          <span class="version-tag">v2.1-beta</span>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <!-- Sync Status Widget -->
+        <div class="sync-status-widget" id="syncStatusWidget">
+          <span class="sync-dot"></span>
+          <span class="sync-text" id="syncStatusText">Local Mode</span>
+        </div>
+        
+        <!-- View Toggle Buttons -->
+        <div class="view-toggles">
+          <button id="viewGridBtn" class="toggle-btn active" title="Masonry Board View" aria-label="Toggle masonry board view">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+          </button>
+          <button id="viewListBtn" class="toggle-btn" title="Compact List View" aria-label="Toggle compact list view">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Add Item FAB Menu -->
+        <button id="quickCreateBtn" class="action-btn-primary" title="New Note/Task (Or press Cmd+K)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          <span>Quick Item</span>
+        </button>
+
+        <!-- Settings Trigger -->
+        <button id="settingsBtn" class="icon-btn-settings" title="Cloud Settings" aria-label="Open settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===========================================================
+         WORKSPACE SPLIT SCREEN
+         =========================================================== -->
+    <div class="workbench-body">
+      
+      <!-- COLLAPSIBLE SIDEBAR PANEL -->
+      <aside class="workbench-sidebar" id="workbenchSidebar">
+        <!-- Search -->
+        <div class="sidebar-search">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="sidebarSearchInput" placeholder="Search notes & tasks... (or Cmd+K)" aria-label="Search items">
+        </div>
+
+        <!-- Filter Options -->
+        <div class="sidebar-filters">
+          <button class="filter-chip active" data-type="all">All</button>
+          <button class="filter-chip" data-type="note">Notes</button>
+          <button class="filter-chip" data-type="task">Tasks</button>
+          <button class="filter-chip" data-type="pinned">📌 Pinned</button>
+        </div>
+
+        <!-- Tag List -->
+        <div class="sidebar-section">
+          <h4>Active Tags</h4>
+          <div class="sidebar-tags" id="sidebarTagsCloud">
+            <!-- Populated dynamically -->
+            <span class="tag-empty">No tags found</span>
+          </div>
+        </div>
+
+        <!-- Outline Navigation List -->
+        <div class="sidebar-section list-section">
+          <h4>Index Outline</h4>
+          <div class="sidebar-items-list" id="sidebarItemsList">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </aside>
+      
+      <!-- MAIN CANVAS / BOARD AREA -->
+      <main class="workbench-canvas" id="workbenchCanvas">
+        
+        <!-- Pinned Section -->
+        <section class="board-section hidden" id="pinnedSection">
+          <div class="section-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-.44-1.24l-2.33-2.91a2 2 0 0 1-.43-1.24V4a2 2 0 0 0-2-2h-3.6a2 2 0 0 0-2 2v5.85a2 2 0 0 1-.43 1.24l-2.33 2.91a2 2 0 0 0-.44 1.24z"/></svg>
+            <h3>Pinned Workspace</h3>
+          </div>
+          <div class="board-grid-pinned" id="pinnedGrid"></div>
+        </section>
+
+        <!-- Active Board Grid (Masonry columns or full page list) -->
+        <section class="board-section">
+          <div class="section-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M3 20v-8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v8"/><path d="M3 10V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6"/><path d="M13 20v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+            <h3>Active Board</h3>
+          </div>
+          
+          <!-- Masonry Board Container -->
+          <div class="masonry-board" id="masonryBoard">
+            <!-- Columns are generated dynamically by JS and cards are distributed -->
+          </div>
+
+          <!-- List View Container (Hidden by default) -->
+          <div class="list-board hidden" id="listBoard">
+            <table class="list-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px;"></th>
+                  <th>Title</th>
+                  <th style="width: 100px;">Type</th>
+                  <th style="width: 120px;">Priority</th>
+                  <th style="width: 200px;">Tags</th>
+                  <th style="width: 150px;">Updated</th>
+                  <th style="width: 100px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="listTableBody">
+                <!-- Table rows populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ===========================================================
+       SPOTLIGHT / COMMAND BAR MODAL (Cmd+K)
+       =========================================================== -->
+  <div class="modal-overlay hidden" id="commandBarModal" role="dialog" aria-modal="true" aria-labelledby="commandBarTitle">
+    <div class="command-bar-container">
+      <div class="command-bar-search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="commandBarInput" placeholder="Type a command (e.g. /note, /todo, /close)..." autocomplete="off">
+        <span class="esc-badge">ESC</span>
+      </div>
+      <div class="command-suggestions-list" id="commandSuggestions">
+        <!-- Generated dynamically -->
+      </div>
+      <div class="command-footer">
+        <span>Use <kbd>↑</kbd><kbd>↓</kbd> to navigate, <kbd>Enter</kbd> to execute</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===========================================================
+       NOTE EDITOR MODAL
+       =========================================================== -->
+  <div class="modal-overlay hidden" id="itemEditorModal" role="dialog" aria-modal="true" aria-labelledby="editorModalTitle">
+    <div class="editor-modal-container">
+      <header class="editor-header">
+        <h3 id="editorModalTitle">Edit Item</h3>
+        <button class="icon-btn-close" id="editorCloseBtn" aria-label="Close editor">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </header>
+      
+      <form id="editorForm" class="editor-form">
+        <input type="hidden" id="editItemId">
+        
+        <!-- Type Selection Toggle -->
+        <div class="form-group flex-row">
+          <label>Item Type:</label>
+          <div class="type-selector-buttons">
+            <button type="button" class="type-select-btn active" data-type="note">Note</button>
+            <button type="button" class="type-select-btn" data-type="task">Task/Todo</button>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <div class="form-group">
+          <label for="editTitle">Title</label>
+          <input type="text" id="editTitle" required placeholder="e.g. Brainstorming layout features" autocomplete="off">
+        </div>
+
+        <!-- Content (For Note) -->
+        <div class="form-group" id="editorContentGroup">
+          <label for="editContent">Note Content</label>
+          <textarea id="editContent" rows="8" placeholder="Type notes here... Supports markdown-like lists."></textarea>
+        </div>
+
+        <!-- Checklist Group (For Task) -->
+        <div class="form-group hidden" id="editorChecklistGroup">
+          <label>Checklist Tasks</label>
+          <div class="checklist-builder-rows" id="checklistBuilderRows">
+            <!-- Row items populated here -->
+          </div>
+          <button type="button" id="addChecklistItemBtn" class="action-btn-secondary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            Add Checklist Item
+          </button>
+        </div>
+
+        <!-- Task Metadata Panel (Due date, priority) -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="editPriority">Priority</label>
+            <select id="editPriority">
+              <option value="low">Low Priority</option>
+              <option value="medium" selected>Medium Priority</option>
+              <option value="high">High Priority</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editColor">Highlight Color</label>
+            <select id="editColor">
+              <option value="#eff6ff" selected>Cobalt Blue</option>
+              <option value="#fffbeb">Amber Gold</option>
+              <option value="#f0fdf4">Emerald Green</option>
+              <option value="#fff5f5">Orange Red</option>
+              <option value="#fafafa">Neutral Slate</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-group">
+          <label for="editTags">Tags (comma-separated)</label>
+          <input type="text" id="editTags" placeholder="e.g. work, idea, code" autocomplete="off">
+        </div>
+
+        <!-- Actions -->
+        <footer class="editor-footer">
+          <button type="button" id="editorDeleteBtn" class="btn-danger">Delete Item</button>
+          <div class="footer-actions-right">
+            <button type="button" id="editorCancelBtn" class="action-btn-secondary">Cancel</button>
+            <button type="submit" class="action-btn-primary">Save Changes</button>
+          </div>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===========================================================
+       SETTINGS MODAL (Google Sync Configuration)
+       =========================================================== -->
+  <div class="modal-overlay hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+    <div class="settings-modal-container">
+      <header class="settings-header">
+        <h3 id="settingsModalTitle">Sync Settings</h3>
+        <button class="icon-btn-close" id="settingsCloseBtn" aria-label="Close settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </header>
+      
+      <div class="settings-body">
+        <h4>Google Drive Synchronization</h4>
+        <p class="settings-desc">
+          Store your notes and tasks securely inside a hidden <code>appDataFolder</code> on your personal Google Drive. 
+          This makes your database accessible from any device.
+        </p>
+
+        <!-- Setup steps instructions -->
+        <details class="instructions-accordion">
+          <summary>How do I configure this? (GCP Setup Steps)</summary>
+          <ol class="setup-steps">
+            <li>Go to the <a href="https://console.cloud.google.com" target="_blank" rel="noopener noreferrer">Google Cloud Console</a>.</li>
+            <li>Create a new project named <strong>Rycode Workbench</strong>.</li>
+            <li>Search for and enable the <strong>Google Drive API</strong> inside your project.</li>
+            <li>Configure the <strong>OAuth consent screen</strong> (select External/Internal, set scopes to include <code>.../auth/drive.appdata</code>).</li>
+            <li>Navigate to <strong>Credentials</strong>, click <strong>Create Credentials → OAuth client ID</strong>.</li>
+            <li>Select <strong>Web application</strong> as application type.</li>
+            <li>Add Authorized JavaScript Origins:
+              <ul>
+                <li><code>http://localhost:4321</code> (for local development)</li>
+                <li><code>https://rycode.dev</code> (for production)</li>
+              </ul>
+            </li>
+            <li>Copy the generated <strong>Client ID</strong> and paste it below.</li>
+          </ol>
+        </details>
+
+        <form id="settingsForm" class="settings-form">
+          <div class="form-group">
+            <label for="settingsClientId">Google OAuth Client ID</label>
+            <input type="text" id="settingsClientId" placeholder="e.g. 123456789-abc123xyz.apps.googleusercontent.com" autocomplete="off" required>
+          </div>
+          
+          <div class="settings-actions">
+            <!-- Google Sign-In trigger button -->
+            <button type="button" id="googleSignInBtn" class="google-signin-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="18" height="18"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24c0-1.61-.15-3.16-.42-4.68H24v9.09h12.75c-.53 2.87-2.14 5.3-4.57 6.94l7.1 5.5C43.5 35.8 46.5 30.33 46.5 24z"/><path fill="#FBBC05" d="M10.54 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.98-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.1-5.5c-1.97 1.34-4.55 2.18-8.79 2.18-6.26 0-11.57-4.22-13.46-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+              <span>Authorize & Connect</span>
+            </button>
+            
+            <button type="button" id="googleSignOutBtn" class="btn-danger hidden">Disconnect Cloud Sync</button>
+          </div>
+        </form>
+
+        <div class="settings-connection-status" id="settingsConnectionInfo">
+          <!-- Connection email and file details show here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom styles for layout, glassmorphism UI, search, outline list, command bar -->
+  <style>
+    /* Styling variables */
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --bg-sidebar: rgba(13, 18, 30, 0.85);
+      --bg-header: rgba(9, 13, 22, 0.85);
+      --border-color: rgba(56, 189, 248, 0.15);
+      --border-hover: rgba(56, 189, 248, 0.35);
+      --text-main: #f1f5f9;
+      --text-dim: #94a3b8;
+      --text-mute: #64748b;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.4);
+      --gold: #f59e0b;
+      --green: #10b981;
+      --red: #ef4444;
+      --font-mono: 'Geist Mono', monospace;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow: hidden; /* Viewport-based layout */
+      font-family: var(--font-sans);
+    }
+
+    .workbench-viewport {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* HEADER */
+    .workbench-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-header);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 10;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .header-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .header-title-group h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .version-tag {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--text-mute);
+      padding: 1px 4px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Sync Widget */
+    .sync-status-widget {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    .sync-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--text-mute);
+    }
+
+    .sync-status-widget.synced .sync-dot {
+      background-color: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .sync-status-widget.syncing .sync-dot {
+      background-color: var(--gold);
+      animation: pulse 1s infinite alternate;
+    }
+
+    .sync-status-widget.error .sync-dot {
+      background-color: var(--red);
+      box-shadow: 0 0 8px var(--red);
+    }
+
+    .sync-status-widget.connected .sync-dot {
+      background-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* Toggles & Actions */
+    .view-toggles {
+      display: flex;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 2px;
+    }
+
+    .toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      border: none;
+      background: transparent;
+      color: var(--text-mute);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn:hover {
+      color: var(--text-main);
+    }
+
+    .toggle-btn.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    .icon-btn-settings {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .icon-btn-settings:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .action-btn-primary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.15);
+      color: #e0f2fe;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .action-btn-primary:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    }
+
+    /* BODY */
+    .workbench-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* SIDEBAR */
+    .workbench-sidebar {
+      width: 280px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1rem;
+      gap: 1.25rem;
+      overflow-y: auto;
+    }
+
+    .sidebar-search {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar-search input {
+      width: 100%;
+      padding: 8px 10px 8px 30px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    .sidebar-search input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      color: var(--text-mute);
+    }
+
+    .sidebar-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .filter-chip {
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+    }
+
+    .filter-chip.active {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .sidebar-section h4 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-mute);
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .sidebar-tag-item {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+    }
+
+    .sidebar-tag-item.active {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .tag-empty {
+      font-size: 0.75rem;
+      color: var(--text-mute);
+      font-style: italic;
+    }
+
+    /* Index Outline List */
+    .list-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .sidebar-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      overflow-y: auto;
+      flex: 1;
+      padding-right: 2px;
+    }
+
+    .outline-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .outline-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(56, 189, 248, 0.1);
+    }
+
+    .outline-item.active {
+      background: rgba(56, 189, 248, 0.05);
+      border-color: var(--border-hover);
+    }
+
+    .outline-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow: hidden;
+    }
+
+    .outline-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .outline-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      color: var(--text-mute);
+    }
+
+    .outline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .outline-dot.low { background-color: var(--accent); }
+    .outline-dot.medium { background-color: var(--gold); }
+    .outline-dot.high { background-color: var(--red); }
+
+    /* CANVAS */
+    .workbench-canvas {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .board-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-dim);
+    }
+
+    .section-header h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0;
+    }
+
+    /* MASONRY BOARD */
+    .masonry-board {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .masonry-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Grid Pinned */
+    .board-grid-pinned {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    /* CARDS */
+    .workbench-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      word-wrap: break-word;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .workbench-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.08);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 0.5rem;
+    }
+
+    .card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .card-title-group h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-main);
+    }
+
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      color: var(--text-mute);
+    }
+
+    .card-type-icon {
+      display: inline-flex;
+      color: var(--accent);
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.3;
+      transition: opacity 0.2s;
+    }
+
+    .workbench-card:hover .card-actions {
+      opacity: 1;
+    }
+
+    .card-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-mute);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .card-action-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+    }
+
+    .card-action-btn.pin-active {
+      color: var(--gold);
+    }
+
+    .card-action-btn:hover.btn-delete-card {
+      color: var(--red);
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .card-body {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--text-dim);
+      white-space: pre-wrap;
+    }
+
+    /* Checklist card contents */
+    .card-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .card-checklist-item input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .card-checklist-item.checked span {
+      text-decoration: line-through;
+      color: var(--text-mute);
+    }
+
+    .card-checklist-item span {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    /* Progress bar */
+    .card-progress-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-progress-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .card-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    .card-progress-val {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      color: var(--text-mute);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 0.5rem;
+    }
+
+    .card-tag {
+      font-size: 0.65rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-mute);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Priority indicators */
+    .priority-badge {
+      font-size: 0.6rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .priority-badge.low {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .priority-badge.medium {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--gold);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+    .priority-badge.high {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    /* Color strips on card borders */
+    .card-color-stripe {
+      position: absolute;
+      top: 0;
+      left: 12px;
+      right: 12px;
+      height: 3px;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+
+    /* LIST BOARD */
+    .list-board {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .list-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.8rem;
+    }
+
+    .list-table th,
+    .list-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .list-table th {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-mute);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+    }
+
+    .list-table tbody tr {
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .list-table tbody tr:hover {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .list-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* MODAL OVERLAYS */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 1rem;
+      transition: opacity 0.2s;
+    }
+
+    .modal-overlay.hidden {
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* EDITOR CONTAINER */
+    .editor-modal-container,
+    .settings-modal-container {
+      width: 100%;
+      max-width: 520px;
+      background: #0f1624;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      animation: modalSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalSlide {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .editor-header,
+    .settings-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .editor-header h3,
+    .settings-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .icon-btn-close {
+      background: transparent;
+      border: none;
+      color: var(--text-mute);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      width: 24px;
+      height: 24px;
+      transition: all 0.2s;
+    }
+
+    .icon-btn-close:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .editor-form {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-group.flex-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      font-family: var(--font-sans);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .type-selector-buttons {
+      display: flex;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 2px;
+    }
+
+    .type-select-btn {
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: none;
+      background: transparent;
+      color: var(--text-mute);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .type-select-btn.active {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+    }
+
+    /* Checklist builder */
+    .checklist-builder-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 150px;
+      overflow-y: auto;
+      margin-bottom: 0.25rem;
+    }
+
+    .builder-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .builder-row input[type="text"] {
+      flex: 1;
+      padding: 6px 10px;
+    }
+
+    .btn-sm {
+      padding: 4px 8px;
+      font-size: 0.7rem;
+    }
+
+    .action-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-dim);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .action-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border-hover);
+    }
+
+    .editor-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .footer-actions-right {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-danger {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      background: rgba(239, 68, 68, 0.1);
+      color: #fee2e2;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-danger:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: var(--red);
+    }
+
+    /* SETTINGS MODAL SPECIALS */
+    .settings-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .settings-body h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .settings-desc {
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: var(--text-dim);
+      margin: 0;
+    }
+
+    .instructions-accordion {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.75rem;
+    }
+
+    .instructions-accordion summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .setup-steps {
+      margin-top: 8px;
+      padding-left: 20px;
+      line-height: 1.5;
+      color: var(--text-dim);
+    }
+
+    .setup-steps li {
+      margin-bottom: 6px;
+    }
+
+    .setup-steps a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .settings-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .settings-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .google-signin-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: white;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex: 1;
+    }
+
+    .google-signin-btn:hover {
+      background: #f9fafb;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .settings-connection-status {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      color: var(--text-mute);
+      line-height: 1.5;
+    }
+
+    /* SPOTLIGHT / COMMAND BAR */
+    .command-bar-container {
+      width: 100%;
+      max-width: 580px;
+      background: #0f1625e6;
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalSlide 0.2s ease-out;
+    }
+
+    .command-bar-search {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .command-bar-search svg {
+      color: var(--accent);
+      margin-right: 0.75rem;
+    }
+
+    .command-bar-search input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-family: var(--font-mono);
+    }
+
+    .command-bar-search input:focus {
+      outline: none;
+    }
+
+    .esc-badge {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      color: var(--text-mute);
+      border: 1px solid var(--border-color);
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .command-suggestions-list {
+      max-height: 250px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0;
+    }
+
+    .suggestion-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 1.25rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .suggestion-item:hover,
+    .suggestion-item.selected {
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .suggestion-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .suggestion-icon {
+      color: var(--text-mute);
+    }
+
+    .suggestion-item.selected .suggestion-icon {
+      color: var(--accent);
+    }
+
+    .suggestion-cmd {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .suggestion-desc {
+      font-size: 0.75rem;
+      color: var(--text-mute);
+    }
+
+    .suggestion-shortcut {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      color: var(--text-mute);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    .command-footer {
+      padding: 0.5rem 1.25rem;
+      background: rgba(0, 0, 0, 0.15);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.65rem;
+      color: var(--text-mute);
+    }
+
+    .command-footer kbd {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      padding: 1px 4px;
+      margin: 0 2px;
+      font-family: var(--font-mono);
+    }
+
+    /* UI Helper Utilities */
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(56, 189, 248, 0.25);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .workbench-body {
+        flex-direction: column;
+      }
+      .workbench-sidebar {
+        width: 100%;
+        height: 250px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+    }
+  </style>
+
+  <!-- Import core controller script module -->
+  <script>
+    import '../../scripts/workbench.js';
+  </script>
+</Layout>
