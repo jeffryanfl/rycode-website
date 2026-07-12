@@ -262,8 +262,9 @@ import Layout from '../layouts/Layout.astro';
         const charHeight = 16;
 
         function resize() {
-          width = canvas.width = container.clientWidth;
-          height = canvas.height = container.clientHeight;
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+          console.log("Matrix Canvas Initialized/Resized:", width, "x", height);
           setupColumns();
         }
 
@@ -424,7 +425,12 @@ import Layout from '../layouts/Layout.astro';
         }
 
         // Animation Loop
+        let frameCount = 0;
         function animate(time) {
+          frameCount++;
+          if (frameCount === 1) {
+            console.log("Matrix animate() loop started. Columns count:", columns.length, "Width:", width, "Height:", height);
+          }
           ctx.clearRect(0, 0, width, height);
 
           // Honor reduced motion preference
