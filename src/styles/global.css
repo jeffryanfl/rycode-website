@@ -1288,10 +1288,17 @@ h1, h2, h3 {
 .viewport-matrix-container {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0; /* Placed in front of body background but behind main content */
   pointer-events: none;
   opacity: 0.9;
   transition: opacity 300ms var(--ease);
+}
+
+/* Ensure content overlays on top of background canvas */
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* Fade out canvas as user scrolls */

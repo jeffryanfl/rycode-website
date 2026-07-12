@@ -6,15 +6,15 @@ import Layout from '../layouts/Layout.astro';
   <!-- Full Screen Glitch Effect Overlay -->
   <div class="glitch-overlay"></div>
 
+  <!-- Interactive Background Matrix Grid Canvas (fixed in viewport behind page) -->
+  <div class="viewport-matrix-container">
+    <canvas id="networkCanvas"></canvas>
+  </div>
+
   <!-- ===========================================================
        HERO / WORKSTATION PORTAL
        =========================================================== -->
   <section class="hero" aria-labelledby="heroTitle">
-    <!-- Interactive Background Matrix Grid Canvas (fixed in viewport behind page) -->
-    <div class="viewport-matrix-container">
-      <canvas id="networkCanvas"></canvas>
-    </div>
-
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-grid">
@@ -278,7 +278,7 @@ import Layout from '../layouts/Layout.astro';
           for (let i = 0; i < colCount; i++) {
             columns.push({
               x: i * spacing,
-              y: Math.random() * -height - 100,
+              y: Math.random() * (height + 250) - 100,
               speed: Math.random() * 2 + 1.5,
               length: Math.floor(Math.random() * 25) + 15,
               chars: [],
@@ -551,12 +551,14 @@ import Layout from '../layouts/Layout.astro';
               ctx.globalAlpha = alpha;
 
               if (i === 0) {
-                // The leading head character is highlighted white/bright
-                ctx.fillStyle = '#ffffff';
+                // The leading head character is highlighted in the contrasting theme head color
+                ctx.fillStyle = currentTheme.head;
                 ctx.shadowColor = currentTheme.main;
-                ctx.shadowBlur = 10;
+                ctx.shadowBlur = 12;
+                ctx.font = 'bold 13px "Geist Mono", Courier, monospace';
               } else {
                 ctx.fillStyle = color;
+                ctx.font = '13px "Geist Mono", Courier, monospace';
                 if (glow > 0) {
                   ctx.shadowColor = color;
                   ctx.shadowBlur = glow * 10;
