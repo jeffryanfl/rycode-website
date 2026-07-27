@@ -2,17 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Rycode — Under Development" hideNavLinks={true}>
+<Layout title="Rycode — Central Command Hub">
   <!-- Full Screen Glitch Effect Overlay -->
   <div class="glitch-overlay"></div>
 
-  <!-- Interactive Background Matrix Grid Canvas (fixed in viewport behind page) -->
+  <!-- Interactive Background Matrix Grid Canvas (Subdued Mode) -->
   <div class="viewport-matrix-container">
     <canvas id="networkCanvas"></canvas>
   </div>
 
   <!-- ===========================================================
-       HERO / WORKSTATION PORTAL
+       HERO / CENTRAL COMMAND HUB
        =========================================================== -->
   <section class="hero" aria-labelledby="heroTitle">
     <div class="hero-bg" aria-hidden="true"></div>
@@ -20,39 +20,31 @@ import Layout from '../layouts/Layout.astro';
       <div class="hero-grid">
         <!-- Brand / Tagline Column -->
         <div class="hero-text-block">
-          <p class="hero-eyebrow">Technology · Geopolitics · Finance</p>
+          <p class="hero-eyebrow">Technology · Geopolitics · Intelligence</p>
           <h1 class="hero-title" id="heroTitle">Rycode</h1>
           <p class="hero-tagline">
-            An independent research lab and developer workshop exploring complex global systems. Our public interfaces, quantitative dashboards, and analytical briefings are currently undergoing scheduled system updates.
+            An independent research lab and developer workshop exploring complex global systems. Select a domain below to enter our active intelligence vault or system diagnostic portals.
           </p>
         </div>
 
-        <!-- Telemetry Diagnostics & Control Column -->
+        <!-- System Status & Subpage Status Column -->
         <div class="hud-container">
           <div class="hud-card">
             <h2 class="hud-title">
               <span class="hud-pulse" aria-hidden="true"></span>
-              System Diagnostics
+              Domain Portals
             </h2>
             <div class="hud-row">
-              <span class="hud-label">LAB_STATUS</span>
-              <span class="hud-val active">ONLINE</span>
+              <span class="hud-label">AI_CONCEPTS_&_INFRASTRUCTURE</span>
+              <span class="hud-val active">ACTIVE</span>
             </div>
             <div class="hud-row">
-              <span class="hud-label">MATRIX_GRID</span>
-              <span class="hud-val" id="hudMatrixStatus">ACTIVE</span>
+              <span class="hud-label">WEB_DEVELOPMENT</span>
+              <span class="hud-val restricted">SCHEDULED MAINTENANCE</span>
             </div>
             <div class="hud-row">
-              <span class="hud-label">HOVERED_GLYPHS</span>
-              <span class="hud-val" id="hudActiveNodes">0 cells</span>
-            </div>
-            <div class="hud-row">
-              <span class="hud-label">PACKETS_SECURED</span>
-              <span class="hud-val" id="hudPackets">14,832</span>
-            </div>
-            <div class="hud-row">
-              <span class="hud-label">PUBLIC_PORTAL</span>
-              <span class="hud-val restricted">RESTRICTED</span>
+              <span class="hud-label">GRC_&_RISK_SYSTEMS</span>
+              <span class="hud-val restricted">SCHEDULED MAINTENANCE</span>
             </div>
           </div>
 
@@ -65,14 +57,14 @@ import Layout from '../layouts/Layout.astro';
             
             <!-- Speed Slider -->
             <div class="control-group">
-              <label for="speedRange">Speed: <span class="val-display" id="speedVal">1.0x</span></label>
-              <input type="range" id="speedRange" class="matrix-range" min="0.1" max="3" step="0.1" value="1.0" aria-label="Matrix speed slider" />
+              <label for="speedRange">Speed: <span class="val-display" id="speedVal">0.8x</span></label>
+              <input type="range" id="speedRange" class="matrix-range" min="0.1" max="3" step="0.1" value="0.8" aria-label="Matrix speed slider" />
             </div>
 
             <!-- Density Slider -->
             <div class="control-group">
-              <label for="densityRange">Density: <span class="val-display" id="densityVal">60%</span></label>
-              <input type="range" id="densityRange" class="matrix-range" min="10" max="100" step="5" value="60" aria-label="Matrix density slider" />
+              <label for="densityRange">Density: <span class="val-display" id="densityVal">35%</span></label>
+              <input type="range" id="densityRange" class="matrix-range" min="10" max="100" step="5" value="35" aria-label="Matrix density slider" />
             </div>
 
             <!-- Theme Color Selector -->
@@ -97,19 +89,8 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
 
-            <!-- Interaction Mode Selector -->
-            <div class="control-group">
-              <label>Interaction Mode</label>
-              <div class="btn-grid-2">
-                <button class="matrix-select-btn active" data-mode="deflect" aria-label="Deflect interaction mode">Deflect</button>
-                <button class="matrix-select-btn" data-mode="decrypt" aria-label="Decrypt interaction mode">Decrypt</button>
-                <button class="matrix-select-btn" data-mode="glow" aria-label="Glow interaction mode">Glow</button>
-                <button class="matrix-select-btn" data-mode="shockwave" aria-label="Shockwave interaction mode">Shockwave</button>
-              </div>
-            </div>
-
             <!-- System Glitch Button -->
-            <div class="control-group" style="margin-top: 1.25rem;">
+            <div class="control-group" style="margin-top: 1rem;">
               <button id="glitchBtn" class="matrix-action-btn" aria-label="Trigger Matrix Glitch Override">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
                 Glitch Override
@@ -117,6 +98,92 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+       INTEGRATED DOMAIN SELECTOR (ONLY SUBPAGES BUILT)
+       =========================================================== -->
+  <section class="section portal-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">COMMAND PORTALS</p>
+        <h2 class="section-title">Select Intelligence Domain</h2>
+        <p class="section-subtitle">Choose a domain to access specialized research, interactive tools, and system dossiers.</p>
+      </div>
+
+      <!-- Single Integrated Glass Container -->
+      <div class="domain-container">
+        <!-- DOMAIN 1: A.I. (ACTIVE BUILD) -->
+        <a href="/ai" class="domain-row active-row">
+          <div class="domain-main">
+            <div class="domain-header">
+              <span class="domain-code">01 // AI_SYSTEMS</span>
+              <span class="domain-badge active">ACTIVE · BUILD ONLINE</span>
+            </div>
+            <h3 class="domain-title">AI Concepts and Infrastructure</h3>
+            <p class="domain-desc">
+              Frontier model benchmarks, Kimi K3 MoE technical analysis, 8-tier AI supply chain matrix, low-precision NVFP4 inference engineering, SMR & power grid strategy, and prompt engineering handbook.
+            </p>
+            <div class="domain-tags">
+              <span>Glossary & Parameter Simulator</span>
+              <span>Frontier Benchmarks</span>
+              <span>8-Tier Supply Chain Directory</span>
+              <span>Energy & Compute Strategy</span>
+            </div>
+          </div>
+          <div class="domain-action">
+            <span class="action-text">Enter Vault</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <!-- DOMAIN 2: WEB DEVELOPMENT (MAINTENANCE) -->
+        <a href="/web-dev" class="domain-row maintenance-row">
+          <div class="domain-main">
+            <div class="domain-header">
+              <span class="domain-code">02 // WEB_DEV</span>
+              <span class="domain-badge maintenance">SCHEDULED MAINTENANCE</span>
+            </div>
+            <h3 class="domain-title">Web Development</h3>
+            <p class="domain-desc">
+              Developer workstation lab, full-stack application architectures, vanilla CSS design systems, modern component engineering, and client performance tools.
+            </p>
+            <div class="domain-tags">
+              <span>Developer Workbench Lab</span>
+              <span>System Component Specs</span>
+              <span>Astro Client Architecture</span>
+            </div>
+          </div>
+          <div class="domain-action">
+            <span class="action-text">Diagnostics</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <!-- DOMAIN 3: GRC (MAINTENANCE) -->
+        <a href="/grc" class="domain-row maintenance-row">
+          <div class="domain-main">
+            <div class="domain-header">
+              <span class="domain-code">03 // GRC_RISK</span>
+              <span class="domain-badge maintenance">SCHEDULED MAINTENANCE</span>
+            </div>
+            <h3 class="domain-title">GRC & Risk Systems</h3>
+            <p class="domain-desc">
+              Governance, Risk & Compliance frameworks, Archer IRM career progression models, enterprise risk aggregation synthesis, and policy gap verification engines.
+            </p>
+            <div class="domain-tags">
+              <span>Archer IRM Framework</span>
+              <span>Enterprise Risk Aggregation</span>
+              <span>Compliance Gap Analytics</span>
+            </div>
+          </div>
+          <div class="domain-action">
+            <span class="action-text">Diagnostics</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -152,10 +219,10 @@ import Layout from '../layouts/Layout.astro';
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.6);
       border-radius: 16px;
-      padding: 1.75rem;
+      padding: 1.5rem;
       box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04);
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
     }
 
@@ -166,13 +233,12 @@ import Layout from '../layouts/Layout.astro';
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--text);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
-    /* Pulsing Cobalt Status Indicator */
     .hud-pulse {
       width: 8px;
       height: 8px;
@@ -191,7 +257,7 @@ import Layout from '../layouts/Layout.astro';
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid rgba(15, 23, 42, 0.04);
-      padding: 0.65rem 0;
+      padding: 0.55rem 0;
     }
 
     .hud-row:last-child {
@@ -212,7 +278,173 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .hud-val.restricted {
-      color: #c2410c; /* Rust Red */
+      color: #c2410c;
+    }
+
+    /* Integrated Domain Panel */
+    .portal-section {
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold-hot);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 0.75rem 0;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    /* Single Integrated Glass Container */
+    .domain-container {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04);
+    }
+
+    .domain-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2.25rem 2.5rem;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s var(--ease);
+    }
+
+    .domain-row:last-child {
+      border-bottom: none;
+    }
+
+    .domain-row:hover {
+      background: rgba(37, 99, 235, 0.03);
+    }
+
+    .domain-row.active-row {
+      border-left: 4px solid #2563eb;
+    }
+
+    .domain-main {
+      flex: 1;
+      max-width: 85%;
+    }
+
+    .domain-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .domain-code {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-faint);
+    }
+
+    .domain-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .domain-badge.active {
+      background: rgba(37, 99, 235, 0.1);
+      color: #2563eb;
+    }
+
+    .domain-badge.maintenance {
+      background: rgba(194, 65, 12, 0.08);
+      color: #c2410c;
+    }
+
+    .domain-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .domain-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0 0 1.25rem 0;
+    }
+
+    .domain-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-faint);
+    }
+
+    .domain-tags span {
+      background: rgba(15, 23, 42, 0.04);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    .domain-action {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #2563eb;
+      white-space: nowrap;
+      margin-left: 2rem;
+      transition: transform 0.2s var(--ease);
+    }
+
+    .domain-row:hover .domain-action {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 800px) {
+      .domain-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 1.75rem;
+      }
+      .domain-main { max-width: 100%; }
+      .domain-action { margin-left: 0; }
     }
   </style>
 
@@ -220,4 +452,3 @@ import Layout from '../layouts/Layout.astro';
     import '../scripts/matrix.js';
   </script>
 </Layout>
-

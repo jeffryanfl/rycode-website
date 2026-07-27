@@ -1,0 +1,479 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ExecutiveCallout from '../../components/ExecutiveCallout.astro';
+import AnalogyBadge from '../../components/AnalogyBadge.astro';
+
+const inferenceSlides = [
+  { id: 1, img: '/images/slides/inference_image1.png', title: 'Engineering the Frontier: Architecture & Physics of AI Inference', text: 'Hardware-software co-design, ultra-sparse MoE scaling, and strategic quantization economics.' },
+  { id: 2, img: '/images/slides/inference_image2.png', title: 'The Primitives of Compute Cost: Tokens, Parameters, KV Cache', text: 'Mathematical formulas for dense training FLOPs (6PT), inference FLOPs (2P), and dynamic KV cache state.' },
+  { id: 3, img: '/images/slides/inference_image3.png', title: 'The Physics of Inference: From Grid to Silicon', text: '4-stage bottleneck pipeline: 1-2 GW Energy Grid -> TSMC 2nm Foundry -> Accelerator Clusters -> Memory Bus Limits.' },
+  { id: 4, img: '/images/slides/inference_image4.png', title: 'Overcoming Ingestion Bottlenecks: Safetensors Direct mmap', text: 'PyTorch pickle security risks vs Safetensors zero-copy mmap loading (BLOOM load time: 10 min -> 45 sec).' },
+  { id: 5, img: '/images/slides/inference_image5.png', title: 'The Quantization Matrix & Outlier Dilemma (GGUF, AWQ, NVFP4)', text: 'Activation outlier preservation, FP8 E4M3/E5M2 dynamic range, and Blackwell NVFP4 (102,725 tok/s).' },
+  { id: 6, img: '/images/slides/inference_image6.png', title: 'Modern Serving Engines: vLLM, SGLang, and TensorRT-LLM', text: 'vLLM PagedAttention (<4% fragmentation), SGLang RadixAttention (70-90% TTFT drop), and TensorRT-LLM AOT compilation.' },
+  { id: 7, img: '/images/slides/inference_image7.png', title: 'The MoE Paradigm Shift: Decoupling Capacity from Inference Cost', text: 'Dense monolith compute vs Sparse MoE parameter routing enabling trillion-parameter knowledge bases.' },
+  { id: 8, img: '/images/slides/inference_image8.png', title: 'Ultra-Sparse 2.8T MoE Engineering: Stable LatentMoE & Quantile Router', text: '896 fine-grained experts (16 active, ~50B active params), latent-space compression, and quantile score balancing.' },
+  { id: 9, img: '/images/slides/inference_image9.png', title: 'Conquering 1M Token Context Limits: Kimi Delta Attention (KDA)', text: 'Gated recurrent hidden state S_t = A_t ⊙ S_{t-1} + v_t k_t^T, DPLR matrix, and 3:1 KDA-to-MLA ratio (75% KV cache reduction).' },
+  { id: 10, img: '/images/slides/inference_image10.png', title: 'Solving Depth Dilution via Attention Residuals (AttnRes)', text: 'Standard PreNorm representation dilution vs Softmax depth retrieval h_l = ∑ α_{j->l} v_j and Block AttnRes.' },
+  { id: 11, img: '/images/slides/inference_image11.png', title: 'Mooncake Disaggregated Prefill & Decode Production Topology', text: 'Compute-heavy Hopper nodes for parallel prefill vs Memory bandwidth nodes for decode, with Copy-on-Write prefix caching.' },
+  { id: 12, img: '/images/slides/inference_image12.png', title: 'Autonomous Engineering: MiniTriton Compiler & 45nm Silicon', text: 'MLIR Tile-level IR, PTX pipelines for NVIDIA Tensor Cores, and 45nm MAC array layout (4.0 mm² footprint, 1.46M cells).' },
+  { id: 13, img: '/images/slides/inference_image13.png', title: 'The 1.4 Terabyte Reality & Inference Economics', text: 'Self-hosted 64-GPU supernode CapEx vs API-hosted prefix caching ($0.30/M input via 90% prefix cache hits).' },
+  { id: 14, img: '/images/slides/inference_image14.png', title: 'The Mechanistic Engine of Prompting: Induction Heads & Activation Pathways', text: 'Prefix-matching & copying stages, OV/QK attention circuits, and dynamic latent rewiring without parameter mutation.' },
+  { id: 15, img: '/images/slides/inference_image15.png', title: 'Synthesis: The 2026 AI Infrastructure Triad', text: 'Harmonizing Silicon & Hardware Physics, Serving Software Schedulers, and Model Architecture.' }
+];
+---
+
+<Layout title="Inference Engineering & Optimization — AI Concepts & Infrastructure">
+  <div class="glitch-overlay"></div>
+  <div class="viewport-matrix-container">
+    <canvas id="networkCanvas"></canvas>
+  </div>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-header">
+        <a href="/ai" class="back-link">← Back to AI Concepts and Infrastructure</a>
+        <p class="hero-eyebrow">MODULE 04 · SYSTEMS & OPTIMIZATION</p>
+        <h1 class="hero-title">Inference Engineering & Optimization</h1>
+        <p class="hero-tagline">
+          Low-precision NVFP4/FP8 quantization scaling, safetensors zero-copy mmap loading, PagedAttention/RadixAttention serving schedulers, and disaggregated prefill/decode topologies.
+        </p>
+
+        <ExecutiveCallout title="EXECUTIVE INFERENCE SUMMARY">
+          AI serving cost is dictated by two distinct phases: <strong>Prefill (Think Time)</strong>, which reads the prompt and is compute-bound, versus <strong>Decode (Typing Speed)</strong>, which generates output tokens and is memory-bandwidth bound. Modern zero-copy formats (`safetensors mmap`) cut model load times from 10 minutes to 45 seconds while eliminating security risks.
+        </ExecutiveCallout>
+
+        <AnalogyBadge concept="Prefill vs. Decode">
+          Prefill is like a lawyer reading a 50-page contract all at once (compute heavy). Decode is the lawyer dictating their response line by line (memory fetch heavy).
+        </AnalogyBadge>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Interactive Prefill vs Decode Latency & Throughput Simulator -->
+  <section class="section">
+    <div class="container">
+      <div class="calculator-panel">
+        <div class="panel-header">
+          <span class="eyebrow-tag">PHYSICAL INFERENCE SIMULATOR</span>
+          <h2>Prefill vs. Decode Latency & Throughput Calculator</h2>
+          <p>Simulate compute-bound prefill latency (Time-To-First-Token) versus memory-bandwidth-bound decode throughput.</p>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="input-group">
+              <label for="simPromptTokens">Input Prompt Context Tokens: <span id="simPromptVal" class="val-num">4,096 tokens</span></label>
+              <input type="range" id="simPromptTokens" min="128" max="128000" step="128" value="4096" />
+            </div>
+
+            <div class="input-group">
+              <label for="simOutputTokens">Generated Output Tokens: <span id="simOutputVal" class="val-num">512 tokens</span></label>
+              <input type="range" id="simOutputTokens" min="16" max="4096" step="16" value="512" />
+            </div>
+
+            <div class="input-group">
+              <label for="simBatchSize">Concurrent Batch Size: <span id="simBatchVal" class="val-num">16 Requests</span></label>
+              <input type="range" id="simBatchSize" min="1" max="64" step="1" value="16" />
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="res-card">
+              <span class="res-label">PREFILL LATENCY (TTFT)</span>
+              <span class="res-val highlight" id="resTtft">142 ms</span>
+              <span class="res-sub">Compute-bound matrix multiplication ($O(N^2)$)</span>
+            </div>
+
+            <div class="res-card">
+              <span class="res-label">INTER-TOKEN LATENCY (ITL)</span>
+              <span class="res-val" id="resItl">14.5 ms / token</span>
+              <span class="res-sub">Memory-bandwidth-bound HBM fetch</span>
+            </div>
+
+            <div class="res-card total">
+              <span class="res-label">TOTAL DECODE THROUGHPUT</span>
+              <span class="res-val total-val" id="resThroughput">1,103 tok/s</span>
+              <span class="res-sub">Aggregated system throughput across batch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Serving Engine Comparison Matrix (vLLM vs SGLang vs TensorRT-LLM) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-box">
+        <span class="eyebrow-tag">SERVING ENGINE ARCHITECTURE</span>
+        <h2>Modern Serving Engine Feature Comparison Matrix</h2>
+        <p>Evaluating PagedAttention virtual memory, Trie-based RadixAttention prefix caching, and Ahead-of-Time CUDA compilation.</p>
+      </div>
+
+      <div class="engine-grid">
+        <div class="engine-card">
+          <div class="engine-header">
+            <span class="engine-badge">vLLM</span>
+            <h3>PagedAttention & Scale-to-Zero</h3>
+          </div>
+          <p>Treats KV cache memory like OS virtual memory paging, reducing VRAM fragmentation to <strong>&lt; 4%</strong>. Supports continuous batching and rapid cold starts (&lt;90s).</p>
+          <ul class="engine-list">
+            <li><strong>Optimal For</strong>: Dynamic multi-tenant cloud APIs & scale-to-zero serverless deployments.</li>
+            <li><strong>KV Cache Strategy</strong>: Virtual Block Page Tables allocated dynamically per request.</li>
+          </ul>
+        </div>
+
+        <div class="engine-card highlight">
+          <div class="engine-header">
+            <span class="engine-badge">SGLang</span>
+            <h3>RadixAttention & Agentic Reuse</h3>
+          </div>
+          <p>Uses Trie-based RadixTree structures for automatic prompt prefix caching. Reuses KV cache pages across multi-turn branches, dropping TTFT latency by <strong>70% – 90%</strong>.</p>
+          <ul class="engine-list">
+            <li><strong>Optimal For</strong>: Multi-agent tree search, CoT reasoning, and multi-turn chat applications.</li>
+            <li><strong>KV Cache Strategy</strong>: Trie-based node caching with Copy-on-Write state forking.</li>
+          </ul>
+        </div>
+
+        <div class="engine-card">
+          <div class="engine-header">
+            <span class="engine-badge">TensorRT-LLM</span>
+            <h3>AOT CUDA Graph Compilation</h3>
+          </div>
+          <p>NVIDIA ahead-of-time (AOT) graph compiler that fuses kernels for maximum raw hardware throughput and lowest tail-latency, at the cost of a 28-minute cold-start compilation.</p>
+          <ul class="engine-list">
+            <li><strong>Optimal For</strong>: High-volume, static production workloads with strict SLA tail-latency bounds.</li>
+            <li><strong>KV Cache Strategy</strong>: Static HBM memory allocation with AOT fused kernel graphs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Safetensors vs PyTorch Pickle Security & Zero-Copy Benchmark -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-card">
+        <div class="section-title-box">
+          <span class="eyebrow-tag">INGESTION SECURITY & BENCHMARKS</span>
+          <h2>Safetensors Direct mmap vs. Legacy PyTorch (.pt)</h2>
+          <p>Eliminating arbitrary code execution vulnerabilities while cutting 175B model loading times from 10 minutes to 45 seconds.</p>
+        </div>
+
+        <div class="bench-grid">
+          <div class="bench-card danger">
+            <span class="bench-tag">LEGACY FORMAT</span>
+            <h3>PyTorch Pickle (`.pt` / `.bin`)</h3>
+            <div class="bench-metrics">
+              <span class="bench-stat">10 Minutes</span>
+              <span class="bench-sub">Load time for 175B model across 8 GPUs</span>
+            </div>
+            <p>Uses Python `pickle` module, introducing critical Remote Code Execution (RCE) vulnerabilities via `__reduce__` shell injection exploits.</p>
+          </div>
+
+          <div class="bench-card success">
+            <span class="bench-tag">ZERO-COPY SOTA</span>
+            <h3>Safetensors (`mmap`)</h3>
+            <div class="bench-metrics">
+              <span class="bench-stat highlight">45 Seconds</span>
+              <span class="bench-sub"><strong>13.3x Faster</strong> zero-copy kernel loading</span>
+            </div>
+            <p>Direct OS kernel memory mapping (`mmap`), header restricted to 100MB, non-overlapping address validation guaranteeing zero RCE attack vectors.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Interactive Quantization & Throughput Benchmarks Table -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-box">
+        <span class="eyebrow-tag">QUANTIZATION BENCHMARKS</span>
+        <h2>Precision Format & Throughput Scaling Matrix</h2>
+        <p>Comparative benchmarks measuring VRAM footprint, prefill latency, and decode throughput across precision formats.</p>
+      </div>
+
+      <div class="table-card">
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Bit Precision</th>
+              <th>VRAM Profile</th>
+              <th>Prefill Latency</th>
+              <th>Decode Throughput</th>
+              <th>Reasoning Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>FP16 / BF16</strong></td>
+              <td>16-bit</td>
+              <td>Baseline (100%)</td>
+              <td>Baseline</td>
+              <td>Baseline (~20 tok/s)</td>
+              <td><span class="score-badge high">100% SOTA</span></td>
+            </tr>
+            <tr>
+              <td><strong>GGUF (Q6_K)</strong></td>
+              <td>6.5-bit</td>
+              <td>Moderate (-58%)</td>
+              <td>3.73s</td>
+              <td>~45 tok/s</td>
+              <td><span class="score-badge high">98.5% Retention</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>AWQ-Int4</strong></td>
+              <td>4-bit</td>
+              <td>Low (-75%)</td>
+              <td>1.68s</td>
+              <td>~75 tok/s</td>
+              <td><span class="score-badge high">96.0% Retention</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Blackwell NVFP4</strong></td>
+              <td>4-bit Micro-scaled</td>
+              <td>Ultra-Low (-75%)</td>
+              <td><strong>0.45s</strong></td>
+              <td><span class="score-badge high">102,725 tok/s</span></td>
+              <td><span class="score-badge high">95.5% Retention</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full PowerPoint Slide Deck Lightbox Inspector (All 15 Slides) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-box">
+        <span class="eyebrow-tag">SLIDE INSPECTOR (15 SLIDES)</span>
+        <h2>Frontier Inference Engineering Slide Deck Inspector</h2>
+        <p>Click any slide to open the high-resolution lightbox inspector with slide details and OCR technical breakdown.</p>
+      </div>
+
+      <div class="slide-gallery">
+        {inferenceSlides.map((slide) => (
+          <div class="slide-card" data-img={slide.img} data-title={slide.title} data-text={slide.text} data-num={slide.id}>
+            <div class="slide-img-wrapper">
+              <img src={slide.img} alt={slide.title} loading="lazy" />
+              <div class="expand-overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <span>Expand Slide</span>
+              </div>
+            </div>
+            <div class="slide-caption">
+              <span class="slide-num">SLIDE {slide.id < 10 ? `0${slide.id}` : slide.id} // 15</span>
+              <h4>{slide.title}</h4>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="slideModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close-btn">&times;</button>
+      <div class="modal-grid">
+        <div class="modal-img-container">
+          <img id="modalImg" src="" alt="Slide Detail" />
+        </div>
+        <div class="modal-info">
+          <span id="modalNum" class="modal-num">SLIDE 01 // 15</span>
+          <h3 id="modalTitle" class="modal-title">Slide Title</h3>
+          <p id="modalText" class="modal-text">Slide description and OCR text breakdown.</p>
+
+          <div class="modal-controls">
+            <button id="prevSlideBtn" class="modal-nav-btn">← Previous</button>
+            <button id="nextSlideBtn" class="modal-nav-btn">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .back-link { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: #2563eb; text-decoration: none; display: inline-block; margin-bottom: 0.5rem; }
+    .eyebrow-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--gold-hot); letter-spacing: 0.1em; display: block; margin-bottom: 0.2rem; }
+    .section-title-box h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--text); margin: 0 0 0.2rem 0; }
+    .section-title-box p { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 1rem 0; }
+
+    .section { padding: 0.75rem 0; }
+
+    /* Calculator Panel */
+    .calculator-panel { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 14px; padding: 1.15rem 1.35rem; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03); margin-bottom: 1.25rem; }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
+    @media (max-width: 850px) { .calc-grid { grid-template-columns: 1fr; gap: 1rem; } }
+    .input-group { margin-bottom: 0.75rem; }
+    .input-group label { font-size: 0.82rem; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; margin-bottom: 0.2rem; }
+    .val-num { font-family: var(--font-mono); color: #2563eb; font-weight: 700; }
+    .input-group input[type="range"] { width: 100%; accent-color: #2563eb; }
+
+    .calc-results { display: flex; flex-direction: column; gap: 0.5rem; }
+    .res-card { background: rgba(15, 23, 42, 0.03); border-radius: 8px; padding: 0.75rem 0.85rem; }
+    .res-card.total { background: rgba(37, 99, 235, 0.06); border: 1px solid rgba(37, 99, 235, 0.2); }
+    .res-label { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: var(--text-faint); }
+    .res-val { font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; color: var(--text); margin: 0.05rem 0; }
+    .res-val.highlight { color: #2563eb; }
+    .res-val.total-val { color: #2563eb; font-size: 1.55rem; }
+    .res-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Serving Engine Grid */
+    .engine-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+    @media (max-width: 900px) { .engine-grid { grid-template-columns: 1fr; } }
+    .engine-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 14px; padding: 1.15rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .engine-card.highlight { border-color: rgba(37, 99, 235, 0.3); background: rgba(37, 99, 235, 0.03); }
+    .engine-header { display: flex; flex-direction: column; gap: 0.2rem; }
+    .engine-badge { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 0.15rem 0.45rem; border-radius: 4px; align-self: flex-start; }
+    .engine-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 0; }
+    .engine-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; margin: 0; }
+    .engine-list { list-style: none; padding: 0; margin: 0.4rem 0 0 0; display: flex; flex-direction: column; gap: 0.35rem; }
+    .engine-list li { font-size: 0.78rem; color: var(--text); line-height: 1.35; position: relative; padding-left: 1rem; }
+    .engine-list li::before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: 800; }
+
+    /* Security Card */
+    .sec-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.25rem; }
+    .bench-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.75rem; }
+    @media (max-width: 750px) { .bench-grid { grid-template-columns: 1fr; } }
+    .bench-card { background: rgba(15, 23, 42, 0.03); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .bench-card.danger { border-left: 3px solid #ef4444; }
+    .bench-card.success { border-left: 3px solid #10b981; background: rgba(16, 185, 129, 0.04); }
+    .bench-tag { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--text-faint); }
+    .bench-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 0; }
+    .bench-metrics { display: flex; flex-direction: column; }
+    .bench-stat { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--text); }
+    .bench-stat.highlight { color: #10b981; }
+    .bench-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .bench-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
+
+    /* Table & Gallery */
+    .table-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 14px; overflow-x: auto; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03); margin-bottom: 1.25rem; }
+    .benchmark-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+    .benchmark-table th, .benchmark-table td { padding: 0.7rem 1rem; border-bottom: 1px solid rgba(15, 23, 42, 0.06); }
+    .benchmark-table th { background: rgba(15, 23, 42, 0.03); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-faint); }
+    .highlight-row { background: rgba(37, 99, 235, 0.04); }
+    .score-badge { font-family: var(--font-mono); font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.75rem; }
+    .score-badge.high { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
+
+    .slide-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+    @media (max-width: 900px) { .slide-gallery { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .slide-gallery { grid-template-columns: 1fr; } }
+
+    .slide-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02); cursor: pointer; transition: transform 0.2s var(--ease); }
+    .slide-card:hover { transform: translateY(-2px); border-color: rgba(37, 99, 235, 0.4); }
+    .slide-img-wrapper { aspect-ratio: 16/9; background: #0f172a; position: relative; overflow: hidden; }
+    .slide-img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .expand-overlay { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.65); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; color: white; opacity: 0; transition: opacity 0.2s var(--ease); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; }
+    .slide-card:hover .expand-overlay { opacity: 1; }
+    .slide-caption { padding: 0.75rem 0.85rem; }
+    .slide-num { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: #2563eb; }
+    .slide-caption h4 { font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--text); margin: 0.1rem 0 0 0; }
+
+    /* Lightbox Modal */
+    .modal-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+    .modal-overlay.active { display: flex; }
+    .modal-content { background: #0f172a; border-radius: 20px; max-width: 95vw; width: 1400px; max-height: 92vh; height: 90vh; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .modal-close-btn { position: absolute; top: 1rem; right: 1.5rem; font-size: 2.5rem; border: none; background: rgba(255, 255, 255, 0.1); color: #f8fafc; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; line-height: 1; transition: background 0.2s var(--ease); }
+    .modal-close-btn:hover { background: #2563eb; color: white; }
+
+    .modal-grid { display: grid; grid-template-columns: 2.5fr 1fr; height: 100%; }
+    @media (max-width: 950px) { .modal-grid { grid-template-columns: 1fr; overflow-y: auto; } }
+    .modal-img-container { background: #020617; display: flex; align-items: center; justify-content: center; padding: 1.5rem; height: 100%; overflow: hidden; }
+    .modal-img-container img { max-width: 100%; max-height: 85vh; width: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .modal-info { padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: space-between; background: #0f172a; border-left: 1px solid rgba(255, 255, 255, 0.08); height: 100%; overflow-y: auto; }
+    .modal-num { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: #3b82f6; }
+    .modal-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #f8fafc; margin: 0.5rem 0 1rem 0; line-height: 1.3; }
+    .modal-text { color: #94a3b8; font-size: 0.95rem; line-height: 1.65; margin-bottom: 2rem; }
+
+    .modal-controls { display: flex; gap: 1rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .modal-nav-btn { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); padding: 0.85rem 1.25rem; border-radius: 10px; font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; color: #f8fafc; cursor: pointer; transition: all 0.2s var(--ease); flex: 1; }
+    .modal-nav-btn:hover { background: #2563eb; color: white; border-color: #2563eb; }
+  </style>
+
+  <script is:raw>
+    // Prefill vs Decode Latency Simulator
+    const simPrompt = document.getElementById('simPromptTokens');
+    const simOutput = document.getElementById('simOutputTokens');
+    const simBatch = document.getElementById('simBatchSize');
+
+    function updateSim() {
+      const promptTokens = parseInt(simPrompt.value);
+      const outputTokens = parseInt(simOutput.value);
+      const batchSize = parseInt(simBatch.value);
+
+      document.getElementById('simPromptVal').textContent = `${promptTokens.toLocaleString()} tokens`;
+      document.getElementById('simOutputVal').textContent = `${outputTokens.toLocaleString()} tokens`;
+      document.getElementById('simBatchVal').textContent = `${batchSize} Requests`;
+
+      // 1. TTFT calculation (ms): O(N^2) compute cost
+      const ttftMs = Math.round(15 + (promptTokens * 0.028) + (batchSize * 0.8));
+
+      // 2. Inter-Token Latency (ITL ms): O(N) memory bandwidth fetch
+      const itlMs = (10.0 + (batchSize * 0.35)).toFixed(1);
+
+      // 3. Total Decode Throughput (tok/s): (OutputTokens * BatchSize) / Total Decode Time
+      const totalDecodeSec = (outputTokens * parseFloat(itlMs)) / 1000;
+      const throughputTps = Math.round((outputTokens * batchSize) / totalDecodeSec);
+
+      document.getElementById('resTtft').textContent = `${ttftMs} ms`;
+      document.getElementById('resItl').textContent = `${itlMs} ms / token`;
+      document.getElementById('resThroughput').textContent = `${throughputTps.toLocaleString()} tok/s`;
+    }
+
+    simPrompt?.addEventListener('input', updateSim);
+    simOutput?.addEventListener('input', updateSim);
+    simBatch?.addEventListener('input', updateSim);
+
+    // Initial Simulation Call
+    updateSim();
+
+    // Slide Lightbox Script
+    const cards = document.querySelectorAll('.slide-card');
+    const modal = document.getElementById('slideModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalNum = document.getElementById('modalNum');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalClose = document.getElementById('modalClose');
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
+
+    let currentIndex = 0;
+
+    function openModal(index) {
+      if (!cards[index] || !modal) return;
+      currentIndex = index;
+      const card = cards[index];
+
+      const img = card.getAttribute('data-img') || '';
+      const title = card.getAttribute('data-title') || '';
+      const text = card.getAttribute('data-text') || '';
+      const num = card.getAttribute('data-num') || '';
+
+      if (modalImg) modalImg.src = img;
+      if (modalNum) modalNum.textContent = `SLIDE ${parseInt(num) < 10 ? '0' + num : num} // ${cards.length}`;
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalText) modalText.textContent = text;
+
+      modal.classList.add('active');
+    }
+
+    cards.forEach((card, idx) => { card.addEventListener('click', () => openModal(idx)); });
+    modalClose?.addEventListener('click', () => modal?.classList.remove('active'));
+    modal?.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+
+    prevBtn?.addEventListener('click', () => { openModal((currentIndex - 1 + cards.length) % cards.length); });
+    nextBtn?.addEventListener('click', () => { openModal((currentIndex + 1) % cards.length); });
+
+    window.addEventListener('keydown', (e) => {
+      if (!modal?.classList.contains('active')) return;
+      if (e.key === 'Escape') modal.classList.remove('active');
+      if (e.key === 'ArrowLeft') prevBtn?.click();
+      if (e.key === 'ArrowRight') nextBtn?.click();
+    });
+  </script>
+</Layout>

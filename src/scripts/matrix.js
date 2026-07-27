@@ -7,10 +7,10 @@
     const container = canvas.parentElement;
     if (!container) return;
 
-    // Interactive States
+    // Interactive States (Subdued & Sleek Default)
     let config = {
-      speed: 1.0,
-      density: 0.6,
+      speed: 0.8,
+      density: 0.35,
       theme: 'blue',
       glyph: 'binary',
       mode: 'deflect',

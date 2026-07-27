@@ -1,0 +1,74 @@
+[
+  {
+    "id": "claude-opus-5",
+    "name": "Claude Opus 5",
+    "developer": "Anthropic",
+    "releaseDate": "2026-05",
+    "sweBench": 83.0,
+    "gdpValElo": 1861,
+    "arcAgi3": 30.2,
+    "architecture": "Dense / Hybrid MoE",
+    "contextWindow": "1.0M tokens",
+    "status": "Validated"
+  },
+  {
+    "id": "claude-fable-5",
+    "name": "Claude Fable 5",
+    "developer": "Anthropic",
+    "releaseDate": "2026-06",
+    "sweBench": 84.0,
+    "gdpValElo": 1820,
+    "arcAgi3": 28.5,
+    "architecture": "High-Efficiency MoE",
+    "contextWindow": "500K tokens",
+    "status": "Validated"
+  },
+  {
+    "id": "gemini-3-1-pro",
+    "name": "Gemini 3.1 Pro",
+    "developer": "Google",
+    "releaseDate": "2026-04",
+    "sweBench": 95.0,
+    "gdpValElo": 1890,
+    "arcAgi3": 32.0,
+    "architecture": "Multimodal Sparse MoE",
+    "contextWindow": "2.0M tokens",
+    "status": "Frontier Peak"
+  },
+  {
+    "id": "gpt-5-6-sol",
+    "name": "GPT-5.6 Sol",
+    "developer": "OpenAI",
+    "releaseDate": "2026-03",
+    "sweBench": 86.5,
+    "gdpValElo": 1845,
+    "arcAgi3": 29.1,
+    "architecture": "Reasoning Hybrid",
+    "contextWindow": "1.0M tokens",
+    "status": "Validated"
+  },
+  {
+    "id": "kimi-k3-moe",
+    "name": "Kimi K3 MoE",
+    "developer": "Moonshot AI",
+    "releaseDate": "2026-07",
+    "sweBench": 81.5,
+    "gdpValElo": 1790,
+    "arcAgi3": 26.8,
+    "architecture": "2.8T MoE (896 experts, 16 active)",
+    "contextWindow": "2.0M tokens",
+    "status": "New Addition"
+  },
+  {
+    "id": "claude-3-7-sonnet",
+    "name": "Claude 3.7 Sonnet",
+    "developer": "Anthropic",
+    "releaseDate": "2026-07",
+    "sweBench": 85.2,
+    "gdpValElo": 1850,
+    "arcAgi3": null,
+    "architecture": "Hybrid MoE",
+    "contextWindow": "1.0M tokens",
+    "status": "Validated"
+  }
+]

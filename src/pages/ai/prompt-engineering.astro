@@ -1,0 +1,366 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ExecutiveCallout from '../../components/ExecutiveCallout.astro';
+import AnalogyBadge from '../../components/AnalogyBadge.astro';
+---
+
+<Layout title="Prompt Engineering & Mechanistics — AI Concepts & Infrastructure">
+  <div class="glitch-overlay"></div>
+  <div class="viewport-matrix-container">
+    <canvas id="networkCanvas"></canvas>
+  </div>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-header">
+        <a href="/ai" class="back-link">← Back to AI Concepts and Infrastructure</a>
+        <p class="hero-eyebrow">MODULE 06 · MECHANISTICS & PROMPT ARCHITECTURE</p>
+        <h1 class="hero-title">Prompt Engineering & Mechanistic Interpretability</h1>
+        <p class="hero-tagline">
+          Understanding prompts as mathematical operators: QK/OV induction circuits, Function Vector (FV) heads, computational complexity classes (TC⁰ to P-Time), and continuous thought spaces.
+        </p>
+
+        <ExecutiveCallout title="EXECUTIVE PROMPTING SUMMARY">
+          Prompt engineering is the soft-programming of transformer attention circuits. Simple zero-shot prompts are limited to constant-depth logic ($TC^0$). Forcing the model to generate <strong>Chain-of-Thought (CoT)</strong> step-by-step reasoning expands its computational ceiling to <strong>Polynomial-Time ($P$-Time)</strong>, allowing it to solve complex legal, financial, and mathematical logic.
+        </ExecutiveCallout>
+
+        <AnalogyBadge concept="Induction Heads">
+          Induction heads are the AI's internal copy-paste shortcut. When the AI sees a pattern earlier in your prompt, induction heads instantly complete the sequence whenever the prefix appears again.
+        </AnalogyBadge>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Interactive Prompt Sandbox & Activation Circuit Simulator -->
+  <section class="section">
+    <div class="container">
+      <div class="calculator-panel">
+        <div class="panel-header">
+          <span class="eyebrow-tag">MECHANISTIC CIRCUIT SIMULATOR</span>
+          <h2>Prompting Technique & Activation Router Simulator</h2>
+          <p>Select a prompting paradigm and adjust token length to simulate how attention circuits, KV cache VRAM footprint, and complexity classes dynamically morph inside the transformer decoder.</p>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="input-group">
+              <label for="promptParadigmSelect">Prompting Paradigm Strategy:</label>
+              <select id="promptParadigmSelect" class="sim-select">
+                <option value="zero-shot" selected>Zero-Shot Direct Generation (TC⁰ Constant Depth)</option>
+                <option value="few-shot">Few-Shot In-Context Learning (L Log-Space Vector)</option>
+                <option value="cot-linear">Linear Chain-of-Thought (Context-Sensitive)</option>
+                <option value="cot-poly">Polynomial Chain-of-Thought (P Polynomial Time)</option>
+                <option value="react-agent">ReAct (Reason + Act Tool Calling Agent)</option>
+                <option value="rag-routing">Retrieval-Augmented Generation (RAG Multi-Circuit)</option>
+                <option value="padding-marcos">Continuous Thoughts / Padding Tokens (MarCos)</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="promptLength">Prompt & Reasoning Context Length: <span id="promptLengthVal" class="val-num">4,096 Tokens</span></label>
+              <input type="range" id="promptLength" min="128" max="64000" step="128" value="4096" />
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="res-card">
+              <span class="res-label">COMPUTATIONAL COMPLEXITY CLASS</span>
+              <span class="res-val highlight" id="resComplexity">TC⁰ (Constant Circuit Depth)</span>
+              <span class="res-sub" id="resCircuitSub">Parametric & Syntactic Heads</span>
+            </div>
+
+            <div class="res-card">
+              <span class="res-label">KV CACHE VRAM FOOTPRINT</span>
+              <span class="res-val" id="resKvMemory">256 MB</span>
+              <span class="res-sub" id="resKvSub">Dynamic Key-Value State Memory</span>
+            </div>
+
+            <div class="res-card">
+              <span class="res-label">CONTEXT WINDOW UTILIZATION</span>
+              <span class="res-val" id="resContextUtil">3.2% of 128K</span>
+              <span class="res-sub" id="resFlopSub">Attention FLOPs: 1.07 TFLOPs</span>
+            </div>
+
+            <div class="res-card total">
+              <span class="res-label">REASONING ACCURACY & ACCELERATION</span>
+              <span class="res-val total-val" id="resAccuracy">62.4% Baseline</span>
+              <span class="res-sub" id="resAccSub">Out-of-distribution reasoning accuracy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Mechanistic Circuits Matrix (Induction Heads, FV Heads, RAG Routing) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-box">
+        <span class="eyebrow-tag">ATTENTION CIRCUIT ARCHITECTURE</span>
+        <h2>The Mechanistic Engine of Transformer Prompting</h2>
+        <p>How prompts dynamically rewire internal attention circuits without mutating static model weights.</p>
+      </div>
+
+      <div class="circuit-grid">
+        <div class="circuit-card">
+          <div class="circuit-header">
+            <span class="circuit-badge">STAGE 1 & 2 MECHANICS</span>
+            <h3>QK & OV Induction Head Circuits</h3>
+          </div>
+          <p>Induction heads consist of two coupled attention heads: <strong>QK (Query-Key) circuits</strong> search the context window for structural prefix patterns, while <strong>OV (Output-Value) circuits</strong> copy the subsequent token into the residual stream output projection.</p>
+          <ul class="circuit-list">
+            <li><strong>QK Circuit</strong>: Locates previous occurrences of pattern [A].</li>
+            <li><strong>OV Circuit</strong>: Copies subsequent token [B] directly to prediction.</li>
+          </ul>
+        </div>
+
+        <div class="circuit-card highlight">
+          <div class="circuit-header">
+            <span class="circuit-badge">LATENT COMPRESSION</span>
+            <h3>Function Vector (FV) Heads</h3>
+          </div>
+          <p>In few-shot prompting, Function Vector heads compress multi-example input/output pairs into compact latent vectors in key-value space. This steers model behavior toward complex tasks without explicit token copying.</p>
+          <ul class="circuit-list">
+            <li><strong>Hapax Paradigm</strong>: Enables abstract in-context learning without literal token matching.</li>
+            <li><strong>Task Steering</strong>: Dynamically shifts output distribution along task-vector axes.</li>
+          </ul>
+        </div>
+
+        <div class="circuit-card">
+          <div class="circuit-header">
+            <span class="circuit-badge">RAG TRIPLE-ROUTING</span>
+            <h3>RAG Multi-Circuit Attention Routing</h3>
+          </div>
+          <p>Retrieval-Augmented Generation prompts force a tri-fold segregation of attention heads: <strong>In-Context Heads</strong> parse task rules, <strong>Parametric Heads</strong> query internal weights, and <strong>Retrieval Heads</strong> copy external document data.</p>
+          <ul class="circuit-list">
+            <li><strong>In-Context Heads</strong>: Interpret instruction rules and JSON schemas.</li>
+            <li><strong>Retrieval Heads</strong>: High-precision copying from fetched RAG documents.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Taxonomy of 7 Prompting Paradigms Table -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-box">
+        <span class="eyebrow-tag">COMPUTATIONAL TAXONOMY</span>
+        <h2>Taxonomy of Prompting Paradigms & Complexity Classes</h2>
+        <p>A rigorous classification of prompting techniques mapped to theoretical computer science complexity classes.</p>
+      </div>
+
+      <div class="table-card">
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Prompting Paradigm</th>
+              <th>Complexity Class</th>
+              <th>Active Attention Sub-Circuits</th>
+              <th>Working Memory Mechanism</th>
+              <th>Core Computational Bottleneck</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Direct Generation (Zero-Shot)</strong></td>
+              <td><span class="score-badge">TC⁰</span></td>
+              <td>Parametric & Syntactic Heads</td>
+              <td>Internal Static Weights</td>
+              <td>Fixed parallel depth; cannot solve serial dependencies</td>
+            </tr>
+            <tr>
+              <td><strong>Few-Shot (In-Context Learning)</strong></td>
+              <td><span class="score-badge">L (Log-Space)</span></td>
+              <td>QK/OV Induction & Function Vector (FV) Heads</td>
+              <td>Latent task-vectors in KV states</td>
+              <td>Limited by context window & induction capacity</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Linear Chain-of-Thought (CoT)</strong></td>
+              <td><span class="score-badge high">Context-Sensitive</span></td>
+              <td>Long-context concentration & Retrieval Heads</td>
+              <td>Autoregressive tokens written to context</td>
+              <td>High latency due to serial token decoding</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Polynomial Chain-of-Thought (CoT)</strong></td>
+              <td><span class="score-badge high">P (Polynomial-Time)</span></td>
+              <td>Multi-layer routing & Semantic Induction Heads</td>
+              <td>Stepwise generated tokens in context window</td>
+              <td>High latency due to serial token decoding</td>
+            </tr>
+            <tr>
+              <td><strong>Polynomial Padding Tokens</strong></td>
+              <td><span class="score-badge">NC Parallel</span></td>
+              <td>Wide parallel spans over blank vector states</td>
+              <td>Hidden states of non-semantic padding tokens</td>
+              <td>Bound by parallel limits; cannot execute serial logic</td>
+            </tr>
+            <tr>
+              <td><strong>Padding with Looping</strong></td>
+              <td><span class="score-badge">Recurrent Layer</span></td>
+              <td>Recurrent looping attention over blank states</td>
+              <td>Hidden states of non-semantic padding tokens</td>
+              <td>Requires structural layer looping support</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Continuous Stepwise (MarCos)</strong></td>
+              <td><span class="score-badge high">P (Polynomial-Time)</span></td>
+              <td>Continuous layer-to-layer thought mapping</td>
+              <td>Latent vector space representations</td>
+              <td>Requires non-standard continuous architectures</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .back-link { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: #2563eb; text-decoration: none; display: inline-block; margin-bottom: 0.5rem; }
+    .eyebrow-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--gold-hot); letter-spacing: 0.1em; display: block; margin-bottom: 0.2rem; }
+    .section-title-box h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--text); margin: 0 0 0.2rem 0; }
+    .section-title-box p { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 1rem 0; }
+
+    .section { padding: 0.75rem 0; }
+
+    /* Calculator Panel */
+    .calculator-panel { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 14px; padding: 1.15rem 1.35rem; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03); margin-bottom: 1.25rem; }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
+    @media (max-width: 850px) { .calc-grid { grid-template-columns: 1fr; gap: 1rem; } }
+    .input-group { margin-bottom: 0.75rem; }
+    .input-group label { font-size: 0.82rem; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; margin-bottom: 0.2rem; }
+    .val-num { font-family: var(--font-mono); color: #2563eb; font-weight: 700; }
+    .sim-select { width: 100%; padding: 0.45rem 0.6rem; border-radius: 6px; border: 1px solid rgba(15, 23, 42, 0.15); font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; background: white; color: var(--text); }
+
+    .calc-results { display: flex; flex-direction: column; gap: 0.5rem; }
+    .res-card { background: rgba(15, 23, 42, 0.03); border-radius: 8px; padding: 0.75rem 0.85rem; }
+    .res-card.total { background: rgba(37, 99, 235, 0.06); border: 1px solid rgba(37, 99, 235, 0.2); }
+    .res-label { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: var(--text-faint); }
+    .res-val { font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; color: var(--text); margin: 0.05rem 0; }
+    .res-val.highlight { color: #2563eb; }
+    .res-val.total-val { color: #2563eb; font-size: 1.4rem; }
+    .res-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Circuit Grid */
+    .circuit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+    @media (max-width: 900px) { .circuit-grid { grid-template-columns: 1fr; } }
+    .circuit-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 14px; padding: 1.15rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .circuit-card.highlight { border-color: rgba(37, 99, 235, 0.3); background: rgba(37, 99, 235, 0.03); }
+    .circuit-header { display: flex; flex-direction: column; gap: 0.2rem; }
+    .circuit-badge { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 0.15rem 0.45rem; border-radius: 4px; align-self: flex-start; }
+    .circuit-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 0; }
+    .circuit-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; margin: 0; }
+    .circuit-list { list-style: none; padding: 0; margin: 0.4rem 0 0 0; display: flex; flex-direction: column; gap: 0.35rem; }
+    .circuit-list li { font-size: 0.78rem; color: var(--text); line-height: 1.35; position: relative; padding-left: 0.85rem; }
+    .circuit-list li::before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: 800; }
+
+    /* Table */
+    .table-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 14px; overflow-x: auto; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03); margin-bottom: 1.25rem; }
+    .benchmark-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.82rem; }
+    .benchmark-table th, .benchmark-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(15, 23, 42, 0.06); }
+    .benchmark-table th { background: rgba(15, 23, 42, 0.03); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-faint); }
+    .highlight-row { background: rgba(37, 99, 235, 0.04); }
+    .score-badge { font-family: var(--font-mono); font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.75rem; background: rgba(15, 23, 42, 0.06); color: var(--text); }
+    .score-badge.high { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
+  </style>
+
+  <script is:raw>
+    const paradigmSelect = document.getElementById('promptParadigmSelect');
+    const lengthInput = document.getElementById('promptLength');
+
+    const paradigmMap = {
+      'zero-shot': {
+        complexity: 'TC⁰ (Constant Depth)',
+        circuit: 'Parametric & Syntactic Heads',
+        baseAccuracy: 62.4,
+        flopFactor: 0.25,
+        memPerToken: 0.0625 // MB per token for KV cache (FP16 128 layers, 128 dim, 128 heads)
+      },
+      'few-shot': {
+        complexity: 'L (Log-Space Vector)',
+        circuit: 'QK/OV Induction & Function Vector Heads',
+        baseAccuracy: 78.2,
+        flopFactor: 0.45,
+        memPerToken: 0.0625
+      },
+      'cot-linear': {
+        complexity: 'Context-Sensitive Languages',
+        circuit: 'Long-Context Attention Concentration',
+        baseAccuracy: 88.5,
+        flopFactor: 1.10,
+        memPerToken: 0.0625
+      },
+      'cot-poly': {
+        complexity: 'P (Polynomial-Time)',
+        circuit: 'Semantic Induction & Multi-Layer Routing',
+        baseAccuracy: 94.2,
+        flopFactor: 2.30,
+        memPerToken: 0.0625
+      },
+      'react-agent': {
+        complexity: 'P (Polynomial-Time)',
+        circuit: 'Tool-Calling Execution Circuits',
+        baseAccuracy: 92.0,
+        flopFactor: 1.80,
+        memPerToken: 0.0625
+      },
+      'rag-routing': {
+        complexity: 'P (Polynomial-Time)',
+        circuit: 'In-Context, Parametric & Retrieval Heads',
+        baseAccuracy: 95.6,
+        flopFactor: 1.95,
+        memPerToken: 0.0625
+      },
+      'padding-marcos': {
+        complexity: 'P (Continuous Space)',
+        circuit: 'Continuous Latent Space Mapping (MarCos)',
+        baseAccuracy: 91.8,
+        flopFactor: 0.35,
+        memPerToken: 0.015 // Compressed continuous representation
+      }
+    };
+
+    function updatePromptSim() {
+      const pKey = paradigmSelect.value;
+      const len = parseInt(lengthInput.value);
+
+      document.getElementById('promptLengthVal').textContent = `${len.toLocaleString()} Tokens`;
+
+      const data = paradigmMap[pKey] || paradigmMap['zero-shot'];
+
+      // 1. Calculate dynamic KV Cache VRAM Footprint
+      const kvMb = len * data.memPerToken;
+      const kvFormatted = kvMb >= 1024 ? `${(kvMb / 1024).toFixed(2)} GB` : `${Math.round(kvMb)} MB`;
+
+      // 2. Calculate Context Window Utilization % (out of 128,000 context max)
+      const utilPct = ((len / 128000) * 100).toFixed(1);
+
+      // 3. Calculate Attention FLOPs (TFLOPs)
+      const tflops = ((len * len * 2 * 128 * data.flopFactor) / 1e12).toFixed(2);
+
+      // 4. Calculate Dynamic Accuracy Scaling with token context length
+      // Longer CoT/ICL context improves reasoning up to a saturation ceiling
+      const lenScaling = Math.min(len / 4096, 2.5);
+      const dynamicAcc = Math.min(99.4, (data.baseAccuracy + (lenScaling * 1.8))).toFixed(1);
+
+      document.getElementById('resComplexity').textContent = data.complexity;
+      document.getElementById('resCircuitSub').textContent = data.circuit;
+
+      document.getElementById('resKvMemory').textContent = kvFormatted;
+      document.getElementById('resKvSub').textContent = `Dynamic Key-Value State Memory (${len.toLocaleString()} tokens)`;
+
+      document.getElementById('resContextUtil').textContent = `${utilPct}% of 128K Window`;
+      document.getElementById('resFlopSub').textContent = `Attention FLOPs: ${tflops} TFLOPs`;
+
+      document.getElementById('resAccuracy').textContent = `${dynamicAcc}% Reasoning Accuracy`;
+      document.getElementById('resAccSub').textContent = `Scaled across ${len.toLocaleString()} context tokens`;
+    }
+
+    paradigmSelect?.addEventListener('change', updatePromptSim);
+    lengthInput?.addEventListener('input', updatePromptSim);
+
+    updatePromptSim();
+  </script>
+</Layout>

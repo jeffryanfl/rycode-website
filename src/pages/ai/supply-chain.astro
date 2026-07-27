@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import supplyChainData from '../../data/supply_chain.json';
+---
+
+<Layout title="Supply Chain & Semiconductor Ecosystem — AI Concepts & Infrastructure">
+  <div class="glitch-overlay"></div>
+  <div class="viewport-matrix-container">
+    <canvas id="networkCanvas"></canvas>
+  </div>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-header">
+        <a href="/ai" class="back-link">← Back to AI Concepts and Infrastructure</a>
+        <p class="hero-eyebrow">MODULE 03 · HARDWARE & SILICON ECOSYSTEM</p>
+        <h1 class="hero-title">Supply Chain & Semiconductor Ecosystem</h1>
+        <p class="hero-tagline">
+          An 8-tier strategic ecosystem directory spanning 33 global infrastructure providers across EDA, Lithography, Foundries, Compute Silicon, Hyperscale Cloud, Data Center REITs, Liquid Cooling, and Power Infrastructure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8-Tier Supply Chain Directory -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-box">
+        <span class="eyebrow-tag">INFRASTRUCTURE ECOSYSTEM</span>
+        <h2>8-Tier Semiconductor & Cloud Supply Chain Directory</h2>
+        <p>33 companies categorized by strategic hardware, software, and energy grid layer.</p>
+      </div>
+
+      <div class="tier-list">
+        {supplyChainData.map((t) => (
+          <div class="tier-block">
+            <div class="tier-header">
+              <span class="tier-badge">TIER 0{t.tier}</span>
+              <h3 class="tier-title">{t.tierName}</h3>
+            </div>
+
+            <div class="company-grid">
+              {t.companies.map((c) => (
+                <div class="company-card">
+                  <div class="co-top">
+                    <strong class="co-name">{c.name}</strong>
+                    <span class="co-ticker">{c.ticker}</span>
+                  </div>
+                  <p class="co-role">{c.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .back-link { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: #2563eb; text-decoration: none; display: inline-block; margin-bottom: 0.5rem; }
+    .eyebrow-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--gold-hot); letter-spacing: 0.1em; display: block; margin-bottom: 0.2rem; }
+    .section-title-box h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--text); margin: 0 0 0.25rem 0; }
+    .section-title-box p { color: var(--text-muted); font-size: 0.92rem; margin: 0 0 1.5rem 0; }
+
+    /* Tier List */
+    .tier-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .tier-block { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 16px; padding: 1.25rem 1.5rem; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.02); }
+    .tier-header { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem; border-bottom: 1px solid rgba(15, 23, 42, 0.06); padding-bottom: 0.5rem; }
+    .tier-badge { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 0.2rem 0.6rem; border-radius: 4px; }
+    .tier-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 0; }
+
+    .company-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
+    @media (max-width: 900px) { .company-grid { grid-template-columns: 1fr; } }
+    .company-card { background: rgba(15, 23, 42, 0.03); border-radius: 10px; padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .co-top { display: flex; justify-content: space-between; align-items: center; }
+    .co-name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+    .co-ticker { font-family: var(--font-mono); font-size: 0.75rem; color: #2563eb; font-weight: 700; }
+    .co-role { font-size: 0.8rem; color: var(--text-muted); line-height: 1.35; margin: 0; }
+  </style>
+
+  <script>
+    import '../../scripts/matrix.js';
+  </script>
+</Layout>

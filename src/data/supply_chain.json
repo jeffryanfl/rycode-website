@@ -1,0 +1,82 @@
+[
+  {
+    "tier": 1,
+    "tierName": "EDA & IP Software",
+    "companies": [
+      { "name": "Synopsys", "ticker": "SNPS", "role": "Electronic Design Automation (EDA) software suite" },
+      { "name": "Cadence Design Systems", "ticker": "CDNS", "role": "Integrated circuit design & verification software" },
+      { "name": "Siemens EDA", "ticker": "SIE", "role": "Silicon design & manufacturing simulation" }
+    ]
+  },
+  {
+    "tier": 2,
+    "tierName": "Lithography & Semiconductor Equipment",
+    "companies": [
+      { "name": "ASML", "ticker": "ASML", "role": "Monopoly provider of EUV & High-NA EUV lithography systems" },
+      { "name": "Applied Materials", "ticker": "AMAT", "role": "Wafer fabrication & thin-film deposition tools" },
+      { "name": "Lam Research", "ticker": "LRCX", "role": "Plasma etch and clean equipment" },
+      { "name": "KLA Corporation", "ticker": "KLAC", "role": "Yield management & process diagnostic inspection" }
+    ]
+  },
+  {
+    "tier": 3,
+    "tierName": "Foundry & Advanced Packaging",
+    "companies": [
+      { "name": "TSMC", "ticker": "TSM", "role": "Exclusive 3nm/2nm foundry for NVIDIA, Apple, AMD, Qualcomm" },
+      { "name": "Samsung Foundry", "ticker": "005930.KS", "role": "GAAFET 3nm node & HBM3e/HBM4 memory integration" },
+      { "name": "Intel Foundry", "ticker": "INTC", "role": "18A node & Foveros 3D packaging technologies" }
+    ]
+  },
+  {
+    "tier": 4,
+    "tierName": "Compute Silicon & High-Bandwidth Memory",
+    "companies": [
+      { "name": "NVIDIA", "ticker": "NVDA", "role": "Hopper, Blackwell NVFP4 & Rubin GPU architecture" },
+      { "name": "AMD", "ticker": "AMD", "role": "Instinct MI300X / MI350 Series AI accelerators" },
+      { "name": "Broadcom", "ticker": "AVGO", "role": "Custom ASIC design (Google TPU, Meta MTIA) & PCIe switches" },
+      { "name": "SK Hynix", "ticker": "000660.KS", "role": "Primary supplier of 12-layer HBM3e memory chips" },
+      { "name": "Micron", "ticker": "MU", "role": "High-bandwidth memory HBM3e 24GB/36GB modules" }
+    ]
+  },
+  {
+    "tier": 5,
+    "tierName": "Hyperscale Cloud & Cluster Orchestration",
+    "companies": [
+      { "name": "Microsoft Azure", "ticker": "MSFT", "role": "Stargate 100k+ GPU cluster & Maia 100 AI accelerator" },
+      { "name": "Amazon AWS", "ticker": "AMZN", "role": "Trainium 2 / Inferentia 2 custom silicon clusters" },
+      { "name": "Google Cloud", "ticker": "GOOGL", "role": "TPU v5p / TPU 8t cluster infrastructure & Vertex AI" },
+      { "name": "Oracle Cloud", "ticker": "ORCL", "role": "Bare-metal NVIDIA Blackwell clusters" },
+      { "name": "xAI Colossus", "ticker": "PRIVATE", "role": "100k–200k+ H100/B200 Memphis cluster facility" }
+    ]
+  },
+  {
+    "tier": 6,
+    "tierName": "Data Center Facilities & Co-location REITs",
+    "companies": [
+      { "name": "Equinix", "ticker": "EQIX", "role": "Global interconnection & high-density liquid-cooled colocation" },
+      { "name": "Digital Realty", "ticker": "DLR", "role": "Hyperscale data center campus facilities" },
+      { "name": "Iron Mountain", "ticker": "IRM", "role": "Sustainable high-security data center campuses" }
+    ]
+  },
+  {
+    "tier": 7,
+    "tierName": "Liquid Cooling & High-Density Power Systems",
+    "companies": [
+      { "name": "Vertiv", "ticker": "VRT", "role": "Direct-to-chip liquid cooling & high-density power distribution" },
+      { "name": "Supermicro", "ticker": "SMCI", "role": "Liquid-cooled high-density GPU server rack architecture" },
+      { "name": "Schneider Electric", "ticker": "SU", "role": "Data center electrical distribution & uninterruptible power" },
+      { "name": "Eaton Corporation", "ticker": "ETN", "role": "Medium-voltage switchgear & power management hardware" }
+    ]
+  },
+  {
+    "tier": 8,
+    "tierName": "Energy Grid, SMR Nuclear & Transmission",
+    "companies": [
+      { "name": "Constellation Energy", "ticker": "CEG", "role": "Three Mile Island nuclear restart contract for Microsoft" },
+      { "name": "Vistra Corp", "ticker": "VST", "role": "Nuclear & natural gas baseload power for Texas ERCOT data centers" },
+      { "name": "GE Vernova", "ticker": "GEV", "role": "Grid electrification transformers & gas turbine generators" },
+      { "name": "Oklo", "ticker": "OKLO", "role": "Fast neutron Small Modular Reactors (SMRs) for AI clusters" },
+      { "name": "NuScale Power", "ticker": "SMR", "role": "NRC-certified Small Modular Reactor design" }
+    ]
+  }
+]
