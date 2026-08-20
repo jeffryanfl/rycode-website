@@ -2,219 +2,208 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Rycode — Clean Editorial Journal">
-  <div class="editorial-container">
+<Layout title="Rycode — Working Notes & Systems Journal">
+  <div class="writing-layout">
+    
     <!-- ===========================================================
-         LEFT / CENTRAL WIDE EDITORIAL COLUMN
+         FEATURED WRITING CANVAS / LEAD ESSAY
          =========================================================== -->
-    <div class="editorial-main">
-      <!-- ONE LARGE FEATURED STORY AT THE TOP -->
-      <article class="featured-story">
-        <div class="story-header">
-          <span class="category-tag">AI Systems & Frontier Models</span>
-          <span class="meta-date">August 18, 2026 · 8 min read</span>
-        </div>
-
-        <h1 class="featured-title">
-          <a href="/ai/benchmarks">
-            Frontier AI Model Benchmarks & Architectural Trade-offs
-          </a>
+    <article class="lead-article" aria-labelledby="leadHeading">
+      <header class="lead-header">
+        <span class="lead-topic-tag">Working Paper · Systems Architecture</span>
+        <h1 class="lead-title" id="leadHeading">
+          The Architecture of Modern Systems: Models, Inference, and Governance
         </h1>
+        <p class="lead-subtitle">
+          Notes on structuring intelligence, high-stakes operational risk, and the emerging economics of autonomous software.
+        </p>
+        <div class="lead-meta">
+          <span>By Jeff Ryan</span>
+          <span>·</span>
+          <span>Draft in Progress</span>
+          <span>·</span>
+          <span>Read Measure: 8 min</span>
+        </div>
+      </header>
 
-        <p class="featured-deck">
-          An empirical evaluation analyzing Kimi K3 MoE, DeepSeek V3/R1, MMLU-Pro, and SWE-bench performance across reasoning rigor, code generation precision, and low-precision inference economics.
+      <div class="prose-canvas">
+        <p class="dropcap">
+          Building systems in an era of rapid technological inflection requires a return to first principles. Whether evaluating the mechanical limits of semiconductor packaging, calculating the total cost of ownership across sovereign infrastructure, or designing enterprise risk frameworks, clarity emerges from rigorous decomposition rather than aggregated assumptions.
         </p>
 
-        <!-- Rectangular illustration / editorial artwork placeholder -->
-        <div class="illustration-box" aria-label="Editorial Illustration Placeholder">
-          <svg class="illustration-graphic" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5"></rect>
-            <line x1="3" y1="9" x2="21" y2="9" stroke-width="1.5"></line>
-            <line x1="9" y1="21" x2="9" y2="9" stroke-width="1.5"></line>
-            <circle cx="15" cy="15" r="2" stroke-width="1.5"></circle>
-          </svg>
-          <span class="illustration-caption">Editorial Schema · Frontier AI Systems Architecture</span>
+        <p>
+          As machine intelligence models transition from empirical novelty to core infrastructure, the bottlenecks are shifting rapidly. We are moving from parameter scale to inference throughput, from monolithic compute clusters to localized energy constraints, and from seat-based software licensing to agentic workflows.
+        </p>
+
+        <blockquote>
+          “The true constraint on technological leverage is rarely the availability of compute—it is the precision with which we define, evaluate, and contain operational blast radiuses.”
+        </blockquote>
+
+        <h2>I. The Three Core Pillars Under Deliberation</h2>
+        <p>
+          While rethinking the broader architecture of this platform, research and technical writing naturally converge around three core disciplines:
+        </p>
+
+        <h3>1. Frontier Intelligence & Physical Infrastructure</h3>
+        <p>
+          Evaluating the raw physics of compute: from advanced wafer fabrication and sub-byte quantization (NVFP4/FP8) to high-density power walls and small modular reactors (SMRs). Understanding what it actually takes to run models at scale without falling for hype cycles.
+        </p>
+
+        <h3>2. Governance, Risk & High-Stakes Containment</h3>
+        <p>
+          Quantifying residual risk in interconnected ecosystems. Developing models that measure control effectiveness, identify single points of failure across supply chains, and treat software governance with the rigor of safety-critical engineering.
+        </p>
+
+        <h3>3. The Inversion of Software Economics</h3>
+        <p>
+          Analyzing the structural shift as autonomous code generation and localized models displace conventional per-seat SaaS models, altering corporate balance sheets and vendor relationships.
+        </p>
+
+        <div class="editorial-note">
+          <strong>Editor's Note:</strong> This document is an active writing canvas. Use the scratchpad below or edit this template directly in the codebase to structure upcoming essays, briefings, and system models.
         </div>
-      </article>
 
-      <!-- MULTI-COLUMN ARTICLE-STYLE CARDS GRID -->
-      <section aria-labelledby="articlesHeading">
-        <div class="article-grid-header">
-          <h2 class="grid-section-title" id="articlesHeading">Latest Research & Technical Dossiers</h2>
-          <span class="meta-date">6 Articles</span>
-        </div>
-
-        <div class="article-grid">
-          <!-- Article Card 1 -->
-          <article class="article-card">
-            <div class="card-top">
-              <span class="card-category-label">Inference Engineering</span>
-              <h3 class="card-headline">
-                <a href="/ai/inference">Low-Precision NVFP4 & FP8 Serving Architectures</a>
-              </h3>
-              <p class="card-snippet">
-                Serving frontier LLMs at scale with sub-byte quantization, KV-cache compression, and GPU memory bandwidth optimization.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span>6 min read</span>
-              <a href="/ai/inference" class="read-more-link">
-                Read Article →
-              </a>
-            </div>
-          </article>
-
-          <!-- Article Card 2 -->
-          <article class="article-card">
-            <div class="card-top">
-              <span class="card-category-label">Semiconductors</span>
-              <h3 class="card-headline">
-                <a href="/ai/supply-chain">8-Tier Global AI Silicon & Hardware Supply Chain</a>
-              </h3>
-              <p class="card-snippet">
-                Mapping photolithography, wafer fabrication, advanced packaging, HBM3e memory, and optical networking bottlenecks.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span>12 min read</span>
-              <a href="/ai/supply-chain" class="read-more-link">
-                Read Article →
-              </a>
-            </div>
-          </article>
-
-          <!-- Article Card 3 -->
-          <article class="article-card">
-            <div class="card-top">
-              <span class="card-category-label">Power & Infrastructure</span>
-              <h3 class="card-headline">
-                <a href="/ai/energy-compute">Datacenter Power Constraints & SMR Nuclear Strategy</a>
-              </h3>
-              <p class="card-snippet">
-                Analyzing hyperscale power requirements, small modular reactor deployment timelines, and grid interconnection queues.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span>7 min read</span>
-              <a href="/ai/energy-compute" class="read-more-link">
-                Read Article →
-              </a>
-            </div>
-          </article>
-
-          <!-- Article Card 4 -->
-          <article class="article-card">
-            <div class="card-top">
-              <span class="card-category-label">Interactive Reference</span>
-              <h3 class="card-headline">
-                <a href="/ai/glossary">Sampling Parameters & AI Engineering Glossary</a>
-              </h3>
-              <p class="card-snippet">
-                Interactive simulator for temperature, top_p, top_k, and context windows alongside a dictionary of 89 essential AI terms.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span>Interactive</span>
-              <a href="/ai/glossary" class="read-more-link">
-                Open Simulator →
-              </a>
-            </div>
-          </article>
-
-          <!-- Article Card 5 -->
-          <article class="article-card">
-            <div class="card-top">
-              <span class="card-category-label">Developer Guide</span>
-              <h3 class="card-headline">
-                <a href="/ai/prompt-engineering">Prompt Engineering & Structured JSON Schemas</a>
-              </h3>
-              <p class="card-snippet">
-                System prompt design, structured output enforcement, chain-of-thought orchestration, and context window optimization.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span>5 min read</span>
-              <a href="/ai/prompt-engineering" class="read-more-link">
-                Read Article →
-              </a>
-            </div>
-          </article>
-
-          <!-- Article Card 6 -->
-          <article class="article-card">
-            <div class="card-top">
-              <span class="card-category-label">Web Architecture</span>
-              <h3 class="card-headline">
-                <a href="/web-dev">Web Development & Vanilla CSS Design Systems</a>
-              </h3>
-              <p class="card-snippet">
-                Developer workstation lab, full-stack application architectures, Astro client performance, and component specs.
-              </p>
-            </div>
-            <div class="card-bottom">
-              <span>Diagnostics</span>
-              <a href="/web-dev" class="read-more-link">
-                View Specs →
-              </a>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div>
+        <h2>II. Working Hypotheses</h2>
+        <p>
+          Technology platforms succeed when they prioritize functional transparency over cosmetic complexity. Over the coming iterations, this publication will focus on standalone, rigorous dispatches paired with interactive tools designed to verify models rather than merely present opinions.
+        </p>
+      </div>
+    </article>
 
     <!-- ===========================================================
-         RIGHT COLUMN - STACK OF 4 COMPACT PRIORITY CARDS
+         IN-BROWSER PERSISTENT SCRATCHPAD / OUTLINER
          =========================================================== -->
-    <aside class="priority-sidebar" aria-label="Priority Briefings">
-      <div class="sidebar-header">
-        <h2 class="sidebar-title">Priority Stories</h2>
+    <section class="scratchpad-box" aria-labelledby="scratchpadTitle">
+      <div class="scratchpad-header">
+        <h2 class="scratchpad-title" id="scratchpadTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          Editorial Scratchpad & Outline Canvas
+        </h2>
+        <span class="scratchpad-status" id="saveStatus">Auto-saved locally</span>
       </div>
 
-      <div class="priority-stack">
-        <!-- Priority Card 1 -->
-        <article class="priority-card">
-          <span class="priority-tag">Macroeconomics</span>
-          <h3 class="priority-headline">
-            <a href="/ai/macroeconomics">Hyperscale Capex Projections & ROI Economics</a>
-          </h3>
-          <p class="priority-desc">
-            Evaluating capital expenditure efficiency, hardware depreciation curves, and enterprise adoption metrics.
-          </p>
+      <textarea 
+        id="scratchpadArea" 
+        class="scratchpad-textarea" 
+        placeholder="Jot down notes, article outlines, structural ideas, or paste drafts here... Changes are automatically preserved in your browser's local storage."
+        rows="8"
+      ></textarea>
+
+      <div class="scratchpad-actions">
+        <button id="copyBtn" class="btn-secondary" type="button">Copy to Clipboard</button>
+        <button id="clearBtn" class="btn-secondary" type="button">Clear Scratchpad</button>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         WORKING DRAFTS & THEMATIC DISPATCHES
+         =========================================================== -->
+    <section class="drafts-section" aria-labelledby="draftsHeading">
+      <div class="section-divider-header">
+        <span class="section-label" id="draftsHeading">Upcoming Dossiers & Themes</span>
+        <span class="section-label" style="color: var(--text-faint);">In Active Development</span>
+      </div>
+
+      <div class="drafts-grid">
+        <!-- Card 1 -->
+        <article class="draft-card">
+          <div>
+            <span class="draft-status-pill">Drafting</span>
+            <h3 class="draft-title">Inference Engineering & Quantization</h3>
+            <p class="draft-excerpt">
+              Deconstructing sub-byte precision, memory bandwidth limits, and KV-cache compression economics for low-latency serving.
+            </p>
+          </div>
+          <div class="draft-meta">
+            <span>Theme: AI Systems</span>
+            <span>Outline Stage</span>
+          </div>
         </article>
 
-        <!-- Priority Card 2 -->
-        <article class="priority-card">
-          <span class="priority-tag">Emerging Risk</span>
-          <h3 class="priority-headline">
-            <a href="/research/saaspocalypse/index.html">SaaSpocalypse 2026: The Software Inversion</a>
-          </h3>
-          <p class="priority-desc">
-            Strategic analysis of seat-based SaaS model displacement by autonomous AI agents and in-house builds.
-          </p>
+        <!-- Card 2 -->
+        <article class="draft-card">
+          <div>
+            <span class="draft-status-pill">Drafting</span>
+            <h3 class="draft-title">Enterprise Risk & SaaS Blast Radiuses</h3>
+            <p class="draft-excerpt">
+              Mathematical modeling of internal control effectiveness, supply chain concentrations, and dependency failure modes.
+            </p>
+          </div>
+          <div class="draft-meta">
+            <span>Theme: Governance</span>
+            <span>Outline Stage</span>
+          </div>
         </article>
 
-        <!-- Priority Card 3 -->
-        <article class="priority-card">
-          <span class="priority-tag">Strategic History</span>
-          <h3 class="priority-headline">
-            <a href="/research/fission/index.html">Fission: High-Stakes Risk Management</a>
-          </h3>
-          <p class="priority-desc">
-            An open-source technical history of atomic systems framed as an extreme exercise in risk containment.
-          </p>
-        </article>
-
-        <!-- Priority Card 4 -->
-        <article class="priority-card">
-          <span class="priority-tag">Governance & Risk</span>
-          <h3 class="priority-headline">
-            <a href="/grc">Enterprise Risk & Control Effectiveness</a>
-          </h3>
-          <p class="priority-desc">
-            Quantitative risk aggregation, internal control effectiveness evaluation, and vendor concentration analytics.
-          </p>
+        <!-- Card 3 -->
+        <article class="draft-card">
+          <div>
+            <span class="draft-status-pill">Drafting</span>
+            <h3 class="draft-title">The Datacenter Power Wall</h3>
+            <p class="draft-excerpt">
+              Investigating gigawatt interconnect queues, behind-the-meter nuclear deployments, and thermal management architectures.
+            </p>
+          </div>
+          <div class="draft-meta">
+            <span>Theme: Infrastructure</span>
+            <span>Outline Stage</span>
+          </div>
         </article>
       </div>
-    </aside>
+    </section>
+
   </div>
+
+  <script is:inline>
+    // In-browser scratchpad persistence
+    const STORAGE_KEY = 'rycode_editorial_scratchpad_v1';
+    const textarea = document.getElementById('scratchpadArea');
+    const statusEl = document.getElementById('saveStatus');
+    const copyBtn = document.getElementById('copyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    if (textarea) {
+      // Load saved draft
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        textarea.value = saved;
+      }
+
+      // Auto-save on input
+      textarea.addEventListener('input', () => {
+        localStorage.setItem(STORAGE_KEY, textarea.value);
+        if (statusEl) {
+          statusEl.textContent = 'Saved';
+          setTimeout(() => {
+            statusEl.textContent = 'Auto-saved locally';
+          }, 1200);
+        }
+      });
+
+      // Copy action
+      copyBtn?.addEventListener('click', async () => {
+        if (!textarea.value) return;
+        try {
+          await navigator.clipboard.writeText(textarea.value);
+          const original = copyBtn.textContent;
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => { copyBtn.textContent = original; }, 1500);
+        } catch (e) {
+          console.error('Failed to copy', e);
+        }
+      });
+
+      // Clear action
+      clearBtn?.addEventListener('click', () => {
+        if (confirm('Clear the contents of your scratchpad?')) {
+          textarea.value = '';
+          localStorage.removeItem(STORAGE_KEY);
+          if (statusEl) statusEl.textContent = 'Cleared';
+        }
+      });
+    }
+  </script>
 </Layout>
