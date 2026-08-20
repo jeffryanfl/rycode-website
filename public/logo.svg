@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" role="img" aria-label="Rycode">
-  <!-- Blue rounded square periodic element mark -->
-  <rect x="4" y="4" width="92" height="92" rx="16" ry="16" fill="#2563eb"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Ry">
+  <!-- Dark blue outline rounded square periodic element mark -->
+  <rect x="4" y="4" width="92" height="92" rx="16" ry="16" fill="none" stroke="#1e3a8a" stroke-width="4"/>
   <text x="14" y="27"
         font-family="'Geist Mono', ui-monospace, SFMono-Regular, monospace"
         font-size="14" font-weight="700"
-        fill="#FFFFFF">26</text>
-  <text x="50" y="74" text-anchor="middle"
+        fill="#1e3a8a">26</text>
+  <text x="50" y="76" text-anchor="middle"
         font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
-        font-size="52" font-weight="800"
-        letter-spacing="-1.5"
-        fill="#FFFFFF">Ry</text>
-  <!-- Wordmark "code" -->
-  <text x="116" y="74"
-        font-family="'Playfair Display', Georgia, serif"
-        font-size="62" font-weight="700"
-        letter-spacing="-0.5"
-        fill="#1C1917">code</text>
+        font-size="58" font-weight="800"
+        letter-spacing="-2"
+        fill="#1e3a8a">Ry</text>
 </svg>

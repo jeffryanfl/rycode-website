@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import HeaderBannerNav from '../components/HeaderBannerNav.astro';
 
 interface Props {
   title?: string;
@@ -45,22 +46,16 @@ const formattedDate = new Date().toLocaleDateString('en-US', {
   <a class="skip-link" href="#mainContent">Skip to content</a>
 
   <div class="editorial-shell">
-    <!-- TOP MASTHEAD -->
+    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV -->
     <header class="masthead">
-      <div class="masthead-top">
-        <div class="masthead-meta-left">
-          <span class="masthead-edition">Working Notes & Systems Journal</span>
-        </div>
-        <div class="masthead-meta-right">
-          <span class="masthead-date">{formattedDate}</span>
-        </div>
-      </div>
-
       <div class="masthead-brand">
         <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
           <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
         </a>
       </div>
+
+      <!-- NEWSPAPER HEADLINE BANNER NAV -->
+      <HeaderBannerNav />
     </header>
 
     <!-- MAIN EDITORIAL CONTENT -->
@@ -72,7 +67,6 @@ const formattedDate = new Date().toLocaleDateString('en-US', {
     <footer class="editorial-footer">
       <div class="editorial-footer-inner">
         <span>© {new Date().getFullYear()} Rycode · Independent Technology & Systems Journal</span>
-        <span class="footer-edition-badge">Distraction-Free Editorial Canvas</span>
       </div>
     </footer>
   </div>
