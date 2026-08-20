@@ -2,453 +2,219 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Rycode — Central Command Hub">
-  <!-- Full Screen Glitch Effect Overlay -->
-  <div class="glitch-overlay"></div>
+<Layout title="Rycode — Clean Editorial Journal">
+  <div class="editorial-container">
+    <!-- ===========================================================
+         LEFT / CENTRAL WIDE EDITORIAL COLUMN
+         =========================================================== -->
+    <div class="editorial-main">
+      <!-- ONE LARGE FEATURED STORY AT THE TOP -->
+      <article class="featured-story">
+        <div class="story-header">
+          <span class="category-tag">AI Systems & Frontier Models</span>
+          <span class="meta-date">August 18, 2026 · 8 min read</span>
+        </div>
 
-  <!-- Interactive Background Matrix Grid Canvas (Subdued Mode) -->
-  <div class="viewport-matrix-container">
-    <canvas id="networkCanvas"></canvas>
-  </div>
+        <h1 class="featured-title">
+          <a href="/ai/benchmarks">
+            Frontier AI Model Benchmarks & Architectural Trade-offs
+          </a>
+        </h1>
 
-  <!-- ===========================================================
-       HERO / CENTRAL COMMAND HUB
-       =========================================================== -->
-  <section class="hero" aria-labelledby="heroTitle">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <div class="hero-grid">
-        <!-- Brand / Tagline Column -->
-        <div class="hero-text-block">
-          <p class="hero-eyebrow">Technology · Geopolitics · Intelligence</p>
-          <h1 class="hero-title" id="heroTitle">Rycode</h1>
-          <p class="hero-tagline">
-            An independent research lab and developer workshop exploring complex global systems. Select a domain below to enter our active intelligence vault or system diagnostic portals.
+        <p class="featured-deck">
+          An empirical evaluation analyzing Kimi K3 MoE, DeepSeek V3/R1, MMLU-Pro, and SWE-bench performance across reasoning rigor, code generation precision, and low-precision inference economics.
+        </p>
+
+        <!-- Rectangular illustration / editorial artwork placeholder -->
+        <div class="illustration-box" aria-label="Editorial Illustration Placeholder">
+          <svg class="illustration-graphic" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5"></rect>
+            <line x1="3" y1="9" x2="21" y2="9" stroke-width="1.5"></line>
+            <line x1="9" y1="21" x2="9" y2="9" stroke-width="1.5"></line>
+            <circle cx="15" cy="15" r="2" stroke-width="1.5"></circle>
+          </svg>
+          <span class="illustration-caption">Editorial Schema · Frontier AI Systems Architecture</span>
+        </div>
+      </article>
+
+      <!-- MULTI-COLUMN ARTICLE-STYLE CARDS GRID -->
+      <section aria-labelledby="articlesHeading">
+        <div class="article-grid-header">
+          <h2 class="grid-section-title" id="articlesHeading">Latest Research & Technical Dossiers</h2>
+          <span class="meta-date">6 Articles</span>
+        </div>
+
+        <div class="article-grid">
+          <!-- Article Card 1 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Inference Engineering</span>
+              <h3 class="card-headline">
+                <a href="/ai/inference">Low-Precision NVFP4 & FP8 Serving Architectures</a>
+              </h3>
+              <p class="card-snippet">
+                Serving frontier LLMs at scale with sub-byte quantization, KV-cache compression, and GPU memory bandwidth optimization.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span>6 min read</span>
+              <a href="/ai/inference" class="read-more-link">
+                Read Article →
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 2 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Semiconductors</span>
+              <h3 class="card-headline">
+                <a href="/ai/supply-chain">8-Tier Global AI Silicon & Hardware Supply Chain</a>
+              </h3>
+              <p class="card-snippet">
+                Mapping photolithography, wafer fabrication, advanced packaging, HBM3e memory, and optical networking bottlenecks.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span>12 min read</span>
+              <a href="/ai/supply-chain" class="read-more-link">
+                Read Article →
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 3 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Power & Infrastructure</span>
+              <h3 class="card-headline">
+                <a href="/ai/energy-compute">Datacenter Power Constraints & SMR Nuclear Strategy</a>
+              </h3>
+              <p class="card-snippet">
+                Analyzing hyperscale power requirements, small modular reactor deployment timelines, and grid interconnection queues.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span>7 min read</span>
+              <a href="/ai/energy-compute" class="read-more-link">
+                Read Article →
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 4 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Interactive Reference</span>
+              <h3 class="card-headline">
+                <a href="/ai/glossary">Sampling Parameters & AI Engineering Glossary</a>
+              </h3>
+              <p class="card-snippet">
+                Interactive simulator for temperature, top_p, top_k, and context windows alongside a dictionary of 89 essential AI terms.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span>Interactive</span>
+              <a href="/ai/glossary" class="read-more-link">
+                Open Simulator →
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 5 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Developer Guide</span>
+              <h3 class="card-headline">
+                <a href="/ai/prompt-engineering">Prompt Engineering & Structured JSON Schemas</a>
+              </h3>
+              <p class="card-snippet">
+                System prompt design, structured output enforcement, chain-of-thought orchestration, and context window optimization.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span>5 min read</span>
+              <a href="/ai/prompt-engineering" class="read-more-link">
+                Read Article →
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 6 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Web Architecture</span>
+              <h3 class="card-headline">
+                <a href="/web-dev">Web Development & Vanilla CSS Design Systems</a>
+              </h3>
+              <p class="card-snippet">
+                Developer workstation lab, full-stack application architectures, Astro client performance, and component specs.
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span>Diagnostics</span>
+              <a href="/web-dev" class="read-more-link">
+                View Specs →
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===========================================================
+         RIGHT COLUMN - STACK OF 4 COMPACT PRIORITY CARDS
+         =========================================================== -->
+    <aside class="priority-sidebar" aria-label="Priority Briefings">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">Priority Stories</h2>
+      </div>
+
+      <div class="priority-stack">
+        <!-- Priority Card 1 -->
+        <article class="priority-card">
+          <span class="priority-tag">Macroeconomics</span>
+          <h3 class="priority-headline">
+            <a href="/ai/macroeconomics">Hyperscale Capex Projections & ROI Economics</a>
+          </h3>
+          <p class="priority-desc">
+            Evaluating capital expenditure efficiency, hardware depreciation curves, and enterprise adoption metrics.
           </p>
-        </div>
+        </article>
 
-        <!-- System Status & Subpage Status Column -->
-        <div class="hud-container">
-          <div class="hud-card">
-            <h2 class="hud-title">
-              <span class="hud-pulse" aria-hidden="true"></span>
-              Domain Portals
-            </h2>
-            <div class="hud-row">
-              <span class="hud-label">AI_CONCEPTS_&_INFRASTRUCTURE</span>
-              <span class="hud-val active">ACTIVE</span>
-            </div>
-            <div class="hud-row">
-              <span class="hud-label">WEB_DEVELOPMENT</span>
-              <span class="hud-val restricted">SCHEDULED MAINTENANCE</span>
-            </div>
-            <div class="hud-row">
-              <span class="hud-label">GRC_&_RISK_SYSTEMS</span>
-              <span class="hud-val restricted">SCHEDULED MAINTENANCE</span>
-            </div>
-          </div>
+        <!-- Priority Card 2 -->
+        <article class="priority-card">
+          <span class="priority-tag">Emerging Risk</span>
+          <h3 class="priority-headline">
+            <a href="/research/saaspocalypse/index.html">SaaSpocalypse 2026: The Software Inversion</a>
+          </h3>
+          <p class="priority-desc">
+            Strategic analysis of seat-based SaaS model displacement by autonomous AI agents and in-house builds.
+          </p>
+        </article>
 
-          <!-- Interactive Matrix Control HUD Console -->
-          <div class="matrix-console">
-            <h3>
-              <span style="display:inline-block; width:8px; height:8px; background:var(--gold-hot); border-radius:50%;"></span>
-              Matrix Control Panel
-            </h3>
-            
-            <!-- Speed Slider -->
-            <div class="control-group">
-              <label for="speedRange">Speed: <span class="val-display" id="speedVal">0.8x</span></label>
-              <input type="range" id="speedRange" class="matrix-range" min="0.1" max="3" step="0.1" value="0.8" aria-label="Matrix speed slider" />
-            </div>
+        <!-- Priority Card 3 -->
+        <article class="priority-card">
+          <span class="priority-tag">Strategic History</span>
+          <h3 class="priority-headline">
+            <a href="/research/fission/index.html">Fission: High-Stakes Risk Management</a>
+          </h3>
+          <p class="priority-desc">
+            An open-source technical history of atomic systems framed as an extreme exercise in risk containment.
+          </p>
+        </article>
 
-            <!-- Density Slider -->
-            <div class="control-group">
-              <label for="densityRange">Density: <span class="val-display" id="densityVal">35%</span></label>
-              <input type="range" id="densityRange" class="matrix-range" min="10" max="100" step="5" value="35" aria-label="Matrix density slider" />
-            </div>
-
-            <!-- Theme Color Selector -->
-            <div class="control-group">
-              <label>Color Palette</label>
-              <div class="btn-grid">
-                <button class="matrix-select-btn active" data-theme="blue" aria-label="Blue color theme">Cobalt</button>
-                <button class="matrix-select-btn" data-theme="gold" aria-label="Gold color theme">Gold</button>
-                <button class="matrix-select-btn" data-theme="green" aria-label="Green color theme">Green</button>
-                <button class="matrix-select-btn" data-theme="red" aria-label="Alert red color theme">Alert</button>
-              </div>
-            </div>
-
-            <!-- Glyph Selector -->
-            <div class="control-group">
-              <label>Glyph Mode</label>
-              <div class="btn-grid">
-                <button class="matrix-select-btn active" data-glyph="binary" aria-label="Binary glyphs mode">Bin</button>
-                <button class="matrix-select-btn" data-glyph="hex" aria-label="Hexadecimal glyphs mode">Hex</button>
-                <button class="matrix-select-btn" data-glyph="glyphs" aria-label="Standard matrix glyphs mode">Glyph</button>
-                <button class="matrix-select-btn" data-glyph="rycode" aria-label="Rycode glyphs mode">Ryc</button>
-              </div>
-            </div>
-
-            <!-- System Glitch Button -->
-            <div class="control-group" style="margin-top: 1rem;">
-              <button id="glitchBtn" class="matrix-action-btn" aria-label="Trigger Matrix Glitch Override">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
-                Glitch Override
-              </button>
-            </div>
-          </div>
-        </div>
+        <!-- Priority Card 4 -->
+        <article class="priority-card">
+          <span class="priority-tag">Governance & Risk</span>
+          <h3 class="priority-headline">
+            <a href="/grc">Enterprise Risk & Control Effectiveness</a>
+          </h3>
+          <p class="priority-desc">
+            Quantitative risk aggregation, internal control effectiveness evaluation, and vendor concentration analytics.
+          </p>
+        </article>
       </div>
-    </div>
-  </section>
-
-  <!-- ===========================================================
-       INTEGRATED DOMAIN SELECTOR (ONLY SUBPAGES BUILT)
-       =========================================================== -->
-  <section class="section portal-section">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">COMMAND PORTALS</p>
-        <h2 class="section-title">Select Intelligence Domain</h2>
-        <p class="section-subtitle">Choose a domain to access specialized research, interactive tools, and system dossiers.</p>
-      </div>
-
-      <!-- Single Integrated Glass Container -->
-      <div class="domain-container">
-        <!-- DOMAIN 1: A.I. (ACTIVE BUILD) -->
-        <a href="/ai" class="domain-row active-row">
-          <div class="domain-main">
-            <div class="domain-header">
-              <span class="domain-code">01 // AI_SYSTEMS</span>
-              <span class="domain-badge active">ACTIVE · BUILD ONLINE</span>
-            </div>
-            <h3 class="domain-title">AI Concepts and Infrastructure</h3>
-            <p class="domain-desc">
-              Frontier model benchmarks, Kimi K3 MoE technical analysis, 8-tier AI supply chain matrix, low-precision NVFP4 inference engineering, SMR & power grid strategy, and prompt engineering handbook.
-            </p>
-            <div class="domain-tags">
-              <span>Glossary & Parameter Simulator</span>
-              <span>Frontier Benchmarks</span>
-              <span>8-Tier Supply Chain Directory</span>
-              <span>Energy & Compute Strategy</span>
-            </div>
-          </div>
-          <div class="domain-action">
-            <span class="action-text">Enter Vault</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </a>
-
-        <!-- DOMAIN 2: WEB DEVELOPMENT (MAINTENANCE) -->
-        <a href="/web-dev" class="domain-row maintenance-row">
-          <div class="domain-main">
-            <div class="domain-header">
-              <span class="domain-code">02 // WEB_DEV</span>
-              <span class="domain-badge maintenance">SCHEDULED MAINTENANCE</span>
-            </div>
-            <h3 class="domain-title">Web Development</h3>
-            <p class="domain-desc">
-              Developer workstation lab, full-stack application architectures, vanilla CSS design systems, modern component engineering, and client performance tools.
-            </p>
-            <div class="domain-tags">
-              <span>Developer Workbench Lab</span>
-              <span>System Component Specs</span>
-              <span>Astro Client Architecture</span>
-            </div>
-          </div>
-          <div class="domain-action">
-            <span class="action-text">Diagnostics</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </a>
-
-        <!-- DOMAIN 3: GRC (MAINTENANCE) -->
-        <a href="/grc" class="domain-row maintenance-row">
-          <div class="domain-main">
-            <div class="domain-header">
-              <span class="domain-code">03 // GRC_RISK</span>
-              <span class="domain-badge maintenance">SCHEDULED MAINTENANCE</span>
-            </div>
-            <h3 class="domain-title">GRC & Risk Systems</h3>
-            <p class="domain-desc">
-              Governance, Risk & Compliance frameworks, Archer IRM career progression models, enterprise risk aggregation synthesis, and policy gap verification engines.
-            </p>
-            <div class="domain-tags">
-              <span>Archer IRM Framework</span>
-              <span>Enterprise Risk Aggregation</span>
-              <span>Compliance Gap Analytics</span>
-            </div>
-          </div>
-          <div class="domain-action">
-            <span class="action-text">Diagnostics</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <style>
-    /* Hero 2-column grid layout */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 968px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-    }
-
-    #networkCanvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* Glassmorphic Telemetry Card */
-    .hud-card {
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04);
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .hud-title {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .hud-pulse {
-      width: 8px;
-      height: 8px;
-      background: #2563eb;
-      border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
-      animation: hud-pulse-anim 1.8s ease-out infinite;
-    }
-
-    @keyframes hud-pulse-anim {
-      0%   { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
-      100% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
-    }
-
-    .hud-row {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.04);
-      padding: 0.55rem 0;
-    }
-
-    .hud-row:last-child {
-      border-bottom: none;
-    }
-
-    .hud-label {
-      color: var(--text-faint);
-    }
-
-    .hud-val {
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .hud-val.active {
-      color: #2563eb;
-    }
-
-    .hud-val.restricted {
-      color: #c2410c;
-    }
-
-    /* Integrated Domain Panel */
-    .portal-section {
-      padding-top: 2rem;
-      padding-bottom: 5rem;
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 3rem auto;
-    }
-
-    .section-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--gold-hot);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 800;
-      color: var(--text);
-      margin: 0 0 0.75rem 0;
-      letter-spacing: -0.02em;
-    }
-
-    .section-subtitle {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      margin: 0;
-    }
-
-    /* Single Integrated Glass Container */
-    .domain-container {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04);
-    }
-
-    .domain-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2.25rem 2.5rem;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s var(--ease);
-    }
-
-    .domain-row:last-child {
-      border-bottom: none;
-    }
-
-    .domain-row:hover {
-      background: rgba(37, 99, 235, 0.03);
-    }
-
-    .domain-row.active-row {
-      border-left: 4px solid #2563eb;
-    }
-
-    .domain-main {
-      flex: 1;
-      max-width: 85%;
-    }
-
-    .domain-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .domain-code {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-faint);
-    }
-
-    .domain-badge {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      text-transform: uppercase;
-    }
-
-    .domain-badge.active {
-      background: rgba(37, 99, 235, 0.1);
-      color: #2563eb;
-    }
-
-    .domain-badge.maintenance {
-      background: rgba(194, 65, 12, 0.08);
-      color: #c2410c;
-    }
-
-    .domain-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 0 0 0.5rem 0;
-    }
-
-    .domain-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.55;
-      margin: 0 0 1.25rem 0;
-    }
-
-    .domain-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--text-faint);
-    }
-
-    .domain-tags span {
-      background: rgba(15, 23, 42, 0.04);
-      padding: 0.25rem 0.65rem;
-      border-radius: 6px;
-    }
-
-    .domain-action {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: #2563eb;
-      white-space: nowrap;
-      margin-left: 2rem;
-      transition: transform 0.2s var(--ease);
-    }
-
-    .domain-row:hover .domain-action {
-      transform: translateX(4px);
-    }
-
-    @media (max-width: 800px) {
-      .domain-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-        padding: 1.75rem;
-      }
-      .domain-main { max-width: 100%; }
-      .domain-action { margin-left: 0; }
-    }
-  </style>
-
-  <script>
-    import '../scripts/matrix.js';
-  </script>
+    </aside>
+  </div>
 </Layout>

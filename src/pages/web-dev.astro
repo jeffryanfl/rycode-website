@@ -2,122 +2,64 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Web Development — Scheduled Maintenance | Rycode">
-  <div class="glitch-overlay"></div>
-  <div class="viewport-matrix-container">
-    <canvas id="networkCanvas"></canvas>
-  </div>
+<Layout title="Web Development & Systems — Rycode Collections">
+  <div class="editorial-container">
+    <div class="editorial-main" style="grid-column: span 2;">
+      <section class="subpage-hero">
+        <p class="subpage-eyebrow">Collections · System Architecture</p>
+        <h1 class="subpage-title">Web Development & Systems Engineering</h1>
+        <p class="subpage-lead">
+          Full-stack application architectures, vanilla CSS design systems, interactive browser explainers, and client-side performance models.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          <a href="/" class="read-more-link" style="font-size: 1rem;">← Return to Editorial Home</a>
+          <a href="/ai" class="read-more-link" style="font-size: 1rem;">Explore AI Systems →</a>
+        </div>
+      </section>
 
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-grid">
-        <div class="hero-text-block">
-          <p class="hero-eyebrow">DOMAINS · WEB DEVELOPMENT</p>
-          <h1 class="hero-title">Web Development</h1>
-          <p class="hero-tagline">
-            Developer workstation engineering lab, full-stack application architectures, vanilla CSS design systems, modern component engineering, and client-side performance tools.
-          </p>
-          <div class="hero-actions">
-            <a href="/" class="btn-primary">← Return to Central Hub</a>
-            <a href="/lab/workbench" class="btn-secondary">Open Workbench Lab</a>
-          </div>
+      <section aria-labelledby="webHeading">
+        <div class="article-grid-header">
+          <h2 class="grid-section-title" id="webHeading">Interactive Systems & Architecture Specs</h2>
+          <span class="meta-date">Active Modules</span>
         </div>
 
-        <div class="hud-container">
-          <div class="hud-card">
-            <h2 class="hud-title">
-              <span class="hud-pulse warning" aria-hidden="true"></span>
-              Workstation Telemetry
-            </h2>
-            <div class="hud-row">
-              <span class="hud-label">PORTAL_ID</span>
-              <span class="hud-val">WEB_DEV_ENGINEERING</span>
+        <div class="article-grid">
+          <!-- Module 1 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Systems Explainer</span>
+              <h3 class="card-headline">
+                <a href="/anatomy/deployment/index.html">Anatomy of a Deployment</a>
+              </h3>
+              <p class="card-snippet">
+                A walkable visual map illustrating the client-server lifecycle, from local commit directories to edge CDN caching and browser paint cycles.
+              </p>
             </div>
-            <div class="hud-row">
-              <span class="hud-label">PORTAL_STATUS</span>
-              <span class="hud-val restricted">UNDER_SCHEDULED_MAINTENANCE</span>
+            <div class="card-bottom">
+              <span>Interactive Map</span>
+              <a href="/anatomy/deployment/index.html" class="read-more-link">Explore Map →</a>
             </div>
-            <div class="hud-row">
-              <span class="hud-label">DESIGN_SYSTEM</span>
-              <span class="hud-val active">VANILLA CSS / FROSTED GLASS</span>
+          </article>
+
+          <!-- Module 2 -->
+          <article class="article-card">
+            <div class="card-top">
+              <span class="card-category-label">Physical Systems</span>
+              <h3 class="card-headline">
+                <a href="/anatomy/teller-ulam/index.html">Teller–Ulam Physics Scroller</a>
+              </h3>
+              <p class="card-snippet">
+                A milliseconds-scale timeline scrubber outlining structural staging and physical sequences inside a thermonuclear reaction in interactive SVG.
+              </p>
             </div>
-            <div class="hud-row">
-              <span class="hud-label">FRAMEWORK_STACK</span>
-              <span class="hud-val">ASTRO 5.x / VITE / TS</span>
+            <div class="card-bottom">
+              <span>Timeline Scrubber</span>
+              <a href="/anatomy/teller-ulam/index.html" class="read-more-link">Open Scroller →</a>
             </div>
-            <div class="hud-row">
-              <span class="hud-label">ESTIMATED_READY</span>
-              <span class="hud-val">PHASE 2 DEPLOYMENT</span>
-            </div>
-          </div>
+          </article>
         </div>
-      </div>
+      </section>
     </div>
-  </section>
-
-  <style>
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    @media (max-width: 968px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-    }
-    .hud-card {
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 16px;
-      padding: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-    }
-    .hud-title {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .hud-pulse.warning {
-      background: #c2410c;
-      box-shadow: 0 0 0 0 rgba(194, 65, 12, 0.5);
-      animation: pulse-warn 1.8s ease-out infinite;
-    }
-    @keyframes pulse-warn {
-      0% { box-shadow: 0 0 0 0 rgba(194, 65, 12, 0.6); }
-      100% { box-shadow: 0 0 0 8px rgba(194, 65, 12, 0); }
-    }
-    .hud-row {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.04);
-      padding: 0.65rem 0;
-    }
-    .hud-label { color: var(--text-faint); }
-    .hud-val { font-weight: 600; color: var(--text); }
-    .hud-val.active { color: #2563eb; }
-    .hud-val.restricted { color: #c2410c; }
-    .hero-actions { display: flex; gap: 1rem; margin-top: 2rem; }
-    .btn-primary {
-      background: #2563eb; color: white; padding: 0.75rem 1.25rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
-    }
-    .btn-secondary {
-      background: rgba(15, 23, 42, 0.05); color: var(--text); border: 1px solid rgba(15, 23, 42, 0.1); padding: 0.75rem 1.25rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
-    }
-  </style>
-
-  <script>
-    import '../scripts/matrix.js';
-  </script>
+  </div>
 </Layout>

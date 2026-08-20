@@ -4,18 +4,52 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
-  hideNavLinks?: boolean;
 }
 
 const {
-  title = "Rycode — High-integrity software, governance systems, and analytical tools.",
-  description = "A collection of full-stack systems, risk management frameworks, and interactive dashboards engineered for clarity and performance.",
-  hideNavLinks = false
+  title = "Rycode — Independent Technology & Systems Journal",
+  description = "A clean, editorial intelligence journal covering frontier AI architectures, web development, and governance systems.",
 } = Astro.props;
+
+const formattedDate = new Date().toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function navState(href: string, { exact = false }: { exact?: boolean } = {}) {
+  const normalized = href.replace(/\/$/, '') || '/';
+  const active = exact
+    ? path === normalized
+    : normalized === '/'
+      ? path === '/'
+      : path === normalized || path.startsWith(`${normalized}/`);
+  return {
+    class: active ? 'is-active' : '',
+    current: active ? 'page' : undefined,
+  };
+}
+
+const nav = {
+  home: navState('/', { exact: true }),
+  ai: (() => {
+    const onGlossary = path === '/ai/glossary' || path.startsWith('/ai/glossary/');
+    const onAi = path === '/ai' || path.startsWith('/ai/');
+    const active = onAi && !onGlossary;
+    return { class: active ? 'is-active' : '', current: active ? 'page' as const : undefined };
+  })(),
+  web: navState('/web-dev'),
+  glossary: navState('/ai/glossary'),
+  grc: navState('/grc'),
+  about: navState('/personal'),
+};
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,86 +57,123 @@ const {
   <meta name="color-scheme" content="light" />
   <meta name="generator" content={Astro.generator} />
   
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content="/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content="/og-image.png" />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>{title}</title>
 
-  <!-- Premium Typography Fonts -->
+  <!-- Typography: Newsreader (Stately Serif Headlines) & Inter (Clean Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
-
-  <script is:inline>
-    // Swap no-js → js before paint so CSS can hide pre-animation states without a flash.
-    document.documentElement.classList.replace('no-js', 'js');
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&family=Frank+Ruhl+Libre:wght@700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="scroll-progress"></div>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
 
-  <a class="skip-link" href="#top">Skip to content</a>
+  <div class="app-layout">
+    <!-- ===========================================================
+         LEFT VERTICAL NAVIGATION RAIL
+         =========================================================== -->
+    <aside class="nav-rail" aria-label="Section shortcuts">
+      <nav class="rail-menu" aria-label="Primary sections">
+        <a href="/" class={`rail-item ${nav.home.class}`} aria-current={nav.home.current} aria-label="Home">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span class="visually-hidden">Home</span>
+          <span class="rail-tooltip">Home</span>
+        </a>
 
-  <!-- ===========================================================
-       HEADER / NAV
-       =========================================================== -->
-  <header class="site-header" id="siteHeader">
-    <nav class="nav" aria-label="Primary">
-      <a href="/" class="brand" aria-label="Rycode home">
-        <img src="/logo.svg" alt="Rycode" class="brand-logo" />
-      </a>
-      {!hideNavLinks && (
-        <>
-          <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
-            <span></span><span></span><span></span>
-          </button>
-          <ul class="nav-links" id="navLinks">
-            <li><a href="/">Hub</a></li>
-            <li><a href="/ai">AI Concepts & Infrastructure</a></li>
-            <li><a href="/web-dev">Web Dev</a></li>
-            <li><a href="/grc">GRC</a></li>
-            <li><a href="/lab/workbench">Workbench</a></li>
-          </ul>
-        </>
-      )}
-    </nav>
-  </header>
+        <a href="/ai" class={`rail-item ${nav.ai.class}`} aria-current={nav.ai.current} aria-label="AI">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span class="visually-hidden">AI</span>
+          <span class="rail-tooltip">AI</span>
+        </a>
 
-  <main id="top" tabindex="-1">
-    <slot />
-  </main>
+        <a href="/web-dev" class={`rail-item ${nav.web.class}`} aria-current={nav.web.current} aria-label="Web">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="visually-hidden">Web</span>
+          <span class="rail-tooltip">Web</span>
+        </a>
 
-  <!-- ===========================================================
-       FOOTER
-       =========================================================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© {new Date().getFullYear()} Rycode. All rights reserved.</span>
-      {!hideNavLinks && (
-        <span>
-          <a href="/build-log/index.html" class="footer-link">Build Log</a> · 
-          <a href="/research/saaspocalypse/index.html" class="footer-link">Briefings</a>
-        </span>
-      )}
-      <span>Built with Astro.</span>
+        <a href="/ai/glossary" class={`rail-item ${nav.glossary.class}`} aria-current={nav.glossary.current} aria-label="Glossary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="visually-hidden">Glossary</span>
+          <span class="rail-tooltip">Glossary</span>
+        </a>
+
+        <a href="/grc" class={`rail-item ${nav.grc.class}`} aria-current={nav.grc.current} aria-label="GRC">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          <span class="visually-hidden">GRC</span>
+          <span class="rail-tooltip">GRC</span>
+        </a>
+
+        <a href="/personal" class={`rail-item ${nav.about.class}`} aria-current={nav.about.current} aria-label="About">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+          </svg>
+          <span class="visually-hidden">About</span>
+          <span class="rail-tooltip">About</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ===========================================================
+         MAIN SHELL AREA (HEADER + CONTENT + FOOTER)
+         =========================================================== -->
+    <div class="main-area">
+      <!-- TOP HEADER -->
+      <header class="site-header">
+        <div class="header-left">
+          <a href="/" class="brand-link" aria-label="Rycode Home">
+            <img src="/logo.svg" alt="Rycode" class="brand-logo-img" />
+          </a>
+          <span class="header-date">{formattedDate}</span>
+        </div>
+
+        <nav class="header-right" aria-label="Primary">
+          <a href="/" class={`header-nav-link ${nav.home.class}`} aria-current={nav.home.current}>Home</a>
+          <a href="/ai" class={`header-nav-link ${nav.ai.class}`} aria-current={nav.ai.current}>AI</a>
+          <a href="/web-dev" class={`header-nav-link ${nav.web.class}`} aria-current={nav.web.current}>Web</a>
+          <a href="/ai/glossary" class={`header-nav-link ${nav.glossary.class}`} aria-current={nav.glossary.current}>Glossary</a>
+          <a href="/grc" class={`header-nav-link ${nav.grc.class}`} aria-current={nav.grc.current}>GRC</a>
+          <a href="/personal" class={`header-nav-link ${nav.about.class}`} aria-current={nav.about.current}>About</a>
+        </nav>
+      </header>
+
+      <!-- PAGE CONTENT -->
+      <main id="mainContent" tabindex="-1">
+        <slot />
+      </main>
+
+      <!-- SITE FOOTER -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <span>© {new Date().getFullYear()} Rycode. All rights reserved.</span>
+          <span>
+            <a href="/research/saaspocalypse/index.html" class="footer-link">Briefings</a> · 
+            <a href="/ai" class="footer-link">AI Vault</a> · 
+            <a href="/grc" class="footer-link">Governance</a>
+          </span>
+          <span>Clean Newspaper Edition</span>
+        </div>
+      </footer>
     </div>
-  </footer>
-
-  <!-- Link Astro's script bundle to main script file -->
-  <script>
-    import '../scripts/main.js';
-  </script>
+  </div>
 </body>
 </html>
