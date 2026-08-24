@@ -1,6 +1,6 @@
 /* ==================================================================
-   RYCODE LANDING STAGE — chip photo, glass tiles
-   Used on home, Systems / Tools / Research, and 404.
+   RYCODE LANDING STAGE
+   Home: glass windows over a grid. Section pages: chip photo + cards.
    ================================================================== */
 
 /* --- Landing canvas: charcoal + chip photo + dark veil ---
@@ -28,9 +28,22 @@ html:has(.editorial-shell--landing) body {
   background-color: #080a10;
   background-image: url("/landing/chip-bg.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center 72%;
   background-repeat: no-repeat;
   color: rgba(248, 250, 252, 0.92);
+}
+
+.editorial-shell--landing:has(.landing-stage--windows),
+.editorial-shell--landing:has(.landing-stage--hero),
+.editorial-shell--landing:has(.landing-stage--coverflow) {
+  background-image: none;
+  background-color: #03050c;
+}
+
+.editorial-shell--landing:has(.landing-stage--windows)::after,
+.editorial-shell--landing:has(.landing-stage--hero)::after,
+.editorial-shell--landing:has(.landing-stage--coverflow)::after {
+  background: none;
 }
 
 .editorial-shell--landing::after {
@@ -102,7 +115,7 @@ html:has(.editorial-shell--landing) body {
 }
 
 /* --- Stage: remaining viewport after compact masthead + footer ---
-   Three tiles sit in the middle of the chip, not along the top. */
+   Tiles hover in the upper band so the die reads underneath them. */
 
 .landing-stage {
   flex: 1 1 auto;
@@ -112,8 +125,8 @@ html:has(.editorial-shell--landing) body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0.35rem clamp(1.5rem, 4vw, 3rem) 1.25rem;
+  justify-content: flex-start;
+  padding: clamp(2.5rem, 10vh, 6.5rem) clamp(1.5rem, 4vw, 3rem) 1.25rem;
   position: relative;
 }
 
@@ -219,12 +232,15 @@ html:has(.editorial-shell--landing) body {
   -webkit-backdrop-filter: blur(28px) saturate(1.35);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    0 28px 50px rgba(0, 0, 0, 0.48),
+    0 8px 18px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
   transition:
     background 180ms var(--ease),
     border-color 180ms var(--ease),
-    color 180ms var(--ease);
+    color 180ms var(--ease),
+    transform 180ms var(--ease),
+    box-shadow 180ms var(--ease);
 }
 
 a.landing-rail-link {
@@ -233,8 +249,16 @@ a.landing-rail-link {
 
 a.landing-rail-link:hover {
   color: rgba(255, 255, 255, 0.98);
-  background: rgba(18, 24, 40, 0.46);
-  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(18, 24, 40, 0.5);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 36px 60px rgba(0, 0, 0, 0.55),
+    0 10px 22px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.landing-rail:not(.landing-rail--windows) a.landing-rail-link:hover {
+  transform: translateY(-4px);
 }
 
 a.landing-rail-link:focus-visible {
@@ -279,6 +303,368 @@ a.landing-rail-link:focus-visible {
   white-space: nowrap;
 }
 
+/* Home: three illustrated windows on a grid. Hover a side card to snap it center. */
+.editorial-shell--landing:has(.landing-stage--coverflow) .editorial-main-content {
+  overflow: visible;
+}
+
+.editorial-shell--landing:has(.landing-stage--coverflow) .masthead--landing {
+  display: none;
+}
+
+.landing-stage--coverflow {
+  justify-content: center;
+  gap: clamp(1.1rem, 3.5vh, 2.4rem);
+  padding: clamp(1rem, 4vh, 2.5rem) 0.5rem clamp(1.5rem, 6vh, 3.25rem);
+  overflow: visible;
+  background-image: url("/landing/hub-floor.jpg");
+  background-size: cover;
+  background-position: center 78%;
+  background-repeat: no-repeat;
+}
+
+.landing-mark {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.landing-mark img {
+  display: block;
+  height: clamp(4.25rem, 9vh, 6.25rem);
+  width: auto;
+  opacity: 0.92;
+  filter:
+    brightness(0) invert(1)
+    drop-shadow(0 0 10px rgba(125, 211, 252, 0.8))
+    drop-shadow(0 0 22px rgba(34, 211, 238, 0.4));
+}
+
+.landing-mark:focus-visible {
+  outline: 2px solid rgba(147, 197, 253, 0.9);
+  outline-offset: 6px;
+  border-radius: 1rem;
+}
+
+.landing-stage--coverflow::before {
+  background: radial-gradient(
+    ellipse 70% 40% at 50% 28%,
+    rgba(20, 70, 160, 0.12),
+    transparent 70%
+  );
+}
+
+.landing-coverflow {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 100%);
+  height: min(52vh, 420px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.landing-coverflow > li {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 38%;
+  margin: 0;
+  cursor: pointer;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  transition:
+    transform 220ms cubic-bezier(0.22, 0.9, 0.32, 1),
+    z-index 0s linear 80ms;
+}
+
+.landing-coverflow img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.7rem;
+  pointer-events: none;
+  user-select: none;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(14, 165, 233, 0.22);
+}
+
+.landing-coverflow a {
+  display: block;
+  border-radius: 0.7rem;
+}
+
+.landing-coverflow a:focus-visible {
+  outline: 2px solid rgba(147, 197, 253, 0.9);
+  outline-offset: 4px;
+}
+
+.landing-coverflow[data-active="tools"] [data-card="research"],
+.landing-coverflow[data-active="systems"] [data-card="research"],
+.landing-coverflow[data-active="research"] [data-card="tools"] {
+  z-index: 1;
+  transform: translate(-50%, -50%) translateX(-72%) rotateY(28deg) translateZ(-70px);
+}
+
+.landing-coverflow[data-active="tools"] [data-card="tools"],
+.landing-coverflow[data-active="research"] [data-card="research"],
+.landing-coverflow[data-active="systems"] [data-card="systems"] {
+  z-index: 3;
+  transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(48px) scale(1.04);
+}
+
+.landing-coverflow[data-active="tools"] [data-card="systems"],
+.landing-coverflow[data-active="research"] [data-card="systems"],
+.landing-coverflow[data-active="systems"] [data-card="tools"] {
+  z-index: 1;
+  transform: translate(-50%, -50%) translateX(72%) rotateY(-28deg) translateZ(-70px);
+}
+
+/* Home: three landscape glass windows over a receding grid. */
+.landing-stage--windows {
+  justify-content: flex-start;
+  padding: clamp(1.5rem, 7vh, 4.5rem) clamp(0.75rem, 3vw, 2rem) 0;
+}
+
+.landing-stage--windows::before {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 32%,
+    rgba(30, 90, 200, 0.14) 0%,
+    transparent 70%
+  );
+}
+
+.landing-stage--windows::after {
+  content: "";
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: -22%;
+  height: 72%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(56, 160, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 160, 255, 0.22) 1px, transparent 1px),
+    radial-gradient(circle, rgba(251, 191, 36, 0.7) 1.1px, transparent 1.7px),
+    radial-gradient(circle, rgba(56, 189, 248, 0.6) 1.1px, transparent 1.7px);
+  background-size: 26px 26px, 26px 26px, 52px 52px, 78px 78px;
+  background-position: 0 0, 0 0, 8px 18px, 30px 4px;
+  transform: perspective(280px) rotateX(70deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 12%,
+    #000 78%,
+    transparent 100%
+  );
+}
+
+.landing-rail--windows {
+  width: min(1240px, 100%);
+}
+
+.landing-rail--windows ul {
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: clamp(0.4rem, 1.2vw, 1.1rem);
+  width: 100%;
+  perspective: 1200px;
+  perspective-origin: 50% 70%;
+  transform-style: preserve-3d;
+}
+
+.landing-rail--windows ul > li {
+  --yaw: 0deg;
+  --pitch: 8deg;
+  --depth: 0px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none;
+  transform: rotateY(var(--yaw)) rotateX(var(--pitch)) translateZ(var(--depth));
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+}
+
+.landing-rail--windows ul > li:nth-child(1) {
+  --yaw: 32deg;
+  --pitch: 10deg;
+  --depth: -24px;
+}
+
+.landing-rail--windows ul > li:nth-child(2) {
+  --yaw: 0deg;
+  --pitch: 6deg;
+  --depth: 36px;
+  z-index: 2;
+}
+
+.landing-rail--windows ul > li:nth-child(3) {
+  --yaw: -32deg;
+  --pitch: 10deg;
+  --depth: -24px;
+}
+
+.landing-window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: default;
+  color: rgba(226, 232, 240, 0.92);
+  border-radius: 0.85rem;
+  isolation: isolate;
+  background: rgba(6, 14, 32, 0.72);
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  border: 1px solid rgba(125, 211, 252, 0.55);
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(14, 165, 233, 0.28),
+    inset 0 0 40px rgba(14, 116, 180, 0.12),
+    inset 0 1px 0 rgba(186, 230, 253, 0.35);
+  backface-visibility: hidden;
+}
+
+a.landing-window {
+  cursor: pointer;
+}
+
+a.landing-window:hover {
+  border-color: rgba(186, 230, 253, 0.8);
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.55),
+    0 0 36px rgba(56, 189, 248, 0.38),
+    inset 0 0 40px rgba(14, 116, 180, 0.16),
+    inset 0 1px 0 rgba(186, 230, 253, 0.45);
+}
+
+a.landing-window:focus-visible {
+  outline: 2px solid rgba(147, 197, 253, 0.9);
+  outline-offset: 3px;
+}
+
+.landing-window-bar {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.4rem;
+  padding: 0.42rem 0.65rem 0.38rem;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.2);
+  background: rgba(6, 12, 28, 0.5);
+}
+
+.landing-window-icon {
+  display: flex;
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+  color: rgba(125, 211, 252, 0.95);
+}
+
+.landing-window-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.landing-window-label {
+  flex: 1 1 auto;
+  font-family: var(--font-sans);
+  font-size: clamp(0.62rem, 1.1vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(224, 242, 254, 0.95);
+}
+
+.landing-window-close {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex-shrink: 0;
+  opacity: 0.55;
+  background:
+    linear-gradient(45deg, transparent 42%, rgba(186, 230, 253, 0.9) 42%, rgba(186, 230, 253, 0.9) 58%, transparent 58%),
+    linear-gradient(-45deg, transparent 42%, rgba(186, 230, 253, 0.9) 42%, rgba(186, 230, 253, 0.9) 58%, transparent 58%);
+}
+
+.landing-window-screen {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0.55rem 0.65rem;
+  overflow: hidden;
+}
+
+.landing-window-art {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.landing-window-wave {
+  position: absolute;
+  inset: 18% 0 0;
+  width: 100%;
+  height: 82%;
+  pointer-events: none;
+}
+
+.landing-window-lens {
+  position: absolute;
+  width: 44%;
+  height: auto;
+  right: 7%;
+  bottom: 4%;
+  filter: drop-shadow(0 0 14px rgba(125, 211, 252, 0.65));
+}
+
+.landing-code {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.48rem, 0.85vw, 0.68rem);
+  line-height: 1.45;
+  color: rgba(191, 219, 254, 0.78);
+}
+
+.landing-code > span {
+  white-space: nowrap;
+}
+
+.landing-code b {
+  display: inline-block;
+  width: 1.4em;
+  margin-right: 0.4em;
+  font-weight: 400;
+  color: rgba(148, 163, 184, 0.55);
+}
+
+.landing-code i {
+  font-style: normal;
+  color: #67e8f9;
+}
+
+.landing-code--dim {
+  opacity: 0.5;
+}
+
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .landing-rail-link {
     background: rgba(8, 10, 16, 0.72);
@@ -287,7 +673,46 @@ a.landing-rail-link:focus-visible {
 
 @media (max-width: 720px) {
   .landing-stage {
-    padding: 0.3rem 1.15rem 1rem;
+    padding: 0.85rem 1.15rem 1rem;
+  }
+
+  .landing-stage--coverflow {
+    padding: 1rem 0 2.5rem;
+    gap: 1rem;
+  }
+
+  .landing-mark img {
+    height: 3.75rem;
+  }
+
+  .landing-coverflow {
+    height: min(34vh, 260px);
+  }
+
+  .landing-coverflow > li {
+    width: 48%;
+  }
+
+  .landing-coverflow[data-active="tools"] [data-card="research"],
+  .landing-coverflow[data-active="systems"] [data-card="research"],
+  .landing-coverflow[data-active="research"] [data-card="tools"] {
+    transform: translate(-50%, -50%) translateX(-52%) rotateY(22deg) translateZ(-40px);
+  }
+
+  .landing-coverflow[data-active="tools"] [data-card="systems"],
+  .landing-coverflow[data-active="research"] [data-card="systems"],
+  .landing-coverflow[data-active="systems"] [data-card="tools"] {
+    transform: translate(-50%, -50%) translateX(52%) rotateY(-22deg) translateZ(-40px);
+  }
+
+  .landing-stage--windows {
+    justify-content: center;
+    padding: 1.2rem 0.55rem 0;
+  }
+
+  .landing-stage--windows::after {
+    height: 58%;
+    bottom: -8%;
   }
 
   .landing-identity {
@@ -312,6 +737,33 @@ a.landing-rail-link:focus-visible {
   .landing-rail-label {
     font-size: clamp(1.85rem, 8vw, 2.35rem);
   }
+
+  .landing-rail--windows ul {
+    gap: 0.4rem;
+  }
+
+  .landing-rail--windows ul > li:nth-child(1),
+  .landing-rail--windows ul > li:nth-child(3) {
+    --yaw: 20deg;
+    --pitch: 8deg;
+    --depth: -12px;
+  }
+
+  .landing-rail--windows ul > li:nth-child(3) {
+    --yaw: -14deg;
+  }
+
+  .landing-window-bar {
+    padding: 0.32rem 0.4rem 0.28rem;
+  }
+
+  .landing-window-label {
+    letter-spacing: 0.08em;
+  }
+
+  .landing-window-screen {
+    padding: 0.35rem 0.4rem;
+  }
 }
 
 @media (max-height: 640px) {
@@ -326,7 +778,7 @@ a.landing-rail-link:focus-visible {
   }
 
   .landing-stage {
-    padding-top: 0.25rem;
+    padding-top: 0.55rem;
     padding-bottom: 0.75rem;
   }
 
@@ -338,12 +790,19 @@ a.landing-rail-link:focus-visible {
     padding: 1.25rem 1.5rem 1.3rem;
     min-height: 5.5rem;
   }
+
+  .landing-stage--windows {
+    padding-top: 0.8rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .landing-stage::before,
-  .landing-rail-link {
-    animation: none;
+  .landing-rail-link,
+  .landing-coverflow > li {
     transition: none;
+  }
+
+  a.landing-rail-link:hover {
+    transform: none;
   }
 }

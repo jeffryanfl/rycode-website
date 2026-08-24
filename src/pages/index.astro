@@ -1,13 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LandingTiles from '../components/LandingTiles.astro';
 import '../styles/landing.css';
-
-const sections = [
-  { label: "Systems" },
-  { label: "Tools", href: "/tools" },
-  { label: "Research" },
-];
 ---
 
 <Layout
@@ -15,8 +8,45 @@ const sections = [
   description="Systems, tools, and research."
   variant="landing"
 >
-  <section class="landing-stage">
+  <section class="landing-stage landing-stage--coverflow">
     <h1 class="visually-hidden">Rycode</h1>
-    <LandingTiles items={sections} />
+    <ul class="landing-coverflow" data-coverflow data-active="tools">
+      <li data-card="research">
+        <img src="/landing/panel-research.jpg" alt="" width="844" height="622" />
+        <span class="visually-hidden">Research</span>
+      </li>
+      <li data-card="tools">
+        <a href="/tools" aria-label="Tools">
+          <img src="/landing/panel-tools.jpg" alt="" width="722" height="628" />
+        </a>
+      </li>
+      <li data-card="systems">
+        <img src="/landing/panel-systems.jpg" alt="" width="706" height="552" />
+        <span class="visually-hidden">Systems</span>
+      </li>
+    </ul>
+    <a href="/" class="landing-mark" aria-label="Rycode Home">
+      <img src="/logo.svg" alt="Rycode" width="100" height="100" />
+    </a>
   </section>
 </Layout>
+
+<script>
+  const root = document.querySelector("[data-coverflow]");
+  if (root instanceof HTMLElement) {
+    const pick = (clientX: number) => {
+      const box = root.getBoundingClientRect();
+      const x = (clientX - box.left) / box.width;
+      if (x < 0.32) return "research";
+      if (x > 0.68) return "systems";
+      return "tools";
+    };
+    root.addEventListener("mousemove", (event) => {
+      root.dataset.active = pick(event.clientX);
+    });
+    root.addEventListener("mouseleave", () => {
+      root.dataset.active = "tools";
+    });
+  }
+</script>
+
