@@ -6,21 +6,21 @@ import AnalogyBadge from '../../components/AnalogyBadge.astro';
 import Tooltip from '../../components/Tooltip.astro';
 
 const frontierSlides = [
-  { id: 1, img: '/images/slides/architecture_image1.png', title: 'Frontier Model Architecture & Agentic Economics', text: 'Overview of Gen 4 models (Claude Opus 5, Claude Fable 5, GPT-5.6 Sol, Gemini 3.1 Pro, Kimi K3).' },
-  { id: 2, img: '/images/slides/architecture_image2.png', title: 'Agentic Evaluation Matrix (SWE-bench & ARC-AGI)', text: 'DeepSWE 95.0% Gemini 3.1 Pro, 30.2% ARC-AGI-3 Opus 5, and OSWorld 2.0 benchmark rankings.' },
-  { id: 3, img: '/images/slides/architecture_image3.png', title: 'The Token-Efficiency Paradox', text: '50% nominal per-token price cuts neutralized by 2.5x self-verification loops, yielding ~20% net task savings.' },
-  { id: 4, img: '/images/slides/architecture_image4.png', title: 'Adaptive Test-Time Compute & Speed Toggles', text: 'Claude Opus 5 Fast Mode (2.5x speedup at $10/M in) vs Batch API ($2.50/M in) vs Standard Mode.' },
-  { id: 5, img: '/images/slides/architecture_image5.png', title: 'Intrinsic Alignment vs Outer Safety Cascade', text: 'Outer wrapper safety classifiers (Fable 5) vs intrinsic weight alignment (Opus 5) reducing false positives by 85%.' },
-  { id: 6, img: '/images/slides/architecture_image6.png', title: 'Model Personalities & Operational Styles', text: 'Architectural craftsman (Fable 5), inquisitive agent (Opus 5), obedient executor (GPT-5.6), and open-weight (Kimi K3).' },
-  { id: 7, img: '/images/slides/architecture_image7.png', title: 'Evolution of Frontier Architectures (Gen 1 to Gen 4)', text: 'Foundational Dense Scaling -> MoE Routing -> Explicit Reasoning Traces -> Gen 4 Adaptive Distilled Frontier.' },
-  { id: 8, img: '/images/slides/architecture_image8.png', title: 'Gen 4 Model Bifurcation (Distilled vs Parent)', text: 'Distilled agents ($5/$25 per M) vs massive parent orchestrators ($10/$50 per M) and open-weight MoEs.' },
-  { id: 9, img: '/images/slides/architecture_image9.png', title: 'Zero-Data-Retention (ZDR) Enterprise Compliance', text: 'Intrinsic weight alignment enabling Zero-Data-Retention policies without 30-day logging bottlenecks.' },
-  { id: 10, img: '/images/slides/architecture_image10.png', title: 'Four Strategic Pillars for Distilled Deployment', text: '1. Optimize Cost-Per-Task | 2. Leverage Prompt Caching | 3. Match Workload | 4. Adaptive Effort Dials.' },
-  { id: 11, img: '/images/slides/architecture_image11.png', title: 'Macroeconomic Pressures & On-Policy Distillation', text: 'Shift from raw parameter pre-training to on-policy knowledge distillation and intrinsic alignment.' },
-  { id: 12, img: '/images/slides/architecture_image12.png', title: 'Agentic Benchmark Dominance (OSWorld & SWE-bench)', text: 'Comparative benchmark scores evaluating computer use, repo-level software engineering, and Elo rankings.' },
-  { id: 13, img: '/images/slides/architecture_image13.png', title: 'Self-Verification Loop Expansion Mechanics', text: 'Mathematical proof showing how distilled models think out loud to match parent model reasoning.' },
-  { id: 14, img: '/images/slides/architecture_image14.png', title: 'Enterprise Model Deployment Strategy Matrix', text: 'Matching specialized workloads to Opus 5, Fable 5, GPT-5.6 Sol, and Kimi K3 open-weight.' },
-  { id: 15, img: '/images/slides/architecture_image15.png', title: 'Conclusion: Active Structural AI Engineering', text: 'Mastering adaptive compute controls, prompt caching, and workload-specific deployment strategies.' }
+  { id: 1, img: '../../images/slides/architecture_image1.png', title: 'Frontier Model Architecture & Agentic Economics', text: 'Overview of Gen 4 models (Claude Opus 5, Claude Fable 5, GPT-5.6 Sol, Gemini 3.1 Pro, Kimi K3).' },
+  { id: 2, img: '../../images/slides/architecture_image2.png', title: 'Agentic Evaluation Matrix (SWE-bench & ARC-AGI)', text: 'DeepSWE 95.0% Gemini 3.1 Pro, 30.2% ARC-AGI-3 Opus 5, and OSWorld 2.0 benchmark rankings.' },
+  { id: 3, img: '../../images/slides/architecture_image3.png', title: 'The Token-Efficiency Paradox', text: '50% nominal per-token price cuts neutralized by 2.5x self-verification loops, yielding ~20% net task savings.' },
+  { id: 4, img: '../../images/slides/architecture_image4.png', title: 'Adaptive Test-Time Compute & Speed Toggles', text: 'Claude Opus 5 Fast Mode (2.5x speedup at $10/M in) vs Batch API ($2.50/M in) vs Standard Mode.' },
+  { id: 5, img: '../../images/slides/architecture_image5.png', title: 'Intrinsic Alignment vs Outer Safety Cascade', text: 'Outer wrapper safety classifiers (Fable 5) vs intrinsic weight alignment (Opus 5) reducing false positives by 85%.' },
+  { id: 6, img: '../../images/slides/architecture_image6.png', title: 'Model Personalities & Operational Styles', text: 'Architectural craftsman (Fable 5), inquisitive agent (Opus 5), obedient executor (GPT-5.6), and open-weight (Kimi K3).' },
+  { id: 7, img: '../../images/slides/architecture_image7.png', title: 'Evolution of Frontier Architectures (Gen 1 to Gen 4)', text: 'Foundational Dense Scaling -> MoE Routing -> Explicit Reasoning Traces -> Gen 4 Adaptive Distilled Frontier.' },
+  { id: 8, img: '../../images/slides/architecture_image8.png', title: 'Gen 4 Model Bifurcation (Distilled vs Parent)', text: 'Distilled agents ($5/$25 per M) vs massive parent orchestrators ($10/$50 per M) and open-weight MoEs.' },
+  { id: 9, img: '../../images/slides/architecture_image9.png', title: 'Zero-Data-Retention (ZDR) Enterprise Compliance', text: 'Intrinsic weight alignment enabling Zero-Data-Retention policies without 30-day logging bottlenecks.' },
+  { id: 10, img: '../../images/slides/architecture_image10.png', title: 'Four Strategic Pillars for Distilled Deployment', text: '1. Optimize Cost-Per-Task | 2. Leverage Prompt Caching | 3. Match Workload | 4. Adaptive Effort Dials.' },
+  { id: 11, img: '../../images/slides/architecture_image11.png', title: 'Macroeconomic Pressures & On-Policy Distillation', text: 'Shift from raw parameter pre-training to on-policy knowledge distillation and intrinsic alignment.' },
+  { id: 12, img: '../../images/slides/architecture_image12.png', title: 'Agentic Benchmark Dominance (OSWorld & SWE-bench)', text: 'Comparative benchmark scores evaluating computer use, repo-level software engineering, and Elo rankings.' },
+  { id: 13, img: '../../images/slides/architecture_image13.png', title: 'Self-Verification Loop Expansion Mechanics', text: 'Mathematical proof showing how distilled models think out loud to match parent model reasoning.' },
+  { id: 14, img: '../../images/slides/architecture_image14.png', title: 'Enterprise Model Deployment Strategy Matrix', text: 'Matching specialized workloads to Opus 5, Fable 5, GPT-5.6 Sol, and Kimi K3 open-weight.' },
+  { id: 15, img: '../../images/slides/architecture_image15.png', title: 'Conclusion: Active Structural AI Engineering', text: 'Mastering adaptive compute controls, prompt caching, and workload-specific deployment strategies.' }
 ];
 
 const benchmarkExplainers = {

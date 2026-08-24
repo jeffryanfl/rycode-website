@@ -4,19 +4,19 @@ import ExecutiveCallout from '../../components/ExecutiveCallout.astro';
 import AnalogyBadge from '../../components/AnalogyBadge.astro';
 
 const energySlides = [
-  { id: 1, img: '/images/slides/energy_image1.png', title: 'The 2030 AI Factory Blueprint: Full-Stack Co-Design', text: 'Full-stack 1 GW gigawatt infrastructure co-design spanning nuclear reactors, liquid cooling, Blackwell NVL72, UEC packet-spraying, and Kubernetes.' },
-  { id: 2, img: '/images/slides/energy_image2.png', title: 'Layer 0 (Power): Nuclear SMRs for Baseload Compute', text: 'Kairos Power KP-FHR Fluoride Salt-Cooled High-Temperature Reactor supplying 1 GW behind-the-meter zero-carbon baseload compute power.' },
-  { id: 3, img: '/images/slides/energy_image3.png', title: 'Layer 0 (Power): Modern Reactor Molten Salt Architecture', text: 'TRISO pebble fuel elements, primary molten fluoride salt loops, secondary steam heat exchangers, and passive emergency decay heat removal.' },
-  { id: 4, img: '/images/slides/energy_image4.png', title: 'Layer 1 (Facility): Cooling the Gigawatt Data Center', text: 'Air cooling 12kW per rack thermal wall vs Direct-to-Chip (DLC) liquid cold plates handling 160kW+ per rack power densities.' },
-  { id: 5, img: '/images/slides/energy_image5.png', title: 'Layer 1 (Facility): Heat Exchange & Liquid Plumbing', text: 'Coolant Distribution Units (CDUs), secondary dielectric liquid loops, dry heat exchangers, and 95% water consumption reduction.' },
-  { id: 6, img: '/images/slides/energy_image6.png', title: 'Layer 2 (Hardware): Compute Architecture (GB200/GB300 NVL72)', text: '72 Blackwell GPUs in a single liquid-cooled NVLink domain delivering 130 TB/s bisection bandwidth.' },
-  { id: 7, img: '/images/slides/energy_image7.png', title: 'Layer 2 (Hardware): Power Delivery & Rack Density', text: '48V to 12V direct-to-die power conversion, copper busbars, and 120kW+ per rack power density delivery.' },
-  { id: 8, img: '/images/slides/energy_image8.png', title: 'Layer 3 (Network): The RoCEv2 Bottleneck', text: 'TCP/IP latency limits (>15us) vs RoCEv2 PFC pause frame head-of-line blocking and network congestion deadlocks.' },
-  { id: 9, img: '/images/slides/energy_image9.png', title: 'Layer 3 (Network): Evaluating the AI Fabric (RoCEv2 vs InfiniBand vs UEC)', text: 'RoCEv2 (5-6us), InfiniBand (1.2us proprietary), and Ultra Ethernet Consortium UEC (~1.9us open-standard TH4/TH5 silicon).' },
-  { id: 10, img: '/images/slides/energy_image10.png', title: 'Layer 3 (Network): Mechanics of Ultra Ethernet Packet Spraying', text: 'Packet-by-packet spraying across spine paths, eliminating flow pinning, with sender-based rate control and out-of-order NIC reassembly.' },
-  { id: 11, img: '/images/slides/energy_image11.png', title: 'Layer 4 (Software): Orchestrating at Scale with Slinky', text: 'Slinky (Slurm-operator) running Slurm workloads natively inside Kubernetes with High Availability (HA) up to 8,000+ GPUs.' },
-  { id: 12, img: '/images/slides/energy_image12.png', title: 'Layer 4 (Software): Topology-Aware Scheduling', text: 'NVIDIA GPU Operator, Dynamic Resource Allocation (DRA), and internode memory exchange (IMEX) domain alignment.' },
-  { id: 13, img: '/images/slides/energy_image13.png', title: 'The 2030 AI Factory Stack Synthesis', text: '120-meter vertical integration: Nuclear Baseload -> Hybrid Liquid Facility -> NVL72 Racks -> UEC Fabric -> Kubernetes.' }
+  { id: 1, img: '../../images/slides/energy_image1.png', title: 'The 2030 AI Factory Blueprint: Full-Stack Co-Design', text: 'Full-stack 1 GW gigawatt infrastructure co-design spanning nuclear reactors, liquid cooling, Blackwell NVL72, UEC packet-spraying, and Kubernetes.' },
+  { id: 2, img: '../../images/slides/energy_image2.png', title: 'Layer 0 (Power): Nuclear SMRs for Baseload Compute', text: 'Kairos Power KP-FHR Fluoride Salt-Cooled High-Temperature Reactor supplying 1 GW behind-the-meter zero-carbon baseload compute power.' },
+  { id: 3, img: '../../images/slides/energy_image3.png', title: 'Layer 0 (Power): Modern Reactor Molten Salt Architecture', text: 'TRISO pebble fuel elements, primary molten fluoride salt loops, secondary steam heat exchangers, and passive emergency decay heat removal.' },
+  { id: 4, img: '../../images/slides/energy_image4.png', title: 'Layer 1 (Facility): Cooling the Gigawatt Data Center', text: 'Air cooling 12kW per rack thermal wall vs Direct-to-Chip (DLC) liquid cold plates handling 160kW+ per rack power densities.' },
+  { id: 5, img: '../../images/slides/energy_image5.png', title: 'Layer 1 (Facility): Heat Exchange & Liquid Plumbing', text: 'Coolant Distribution Units (CDUs), secondary dielectric liquid loops, dry heat exchangers, and 95% water consumption reduction.' },
+  { id: 6, img: '../../images/slides/energy_image6.png', title: 'Layer 2 (Hardware): Compute Architecture (GB200/GB300 NVL72)', text: '72 Blackwell GPUs in a single liquid-cooled NVLink domain delivering 130 TB/s bisection bandwidth.' },
+  { id: 7, img: '../../images/slides/energy_image7.png', title: 'Layer 2 (Hardware): Power Delivery & Rack Density', text: '48V to 12V direct-to-die power conversion, copper busbars, and 120kW+ per rack power density delivery.' },
+  { id: 8, img: '../../images/slides/energy_image8.png', title: 'Layer 3 (Network): The RoCEv2 Bottleneck', text: 'TCP/IP latency limits (>15us) vs RoCEv2 PFC pause frame head-of-line blocking and network congestion deadlocks.' },
+  { id: 9, img: '../../images/slides/energy_image9.png', title: 'Layer 3 (Network): Evaluating the AI Fabric (RoCEv2 vs InfiniBand vs UEC)', text: 'RoCEv2 (5-6us), InfiniBand (1.2us proprietary), and Ultra Ethernet Consortium UEC (~1.9us open-standard TH4/TH5 silicon).' },
+  { id: 10, img: '../../images/slides/energy_image10.png', title: 'Layer 3 (Network): Mechanics of Ultra Ethernet Packet Spraying', text: 'Packet-by-packet spraying across spine paths, eliminating flow pinning, with sender-based rate control and out-of-order NIC reassembly.' },
+  { id: 11, img: '../../images/slides/energy_image11.png', title: 'Layer 4 (Software): Orchestrating at Scale with Slinky', text: 'Slinky (Slurm-operator) running Slurm workloads natively inside Kubernetes with High Availability (HA) up to 8,000+ GPUs.' },
+  { id: 12, img: '../../images/slides/energy_image12.png', title: 'Layer 4 (Software): Topology-Aware Scheduling', text: 'NVIDIA GPU Operator, Dynamic Resource Allocation (DRA), and internode memory exchange (IMEX) domain alignment.' },
+  { id: 13, img: '../../images/slides/energy_image13.png', title: 'The 2030 AI Factory Stack Synthesis', text: '120-meter vertical integration: Nuclear Baseload -> Hybrid Liquid Facility -> NVL72 Racks -> UEC Fabric -> Kubernetes.' }
 ];
 ---
 
@@ -111,7 +111,7 @@ const energySlides = [
 
         <div class="cooling-feature-grid">
           <div class="cooling-img-box">
-            <img src="/images/slides/cooling_comparison.png" alt="AI Data Center Cooling Comparison" />
+            <img src="../../images/slides/cooling_comparison.png" alt="AI Data Center Cooling Comparison" />
           </div>
 
           <div class="cooling-metrics-box">

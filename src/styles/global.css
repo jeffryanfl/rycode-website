@@ -1,4 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&family=Frank+Ruhl+Libre:wght@700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap');
+/* Self-hosted OFL fonts (public/fonts). One @font-face source of truth for the editorial chrome. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin-wght-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/geist-mono-latin-wght-normal.woff2") format("woff2");
+}
 
 /* ==================================================================
    RYCODE — Stately Broadsheet & Slate Newsprint Stylesheet
@@ -109,158 +137,6 @@ ul {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-/* Layout Frame: Left Rail + Main Content */
-.app-layout {
-  display: flex;
-  min-height: 100vh;
-  background: var(--bg);
-}
-
-/* Left Vertical Navigation Rail */
-.nav-rail {
-  width: 72px;
-  min-width: 72px;
-  background: var(--bg);
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.25rem 0;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  z-index: 100;
-}
-
-.rail-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-  align-items: center;
-}
-
-.rail-item {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 150ms var(--ease), background 150ms var(--ease);
-  position: relative;
-}
-
-.rail-item:hover {
-  color: var(--blue);
-  background: var(--surface-subtle);
-}
-
-.rail-item.is-active {
-  color: var(--blue);
-  background: var(--blue-soft);
-}
-
-.rail-item svg {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-}
-
-.rail-tooltip {
-  position: absolute;
-  left: 64px;
-  background: var(--text);
-  color: #FFFFFF;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 150ms var(--ease), transform 150ms var(--ease);
-  transform: translateX(-4px);
-  z-index: 200;
-  box-shadow: var(--shadow-sm);
-}
-
-.rail-item:hover .rail-tooltip,
-.rail-item:focus-visible .rail-tooltip {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Main Content Area */
-.main-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-/* Top Header */
-.site-header {
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  padding: 1.25rem 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 90;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-.brand-link {
-  display: flex;
-  align-items: center;
-}
-
-.brand-logo-img {
-  height: 38px;
-  width: auto;
-}
-
-.header-date {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--text-faint);
-  font-weight: 500;
-  padding-left: 1.75rem;
-  border-left: 1px solid var(--border);
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.35rem 1.25rem;
-}
-
-.header-nav-link {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  transition: color 150ms var(--ease);
-}
-.header-nav-link:hover {
-  color: var(--blue);
-}
-.header-nav-link.is-active {
-  color: var(--blue);
-  font-weight: 600;
 }
 
 /* Editorial Page Grid Container */
@@ -563,33 +439,6 @@ ul {
   margin: 0;
 }
 
-/* Footer */
-.site-footer {
-  border-top: 1px solid var(--border);
-  background: var(--bg);
-  padding: 2.5rem;
-  margin-top: auto;
-}
-
-.footer-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--text-faint);
-}
-
-.footer-link {
-  color: var(--text-muted);
-  font-weight: 500;
-}
-.footer-link:hover {
-  color: var(--blue);
-}
-
 /* Subpage Hero Standardizer */
 .subpage-hero {
   background: var(--surface);
@@ -637,9 +486,6 @@ ul {
 }
 
 @media (max-width: 768px) {
-  .app-layout {
-    flex-direction: column;
-  }
   .article-grid {
     grid-template-columns: 1fr;
   }
@@ -665,20 +511,6 @@ ul {
   margin: 0 auto;
   padding: 2.5rem 1.5rem 0.5rem;
   position: relative;
-}
-
-.masthead-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1.5rem;
 }
 
 .masthead-brand {
@@ -1034,3 +866,50 @@ ul {
   color: var(--text-muted);
 }
 
+/* Hub index list (section pages) */
+.hub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.hub-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hub-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+  margin: 0 0 0.4rem 0;
+}
+
+.hub-item-title a {
+  color: inherit;
+}
+
+.hub-item-title a:hover {
+  color: var(--blue);
+}
+
+.hub-item-desc {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 65ch;
+}
+
+.hub-empty {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
+}

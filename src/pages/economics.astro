@@ -1,5 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HubList from '../components/HubList.astro';
+
+const items = [
+  {
+    href: '/research/saaspocalypse/',
+    title: 'SaaSpocalypse 2026',
+    description: 'An emerging-risk briefing on the collapse of generic seat-based SaaS, the Build-vs-Buy inversion, and the corner of the industry still growing.',
+  },
+  {
+    href: '/dashboards/build-vs-buy/',
+    title: 'Build vs. Buy',
+    description: 'An interactive calculator comparing the cost of building software vs. licensing SaaS over time.',
+  },
+  {
+    href: '/dashboards/grocery-swap-calc/',
+    title: 'Grocery Swap Calculator',
+    description: 'Compare an existing SKU against a proposed replacement using penny profit, shrink, slotting, and cannibalization.',
+  },
+];
 ---
 
 <Layout title="Economics — Rycode Systems Journal" description="Micro and macro economics, infrastructure CapEx, and market dynamics.">
@@ -12,5 +31,6 @@ import Layout from '../layouts/Layout.astro';
         Micro and macro economics, infrastructure investments, and software market dynamics.
       </p>
     </header>
+    <HubList items={items} />
   </div>
 </Layout>

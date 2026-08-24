@@ -8,15 +8,16 @@
   <meta property="og:title" content="Grocery Swap Calculator — Rycode" />
   <meta property="og:description" content="Shipped vs sold comparison for corporate grocery buyers. Penny profit after shrink, switching costs, and cannibalization." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image" content="https://rycode.dev/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="../../og-image.png" />
+  <meta name="twitter:image" content="https://rycode.dev/og-image.png" />
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
   <title>Grocery Swap Calculator — Rycode</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="stylesheet" href="grocery-swap-calc.css" />
+  <link rel="stylesheet" href="/journal-chrome.css" />
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
@@ -29,22 +30,59 @@
     </div>
   </noscript>
 
-  <!-- ===========================================================
-       HEADER / NAV
-       =========================================================== -->
-    <header class="site-header" id="siteHeader">
-    <nav class="nav" aria-label="Primary">
-      <a href="../../index.html" class="brand" aria-label="Rycode home">
-        <img src="../../logo.svg" alt="Rycode" class="brand-logo" />
+  <!-- Site chrome: journal masthead. Tool interior is unchanged below. -->
+  <header class="masthead">
+    <div class="masthead-brand">
+      <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
+        <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../../index.html#projects">Projects</a></li>
-        <li><a href="../../index.html#contact">Contact</a></li>
-      </ul>
+    </div>
+    <nav class="newspaper-banner-nav" aria-label="Sections">
+      <div class="newspaper-banner-inner">
+        <ul class="newspaper-nav-list">
+        <li class="newspaper-nav-item">
+          <a href="/ai" class="newspaper-nav-link">
+            <span class="newspaper-link-text">AI</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/build" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Build</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/technology" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Technology</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/systems" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Systems</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/economics" class="newspaper-nav-link is-active" aria-current="page">
+            <span class="newspaper-link-text">Economics</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/engineering" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Engineering</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/tools" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Tools</span>
+          </a>
+        </li>
+        </ul>
+      </div>
     </nav>
   </header>
 
@@ -56,7 +94,7 @@
     <section class="case-hero">
       <div class="container">
         <p class="hero-eyebrow reveal">
-          <a href="../../index.html#dashboards" class="back-link">← Back to dashboards</a>
+          <a href="/tools" class="back-link">← Back to tools</a>
         </p>
         <div class="case-meta reveal">
           <span class="card-category">Dashboards</span>
@@ -324,7 +362,7 @@
     <section class="section">
       <div class="container case-body">
         <div class="case-cta reveal">
-          <a class="btn btn-primary" href="../../index.html#dashboards">See other dashboards</a>
+          <a class="btn btn-primary" href="/tools">See other tools</a>
           <a class="btn btn-ghost" href="../build-vs-buy/">Try Build vs. Buy</a>
         </div>
       </div>
@@ -332,12 +370,12 @@
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
-      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+  <footer class="editorial-footer">
+    <div class="editorial-footer-inner">
+      <span>© 2026 Rycode · Independent Technology & Systems Journal</span>
     </div>
   </footer>
+
 
   <!-- Chart.js via CDN — same version the rest of the site uses.
        integrity= is a Subresource Integrity (SRI) hash. The browser will

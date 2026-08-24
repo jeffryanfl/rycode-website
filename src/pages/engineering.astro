@@ -1,5 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HubList from '../components/HubList.astro';
+
+const items = [
+  {
+    href: '/research/fission/',
+    title: 'Fission: A Technical History',
+    description: 'From Marie Curie to the 2026 strategic landscape. An engineering-minded history of atomic weaponry.',
+  },
+  {
+    href: '/anatomy/teller-ulam/',
+    title: 'Anatomy of the Teller-Ulam sequence',
+    description: 'An interactive scrubber that walks through the first 300 nanoseconds of a thermonuclear detonation.',
+  },
+];
 ---
 
 <Layout title="Engineering — Rycode Systems Journal" description="Deep physics, structural mechanics, and high-stakes engineering principles.">
@@ -12,5 +26,6 @@ import Layout from '../layouts/Layout.astro';
         First-principles analysis of complex physical systems, thermodynamics, and extreme engineering.
       </p>
     </header>
+    <HubList items={items} />
   </div>
 </Layout>

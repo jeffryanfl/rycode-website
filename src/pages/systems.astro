@@ -1,5 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HubList from '../components/HubList.astro';
+
+const items = [
+  {
+    href: '/projects/grc.html',
+    title: 'Rycode GRC',
+    description: 'A full governance, risk, and compliance platform built from scratch in vanilla HTML, CSS, and JavaScript.',
+  },
+  {
+    href: '/dashboards/control-effectiveness/',
+    title: 'Control Effectiveness & Residual Risk',
+    description: 'An interactive ERM calculator. Select risks, assign controls, watch residual risk drop in real time.',
+  },
+  {
+    href: '/dashboards/vendor-concentration/',
+    title: 'Vendor Concentration',
+    description: 'Build a stack, take a vendor offline, see the blast radius.',
+  },
+];
 ---
 
 <Layout title="Systems — Rycode Systems Journal" description="Governance, Risk & Compliance (GRC), blast-radius containment, and operational resilience.">
@@ -12,5 +31,6 @@ import Layout from '../layouts/Layout.astro';
         Governance, Risk & Compliance (GRC), operational containment, and system architectures.
       </p>
     </header>
+    <HubList items={items} />
   </div>
 </Layout>

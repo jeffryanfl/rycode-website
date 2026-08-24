@@ -12,12 +12,8 @@ const {
   description = "A clean, editorial intelligence journal covering frontier AI architectures, web development, and governance systems.",
 } = Astro.props;
 
-const formattedDate = new Date().toLocaleDateString('en-US', {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('og-image.png', Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -33,14 +29,16 @@ const formattedDate = new Date().toLocaleDateString('en-US', {
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={ogImageURL} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImageURL} />
+  <link rel="canonical" href={canonicalURL} />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>{title}</title>
 
-  <!-- Typography: Newsreader, Merriweather, Inter, Geist Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&family=Frank+Ruhl+Libre:wght@700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Typography is self-hosted via global.css @font-face (public/fonts). -->
 </head>
 <body>
   <a class="skip-link" href="#mainContent">Skip to content</a>

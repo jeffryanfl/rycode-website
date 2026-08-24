@@ -13,6 +13,7 @@
   <title>Chat Builder · Lab — Rycode</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="stylesheet" href="chat-builder.css?v=6" />
+  <link rel="stylesheet" href="/journal-chrome.css" />
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body class="cb-body">
@@ -25,15 +26,60 @@
     </div>
   </noscript>
 
-  <!-- Minimal page header — not the full site nav since this is an
-       unlinked side project. Just a label and a way home. -->
-  <header class="cb-page-header">
-    <div class="cb-page-header-inner">
-      <a href="../../index.html" class="cb-brand" aria-label="Rycode home">
-        <img src="../../logo.svg" alt="" class="cb-brand-logo" />
+  <!-- Site chrome: journal masthead. Tool interior is unchanged below. -->
+  <header class="masthead">
+    <div class="masthead-brand">
+      <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
+        <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
       </a>
-      <p class="cb-page-eyebrow">Lab · side project · WhatsApp chat builder</p>
     </div>
+    <nav class="newspaper-banner-nav" aria-label="Sections">
+      <div class="newspaper-banner-inner">
+        <ul class="newspaper-nav-list">
+        <li class="newspaper-nav-item">
+          <a href="/ai" class="newspaper-nav-link">
+            <span class="newspaper-link-text">AI</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/build" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Build</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/technology" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Technology</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/systems" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Systems</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/economics" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Economics</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/engineering" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Engineering</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/tools" class="newspaper-nav-link is-active" aria-current="page">
+            <span class="newspaper-link-text">Tools</span>
+          </a>
+        </li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
   <main id="cb-app" class="cb-app" tabindex="-1">
@@ -200,6 +246,12 @@
     </p>
 
   </main>
+
+  <footer class="editorial-footer">
+    <div class="editorial-footer-inner">
+      <span>© 2026 Rycode · Independent Technology & Systems Journal</span>
+    </div>
+  </footer>
 
   <!-- Reaction picker — small popover summoned by .cb-add-reaction
        buttons in the message editor. Hidden by default; positioned

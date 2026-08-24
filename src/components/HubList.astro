@@ -1,0 +1,29 @@
+---
+interface HubItem {
+  href: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  items?: HubItem[];
+  empty?: string;
+}
+
+const { items = [], empty = "No live pieces in this section yet." } = Astro.props;
+---
+
+{items.length > 0 ? (
+  <ul class="hub-list">
+    {items.map((item) => (
+      <li class="hub-item">
+        <h2 class="hub-item-title">
+          <a href={item.href}>{item.title}</a>
+        </h2>
+        <p class="hub-item-desc">{item.description}</p>
+      </li>
+    ))}
+  </ul>
+) : (
+  <p class="hub-empty">{empty}</p>
+)}

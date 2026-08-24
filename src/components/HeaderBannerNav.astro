@@ -39,18 +39,17 @@ const navItems = [
 
 <nav class="newspaper-banner-nav" aria-label="Sections">
   <div class="newspaper-banner-inner">
-    <ul class="newspaper-nav-list" role="menubar">
+    <ul class="newspaper-nav-list">
       {navItems.map((item, idx) => {
         const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
         return (
-          <li class="newspaper-nav-item" role="none">
+          <li class="newspaper-nav-item">
             <a
               href={item.href}
               class:list={[
                 "newspaper-nav-link",
                 { "is-active": isActive }
               ]}
-              role="menuitem"
               aria-current={isActive ? "page" : undefined}
             >
               <span class="newspaper-link-text">{item.label}</span>

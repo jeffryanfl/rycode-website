@@ -1,5 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HubList from '../components/HubList.astro';
+
+const items = [
+  {
+    href: '/anatomy/deployment/',
+    title: 'Anatomy of a Deployment',
+    description: 'An interactive map of how a website actually gets from a laptop to someone else\'s screen.',
+  },
+];
 ---
 
 <Layout title="Build — Rycode Systems Journal" description="Web engineering, full-stack architecture, and production software patterns.">
@@ -12,5 +21,6 @@ import Layout from '../layouts/Layout.astro';
         Coding, web development, full-stack architecture, and software craft.
       </p>
     </header>
+    <HubList items={items} />
   </div>
 </Layout>

@@ -8,11 +8,11 @@
   <meta property="og:title" content="Anatomy of the Teller-Ulam sequence — Rycode" />
   <meta property="og:description" content="Drag the slider. Watch X-rays beat the blast wave by a factor of thousands. Part of the Anatomy Of series." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../../og-image.png" />
+  <meta property="og:image" content="https://rycode.dev/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="../../og-image.png" />
+  <meta name="twitter:image" content="https://rycode.dev/og-image.png" />
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
   <title>Anatomy of the Teller-Ulam sequence — Rycode</title>
   <!-- Site-wide design tokens and base typography first. Page-specific
@@ -20,29 +20,66 @@
        changes so returning visitors pick up the new version. -->
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="stylesheet" href="teller-ulam.css?v=2" />
+  <link rel="stylesheet" href="/journal-chrome.css" />
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
 
   <a class="skip-link" href="#top">Skip to content</a>
 
-  <!-- ===========================================================
-       SITE HEADER / NAV — same pattern as every other Rycode page,
-       so this page feels like part of the site, not a detached demo.
-       =========================================================== -->
-    <header class="site-header" id="siteHeader">
-    <nav class="nav" aria-label="Primary">
-      <a href="../../index.html" class="brand" aria-label="Rycode home">
-        <img src="../../logo.svg" alt="Rycode" class="brand-logo" />
+  <!-- Site chrome: journal masthead. Tool interior is unchanged below. -->
+  <header class="masthead">
+    <div class="masthead-brand">
+      <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
+        <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../../index.html#projects">Projects</a></li>
-        <li><a href="../../index.html#contact">Contact</a></li>
-      </ul>
+    </div>
+    <nav class="newspaper-banner-nav" aria-label="Sections">
+      <div class="newspaper-banner-inner">
+        <ul class="newspaper-nav-list">
+        <li class="newspaper-nav-item">
+          <a href="/ai" class="newspaper-nav-link">
+            <span class="newspaper-link-text">AI</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/build" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Build</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/technology" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Technology</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/systems" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Systems</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/economics" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Economics</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/engineering" class="newspaper-nav-link is-active" aria-current="page">
+            <span class="newspaper-link-text">Engineering</span>
+          </a>
+          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
+        </li>
+        <li class="newspaper-nav-item">
+          <a href="/tools" class="newspaper-nav-link">
+            <span class="newspaper-link-text">Tools</span>
+          </a>
+        </li>
+        </ul>
+      </div>
     </nav>
   </header>
 
@@ -539,7 +576,7 @@
     <section class="section" style="margin-top: 3rem;">
       <div class="case-cta">
         <a class="btn btn-primary" href="../../research/fission/">← Back to Fission: A Technical History</a>
-        <a class="btn btn-ghost" href="../../index.html#anatomy">See other anatomies</a>
+        <a class="btn btn-ghost" href="/build">See other anatomies</a>
       </div>
     </section>
 
@@ -548,10 +585,9 @@
   <!-- ==========================================================
        SITE FOOTER — same markup everywhere on rycode.dev.
        ========================================================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© 2026 Rycode. All rights reserved. · Sebring, FL</span>
-      <span>Built in vanilla HTML, CSS, and JavaScript.</span>
+  <footer class="editorial-footer">
+    <div class="editorial-footer-inner">
+      <span>© 2026 Rycode · Independent Technology & Systems Journal</span>
     </div>
   </footer>
 
