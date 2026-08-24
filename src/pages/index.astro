@@ -1,32 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LandingTiles from '../components/LandingTiles.astro';
 import '../styles/landing.css';
 
 const sections = [
-  { label: "AI" },
-  { label: "Build" },
-  { label: "Technology" },
   { label: "Systems" },
-  { label: "Economics" },
-  { label: "Engineering" },
-  { label: "Tools" },
-] as const;
+  { label: "Tools", href: "/tools" },
+  { label: "Research" },
+];
 ---
 
-<Layout title="Rycode — Working Notes & Systems Journal" variant="landing">
+<Layout
+  title="Rycode — Systems, tools, and research"
+  description="Systems, tools, and research."
+  variant="landing"
+>
   <section class="landing-stage">
     <h1 class="visually-hidden">Rycode</h1>
-
-    <div class="landing-rail">
-      <ul>
-        {sections.map((item) => (
-          <li>
-            <span class="landing-rail-link">
-              <span class="landing-rail-label">{item.label}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <LandingTiles items={sections} />
   </section>
 </Layout>

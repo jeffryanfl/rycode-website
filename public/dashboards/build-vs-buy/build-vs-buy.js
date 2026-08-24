@@ -157,10 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           label: 'Buy (cumulative)',
           data: [],
-          borderColor: '#ffb547',                     // same gold as the .is-buy tile
-          backgroundColor: 'rgba(255, 181, 71, 0.08)',
+          borderColor: '#60a5fa',
+          backgroundColor: 'rgba(96, 165, 250, 0.12)',
           borderWidth: 3,
-          pointBackgroundColor: '#ffb547',
+          pointBackgroundColor: '#60a5fa',
           pointRadius: 4,
           pointHoverRadius: 6,
           tension: 0.15,                              // gentle curve, not straight lines
@@ -199,9 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         tooltip: {
           backgroundColor: 'rgba(20, 20, 20, 0.96)',
-          borderColor: '#3a2f18',
+          borderColor: 'rgba(255, 255, 255, 0.12)',
           borderWidth: 1,
-          titleColor: '#d4a84b',
+          titleColor: '#93c5fd',
           bodyColor: '#f4f4f5',
           padding: 12,
           callbacks: {
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const render = () => {
     const s = readState();
 
-    // --- Readout labels (the little gold numbers next to each slider) ---
+    // --- Readout labels next to each slider ---
     readouts.horizon.textContent      = s.horizon + (s.horizon === 1 ? ' year' : ' years');
     readouts.seats.textContent        = s.seats.toLocaleString();
     readouts.pricePerSeat.textContent = moneyFull.format(s.pricePerSeat);
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (totalBuy < totalBuild) {
       deltaEl.textContent = moneyFull.format(delta) + ' by buying';
     } else {
-      deltaEl.textContent = '$0 — a wash';
+      deltaEl.textContent = '$0, a wash';
     }
   };
 

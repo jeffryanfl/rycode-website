@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Build vs. Buy — an interactive calculator comparing the cost of building software vs. licensing SaaS over time. Part of Rycode." />
+  <meta name="description" content="Build vs. Buy: slide the inputs and find the break-even year." />
   <meta name="color-scheme" content="dark" />
-  <meta property="og:title" content="Build vs. Buy — Rycode" />
+  <meta property="og:title" content="Build vs. Buy - Rycode" />
   <meta property="og:description" content="Slide the inputs. Find the break-even year." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://rycode.dev/og-image.png" />
@@ -13,262 +13,151 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://rycode.dev/og-image.png" />
-  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
-  <title>Build vs. Buy — Rycode</title>
-  <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="build-vs-buy.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Build vs. Buy - Rycode</title>
   <link rel="stylesheet" href="/journal-chrome.css" />
-  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <link rel="stylesheet" href="build-vs-buy.css" />
 </head>
 <body>
 
-  <a class="skip-link" href="#top">Skip to content</a>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
 
   <noscript>
     <div class="noscript-banner">
-      This calculator needs JavaScript to update the chart as you move the sliders. The defaults below give you a sense of the shape — turn JS on for the full experience.
+      This calculator needs JavaScript to update the chart as you move the sliders.
     </div>
   </noscript>
 
-  <!-- Site chrome: journal masthead. Tool interior is unchanged below. -->
   <header class="masthead">
     <div class="masthead-brand">
       <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
         <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
       </a>
     </div>
-    <nav class="newspaper-banner-nav" aria-label="Sections">
-      <div class="newspaper-banner-inner">
-        <ul class="newspaper-nav-list">
-        <li class="newspaper-nav-item">
-          <a href="/ai" class="newspaper-nav-link">
-            <span class="newspaper-link-text">AI</span>
-          </a>
-          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
-        </li>
-        <li class="newspaper-nav-item">
-          <a href="/build" class="newspaper-nav-link">
-            <span class="newspaper-link-text">Build</span>
-          </a>
-          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
-        </li>
-        <li class="newspaper-nav-item">
-          <a href="/technology" class="newspaper-nav-link">
-            <span class="newspaper-link-text">Technology</span>
-          </a>
-          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
-        </li>
-        <li class="newspaper-nav-item">
-          <a href="/systems" class="newspaper-nav-link">
-            <span class="newspaper-link-text">Systems</span>
-          </a>
-          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
-        </li>
-        <li class="newspaper-nav-item">
-          <a href="/economics" class="newspaper-nav-link is-active" aria-current="page">
-            <span class="newspaper-link-text">Economics</span>
-          </a>
-          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
-        </li>
-        <li class="newspaper-nav-item">
-          <a href="/engineering" class="newspaper-nav-link">
-            <span class="newspaper-link-text">Engineering</span>
-          </a>
-          <span class="newspaper-nav-separator" aria-hidden="true">/</span>
-        </li>
-        <li class="newspaper-nav-item">
-          <a href="/tools" class="newspaper-nav-link">
-            <span class="newspaper-link-text">Tools</span>
-          </a>
-        </li>
-        </ul>
-      </div>
-    </nav>
   </header>
 
-  <main id="top" tabindex="-1">
+  <main id="mainContent" tabindex="-1">
 
-    <!-- ===========================================================
-         CALCULATOR HERO
-         =========================================================== -->
-    <section class="case-hero">
-      <div class="container">
-        <p class="hero-eyebrow reveal">
-          <a href="/tools" class="back-link">← Back to tools</a>
-        </p>
-        <div class="case-meta reveal">
-          <span class="card-category">Dashboards</span>
-          <span class="card-status is-live">
-            <span class="live-dot" aria-hidden="true"></span> Live · v1.0
-          </span>
-        </div>
-        <h1 class="case-title reveal">Build vs. Buy</h1>
-        <p class="case-lede reveal">Slide the inputs. Watch the two curves move. The year they cross is the year building pays off — and if they never cross, the model is telling you something too.</p>
+    <section class="bvb-hero">
+      <div class="bvb-wrap">
+        <h1>Build vs. Buy</h1>
+        <p class="bvb-lede">Slide the inputs. Watch the two curves. The year they cross is the year building pays off.</p>
       </div>
     </section>
 
-    <!-- ===========================================================
-         THE CALCULATOR
-         =========================================================== -->
-    <section class="section">
-      <div class="container">
-        <div class="calculator reveal">
+    <div class="bvb-wrap">
+      <div class="calculator">
 
-          <!-- =========================================
-               CONTROLS (left column on desktop)
-               ========================================= -->
-          <aside class="calc-controls" aria-label="Calculator inputs">
+        <aside class="calc-controls" aria-label="Calculator inputs">
+          <h2 class="calc-heading">Inputs</h2>
 
-            <h2 class="calc-heading">Inputs</h2>
-
-            <!-- Horizon ——————————————————————————————————————— -->
-            <div class="control-group">
-              <p class="control-group-label">Time horizon</p>
-              <div class="control">
-                <label for="horizon">
-                  <span>Years to model</span>
-                  <span class="control-value" id="horizonValue">3 years</span>
-                </label>
-                <input type="range" id="horizon" min="1" max="7" step="1" value="3" />
-              </div>
+          <div class="control-group">
+            <p class="control-group-label">Time horizon</p>
+            <div class="control">
+              <label for="horizon">
+                <span>Years to model</span>
+                <span class="control-value" id="horizonValue">3 years</span>
+              </label>
+              <input type="range" id="horizon" min="1" max="7" step="1" value="3" />
             </div>
-
-            <!-- Buy side ——————————————————————————————————————— -->
-            <div class="control-group">
-              <p class="control-group-label">Buy</p>
-              <div class="control">
-                <label for="seats">
-                  <span>Seats</span>
-                  <span class="control-value" id="seatsValue">100</span>
-                </label>
-                <input type="range" id="seats" min="10" max="1000" step="10" value="100" />
-              </div>
-              <div class="control">
-                <label for="pricePerSeat">
-                  <span>$ / seat / month</span>
-                  <span class="control-value" id="pricePerSeatValue">$40</span>
-                </label>
-                <input type="range" id="pricePerSeat" min="5" max="500" step="5" value="40" />
-              </div>
-              <div class="control">
-                <label for="annualLicense">
-                  <span>Annual license (on top)</span>
-                  <span class="control-value" id="annualLicenseValue">None</span>
-                </label>
-                <input type="range" id="annualLicense" min="0" max="500000" step="5000" value="0" />
-              </div>
-            </div>
-
-            <!-- Build side ——————————————————————————————————————— -->
-            <div class="control-group">
-              <p class="control-group-label">Build</p>
-              <div class="control">
-                <label for="teamSize">
-                  <span>Team size (Year 1)</span>
-                  <span class="control-value" id="teamSizeValue">2 engineers</span>
-                </label>
-                <input type="range" id="teamSize" min="1" max="5" step="1" value="2" />
-              </div>
-              <div class="control">
-                <label for="salary">
-                  <span>Avg salary / engineer</span>
-                  <span class="control-value" id="salaryValue">$150,000</span>
-                </label>
-                <input type="range" id="salary" min="60000" max="300000" step="5000" value="150000" />
-              </div>
-              <div class="control">
-                <label for="maintenance">
-                  <span>Maintenance (Year 2+)</span>
-                  <span class="control-value" id="maintenanceValue">30%</span>
-                </label>
-                <input type="range" id="maintenance" min="10" max="100" step="5" value="30" />
-              </div>
-            </div>
-
-          </aside>
-
-          <!-- =========================================
-               RESULTS (right column on desktop)
-               ========================================= -->
-          <div class="calc-results">
-
-            <div class="calc-headline" aria-live="polite">
-              <p class="calc-headline-label">Verdict</p>
-              <p class="calc-headline-value" id="headlineValue">Break-even: Year 3</p>
-            </div>
-
-            <div class="calc-chart-wrap">
-              <canvas id="costChart" aria-label="Cumulative cost chart: Buy vs. Build over time"></canvas>
-            </div>
-
-            <div class="calc-totals">
-              <div class="calc-total is-buy">
-                <p class="calc-total-label">Total Buy</p>
-                <p class="calc-total-value" id="buyTotal">$0</p>
-              </div>
-              <div class="calc-total is-build">
-                <p class="calc-total-label">Total Build</p>
-                <p class="calc-total-value" id="buildTotal">$0</p>
-              </div>
-              <div class="calc-total is-delta">
-                <p class="calc-total-label">Delta</p>
-                <p class="calc-total-value" id="deltaTotal">—</p>
-              </div>
-            </div>
-
           </div>
 
+          <div class="control-group">
+            <p class="control-group-label">Buy</p>
+            <div class="control">
+              <label for="seats">
+                <span>Seats</span>
+                <span class="control-value" id="seatsValue">100</span>
+              </label>
+              <input type="range" id="seats" min="10" max="1000" step="10" value="100" />
+            </div>
+            <div class="control">
+              <label for="pricePerSeat">
+                <span>$ / seat / month</span>
+                <span class="control-value" id="pricePerSeatValue">$40</span>
+              </label>
+              <input type="range" id="pricePerSeat" min="5" max="500" step="5" value="40" />
+            </div>
+            <div class="control">
+              <label for="annualLicense">
+                <span>Annual license (on top)</span>
+                <span class="control-value" id="annualLicenseValue">None</span>
+              </label>
+              <input type="range" id="annualLicense" min="0" max="500000" step="5000" value="0" />
+            </div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-group-label">Build</p>
+            <div class="control">
+              <label for="teamSize">
+                <span>Team size (Year 1)</span>
+                <span class="control-value" id="teamSizeValue">2 engineers</span>
+              </label>
+              <input type="range" id="teamSize" min="1" max="5" step="1" value="2" />
+            </div>
+            <div class="control">
+              <label for="salary">
+                <span>Avg salary / engineer</span>
+                <span class="control-value" id="salaryValue">$150,000</span>
+              </label>
+              <input type="range" id="salary" min="60000" max="300000" step="5000" value="150000" />
+            </div>
+            <div class="control">
+              <label for="maintenance">
+                <span>Maintenance (Year 2+)</span>
+                <span class="control-value" id="maintenanceValue">30%</span>
+              </label>
+              <input type="range" id="maintenance" min="10" max="100" step="5" value="30" />
+            </div>
+          </div>
+        </aside>
+
+        <div class="calc-results">
+          <div class="calc-headline" aria-live="polite">
+            <p class="calc-headline-label">Verdict</p>
+            <p class="calc-headline-value" id="headlineValue">Break-even: Year 3</p>
+          </div>
+
+          <div class="calc-chart-wrap">
+            <canvas id="costChart" aria-label="Cumulative cost chart: Buy vs. Build over time"></canvas>
+          </div>
+
+          <div class="calc-totals">
+            <div class="calc-total is-buy">
+              <p class="calc-total-label">Total Buy</p>
+              <p class="calc-total-value" id="buyTotal">$0</p>
+            </div>
+            <div class="calc-total is-build">
+              <p class="calc-total-label">Total Build</p>
+              <p class="calc-total-value" id="buildTotal">$0</p>
+            </div>
+            <div class="calc-total is-delta">
+              <p class="calc-total-label">Delta</p>
+              <p class="calc-total-value" id="deltaTotal">-</p>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- ===========================================================
-         METHODOLOGY — honest footnote about what the model does
-                        and doesn't do.
-         =========================================================== -->
-    <section class="section">
-      <div class="container case-body">
-        <p class="section-eyebrow reveal">Methodology</p>
-        <h2 class="section-title reveal">What this models — and what it doesn't.</h2>
-        <div class="case-prose reveal">
-          <p><strong>What it models.</strong> Buy is a flat annual cost: seats × monthly price × 12, plus any annual enterprise license. Build is a front-loaded cost: Year 1 is the full engineering team working on the product; Year 2 and onward are the team's time at a reduced maintenance factor (default 30%, meaning the team spends about a third of their ongoing time keeping the product alive).</p>
-          <p><strong>What it doesn't model.</strong> Benefits and overhead on top of salary. Hiring ramp time. Opportunity cost of what the engineers could have built instead. Vendor price increases. Churn. Integration headaches. The one-time cost of switching providers when you outgrow the SaaS. In other words — a lot. This is a conversation-starter, not a procurement decision.</p>
-          <p><strong>Why break-even matters.</strong> If the curves never cross inside your horizon, buying is cheaper for the period you're planning. If they cross fast, building pays off — assuming you can actually build and maintain it. The maintenance slider is the honest lever here: drop it to 15% if your team barely touches it after Year 1, push it to 80% if the thing constantly breaks.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===========================================================
-         BACK TO ITEMS
-         =========================================================== -->
-    <section class="section">
-      <div class="container case-body">
-        <div class="case-cta reveal">
-          <a class="btn btn-primary" href="/tools">See other tools</a>
-          <a class="btn btn-ghost" href="/">Back to Rycode</a>
-        </div>
-      </div>
-    </section>
-
+      <section class="bvb-explainer">
+        <h2>What this models, and what it does not</h2>
+        <p><strong>What it models.</strong> Buy is a flat annual cost: seats x monthly price x 12, plus any annual enterprise license. Build is a front-loaded cost: Year 1 is the full engineering team working on the product; Year 2 and onward are the team's time at a reduced maintenance factor (default 30%, meaning the team spends about a third of their ongoing time keeping the product alive).</p>
+        <p><strong>What it does not model.</strong> Benefits and overhead on top of salary. Hiring ramp time. Opportunity cost of what the engineers could have built instead. Vendor price increases. Churn. Integration headaches. The one-time cost of switching providers when you outgrow the SaaS. This is a conversation-starter, not a procurement decision.</p>
+        <p><strong>Why break-even matters.</strong> If the curves never cross inside your horizon, buying is cheaper for the period you are planning. If they cross fast, building pays off, assuming you can actually build and maintain it. The maintenance slider is the honest lever here: drop it to 15% if your team barely touches it after Year 1, push it to 80% if the thing constantly breaks.</p>
+      </section>
+    </div>
   </main>
 
   <footer class="editorial-footer">
     <div class="editorial-footer-inner">
-      <span>© 2026 Rycode · Independent Technology & Systems Journal</span>
+      <span>© 2026 Rycode</span>
     </div>
   </footer>
 
-
-  <!-- Chart.js via CDN — same version the GRC uses.
-       integrity= is a Subresource Integrity (SRI) hash. The browser will
-       refuse to run the script if the file's content doesn't match this
-       hash, so a tampered CDN file can't silently take over the page. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
           integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g"
           crossorigin="anonymous"></script>
-  <!-- Shared site behavior (header scroll, nav toggle, reveals). -->
-  <script src="../../script.js"></script>
-  <!-- Calculator logic — must load AFTER Chart.js is available. -->
   <script src="build-vs-buy.js"></script>
 </body>
 </html>

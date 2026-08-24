@@ -1,17 +1,96 @@
 /* ==================================================================
-   BUILD vs. BUY — build-vs-buy.css
-   Page-specific styles. Shares design tokens with ../../styles.css,
-   so colors, spacing, radii, and fonts all come from the :root vars
-   defined there. This file only adds what the calculator needs.
+   BUILD vs. BUY — page-scoped styles
+   Dark working interior. Tokens live here so the deleted site
+   stylesheet is not required.
 
    TABLE OF CONTENTS
    -----------------
+   0. TOKENS + PAGE SHELL
    1. LAYOUT              (2-column grid: controls + results)
-   2. CONTROLS PANEL      (the left column — sliders + labels)
-   3. SLIDERS             (custom-styled range inputs)
-   4. RESULTS PANEL       (headline, chart, totals)
-   5. RESPONSIVE          (stack at <960px)
+   2. CONTROLS PANEL
+   3. SLIDERS
+   4. RESULTS PANEL
+   5. EXPLAINER
+   6. RESPONSIVE
    ================================================================== */
+
+:root {
+  --bg: #080a10;
+  --surface: #12161f;
+  --border: rgba(255, 255, 255, 0.12);
+  --text: rgba(248, 250, 252, 0.94);
+  --text-muted: rgba(226, 232, 240, 0.7);
+  --text-faint: rgba(226, 232, 240, 0.48);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --fs-tiny: 0.7rem;
+  --fs-small: 0.85rem;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --bvb-buy: #60a5fa;
+  --bvb-build: #4ade80;
+  --bvb-accent: #93c5fd;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+.noscript-banner {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  background: #1e293b;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.bvb-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.bvb-hero {
+  padding: 1.5rem 0 0.5rem;
+}
+
+.bvb-hero h1 {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.bvb-lede {
+  margin: 0 0 1.75rem;
+  max-width: 46ch;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
 
 
 /* ==================================================================
@@ -61,7 +140,7 @@
   font-size: var(--fs-tiny);
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: var(--gold);
+  color: var(--bvb-accent);
   margin: 0 0 var(--s-4);
 }
 
@@ -80,7 +159,7 @@
   margin-bottom: var(--s-2);
 }
 .control-value {
-  color: var(--gold);
+  color: var(--bvb-accent);
   font-family: var(--font-mono);
   font-weight: 600;
   font-variant-numeric: tabular-nums;  /* keeps numbers from jittering as they change */
@@ -92,8 +171,7 @@
    3. SLIDERS
    Custom range inputs. Browsers split this into two pseudo-elements
    (::-webkit- and ::-moz-) so we repeat the thumb + track styles for
-   each vendor. Thin gold thumb on a subtle track — matches the
-   "Coal & Forged Gold" palette without shouting.
+   each vendor. Thin accent thumb on a subtle track.
    ================================================================== */
 .control input[type="range"] {
   width: 100%;
@@ -116,17 +194,17 @@
   appearance: none;
   width: 18px;
   height: 18px;
-  background: var(--gold);
+  background: var(--bvb-accent);
   border-radius: 50%;
-  margin-top: -7px;  /* centers the thumb on the 4px track */
+  margin-top: -7px;
   border: 2px solid var(--bg);
-  box-shadow: 0 0 0 1px var(--gold);
+  box-shadow: 0 0 0 1px var(--bvb-accent);
   transition: transform 120ms var(--ease), box-shadow 120ms var(--ease);
 }
 .control input[type="range"]:hover::-webkit-slider-thumb,
 .control input[type="range"]:focus::-webkit-slider-thumb {
   transform: scale(1.15);
-  box-shadow: 0 0 0 1px var(--gold-hot), 0 0 18px rgba(255, 181, 71, 0.45);
+  box-shadow: 0 0 0 1px var(--bvb-accent), 0 0 18px rgba(147, 197, 253, 0.35);
 }
 
 /* Firefox track + thumb */
@@ -138,20 +216,20 @@
 .control input[type="range"]::-moz-range-thumb {
   width: 18px;
   height: 18px;
-  background: var(--gold);
+  background: var(--bvb-accent);
   border-radius: 50%;
   border: 2px solid var(--bg);
-  box-shadow: 0 0 0 1px var(--gold);
+  box-shadow: 0 0 0 1px var(--bvb-accent);
   transition: transform 120ms var(--ease), box-shadow 120ms var(--ease);
 }
 .control input[type="range"]:hover::-moz-range-thumb,
 .control input[type="range"]:focus::-moz-range-thumb {
   transform: scale(1.15);
-  box-shadow: 0 0 0 1px var(--gold-hot), 0 0 18px rgba(255, 181, 71, 0.45);
+  box-shadow: 0 0 0 1px var(--bvb-accent), 0 0 18px rgba(147, 197, 253, 0.35);
 }
 
 .control input[type="range"]:focus-visible {
-  outline: 2px solid var(--gold-hot);
+  outline: 2px solid var(--bvb-accent);
   outline-offset: 6px;
   border-radius: 8px;
 }
@@ -168,10 +246,8 @@
 
 /* Headline card — the big verdict ("Break-even: Year 3"). */
 .calc-headline {
-  background:
-    radial-gradient(80% 120% at 50% 0%, rgba(255, 181, 71, 0.08), transparent 60%),
-    var(--surface);
-  border: 1px solid var(--border-hot);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--s-6) var(--s-5);
   text-align: center;
@@ -190,10 +266,9 @@
   letter-spacing: -0.02em;
   line-height: 1.05;
   margin: 0;
-  background: linear-gradient(135deg, #ffb547 0%, #d4a84b 100%);
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--text);
 }
 
 /* Chart container — fixed aspect so the chart has room to breathe
@@ -242,9 +317,47 @@
   color: var(--text);
   word-break: break-word;
 }
-.calc-total.is-buy   .calc-total-value { color: #ffb547; }   /* same gold the "Buy" line uses in the chart */
-.calc-total.is-build .calc-total-value { color: #4ade80; }   /* same green the "Build" line uses */
+.calc-total.is-buy   .calc-total-value { color: var(--bvb-buy); }
+.calc-total.is-build .calc-total-value { color: var(--bvb-build); }
 .calc-total.is-delta .calc-total-value { color: var(--text); font-size: 1.125rem; }
+
+.bvb-explainer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--s-5) var(--s-6);
+  margin-top: var(--s-6);
+}
+
+.bvb-explainer h2 {
+  font-size: 1.5rem;
+  margin: 0 0 var(--s-4);
+  color: var(--text);
+}
+
+.bvb-explainer p {
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 0 var(--s-3);
+  max-width: 72ch;
+}
+
+.bvb-explainer p:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control input[type="range"]::-webkit-slider-thumb,
+  .control input[type="range"]::-moz-range-thumb {
+    transition: none !important;
+  }
+  .control input[type="range"]:hover::-webkit-slider-thumb,
+  .control input[type="range"]:focus::-webkit-slider-thumb,
+  .control input[type="range"]:hover::-moz-range-thumb,
+  .control input[type="range"]:focus::-moz-range-thumb {
+    transform: none;
+  }
+}
 
 
 /* ==================================================================

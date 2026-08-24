@@ -1,6 +1,6 @@
 # Rycode
 
-Working notes and systems journal: editorial pages in Astro, plus standalone HTML apps under `public/`. Built with Astro. Deployed on Netlify.
+Systems, tools, and research. Astro hub plus standalone HTML apps under `public/`. Deployed on Netlify.
 
 **Live:** https://rycode.dev
 
@@ -23,11 +23,9 @@ npm run preview    # serves dist/
 ## What's here
 
 ```
-src/pages/     journal home, hub indexes (ai, build, economics, engineering,
-               systems, technology, tools), and 404
-src/           layouts, components, styles, data
-public/        static assets and HTML apps — dashboards, research, anatomy,
-               lab, projects — plus fonts, chrome, and og-image.png
+src/pages/     home (`/`), Systems, 404. Tools and Research get added with their first piece.
+src/           layouts, components, styles
+public/        fonts, logo, chrome, og-image.png. HTML apps go here when added.
 scripts/       local helpers, including og-image.html
 ```
 

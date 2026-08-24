@@ -1,8 +1,8 @@
 # Rycode website
 
-Personal technology and systems journal. Live at https://rycode.dev. Built with Astro 6, deployed on Netlify.
+Hub with three doors: Systems, Tools, Research. Live at https://rycode.dev. Built with Astro 6, deployed on Netlify.
 
-This file is the map for Grok in T3 Code. Read `CONTEXT.md` for the site's words. Do not replace this journal with a conversion landing page unless Jeffrey asks.
+This file is the map for Grok in T3 Code. Read `CONTEXT.md` for the site's words. Keep the existing chip-and-glass home. Do not turn it into a conversion landing page unless Jeffrey asks.
 
 ## Commands
 
@@ -17,55 +17,57 @@ New T3 Code threads default to a git worktree of this repo. `t3.json` links `nod
 
 ## Two layers
 
-**1. Journal (Astro)** — `src/`
+**1. Hub (Astro)** — `src/`
 
-Editorial pages: home, hubs, 404. Shared chrome lives in `src/layouts/Layout.astro`.
+Home, section pages, 404. Shared chrome lives in `src/layouts/Layout.astro`.
+
+Live routes: home (`/`), Tools, Control Effectiveness, Build vs. Buy, 404. Systems and Research stay closed until they have a piece. Vendor Concentration is out.
 
 | Path | What it is |
 |---|---|
-| `src/pages/` | One `.astro` file per route (`index`, `ai`, `build`, `economics`, `engineering`, `systems`, `technology`, `tools`, `404`) |
+| `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `404`. `systems.astro` exists but has no pieces. |
 | `src/layouts/` | Site shell |
-| `src/components/` | Shared pieces (`HeaderBannerNav`, `HubList`, …) |
-| `src/styles/global.css` | Colors, type, radii, chrome. Source of truth for look. |
-| `src/styles/landing.css` | Home (`/`) only |
-| `src/data/` | JSON used by pages |
-| `src/scripts/` | Site JS loaded by the layout |
+| `src/components/` | `LandingTiles` for home and section cards |
+| `src/styles/global.css` | Type, radii, shared chrome |
+| `src/styles/landing.css` | Chip photo, glass tiles, landing chrome |
 
 **2. Standalone apps (vanilla)** — `public/`
 
-HTML/CSS/JS tools that ship as static files. No Astro in these folders.
+HTML/CSS/JS tools that ship as static files. No Astro in these folders. Live: Control Effectiveness and Build vs. Buy.
 
 | Path | What it is |
 |---|---|
-| `public/dashboards/` | Interactive calculators |
-| `public/research/` | Long pieces with their own HTML |
-| `public/anatomy/` | Explainers |
-| `public/lab/` | Experiments |
-| `public/projects/` | Case-study HTML |
+| `public/dashboards/` | Interactive calculators (when added) |
+| `public/research/` | Long pieces with their own HTML (when added) |
+| `public/anatomy/` | Explainers (when added) |
+| `public/lab/` | Experiments (when added) |
+| `public/projects/` | Case-study HTML (when added) |
 | `public/fonts/`, `logo.svg`, `og-image.png` | Shared assets |
 
-`public/` is copied to the site root. `/tools` is an Astro hub; `/dashboards/grocery-swap-calc/` is a file under `public/`.
+`public/` is copied to the site root. `/systems` is an Astro section page. A calculator is a file under `public/`.
 
 ## Where new work goes
 
-- New journal/hub page → `src/pages/<name>.astro` using `Layout.astro`. Link it from the right hub with `HubList`.
-- New calculator or HTML app → `public/<section>/<name>/` as `index.html`, `*.css`, `*.js`. Vanilla HTML/CSS/JS. Chart.js via CDN is allowed. Then add a card on the matching hub.
-- Visual values for the journal chrome → CSS custom properties in `src/styles/global.css`. Do not invent one-off colors.
+- New section page → `src/pages/tools.astro` or `research.astro`, same landing layout as `systems.astro`, using `LandingTiles`. Then make that tile a link on home.
+- New piece on a section → add a card (`label`, `href`, `description`) to that page's `LandingTiles` items.
+- New calculator or HTML app → `public/<section>/<name>/` as `index.html`, `*.css`, `*.js`. Vanilla HTML/CSS/JS. Chart.js via CDN is allowed. Dark masthead, flat working interior. No chip photo behind a form. Then add a card on the matching section.
+- Restore old work from git, then revamp the shell and UX. Keep the math. Do not add new product features on the first pass.
+- Tools holds Build vs. Buy and Control Effectiveness. Systems and Research stay closed. SaaSpocalypse waits on review. Vendor Concentration is out. GRC stays off this site until Jeffrey says it is ready.
 - Scratch files → `sandbox/` (gitignored). Never ship from there.
-- `archive/` is old pages. Do not resurrect unless asked.
+- Old pages live in git history. Do not resurrect them unless asked.
 
 Astro is already the stack for `src/`. Do not add another framework. Do not rewrite `public/` apps into Astro unless asked.
 
 ## Look and feel
 
-This is an editorial broadsheet, not a marketing landing page.
+Home and section pages share one look: chip photograph, dark veil, glass tiles.
 
-- Type: Newsreader (headlines), Inter (body), Geist Mono (code/data).
-- Palette and radii: `--bg`, `--text`, `--blue`, `--radius-*` in `global.css`.
+- Type: Newsreader (tile labels), Inter (card sentences, UI), Geist Mono (code/data).
+- Landing values live in `landing.css`. Journal newsprint in `global.css` is leftover until apps need a working interior.
 - Accessibility: semantic HTML, `aria-label` on controls, skip link, `:focus-visible`, `prefers-reduced-motion`.
-- `public/` apps use `/journal-chrome.css` plus a local stylesheet. Keep that split.
+- `public/` apps use `/journal-chrome.css` plus a local stylesheet. Keep that split. Restyle that chrome dark when the first app comes back.
 
-The `landing-page-design` skill does **not** override this journal. Use it only if Jeffrey asks for a conversion landing page.
+The `landing-page-design` skill does **not** override this hub. Use it only if Jeffrey asks for a conversion landing page.
 
 ## How to work here
 
@@ -74,3 +76,14 @@ The `landing-page-design` skill does **not** override this journal. Use it only 
 3. After UI changes, verify in the browser: desktop and a mobile width, the page you touched, and any hub that lists it.
 4. Do not add npm packages or CDNs without saying so first (Chart.js CDN is already approved for dashboards).
 5. GRC is a **separate** site: https://grc.rycode.dev/. Do not proxy `/grc` through this repo.
+
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues at jeffryanfl/rycode-website. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Single-context: one `CONTEXT.md` at the repo root and `docs/adr/` for decisions. See `docs/agents/domain.md`.
+

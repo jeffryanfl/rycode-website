@@ -1,19 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '../styles/landing.css';
 ---
 
-<Layout title="Page not found — Rycode Systems Journal" description="This address is not in the journal.">
-  <div class="writing-layout">
-    <header class="lead-header">
-      <h1 class="lead-title">
-        Page not found
-      </h1>
-      <p class="lead-subtitle">
-        This address is not in the journal.
-      </p>
-    </header>
-    <p class="hub-empty">
-      Return to <a href="/">home</a> or see live apps on <a href="/tools">Tools</a>.
+<Layout
+  title="Page not found — Rycode"
+  description="This address is not on Rycode."
+  variant="landing"
+>
+  <section class="landing-stage">
+    <h1 class="landing-identity">Page not found</h1>
+    <p class="landing-empty">
+      Return to <a href="/">home</a>.
     </p>
-  </div>
+  </section>
 </Layout>

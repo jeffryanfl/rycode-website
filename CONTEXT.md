@@ -2,18 +2,20 @@
 
 Glossary for this repo. Use these words in conversation and in code names.
 
-**Rycode.** Jeffrey's independent technology and systems journal. Live site: https://rycode.dev.
+**Rycode.** A hub with three doors: Systems, Tools, and Research. Live site: https://rycode.dev.
 
-**Journal page.** An editorial Astro route under `src/pages/`. Shared masthead, footer, and newsprint look.
+**Home.** The chip photograph and glass tiles at `/`. Three tiles. Only a tile with a live piece behind it is a link.
 
-**Hub.** A journal page that lists pieces in one topic (AI, Build, Technology, Systems, Economics, Engineering, Tools). Built with `HubList`.
+**Section page.** `/systems`, `/tools`, or `/research`. Same look as home: dark chip, glass cards, one card per piece. Logo goes home. No pillar rail.
 
-**Standalone app.** A vanilla HTML/CSS/JS tool under `public/` (dashboards, lab, anatomy, research HTML). It has its own `index.html`. It is not an Astro page.
+**Piece.** One app or research item. A section card is a title plus one sentence. Apps live under `public/` as vanilla HTML/CSS/JS. They keep the dark masthead and a flat working interior. No chip photo behind a form.
 
-**Chrome.** Shared masthead, logo, section nav, and footer.
+**Standalone app.** A vanilla HTML/CSS/JS tool under `public/`. It has its own `index.html`. It is not an Astro page.
 
-**Newsprint.** The visual system: slate gray paper (`#E8ECEF`), deep ink, medium blue (`#2563eb`), Newsreader + Inter.
+**Chrome.** Shared masthead, logo, and footer.
 
-**GRC site.** Separate Netlify project at https://grc.rycode.dev/. Not this repo.
+**Landing look.** Chip photograph, dark veil, glass tiles, Newsreader + Inter. Used on home and section pages.
+
+**GRC site.** Separate Netlify project at https://grc.rycode.dev/. Not this repo. Do not add it here until Jeffrey says it is ready.
 
 **Worktree.** A linked working copy of this git repo that T3 Code creates for a Grok thread. Same history as the main checkout. Different folder. Merge back through git.

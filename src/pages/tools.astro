@@ -1,46 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HubList from '../components/HubList.astro';
+import LandingTiles from '../components/LandingTiles.astro';
+import '../styles/landing.css';
 
-const items = [
+const pieces = [
   {
-    href: '/dashboards/build-vs-buy/',
-    title: 'Build vs. Buy',
-    description: 'An interactive calculator comparing the cost of building software vs. licensing SaaS over time.',
+    label: "Build vs. Buy",
+    href: "/dashboards/build-vs-buy/",
+    description: "Slide the inputs. Find the year building pays off.",
   },
   {
-    href: '/dashboards/control-effectiveness/',
-    title: 'Control Effectiveness & Residual Risk',
-    description: 'An interactive ERM calculator. Select risks, assign controls, watch residual risk drop in real time.',
-  },
-  {
-    href: '/dashboards/grocery-swap-calc/',
-    title: 'Grocery Swap Calculator',
-    description: 'Compare an existing SKU against a proposed replacement using penny profit, shrink, slotting, and cannibalization.',
-  },
-  {
-    href: '/dashboards/vendor-concentration/',
-    title: 'Vendor Concentration',
-    description: 'Build a stack, take a vendor offline, see the blast radius.',
-  },
-  {
-    href: '/lab/chat-builder/',
-    title: 'Chat Builder',
-    description: 'A WhatsApp-style chat mockup builder for storytelling and creative work.',
+    label: "Control Effectiveness",
+    href: "/dashboards/control-effectiveness/",
+    description: "Slide control effectiveness and watch residual risk drop.",
   },
 ];
 ---
 
-<Layout title="Tools — Rycode Systems Journal" description="Interactive calculators, decision simulators, and systems dashboards.">
-  <div class="writing-layout">
-    <header class="lead-header">
-      <h1 class="lead-title">
-        Tools
-      </h1>
-      <p class="lead-subtitle">
-        Calculators, quantitative models, and interactive utilities.
-      </p>
-    </header>
-    <HubList items={items} />
-  </div>
+<Layout
+  title="Tools — Rycode"
+  description="Tools."
+  variant="landing"
+>
+  <section class="landing-stage">
+    <h1 class="landing-identity">Tools</h1>
+    <LandingTiles items={pieces} />
+  </section>
 </Layout>

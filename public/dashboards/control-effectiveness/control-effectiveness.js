@@ -37,7 +37,7 @@
 
   const COLORS = {
     inherent: cssVar('--ce-inherent') || '#6b7280',
-    residual: cssVar('--gold')        || '#d4a84b',
+    residual: cssVar('--ce-residual') || '#60a5fa',
     grid:     'rgba(255,255,255,0.06)',
     text:     cssVar('--text-muted')  || '#a8a8b3',
     textBold: cssVar('--text')        || '#e8e8ec',
@@ -250,8 +250,8 @@
             min="0" max="100" step="5" value="${control.effectiveness}"
             aria-label="Control effectiveness, 0 to 100 percent"
           />
-          <div style="display:flex; justify-content:flex-end; margin-top:4px;">
-            <button type="button" class="ce-btn ce-btn--ghost ce-btn--danger" data-action="remove-control" style="padding:4px 8px;">Remove</button>
+          <div class="ce-control-remove">
+            <button type="button" class="ce-btn ce-btn--ghost ce-btn--danger" data-action="remove-control">Remove</button>
           </div>
         </div>
       </div>
@@ -579,7 +579,9 @@
     }
   }
 
-  // Chart.js loads via a non-async <script> tag right above this
-  // file, so by the time we run, Chart is defined. Safe to init.
-  init();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
