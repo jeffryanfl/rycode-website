@@ -1,37 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '../styles/landing.css';
+
+const sections = [
+  { label: "AI" },
+  { label: "Build" },
+  { label: "Technology" },
+  { label: "Systems" },
+  { label: "Economics" },
+  { label: "Engineering" },
+  { label: "Tools" },
+] as const;
 ---
 
-<Layout title="Rycode — Working Notes & Systems Journal">
-  <div class="writing-layout">
-    
-    <!-- ===========================================================
-         FEATURED WRITING CANVAS / LEAD ESSAY
-         =========================================================== -->
-    <article class="lead-article" aria-labelledby="leadHeading">
-      <header class="lead-header">
-        <h1 class="lead-title" id="leadHeading">
-          The Architecture of Modern Systems: Models, Inference, and Governance
-        </h1>
-        <p class="lead-subtitle">
-          Notes on structuring intelligence, high-stakes operational risk, and the emerging economics of autonomous software.
-        </p>
-      </header>
+<Layout title="Rycode — Working Notes & Systems Journal" variant="landing">
+  <section class="landing-stage">
+    <h1 class="visually-hidden">Rycode</h1>
 
-      <div class="prose-canvas">
-        <p>
-          Building systems in an era of rapid technological inflection requires a return to first principles. Whether evaluating the mechanical limits of semiconductor packaging, calculating the total cost of ownership across sovereign infrastructure, or designing enterprise risk frameworks, clarity emerges from rigorous decomposition rather than aggregated assumptions.
-        </p>
-
-        <p>
-          As machine intelligence models transition from empirical novelty to core infrastructure, the bottlenecks are shifting rapidly. We are moving from parameter scale to inference throughput, from monolithic compute clusters to localized energy constraints, and from seat-based software licensing to agentic workflows.
-        </p>
-
-        <blockquote>
-          “The true constraint on technological leverage is rarely the availability of compute—it is the precision with which we define, evaluate, and contain operational blast radiuses.”
-        </blockquote>
-      </div>
-    </article>
-
-  </div>
+    <div class="landing-rail">
+      <ul>
+        {sections.map((item) => (
+          <li>
+            <span class="landing-rail-link">
+              <span class="landing-rail-label">{item.label}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 </Layout>

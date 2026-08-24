@@ -1,0 +1,282 @@
+/* ==================================================================
+   RYCODE LANDING STAGE — chip photo, glass section tiles as a top rail
+   Imported only from src/pages/index.astro. Journal chrome stays in global.css.
+   Hub pages keep the newsprint scheme; these rules are landing-scoped.
+
+   Stacking: the chip is a background-image on .editorial-shell--landing.
+   The dull veil (::after) sits above the photo. The glass tiles are a
+   higher layer (z-index 2) so a full-width top row reads over the photo.
+   ================================================================== */
+
+/* --- Landing canvas: charcoal + chip photo + dark veil ---
+   Photo lives at /landing/chip-bg.jpg (copied into public so it deploys).
+   Viewport-fit: 100dvh minus compact masthead/footer; overflow stays on this
+   shell only so hub pages are untouched. */
+
+html:has(.editorial-shell--landing),
+html:has(.editorial-shell--landing) body {
+  background: #080a10;
+  color-scheme: dark;
+  height: 100%;
+  overflow: hidden;
+}
+
+.editorial-shell--landing {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background-color: #080a10;
+  background-image: url("/landing/chip-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgba(248, 250, 252, 0.92);
+}
+
+.editorial-shell--landing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 10, 16, 0.68) 0%,
+    rgba(8, 10, 16, 0.52) 42%,
+    rgba(8, 10, 16, 0.62) 100%
+  );
+}
+
+.editorial-shell--landing > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo pinned to the upper-right on landing only (journal hubs untouched).
+   Compact masthead sits above the tile row so the two never overlap. */
+.editorial-shell--landing .masthead--landing {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0.45rem 1.75rem 0.4rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.editorial-shell--landing .masthead-brand {
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+}
+
+.editorial-shell--landing .masthead-logo-img {
+  height: 36px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
+}
+
+.editorial-shell--landing .editorial-main-content {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.editorial-shell--landing .editorial-footer {
+  background: transparent;
+  border-top-color: rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 1.5rem;
+  flex-shrink: 0;
+}
+
+.editorial-shell--landing .editorial-footer-inner {
+  max-width: min(1100px, 90vw);
+  color: rgba(226, 232, 240, 0.48);
+}
+
+/* --- Stage: remaining viewport after compact masthead + footer ---
+   Rail sits at the TOP of this stage (not vertically centered). */
+
+.landing-stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* Horizontal inset keeps first/last tiles off the viewport edge. */
+  padding: 0.35rem clamp(1.5rem, 4vw, 3rem) 1.25rem;
+  position: relative;
+}
+
+/* Soft bloom so the die still reads around the tile row. */
+.landing-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 58% 62% at 50% 52%,
+    rgba(120, 170, 255, 0.08) 0%,
+    transparent 72%
+  );
+}
+
+/* --- Horizontal rail: seven glass tiles equally spaced along the top --- */
+
+.landing-rail {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-rail ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.landing-rail ul > li {
+  flex: 0 1 auto;
+  display: flex;
+  max-width: 100%;
+}
+
+.landing-rail-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 8.5rem;
+  padding: 0.85rem 1.2rem 0.9rem;
+  text-decoration: none;
+  cursor: default;
+  color: rgba(248, 250, 252, 0.9);
+  border-radius: 0.7rem;
+  /* Frosted glass, not a milk sheet: lower blur + fill so the chip reads through. */
+  background: rgba(12, 16, 28, 0.34);
+  backdrop-filter: blur(8px) saturate(1.12);
+  -webkit-backdrop-filter: blur(8px) saturate(1.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  transition:
+    background 180ms var(--ease),
+    border-color 180ms var(--ease),
+    color 180ms var(--ease);
+}
+
+.landing-rail-link:hover {
+  color: rgba(255, 255, 255, 0.98);
+  background: rgba(18, 24, 40, 0.46);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.landing-rail-link:focus-visible {
+  outline: 2px solid rgba(147, 197, 253, 0.9);
+  outline-offset: 3px;
+  border-radius: 0.7rem;
+}
+
+.landing-rail-label {
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 2.2vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.18;
+  text-align: center;
+  color: inherit;
+  letter-spacing: 0.012em;
+  white-space: nowrap;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .landing-rail-link {
+    background: rgba(8, 10, 16, 0.55);
+  }
+}
+
+@media (max-width: 720px) {
+  .landing-stage {
+    padding: 0.3rem 1.15rem 1rem;
+    align-items: flex-start;
+  }
+
+  .landing-rail {
+    width: 100%;
+  }
+
+  .landing-rail ul {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 0.42rem 0.45rem;
+  }
+
+  .landing-rail-link {
+    padding: 0.62rem 0.95rem 0.66rem;
+    min-width: min(8.5rem, 100%);
+  }
+
+  .landing-rail-label {
+    font-size: clamp(1.35rem, 6.2vw, 1.75rem);
+  }
+}
+
+@media (max-height: 640px) {
+  .editorial-shell--landing .masthead--landing {
+    padding-top: 0.35rem;
+    padding-bottom: 0.28rem;
+  }
+
+  .editorial-shell--landing .editorial-footer {
+    padding-top: 0.28rem;
+    padding-bottom: 0.28rem;
+  }
+
+  .landing-stage {
+    padding-top: 0.25rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .landing-rail ul {
+    gap: 0.32rem 0.4rem;
+  }
+
+  .landing-rail-link {
+    padding: 0.5rem 0.95rem 0.54rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-stage::before,
+  .landing-rail-link {
+    animation: none;
+    transition: none;
+  }
+}
