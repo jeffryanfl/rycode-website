@@ -10,20 +10,26 @@ import '../styles/landing.css';
 >
   <section class="landing-stage landing-stage--coverflow">
     <h1 class="visually-hidden">Rycode</h1>
-    <ul class="landing-coverflow" data-coverflow data-active="tools">
+    <ul class="landing-coverflow" data-coverflow>
       <li data-card="research">
-        <a href="/research" aria-label="Research">
-          <img src="/landing/panel-research.jpg" alt="" width="844" height="622" />
-        </a>
+        <div class="landing-coverflow-pane">
+          <a href="/research" aria-label="Research">
+            <img src="/landing/panel-research.jpg" alt="" width="844" height="622" />
+          </a>
+        </div>
       </li>
       <li data-card="tools">
-        <a href="/tools" aria-label="Tools">
-          <img src="/landing/panel-tools.jpg" alt="" width="722" height="628" />
-        </a>
+        <div class="landing-coverflow-pane">
+          <a href="/tools" aria-label="Tools">
+            <img src="/landing/panel-tools.jpg" alt="" width="722" height="628" />
+          </a>
+        </div>
       </li>
       <li data-card="systems">
-        <img src="/landing/panel-systems.jpg" alt="" width="706" height="552" />
-        <span class="visually-hidden">Systems</span>
+        <div class="landing-coverflow-pane">
+          <img src="/landing/panel-systems.jpg" alt="" width="706" height="552" />
+          <span class="visually-hidden">Systems</span>
+        </div>
       </li>
     </ul>
     <a href="/ai" class="landing-brain" aria-label="A.I.">
@@ -37,4 +43,5 @@ import '../styles/landing.css';
 </Layout>
 
 <script is:inline src="/coverflow.js" defer></script>
+
 

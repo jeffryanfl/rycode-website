@@ -402,26 +402,29 @@ a.landing-rail-link:focus-visible {
   position: relative;
   z-index: 2;
   width: min(1180px, 100%);
-  height: min(52vh, 420px);
+  height: min(58vh, 480px);
   margin: 0;
   padding: 0;
   list-style: none;
-  perspective: 1400px;
-  transform-style: preserve-3d;
-  cursor: pointer;
+  overflow: visible;
 }
 
 .landing-coverflow > li {
   position: absolute;
-  left: 50%;
   top: 50%;
-  width: 38%;
+  width: 32%;
   margin: 0;
   cursor: pointer;
-  pointer-events: none;
-  transform-origin: center center;
   transform-style: preserve-3d;
-  transition: transform 280ms cubic-bezier(0.22, 0.9, 0.32, 1);
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.32, 1),
+    z-index 0s;
+}
+
+.landing-coverflow-pane {
+  display: block;
+  width: 100%;
+  transform-style: preserve-3d;
 }
 
 .landing-coverflow img {
@@ -438,7 +441,6 @@ a.landing-rail-link:focus-visible {
 
 .landing-coverflow a {
   display: block;
-  pointer-events: auto;
   border-radius: 0.7rem;
 }
 
@@ -447,25 +449,73 @@ a.landing-rail-link:focus-visible {
   outline-offset: 4px;
 }
 
-.landing-coverflow[data-active="tools"] [data-card="research"],
-.landing-coverflow[data-active="systems"] [data-card="research"],
-.landing-coverflow[data-active="research"] [data-card="tools"] {
-  z-index: 1;
-  transform: translate(-50%, -50%) translateX(-72%) rotateY(28deg) translateZ(-70px);
-}
+@media (min-width: 721px) {
+  /*
+    U-arc opening toward the camera. Perspective lives on the stage
+    so rotateY actually foreshortens: inner edges shorter, outer
+    edges taller. Hinges sit on Tools's vertical edges.
+  */
+  .landing-stage--coverflow {
+    perspective: 580px;
+    perspective-origin: 50% calc(clamp(0.75rem, 3vh, 1.75rem) + min(29vh, 240px));
+  }
 
-.landing-coverflow[data-active="tools"] [data-card="tools"],
-.landing-coverflow[data-active="research"] [data-card="research"],
-.landing-coverflow[data-active="systems"] [data-card="systems"] {
-  z-index: 3;
-  transform: translate(-50%, -50%) translateX(0) rotateY(0deg) translateZ(48px) scale(1.04);
-}
+  .landing-coverflow {
+    --tile-w: 32%;
+    --yaw: 48deg;
+    --back: -100px;
+    --front: 72px;
+    transform-style: preserve-3d;
+  }
 
-.landing-coverflow[data-active="tools"] [data-card="systems"],
-.landing-coverflow[data-active="research"] [data-card="systems"],
-.landing-coverflow[data-active="systems"] [data-card="tools"] {
-  z-index: 1;
-  transform: translate(-50%, -50%) translateX(72%) rotateY(-28deg) translateZ(-70px);
+  .landing-coverflow [data-card="research"] {
+    left: calc(50% - 1.5 * var(--tile-w));
+    z-index: 2;
+    transform-origin: right center;
+    transform: translateY(-50%) translateZ(var(--back)) rotateY(var(--yaw));
+  }
+
+  .landing-coverflow [data-card="tools"] {
+    left: calc(50% - 0.5 * var(--tile-w));
+    z-index: 1;
+    transform-origin: center center;
+    transform: translateY(-50%) translateZ(calc(var(--back) - 16px)) rotateY(0deg);
+  }
+
+  .landing-coverflow [data-card="systems"] {
+    left: calc(50% + 0.5 * var(--tile-w));
+    z-index: 2;
+    transform-origin: left center;
+    transform: translateY(-50%) translateZ(var(--back)) rotateY(calc(-1 * var(--yaw)));
+  }
+
+  .landing-coverflow a {
+    pointer-events: none;
+  }
+
+  .landing-coverflow:not([data-focus]) [data-card="tools"] a,
+  .landing-coverflow[data-focus="tools"] [data-card="tools"] a,
+  .landing-coverflow[data-focus="research"] [data-card="research"] a {
+    pointer-events: auto;
+  }
+
+  .landing-coverflow[data-focus="research"] [data-card="research"],
+  .landing-coverflow [data-card="research"]:focus-within {
+    z-index: 5;
+    transform: translateY(-50%) translateZ(var(--front)) rotateY(0deg);
+  }
+
+  .landing-coverflow[data-focus="tools"] [data-card="tools"],
+  .landing-coverflow [data-card="tools"]:focus-within {
+    z-index: 5;
+    transform: translateY(-50%) translateZ(var(--front)) rotateY(0deg);
+  }
+
+  .landing-coverflow[data-focus="systems"] [data-card="systems"],
+  .landing-coverflow [data-card="systems"]:focus-within {
+    z-index: 5;
+    transform: translateY(-50%) translateZ(var(--front)) rotateY(0deg);
+  }
 }
 
 /* Home: three landscape glass windows over a receding grid. */
@@ -723,6 +773,7 @@ a.landing-window:focus-visible {
     justify-content: center;
     padding: 0.6rem 1rem 0.4rem;
     gap: 0.55rem;
+    perspective: none;
   }
 
   .landing-brain {
@@ -756,7 +807,7 @@ a.landing-window:focus-visible {
     gap: 0.55rem;
   }
 
-  .landing-coverflow[data-active] > [data-card] {
+  .landing-coverflow > [data-card] {
     position: relative;
     left: auto;
     top: auto;
@@ -770,6 +821,14 @@ a.landing-window:focus-visible {
     transition: none;
     cursor: default;
     pointer-events: auto;
+  }
+
+  .landing-coverflow-pane {
+    width: 100%;
+    height: 100%;
+    transform: none;
+    transform-origin: center center;
+    transform-style: flat;
   }
 
   .landing-coverflow a {
@@ -883,7 +942,8 @@ a.landing-window:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .landing-rail-link,
-  .landing-coverflow > li {
+  .landing-coverflow > li,
+  .landing-coverflow-pane {
     transition: none;
   }
 
