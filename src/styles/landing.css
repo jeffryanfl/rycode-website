@@ -438,6 +438,7 @@ a.landing-rail-link:focus-visible {
 
 .landing-coverflow a {
   display: block;
+  pointer-events: auto;
   border-radius: 0.7rem;
 }
 
