@@ -59,6 +59,8 @@ const ogImageURL = new URL('og-image.png', Astro.site);
         </a>
       </div>
 
+      {isNewspaper && <p class="masthead-updated">Last updated Aug 2026</p>}
+
       {!isLanding && !isNewspaper && <HeaderBannerNav />}
     </header>
 
