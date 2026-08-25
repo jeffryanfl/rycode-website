@@ -1,0 +1,395 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/newspaper.css';
+
+const stages = [
+  {
+    id: 'pretrain',
+    tick: 'pretrain',
+    label: 'Pretraining',
+    buys: 'Fluency, frequent facts, code patterns, a prior RL can search.',
+    not: 'Honesty, refusal, tool use, calibration on rare facts.',
+  },
+  {
+    id: 'mid',
+    tick: 'mid',
+    label: 'Mid-training',
+    buys: 'Specialist density (code/math), long-context stretch, a better SFT/RL init.',
+    not: 'A product.',
+  },
+  {
+    id: 'sft',
+    tick: 'SFT',
+    label: 'SFT',
+    buys: 'Assistant format, style, behaviors you can write down.',
+    not: 'Discovery of better-than-human strategies.',
+  },
+  {
+    id: 'rlhf',
+    tick: 'RLHF/DPO',
+    label: 'RLHF / RLAIF / DPO',
+    buys: 'Helpfulness, harmlessness, chat preference.',
+    not: 'Truth over agreeableness.',
+  },
+  {
+    id: 'rlvr',
+    tick: 'RLVR',
+    label: 'RLVR',
+    buys: 'Long search on verifiable domains; test-time compute as a knob.',
+    not: 'Writing quality, SWE-scale engineering by itself, judgment on unverifiable work.',
+  },
+  {
+    id: 'distill',
+    tick: 'distill',
+    label: 'Distillation',
+    buys: 'The teacher’s visible procedure at lower inference cost.',
+    not: 'The teacher’s internal search, automatically.',
+  },
+];
+
+const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
+---
+
+<Layout
+  title="A next-token engine with an RLVR post-train and a tool loop — Rycode"
+  description="How it works, what still discriminates, and the hardware you actually buy."
+  variant="newspaper"
+>
+  <article class="paper">
+    <header class="paper-head">
+      <p class="paper-kicker">A.I.</p>
+      <h1 class="paper-claim">A next-token engine with an RLVR post-train and a tool loop, sitting on a liquid-cooled rack.</h1>
+      <p class="paper-dek">How it works, what still discriminates, and the hardware you actually buy.</p>
+      <p class="paper-byline">Jeffrey Ryan</p>
+    </header>
+
+    <section class="paper-section" aria-labelledby="how-it-works">
+      <h2 class="paper-h2" id="how-it-works">How it works</h2>
+
+      <a class="paper-skip" href="#how-it-works-body">Skip figure</a>
+      <figure class="paper-figure stage-strip">
+        <figcaption class="paper-fig-kicker">How it works</figcaption>
+        <p class="paper-fig-sub">Distill view of training (inference folded in)</p>
+
+        <div class="stage-ticks" role="radiogroup" aria-label="Training stage">
+          {stages.map((stage) => (
+            <label class:list={['stage-tick', { 'stage-tick--rlvr': stage.id === 'rlvr' }]}>
+              <input
+                type="radio"
+                name="ai-stage"
+                value={stage.id}
+                checked={stage.id === 'rlvr'}
+              />
+              <span class="stage-dot" aria-hidden="true"></span>
+              <span class="stage-name">{stage.tick}</span>
+            </label>
+          ))}
+        </div>
+
+        <div class="stage-detail">
+          {stages.map((stage) => (
+            <div class="stage-panel" data-stage={stage.id}>
+              <p class="stage-panel-label">{stage.label}</p>
+              <p><strong>Buys.</strong> {stage.buys} <strong>Does not.</strong> {stage.not}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="stage-facts">
+          <div class="stage-fact">
+            <h3>Prefill vs decode</h3>
+            <p>Prefill reads the prompt and fills the KV cache. Decode emits one token at a time and is memory-bandwidth bound.</p>
+          </div>
+          <div class="stage-fact">
+            <h3>KV cache</h3>
+            <p>Advertised context is an architectural number. Usable recall is empirical. A million-token window is a whiteboard size.</p>
+          </div>
+          <div class="stage-fact">
+            <h3>MoE · total ≠ active</h3>
+            <p>DeepSeek-V3 is 671B total / about 37B active (lab-published). Routing is a new outage class.</p>
+          </div>
+        </div>
+      </figure>
+
+      <div class="paper-body" id="how-it-works-body">
+        <p>Treat the model like a pianist who has only ever been asked to play the next note. There is no score in the head, and no inner room where a world is being simulated. Text is chopped into tokens. Each token becomes a vector. A stack of transformer blocks updates those vectors in a shared residual stream. Attention moves information between positions. The last state is projected into a vocabulary distribution, a token is sampled, and the loop repeats. What looks like reasoning is that same loop, sometimes stretched into a long chain of thought by post-training. The chain is generated text, not a window into thoughts.</p>
+        <p>Chat vision-language models sit on that loop. They are not world models. World models (Genie-class, Cosmos-class) predict future states. They last minutes, not hours, and they are not a digital twin of anything you run.</p>
+        <p>Training is not one process. Each stage buys something; none of them buy the rest.</p>
+
+        <div class="paper-table-wrap">
+          <table class="paper-table">
+            <thead>
+              <tr>
+                <th scope="col">Stage</th>
+                <th scope="col">What it buys</th>
+                <th scope="col">What it does not</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pretraining</td>
+                <td>Fluency, frequent facts, code patterns, a prior RL can search</td>
+                <td>Honesty, refusal, tool use, calibration on rare facts</td>
+              </tr>
+              <tr>
+                <td>Mid-training</td>
+                <td>Specialist density (code/math), long-context stretch, a better SFT/RL init</td>
+                <td>A product</td>
+              </tr>
+              <tr>
+                <td>SFT</td>
+                <td>Assistant format, style, behaviors you can write down</td>
+                <td>Discovery of better-than-human strategies</td>
+              </tr>
+              <tr>
+                <td>RLHF / RLAIF / DPO</td>
+                <td>Helpfulness, harmlessness, chat preference</td>
+                <td>Truth over agreeableness</td>
+              </tr>
+              <tr data-accent="rlvr">
+                <td>RLVR</td>
+                <td>Long search on verifiable domains; test-time compute as a knob</td>
+                <td>Writing quality, SWE-scale engineering by itself, judgment on unverifiable work</td>
+              </tr>
+              <tr>
+                <td>Distillation</td>
+                <td>The teacher’s visible procedure at lower inference cost</td>
+                <td>The teacher’s internal search, automatically</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The 2025–2026 jump is RLVR plus test-time compute: drill on domains a checker can grade, then spend extra tokens at inference. Math and code move. Writing, long-horizon engineering, and calibrated judgment on unverifiable work do not come along for the ride.</p>
+        <p>Mixture-of-experts is a roster with a dispatcher; only a subset fires. DeepSeek-V3 is 671B total / about 37B active (lab-published). Qwen3.8-Max launched as an Alibaba API SKU on 3 August 2026 (2.4T / 95B active); open weights followed around 12 August. Total is not compute per token. Routing is a new outage class.</p>
+        <p>Prefill reads the prompt and fills the key-value cache. Decode emits one token at a time and is memory-bandwidth bound: every new token reloads the KV cache of everything before it. Advertised context is an architectural number. Usable recall is empirical. A million-token window is a whiteboard size, not a guarantee the model read the board.</p>
+        <p>FlashAttention is an IO-aware attention kernel (same math, less HBM traffic). PagedAttention is vLLM paging the KV cache in blocks so many sequences can share GPU RAM. Different jobs. Speculative decoding is a fast draft plus a target check; NVIDIA and vLLM do not treat it as lossless in all settings.</p>
+        <p>An agent is the model calling a tool, reading the observation, and calling again, with an autonomy slider in the app (Claude Code, Cursor, Codex-class). Recursive self-improvement, in the architecture-rewrites-itself sense, is not demonstrated in production.</p>
+        <p>Failure modes are incentives. Hallucination is, in part, a test-taking problem: OpenAI argued in September 2025 that evals scoring zero for “I don’t know” teach bluffing. Sycophancy is what preference data buys. Scaffold and contamination move leaderboards. Dual-use classifiers are a routing layer in the API, not a footnote.</p>
+      </div>
+
+      <aside class="know-more" aria-label="Know more">
+        <p class="know-more-kicker">Know more</p>
+        <div class="know-more-pair">
+          <div>
+            <h3>FlashAttention</h3>
+            <p>An IO-aware attention kernel. Same math, less HBM traffic.</p>
+          </div>
+          <div>
+            <h3>PagedAttention</h3>
+            <p>vLLM paging the KV cache in blocks so many sequences can share GPU RAM. Different job.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="paper-section" aria-labelledby="what-still-counts">
+      <h2 class="paper-h2" id="what-still-counts">What still counts as capability</h2>
+
+      <figure class="paper-figure">
+        <figcaption class="paper-fig-kicker">What still counts</figcaption>
+        <p class="paper-fig-sub">Evaluation split. No scores invented here.</p>
+        <div class="eval-split">
+          <div class="eval-col eval-col--full">
+            <h3>Discriminating</h3>
+            <ul>
+              <li>Terminal-Bench 3.0</li>
+              <li>OSWorld 2.0</li>
+              <li>ARC-AGI-3</li>
+              <li>METR</li>
+            </ul>
+          </div>
+          <div class="eval-col eval-col--sat">
+            <h3>Saturated</h3>
+            <ul>
+              <li>SWE-Verified</li>
+              <li>GPQA Diamond</li>
+            </ul>
+          </div>
+        </div>
+        <p class="paper-caption">Failure modes: state on OSWorld, not mouse-clicking. Scaffold and contamination move leaderboards. An 8-hour horizon is not an 8-hour employee.</p>
+      </figure>
+
+      <div class="paper-body">
+        <p>Claude Opus 5 is $5 / $25 per million tokens, 1M context. Sonnet 5 is $2 / $10. Fable 5 is $10 / $50. Dual-use classifiers and 30-day retention are Mythos-class terms, including Mythos 5; Fable is the generally available SKU in that class, and Mythos 5 is trusted access with the classifiers lifted. Grok 4.6 (xAI, 12 August 2026) is 500k context; $2 / $6 per million tokens when the prompt is below 200k, and $4 / $12 for the whole request at or above 200k prompt tokens (xAI pricing). GPT-5.6 Sol, Terra, and Luna, and Gemini 3.x, are closed SKUs; prices and parameter counts for those lines are not published here.</p>
+        <p>SWE-Verified and GPQA Diamond are saturated. OpenAI stopped reporting SWE-Verified for frontier launches. Epoch found scaffold choice alone moved Verified by about 11–15 points. What still discriminates: Terminal-Bench 3.0, OSWorld 2.0 binary success, ARC-AGI-3, and METR’s time horizon.</p>
+        <p>OSWorld 2.0 (paper, 28 June 2026): 108 workflows, human median 1.6 hours. Opus 4.8, max thinking plus batched, 500-step budget: 20.6% binary and 54.8% partial. Above about 163 minutes, binary completion was zero for every model in that paper’s plot. The failure mode is state, not mouse-clicking. ARC Prize reported GPT-5.6 Sol Max at 7.78% on ARC-AGI-3 semi-private (9 July 2026). METR measured an early Mythos Preview at a 50% time horizon of ≥16 hours (CI 8.5–55h) and warned measurements above 16 hours are unreliable on the current suite. An 8-hour horizon is not an 8-hour employee.</p>
+        <p>The working layer is a coding agent with a human on the irreversible step. Unattended multi-hour computer use, and “the model that thinks for days,” are still demo.</p>
+      </div>
+
+      <aside class="know-more" aria-label="Know more">
+        <p class="know-more-kicker">Know more</p>
+        <div class="know-more-pair">
+          <div>
+            <h3>Fable</h3>
+            <p>The generally available SKU in that class. Fable 5 is $10 / $50 per million tokens.</p>
+          </div>
+          <div>
+            <h3>Mythos</h3>
+            <p>Trusted access with the dual-use classifiers lifted. Mythos-class terms include 30-day retention, including Mythos 5.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="paper-section" aria-labelledby="the-rack">
+      <h2 class="paper-h2" id="the-rack">The rack, not the GPU</h2>
+
+      <figure class="paper-figure rack-figure">
+        <figcaption class="paper-fig-kicker">The rack</figcaption>
+        <p class="paper-fig-sub">Liquid-cooled, 72-GPU. Bind order labeled on the drawing.</p>
+        <svg
+          class="rack-svg"
+          viewBox="0 0 920 520"
+          role="img"
+          aria-labelledby="rack-title rack-desc"
+        >
+          <title id="rack-title">Liquid-cooled 72-GPU rack</title>
+          <desc id="rack-desc">
+            Line drawing of a liquid-cooled 72-GPU rack. Bind order: grid interconnect, then CoWoS packaging, then HBM, then the rack.
+          </desc>
+
+          <!-- Cabinet 3/4 -->
+          <g class="rack-ink" stroke-width="1.2">
+            <polygon points="78,42 318,42 318,448 78,448" />
+            <polygon points="318,42 408,88 408,494 318,448" />
+            <polygon points="78,42 168,88 408,88 318,42" />
+          </g>
+
+          <!-- Inner front rails -->
+          <g class="rack-ink" stroke-width="0.7" opacity="0.7">
+            <line x1="92" y1="58" x2="92" y2="432" />
+            <line x1="304" y1="58" x2="304" y2="432" />
+          </g>
+
+          <!-- Top manifold -->
+          <g class="rack-cyan" stroke-width="1.4">
+            <line x1="96" y1="62" x2="300" y2="62" />
+            <line x1="96" y1="62" x2="96" y2="74" />
+            <line x1="300" y1="62" x2="300" y2="74" />
+            <line x1="330" y1="78" x2="396" y2="112" />
+          </g>
+
+          <!-- Compute sleds: 18 trays, 4 GPU pips each -->
+          <g class="rack-ink" stroke-width="0.8">
+            {sleds.map((y) => (
+              <g>
+                <rect x="98" y={y} width="204" height="13" />
+                <rect x="108" y={y + 3} width="18" height="7" />
+                <rect x="154" y={y + 3} width="18" height="7" />
+                <rect x="200" y={y + 3} width="18" height="7" />
+                <rect x="246" y={y + 3} width="18" height="7" />
+              </g>
+            ))}
+          </g>
+
+          <!-- Switch fabric / NVLink spine on the side -->
+          <g class="rack-cyan" stroke-width="1.6">
+            <rect x="348" y="130" width="18" height="250" />
+            <line x1="366" y1="160" x2="396" y2="175" />
+            <line x1="366" y1="220" x2="396" y2="235" />
+            <line x1="366" y1="280" x2="396" y2="295" />
+            <line x1="366" y1="340" x2="396" y2="355" />
+          </g>
+          <g class="rack-cyan" stroke-width="1.1">
+            <line x1="338" y1="130" x2="348" y2="130" />
+            <line x1="338" y1="380" x2="348" y2="380" />
+          </g>
+
+          <!-- Power shelf -->
+          <g class="rack-ink" stroke-width="1">
+            <rect x="98" y="368" width="204" height="22" />
+            <line x1="110" y1="379" x2="290" y2="379" />
+          </g>
+
+          <!-- CDU -->
+          <g class="rack-cyan" stroke-width="1.15">
+            <rect x="110" y="400" width="180" height="32" />
+            <circle cx="150" cy="416" r="8" />
+            <circle cx="190" cy="416" r="8" />
+            <line x1="230" y1="408" x2="272" y2="408" />
+            <line x1="230" y1="416" x2="272" y2="416" />
+            <line x1="230" y1="424" x2="272" y2="424" />
+          </g>
+
+          <!-- Bottom manifold / drain -->
+          <g class="rack-cyan" stroke-width="1.4">
+            <line x1="96" y1="438" x2="300" y2="438" />
+            <line x1="330" y1="452" x2="396" y2="486" />
+          </g>
+
+          <!-- Side coolant risers -->
+          <g class="rack-cyan" stroke-width="1.3">
+            <line x1="388" y1="112" x2="388" y2="486" />
+            <line x1="376" y1="118" x2="376" y2="478" />
+          </g>
+
+          <!-- Package inset: CoWoS + HBM -->
+          <g class="rack-ink" stroke-width="1">
+            <rect x="560" y="300" width="200" height="132" />
+            <rect x="600" y="346" width="72" height="48" />
+          </g>
+          <g class="rack-cyan" stroke-width="1">
+            <rect x="574" y="322" width="18" height="88" />
+            <rect x="594" y="322" width="18" height="88" />
+            <rect x="708" y="322" width="18" height="88" />
+            <rect x="728" y="322" width="18" height="88" />
+            <line x1="304" y1="260" x2="560" y2="340" />
+          </g>
+
+          <g font-size="13">
+            <text x="430" y="156">1  GRID</text>
+            <text class="rack-muted" x="430" y="174" font-size="11">NVLink switch fabric</text>
+            <text x="780" y="292">2  CoWoS</text>
+            <text class="rack-muted" x="780" y="310" font-size="11">advanced package</text>
+            <text x="780" y="380">3  HBM</text>
+            <text class="rack-muted" x="780" y="398" font-size="11">on-package memory</text>
+            <text x="430" y="508">4  RACK</text>
+            <text class="rack-muted" x="510" y="508" font-size="11">liquid-cooled 72-GPU cabinet</text>
+          </g>
+
+          <g class="rack-cyan" stroke-width="0.8">
+            <line x1="366" y1="168" x2="424" y2="154" />
+            <line x1="636" y1="346" x2="774" y2="292" />
+            <line x1="728" y1="366" x2="774" y2="374" />
+            <line x1="200" y1="448" x2="424" y2="502" />
+          </g>
+        </svg>
+        <p class="paper-caption">Google’s line is TPU, Ironwood / TPU7x-class, Google-specific. For open-weight serving on NVIDIA, vLLM is the default.</p>
+        <p class="paper-caption paper-caption--foot">EAR and deemed export are a GRC pointer, not legal advice here.</p>
+      </figure>
+
+      <div class="paper-body">
+        <p>The unit you buy is a liquid-cooled 72-GPU rack (NVIDIA GB200 or GB300 NVL72), not a GPU. Blackwell is the 2026 fleet. Rubin is announced as next; treat a GA date as unconfirmed until it is fleet.</p>
+        <p>This essay’s rank of the bind (the glossary lists the same four unranked): grid interconnect, then CoWoS and other advanced packaging, then HBM, then liquid-cooled rack integration. Google’s line is TPU, Ironwood / TPU7x-class, Google-specific. For open-weight serving on NVIDIA, vLLM is the default.</p>
+        <p>Export control is live. EAR and deemed export are a GRC pointer, not legal advice here. In the EU, GPAI duties have applied since 2 August 2025, with Commission and AI Office enforcement and fines since 2 August 2026, and a systemic-risk presumption at 10²⁵ FLOP.</p>
+      </div>
+    </section>
+
+    <section class="wrong-strip" aria-labelledby="dont-get-this-wrong">
+      <h2 class="paper-h2" id="dont-get-this-wrong">Don’t get this wrong</h2>
+      <ol class="wrong-list">
+        <li>Chain-of-thought is not the model’s thoughts.</li>
+        <li>Bigger context ≠ it read everything.</li>
+        <li>RLHF made it preferred, not truthful.</li>
+        <li>Reasoning models are spiky on verifiable domains, not generally smarter.</li>
+        <li>A SWE-bench pass is not merge-ready in your SDLC.</li>
+        <li>Production agents loop. Budget human checkpoints.</li>
+        <li>Native multimodal samples tokens/frames. “1M context” is not “watched the hour.”</li>
+        <li>You will not reliably “see it in the logs.” Hidden or unfaithful CoT is the default.</li>
+      </ol>
+    </section>
+
+    <footer class="method-bar">
+      <ul class="method-items">
+        <li>Reward the right thing.</li>
+        <li>Ground every claim.</li>
+        <li>Keep the loop tight.</li>
+        <li>Measure what matters.</li>
+        <li>Build infrastructure as an advantage.</li>
+        <li>Ship, observe, iterate.</li>
+      </ul>
+      <p class="method-close">Method over hype. Systems over slogans. Progress you can verify.</p>
+    </footer>
+  </article>
+</Layout>

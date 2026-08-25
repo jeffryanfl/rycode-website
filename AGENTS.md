@@ -21,11 +21,11 @@ New T3 Code threads default to a git worktree of this repo. `t3.json` links `nod
 
 Home, section pages, 404. Shared chrome lives in `src/layouts/Layout.astro`.
 
-Live routes: home (`/`), Tools, Control Effectiveness, Build vs. Buy, 404. Systems and Research stay closed until they have a piece. Vendor Concentration is out.
+Live routes: home (`/`), Tools, Research, A.I. (`/ai`), Control Effectiveness, Build vs. Buy, 404. Systems stays closed until it has a piece. Vendor Concentration is out. The home brain links to `/ai`. Do not put that essay on `/research` or clone `/tools` for it.
 
 | Path | What it is |
 |---|---|
-| `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `404`. `systems.astro` exists but has no pieces. |
+| `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `research`, `ai`, `404`. `systems.astro` exists but has no pieces. `research.astro` is live with no pieces yet. |
 | `src/layouts/` | Site shell |
 | `src/components/` | `LandingTiles` for home and section cards |
 | `src/styles/global.css` | Type, radii, shared chrome |
@@ -52,7 +52,7 @@ HTML/CSS/JS tools that ship as static files. No Astro in these folders. Live: Co
 - New piece on a section → add a card (`label`, `href`, `description`) to that page's `LandingTiles` items.
 - New calculator or HTML app → `public/<section>/<name>/` as `index.html`, `*.css`, `*.js`. Vanilla HTML/CSS/JS. Chart.js via CDN is allowed. Dark masthead, flat working interior. No chip photo behind a form. Then add a card on the matching section.
 - Restore old work from git, then revamp the shell and UX. Keep the math. Do not add new product features on the first pass.
-- Tools holds Build vs. Buy and Control Effectiveness. Systems and Research stay closed. SaaSpocalypse waits on review. Vendor Concentration is out. GRC stays off this site until Jeffrey says it is ready.
+- Tools holds Build vs. Buy and Control Effectiveness. Research is a live door with no pieces yet: add a card on `src/pages/research.astro` and the HTML under `public/research/<name>/`. Do not resurrect old research unless Jeffrey asks. Systems stays closed. Vendor Concentration is out. GRC stays off this site until Jeffrey says it is ready.
 - Scratch files → `sandbox/` (gitignored). Never ship from there.
 - Old pages live in git history. Do not resurrect them unless asked.
 
@@ -63,7 +63,7 @@ Astro is already the stack for `src/`. Do not add another framework. Do not rewr
 Home and section pages share one look: chip photograph, dark veil, glass tiles.
 
 - Type: Newsreader (tile labels), Inter (card sentences, UI), Geist Mono (code/data).
-- Landing values live in `landing.css`. Journal newsprint in `global.css` is leftover until apps need a working interior.
+- Landing values live in `landing.css`. Journal newsprint in `global.css` is leftover until apps need a working interior. `/ai` uses `newspaper.css`: charcoal paper, inverted Ry, cyan hairlines.
 - Accessibility: semantic HTML, `aria-label` on controls, skip link, `:focus-visible`, `prefers-reduced-motion`.
 - `public/` apps use `/journal-chrome.css` plus a local stylesheet. Keep that split. Restyle that chrome dark when the first app comes back.
 
