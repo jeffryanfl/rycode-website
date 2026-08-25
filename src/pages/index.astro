@@ -25,6 +25,9 @@ import '../styles/landing.css';
         <span class="visually-hidden">Systems</span>
       </li>
     </ul>
+    <p class="landing-brain" aria-hidden="true">
+      <img src="/landing/hub-brain.png" alt="" width="498" height="446" />
+    </p>
     <a href="/" class="landing-mark" aria-label="Rycode Home">
       <img src="/logo.svg" alt="Rycode" width="100" height="100" />
     </a>
@@ -34,6 +37,7 @@ import '../styles/landing.css';
 <script>
   const root = document.querySelector("[data-coverflow]");
   if (root instanceof HTMLElement) {
+    const desktop = window.matchMedia("(min-width: 721px) and (hover: hover)");
     const pick = (clientX: number) => {
       const box = root.getBoundingClientRect();
       const x = (clientX - box.left) / box.width;
@@ -42,10 +46,14 @@ import '../styles/landing.css';
       return "tools";
     };
     root.addEventListener("mousemove", (event) => {
+      if (!desktop.matches) return;
       root.dataset.active = pick(event.clientX);
     });
     root.addEventListener("mouseleave", () => {
       root.dataset.active = "tools";
+    });
+    desktop.addEventListener("change", () => {
+      if (!desktop.matches) root.dataset.active = "tools";
     });
   }
 </script>

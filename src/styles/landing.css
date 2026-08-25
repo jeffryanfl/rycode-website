@@ -313,14 +313,30 @@ a.landing-rail-link:focus-visible {
 }
 
 .landing-stage--coverflow {
-  justify-content: center;
-  gap: clamp(1.1rem, 3.5vh, 2.4rem);
-  padding: clamp(1rem, 4vh, 2.5rem) 0.5rem clamp(1.5rem, 6vh, 3.25rem);
+  justify-content: flex-start;
+  align-items: center;
+  gap: clamp(0.6rem, 2vh, 1.25rem);
+  padding: clamp(0.75rem, 3vh, 1.75rem) 0.5rem 0.75rem;
   overflow: visible;
   background-image: url("/landing/hub-floor.jpg");
   background-size: cover;
   background-position: center 78%;
   background-repeat: no-repeat;
+}
+
+.landing-brain {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.landing-brain img {
+  display: block;
+  height: clamp(7.5rem, 18vh, 12rem);
+  width: auto;
 }
 
 .landing-mark {
@@ -329,6 +345,7 @@ a.landing-rail-link:focus-visible {
   display: flex;
   justify-content: center;
   flex-shrink: 0;
+  padding-bottom: 0.35rem;
 }
 
 .landing-mark img {
@@ -677,32 +694,68 @@ a.landing-window:focus-visible {
   }
 
   .landing-stage--coverflow {
-    padding: 1rem 0 2.5rem;
-    gap: 1rem;
+    justify-content: center;
+    padding: 0.6rem 1rem 0.4rem;
+    gap: 0.55rem;
+  }
+
+  .landing-brain {
+    margin-top: 0.35rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .landing-brain img {
+    height: 4.75rem;
   }
 
   .landing-mark img {
-    height: 3.75rem;
+    height: 3.6rem;
   }
 
+  /* Phones: one centered column, same window size for all three. */
   .landing-coverflow {
-    height: min(34vh, 260px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: min(80vw, 18rem, calc(21vh * 4 / 3));
+    height: auto;
+    margin-inline: auto;
+    perspective: none;
+    transform-style: flat;
+    gap: 0.55rem;
   }
 
-  .landing-coverflow > li {
-    width: 48%;
+  .landing-coverflow[data-active] > [data-card] {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: flex;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 0.7rem;
+    transform: none;
+    z-index: auto;
+    transition: none;
+    cursor: default;
   }
 
-  .landing-coverflow[data-active="tools"] [data-card="research"],
-  .landing-coverflow[data-active="systems"] [data-card="research"],
-  .landing-coverflow[data-active="research"] [data-card="tools"] {
-    transform: translate(-50%, -50%) translateX(-52%) rotateY(22deg) translateZ(-40px);
+  .landing-coverflow a {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
-  .landing-coverflow[data-active="tools"] [data-card="systems"],
-  .landing-coverflow[data-active="research"] [data-card="systems"],
-  .landing-coverflow[data-active="systems"] [data-card="tools"] {
-    transform: translate(-50%, -50%) translateX(52%) rotateY(-22deg) translateZ(-40px);
+  .landing-coverflow img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: center 18%;
+    box-shadow:
+      0 12px 24px rgba(0, 0, 0, 0.5),
+      0 0 16px rgba(14, 165, 233, 0.2);
   }
 
   .landing-stage--windows {
