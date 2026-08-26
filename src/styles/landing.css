@@ -451,42 +451,57 @@ a.landing-rail-link:focus-visible {
 
 @media (min-width: 721px) {
   /*
-    U-arc opening toward the camera. Perspective lives on the stage
-    so rotateY actually foreshortens: inner edges shorter, outer
-    edges taller. Hinges sit on Tools's vertical edges.
+    U-arc opening toward the camera. Perspective + preserve-3d live on
+    the coverflow (the 3D stage for the three tiles) so the vanishing
+    point is the Tools tile, not the brain, and negative-Z cards stay
+    in front of the floor bitmap. Rest pose is rotateY only. Layout
+    centering is top/bottom + margin so translateY is not mixed into
+    the 3D transform.
   */
   .landing-stage--coverflow {
-    perspective: 580px;
-    perspective-origin: 50% calc(clamp(0.75rem, 3vh, 1.75rem) + min(29vh, 240px));
+    perspective: none;
+    transform-style: flat;
   }
 
   .landing-coverflow {
-    --tile-w: 32%;
-    --yaw: 48deg;
-    --back: -100px;
+    --tile-w: 31%;
+    --yaw: 38deg;
+    --back: -72px;
+    --tools-z: -96px;
     --front: 72px;
+    --hinge-gap: 14px;
+    perspective: 960px;
+    perspective-origin: 50% 50%;
     transform-style: preserve-3d;
   }
 
+  .landing-coverflow > [data-card] {
+    top: 0;
+    bottom: 0;
+    height: max-content;
+    margin-block: auto;
+    width: var(--tile-w);
+  }
+
   .landing-coverflow [data-card="research"] {
-    left: calc(50% - 1.5 * var(--tile-w));
+    left: calc(50% - 1.5 * var(--tile-w) - var(--hinge-gap));
     z-index: 2;
     transform-origin: right center;
-    transform: translateY(-50%) translateZ(var(--back)) rotateY(var(--yaw));
+    transform: rotateX(0deg) translateZ(var(--back)) rotateY(var(--yaw));
   }
 
   .landing-coverflow [data-card="tools"] {
     left: calc(50% - 0.5 * var(--tile-w));
     z-index: 1;
     transform-origin: center center;
-    transform: translateY(-50%) translateZ(calc(var(--back) - 16px)) rotateY(0deg);
+    transform: rotateX(0deg) translateZ(var(--tools-z)) rotateY(0deg);
   }
 
   .landing-coverflow [data-card="systems"] {
-    left: calc(50% + 0.5 * var(--tile-w));
+    left: calc(50% + 0.5 * var(--tile-w) + var(--hinge-gap));
     z-index: 2;
     transform-origin: left center;
-    transform: translateY(-50%) translateZ(var(--back)) rotateY(calc(-1 * var(--yaw)));
+    transform: rotateX(0deg) translateZ(var(--back)) rotateY(calc(-1 * var(--yaw)));
   }
 
   .landing-coverflow a {
@@ -502,19 +517,19 @@ a.landing-rail-link:focus-visible {
   .landing-coverflow[data-focus="research"] [data-card="research"],
   .landing-coverflow [data-card="research"]:focus-within {
     z-index: 5;
-    transform: translateY(-50%) translateZ(var(--front)) rotateY(0deg);
+    transform: rotateX(0deg) translateZ(var(--front)) rotateY(0deg);
   }
 
   .landing-coverflow[data-focus="tools"] [data-card="tools"],
   .landing-coverflow [data-card="tools"]:focus-within {
     z-index: 5;
-    transform: translateY(-50%) translateZ(var(--front)) rotateY(0deg);
+    transform: rotateX(0deg) translateZ(var(--front)) rotateY(0deg);
   }
 
   .landing-coverflow[data-focus="systems"] [data-card="systems"],
   .landing-coverflow [data-card="systems"]:focus-within {
     z-index: 5;
-    transform: translateY(-50%) translateZ(var(--front)) rotateY(0deg);
+    transform: rotateX(0deg) translateZ(var(--front)) rotateY(0deg);
   }
 }
 
