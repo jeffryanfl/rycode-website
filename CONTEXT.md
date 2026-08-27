@@ -12,9 +12,9 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Newspaper look.** Charcoal paper near `#080a10`, off-white ink, cyan hairlines. Newsreader for the claim and body, Inter for kickers and captions, Geist Mono for stage ticks and eval names. Inverted Ry plus a thin cyan hairline. Not cream newsprint, not the chip photo, not coverflow.
 
-**Section page.** `/systems` and `/tools` match home: dark chip, glass cards, one card per piece. `/research` is a light newsprint journal, not chip or glass. Logo goes home. No pillar rail. `/ai` is not a section page.
+**Section page.** `/systems` and `/tools` match home: dark chip, glass cards, one card per piece. `/research` is a charcoal journal, not chip or glass and not the `/ai` newspaper. Logo goes home. No pillar rail. `/ai` is not a section page.
 
-**Research.** Light newsprint at `/research`. Small Inter “Research”, dark Ry upper-right, one hairline, then a vertical list (date · claim · dek) once a piece is published. Empty identity if nothing is published. No “Coming soon”, no cards, no ENTER. Essays are Astro pages at `/research/[slug]`, same paper. Canonical first piece: `/research/saas-barbell-2026/`. `/research/saaspocalypse/` redirects there.
+**Research.** Charcoal `#080a10` at `/research`, same ground as home. Magnifying-glass Inter “Research”, square Ry upper-right, one hairline, then a vertical list (date · claim · dek) once a piece is published. Empty identity if nothing is published. No “Coming soon”, no cards, no ENTER. Essays are Astro pages at `/research/[slug]`, same charcoal. Chassis: Newsreader claim, italic dek, 1px rule, Inter section heading. No cyan. Canonical first piece: `/research/saas-barbell-2026/`. `/research/saaspocalypse/` redirects there.
 
 **Piece.** One app or research item. A Tools/Systems card is a title plus one sentence. A research row is a date, a Newsreader claim, and one-line dek. Apps live under `public/` as vanilla HTML/CSS/JS. They keep the dark masthead and a flat working interior. No chip photo behind a form.
 

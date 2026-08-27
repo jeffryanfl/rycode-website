@@ -17,7 +17,7 @@ const {
 const isLanding = variant === "landing";
 const isNewspaper = variant === "newspaper";
 const isResearch = variant === "research";
-const isDark = isLanding || isNewspaper;
+const isDark = isLanding || isNewspaper || isResearch;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('og-image.png', Astro.site);
@@ -57,11 +57,21 @@ const ogImageURL = new URL('og-image.png', Astro.site);
         <>
           <div class="masthead-brand">
             <slot name="research-identity">
-              <a href="/research" class="research-identity">Research</a>
+              <a href="/research" class="research-identity">
+                <svg class="research-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="10.2" cy="10.2" r="6.2" stroke="currentColor" stroke-width="1" />
+                  <path d="M14.7 14.7 L20.2 20.2" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+                </svg>
+                Research
+              </a>
             </slot>
           </div>
           <a href="/" class="research-mark" aria-label="Rycode Home">
-            Ry<span class="research-mark-n">26</span>
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+              <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
+              <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
+            </svg>
           </a>
         </>
       ) : (

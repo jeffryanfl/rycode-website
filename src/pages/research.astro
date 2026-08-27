@@ -8,17 +8,26 @@ const pieces = [
     date: '2026-08-25',
     dateLabel: '25 Aug 2026',
     title: 'The SaaSpocalypse was a multiple, not a market.',
-    dek: 'Multiples re-rated. Demand did not vanish.',
+    dek: 'SaaS is a pricing and durability problem, not a dying industry.',
   },
 ];
 ---
 
 <Layout
   title="Research — Rycode"
-  description="Research."
+  description="Essays and research notes. New topics appear here as rows."
   variant="research"
 >
-  <h1 slot="research-identity" class="research-identity">Research</h1>
+  <div slot="research-identity" class="research-identity-block">
+    <h1 class="research-identity">
+      <svg class="research-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="10.2" cy="10.2" r="6.2" stroke="currentColor" stroke-width="1" />
+        <path d="M14.7 14.7 L20.2 20.2" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+      </svg>
+      Research
+    </h1>
+    <p class="research-identity-dek">Essays and research notes. New topics appear here as rows.</p>
+  </div>
 
   <ol class="research-index">
     {pieces.map((piece) => (
