@@ -23,7 +23,7 @@ npm run preview    # serves dist/
 ## What's here
 
 ```
-src/pages/     home (`/`), Systems, Tools, Research, A.I. (`/ai`), 404.
+src/pages/     home (`/`, charcoal doors), Systems, Tools, Research (journal), A.I. (`/ai`), 404.
 src/           layouts, components, styles
 public/        fonts, logo, chrome, og-image.png. HTML apps go here when added.
 scripts/       local helpers, including og-image.html

@@ -1,18 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LandingTiles from '../components/LandingTiles.astro';
-import '../styles/landing.css';
+import '../styles/research.css';
 
-const pieces: { label: string; href: string; description: string }[] = [];
+const pieces = [
+  {
+    href: '/research/saas-barbell-2026/',
+    date: '2026-08-25',
+    dateLabel: '25 Aug 2026',
+    title: 'The SaaSpocalypse was a multiple, not a market.',
+    dek: 'Multiples re-rated. Demand did not vanish.',
+  },
+];
 ---
 
 <Layout
   title="Research — Rycode"
   description="Research."
-  variant="landing"
+  variant="research"
 >
-  <section class="landing-stage">
-    <h1 class="landing-identity">Research</h1>
-    <LandingTiles items={pieces} />
-  </section>
+  <h1 slot="research-identity" class="research-identity">Research</h1>
+
+  <ol class="research-index">
+    {pieces.map((piece) => (
+      <li>
+        <a href={piece.href}>
+          <time class="research-index-date" datetime={piece.date}>{piece.dateLabel}</time>
+          <span class="research-index-title">{piece.title}</span>
+          <span class="research-index-dek">{piece.dek}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
 </Layout>

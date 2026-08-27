@@ -1,0 +1,189 @@
+/* ==================================================================
+   HUB — charcoal emptiness. Three stroke doors, small overhead brain.
+   Inter only. No cyan, no grid, no glass, no coverflow.
+   ================================================================== */
+
+html:has(.landing-stage--doors),
+html:has(.landing-stage--doors) body {
+  background: #080a10;
+  color-scheme: dark;
+}
+
+.editorial-shell--landing:has(.landing-stage--doors) {
+  background-color: #080a10;
+  background-image: none;
+  color: rgba(248, 250, 252, 0.88);
+}
+
+.editorial-shell--landing:has(.landing-stage--doors)::after {
+  display: none;
+}
+
+.landing-stage.landing-stage--doors::before {
+  content: none;
+  display: none;
+  background: none;
+}
+
+.editorial-shell--landing:has(.landing-stage--doors) .masthead--landing {
+  display: none;
+}
+
+.editorial-shell--landing:has(.landing-stage--doors) .editorial-main-content {
+  overflow: hidden;
+}
+
+.editorial-shell--landing:has(.landing-stage--doors) .editorial-footer {
+  display: none;
+}
+
+.landing-stage--doors {
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  background: #080a10;
+  filter: none;
+  box-shadow: none;
+}
+
+.hub-mark {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.5rem;
+  width: 2.65rem;
+  height: 2.65rem;
+  color: rgba(248, 250, 252, 0.9);
+  text-decoration: none;
+}
+
+.hub-mark svg,
+.hub-mark text {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-sans);
+}
+
+.hub-mark text {
+  width: auto;
+  height: auto;
+}
+
+.hub-mark:focus-visible {
+  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline-offset: 4px;
+}
+
+.hub-cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: none;
+  box-shadow: none;
+  background: none;
+}
+
+.hub-doors {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(2.4rem, 7vw, 4.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hub-door {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.72rem;
+  color: rgba(248, 250, 252, 0.88);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.hub-glyph {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.hub-door:hover,
+.hub-door:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+}
+
+.hub-door:focus-visible {
+  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline-offset: 8px;
+}
+
+.hub-door--closed {
+  color: rgba(248, 250, 252, 0.34);
+  cursor: default;
+}
+
+.hub-brain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.15rem;
+  color: rgba(248, 250, 252, 0.88);
+  text-decoration: none;
+}
+
+.hub-brain-mark {
+  display: block;
+  width: auto;
+  height: 44px;
+  pointer-events: none;
+  user-select: none;
+  filter: none;
+  box-shadow: none;
+}
+
+.hub-brain-kicker {
+  margin-top: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.hub-brain:hover,
+.hub-brain:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+}
+
+.hub-brain:focus-visible {
+  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline-offset: 8px;
+}
+
+@media (max-width: 720px) {
+  .hub-mark {
+    top: 1.1rem;
+    right: 1.1rem;
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .hub-doors {
+    gap: 1.85rem;
+  }
+
+  .hub-door {
+    font-size: 0.78rem;
+  }
+
+  .hub-brain {
+    margin-top: 1.85rem;
+  }
+}

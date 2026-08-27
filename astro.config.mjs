@@ -30,6 +30,9 @@ function servePublicIndex() {
 export default defineConfig({
   site: 'https://rycode.dev',
   integrations: [sitemap()],
+  redirects: {
+    '/research/saaspocalypse': '/research/saas-barbell-2026/',
+  },
   server: {
     host: true,
   },

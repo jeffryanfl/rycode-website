@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/landing.css';
+import '../styles/hub.css';
 ---
 
 <Layout
@@ -8,40 +9,70 @@ import '../styles/landing.css';
   description="Systems, tools, and research."
   variant="landing"
 >
-  <section class="landing-stage landing-stage--coverflow">
+  <section class="landing-stage landing-stage--doors">
     <h1 class="visually-hidden">Rycode</h1>
-    <ul class="landing-coverflow" data-coverflow>
-      <li data-card="research">
-        <div class="landing-coverflow-pane">
-          <a href="/research" aria-label="Research">
-            <img src="/landing/panel-research.jpg" alt="" width="844" height="622" />
-          </a>
-        </div>
-      </li>
-      <li data-card="tools">
-        <div class="landing-coverflow-pane">
-          <a href="/tools" aria-label="Tools">
-            <img src="/landing/panel-tools.jpg" alt="" width="722" height="628" />
-          </a>
-        </div>
-      </li>
-      <li data-card="systems">
-        <div class="landing-coverflow-pane">
-          <img src="/landing/panel-systems.jpg" alt="" width="706" height="552" />
-          <span class="visually-hidden">Systems</span>
-        </div>
-      </li>
-    </ul>
-    <a href="/ai" class="landing-brain" aria-label="A.I.">
-      <img src="/landing/hub-brain.png" alt="" width="498" height="446" />
-      <span class="landing-brain-kicker">A.I.</span>
+
+    <a href="/" class="hub-mark" aria-label="Rycode Home">
+      <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+        <text x="9" y="19" fill="currentColor" font-size="11" font-weight="500">26</text>
+        <text x="28" y="44" text-anchor="middle" fill="currentColor" font-size="20" font-weight="650">Ry</text>
+      </svg>
     </a>
-    <a href="/" class="landing-mark" aria-label="Rycode Home">
-      <img src="/logo.svg" alt="Rycode" width="100" height="100" />
-    </a>
+
+    <nav class="hub-cluster" aria-label="Doors">
+      <ul class="hub-doors">
+        <li>
+          <a class="hub-door" href="/research">
+            <svg class="hub-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10.2" cy="10.2" r="6.2" stroke="currentColor" stroke-width="1" />
+              <path d="M14.7 14.7 L20.2 20.2" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+            </svg>
+            <span>Research</span>
+          </a>
+        </li>
+        <li>
+          <a class="hub-door" href="/tools">
+            <svg class="hub-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M10.18 5.78 L6.18 15.94 L5.99 15.86 L5.48 17.15 L5.57 20.48 L7.9 18.1 L8.41 16.81 L8.22 16.74 L12.16 6.34"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linejoin="miter"
+              />
+              <path d="M5.99 15.86 L8.41 16.81" stroke="currentColor" stroke-width="1" />
+              <path
+                d="M13.82 5.78 L17.82 15.94 L18.01 15.86 L18.52 17.15 L18.68 19.45 L18.43 20.48 L16.1 18.1 L15.59 16.81 L15.78 16.74 L11.84 6.34"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linejoin="miter"
+              />
+              <path d="M18.01 15.86 L15.59 16.81" stroke="currentColor" stroke-width="1" />
+              <circle cx="12" cy="4.15" r="2.2" stroke="currentColor" stroke-width="1" />
+              <circle cx="12" cy="4.15" r="0.78" stroke="currentColor" stroke-width="1" />
+            </svg>
+            <span>Tools</span>
+          </a>
+        </li>
+        <li>
+          <span class="hub-door hub-door--closed" aria-disabled="true">
+            <svg class="hub-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="6.2" r="1.7" stroke="currentColor" stroke-width="1" />
+              <circle cx="5.6" cy="18.2" r="1.7" stroke="currentColor" stroke-width="1" />
+              <circle cx="18.4" cy="18.2" r="1.7" stroke="currentColor" stroke-width="1" />
+              <path d="M10.7 7.4 L6.7 16.6" stroke="currentColor" stroke-width="1" />
+              <path d="M13.3 7.4 L17.3 16.6" stroke="currentColor" stroke-width="1" />
+              <path d="M7.3 18.2 H16.7" stroke="currentColor" stroke-width="1" />
+            </svg>
+            <span>Systems</span>
+          </span>
+        </li>
+      </ul>
+
+      <a class="hub-brain" href="/ai" aria-label="A.I.">
+        <img class="hub-brain-mark" src="/landing/hub-brain-overhead.png" alt="" width="742" height="851" />
+        <span class="hub-brain-kicker">A.I.</span>
+      </a>
+    </nav>
   </section>
 </Layout>
-
-<script is:inline src="/coverflow.js" defer></script>
-
-

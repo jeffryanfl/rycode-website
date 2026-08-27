@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/research.css';
+
+/* Stub until QC copy. Do not invent body, dek, byline, or exhibits. */
+const title = "The SaaSpocalypse was a multiple, not a market.";
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description={title}
+  variant="research"
+>
+  <article class="research-article">
+    <p class="research-kicker">Research</p>
+    <h1 class="research-claim">{title}</h1>
+  </article>
+</Layout>

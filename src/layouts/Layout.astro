@@ -5,7 +5,7 @@ import HeaderBannerNav from '../components/HeaderBannerNav.astro';
 interface Props {
   title?: string;
   description?: string;
-  variant?: "journal" | "landing" | "newspaper";
+  variant?: "journal" | "landing" | "newspaper" | "research";
 }
 
 const {
@@ -16,6 +16,7 @@ const {
 
 const isLanding = variant === "landing";
 const isNewspaper = variant === "newspaper";
+const isResearch = variant === "research";
 const isDark = isLanding || isNewspaper;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -49,19 +50,34 @@ const ogImageURL = new URL('og-image.png', Astro.site);
 <body>
   <a class="skip-link" href="#mainContent">Skip to content</a>
 
-  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper }]}>
-    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV (banner skipped on landing and newspaper) -->
-    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper }]}>
-      <div class="masthead-brand">
-        <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
-          <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
-          {isNewspaper && <span class="masthead-wordmark">Rycode</span>}
-        </a>
-      </div>
+  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper, "editorial-shell--research": isResearch }]}>
+    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV (banner skipped on landing, newspaper, and research) -->
+    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper, "masthead--research": isResearch }]}>
+      {isResearch ? (
+        <>
+          <div class="masthead-brand">
+            <slot name="research-identity">
+              <a href="/research" class="research-identity">Research</a>
+            </slot>
+          </div>
+          <a href="/" class="research-mark" aria-label="Rycode Home">
+            Ry<span class="research-mark-n">26</span>
+          </a>
+        </>
+      ) : (
+        <>
+          <div class="masthead-brand">
+            <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
+              <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
+              {isNewspaper && <span class="masthead-wordmark">Rycode</span>}
+            </a>
+          </div>
 
-      {isNewspaper && <p class="masthead-updated">Last updated Aug 2026</p>}
+          {isNewspaper && <p class="masthead-updated">Last updated Aug 2026</p>}
 
-      {!isLanding && !isNewspaper && <HeaderBannerNav />}
+          {!isLanding && !isNewspaper && <HeaderBannerNav />}
+        </>
+      )}
     </header>
 
     <!-- MAIN EDITORIAL CONTENT -->
