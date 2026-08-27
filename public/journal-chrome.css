@@ -1,7 +1,6 @@
 /* ==================================================================
-   APP CHROME — masthead + footer for static public/ apps
-   Matches the landing look: dark strip, compact inverted logo, no
-   section rail. App interiors stay in their own stylesheet.
+   APP CHROME — identity strip + footer for static public/ apps
+   Charcoal paper, square Ry, Tools · job. Interiors stay local.
    Tokens are local (--jc-*) so an app's :root cannot override them.
    ================================================================== */
 
@@ -22,6 +21,14 @@
 }
 
 @font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin-wght-italic.woff2") format("woff2");
+}
+
+@font-face {
   font-family: "Geist Mono";
   font-style: normal;
   font-weight: 100 900;
@@ -35,12 +42,11 @@
   top: -100px;
   z-index: 10001;
   padding: 0.6rem 0.9rem;
-  background: #12161f;
+  background: #080a10;
   color: #f8fafc;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 0.9rem;
   text-decoration: none;
-  border-radius: 0.4rem;
 }
 
 .skip-link:focus {
@@ -50,10 +56,11 @@
 .masthead,
 .editorial-footer {
   --jc-bg: #080a10;
-  --jc-text: rgba(248, 250, 252, 0.94);
-  --jc-text-faint: rgba(226, 232, 240, 0.48);
-  --jc-border: rgba(255, 255, 255, 0.1);
-  --jc-focus: rgba(147, 197, 253, 0.9);
+  --jc-text: rgba(248, 250, 252, 0.92);
+  --jc-muted: rgba(248, 250, 252, 0.52);
+  --jc-faint: rgba(248, 250, 252, 0.4);
+  --jc-hair: rgba(248, 250, 252, 0.16);
+  --jc-pad: clamp(1.4rem, 5.2vw, 3.75rem);
   --jc-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   box-sizing: border-box;
   font-family: var(--jc-font-sans);
@@ -75,56 +82,121 @@
 .masthead {
   width: 100%;
   margin: 0;
-  padding: 0.45rem 1.75rem 0.4rem;
+  padding: 1.45rem var(--jc-pad) 1.05rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  gap: 0.55rem;
+  border-bottom: 1px solid var(--jc-hair);
 }
 
-.masthead-brand {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0;
-}
-
-.masthead-logo-link {
+.tool-strip-identity {
   display: inline-flex;
-  color: inherit;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--jc-text);
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.tool-strip-identity:hover,
+.tool-strip-identity:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+}
+
+.tool-caliper {
+  display: block;
+  width: 0.92em;
+  height: 1.25em;
+  flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask: url("/landing/tools-caliper.png") center / contain no-repeat;
+  mask: url("/landing/tools-caliper.png") center / contain no-repeat;
+}
+
+.tool-strip-sep {
+  color: var(--jc-faint);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.tool-strip-job {
+  color: var(--jc-muted);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.tool-mark {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: rgba(248, 250, 252, 0.9);
   text-decoration: none;
 }
 
-.masthead-logo-img {
+.tool-mark svg {
   display: block;
-  height: 36px;
-  width: auto;
-  max-width: 100%;
-  filter: brightness(0) invert(1);
-  opacity: 0.88;
+  width: 100%;
+  height: 100%;
+}
+
+.tool-mark text {
+  font-family: var(--jc-font-sans);
+}
+
+.tool-mark:hover,
+.tool-mark:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
 }
 
 .masthead :focus-visible,
 .editorial-footer :focus-visible {
-  outline: 2px solid var(--jc-focus);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline-offset: 4px;
 }
 
 .editorial-footer {
   width: 100%;
-  border-top: 1px solid var(--jc-border);
-  padding: 0.75rem 1.5rem;
+  border-top: none;
+  padding: 2rem var(--jc-pad) 1.4rem;
   margin-top: 0;
 }
 
 .editorial-footer-inner {
-  max-width: min(1100px, 90vw);
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 0.82rem;
-  color: var(--jc-text-faint);
+  font-size: 0.78rem;
+  color: var(--jc-faint);
+}
+
+@media (max-width: 720px) {
+  .masthead,
+  .editorial-footer {
+    --jc-pad: 1.25rem;
+  }
+
+  .masthead {
+    padding-top: 1.2rem;
+    padding-bottom: 0.95rem;
+  }
+
+  .tool-mark {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .tool-strip-job {
+    font-size: 0.95rem;
+  }
 }
 
 @media print {

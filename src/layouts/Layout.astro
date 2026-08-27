@@ -5,7 +5,7 @@ import HeaderBannerNav from '../components/HeaderBannerNav.astro';
 interface Props {
   title?: string;
   description?: string;
-  variant?: "journal" | "landing" | "newspaper" | "research";
+  variant?: "journal" | "landing" | "newspaper" | "research" | "tools";
 }
 
 const {
@@ -17,7 +17,8 @@ const {
 const isLanding = variant === "landing";
 const isNewspaper = variant === "newspaper";
 const isResearch = variant === "research";
-const isDark = isLanding || isNewspaper || isResearch;
+const isTools = variant === "tools";
+const isDark = isLanding || isNewspaper || isResearch || isTools;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('og-image.png', Astro.site);
@@ -50,9 +51,9 @@ const ogImageURL = new URL('og-image.png', Astro.site);
 <body>
   <a class="skip-link" href="#mainContent">Skip to content</a>
 
-  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper, "editorial-shell--research": isResearch }]}>
-    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV (banner skipped on landing, newspaper, and research) -->
-    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper, "masthead--research": isResearch }]}>
+  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper, "editorial-shell--research": isResearch, "editorial-shell--tools": isTools }]}>
+    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV (banner skipped on landing, newspaper, research, and tools) -->
+    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper, "masthead--research": isResearch, "masthead--tools": isTools }]}>
       {isResearch ? (
         <>
           <div class="masthead-brand">
@@ -67,6 +68,24 @@ const ogImageURL = new URL('og-image.png', Astro.site);
             </slot>
           </div>
           <a href="/" class="research-mark" aria-label="Rycode Home">
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+              <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
+              <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
+            </svg>
+          </a>
+        </>
+      ) : isTools ? (
+        <>
+          <div class="masthead-brand">
+            <slot name="tools-identity">
+              <a href="/tools" class="tools-identity">
+                <span class="tools-caliper" aria-hidden="true"></span>
+                Tools
+              </a>
+            </slot>
+          </div>
+          <a href="/" class="tools-mark" aria-label="Rycode Home">
             <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
               <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
               <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>

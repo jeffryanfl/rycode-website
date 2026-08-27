@@ -16,8 +16,8 @@
 
 :root {
   --bg: #080a10;
-  --surface: #12161f;
-  --border: rgba(255, 255, 255, 0.12);
+  --surface: #080a10;
+  --border: #f8fafc;
   --text: rgba(248, 250, 252, 0.94);
   --text-muted: rgba(226, 232, 240, 0.7);
   --text-faint: rgba(226, 232, 240, 0.48);
@@ -31,12 +31,12 @@
   --s-6: 2rem;
   --fs-tiny: 0.7rem;
   --fs-small: 0.85rem;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-md: 0;
+  --radius-lg: 0;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --bvb-buy: #60a5fa;
   --bvb-build: #4ade80;
-  --bvb-accent: #93c5fd;
+  --bvb-accent: #f8fafc;
 }
 
 html, body {
@@ -77,9 +77,10 @@ main {
 
 .bvb-hero h1 {
   margin: 0 0 0.6rem;
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: clamp(1.7rem, 3.2vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: 1.15;
   color: var(--text);
 }
@@ -204,7 +205,7 @@ main {
 .control input[type="range"]:hover::-webkit-slider-thumb,
 .control input[type="range"]:focus::-webkit-slider-thumb {
   transform: scale(1.15);
-  box-shadow: 0 0 0 1px var(--bvb-accent), 0 0 18px rgba(147, 197, 253, 0.35);
+  box-shadow: 0 0 0 1px var(--bvb-accent);
 }
 
 /* Firefox track + thumb */
@@ -225,7 +226,7 @@ main {
 .control input[type="range"]:hover::-moz-range-thumb,
 .control input[type="range"]:focus::-moz-range-thumb {
   transform: scale(1.15);
-  box-shadow: 0 0 0 1px var(--bvb-accent), 0 0 18px rgba(147, 197, 253, 0.35);
+  box-shadow: 0 0 0 1px var(--bvb-accent);
 }
 
 .control input[type="range"]:focus-visible {
@@ -262,12 +263,11 @@ main {
 }
 .calc-headline-value {
   font-size: clamp(1.75rem, 5vw, 3.25rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: 1.05;
   margin: 0;
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 700;
   color: var(--text);
 }
 

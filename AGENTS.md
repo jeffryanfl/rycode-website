@@ -26,13 +26,14 @@ Live routes: home (`/`), Tools, Research, A.I. (`/ai`), Control Effectiveness, B
 | Path | What it is |
 |---|---|
 | `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `research`, `ai`, `404`. Research articles live under `src/pages/research/`. `systems.astro` exists but has no pieces. |
-| `src/layouts/` | Site shell. Variants: `landing` (hub + Tools + Systems), `newspaper` (`/ai`), `research` (journal), `journal` (default). |
-| `src/components/` | `LandingTiles` for Tools and Systems cards |
+| `src/layouts/` | Site shell. Variants: `landing` (hub + Systems), `newspaper` (`/ai`), `research` (journal), `tools` (charcoal index), `journal` (default). |
+| `src/components/` | `LandingTiles` for Systems cards |
 | `src/styles/global.css` | Type, radii, shared chrome |
-| `src/styles/landing.css` | Chip photo, glass tiles for Tools/Systems |
+| `src/styles/landing.css` | Chip photo, glass tiles for Systems |
 | `src/styles/hub.css` | Charcoal home: three doors, small brain, square Ry |
 | `src/styles/newspaper.css` | Charcoal `/ai` essay |
 | `src/styles/research.css` | Charcoal research journal |
+| `src/styles/tools.css` | Charcoal Tools index |
 
 **2. Standalone apps (vanilla)** — `public/`
 
@@ -51,11 +52,12 @@ HTML/CSS/JS tools that ship as static files. No Astro in these folders. Live: Co
 
 ## Where new work goes
 
-- New Tools/Systems card → `LandingTiles` on `src/pages/tools.astro` or `systems.astro`. Same landing layout. Then make that tile a link on home if it is not already.
+- New Tools row → add it to the list in `src/pages/tools.astro`. Same charcoal index. Then make that row a link on home if it is not already.
+- New Systems card → `LandingTiles` on `systems.astro`. Same landing layout. Then make that tile a link on home if it is not already.
 - New research essay → `src/pages/research/<slug>.astro` on the research paper (kicker, claim, dek, byline, measured column, exhibits, method bar). Add one row to the list in `src/pages/research.astro` only when it is published. Canonical SaaS piece is `/research/saas-barbell-2026/`. `/research/saaspocalypse/` redirects there. Do not invent copy. Do not resurrect old research unless Jeffrey asks.
-- New calculator or HTML app → `public/<section>/<name>/` as `index.html`, `*.css`, `*.js`. Vanilla HTML/CSS/JS. Chart.js via CDN is allowed. Dark masthead, flat working interior. No chip photo behind a form. Then add a card on the matching section.
+- New calculator or HTML app → `public/<section>/<name>/` as `index.html`, `*.css`, `*.js`. Vanilla HTML/CSS/JS. Chart.js via CDN is allowed. Dark identity strip, flat working interior. No chip photo behind a form. Then add a row on Tools.
 - Restore old work from git, then revamp the shell and UX. Keep the math. Do not add new product features on the first pass.
-- Tools holds Build vs. Buy and Control Effectiveness. Research is a live journal door: identity on `/research`, essays as Astro pages, not `LandingTiles` and not the `/ai` newspaper. Systems stays closed. Vendor Concentration is out. GRC stays off this site until Jeffrey says it is ready.
+- Tools holds Build vs. Buy and Control Effectiveness as charcoal index rows, not `LandingTiles`. Research is a live journal door: identity on `/research`, essays as Astro pages, not `LandingTiles` and not the `/ai` newspaper. Systems stays closed. Vendor Concentration is out. GRC stays off this site until Jeffrey says it is ready.
 - Scratch files → `sandbox/` (gitignored). Never ship from there.
 - Old pages live in git history. Do not resurrect them unless asked.
 
@@ -63,12 +65,12 @@ Astro is already the stack for `src/`. Do not add another framework. Do not rewr
 
 ## Look and feel
 
-Home is charcoal emptiness (`#080a10`): three 1px white-stroke doors, small overhead brain, square Ry. Inter only. Tools/Systems keep chip photograph and glass tiles. Research is charcoal journal, same ground as home. `/ai` is charcoal newspaper.
+Home is charcoal emptiness (`#080a10`): three 1px white-stroke doors, small overhead brain, square Ry. Inter only. Systems keep chip photograph and glass tiles. Tools is a charcoal index, same ground as home. Research is charcoal journal. `/ai` is charcoal newspaper.
 
 - Type: Inter on the hub. Newsreader for research claims. Geist Mono for research dates and data.
-- Hub values live in `hub.css`. Landing values in `landing.css` for Tools/Systems. `/research` uses `research.css`: ground `#080a10`, off-white ink, no cyan. `/ai` uses `newspaper.css`: charcoal paper, inverted Ry, cyan hairlines. Cyan stays off the hub and off Research.
+- Hub values live in `hub.css`. Landing values in `landing.css` for Systems. `/tools` uses `tools.css`: ground `#080a10`, signed caliper, no cyan. `/research` uses `research.css`: ground `#080a10`, off-white ink, no cyan. `/ai` uses `newspaper.css`: charcoal paper, inverted Ry, cyan hairlines. Cyan stays off the hub, off Tools, and off Research.
 - Accessibility: semantic HTML, `aria-label` on controls, skip link, `:focus-visible`, `prefers-reduced-motion`.
-- `public/` apps use `/journal-chrome.css` plus a local stylesheet. Keep that split. Restyle that chrome dark when the first app comes back.
+- `public/` apps use `/journal-chrome.css` plus a local stylesheet. Keep that split. Chrome is charcoal: Tools · job, square Ry, 1px hairline. Working interiors are flat charcoal with 1px `#f8fafc` panels.
 
 The `landing-page-design` skill does **not** override this hub. Use it only if Jeffrey asks for a conversion landing page.
 

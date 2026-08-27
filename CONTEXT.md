@@ -12,11 +12,11 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Newspaper look.** Charcoal paper near `#080a10`, off-white ink, cyan hairlines. Newsreader for the claim and body, Inter for kickers and captions, Geist Mono for stage ticks and eval names. Inverted Ry plus a thin cyan hairline. Not cream newsprint, not the chip photo, not coverflow.
 
-**Section page.** `/systems` and `/tools` match home: dark chip, glass cards, one card per piece. `/research` is a charcoal journal, not chip or glass and not the `/ai` newspaper. Logo goes home. No pillar rail. `/ai` is not a section page.
+**Section page.** `/systems` still uses the chip photograph and glass cards. `/tools` is a charcoal index, same ground as home, not chip or glass. `/research` is a charcoal journal, not chip or glass and not the `/ai` newspaper. Logo goes home. No pillar rail. `/ai` is not a section page.
 
 **Research.** Charcoal `#080a10` at `/research`, same ground as home. Magnifying-glass Inter “Research”, square Ry upper-right, one hairline, then a vertical list (date · claim · dek) once a piece is published. Empty identity if nothing is published. No “Coming soon”, no cards, no ENTER. Essays are Astro pages at `/research/[slug]`, same charcoal. Chassis: Newsreader claim, italic dek, 1px rule, Inter section heading. No cyan. Canonical first piece: `/research/saas-barbell-2026/`. `/research/saaspocalypse/` redirects there.
 
-**Piece.** One app or research item. A Tools/Systems card is a title plus one sentence. A research row is a date, a Newsreader claim, and one-line dek. Apps live under `public/` as vanilla HTML/CSS/JS. They keep the dark masthead and a flat working interior. No chip photo behind a form.
+**Piece.** One app or research item. A Tools row is a title plus one sentence, the whole row a link. A Systems card is a title plus one sentence. A research row is a date, a Newsreader claim, and one-line dek. Apps live under `public/` as vanilla HTML/CSS/JS. They keep a charcoal identity strip (Tools · job, square Ry) and a flat working interior. No chip photo behind a form.
 
 **Bind order.** The four constraints on a 72-GPU rack, listed unranked here, ranked in the A.I. essay: grid interconnect, CoWoS and other advanced packaging, HBM, liquid-cooled rack integration.
 
@@ -24,7 +24,9 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Chrome.** Shared masthead, logo, and footer.
 
-**Landing look.** Chip photograph, dark veil, glass tiles, Newsreader + Inter. Used on Tools and Systems. Home is charcoal emptiness (`hub.css`). Not Research. Not `/ai`.
+**Landing look.** Chip photograph, dark veil, glass tiles, Newsreader + Inter. Used on Systems. Home is charcoal emptiness (`hub.css`). Not Tools. Not Research. Not `/ai`.
+
+**Tools.** Charcoal `#080a10` at `/tools`, same ground as home. Signed caliper, Inter “Tools”, italic dek, square Ry, one hairline, then full-width rows. No cards, no ENTER, no cyan. Calculators keep slider math and chart series colors. Identity strip is Tools · job name, then the working interior.
 
 **GRC site.** Separate Netlify project at https://grc.rycode.dev/. Not this repo. Do not add it here until Jeffrey says it is ready.
 
