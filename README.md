@@ -1,6 +1,6 @@
 # Rycode
 
-Systems, tools, and research. Astro hub plus standalone HTML apps under `public/`. Deployed on Netlify.
+Research, tools, economics, and risk. Astro hub plus standalone HTML apps under `public/`. Deployed on Netlify.
 
 **Live:** https://rycode.dev
 
@@ -23,7 +23,7 @@ npm run preview    # serves dist/
 ## What's here
 
 ```
-src/pages/     home (`/`, charcoal doors), Systems, Tools, Research (journal), A.I. (`/ai`), 404.
+src/pages/     home (`/`, charcoal doors), Tools, Research (journal), Economics, Risk, A.I. (`/ai`), 404.
 src/           layouts, components, styles
 public/        fonts, logo, chrome, og-image.png. HTML apps go here when added.
 scripts/       local helpers, including og-image.html

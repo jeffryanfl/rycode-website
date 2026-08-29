@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/landing.css';
+import '../styles/hub.css';
+---
+
+<Layout
+  title="Economics — Rycode"
+  description="Prices, cycles, and trade-offs."
+  variant="landing"
+>
+  <section class="landing-stage landing-stage--charcoal landing-stage--branch">
+    <a href="/" class="hub-mark" aria-label="Rycode Home">
+      <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+        <text x="9" y="19" fill="currentColor" font-size="11" font-weight="500">26</text>
+        <text x="28" y="44" text-anchor="middle" fill="currentColor" font-size="20" font-weight="650">Ry</text>
+      </svg>
+    </a>
+
+    <div class="hub-branch">
+      <img class="hub-branch-mark" src="/landing/hub-economics.png" alt="" width="880" height="784" />
+      <h1 class="hub-branch-name">Economics</h1>
+      <p class="hub-branch-dek">Prices, cycles, and trade-offs. New pieces appear here as rows.</p>
+    </div>
+  </section>
+</Layout>

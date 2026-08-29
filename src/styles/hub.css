@@ -1,43 +1,43 @@
 /* ==================================================================
-   HUB — charcoal emptiness. Three stroke doors, small overhead brain.
-   Inter only. No cyan, no grid, no glass, no coverflow.
+   HUB — charcoal emptiness. Four stroke doors, small overhead brain.
+   Inter only. No cyan, no grid, no glass, no coverflow, no Systems.
    ================================================================== */
 
-html:has(.landing-stage--doors),
-html:has(.landing-stage--doors) body {
+html:has(.landing-stage--charcoal),
+html:has(.landing-stage--charcoal) body {
   background: #080a10;
   color-scheme: dark;
 }
 
-.editorial-shell--landing:has(.landing-stage--doors) {
+.editorial-shell--landing:has(.landing-stage--charcoal) {
   background-color: #080a10;
   background-image: none;
-  color: rgba(248, 250, 252, 0.88);
+  color: rgba(248, 250, 252, 0.52);
 }
 
-.editorial-shell--landing:has(.landing-stage--doors)::after {
+.editorial-shell--landing:has(.landing-stage--charcoal)::after {
   display: none;
 }
 
-.landing-stage.landing-stage--doors::before {
+.landing-stage.landing-stage--charcoal::before {
   content: none;
   display: none;
   background: none;
 }
 
-.editorial-shell--landing:has(.landing-stage--doors) .masthead--landing {
+.editorial-shell--landing:has(.landing-stage--charcoal) .masthead--landing {
   display: none;
 }
 
-.editorial-shell--landing:has(.landing-stage--doors) .editorial-main-content {
+.editorial-shell--landing:has(.landing-stage--charcoal) .editorial-main-content {
   overflow: hidden;
 }
 
-.editorial-shell--landing:has(.landing-stage--doors) .editorial-footer {
+.editorial-shell--landing:has(.landing-stage--charcoal) .editorial-footer {
   display: none;
 }
 
-.landing-stage--doors {
+.landing-stage--charcoal {
   justify-content: center;
   align-items: center;
   padding: 0;
@@ -53,7 +53,7 @@ html:has(.landing-stage--doors) body {
   right: 1.5rem;
   width: 2.65rem;
   height: 2.65rem;
-  color: rgba(248, 250, 252, 0.9);
+  color: rgba(248, 250, 252, 0.52);
   text-decoration: none;
 }
 
@@ -71,7 +71,7 @@ html:has(.landing-stage--doors) body {
 }
 
 .hub-mark:focus-visible {
-  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline: 1px solid rgba(248, 250, 252, 0.52);
   outline-offset: 4px;
 }
 
@@ -88,7 +88,7 @@ html:has(.landing-stage--doors) body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(2.4rem, 7vw, 4.25rem);
+  gap: clamp(1.5rem, 4.5vw, 3.25rem);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -99,7 +99,7 @@ html:has(.landing-stage--doors) body {
   flex-direction: column;
   align-items: center;
   gap: 0.72rem;
-  color: rgba(248, 250, 252, 0.88);
+  color: rgba(248, 250, 252, 0.52);
   text-decoration: none;
   font-family: var(--font-sans);
   font-size: 0.84rem;
@@ -114,19 +114,21 @@ html:has(.landing-stage--doors) body {
   height: 24px;
 }
 
+img.hub-glyph--raster {
+  width: auto;
+  height: 24px;
+  pointer-events: none;
+  user-select: none;
+}
+
 .hub-door:hover,
 .hub-door:focus-visible {
-  color: rgba(248, 250, 252, 0.98);
+  color: rgba(248, 250, 252, 0.72);
 }
 
 .hub-door:focus-visible {
-  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline: 1px solid rgba(248, 250, 252, 0.52);
   outline-offset: 8px;
-}
-
-.hub-door--closed {
-  color: rgba(248, 250, 252, 0.34);
-  cursor: default;
 }
 
 .hub-brain {
@@ -134,7 +136,7 @@ html:has(.landing-stage--doors) body {
   flex-direction: column;
   align-items: center;
   margin-top: 2.15rem;
-  color: rgba(248, 250, 252, 0.88);
+  color: rgba(248, 250, 252, 0.52);
   text-decoration: none;
 }
 
@@ -159,12 +161,52 @@ html:has(.landing-stage--doors) body {
 
 .hub-brain:hover,
 .hub-brain:focus-visible {
-  color: rgba(248, 250, 252, 0.98);
+  color: rgba(248, 250, 252, 0.72);
 }
 
 .hub-brain:focus-visible {
-  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline: 1px solid rgba(248, 250, 252, 0.52);
   outline-offset: 8px;
+}
+
+.hub-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.hub-branch-mark {
+  display: block;
+  width: auto;
+  height: 56px;
+  margin-bottom: 1.15rem;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.52;
+}
+
+.hub-branch-name {
+  margin: 0;
+  color: rgba(248, 250, 252, 0.52);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.hub-branch-dek {
+  max-width: 22rem;
+  margin: 0.85rem 0 0;
+  color: rgba(248, 250, 252, 0.52);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-align: center;
 }
 
 @media (max-width: 720px) {
@@ -176,14 +218,18 @@ html:has(.landing-stage--doors) body {
   }
 
   .hub-doors {
-    gap: 1.85rem;
+    gap: 1.05rem;
   }
 
   .hub-door {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
   }
 
   .hub-brain {
     margin-top: 1.85rem;
+  }
+
+  .hub-branch-mark {
+    height: 48px;
   }
 }
