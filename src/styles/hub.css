@@ -1,6 +1,6 @@
 /* ==================================================================
-   HUB — charcoal emptiness. Four stroke doors, small overhead brain.
-   Inter only. No cyan, no grid, no glass, no coverflow, no Systems.
+   HUB — charcoal emptiness. Five stroke doors, small overhead brain.
+   Inter only. No cyan, no grid, no glass, no coverflow.
    ================================================================== */
 
 html:has(.landing-stage--charcoal),
@@ -47,6 +47,12 @@ html:has(.landing-stage--charcoal) body {
   box-shadow: none;
 }
 
+.landing-stage--doors {
+  --hub-ink: #f8fafc;
+  --hub-ink-rest: 0.64;
+  --hub-ink-hover: 0.84;
+}
+
 .hub-mark {
   position: absolute;
   top: 1.35rem;
@@ -55,6 +61,11 @@ html:has(.landing-stage--charcoal) body {
   height: 2.65rem;
   color: rgba(248, 250, 252, 0.52);
   text-decoration: none;
+}
+
+.landing-stage--doors .hub-mark {
+  color: var(--hub-ink);
+  opacity: var(--hub-ink-rest);
 }
 
 .hub-mark svg,
@@ -99,7 +110,8 @@ html:has(.landing-stage--charcoal) body {
   flex-direction: column;
   align-items: center;
   gap: 0.72rem;
-  color: rgba(248, 250, 252, 0.52);
+  color: var(--hub-ink, #f8fafc);
+  opacity: var(--hub-ink-rest, 0.64);
   text-decoration: none;
   font-family: var(--font-sans);
   font-size: 0.84rem;
@@ -123,11 +135,12 @@ img.hub-glyph--raster {
 
 .hub-door:hover,
 .hub-door:focus-visible {
-  color: rgba(248, 250, 252, 0.72);
+  color: var(--hub-ink, #f8fafc);
+  opacity: var(--hub-ink-hover, 0.84);
 }
 
 .hub-door:focus-visible {
-  outline: 1px solid rgba(248, 250, 252, 0.52);
+  outline: 1px solid var(--hub-ink, #f8fafc);
   outline-offset: 8px;
 }
 
@@ -136,7 +149,8 @@ img.hub-glyph--raster {
   flex-direction: column;
   align-items: center;
   margin-top: 2.15rem;
-  color: rgba(248, 250, 252, 0.52);
+  color: var(--hub-ink, #f8fafc);
+  opacity: var(--hub-ink-rest, 0.64);
   text-decoration: none;
 }
 
@@ -161,11 +175,12 @@ img.hub-glyph--raster {
 
 .hub-brain:hover,
 .hub-brain:focus-visible {
-  color: rgba(248, 250, 252, 0.72);
+  color: var(--hub-ink, #f8fafc);
+  opacity: var(--hub-ink-hover, 0.84);
 }
 
 .hub-brain:focus-visible {
-  outline: 1px solid rgba(248, 250, 252, 0.52);
+  outline: 1px solid var(--hub-ink, #f8fafc);
   outline-offset: 8px;
 }
 

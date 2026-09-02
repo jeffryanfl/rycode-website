@@ -32,6 +32,7 @@ export default defineConfig({
   integrations: [sitemap()],
   redirects: {
     '/research/saaspocalypse': '/research/saas-barbell-2026/',
+    '/systems': 'https://grc.rycode.dev/',
   },
   server: {
     host: true,
