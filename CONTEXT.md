@@ -12,13 +12,13 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Newspaper look.** Charcoal paper near `#080a10`, off-white ink, cyan hairlines. Newsreader for the claim and body, Inter for kickers and captions, Geist Mono for stage ticks and eval names. Inverted Ry plus a thin cyan hairline. Not cream newsprint, not the chip photo, not coverflow.
 
-**Section page.** `/systems` still uses the chip photograph and glass cards. `/tools` is a charcoal index, same ground as home, not chip or glass. `/research` is a charcoal journal, not chip or glass and not the `/ai` newspaper. `/economics` and `/risk` are empty charcoal landings: signed mark, Inter title, italic dek. Logo goes home. No pillar rail. `/ai` is not a section page.
+**Section page.** `/systems` still uses the chip photograph and glass cards. `/tools` is a charcoal index, same ground as home, not chip or glass. `/research` is a charcoal journal, not chip or glass and not the `/ai` newspaper. `/economics` is an empty charcoal landing. `/risk` is a charcoal index: signed triangle, Inter title, italic dek, named sections, rows. Logo goes home. No pillar rail. `/ai` is not a section page.
 
 **Research.** Charcoal `#080a10` at `/research`, same ground as home. Magnifying-glass Inter “Research”, square Ry upper-right, one hairline, then a vertical list (date · claim · dek) once a piece is published. Empty identity if nothing is published. No “Coming soon”, no cards, no ENTER. Essays are Astro pages at `/research/[slug]`, same charcoal. Chassis: Newsreader claim, italic dek, 1px rule, Inter section heading. No cyan. Canonical first piece: `/research/saas-barbell-2026/`. `/research/saaspocalypse/` redirects there.
 
 **Economics.** Empty charcoal at `/economics`. Bar-chart PNG, Inter “Economics”, italic dek: “Prices, cycles, and trade-offs. New pieces appear here as rows.” Not a Research clone. No “Coming soon”. No fake rows.
 
-**Risk.** Empty charcoal at `/risk`. Warning-triangle PNG, Inter “Risk”, italic dek: “Tails and what actually breaks. New pieces appear here as rows.” Not GRC, not L2. No “Coming soon”. No fake rows.
+**Risk.** Charcoal `#080a10` at `/risk`, same ground as home. Warning-triangle PNG from `/landing/hub-risk.png`, Inter “Risk”, italic dek: “Tails and what actually breaks. New pieces appear here as rows.” Square Ry, 1px hairline, named sections, then rows. No cyan on the landing. No “Coming soon”. No hook, bell, or carabiner. Not GRC, not L2. Analyses are newspaper pages at `/risk/[slug]`: charcoal, cyan 1px hairlines, Newsreader H1, glossary rail with News / Know More. First analysis: `/risk/six-percent-that-stays/`. Headlines file: `docs/risk/six-percent-that-stays-headlines.md`.
 
 **Piece.** One app or research item. A Tools row is a title plus one sentence, the whole row a link. A Systems card is a title plus one sentence. A research row is a date, a Newsreader claim, and one-line dek. Apps live under `public/` as vanilla HTML/CSS/JS. They keep a charcoal identity strip (Tools · job, square Ry) and a flat working interior. No chip photo behind a form.
 

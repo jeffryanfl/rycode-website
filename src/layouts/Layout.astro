@@ -5,7 +5,7 @@ import HeaderBannerNav from '../components/HeaderBannerNav.astro';
 interface Props {
   title?: string;
   description?: string;
-  variant?: "journal" | "landing" | "newspaper" | "research" | "tools";
+  variant?: "journal" | "landing" | "newspaper" | "research" | "tools" | "risk";
 }
 
 const {
@@ -18,7 +18,8 @@ const isLanding = variant === "landing";
 const isNewspaper = variant === "newspaper";
 const isResearch = variant === "research";
 const isTools = variant === "tools";
-const isDark = isLanding || isNewspaper || isResearch || isTools;
+const isRisk = variant === "risk";
+const isDark = isLanding || isNewspaper || isResearch || isTools || isRisk;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('og-image.png', Astro.site);
@@ -51,9 +52,9 @@ const ogImageURL = new URL('og-image.png', Astro.site);
 <body>
   <a class="skip-link" href="#mainContent">Skip to content</a>
 
-  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper, "editorial-shell--research": isResearch, "editorial-shell--tools": isTools }]}>
-    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV (banner skipped on landing, newspaper, research, and tools) -->
-    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper, "masthead--research": isResearch, "masthead--tools": isTools }]}>
+  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper, "editorial-shell--research": isResearch, "editorial-shell--tools": isTools, "editorial-shell--risk": isRisk }]}>
+    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV (banner skipped on landing, newspaper, research, tools, and risk) -->
+    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper, "masthead--research": isResearch, "masthead--tools": isTools, "masthead--risk": isRisk }]}>
       {isResearch ? (
         <>
           <div class="masthead-brand">
@@ -93,18 +94,47 @@ const ogImageURL = new URL('og-image.png', Astro.site);
             </svg>
           </a>
         </>
+      ) : isRisk ? (
+        <>
+          <div class="masthead-brand">
+            <slot name="risk-identity">
+              <a href="/risk" class="risk-identity">
+                <img class="risk-glyph" src="/landing/hub-risk.png" alt="" width="978" height="887" />
+                Risk
+              </a>
+            </slot>
+          </div>
+          <a href="/" class="risk-mark" aria-label="Rycode Home">
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+              <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
+              <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
+            </svg>
+          </a>
+        </>
+      ) : isNewspaper ? (
+        <>
+          <div class="masthead-brand">
+            <slot name="newspaper-identity">
+              <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
+                <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
+                <span class="masthead-wordmark">Rycode</span>
+              </a>
+            </slot>
+          </div>
+          <slot name="newspaper-aside">
+            <p class="masthead-updated">Last updated Aug 2026</p>
+          </slot>
+        </>
       ) : (
         <>
           <div class="masthead-brand">
             <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
               <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
-              {isNewspaper && <span class="masthead-wordmark">Rycode</span>}
             </a>
           </div>
 
-          {isNewspaper && <p class="masthead-updated">Last updated Aug 2026</p>}
-
-          {!isLanding && !isNewspaper && <HeaderBannerNav />}
+          {!isLanding && <HeaderBannerNav />}
         </>
       )}
     </header>

@@ -1,0 +1,383 @@
+/* ==================================================================
+   RISK — charcoal index + analysis chrome
+   Ground #080a10. Signed triangle raster. Square Ry. No cyan on the landing.
+   Analysis pages sit on the newspaper chassis.
+   ================================================================== */
+
+.editorial-shell--risk {
+  --risk-paper: #080a10;
+  --risk-ink: rgba(248, 250, 252, 0.92);
+  --risk-muted: rgba(248, 250, 252, 0.52);
+  --risk-faint: rgba(248, 250, 252, 0.4);
+  --risk-hair: rgba(248, 250, 252, 0.16);
+  --risk-pad: clamp(1.4rem, 5.2vw, 3.75rem);
+  background: var(--risk-paper);
+  color: var(--risk-ink);
+  min-height: 100vh;
+}
+
+html:has(.editorial-shell--risk),
+html:has(.editorial-shell--risk) body {
+  background: var(--risk-paper, #080a10);
+  color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  color-scheme: dark;
+}
+
+html:has(.editorial-shell--risk) .skip-link {
+  background: #080a10;
+  color: rgba(248, 250, 252, 0.92);
+}
+
+.editorial-shell--risk a {
+  color: inherit;
+}
+
+.editorial-shell--risk a:hover {
+  color: inherit;
+}
+
+.editorial-shell--risk a:focus-visible {
+  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline-offset: 4px;
+}
+
+.editorial-shell--risk .masthead--risk {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 1.45rem var(--risk-pad) 1.15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: none;
+  background: transparent;
+}
+
+.editorial-shell--risk:has(.risk-identity-block) .masthead--risk {
+  border-bottom: 1px solid var(--risk-hair);
+  padding-bottom: 1.05rem;
+}
+
+.editorial-shell--risk .masthead-brand {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.risk-identity-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.risk-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  font-family: var(--font-sans);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.risk-glyph {
+  display: block;
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+a.risk-identity {
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--risk-faint);
+}
+
+a.risk-identity:hover,
+a.risk-identity:focus-visible {
+  color: rgba(248, 250, 252, 0.72);
+}
+
+h1.risk-identity {
+  font-size: clamp(1.7rem, 2.6vw, 2.05rem);
+  font-weight: 700;
+  color: var(--risk-ink);
+}
+
+.risk-identity-dek {
+  margin: 0.32rem 0 0 1.6rem;
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--risk-muted);
+}
+
+.risk-mark {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: rgba(248, 250, 252, 0.9);
+  text-decoration: none;
+}
+
+.risk-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.risk-mark text {
+  font-family: var(--font-sans);
+}
+
+.risk-mark:hover,
+.risk-mark:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+}
+
+.editorial-shell--risk .editorial-main-content {
+  flex: 1 0 auto;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 2.35rem var(--risk-pad) 0;
+  background: transparent;
+}
+
+.editorial-shell--risk .editorial-footer {
+  background: transparent;
+  border-top: none;
+  margin-top: auto;
+  padding: 2rem var(--risk-pad) 1.4rem;
+}
+
+.editorial-shell--risk .editorial-footer-inner {
+  max-width: none;
+  justify-content: flex-start;
+  color: var(--risk-faint);
+  font-size: 0.78rem;
+  border-top: none;
+  padding-top: 0;
+}
+
+.risk-section {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  color: var(--risk-faint);
+}
+
+.risk-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.risk-index li {
+  border: none;
+}
+
+.risk-index a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.15rem 0 1.2rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.risk-index a:hover .risk-index-title,
+.risk-index a:focus-visible .risk-index-title {
+  color: rgba(248, 250, 252, 0.98);
+}
+
+.risk-index-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--risk-ink);
+}
+
+.risk-index-dek {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--risk-muted);
+}
+
+/* Analysis masthead on the newspaper chassis */
+.editorial-shell--newspaper .risk-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-faint, rgba(232, 234, 238, 0.46));
+  text-decoration: none;
+}
+
+.editorial-shell--newspaper .risk-identity:hover,
+.editorial-shell--newspaper .risk-identity:focus-visible {
+  color: var(--ink, #e8eaee);
+}
+
+.editorial-shell--newspaper .risk-glyph {
+  display: block;
+  width: 1.05em;
+  height: 1.05em;
+  object-fit: contain;
+}
+
+.editorial-shell--newspaper .risk-mark {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: rgba(232, 234, 238, 0.9);
+  text-decoration: none;
+}
+
+.editorial-shell--newspaper .risk-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.editorial-shell--newspaper .risk-mark text {
+  font-family: var(--font-sans);
+}
+
+.editorial-shell--newspaper:has(.risk-analysis) .masthead--newspaper {
+  border-bottom: none;
+  align-items: flex-start;
+  padding: 1.15rem 1.75rem 0.85rem;
+}
+
+.risk-analysis .paper-head {
+  border-bottom: 1px solid var(--hair-strong);
+}
+
+.risk-analysis .paper-section:first-of-type {
+  margin-top: 0;
+  padding-top: 1.15rem;
+  border-top: none;
+}
+
+.risk-analysis .paper-kicker {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+.risk-analysis .paper-kicker a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.risk-analysis .paper-kicker a:hover,
+.risk-analysis .paper-kicker a:focus-visible {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.risk-analysis .paper-list {
+  margin: 0 0 0.35rem;
+  padding: 0 0 0 1.15rem;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.risk-analysis .paper-list li {
+  margin: 0 0 0.55rem;
+}
+
+.risk-analysis .paper-list li:last-child {
+  margin-bottom: 0;
+}
+
+.risk-analysis .risk-name {
+  margin: 1.35rem 0 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.risk-analysis .risk-name + p {
+  margin: 0 0 0.15rem;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  max-width: 68ch;
+}
+
+.risk-analysis .terms-rail-kicker {
+  letter-spacing: 0.08em;
+}
+
+.risk-analysis .terms-rail-term {
+  margin: 0;
+  padding: 0.55rem 0 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .editorial-shell--risk {
+    --risk-pad: 1.25rem;
+  }
+
+  .editorial-shell--risk .masthead--risk {
+    padding-top: 1.2rem;
+    padding-bottom: 0.95rem;
+  }
+
+  .risk-mark {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .risk-identity-dek {
+    margin-left: 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  .editorial-shell--newspaper .risk-mark {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-shell--risk a,
+  .editorial-shell--newspaper .risk-identity,
+  .editorial-shell--newspaper .risk-mark {
+    transition: none;
+  }
+}

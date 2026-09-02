@@ -25,13 +25,14 @@ Live routes: home (`/`), Tools, Research, Economics, Risk, A.I. (`/ai`), Control
 
 | Path | What it is |
 |---|---|
-| `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `research`, `economics`, `risk`, `ai`, `404`. Research articles live under `src/pages/research/`. `systems.astro` exists but is not a hub door. |
-| `src/layouts/` | Site shell. Variants: `landing` (hub + Systems + empty charcoal branches), `newspaper` (`/ai`), `research` (journal), `tools` (charcoal index), `journal` (default). |
+| `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `research`, `economics`, `risk`, `ai`, `404`. Research articles live under `src/pages/research/`. Risk analyses live under `src/pages/risk/`. `systems.astro` exists but is not a hub door. |
+| `src/layouts/` | Site shell. Variants: `landing` (hub + Systems + empty Economics), `newspaper` (`/ai` + Risk analyses), `research` (journal), `tools` (charcoal index), `risk` (charcoal Risk index), `journal` (default). |
 | `src/components/` | `LandingTiles` for Systems cards |
 | `src/styles/global.css` | Type, radii, shared chrome |
 | `src/styles/landing.css` | Chip photo, glass tiles for Systems |
-| `src/styles/hub.css` | Charcoal home: four doors, small brain, square Ry. Empty `/economics` and `/risk` landings. |
-| `src/styles/newspaper.css` | Charcoal `/ai` essay |
+| `src/styles/hub.css` | Charcoal home: four doors, small brain, square Ry. Empty `/economics` landing. |
+| `src/styles/newspaper.css` | Charcoal `/ai` essay and Risk analyses |
+| `src/styles/risk.css` | Charcoal Risk index. Triangle raster. No cyan on the landing. |
 | `src/styles/research.css` | Charcoal research journal |
 | `src/styles/tools.css` | Charcoal Tools index |
 
@@ -55,10 +56,11 @@ HTML/CSS/JS tools that ship as static files. No Astro in these folders. Live: Co
 - New Tools row → add it to the list in `src/pages/tools.astro`. Same charcoal index. Then make that row a link on home if it is not already.
 - New Systems card → `LandingTiles` on `systems.astro`. Same landing layout. Then make that tile a link on home if it is not already.
 - New research essay → `src/pages/research/<slug>.astro` on the research paper (kicker, claim, dek, byline, measured column, exhibits, method bar). Add one row to the list in `src/pages/research.astro` only when it is published. Canonical SaaS piece is `/research/saas-barbell-2026/`. `/research/saaspocalypse/` redirects there. Do not invent copy. Do not resurrect old research unless Jeffrey asks.
-- New Economics or Risk piece → add a row on that empty charcoal page only when it is published. Do not invent copy. Do not clone the Research journal onto those routes.
+- New Economics piece → add a row on that empty charcoal page only when it is published. Do not invent copy. Do not clone the Research journal onto those routes.
+- New Risk analysis → `src/pages/risk/<slug>.astro` on the newspaper chassis (charcoal, cyan hairlines, Newsreader H1, glossary rail). Add one row under a named section on `src/pages/risk.astro` only when it is published. Headlines live in `docs/risk/`. Do not invent copy. Do not drop a long-wall draft. Do not use a hook, bell, or carabiner for the Risk mark.
 - New calculator or HTML app → `public/<section>/<name>/` as `index.html`, `*.css`, `*.js`. Vanilla HTML/CSS/JS. Chart.js via CDN is allowed. Dark identity strip, flat working interior. No chip photo behind a form. Then add a row on Tools.
 - Restore old work from git, then revamp the shell and UX. Keep the math. Do not add new product features on the first pass.
-- Tools holds Build vs. Buy and Control Effectiveness as charcoal index rows, not `LandingTiles`. Research is a live journal door: identity on `/research`, essays as Astro pages, not `LandingTiles` and not the `/ai` newspaper. Economics and Risk are empty charcoal landings until a piece exists: the signed mark, Inter title, italic dek. No “Coming soon”. No fake rows. Systems is off the hub. Vendor Concentration is out. GRC stays off this site until Jeffrey says it is ready. Do not redraw signed hub marks.
+- Tools holds Build vs. Buy and Control Effectiveness as charcoal index rows, not `LandingTiles`. Research is a live journal door: identity on `/research`, essays as Astro pages, not `LandingTiles` and not the `/ai` newspaper. Economics is an empty charcoal landing until a piece exists. Risk is a charcoal index: signed triangle, Inter “Risk”, italic dek, named sections, rows. Analyses use the `/ai` newspaper chassis. No “Coming soon”. No fake rows. Systems is off the hub. Vendor Concentration is out. GRC stays off this site until Jeffrey says it is ready. Do not redraw signed hub marks.
 - Scratch files → `sandbox/` (gitignored). Never ship from there.
 - Old pages live in git history. Do not resurrect them unless asked.
 
@@ -66,7 +68,7 @@ Astro is already the stack for `src/`. Do not add another framework. Do not rewr
 
 ## Look and feel
 
-Home is charcoal emptiness (`#080a10`): four 1px doors (Research lens SVG, Tools compass SVG, Economics chart PNG, Risk triangle PNG) at `rgba(248, 250, 252, 0.52)`, small overhead brain, square Ry. Inter only. No dollar, shield, COSO cube, cyan, glass, or hero sentence. Systems keep chip photograph and glass tiles. Tools is a charcoal index, same ground as home. Research is charcoal journal. `/ai` is charcoal newspaper. `/economics` and `/risk` are empty charcoal, not Research clones and not GRC.
+Home is charcoal emptiness (`#080a10`): four 1px doors (Research lens SVG, Tools compass SVG, Economics chart PNG, Risk triangle PNG) at `rgba(248, 250, 252, 0.52)`, small overhead brain, square Ry. Inter only. No dollar, shield, COSO cube, cyan, glass, or hero sentence. Systems keep chip photograph and glass tiles. Tools is a charcoal index, same ground as home. Research is charcoal journal. `/ai` is charcoal newspaper. `/economics` is empty charcoal. `/risk` is a charcoal index, not GRC; Risk analyses use newspaper cyan hairlines.
 
 - Type: Inter on the hub and on Economics/Risk. Newsreader for research claims. Geist Mono for research dates and data.
 - Hub values live in `hub.css`. Landing values in `landing.css` for Systems. `/tools` uses `tools.css`: ground `#080a10`, signed caliper, no cyan. `/research` uses `research.css`: ground `#080a10`, off-white ink, no cyan. `/ai` uses `newspaper.css`: charcoal paper, inverted Ry, cyan hairlines. Cyan stays off the hub, off Tools, off Economics, off Risk, and off Research.

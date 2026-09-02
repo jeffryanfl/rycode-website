@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/newspaper.css';
+import '../../styles/risk.css';
+
+const title = 'Six percent that stays';
+const kicker = 'Ten trillion to roll, one trillion to buy';
+
+const names = [
+  {
+    id: 'six-percent',
+    label: 'Six percent that stays',
+    news: 'The thirty-year goes to about 6 percent and holds through one long-term borrowing date.',
+    more: 'New coupons price at 6. Home loans rise as Treasury plus a spread. A morning print that fades is not the tail.',
+    body: 'The thirty-year goes to about 6 percent and holds through one long-term borrowing date. New coupons price at 6. Home loans rise as Treasury plus a spread. A morning print that fades is not the tail.',
+  },
+  {
+    id: 'auctions',
+    label: 'Auctions weaken before six',
+    news: 'Fewer bids, worse prices, while the thirty-year is still 5.3 to 5.6.',
+    more: 'Demand can fail the test before the danger print.',
+    body: 'Fewer bids, worse prices, while the thirty-year is still 5.3 to 5.6. Demand can fail the test before the danger print.',
+  },
+  {
+    id: 'home-loans',
+    label: 'Home loans can hit six first',
+    news: 'The mortgage spread can blow out.',
+    more: 'Households feel 6 percent loan pain while Treasuries are still below 6.',
+    body: 'The mortgage spread can blow out. Households feel 6 percent loan pain while Treasuries are still below 6.',
+  },
+  {
+    id: 'not-all-bills',
+    label: 'Not all of the ten trillion is bills',
+    news: 'Mostly bills is right.',
+    more: 'A slice of longer debt does reprice. Zero coupon wall is the wrong correction.',
+    body: 'Mostly bills is right. A slice of longer debt does reprice. Zero coupon wall is the wrong correction.',
+  },
+  {
+    id: 'bill-strike',
+    label: 'A bill strike is another crash',
+    news: 'Auction failure on bills is more extreme and separate.',
+    more: 'It is not the lead.',
+    body: 'Auction failure on bills is more extreme and separate. It is not the lead.',
+  },
+];
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description="A 6 percent rate that lasts is the named tail."
+  variant="newspaper"
+>
+  <a slot="newspaper-identity" href="/risk" class="risk-identity">
+    <img class="risk-glyph" src="/landing/hub-risk.png" alt="" width="978" height="887" />
+    Risk
+  </a>
+  <a slot="newspaper-aside" href="/" class="risk-mark" aria-label="Rycode Home">
+    <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+      <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+      <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
+      <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
+    </svg>
+  </a>
+
+  <article class="paper risk-analysis">
+    <div class="paper-grid">
+      <header class="paper-head">
+        <p class="paper-kicker">
+          <a href="/research/ten-trillion-to-roll/">{kicker}</a>
+        </p>
+        <h1 class="paper-claim">{title}</h1>
+      </header>
+
+      <aside class="terms-rail" aria-label="Glossary">
+        <p class="terms-rail-kicker">Glossary</p>
+        <ul class="terms-rail-list">
+          {names.map((name) => (
+            <li>
+              <p class="terms-rail-term">{name.label}</p>
+              <p class="term-pair"><span>News</span> {name.news}</p>
+              <p class="term-pair"><span>Know More</span> {name.more}</p>
+            </li>
+          ))}
+        </ul>
+      </aside>
+
+      <div class="paper-main">
+        <section class="paper-section" aria-labelledby="from-the-essay">
+          <h2 class="paper-h2" id="from-the-essay">From the essay</h2>
+          <ul class="paper-list">
+            <li>The government refinances. It almost never pays the stock down. GAO has about $9.7 trillion coming due in FY26, roughly a third of what is owed.</li>
+            <li>That ten trillion is mostly bills, rolled every week. It is not a coupon wall.</li>
+            <li>The one trillion is cash in the Treasury General Account, about $950 billion on August 27. A checking account, not a buyback program.</li>
+            <li>Long-end purchases of at least $4 billion per operation, two sectors, September 9 through November 4, make some bonds easier to trade. They do not pin the thirty-year.</li>
+            <li>A one-point rise in rates is about 0.3 percent of output in year one on the debt that actually rolls. The 1.25 percent figure is a full-stock thought experiment.</li>
+            <li>Thirty-year cash: about 5.21 percent Friday, August 28; about 5.23 to 5.26 on August 31. Six percent has not printed.</li>
+            <li>This year is expensive. It is not a crash.</li>
+          </ul>
+        </section>
+
+        <section class="paper-section" aria-labelledby="emerging-risks">
+          <h2 class="paper-h2" id="emerging-risks">Emerging risks</h2>
+          {names.map((name) => (
+            <>
+              <h3 class="risk-name">{name.label}</h3>
+              <p>{name.body}</p>
+            </>
+          ))}
+        </section>
+
+        <section class="paper-section" aria-labelledby="if-the-tail-hits">
+          <h2 class="paper-h2" id="if-the-tail-hits">If the tail hits</h2>
+          <h3 class="risk-name">Economy: the next long bond costs 6, not the whole stock overnight</h3>
+          <p>New long-term borrowing prints at 6 percent. That extra interest is a budget line that repeats every time the Treasury sells a long bond. The first-year cash hit on a one-point move is still about 0.3 percent of output on what actually rolls, not 1.25 percent on every dollar owed. Housing and other rate-sensitive demand cool as the long mortgage follows. This is a slower squeeze, not a one-week crash.</p>
+          <h3 class="risk-name">Consumers: the next house, not the last one</h3>
+          <p>A mortgage is the thirty-year Treasury plus a spread. If 6 percent stays, the next purchase or refinance costs more by about that move, plus whatever the spread does. A loan already locked at a fixed rate does not reprice. If the spread blows out first, the payment hits households before Treasuries print 6. Renters feel it later, if sales freeze and the shortage lasts.</p>
+          <h3 class="risk-name">Banks and credit unions: paper losses first, then volume</h3>
+          <p>Bonds and mortgage-backed securities already on the books lose market value as the thirty-year rises. That is a paper mark, not an automatic sale. New mortgage origination slows. Credit that reprices with rates, such as HELOCs and some commercial loans, gets more expensive for the member or customer and tighter to underwrite. Deposit costs are already high in the expensive-year base. A bill-auction failure would be a funding and collateral event. That is the other crash, not this tail.</p>
+        </section>
+
+        <section class="paper-section" aria-labelledby="watch">
+          <h2 class="paper-h2" id="watch">Watch</h2>
+          <ul class="paper-list">
+            <li>Thirty-year holding above 5.75, then 6, through a long-term borrowing date</li>
+            <li>Whether the thirty-year is leading the ten-year</li>
+            <li>Ten-year and thirty-year auction clearance</li>
+            <li>Thirty-year mortgage rate and the extra over Treasury</li>
+            <li>Checking-account cash for the week, not as a purchase program</li>
+            <li>New debt staying in bills or extending</li>
+            <li>Long-end purchases still at least $4 billion per operation through early November</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>

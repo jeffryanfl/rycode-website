@@ -1,27 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import '../styles/landing.css';
-import '../styles/hub.css';
+import '../styles/risk.css';
+
+const pieces = [
+  {
+    href: '/risk/six-percent-that-stays/',
+    title: 'Six percent that stays',
+    dek: 'A 6 percent rate that lasts is the named tail.',
+  },
+];
 ---
 
 <Layout
   title="Risk — Rycode"
   description="Tails and what actually breaks."
-  variant="landing"
+  variant="risk"
 >
-  <section class="landing-stage landing-stage--charcoal landing-stage--branch">
-    <a href="/" class="hub-mark" aria-label="Rycode Home">
-      <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-        <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-        <text x="9" y="19" fill="currentColor" font-size="11" font-weight="500">26</text>
-        <text x="28" y="44" text-anchor="middle" fill="currentColor" font-size="20" font-weight="650">Ry</text>
-      </svg>
-    </a>
+  <div slot="risk-identity" class="risk-identity-block">
+    <h1 class="risk-identity">
+      <img class="risk-glyph" src="/landing/hub-risk.png" alt="" width="978" height="887" />
+      Risk
+    </h1>
+    <p class="risk-identity-dek">Tails and what actually breaks. New pieces appear here as rows.</p>
+  </div>
 
-    <div class="hub-branch">
-      <img class="hub-branch-mark" src="/landing/hub-risk.png" alt="" width="978" height="887" />
-      <h1 class="hub-branch-name">Risk</h1>
-      <p class="hub-branch-dek">Tails and what actually breaks. New pieces appear here as rows.</p>
-    </div>
-  </section>
+  <h2 class="risk-section">Emerging risks</h2>
+  <ul class="risk-index">
+    {pieces.map((piece) => (
+      <li>
+        <a href={piece.href}>
+          <span class="risk-index-title">{piece.title}</span>
+          <span class="risk-index-dek">{piece.dek}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
 </Layout>
