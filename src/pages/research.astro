@@ -2,7 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 import '../styles/research.css';
 
-const pieces = [
+const notes = [
+  {
+    href: '/research/ten-trillion-to-roll/',
+    date: '2026-09-01',
+    dateLabel: '1 Sep 2026',
+    title: 'Ten trillion to roll, one trillion to buy',
+    dek: 'Ten trillion to roll is the ordinary refinance. One trillion to buy is a checking account.',
+  },
+];
+
+const saas = [
   {
     href: '/research/saas-barbell-2026/',
     date: '2026-08-25',
@@ -30,7 +40,20 @@ const pieces = [
   </div>
 
   <ol class="research-index">
-    {pieces.map((piece) => (
+    {notes.map((piece) => (
+      <li>
+        <a href={piece.href}>
+          <time class="research-index-date" datetime={piece.date}>{piece.dateLabel}</time>
+          <span class="research-index-title">{piece.title}</span>
+          <span class="research-index-dek">{piece.dek}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  <h2 class="research-index-kicker">SaaS</h2>
+  <ol class="research-index">
+    {saas.map((piece) => (
       <li>
         <a href={piece.href}>
           <time class="research-index-date" datetime={piece.date}>{piece.dateLabel}</time>
