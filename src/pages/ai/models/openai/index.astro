@@ -1,0 +1,44 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/openai/gpt-6-astra/',
+    title: 'GPT-6 Astra',
+    dek: 'Flagship for hard end-to-end work.',
+    meta: ['1.05M · 128K · $10/$50 · effort low–max (no none)'],
+  },
+  {
+    href: '/ai/models/openai/gpt-5-6-sol/',
+    title: 'GPT-5.6 Sol',
+    dek: 'Flagship for complex professional work.',
+    meta: ['1.05M · 128K · $4/$20 · effort none–max'],
+  },
+];
+---
+
+<Layout
+  title="OpenAI — A.I. — Rycode"
+  description="GPT frontier lineup"
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">OpenAI</h1>
+    <p class="ai-lab-dek">GPT frontier lineup</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>

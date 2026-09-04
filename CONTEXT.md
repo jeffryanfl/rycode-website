@@ -8,13 +8,13 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Brain.** Overhead two-hemisphere wireframe under the door row. It is the hit target for A.I. Link to `/ai`. Not a glass window, not a chip card, not a hero.
 
-**A.I.** Newspaper essay at `/ai`. Entered from the home brain. Not a Research piece and not a Tools clone.
+**A.I.** Charcoal branch at `/ai`: signed brain, Inter “A.I.”, italic dek, Deep dive row plus Models cards (Anthropic, OpenAI). No Grok. No cyan. Essay lives only at `/ai/next-token-engine/` on the newspaper chassis. Lab doors at `/ai/models/anthropic/` and `/ai/models/openai/`. Model pages under those paths from `docs/ai/models/`. Entered from the home brain. Not a Research piece and not a Tools clone.
 
 **Newspaper look.** Charcoal paper near `#080a10`, off-white ink, cyan hairlines. Newsreader for the claim and body, Inter for kickers and captions, Geist Mono for stage ticks and eval names. Inverted Ry plus a thin cyan hairline. Not cream newsprint, not the chip photo, not coverflow.
 
 **Section page.** `/tools` is a charcoal index, same ground as home, not chip or glass. `/research` is a charcoal journal, not chip or glass and not the `/ai` newspaper. `/economics` is an empty charcoal landing. `/risk` is a charcoal index: signed triangle, Inter title, italic dek, named sections, rows. Logo goes home. No pillar rail. `/ai` is not a section page. Systems is not a section page on this site; old `/systems` links go to https://grc.rycode.dev.
 
-**Research.** Charcoal `#080a10` at `/research`, same ground as home. Magnifying-glass Inter “Research”, square Ry upper-right, one hairline, then rows (date · Newsreader claim · dek). Named sections (SaaS) use the same kicker treatment as “Emerging risks” on `/risk`. No “Coming soon”, no cards, no ENTER, no cyan. Essays are Astro pages at `/research/[slug]`, same charcoal: Newsreader title, dek, 1px rule, Inter headings. Canonical SaaS piece: `/research/saas-barbell-2026/`. `/research/saaspocalypse/` redirects there. Treasury essay: `/research/ten-trillion-to-roll/`, closer two lines only (Risk / Six percent that stays). Source: `docs/research/ten-trillion-to-roll.md`.
+**Research.** Charcoal `#080a10` at `/research`, same ground as home. Magnifying-glass Inter “Research”, square Ry upper-right, one hairline, then rows (date · Newsreader claim · dek). Named sections (SaaS) use the same kicker treatment as “Emerging risks” on `/risk`. No “Coming soon”, no cards, no ENTER, no cyan. Essays are Astro pages at `/research/[slug]`, same charcoal: Newsreader title, dek, 1px rule, Inter headings. Canonical SaaS piece: `/research/saas-barbell-2026/` with exhibits at `public/research/exhibits/`. `/research/saaspocalypse/` redirects there. Treasury essay: `/research/ten-trillion-to-roll/`, closer two lines only (Risk / Six percent that stays). Source: `docs/research/ten-trillion-to-roll.md`.
 
 **Economics.** Empty charcoal at `/economics`. Bar-chart PNG, Inter “Economics”, italic dek: “Prices, cycles, and trade-offs. New pieces appear here as rows.” Not a Research clone. No “Coming soon”. No fake rows.
 

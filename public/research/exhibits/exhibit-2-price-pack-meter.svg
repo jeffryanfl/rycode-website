@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720">
+  <defs>
+    <style type="text/css"><![CDATA[
+
+@font-face { font-family: Inter; src: url("/fonts/InterVariable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: Newsreader; src: url("/fonts/newsreader-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; }
+@font-face { font-family: Newsreader; src: url("/fonts/newsreader-latin-wght-italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; }
+@font-face { font-family: GeistMono; src: url("/fonts/geist-mono-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; }
+
+text { -webkit-font-smoothing: antialiased; }
+    ]]></style>
+  </defs>
+  <rect width="1100" height="720" fill="#080a10"/>
+  <rect x="36.5" y="36.5" width="1027" height="504" fill="none" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+  <text x="56" y="68" fill="#8b919a" font-family="GeistMono" font-size="11" letter-spacing="0.08em">PRICING · PACK · METER</text>
+<text x="56" y="96" fill="#f8fafc" font-family="Newsreader" font-size="22">The invoice got more complicated</text>
+<text x="56" y="120" fill="#8b919a" font-family="Inter" font-size="12">QC facts only — list steps, add-on seats, metered ARR</text>
+<rect x="56" y="148" width="310" height="340" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+<text x="76" y="176" fill="#8b919a" font-family="GeistMono" font-size="10" letter-spacing="0.1em">LIST STEPS</text>
+<text x="76" y="206" fill="#f8fafc" font-family="Newsreader" font-size="26">Price</text>
+<line x1="76" y1="222" x2="346" y2="222" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="76" y="254" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="500">Microsoft 365</text>
+<text x="346" y="254" fill="#8b919a" font-family="GeistMono" font-size="12" text-anchor="end">eff. 1 July 2026</text>
+<text x="76" y="282" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="400">E5</text>
+<text x="346" y="282" fill="#8b919a" font-family="GeistMono" font-size="12" text-anchor="end">$57 → $60</text>
+<text x="76" y="310" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="400">E3</text>
+<text x="346" y="310" fill="#8b919a" font-family="GeistMono" font-size="12" text-anchor="end">$36 → $39</text>
+<text x="76" y="338" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="400">O365 E3</text>
+<text x="346" y="338" fill="#8b919a" font-family="GeistMono" font-size="12" text-anchor="end">$23 → $26</text>
+<text x="76" y="366" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="500">Salesforce</text>
+<text x="346" y="366" fill="#8b919a" font-family="GeistMono" font-size="12" text-anchor="end">+6% Ent / Unlimited</text>
+<text x="346" y="394" fill="#8b919a" font-family="GeistMono" font-size="12" text-anchor="end">1 August 2025</text>
+<rect x="384" y="148" width="310" height="340" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+<text x="404" y="176" fill="#8b919a" font-family="GeistMono" font-size="10" letter-spacing="0.1em">ADD-ON</text>
+<text x="404" y="206" fill="#f8fafc" font-family="Newsreader" font-size="26">Pack</text>
+<line x1="404" y1="222" x2="674" y2="222" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="404" y="268" fill="#8b919a" font-family="Inter" font-size="12" font-weight="500">Copilot</text>
+<text x="404" y="306" fill="#f8fafc" font-family="GeistMono" font-size="32" font-weight="500">$30</text>
+<text x="404" y="330" fill="#8b919a" font-family="Inter" font-size="13">add-on</text>
+<line x1="404" y1="358" x2="674" y2="358" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="404" y="396" fill="#8b919a" font-family="Inter" font-size="12" font-weight="500">Paid seats</text>
+<text x="404" y="434" fill="#f8fafc" font-family="GeistMono" font-size="28" font-weight="500">&gt;30 million</text>
+<rect x="712" y="148" width="310" height="340" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+<text x="732" y="176" fill="#8b919a" font-family="GeistMono" font-size="10" letter-spacing="0.1em">EXPANSION</text>
+<text x="732" y="206" fill="#f8fafc" font-family="Newsreader" font-size="26">Meter</text>
+<line x1="732" y1="222" x2="1002" y2="222" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="732" y="268" fill="#8b919a" font-family="Inter" font-size="12" font-weight="500">Agentforce</text>
+<text x="732" y="320" fill="#f8fafc" font-family="GeistMono" font-size="36" font-weight="500">$1.2B</text>
+<text x="732" y="348" fill="#8b919a" font-family="Inter" font-size="13">ARR</text>
+  <line x1="36" y1="556" x2="1064" y2="556" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+  <text x="48" y="568" fill="#8b919a" font-family="Newsreader" font-size="12" font-weight="400" font-style="italic" text-anchor="start"><tspan x="48" dy="0">Exhibit 2. Price, pack, meter: Microsoft 365 list steps effective 1 July 2026; Salesforce +6 percent</tspan>
+<tspan x="48" dy="17">on Enterprise/Unlimited (1 August 2025); Copilot $30 add-on with &gt;30 million paid seats; Agentforce</tspan>
+<tspan x="48" dy="17">$1.2 billion ARR. Caption: the invoice got more complicated. The customer did not leave.</tspan></text>
+</svg>

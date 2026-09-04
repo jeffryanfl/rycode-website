@@ -1,0 +1,60 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/anthropic/claude-fable-5-1/',
+    title: 'Claude Fable 5.1',
+    dek: 'Most capable widely released.',
+    meta: [
+      '1M ctx · 128K out · $10/$50 · adaptive always on',
+      'Mythos 5.1 = same, Glasswing only.',
+      'Opens the Fable chassis →',
+    ],
+  },
+  {
+    href: '/ai/models/anthropic/claude-opus-5/',
+    title: 'Claude Opus 5',
+    dek: 'Default start.',
+    meta: ['1M · 128K · $5/$25 · adaptive'],
+  },
+  {
+    href: '/ai/models/anthropic/claude-sonnet-5/',
+    title: 'Claude Sonnet 5',
+    dek: 'Speed + intelligence.',
+    meta: ['1M · 128K · $2/$10 · adaptive'],
+  },
+  {
+    href: '/ai/models/anthropic/claude-haiku-4-5/',
+    title: 'Claude Haiku 4.5',
+    dek: 'Fastest.',
+    meta: ['200K · 64K · $1/$5 · extended thinking'],
+  },
+];
+---
+
+<Layout
+  title="Anthropic — A.I. — Rycode"
+  description="Claude frontier lineup"
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">Anthropic</h1>
+    <p class="ai-lab-dek">Claude frontier lineup</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>

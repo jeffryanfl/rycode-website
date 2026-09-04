@@ -1,0 +1,73 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="GPT-6 Astra — A.I. — Rycode"
+  description="OpenAI's flagship for hard end-to-end work."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">GPT-6 Astra</h1>
+    <p class="ai-model-dek">Flagship for hard end-to-end work: reasoning, coding, computer use, research, and documents.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Knowledge cutoff: April 30, 2026. Parameter count, FLOPs, and any RLVR / RLHF recipe tied to Astra on the API page: UNKNOWN. Do not use secondary "N GPUs" training claims without an OpenAI primary.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>reasoning.effort: low / medium / high / xhigh / max. There is no none. Reasoning tokens are supported.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>1.05M context window. 128K max output tokens. Text and image in; text out.</p>
+
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Tools named for Astra include web search, file search, code interpreter, hosted shell, apply patch, skills, computer use, MCP, and tool search. Also: async tool calling, mid-turn steering, and misalignment monitoring. OpenAI states this is the first model at Critical cybersecurity level under the Preparedness Framework, with stronger jailbreak robustness claimed vs GPT-5.6 Sol.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Numbers below are from OpenAI's GPT-6 Astra announce. Sol column is OpenAI's Sol, not Anthropic's. CursorBench for Astra: UNKNOWN (not on OpenAI's Astra announce extract).</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">GPT-6 Astra</th>
+            <th scope="col">GPT-5.6 Sol (OpenAI)</th>
+            <th scope="col">Notes from OpenAI page</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Terminal-Bench 4.0</td><td>57.9%</td><td>37.3%</td><td>OpenAI also lists Claude Fable 5.1 at 55.8%</td></tr>
+          <tr><td>Terminal-Bench Science 0.1</td><td>64.6%</td><td>22.4%</td><td>OpenAI lists Fable 5.1 52.6%, Opus 5 30.0%</td></tr>
+          <tr><td>OSWorld 2.0 (latency sim prose)</td><td>72.6% @ ~40 min/task</td><td>65.7% @ ~75 min</td><td>~47% less time than Sol</td></tr>
+          <tr><td>AutomationBench</td><td>41.4%</td><td>18.1%</td><td>OpenAI lists Fable 5.1 31.4%, Opus 5 26.9%</td></tr>
+          <tr><td>BrowseComp</td><td>91.5%</td><td>90.4%</td><td></td></tr>
+          <tr><td>BenchCAD</td><td>95.9%</td><td>83.3%</td><td></td></tr>
+          <tr><td>DeepSWE v1.1</td><td>74.1%</td><td>72.7%</td><td></td></tr>
+          <tr><td>FrontierMath Tier 4 (v2)</td><td>97.6% (prose also ~98% / saturates)</td><td>83.0%</td><td></td></tr>
+          <tr><td>GPQA Diamond</td><td>96.0%</td><td>94.6%</td><td></td></tr>
+          <tr><td>Humanity's Last Exam (w/ tools)</td><td>57.2%</td><td>-</td><td>OpenAI lists Fable 5.1 65.0%</td></tr>
+          <tr><td>ARC-AGI-3</td><td>saturates 99.9%; human action-efficiency baseline on 96% of levels</td><td>-</td><td>prose</td></tr>
+          <tr><td>ExploitBench</td><td>100%</td><td>-</td><td>prose</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Health (system card Table 6, length-adjusted): HealthBench Professional 63.4 (Sol 60.5); HealthBench 58.1 (Sol 57.0); HealthBench Hard 36.3 (Sol 33.1).</p>
+    <p>Safety (system card, not a capability leaderboard): Production Benchmarks safe-completion rates improve vs Sol across categories (example: Violent Illicit 0.990 vs 0.934). Critical cyber threshold under the Preparedness Framework. Misalignment flags in internal Codex sim: about half of Sol on severity ≥3 (34/54,218 vs 73).</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Per-SKU hardware for Astra: UNKNOWN. OpenAI published Stargate Abilene (Oracle + NVIDIA GB200) as the site that trained GPT-5.5. That is company infrastructure context, not a published "Astra trained on N GPUs" claim. Buyers purchase API tokens, not an Astra GPU SKU.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://developers.openai.com/api/docs/models/gpt-6-astra">GPT-6 Astra model page</a></li>
+      <li><a href="https://developers.openai.com/api/docs/models">Models</a></li>
+      <li><a href="https://developers.openai.com/api/docs/guides/latest-model">Latest model guide</a></li>
+      <li><a href="https://openai.com/index/gpt-6-astra/">GPT-6 Astra: A new generation of intelligence</a></li>
+      <li><a href="https://deploymentsafety.openai.com/gpt-6-astra">GPT-6 Astra System Card</a></li>
+      <li><a href="https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/">Building the compute infrastructure for the intelligence age</a> (GPT-5.5 / Stargate Abilene / GB200 context only)</li>
+    </ul>
+  </article>
+</Layout>

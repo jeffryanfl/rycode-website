@@ -1,0 +1,72 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Claude Fable 5.1 — A.I. — Rycode"
+  description="Most capable widely released Claude; long-horizon agents."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Claude Fable 5.1</h1>
+    <p class="ai-model-dek">Most capable widely released Claude; long-horizon agents.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Reliable knowledge and training data cutoff: June 2026. Parameter count, FLOPs, dataset mix, and any RLHF / RLVR / RLAIF recipe tied to this SKU: UNKNOWN. Anthropic does not publish those figures on the models overview or Fable SKU pages.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Adaptive thinking is always on. Default effort is high. Latency class is slower relative to the rest of the current Claude lineup. Effort steers thinking depth; per-message effort mid-conversation is available as a beta on the Claude API.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>1M token context window. 128K max output tokens. Modalities: text and image in, text out; multilingual; vision; tool use.</p>
+
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Effort parameter, tools, and an agentic coding / research focus are what Anthropic names for this SKU. Exact train-time RL recipe at SKU level: UNKNOWN. Forced tool use (tool_choice type any or named tool) is not supported on Fable 5.1.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Numbers below are from Anthropic's Fable 5.1 announce (production safeguards on for Fable). Do not treat Anthropic's GPT-5.6 Sol column as interchangeable with OpenAI's own Sol scores.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Fable 5.1</th>
+            <th scope="col">Fable 5</th>
+            <th scope="col">Opus 5</th>
+            <th scope="col">GPT-5.6 Sol (Anthropic column)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Terminal-Bench-Science 0.1</td><td>52.6%</td><td>24.7%</td><td>29.0%</td><td>22.4%</td></tr>
+          <tr><td>Terminal-Bench 4.0</td><td>55.8% (Mythos 5.1 60.9%)</td><td>42.0%</td><td>52.3%</td><td>37.3%</td></tr>
+          <tr><td>GDPval-AA v2 (score)</td><td>1853</td><td>1723</td><td>1824</td><td>1711</td></tr>
+          <tr><td>OSWorld 2.0 partial</td><td>77.9%</td><td>72.9%</td><td>75.4%</td><td>-</td></tr>
+          <tr><td>OSWorld 2.0 strict</td><td>41.7%</td><td>36.1%</td><td>39.6%</td><td>-</td></tr>
+          <tr><td>Humanity's Last Exam (no tools)</td><td>60.9%</td><td>57.8%</td><td>56.6%</td><td>-</td></tr>
+          <tr><td>Humanity's Last Exam (with tools)</td><td>65.0%</td><td>63.8%</td><td>63.6%</td><td>-</td></tr>
+          <tr><td>AutomationBench</td><td>31.4%</td><td>17.1%</td><td>26.9%</td><td>19.6%</td></tr>
+          <tr><td>CursorBench 3.2.0</td><td>73.4%</td><td>70.5%</td><td>70.0%</td><td>67.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Anthropic caveats: Terminal-Bench-Science standard error about ±3.5–4.5 points. OSWorld 2.0 here is the August 2026 task release and is not comparable to older OSWorld 2.0 prints. Safeguard interventions scored as zeros on some OSWorld and AutomationBench cases for Fable. Cyber tasks that hit Fable safeguards were completed by Opus 4.8; biology by Opus 5.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Anthropic trains and runs Claude on AWS Trainium, Google TPUs, and NVIDIA GPUs. Amazon is the primary cloud and training partner (Project Rainier). More than 1 million Trainium2 chips in use as of April 2026. Which chip serves which Fable request, and any per-SKU rack map: UNKNOWN. Buyers purchase API tokens (Claude API, Bedrock, Vertex AI, Microsoft Foundry), not a named Claude GPU SKU. Weights are closed; self-host is not offered.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://platform.claude.com/docs/en/models/overview">Models overview</a></li>
+      <li><a href="https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1">What's new in Fable 5.1</a></li>
+      <li><a href="https://platform.claude.com/docs/en/about-claude/models/choosing-a-model">Choosing a model</a></li>
+      <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Introducing Claude Fable 5.1 and Mythos 5.1</a></li>
+      <li><a href="https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20%26%20Claude%20Mythos%205.1%20System%20Card.pdf">Fable 5.1 &amp; Mythos 5.1 System Card (PDF)</a></li>
+      <li><a href="https://www.anthropic.com/news/anthropic-amazon-compute">Amazon compute partnership (20 Apr 2026)</a></li>
+      <li><a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Google/Broadcom compute partnership (6 Apr 2026)</a></li>
+    </ul>
+    <p class="ai-model-note">Mythos 5.1 (claude-mythos-5-1) matches Fable 5.1 capabilities and pricing shape but is available to Project Glasswing participants only.</p>
+  </article>
+</Layout>

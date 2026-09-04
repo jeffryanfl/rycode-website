@@ -1,0 +1,43 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Claude Sonnet 5 — A.I. — Rycode"
+  description="Speed-and-intelligence balance for everyday coding and agents."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Claude Sonnet 5</h1>
+    <p class="ai-model-dek">Speed-and-intelligence balance for everyday coding and agents.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Reliable knowledge and training data cutoff: January 2026. Parameter count, FLOPs, dataset mix, and any RLHF / RLVR / RLAIF recipe tied to this SKU: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Adaptive thinking. Default effort is high. Latency class is fast relative to the current Claude lineup.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>1M token context window. 128K max output tokens. Modalities: text and image in, text out; multilingual; vision; tool use.</p>
+
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Effort parameter and tools are what Anthropic names for this SKU. Exact train-time RL recipe at SKU level: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>UNKNOWN. No lab-published score table for Claude Sonnet 5 appears in our sources (models overview and the Fable announce table cover Fable / Opus columns, not Sonnet 5). Do not invent scores.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Anthropic trains and runs Claude on AWS Trainium, Google TPUs, and NVIDIA GPUs. Amazon is the primary cloud and training partner. More than 1 million Trainium2 chips in use as of April 2026. Per-SKU serving silicon: UNKNOWN. Buyers purchase API tokens, not a named Claude GPU SKU.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://platform.claude.com/docs/en/models/overview">Models overview</a></li>
+      <li><a href="https://platform.claude.com/docs/en/about-claude/models/choosing-a-model">Choosing a model</a></li>
+      <li><a href="https://www.anthropic.com/news/anthropic-amazon-compute">Amazon compute partnership (20 Apr 2026)</a></li>
+      <li><a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Google/Broadcom compute partnership (6 Apr 2026)</a></li>
+    </ul>
+  </article>
+</Layout>

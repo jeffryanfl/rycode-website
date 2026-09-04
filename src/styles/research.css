@@ -378,8 +378,14 @@ h1.research-identity {
   background: transparent;
 }
 
+.research-exhibit-frame:has(img, svg, picture) {
+  min-height: 0;
+  border: none;
+}
+
 .research-exhibit img,
 .research-exhibit svg {
+  display: block;
   width: 100%;
   height: auto;
 }

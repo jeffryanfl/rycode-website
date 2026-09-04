@@ -21,17 +21,18 @@ New T3 Code threads default to a git worktree of this repo. `t3.json` links `nod
 
 Home, section pages, 404. Shared chrome lives in `src/layouts/Layout.astro`.
 
-Live routes: home (`/`), Tools, Research, Economics, Risk, A.I. (`/ai`), Control Effectiveness, Build vs. Buy, 404. Systems is the fifth home door and goes out to https://grc.rycode.dev. Do not build GRC pages on this site. Vendor Concentration is out. The home brain links to `/ai`. Do not put that essay on `/research` or clone `/tools` for it.
+Live routes: home (`/`), Tools, Research, Economics, Risk, A.I. (`/ai`), Control Effectiveness, Build vs. Buy, 404. Systems is the fifth home door and goes out to https://grc.rycode.dev. Do not build GRC pages on this site. Vendor Concentration is out. The home brain links to `/ai`. `/ai` is the A.I. split landing (Deep dive + Models). The RLVR essay lives only at `/ai/next-token-engine/`. Do not put that essay on `/research` or clone `/tools` for it. No Grok door.
 
 | Path | What it is |
 |---|---|
-| `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `research`, `economics`, `risk`, `ai`, `404`. Research articles live under `src/pages/research/`. Risk analyses live under `src/pages/risk/`. `/systems` redirects to https://grc.rycode.dev. |
-| `src/layouts/` | Site shell. Variants: `landing` (hub + empty Economics), `newspaper` (`/ai` + Risk analyses), `research` (journal), `tools` (charcoal index), `risk` (charcoal Risk index), `journal` (default). |
+| `src/pages/` | One `.astro` file per route. Live: `index`, `tools`, `research`, `economics`, `risk`, `ai`, `404`. Research articles live under `src/pages/research/`. Risk analyses live under `src/pages/risk/`. A.I. essay at `src/pages/ai/next-token-engine.astro`. Model doors and pages under `src/pages/ai/models/`. `/systems` redirects to https://grc.rycode.dev. |
+| `src/layouts/` | Site shell. Variants: `landing` (hub + empty Economics), `newspaper` (A.I. essay + Risk analyses), `research` (journal), `tools` (charcoal index), `risk` (charcoal Risk index), `ai` (A.I. landing, lab doors, model pages), `journal` (default). |
 | `src/components/` | `LandingTiles` leftover from the old Systems room. Do not put Systems cards on this hub. |
 | `src/styles/global.css` | Type, radii, shared chrome |
 | `src/styles/landing.css` | Chip photo, glass tiles for Systems |
 | `src/styles/hub.css` | Charcoal home: five doors, small brain, square Ry. Empty `/economics` landing. |
-| `src/styles/newspaper.css` | Charcoal `/ai` essay and Risk analyses |
+| `src/styles/newspaper.css` | Charcoal A.I. essay (`/ai/next-token-engine/`) and Risk analyses |
+| `src/styles/ai.css` | Charcoal A.I. landing, lab doors, model pages. No cyan. |
 | `src/styles/risk.css` | Charcoal Risk index. Triangle raster. No cyan on the landing. |
 | `src/styles/research.css` | Charcoal research journal |
 | `src/styles/tools.css` | Charcoal Tools index |
@@ -71,7 +72,7 @@ Astro is already the stack for `src/`. Do not add another framework. Do not rewr
 Home is charcoal emptiness (`#080a10`): five 1px doors (Research lens SVG, Tools compass SVG, Economics chart PNG, Risk triangle PNG, Systems three-node triangle SVG) at `rgba(248, 250, 252, 0.52)`, small overhead brain, square Ry. Inter only. No dollar, shield, COSO cube, cyan, glass, or hero sentence. Systems is not a room on this site. Tools is a charcoal index, same ground as home. Research is charcoal journal. `/ai` is charcoal newspaper. `/economics` is empty charcoal. `/risk` is a charcoal index, not GRC; Risk analyses use newspaper cyan hairlines.
 
 - Type: Inter on the hub and on Economics/Risk. Newsreader for research claims. Geist Mono for research dates and data.
-- Hub values live in `hub.css`. Landing values in `landing.css` are leftover chip-photo chrome (404). `/tools` uses `tools.css`: ground `#080a10`, signed caliper, no cyan. `/research` uses `research.css`: ground `#080a10`, off-white ink, no cyan. `/ai` uses `newspaper.css`: charcoal paper, inverted Ry, cyan hairlines. Cyan stays off the hub, off Tools, off Economics, off Risk, and off Research.
+- Hub values live in `hub.css`. Landing values in `landing.css` are leftover chip-photo chrome (404). `/tools` uses `tools.css`: ground `#080a10`, signed caliper, no cyan. `/research` uses `research.css`: ground `#080a10`, off-white ink, no cyan. `/ai` landing, lab doors, and model pages use `ai.css`: charcoal, no cyan. The A.I. essay at `/ai/next-token-engine/` and Risk analyses use `newspaper.css` (cyan hairlines). Cyan stays off the hub, off Tools, off Economics, off Risk landing, off Research, and off the A.I. landing.
 - Accessibility: semantic HTML, `aria-label` on controls, skip link, `:focus-visible`, `prefers-reduced-motion`.
 - `public/` apps use `/journal-chrome.css` plus a local stylesheet. Keep that split. Chrome is charcoal: Tools · job, square Ry, 1px hairline. Working interiors are flat charcoal with 1px `#f8fafc` panels.
 
