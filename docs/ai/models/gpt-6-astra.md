@@ -1,26 +1,48 @@
 # GPT-6 Astra
 
-GPT-6 Astra is OpenAI's flagship for hard end-to-end work: reasoning, coding, computer use, research, and documents. Model id: `gpt-6-astra`. Pricing is $10 input / $50 output per million tokens; cached input $1; cache writes $12.50. Prompts with more than 272K input tokens are priced at 2× input/cache and 1.5× output for the full request. Batch/Flex are 50%; Fast mode is 2×. As of the docs fetch (4 Sep 2026), access rolls out via the Trusted Access Program, with Plus/Pro/Business/Enterprise "coming in the coming days."
+GPT-6 Astra is OpenAI's most capable model for hard end-to-end work: complex reasoning, coding, computer use (the model drives a desktop or browser for you), research, and document creation. Model id: `gpt-6-astra`.
+
+As of OpenAI's announce (fetched 5 Sep 2026), Astra was rolling out to a limited set of organizations and, over the coming days, to ChatGPT Plus, Pro, Business, and Enterprise, plus the OpenAI API, Microsoft Azure, and AWS Bedrock. Pro, Business, and Enterprise plans also get GPT-6 Astra Pro. Enterprise administrators enable Astra for the workspace; access is off by default at launch. That access language will go stale. Re-check the live pages before publish. Prefer this announce wording over older “Trusted Access Program” card language.
+
+Standard API pricing: $10 per million input tokens and $50 per million output tokens. Cached input $1.00. Cache writes $12.50. Prompts with more than 272K input tokens are priced at 2× input and cache rates and 1.5× output for the full request. Batch and Flex are 50% of Standard. Fast mode is 2× the applicable rates. This page is a learning model card under the OpenAI door on rycode.dev, not a news essay.
 
 ## Training
 
-Knowledge cutoff: April 30, 2026. Parameter count, FLOPs, and any RLVR / RLHF recipe tied to Astra on the API page: **UNKNOWN**. Do not use secondary "N GPUs" training claims without an OpenAI primary.
+Knowledge cutoff: April 30, 2026 (API model page).
+
+What OpenAI has not published for this SKU on the API page or announce extract used here: parameter count, training FLOPs, dataset mix, and any RLHF / RLVR / RLAIF recipe tied specifically to Astra. Mark those **UNKNOWN**. Do not use secondary "N GPUs trained Astra" claims without an OpenAI primary.
+
+The GPT-6 Astra System Card was published September 3, 2026 (OpenAI Deployment Safety hub). Use it for safety and health eval numbers below, not as a substitute for a missing training recipe.
 
 ## Inference
 
-`reasoning.effort`: `low` / `medium` / `high` / `xhigh` / `max`. There is no `none`. Reasoning tokens are supported.
+`reasoning.effort` (how hard the model thinks before answering) supports `low`, `medium`, `high`, `xhigh`, and `max`. There is no `none` on Astra. Reasoning tokens are supported.
+
+Migration note from OpenAI's latest-model guide: if you currently use `none` or `minimal` on an older model, start with `low` on Astra and compare. Prefer `reasoning.effort` on the Responses API, or `reasoning_effort` on Chat Completions.
+
+Chat Completions works for Astra, but tool calling requires the Responses API. Remove unsupported sampling knobs: `temperature`, `top_p`, and `top_logprobs` (and related Chat Completions logprobs includes). For EU data residency, OpenAI says use Standard processing; Fast mode is not for that path in the guide extract used here.
 
 ## Context
 
-1.05M context window. 128K max output tokens. Text and image in; text out.
+Context window: 1,050,000 tokens. Max output: 128,000 tokens.
+
+Modalities (API model page): text in and out; image input only; audio not supported; video not supported.
+
+Features listed as supported: streaming, function calling, structured outputs. Fine-tuning: not supported.
 
 ## Methods
 
-Tools named for Astra include web search, file search, code interpreter, hosted shell, apply patch, skills, computer use, MCP, and tool search. Also: async tool calling, mid-turn steering, and misalignment monitoring. OpenAI states this is the first model at Critical cybersecurity level under the Preparedness Framework, with stronger jailbreak robustness claimed vs GPT-5.6 Sol.
+Tools supported on Astra when using the Responses API (API model page): web search, file search, image generation, code interpreter, hosted shell, apply patch, skills, computer use, MCP (Model Context Protocol), and tool search.
+
+Related product behaviors OpenAI names in the guide family: mid-turn steering, async and programmatic tool calling patterns, compaction when long sessions fill the context window, and misalignment monitoring as a safety control surface. Exact train-time alignment recipe for Astra: **UNKNOWN**.
+
+OpenAI states Astra meets the Critical cybersecurity threshold under its Preparedness Framework (announce + system card). Treat that as a safety classification, not a capability leaderboard score.
+
+Relative to GPT-5.6 Sol (flagship of the prior GPT-5.6 family at $4 / $20 per million tokens, effort includes `none`): Astra is the GPT-6 flagship SKU at higher price and without `none` effort. Terra and Luna remain lower-cost GPT-5.6 siblings and are not Astra.
 
 ## Benchmarking
 
-Numbers below are from OpenAI's GPT-6 Astra announce. Sol column is OpenAI's Sol, not Anthropic's. CursorBench for Astra: **UNKNOWN** (not on OpenAI's Astra announce extract).
+Numbers below are from OpenAI's GPT-6 Astra announce page (openai.com/index/gpt-6-astra/), fetched 5 Sep 2026. The Sol column is OpenAI's Sol, not Anthropic's Sol column from Anthropic pages. Do not merge lab tables. CursorBench for Astra: **UNKNOWN** (not on the OpenAI announce extract used here).
 
 | Eval | GPT-6 Astra | GPT-5.6 Sol (OpenAI) | Notes from OpenAI page |
 | --- | ---: | ---: | --- |
@@ -37,19 +59,21 @@ Numbers below are from OpenAI's GPT-6 Astra announce. Sol column is OpenAI's Sol
 | ARC-AGI-3 | saturates 99.9%; human action-efficiency baseline on 96% of levels | - | prose |
 | ExploitBench | 100% | - | prose |
 
-Health (system card Table 6, length-adjusted): HealthBench Professional 63.4 (Sol 60.5); HealthBench 58.1 (Sol 57.0); HealthBench Hard 36.3 (Sol 33.1).
+Health (system card Table 6, length-adjusted scores; higher is better): HealthBench Professional 63.4 (Sol 60.5); HealthBench 58.1 (Sol 57.0); HealthBench Hard 36.3 (Sol 33.1).
 
-Safety (system card, not a capability leaderboard): Production Benchmarks safe-completion rates improve vs Sol across categories (example: Violent Illicit 0.990 vs 0.934). Critical cyber threshold under the Preparedness Framework. Misalignment flags in internal Codex sim: about half of Sol on severity ≥3 (34/54,218 vs 73).
+Safety (system card, not a capability leaderboard): OpenAI reports stronger jailbreak robustness vs Sol in its testing program. In an internal Codex deployment simulation across 54,218 tasks, Astra had 34 severity-3-or-higher flags (0.063%) vs more for Sol; OpenAI states about 53% fewer severity level 3 actions vs Sol on that comparison. Production safe-completion rates improve vs Sol across categories in the card tables (example category names appear on the hub; quote individual rates only with the live card open at QC time).
 
 ## Hardware
 
-Per-SKU hardware for Astra: **UNKNOWN**. OpenAI published Stargate Abilene (Oracle + NVIDIA GB200) as the site that trained GPT-5.5. That is company infrastructure context, not a published "Astra trained on N GPUs" claim. Buyers purchase API tokens, not an Astra GPU SKU.
+Per-SKU training or serving silicon for Astra: **UNKNOWN**. Buyers purchase API tokens (or Azure / Bedrock meters), not an "Astra GPU" SKU. Weights are closed.
+
+Company infrastructure context only: OpenAI's compute post names Stargate Abilene (Oracle + NVIDIA GB200) as a site that trained GPT-5.5. That is not a published "Astra trained on N GB200s" claim. Do not invent one.
 
 ## Sources
 
-- [GPT-6 Astra model page](https://developers.openai.com/api/docs/models/gpt-6-astra)
-- [Models](https://developers.openai.com/api/docs/models)
-- [Latest model guide](https://developers.openai.com/api/docs/guides/latest-model)
-- [GPT-6 Astra: A new generation of intelligence](https://openai.com/index/gpt-6-astra/)
-- [GPT-6 Astra System Card](https://deploymentsafety.openai.com/gpt-6-astra)
-- [Building the compute infrastructure for the intelligence age](https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/) (GPT-5.5 / Stargate Abilene / GB200 context only)
+- [GPT-6 Astra model page](https://developers.openai.com/api/docs/models/gpt-6-astra) (fetched 5 Sep 2026)
+- [GPT-5.6 Sol model page](https://developers.openai.com/api/docs/models/gpt-5.6-sol) (Sol $4/$20 and `none` effort cite; fetched 5 Sep 2026)
+- [Using GPT-6 Astra / latest model guide](https://developers.openai.com/api/docs/guides/latest-model) (fetched 5 Sep 2026)
+- [GPT-6 Astra: A new generation of intelligence](https://openai.com/index/gpt-6-astra/) (fetched 5 Sep 2026)
+- [GPT-6 Astra System Card](https://deploymentsafety.openai.com/gpt-6-astra) (published 3 Sep 2026; fetched 5 Sep 2026)
+- [Building the compute infrastructure for the intelligence age](https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/) (GPT-5.5 / Stargate / GB200 company context only)
