@@ -1,0 +1,87 @@
+# The SaaSpocalypse was a multiple, not a market.
+
+SaaS is a pricing and durability problem, not a dying industry.
+
+Software sold as a subscription (SaaS, for software as a service) had a scare label early in 2026. The label sounded like the industry was ending. What actually moved was how expensive investors were willing to pay for a dollar of software revenue. That price tag is called a multiple. This piece is about that multiple, about invoices that got more complicated, and about customers who mostly stayed. It is not a funeral notice.
+
+## The scare named a price tag, not an industry death
+
+In February 2026 a Jefferies trader called a software selloff the SaaSpocalypse. The word stuck because it sounded like a funeral. What happened was a re-rate: investors paid less for the typical software company relative to its sales. Revenue did not vanish. The story people told about the price did.
+
+Before you use any software index number, say which index you mean. An equal-weight median treats each company the same and describes the typical name. An average can be pulled around by a handful of giant platforms. The top ten names are a different asset class from the middle of the list. Mixing those screens is how a scare becomes a fake crash.
+
+On 14 August 2026, Meritech’s Software Pulse put the overall median implied ARR multiple at 4.3x. ARR means annual recurring revenue, the yearly subscription run-rate. That 4.3x is fifty percent below Meritech’s pre-ZIRP median of 8.7x. ZIRP means the years of near-zero interest rates, when investors paid more for growth. The top ten sat at 19.9x, twenty percent above their pre-ZIRP 16.6x. Fourteen public software names traded above 10x next-twelve-months revenue. Sixty-three percent traded under 5x. The Meritech Software Index was roughly flat year to date and up 37 percent over the prior six months.
+
+Bessemer’s Nasdaq Emerging Cloud Index, fetched 25 August 2026, printed an average (not median) revenue multiple of 7.8x on 20.9 percent average growth and about $2.4 trillion of market cap. That is the mega-cap tape, not the median name.
+
+SaaS Capital’s equal-weight index peaked near 16.9x in August 2021 and printed a local low near 6.25x in November 2022. In June 2025 the firm described a 6–8x band as a “new normal.” That band is commentary, not an official index rule. After the early-2026 AI re-rate, SaaS Capital’s own language was “decade-plus lows.” Treat any single-day print that looks like a 3-handle as a one-off, unverified print, not a law of nature.
+
+Stock prices and multiples are not the same story. Through 13 August 2026, IGV’s total return was +0.58 percent year to date and 9.75 percent below its 22 September 2025 high. IGV is a big software exchange-traded fund, a basket of public software stocks. The cash index had mostly walked back the scare. The equal-weight multiple had not.
+
+That shape is a barbell, not a crash. A barbell here means the ends of the market tell different stories: the typical name is cheap on sales, and the top names are still expensive. Growth still buys more multiple than free-cash-flow margin. Meritech’s Rule of 40 split in mid-August was roughly 12–15x on the faster-growth cohort versus 4.5–4.8x on the high free-cash-flow, slower-growth names. The Rule of 40 is a rough scorecard that adds growth rate and profit margin; names that score well on growth still get paid more than names that score well mainly on cash.
+
+The 2022 episode had the same shape with a different driver. Rates went up, growth slowed, and multiples compressed on the order of 60–75 percent depending on the screen. Revenue did not vanish. People mostly called that one the SaaSacre. Do not paste 2022 onto 2026 and call it a sequel.
+
+**Exhibit 1.** Three-index multiple tape, 2018 through August 2026: SaaS Capital equal-weight ARR, Meritech overall versus top-10 implied ARR (14 August 2026: 4.3x / 19.9x), BVP average 7.8x. Caption: equal-weight median is not the market-cap average, and neither is the top ten.
+
+## Customers are still paying. The invoice got more complicated
+
+The installed base is still being asked to pay more. Microsoft’s 365 suite list prices stepped up on 1 July 2026: E5 from $57 to $60, E3 from $36 to $39, Office 365 E3 from $23 to $26. Standalone Copilot stayed a $30 per user per month add-on, and that add-on was left out of the suite hike. Salesforce lifted Enterprise and Unlimited list prices about 6 percent on 1 August 2025. Foundations, Starter, and Pro were left alone. Agentforce is sold as a seat add-on and as Flex Credits. That is packaging power, not a death certificate.
+
+ICONIQ’s GenAI Survey (April 2025, N=266, not the Enterprise Five report) had 38 percent of respondents on hybrid as the primary pricing model. Hybrid means a mix of seats and usage. Seats are not gone. Usage is mixing in.
+
+Copilot’s paid base was more than 30 million seats as of Microsoft’s FY26 Q4 (quarter ended 30 June 2026, released 29 July). Net adds more than doubled quarter on quarter. Microsoft has not disclosed attach, which is the share of existing seats that also buy the add-on. Dividing 30 million by a previously printed commercial-seat base north of 450 million is arithmetic, about 6.5 percent. It is not a company ceiling, and the step-up from the prior quarter was acceleration, not a stall. Microsoft 365 commercial cloud revenue was +14 percent reported in that quarter. Suites are still growing.
+
+Salesforce’s Agentforce ARR ran from $800 million in FY26 Q4 to $1.2 billion in Q1 FY27, +205 percent, with more than half of Agentforce and Data 360 bookings from existing customers. That is expansion on a system of record, the core customer database a company already runs. It is not proof that AI agents never eat someone else’s seat. It is also not proof that they already have.
+
+List hikes plus AI add-ons raise the effective bill, the real amount the customer pays after packing and add-ons. That invites buyers to push back at renewal. It is a pricing problem. It is not a demand collapse.
+
+**Exhibit 2.** Price, pack, meter: Microsoft 365 list steps effective 1 July 2026; Salesforce +6 percent on Enterprise/Unlimited (1 August 2025); Copilot $30 add-on with >30 million paid seats; Agentforce $1.2 billion ARR. Caption: the invoice got more complicated. The customer did not leave.
+
+## Spend is up. The equal-weight multiple is down. That is a grind, not a cliff
+
+Public median net dollar retention is still above 100 percent. Net dollar retention (NDR) asks: of the money you collected from this year’s customers, how much do you collect from those same customers next year, after upsells, downsells, and cancellations? Above 100 percent means the existing base is still growing. Blossom Street’s post-2017 IPO screen for Q1 2026 (published 8 July) had median NDR at 110 percent and median year-over-year growth at 22 percent, down from 36 percent in Q1 2022 and stable for five quarters. Operating margins healed from roughly −30 percent to −4 percent. Mostly Metrics’ hand-collected NDR prints had the “130 percent club” go from 18 names to two, Palantir and Figma. That is not the Blossom Street screen. Disclosure is biased toward the names still willing to print a number, so the true median of the whole universe is probably a few points lower. It is not 80.
+
+Gross retention is the leak. Gross retention (GRR) measures how much recurring revenue you keep before counting expansion. Benchmarkit’s CY-2025 book (mixed public and private) had median GRR at 84 percent, down from 88 percent. NDR is being held up by expansion and price, not by logos staying forever.
+
+Spend is not frozen. Gartner’s 27 July 2026 forecast has worldwide software at $1,468 billion in 2026, +15.5 percent, on $1,271 billion in 2025. Overall IT is +14.2 percent to $6.37 trillion. Gartner’s own point: a rising tide does not lift every boat. Incremental dollars are concentrating in AI infrastructure and AI-ready software. That is mix. It is not a SaaS recession.
+
+Platform remaining-performance-obligation is still growing. Remaining performance obligation (RPO) is contracted future revenue not yet recognized. Salesforce’s current RPO (cRPO) was +14 percent in Q1 FY27. Microsoft commercial RPO of $678 billion, +84 percent, is cloud-and-infrastructure heavy. Do not quote that Microsoft figure as an apps-SaaS durability print. The Informatica deal, about $8 billion of equity, closed 18 November 2025 and is already in Salesforce’s numbers.
+
+Synergy Research for Q1 2026 had AWS, Azure, and Google at 63 percent of IaaS plus PaaS plus hosted private cloud, and 67 percent of public cloud. That is infrastructure concentration, the big cloud landlords. It is not “top ten SaaS as a share of Gartner software.” Nobody should invent that percentage.
+
+Private books with leverage are the ugly version of the same grind. Public horizontal names growing under 15 percent, still priced mainly by seat, sit in the 3–5x doghouse until they show growth again. That is lower for longer on the long tail. It is not 2008.
+
+**Exhibit 3.** The grind, not the cliff: median NDR from the 120s (2022) to 110 percent (Q1 2026, stable); median growth 36 percent to 22 percent, five quarters stable; Gartner software $1,271 billion to $1,468 billion. Set against IGV total return through 13 August 2026. Caption: spend up, equal-weight multiple down.
+
+## What the word meant, and what this essay is not
+
+SaaSpocalypse, in public, is a February 2026 coinage. Bloomberg quoted Jefferies’ Jeffrey Favuzza on 3 February: trading was “get me out” style selling. The S&P North American software index’s January drop was the worst month since October 2008. Piper Sandler talked that week about a seat-compression and vibe-coding ceiling on multiples. Seat compression means buyers trying to run the same work with fewer paid users. Vibe-coding is the claim that AI can knock together simple software so fast that seat-priced tools lose pricing power.
+
+What the Bloomberg reprint does not contain are the round-number wipe figures that circulate in trade blogs. They are not used here.
+
+The 2022 multiple crush was real. It had a different name and a different cause.
+
+This is not an essay about AI agents eating SaaS.
+
+No issuer has reported a sector-wide seat collapse. Satya Nadella’s December 2024 BG2 line that SaaS looks like CRUD, with logic moving to an AI tier, is a real quote. CRUD means basic create-read-update-delete database work. The same clip is Copilot as an organizing layer, not a Microsoft 365 seat-kill. Microsoft’s own FY26 Q4 is attach and suite growth, not a seat wipeout.
+
+Claude Cowork did not replace legal software overnight. Anthropic’s plugins blog was 30 January 2026. The Thomson Reuters and LSEG tape move was 3 February. That is a factor move in stock prices, not a churn print showing customers cancelled. Anthropic later partnered, via MCP (a connector protocol for tools), with CoCounsel.
+
+Usage is a mix-shift, not a replacement of seats. Meritech’s read was that a large AI account cut spend, not that Datadog cut usage. That is concentration and lumpy consumption. It is not a sector death print.
+
+Agents are tool loops that still fail over long tasks. Identity, audit, permissions, and unique data still live in the application. Horizontal CRUD is more copyable than a unique data or security control plane. That split is a capability point. It is not a 2026 tape that says “horizontal is dead.”
+
+## What this year is
+
+Here is the distinction the rest of the piece is about.
+
+The year we are in is one where the typical software name trades cheaper on sales than it did in the zero-rate years, while the top platforms still trade expensive. Customers are still buying and still expanding. Invoices pack list hikes and AI add-ons together, so renewals get harder. Growth slowed from the early-2020s sprint and then stabilized. Worldwide software spend is still rising. That is a grind on the long tail and a pricing fight at renewal. It is not an industry funeral.
+
+The story that would actually break the sector is different. It would be net dollar retention falling well below 100 percent across the public median, or a reported sector-wide collapse in paid seats, with revenue following. We do not have that tape. The median multiple is the receipt for the scare people already paid for. The top ten never paid it.
+
+SaaSpocalypse named a multiple. It did not name a market that ended.
+
+## Sources
+
+Meritech Software Pulse, 14 August 2026. Bessemer / Nasdaq Emerging Cloud Index, 25 August 2026. SaaS Capital Index and June 2025 “new normal” commentary. IGV total return through 13 August 2026. Bloomberg via WealthAdvisor, Ryan Vlastelica, 3 February 2026. Gartner worldwide IT spending forecast, 27 July 2026. Blossom Street Ventures, Q1 2026 SaaS screen, 8 July 2026. Mostly Metrics NDR disclosure (130 percent club, 18 to 2). ICONIQ GenAI Survey, April 2025 (hybrid primary pricing, 38 percent). ICONIQ Enterprise Five / State of Software 2025 (NDR range). Benchmarkit 2026 SaaS and AI benchmarks. Synergy Research, Q1 2026 cloud infrastructure. Microsoft FY26 Q4, 29 July 2026, and Microsoft 365 packaging and pricing, effective 1 July 2026. Salesforce pricing update, 17 June 2025; FY26 Q4; Q1 FY27, 27 May 2026. Salesforce–Informatica close, 18 November 2025.
