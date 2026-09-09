@@ -342,7 +342,7 @@ h1.economics-identity {
 }
 
 .econ-digest-title {
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.55rem;
   font-family: var(--font-serif);
   font-size: clamp(1.85rem, 4vw, 2.75rem);
   font-weight: 500;
@@ -351,11 +351,22 @@ h1.economics-identity {
   color: var(--digest-ink);
 }
 
+.econ-digest-subhead {
+  margin: 0 0 0.55rem;
+  max-width: 38rem;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--digest-ink);
+}
+
 .econ-digest-dek {
   margin: 0;
   max-width: 38rem;
   font-family: var(--font-serif);
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   font-style: italic;
   font-weight: 400;
   line-height: 1.45;
