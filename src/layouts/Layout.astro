@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import HeaderBannerNav from '../components/HeaderBannerNav.astro';
 
 interface Props {
   title?: string;
@@ -21,7 +20,7 @@ const isTools = variant === "tools";
 const isRisk = variant === "risk";
 const isAi = variant === "ai";
 const isEconomics = variant === "economics";
-const isDark = isLanding || isNewspaper || isResearch || isTools || isRisk || isAi || isEconomics;
+const isDark = true;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('og-image.png', Astro.site);
@@ -55,7 +54,7 @@ const ogImageURL = new URL('og-image.png', Astro.site);
   <a class="skip-link" href="#mainContent">Skip to content</a>
 
   <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper, "editorial-shell--research": isResearch, "editorial-shell--tools": isTools, "editorial-shell--risk": isRisk, "editorial-shell--ai": isAi, "editorial-shell--economics": isEconomics }]}>
-    <!-- TOP MASTHEAD WITH BROADSHEET BANNER NAV (banner skipped on landing, newspaper, research, tools, risk, ai, and economics) -->
+    <!-- TOP MASTHEAD (banner skipped on landing, newspaper, research, tools, risk, ai, and economics) -->
     <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper, "masthead--research": isResearch, "masthead--tools": isTools, "masthead--risk": isRisk, "masthead--ai": isAi, "masthead--economics": isEconomics }]}>
       {isResearch ? (
         <>
@@ -155,7 +154,11 @@ const ogImageURL = new URL('og-image.png', Astro.site);
           <div class="masthead-brand">
             <slot name="newspaper-identity">
               <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
-                <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
+                <svg viewBox="0 0 56 56" fill="none" aria-hidden="true" width="40" height="40">
+                  <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+                  <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
+                  <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
+                </svg>
                 <span class="masthead-wordmark">Rycode</span>
               </a>
             </slot>
@@ -168,11 +171,13 @@ const ogImageURL = new URL('og-image.png', Astro.site);
         <>
           <div class="masthead-brand">
             <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
-              <img src="/logo.svg" alt="Rycode" class="masthead-logo-img" />
+              <svg viewBox="0 0 56 56" fill="none" aria-hidden="true" width="40" height="40">
+                <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+                <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
+                <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
+              </svg>
             </a>
           </div>
-
-          {!isLanding && <HeaderBannerNav />}
         </>
       )}
     </header>

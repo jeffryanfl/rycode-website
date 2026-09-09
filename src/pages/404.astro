@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/landing.css';
+import '../styles/hub.css';
 ---
 
 <Layout
@@ -8,9 +9,16 @@ import '../styles/landing.css';
   description="This address is not on Rycode."
   variant="landing"
 >
-  <section class="landing-stage">
-    <h1 class="landing-identity">Page not found</h1>
-    <p class="landing-empty">
+  <section class="landing-stage landing-stage--charcoal">
+    <a href="/" class="hub-mark" aria-label="Rycode Home">
+      <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
+        <text x="9" y="19" fill="currentColor" font-size="11" font-weight="500">26</text>
+        <text x="28" y="44" text-anchor="middle" fill="currentColor" font-size="20" font-weight="650">Ry</text>
+      </svg>
+    </a>
+    <h1 class="hub-404-title">Page not found</h1>
+    <p class="hub-404-copy">
       Return to <a href="/">home</a>.
     </p>
   </section>

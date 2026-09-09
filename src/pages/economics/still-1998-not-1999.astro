@@ -3,7 +3,33 @@ import Layout from '../../layouts/Layout.astro';
 import '../../styles/economics.css';
 
 const title = 'Still 1998, not 1999';
-const dek = 'The question people keep asking is whether this boom feels like 1998 or 1999. The useful answer is still 1998. Real revenue and profits are here. Euphoria is a pricing and cash-timing story, not a crash call yet.';
+const dek = 'The useful answer is still 1998. Real revenue and profits are here. Euphoria is a pricing and cash-timing story, not a crash call yet.';
+
+const cards = {
+  cycle: {
+    kicker: 'Cycle read',
+    figure: 'Still 1998',
+    label: 'Real revenue · durable profit for strongest',
+    note: 'Cash quality vs late-90s vanity metrics (page views/hits). Products in market; customers pay. Euphoria can price a real market too aggressively — clock is when repricing comes, not whether revenue is fake today.',
+  },
+  froth: {
+    kicker: 'Edge froth',
+    figure: '50–100×',
+    label: 'Late private · top-line stretch',
+    note: 'Unproven teams at 50–100× look like late-dot-com checks. One-of-one operators can defend high multiples; thin wrappers cannot wear pure-software multiples forever. Froth is a pricing problem — not proof Anthropic/OpenAI-scale revenue is imaginary.',
+  },
+  raise: {
+    kicker: 'Cash timing',
+    figure: 'Raise open',
+    label: 'Optionality · when the window is open',
+    note: 'Take chips carefully by role (late-stage slice ≠ early founder cash-out signal). Delaying a raise for a prettier price risks a closed window. SF housing is a local wealth-wave mirror, not by itself the national crash signal.',
+  },
+};
+
+const legend = [
+  'How to read this: Still 1998 = cash-quality cycle. 50–100× = edge froth. Raise open = founder cash timing inside the heat.',
+  'Quiet: True 1999→2000 match would be widespread monopoly-only multiples, vanity metrics back, late-stage sellers finding no bids — froth at edges now, not empty-office base case.',
+];
 ---
 
 <Layout
@@ -11,27 +37,155 @@ const dek = 'The question people keep asking is whether this boom feels like 199
   description={dek}
   variant="economics"
 >
-  <article class="economics-article">
-    <h1 class="economics-claim">{title}</h1>
-    <p class="economics-dek">{dek}</p>
-    <hr class="economics-rule" />
+  <article class="econ-digest">
+    <header class="econ-digest-head">
+      <h1 class="econ-digest-title">{title}</h1>
+      <p class="econ-digest-dek">{dek}</p>
+    </header>
 
-    <h2 class="economics-section">What 1999 meant, and what people are afraid of repeating</h2>
-    <p>In the late 1990s, internet companies were often valued on metrics that were not dollars: page views, hits, stories about the future. The crash in early 2000 wiped out long tails of companies. Offices emptied. Paper wealth vanished in months. Anyone who lived through that carries scar tissue. Every new bull market, that scar tissue asks the same question: is this a bubble again?</p>
-    <p>That question is not the same as an answer. Overfitting the old pattern is its own risk. So is pretending young founders have already seen a wipeout of that size. Most have not.</p>
+    <aside class="econ-digest-rail" data-digest-rail aria-label="Digest, economics read">
+      <p class="econ-digest-kicker">Digest · Economics read</p>
+      <div class="econ-digest-viewport">
+        <div class="econ-digest-stack">
+          {Object.entries(cards).map(([key, card]) => (
+            <article class="econ-card" id={`card-${key}`} data-card={key}>
+              <p class="econ-card-kicker">{card.kicker}</p>
+              <p class="econ-card-figure">{card.figure}</p>
+              <p class="econ-card-label">{card.label}</p>
+              <p class="econ-card-note">{card.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="econ-digest-legend">
+        {legend.map((line) => <p>{line}</p>)}
+      </div>
+    </aside>
 
-    <h2 class="economics-section">This cycle has dollars where the last scare cycle had vanity metrics</h2>
-    <p>The distinction that matters now is cash quality. Leading AI labs and the infrastructure around them, data centers, networking, chips, are booking real revenue and, for the strongest names, durable profit. Late-1990s web companies often had revenue growth too. What many lacked was lasting profit and a business that did not live on vanity metrics: page views, hits, stories about the future. Products are in market now. Customers pay. That is a different check than counting website hits and hoping.</p>
-    <p>Euphoria can still be real when the underlying market is real. Euphoria means people guess how far forward to price that reality. Bubbles burst when the guess was too aggressive: when buyers paid fifty times sales and later decided fifteen or five was the honest number. The clock question is when that repricing comes, not whether revenue was fake today.</p>
-    <p>Late-stage private rounds are where the stretch shows. Unproven teams at fifty to a hundred times top-line revenue look like late-dot-com checks. A one-of-one operator with a track record can defend a high multiple. A thin wrapper or a service that still needs humans to polish the last fifth of the work cannot wear a pure software multiple forever. Froth there is a pricing problem. It is not proof that Anthropic-scale or OpenAI-scale revenue is imaginary.</p>
+    <p class="econ-digest-lede">The question people keep asking is whether this boom feels like 1998 or 1999. Anyone who lived through early 2000 carries scar tissue. That question is not the same as an answer. Overfitting the old pattern is its own risk.</p>
 
-    <h2 class="economics-section">Cash timing is the founder problem inside the euphoria</h2>
-    <p>If the cycle still has years of heat left, the practical question is not “deny the boom.” It is when to take chips off the table and when to raise.</p>
-    <p>Late-stage employees at companies months from a public listing have historically been able to sell a slice without signaling defeat. Early founders raising a first institutional round who try to cash out hard send a different signal: the investor wanted them all-in. Those are not the same acts. Mixing them is how good advice becomes bad.</p>
-    <p>On the company side, delaying a raise to “double the valuation in six months” is a common mistake in hot tapes. Cash on the balance sheet is optionality. Companies that took money when it was offered, Amazon in its era, others that survived the 2000 bust, lived through the retreat. Companies that waited for a prettier price sometimes met a closed window. Make hay when the sun shines is crude. It is also how treasuries survive.</p>
-    <p>San Francisco housing is a local mirror of the same cash timing. Anticipation of large AI listings, secondary sales, and thin luxury inventory push prices. That can run toward London- or Hong Kong-style footprints per foot if supply stays blocked. It is a wealth-wave symptom. It is not, by itself, the national crash signal.</p>
-    <p>People are arguing 1998 versus 1999 because they remember March and April of 2000. The honest read from the revenue tape is closer to 1998: heat is up, peak pricing may still be ahead, and the crash costume is being tried on before the body fits.</p>
-    <p>A true 1999-into-2000 match would look different. It would be widespread multiples that only work if every hopeful product is already a monopoly, vanity metrics replacing cash again, and late-stage sellers finding no bids. We are seeing froth at the edges. We are not seeing the empty-office sequel as the base case.</p>
-    <p>Still 1998 means price carefully, raise when the window is open if you need the cash, and do not confuse a real profit cycle with a permission slip for every private beta to clear at a hundred times sales. It does not mean deny the boom. It means refuse to mistake the boom’s pricing mistakes for proof that the boom has no revenue.</p>
+    <section class="econ-digest-section" id="what-1999-meant" data-digest-section="cycle">
+      <h2>What 1999 meant, and what people are afraid of repeating</h2>
+      <p>In the late 1990s, internet companies were often valued on metrics that were not dollars: page views, hits, stories about the future. The crash in early 2000 wiped out long tails of companies. Offices emptied. Paper wealth vanished in months. Every new bull market, that scar tissue asks the same question: is this a bubble again?</p>
+      <article class="econ-card econ-card--inline">
+        <p class="econ-card-kicker">{cards.cycle.kicker}</p>
+        <p class="econ-card-figure">{cards.cycle.figure}</p>
+        <p class="econ-card-label">{cards.cycle.label}</p>
+        <p class="econ-card-note">{cards.cycle.note}</p>
+      </article>
+    </section>
+
+    <section class="econ-digest-section" id="cash-quality" data-digest-section="froth">
+      <h2>This cycle has dollars where the last scare cycle had vanity metrics</h2>
+      <p>The distinction that matters now is cash quality. Leading AI labs and the infrastructure around them are booking real revenue and, for the strongest names, durable profit. Products are in market. Customers pay. Euphoria can still price a real market too aggressively — the clock is when that repricing comes, not whether revenue was fake today.</p>
+      <article class="econ-card econ-card--inline">
+        <p class="econ-card-kicker">{cards.froth.kicker}</p>
+        <p class="econ-card-figure">{cards.froth.figure}</p>
+        <p class="econ-card-label">{cards.froth.label}</p>
+        <p class="econ-card-note">{cards.froth.note}</p>
+      </article>
+    </section>
+
+    <section class="econ-digest-section" id="cash-timing" data-digest-section="raise">
+      <h2>Cash timing is the founder problem inside the euphoria</h2>
+      <p>If the cycle still has years of heat left, the practical question is not deny the boom. It is when to take chips off the table and when to raise. Delaying a raise for a prettier price risks a closed window. San Francisco housing is a local wealth-wave mirror, not by itself the national crash signal.</p>
+      <article class="econ-card econ-card--inline">
+        <p class="econ-card-kicker">{cards.raise.kicker}</p>
+        <p class="econ-card-figure">{cards.raise.figure}</p>
+        <p class="econ-card-label">{cards.raise.label}</p>
+        <p class="econ-card-note">{cards.raise.note}</p>
+      </article>
+    </section>
+
+    <div class="econ-digest-legend econ-digest-legend--inline">
+      {legend.map((line) => <p>{line}</p>)}
+    </div>
+
+    <p class="econ-digest-closer">Still 1998 means price carefully, raise when the window is open if you need the cash, and do not confuse a real profit cycle with a permission slip for every private beta to clear at a hundred times sales.</p>
+
+    <p class="econ-digest-related">Related Economics essay: <a href="/economics/jobs-print-was-strong-mix-is-the-story/">/economics/jobs-print-was-strong-mix-is-the-story/</a>.</p>
   </article>
 </Layout>
+
+<script>
+  function bindDigestRail() {
+    const rail = document.querySelector("[data-digest-rail]");
+    const stack = rail?.querySelector(".econ-digest-stack");
+    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
+
+    const wide = window.matchMedia("(min-width: 860px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sections = [...document.querySelectorAll("[data-digest-section]")];
+    const cards = {
+      cycle: document.getElementById("card-cycle"),
+      froth: document.getElementById("card-froth"),
+      raise: document.getElementById("card-raise"),
+    };
+
+    function clearActive() {
+      Object.values(cards).forEach((card) => card?.removeAttribute("data-active"));
+    }
+
+    function activate(key) {
+      if (!wide.matches) {
+        stack.style.transform = "";
+        clearActive();
+        return;
+      }
+      const pin = key === "cycle" ? "cycle" : "froth";
+      const card = cards[pin];
+      const origin = cards.cycle;
+      if (!card) return;
+      clearActive();
+      cards[key === "raise" ? "raise" : pin]?.setAttribute("data-active", "true");
+      if (cards.froth) {
+        if (pin === "froth" && stack.parentElement) {
+          const gap = 10;
+          const room = stack.parentElement.clientHeight - (cards.raise?.offsetHeight || 0) - gap;
+          cards.froth.style.minHeight = room > 0 ? `${room}px` : "";
+        } else {
+          cards.froth.style.minHeight = "";
+        }
+      }
+      const offset = pin === "cycle" || !origin ? 0 : card.offsetTop - origin.offsetTop;
+      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
+    }
+
+    function currentKey() {
+      const mark = window.innerHeight * 0.28;
+      let key = "cycle";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= mark) {
+          key = section.getAttribute("data-digest-section") || key;
+        }
+      }
+      return key;
+    }
+
+    function sync() {
+      const viewport = stack.parentElement;
+      if (!wide.matches) {
+        stack.style.transform = "";
+        clearActive();
+        if (viewport) viewport.style.overflow = "";
+        return;
+      }
+      if (reduce.matches) {
+        stack.style.transform = "";
+        clearActive();
+        if (viewport) viewport.style.overflow = "auto";
+        return;
+      }
+      if (viewport) viewport.style.overflow = "hidden";
+      activate(currentKey());
+    }
+
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    wide.addEventListener("change", sync);
+    reduce.addEventListener("change", sync);
+  }
+
+  bindDigestRail();
+</script>

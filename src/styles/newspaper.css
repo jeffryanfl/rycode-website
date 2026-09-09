@@ -1,6 +1,6 @@
 /* ==================================================================
    RYCODE NEWSPAPER — dark charcoal essay at /ai
-   Not the hub, not Tools, not cream newsprint.
+   Off-white hairlines. No cyan. Not the hub, not Tools, not cream newsprint.
    ================================================================== */
 
 .editorial-shell--newspaper {
@@ -9,9 +9,9 @@
   --ink-muted: rgba(232, 234, 238, 0.74);
   --ink-faint: rgba(232, 234, 238, 0.46);
   --ink-sat: rgba(232, 234, 238, 0.38);
-  --cyan: #67e8f9;
-  --hair: rgba(103, 232, 249, 0.42);
-  --hair-strong: rgba(103, 232, 249, 0.7);
+  --cyan: rgba(248, 250, 252, 0.72);
+  --hair: rgba(248, 250, 252, 0.16);
+  --hair-strong: rgba(248, 250, 252, 0.28);
   background: var(--paper);
   color: var(--ink);
   min-height: 100vh;
@@ -59,13 +59,19 @@ html:has(.editorial-shell--newspaper) body {
   align-items: center;
   gap: 0.85rem;
   text-decoration: none;
+  color: var(--ink);
+}
+
+.editorial-shell--newspaper .masthead-logo-link svg {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 }
 
 .editorial-shell--newspaper .masthead-logo-img {
   height: 40px;
   width: 40px;
   flex-shrink: 0;
-  filter: brightness(0) invert(1);
   opacity: 0.9;
 }
 
@@ -97,8 +103,8 @@ html:has(.editorial-shell--newspaper) body {
 }
 
 .editorial-shell--newspaper .skip-link {
-  background: #041018;
-  color: var(--cyan);
+  background: #080a10;
+  color: rgba(248, 250, 252, 0.92);
 }
 
 .editorial-shell--newspaper .paper a {
@@ -311,7 +317,7 @@ html:has(.editorial-shell--newspaper) body {
   display: flex;
   gap: 0.45rem;
   padding: 0.55rem 0.7rem 0.55rem 0;
-  border-top: 1px solid rgba(103, 232, 249, 0.14);
+  border-top: 1px solid var(--hair);
   font-family: var(--font-sans);
   font-size: 0.82rem;
   line-height: 1.4;
@@ -439,7 +445,7 @@ html:has(.editorial-shell--newspaper) body {
 
 .glossary > div {
   padding: 0.7rem 0;
-  border-top: 1px solid rgba(103, 232, 249, 0.14);
+  border-top: 1px solid var(--hair);
 }
 
 .glossary dt {
@@ -694,7 +700,7 @@ html:has(.editorial-shell--newspaper) body {
 .stage-detail {
   min-height: 4.4rem;
   padding: 0.7rem 0.15rem 0.2rem;
-  border-top: 1px solid rgba(103, 232, 249, 0.18);
+  border-top: 1px solid var(--hair);
 }
 
 .stage-panel {
@@ -782,7 +788,7 @@ html:has(.editorial-shell--newspaper) body {
   text-align: left;
   vertical-align: top;
   padding: 0.55rem 0.7rem 0.55rem 0;
-  border-bottom: 1px solid rgba(103, 232, 249, 0.16);
+  border-bottom: 1px solid var(--hair);
 }
 
 .paper-table th {
@@ -978,7 +984,7 @@ html:has(.editorial-shell--newspaper) body {
   line-height: 1.45;
   color: var(--ink-muted);
   padding: 0.35rem 0;
-  border-bottom: 1px solid rgba(103, 232, 249, 0.12);
+  border-bottom: 1px solid var(--hair);
 }
 
 .wrong-list li::before {
@@ -1094,7 +1100,7 @@ html:has(.editorial-shell--newspaper) body {
   }
 
   .exec-strip li:nth-child(-n + 2) {
-    border-top: 1px solid rgba(103, 232, 249, 0.14);
+    border-top: 1px solid var(--hair);
   }
 
   .exec-strip li:first-child {

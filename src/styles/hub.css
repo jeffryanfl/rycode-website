@@ -53,6 +53,35 @@ html:has(.landing-stage--charcoal) body {
   --hub-ink-hover: 0.84;
 }
 
+.hub-404-title {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(248, 250, 252, 0.72);
+}
+
+.hub-404-copy {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: rgba(248, 250, 252, 0.52);
+}
+
+.hub-404-copy a {
+  color: rgba(248, 250, 252, 0.84);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(248, 250, 252, 0.28);
+}
+
+.hub-404-copy a:hover,
+.hub-404-copy a:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+  text-decoration-color: rgba(248, 250, 252, 0.55);
+}
+
 .hub-mark {
   position: absolute;
   top: 1.35rem;
