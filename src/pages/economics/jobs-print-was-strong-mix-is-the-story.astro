@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/economics.css';
+
+const title = 'The jobs print was strong. The mix is the story.';
+const dek = 'August jobs print was strong. The interesting part is who the next hire is: someone who does the work with AI, not someone who only manages people who do.';
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description={dek}
+  variant="economics"
+>
+  <article class="econ-digest">
+    <header class="econ-digest-head">
+      <h1 class="econ-digest-title">{title}</h1>
+      <p class="econ-digest-dek">{dek}</p>
+    </header>
+
+    <aside class="econ-digest-rail" data-digest-rail aria-label="Digest, economics read">
+      <p class="econ-digest-kicker">Digest · Economics read</p>
+      <div class="econ-digest-viewport">
+        <div class="econ-digest-stack">
+          <article class="econ-card" id="card-print" data-card="print">
+            <p class="econ-card-kicker">Headline print</p>
+            <p class="econ-card-figure">+162k</p>
+            <p class="econ-card-label">Nonfarm payrolls · Aug 2026</p>
+            <p class="econ-card-note">Unemployment held 4.1%. AHE +0.3% m/m, +3.1% y/y to $37.75. LFPR 61.6% (+0.2 pt). Emp-pop 59.1% (little change; +0.2 from 58.9). Beat soft consensus ~53k (Dow Jones via CNBC). Prior months revised higher.</p>
+          </article>
+          <article class="econ-card" id="card-mix" data-card="mix">
+            <p class="econ-card-kicker">Mix not the cartoon</p>
+            <p class="econ-card-figure">Mix</p>
+            <p class="econ-card-label">Sector color ≠ AI boom cartoon</p>
+            <p class="econ-card-note">Food services &amp; drinking places and local government education added jobs. Information industry lost jobs. Turning all 162k into an AI-infrastructure boom is interpretation on the release, not the release. Firm labor into mid-Sep Fed meeting ≠ soft-landing certificate or cut path by itself.</p>
+          </article>
+          <article class="econ-card" id="card-doers" data-card="doers">
+            <p class="econ-card-kicker">Doers</p>
+            <p class="econ-card-figure">Doers</p>
+            <p class="econ-card-label">Skill mix · computer use shipping</p>
+            <p class="econ-card-note">Frontier models list computer use as real capability (desktop, apps, multi-step). Hiring sentence: not hiring you to hire people — hire to do the thing with tools and own the result. Premium to think/decide/operate AI. Hot print can coexist with quiet org-chart rewrite; slogans skip the selection mechanism.</p>
+          </article>
+        </div>
+      </div>
+      <div class="econ-digest-legend">
+        <p>How to read this: +162k = firm tape. Mix = sector color vs AI cartoon. Doers = skill-mix claim under the print.</p>
+        <p>Quiet OK: Price the boom carefully. Hire for doers. Strong payroll ≠ proof old coordination stack still deserves headcount.</p>
+      </div>
+    </aside>
+
+    <p class="econ-digest-lede">The August jobs print was strong. That is not the interesting part. The interesting part is who the next hire is: someone who does the work with AI, not someone who only manages people who do.</p>
+
+    <section class="econ-digest-section" id="numbers" data-digest-section="print">
+      <h2>What the numbers actually said</h2>
+      <p>In August 2026 the Bureau of Labor Statistics reported that nonfarm payroll employment rose by 162,000. Unemployment held at 4.1 percent. Average hourly earnings rose 0.3 percent on the month and 3.1 percent over the year, to $37.75. Labor force participation rose 0.2 points to 61.6 percent. Employment-to-population changed little at 59.1 percent. The print beat a soft consensus near 53,000 (Dow Jones via CNBC). Prior months were revised higher.</p>
+      <article class="econ-card econ-card--inline">
+        <p class="econ-card-kicker">Headline print</p>
+        <p class="econ-card-figure">+162k</p>
+        <p class="econ-card-label">Nonfarm payrolls · Aug 2026</p>
+        <p class="econ-card-note">Unemployment held 4.1%. AHE +0.3% m/m, +3.1% y/y to $37.75. LFPR 61.6% (+0.2 pt). Emp-pop 59.1% (little change; +0.2 from 58.9). Beat soft consensus ~53k (Dow Jones via CNBC). Prior months revised higher.</p>
+      </article>
+      <article class="econ-card econ-card--inline">
+        <p class="econ-card-kicker">Mix not the cartoon</p>
+        <p class="econ-card-figure">Mix</p>
+        <p class="econ-card-label">Sector color ≠ AI boom cartoon</p>
+        <p class="econ-card-note">Food services &amp; drinking places and local government education added jobs. Information industry lost jobs. Turning all 162k into an AI-infrastructure boom is interpretation on the release, not the release. Firm labor into mid-Sep Fed meeting ≠ soft-landing certificate or cut path by itself.</p>
+      </article>
+    </section>
+
+    <section class="econ-digest-section" id="product" data-digest-section="mix">
+      <h2>The product fact underneath the labor argument</h2>
+      <p>Frontier models now list computer use as a real capability: the model can operate a desktop, open apps, and drive multi-step workflows. That is product surface, not a podcast invention. When an agent can run the computer, the scarce input shifts toward judging what to build, catching errors, and owning the outcome — a skill-mix claim, not a measured payroll line.</p>
+    </section>
+
+    <section class="econ-digest-section" id="doers" data-digest-section="doers">
+      <h2>Doers pull ahead. Coordinators get thinner.</h2>
+      <p>AI tools that can draft, search, code, and operate software compress the need for a stack of managers watching managers. The hiring sentence is blunt: not hiring you to hire people — hire to do the thing with tools and own the result. A hot jobs print can coexist with a quiet rewrite of the org chart. Slogans skip the selection mechanism.</p>
+      <article class="econ-card econ-card--inline">
+        <p class="econ-card-kicker">Doers</p>
+        <p class="econ-card-figure">Doers</p>
+        <p class="econ-card-label">Skill mix · computer use shipping</p>
+        <p class="econ-card-note">Frontier models list computer use as real capability (desktop, apps, multi-step). Hiring sentence: not hiring you to hire people — hire to do the thing with tools and own the result. Premium to think/decide/operate AI. Hot print can coexist with quiet org-chart rewrite; slogans skip the selection mechanism.</p>
+      </article>
+    </section>
+
+    <div class="econ-digest-legend econ-digest-legend--inline">
+      <p>How to read this: +162k = firm tape. Mix = sector color vs AI cartoon. Doers = skill-mix claim under the print.</p>
+      <p>Quiet OK: Price the boom carefully. Hire for doers. Strong payroll ≠ proof old coordination stack still deserves headcount.</p>
+    </div>
+
+    <p class="econ-digest-closer">That reading is not a pep talk. Skill mix is the turning point, the August print keeps the tape firm without proving a soft landing, and the product capability that makes the hiring sentence real is already shipping. Price the boom carefully. Hire for doers. Do not confuse a strong payroll headline with proof that the old coordination stack still deserves its headcount.</p>
+
+    <p class="econ-digest-related">Related Economics essay: <a href="/economics/still-1998-not-1999/">/economics/still-1998-not-1999/</a>.</p>
+  </article>
+</Layout>
+
+<script>
+  function bindDigestRail() {
+    const rail = document.querySelector("[data-digest-rail]");
+    const stack = rail?.querySelector(".econ-digest-stack");
+    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
+
+    const wide = window.matchMedia("(min-width: 860px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sections = [...document.querySelectorAll("[data-digest-section]")];
+    const cards = {
+      print: document.getElementById("card-print"),
+      mix: document.getElementById("card-mix"),
+      doers: document.getElementById("card-doers"),
+    };
+
+    function clearActive() {
+      Object.values(cards).forEach((card) => card?.removeAttribute("data-active"));
+    }
+
+    function activate(key) {
+      if (!wide.matches) {
+        stack.style.transform = "";
+        clearActive();
+        return;
+      }
+      const pin = key === "print" ? "print" : "mix";
+      const card = cards[pin];
+      const origin = cards.print;
+      if (!card) return;
+      clearActive();
+      cards[key === "doers" ? "doers" : pin]?.setAttribute("data-active", "true");
+      if (cards.mix) {
+        if (pin === "mix" && stack.parentElement) {
+          const gap = 10;
+          const room = stack.parentElement.clientHeight - (cards.doers?.offsetHeight || 0) - gap;
+          cards.mix.style.minHeight = room > 0 ? `${room}px` : "";
+        } else {
+          cards.mix.style.minHeight = "";
+        }
+      }
+      const offset = pin === "print" || !origin ? 0 : card.offsetTop - origin.offsetTop;
+      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
+    }
+
+    function currentKey() {
+      const mark = window.innerHeight * 0.28;
+      let key = "print";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= mark) {
+          key = section.getAttribute("data-digest-section") || key;
+        }
+      }
+      return key;
+    }
+
+    function sync() {
+      const viewport = stack.parentElement;
+      if (!wide.matches) {
+        stack.style.transform = "";
+        clearActive();
+        if (viewport) viewport.style.overflow = "";
+        return;
+      }
+      if (reduce.matches) {
+        stack.style.transform = "";
+        clearActive();
+        if (viewport) viewport.style.overflow = "auto";
+        return;
+      }
+      if (viewport) viewport.style.overflow = "hidden";
+      activate(currentKey());
+    }
+
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    wide.addEventListener("change", sync);
+    reduce.addEventListener("change", sync);
+  }
+
+  bindDigestRail();
+</script>

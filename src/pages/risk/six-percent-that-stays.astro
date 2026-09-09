@@ -4,45 +4,7 @@ import '../../styles/newspaper.css';
 import '../../styles/risk.css';
 
 const title = 'Six percent that stays';
-const kicker = 'Ten trillion to roll, one trillion to buy';
-
-const names = [
-  {
-    id: 'six-percent',
-    label: 'Six percent that stays',
-    news: 'The thirty-year goes to about 6 percent and holds through one long-term borrowing date.',
-    more: 'New coupons price at 6. Home loans rise as Treasury plus a spread. A morning print that fades is not the tail.',
-    body: 'The thirty-year goes to about 6 percent and holds through one long-term borrowing date. New coupons price at 6. Home loans rise as Treasury plus a spread. A morning print that fades is not the tail.',
-  },
-  {
-    id: 'auctions',
-    label: 'Auctions weaken before six',
-    news: 'Fewer bids, worse prices, while the thirty-year is still 5.3 to 5.6.',
-    more: 'Demand can fail the test before the danger print.',
-    body: 'Fewer bids, worse prices, while the thirty-year is still 5.3 to 5.6. Demand can fail the test before the danger print.',
-  },
-  {
-    id: 'home-loans',
-    label: 'Home loans can hit six first',
-    news: 'The mortgage spread can blow out.',
-    more: 'Households feel 6 percent loan pain while Treasuries are still below 6.',
-    body: 'The mortgage spread can blow out. Households feel 6 percent loan pain while Treasuries are still below 6.',
-  },
-  {
-    id: 'not-all-bills',
-    label: 'Not all of the ten trillion is bills',
-    news: 'Mostly bills is right.',
-    more: 'A slice of longer debt does reprice. Zero coupon wall is the wrong correction.',
-    body: 'Mostly bills is right. A slice of longer debt does reprice. Zero coupon wall is the wrong correction.',
-  },
-  {
-    id: 'bill-strike',
-    label: 'A bill strike is another crash',
-    news: 'Auction failure on bills is more extreme and separate.',
-    more: 'It is not the lead.',
-    body: 'Auction failure on bills is more extreme and separate. It is not the lead.',
-  },
-];
+const dek = 'A risk read of the same ten-trillion facts — not a second telling of bills or the checking account.';
 ---
 
 <Layout
@@ -62,75 +24,163 @@ const names = [
     </svg>
   </a>
 
-  <article class="paper risk-analysis">
-    <div class="paper-grid">
-      <header class="paper-head">
-        <p class="paper-kicker">
-          <a href="/research/ten-trillion-to-roll/">{kicker}</a>
-        </p>
-        <h1 class="paper-claim">{title}</h1>
-      </header>
+  <article class="risk-digest">
+    <header class="risk-digest-head">
+      <h1 class="risk-digest-title">{title}</h1>
+      <p class="risk-digest-dek">{dek}</p>
+    </header>
 
-      <aside class="terms-rail" aria-label="Glossary">
-        <p class="terms-rail-kicker">Glossary</p>
-        <ul class="terms-rail-list">
-          {names.map((name) => (
-            <li>
-              <p class="terms-rail-term">{name.label}</p>
-              <p class="term-pair"><span>News</span> {name.news}</p>
-              <p class="term-pair"><span>Know More</span> {name.more}</p>
-            </li>
-          ))}
-        </ul>
-      </aside>
-
-      <div class="paper-main">
-        <section class="paper-section" aria-labelledby="from-the-essay">
-          <h2 class="paper-h2" id="from-the-essay">From the essay</h2>
-          <ul class="paper-list">
-            <li>The government refinances. It almost never pays the stock down. GAO has about $9.7 trillion coming due in FY26, roughly a third of what is owed.</li>
-            <li>That ten trillion is mostly bills, rolled every week. It is not a coupon wall.</li>
-            <li>The one trillion is cash in the Treasury General Account, about $950 billion on August 27. A checking account, not a buyback program.</li>
-            <li>Long-end purchases of at least $4 billion per operation, two sectors, September 9 through November 4, make some bonds easier to trade. They do not pin the thirty-year.</li>
-            <li>A one-point rise in rates is about 0.3 percent of output in year one on the debt that actually rolls. The 1.25 percent figure is a full-stock thought experiment.</li>
-            <li>Thirty-year cash: about 5.21 percent Friday, August 28; about 5.23 to 5.26 on August 31. Six percent has not printed.</li>
-            <li>This year is expensive. It is not a crash.</li>
-          </ul>
-        </section>
-
-        <section class="paper-section" aria-labelledby="emerging-risks">
-          <h2 class="paper-h2" id="emerging-risks">Emerging risks</h2>
-          {names.map((name) => (
-            <>
-              <h3 class="risk-name">{name.label}</h3>
-              <p>{name.body}</p>
-            </>
-          ))}
-        </section>
-
-        <section class="paper-section" aria-labelledby="if-the-tail-hits">
-          <h2 class="paper-h2" id="if-the-tail-hits">If the tail hits</h2>
-          <h3 class="risk-name">Economy: the next long bond costs 6, not the whole stock overnight</h3>
-          <p>New long-term borrowing prints at 6 percent. That extra interest is a budget line that repeats every time the Treasury sells a long bond. The first-year cash hit on a one-point move is still about 0.3 percent of output on what actually rolls, not 1.25 percent on every dollar owed. Housing and other rate-sensitive demand cool as the long mortgage follows. This is a slower squeeze, not a one-week crash.</p>
-          <h3 class="risk-name">Consumers: the next house, not the last one</h3>
-          <p>A mortgage is the thirty-year Treasury plus a spread. If 6 percent stays, the next purchase or refinance costs more by about that move, plus whatever the spread does. A loan already locked at a fixed rate does not reprice. If the spread blows out first, the payment hits households before Treasuries print 6. Renters feel it later, if sales freeze and the shortage lasts.</p>
-          <h3 class="risk-name">Banks and credit unions: paper losses first, then volume</h3>
-          <p>Bonds and mortgage-backed securities already on the books lose market value as the thirty-year rises. That is a paper mark, not an automatic sale. New mortgage origination slows. Credit that reprices with rates, such as HELOCs and some commercial loans, gets more expensive for the member or customer and tighter to underwrite. Deposit costs are already high in the expensive-year base. A bill-auction failure would be a funding and collateral event. That is the other crash, not this tail.</p>
-        </section>
-
-        <section class="paper-section" aria-labelledby="watch">
-          <h2 class="paper-h2" id="watch">Watch</h2>
-          <ul class="paper-list">
-            <li>Thirty-year holding above 5.75, then 6, through a long-term borrowing date</li>
-            <li>Whether the thirty-year is leading the ten-year</li>
-            <li>Ten-year and thirty-year auction clearance</li>
-            <li>Thirty-year mortgage rate and the extra over Treasury</li>
-            <li>Checking-account cash for the week, not as a purchase program</li>
-            <li>New debt staying in bills or extending</li>
-            <li>Long-end purchases still at least $4 billion per operation through early November</li>
-          </ul>
-        </section>
+    <aside class="risk-digest-rail" data-digest-rail aria-label="Digest, risk read">
+      <p class="risk-digest-kicker">Digest · Risk read</p>
+      <div class="risk-digest-viewport">
+      <div class="risk-digest-stack">
+        <article class="risk-card" id="card-usual" data-card="usual">
+          <p class="risk-card-kicker">Usual case</p>
+          <p class="risk-card-figure">5.21–5.26%</p>
+          <p class="risk-card-label">Thirty-year, late August</p>
+          <p class="risk-card-note">Expensive year. Not a crash.</p>
+        </article>
+        <article class="risk-card" id="card-tail" data-card="tail">
+          <p class="risk-card-kicker">Named tail</p>
+          <p class="risk-card-figure">~6%</p>
+          <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
+          <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
+        </article>
+        <article class="risk-card" id="card-watch" data-card="watch">
+          <p class="risk-card-kicker">Watch</p>
+          <p class="risk-card-figure">5.75% → 6%</p>
+          <p class="risk-card-label">Hold through a long-term borrow date</p>
+          <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
+        </article>
       </div>
+      </div>
+      <div class="risk-digest-legend">
+        <p>How to read this: Usual case is the late-August thirty-year. Named tail is ~6% that lasts through a long-term borrow. Watch is the hold — not a morning print.</p>
+        <p>Quiet: ~$950B TGA · checking account, week cash — not a purchase program.</p>
+        <p>Quiet: one-point rise ≈ 0.3% of output first year on debt that comes due.</p>
+      </div>
+    </aside>
+
+    <p class="risk-digest-lede">The essay on this site, <a href="/research/ten-trillion-to-roll/">Ten trillion to roll, one trillion to buy</a>, is the story of the number. This page is the risk read of the same facts. It is not a second telling of bills, the checking account, or the four-billion-dollar purchases.</p>
+
+    <section class="risk-digest-section" id="usual" data-digest-section="usual">
+      <h2>Usual case</h2>
+      <p>The government will replace about ten trillion dollars of debt in the coming year. Most of that is short-term bills it already rolls every week. The thirty-year yield in late August was about 5.21 to 5.26 percent. That is an expensive year. It is not a crash.</p>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">Usual case</p>
+        <p class="risk-card-figure">5.21–5.26%</p>
+        <p class="risk-card-label">Thirty-year, late August</p>
+        <p class="risk-card-note">Expensive year. Not a crash.</p>
+      </article>
+    </section>
+
+    <section class="risk-digest-section" id="named-tail" data-digest-section="tail">
+      <h2>The named tail</h2>
+      <p>The bad outcome that is not the usual case is the thirty-year Treasury yield going to about 6 percent and remaining there through at least one round of long-term borrowing. From late August that is a move of about three-quarters of a percentage point. A single print at 6 percent that fades is not the tail. A 6 percent rate that lasts is.</p>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">Named tail</p>
+        <p class="risk-card-figure">~6%</p>
+        <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
+        <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
+      </article>
+    </section>
+
+    <section class="risk-digest-section" id="related-tails">
+      <h2>Related tails, not the same event</h2>
+      <p>Do not fold every bad rates story into 6 percent. Auction demand can weaken while the thirty-year is still 5.3 to 5.6. Home-loan spreads can widen so households feel 6 percent mortgage pain before the Treasury is at 6 percent. A failure of bill auctions is a different and more extreme event. It is not the lead.</p>
+    </section>
+
+    <section class="risk-digest-section" id="watch" data-digest-section="watch">
+      <h2>What to watch</h2>
+      <p>Whether the thirty-year holds above 5.75 percent, then 6 percent, through a long-term borrowing date, not for a single morning. How well ten-year and thirty-year auctions clear. The mortgage spread. TGA as cash for the week. Bills vs longer. Purchases at least $4 billion through early November.</p>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">Watch</p>
+        <p class="risk-card-figure">5.75% → 6%</p>
+        <p class="risk-card-label">Hold through a long-term borrow date</p>
+        <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
+      </article>
+    </section>
+
+    <div class="risk-digest-legend risk-digest-legend--inline">
+      <p>How to read this: Usual case is the late-August thirty-year. Named tail is ~6% that lasts through a long-term borrow. Watch is the hold — not a morning print.</p>
+      <p>Quiet: ~$950B TGA · checking account, week cash — not a purchase program.</p>
+      <p>Quiet: one-point rise ≈ 0.3% of output first year on debt that comes due.</p>
     </div>
+
+    <p class="risk-digest-related">Related Research essay: <a href="/research/ten-trillion-to-roll/">/research/ten-trillion-to-roll/</a>.</p>
   </article>
 </Layout>
+
+<script>
+  function bindDigestRail() {
+    const rail = document.querySelector("[data-digest-rail]");
+    const stack = rail?.querySelector(".risk-digest-stack");
+    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
+
+    const wide = window.matchMedia("(min-width: 860px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sections = [...document.querySelectorAll("[data-digest-section]")];
+    const cards = {
+      usual: document.getElementById("card-usual"),
+      tail: document.getElementById("card-tail"),
+      watch: document.getElementById("card-watch"),
+    };
+
+    function clearActive() {
+      Object.values(cards).forEach((card) => card?.removeAttribute("data-active"));
+    }
+
+    function activate(key) {
+      if (!wide.matches) {
+        stack.style.transform = "";
+        clearActive();
+        return;
+      }
+      const pin = key === "usual" ? "usual" : "tail";
+      const card = cards[pin];
+      const origin = cards.usual;
+      if (!card) return;
+      clearActive();
+      cards[key === "watch" ? "watch" : pin]?.setAttribute("data-active", "true");
+      const offset = pin === "usual" || !origin ? 0 : card.offsetTop - origin.offsetTop;
+      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
+    }
+
+    function currentKey() {
+      const mark = window.innerHeight * 0.28;
+      let key = "usual";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= mark) {
+          key = section.getAttribute("data-digest-section") || key;
+        }
+      }
+      return key;
+    }
+
+    function sync() {
+      const viewport = stack.parentElement;
+      if (!wide.matches) {
+        stack.style.transform = "";
+        clearActive();
+        if (viewport) viewport.style.overflow = "";
+        return;
+      }
+      if (reduce.matches) {
+        stack.style.transform = "";
+        clearActive();
+        if (viewport) viewport.style.overflow = "auto";
+        return;
+      }
+      if (viewport) viewport.style.overflow = "hidden";
+      activate(currentKey());
+    }
+
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    wide.addEventListener("change", sync);
+    reduce.addEventListener("change", sync);
+  }
+
+  bindDigestRail();
+</script>

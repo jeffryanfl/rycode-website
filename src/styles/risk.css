@@ -348,6 +348,263 @@ h1.risk-identity {
   color: var(--ink);
 }
 
+/* Six-percent digest rail — charcoal, no cyan */
+.editorial-shell--newspaper:has(.risk-digest) {
+  --hair: rgba(248, 250, 252, 0.16);
+  --hair-strong: rgba(248, 250, 252, 0.16);
+}
+
+html:has(.risk-digest) .skip-link {
+  background: #080a10;
+  color: rgba(248, 250, 252, 0.92);
+}
+
+.editorial-shell--newspaper:has(.risk-digest) .paper a,
+.editorial-shell--newspaper:has(.risk-digest) .risk-digest a {
+  color: inherit;
+}
+
+.editorial-shell--newspaper:has(.risk-digest) .risk-digest a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(248, 250, 252, 0.28);
+}
+
+.editorial-shell--newspaper:has(.risk-digest) .risk-digest a:hover,
+.editorial-shell--newspaper:has(.risk-digest) .risk-digest a:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+  text-decoration-color: rgba(248, 250, 252, 0.55);
+}
+
+.editorial-shell--newspaper:has(.risk-digest) .risk-identity {
+  color: rgba(248, 250, 252, 0.46);
+}
+
+.editorial-shell--newspaper:has(.risk-digest) .risk-identity:hover,
+.editorial-shell--newspaper:has(.risk-digest) .risk-identity:focus-visible {
+  color: rgba(248, 250, 252, 0.85);
+}
+
+.risk-digest {
+  --digest-pad: clamp(1.4rem, 5.2vw, 3.75rem);
+  --digest-ink: rgba(248, 250, 252, 0.92);
+  --digest-muted: rgba(248, 250, 252, 0.52);
+  --digest-faint: rgba(248, 250, 252, 0.4);
+  --digest-hair: rgba(248, 250, 252, 0.16);
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(17rem, 0.9fr);
+  column-gap: clamp(2rem, 6vw, 4.75rem);
+  row-gap: 0;
+  align-items: start;
+  max-width: none;
+  margin: 0;
+  padding: 1.35rem var(--digest-pad) 3.5rem;
+  color: var(--digest-ink);
+}
+
+.risk-digest-head {
+  grid-column: 1;
+  margin: 0 0 1.35rem;
+  padding: 0 0 1.15rem;
+  border-bottom: 1px solid var(--digest-hair);
+  max-width: 40rem;
+}
+
+.risk-digest-title {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.022em;
+  color: var(--digest-ink);
+}
+
+.risk-digest-dek {
+  margin: 0;
+  max-width: 36rem;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--digest-muted);
+}
+
+.risk-digest-lede,
+.risk-digest-section,
+.risk-digest-related {
+  grid-column: 1;
+  max-width: 40rem;
+}
+
+.risk-digest-lede,
+.risk-digest-section > p,
+.risk-digest-related {
+  margin: 0 0 1.35rem;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--digest-ink);
+}
+
+.risk-digest-section h2 {
+  margin: 2.15rem 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--digest-ink);
+}
+
+.risk-digest-section:first-of-type h2 {
+  margin-top: 0.35rem;
+}
+
+.risk-digest-related {
+  margin-top: 0.4rem;
+  font-size: 0.98rem;
+  color: var(--digest-muted);
+}
+
+.risk-digest-rail {
+  grid-column: 2;
+  grid-row: 1 / span 8;
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 2rem);
+}
+
+.risk-digest-viewport {
+  overflow: hidden;
+  flex: 0 0 auto;
+  height: calc(13.5rem + 0.85rem + 13.5rem);
+}
+
+.risk-digest-kicker {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--digest-faint);
+}
+
+.risk-digest-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: transform 0.35s ease;
+}
+
+.risk-card {
+  min-height: 13.5rem;
+  padding: 1.05rem 1.1rem 1.2rem;
+  border: 1px solid var(--digest-hair);
+  background: transparent;
+}
+
+.risk-card-kicker {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--digest-faint);
+}
+
+.risk-card-figure {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-sans);
+  font-size: clamp(1.85rem, 2.4vw, 2.35rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--digest-ink);
+}
+
+.risk-card-label {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--digest-ink);
+}
+
+.risk-card-note {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--digest-muted);
+}
+
+.risk-digest-legend {
+  margin: 1.05rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--digest-hair);
+}
+
+.risk-digest-legend p {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--digest-muted);
+}
+
+.risk-digest-legend p:last-child {
+  margin-bottom: 0;
+}
+
+.risk-card--inline,
+.risk-digest-legend--inline {
+  display: none;
+}
+
+@media (max-width: 859px) {
+  .risk-digest {
+    display: flex;
+    flex-direction: column;
+    padding: 0.85rem 1.25rem 2.75rem;
+  }
+
+  .risk-digest-rail {
+    display: none;
+  }
+
+  .risk-card--inline,
+  .risk-digest-legend--inline {
+    display: block;
+  }
+
+  .risk-card--inline {
+    margin: 0.35rem 0 1.6rem;
+    min-height: 0;
+  }
+
+  .risk-digest-legend--inline {
+    margin-top: 0.5rem;
+  }
+
+  .risk-digest-section h2 {
+    margin-top: 1.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .risk-digest-stack {
+    transition: none;
+  }
+}
+
 @media (max-width: 720px) {
   .editorial-shell--risk {
     --risk-pad: 1.25rem;
