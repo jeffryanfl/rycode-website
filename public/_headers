@@ -37,29 +37,46 @@
 # CSP NOTES — what's allowed and why
 # ---------------------------------------------------------------
 #   default-src 'self'           — by default, only load from rycode.dev
-#   script-src                   — scripts from rycode.dev + Chart.js on
-#                                  jsdelivr + the one inline bootstrap
-#                                  script (allowed by its sha256 hash)
+#   script-src 'self'            — scripts from this origin only.
+#                                  Chart.js is vendored at /vendor/, so
+#                                  jsdelivr is not on the allow-list.
 #   style-src 'self' 'unsafe-inline'
-#                                — needed because we set inline style
-#                                  attributes from JS (e.g. CSS custom
-#                                  properties for tilt cards / charts)
+#                                — digest rails set element.style in JS.
+#                                  No third-party stylesheets.
 #   img-src 'self' data:         — own images + base64 data: URIs
-#   connect-src 'self' https://cdn.jsdelivr.net
-#                                — own origin + jsdelivr (the latter so
-#                                  the browser can fetch Chart.js's
-#                                  source map for DevTools; harmless
-#                                  but noisy in the console otherwise)
+#                                  (PNG export from the calculators)
+#   connect-src 'self'           — no third-party fetches
 #   frame-ancestors 'none'       — same as X-Frame-Options: DENY but
 #                                  newer / more granular
 #   object-src 'none'            — blocks <object>/<embed>/<applet>
 #   upgrade-insecure-requests    — auto-upgrades any stray http:// link
 #                                  to https:// before the request goes out
+#
+# CACHE
+# ---------------------------------------------------------------
+# HTML stays at Netlify's default (must-revalidate) so a deploy is
+# visible on the next visit. Hashed /_astro/* files can be cached for
+# a year: the filename changes when the bytes change. Fonts almost
+# never change. Landing marks and /vendor/ use a one-week cache so a
+# replace-in-place still reaches visitors without a year-long pin.
+# Later, more-specific rules override earlier ones for the same header.
 # ---------------------------------------------------------------
 
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-e2g5HkZP+fghbsY1m7moq4GopOo7zRRaAHNyQ2Q7oSI='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cdn.jsdelivr.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/landing/*
+  Cache-Control: public, max-age=604800
+
+/vendor/*
+  Cache-Control: public, max-age=604800
