@@ -1,0 +1,262 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/research.css';
+
+const title = 'The claimed math breakthrough was agent scale and token spend';
+const subhead = 'Ten thousand agents is not a genius';
+
+const cards = [
+  {
+    id: 'agents',
+    group: 'claimed',
+    kicker: 'Navier–Stokes',
+    figure: '~10,000',
+    label: 'Concurrent agents · NS group',
+    note: 'OpenAI accounting. Binding constraint: concurrent agents you can afford.',
+  },
+  {
+    id: 'hours',
+    group: 'claimed',
+    kicker: 'Wall-clock · NS',
+    figure: '~88 hours',
+    label: 'NS wall-clock from launch to resolution',
+    note: 'From launch to resolution. Separate from Lean verify time.',
+  },
+  {
+    id: 'lean',
+    group: 'claimed',
+    kicker: 'Verify · Lean',
+    figure: '+17 hours',
+    label: 'Lean formalization / verification via GPT-6 Astra',
+    note: 'After the ~88h NS run. Formalization and verification in Lean.',
+  },
+  {
+    id: 'messages-all',
+    group: 'claimed',
+    kicker: 'Messages · all',
+    figure: '~4.9M',
+    label: 'Messages across all attempted problems',
+    note: 'All attempted problems. OpenAI’s own accounting.',
+  },
+  {
+    id: 'tokens-all',
+    group: 'brute',
+    kicker: 'Tokens · all',
+    figure: '~300B',
+    label: 'Output tokens across all attempted problems',
+    note: 'All attempted problems. OpenAI’s own accounting.',
+  },
+  {
+    id: 'messages-ns',
+    group: 'brute',
+    kicker: 'Messages · NS',
+    figure: '~2.7M',
+    label: 'Messages on Navier–Stokes alone',
+    note: 'NS alone. OpenAI’s own accounting.',
+  },
+  {
+    id: 'tokens-ns',
+    group: 'brute',
+    kicker: 'Tokens · NS',
+    figure: '~130B',
+    label: 'Output tokens on Navier–Stokes alone',
+    note: 'NS alone. Rest of ~300B across other problems incl. Euler.',
+  },
+  {
+    id: 'euler-agents',
+    group: 'brute',
+    kicker: 'Euler · easier notch',
+    figure: '~100',
+    label: 'Agents on related Euler blowup',
+    note: 'Easier fluid blowup question (Euler, no viscosity).',
+  },
+  {
+    id: 'euler-hours',
+    group: 'brute',
+    kicker: 'Wall-clock · Euler',
+    figure: '~50 hours',
+    label: 'Euler wall-clock',
+    note: 'Related Euler blowup run. Compare to NS ~88 hours.',
+  },
+  {
+    id: 'scale',
+    group: 'brute',
+    kicker: 'Scale contrast',
+    figure: '~100×',
+    label: 'Concurrent agents, one notch harder',
+    note: 'Wall-clock rose less than ~2× (Euler ~50h → NS ~88h). Not mystic insight.',
+  },
+  {
+    id: 'share',
+    group: 'brute',
+    kicker: 'Token share · NS',
+    figure: '~130B of ~300B',
+    label: 'Output tokens on NS vs all attempted problems',
+    note: 'Rest: other problems incl. Euler. OpenAI accounting, not audit.',
+  },
+];
+
+const legend = [
+  'How to read this: agents/hours = wall-clock run; messages/tokens = spend; Euler vs NS = scale contrast; source = OpenAI accounting.',
+  'Quiet: Not independent audit. Math acceptance separate from engineering claim.',
+  'Source: OpenAI’s own accounting (not independent audit).',
+];
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description="OpenAI’s Navier–Stokes claim is a systems result: concurrent agents, wall-clock, messages, and tokens. Not a genius that transcends the harness."
+  variant="research"
+>
+  <article class="research-digest research-digest--cards">
+    <header class="research-digest-head">
+      <h1 class="research-digest-title">{title}</h1>
+      <p class="research-digest-subhead">{subhead}</p>
+    </header>
+
+    <aside class="research-digest-rail" data-digest-rail aria-label="Digest, research read">
+      <p class="research-digest-kicker">Digest · Research read</p>
+      <div class="research-digest-viewport">
+        <div class="research-digest-stack">
+          {cards.map((card) => (
+            <article class="research-card" id={`card-${card.id}`} data-card={card.id}>
+              <p class="research-card-kicker">{card.kicker}</p>
+              <p class="research-card-figure">{card.figure}</p>
+              <p class="research-card-label">{card.label}</p>
+              <p class="research-card-note">{card.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="research-digest-legend">
+        {legend.map((line) => <p>{line}</p>)}
+      </div>
+    </aside>
+
+    <p class="research-digest-lede">OpenAI published a claim that a multi-agent system helped resolve a famous open problem in fluid mathematics. The numbers in that post are large. The lesson is not that a single model woke up as a god. The lesson is that the harness, the tools, and a huge token budget did the work.</p>
+
+    <section class="research-digest-section" id="claimed" data-digest-section="claimed">
+      <h2>What was claimed, in plain English</h2>
+      <p>The Navier–Stokes equations are a set of equations that describe how fluids move. A related Millennium Prize question asks whether solutions to those equations always stay smooth, or whether they can “blow up” in finite time. That question has sat open for decades. OpenAI’s public note says an internal model, still in training and described as more capable than its released frontier line, powered a system of coordinating agents that worked the problem.</p>
+      <p>An agent here is a program that can use tools, write and run code, and hand work to other programs. OpenAI says the agents could read from a cached version of the internet and run code. They were split into groups that could talk inside the group. The group that produced the Navier–Stokes resolution involved on the order of 10,000 concurrent agents. OpenAI says those agents arrived at their resolution after about 88 hours from launch. Formalization and verification in Lean, a language used to check mathematical proofs by computer, took another 17 hours via GPT-6 Astra.</p>
+      {cards.filter((card) => ['agents', 'hours', 'lean'].includes(card.id)).map((card) => (
+        <article class="research-card research-card--inline">
+          <p class="research-card-kicker">{card.kicker}</p>
+          <p class="research-card-figure">{card.figure}</p>
+          <p class="research-card-label">{card.label}</p>
+          <p class="research-card-note">{card.note}</p>
+        </article>
+      ))}
+      <p>OpenAI also published resource figures. Across all attempted problems, the agents sent about 4.9 million messages and used about 300 billion output tokens. A token is a small chunk of text the model reads or writes. For the Navier–Stokes problem alone, OpenAI reports about 2.7 million messages and about 130 billion output tokens. Those are OpenAI’s own accounting, not an independent audit.</p>
+      {cards.filter((card) => ['messages-all', 'tokens-all', 'messages-ns', 'tokens-ns'].includes(card.id)).map((card) => (
+        <article class="research-card research-card--inline">
+          <p class="research-card-kicker">{card.kicker}</p>
+          <p class="research-card-figure">{card.figure}</p>
+          <p class="research-card-label">{card.label}</p>
+          <p class="research-card-note">{card.note}</p>
+        </article>
+      ))}
+      <p>A related “easier” fluid question, a blowup question for the Euler equations without viscosity, was also resolved in OpenAI’s telling by nearly 100 agents over about 50 hours. That detail matters for the scale story: one notch harder problem, roughly a hundred times more concurrent agents.</p>
+      <p>Whether the mathematical community accepts the proof as settled is a separate check from what this essay argues. The publishable claim for Research is what the system actually did as engineering: parallel agents, tools, messages, and tokens.</p>
+    </section>
+
+    <section class="research-digest-section" id="brute" data-digest-section="brute">
+      <h2>Brute force at machine scale is not a stroke of genius</h2>
+      <p>The costume that travels online is genius. One mind sees what humans could not. The documented shape of the run is different. Ten thousand agents means ten thousand applications talking, sharing intermediate analysis, and searching a large space of attempts. OpenAI’s own totals put about 130 billion of the roughly 300 billion output tokens on the Navier–Stokes problem alone, with the rest across other attempted problems, including the Euler result that also landed. Automated search at this stage still looks like volume and coordination, not a single private insight. Wall-clock time rose less than two times from the Euler run to Navier–Stokes while concurrent agents rose by about two orders of magnitude. The binding constraint looks like how many agents you can afford to run at once, not a mystical insight no person can read.</p>
+      {cards.filter((card) => ['euler-agents', 'euler-hours', 'scale', 'share'].includes(card.id)).map((card) => (
+        <article class="research-card research-card--inline">
+          <p class="research-card-kicker">{card.kicker}</p>
+          <p class="research-card-figure">{card.figure}</p>
+          <p class="research-card-label">{card.label}</p>
+          <p class="research-card-note">{card.note}</p>
+        </article>
+      ))}
+      <p>That is leverage. A human who can design the problem split, the tools, and the verification path multiplies labor. It is not a magical super-intelligence sitting above the work with private motives. Every message between agents is, in principle, readable. The breakthrough, if the math holds, is still a product of organized compute and an agent harness. A harness is the wrapper that gives models tools, memory, and coordination. Confusing the harness for a god model is how a research note becomes a doomer or utopia myth.</p>
+    </section>
+
+    <section class="research-digest-section" id="clearance">
+      <h2>What OpenAI says about other researchers’ work</h2>
+      <p>OpenAI’s live note says the researchers and the agents did not see the other team’s work through any means until it was released publicly, and that no specific user data was accessed in order to solve the problem. After an investigation, OpenAI says it confirmed that one outside mathematician’s Codex prompts over the two months before the September 8, 2026 announcement could not have influenced the system in any way, including through training.</p>
+      <p>That is a stronger clearance than an earlier public rumor cycle suggested. Treat the live page as the primary. The engineering story in this essay follows that investigation result, not older rumor wording.</p>
+    </section>
+
+    <section class="research-digest-section" id="stack">
+      <h2>Control of the stack still matters for sensitive work</h2>
+      <p>Separately from that clearance, buyers who care about method leakage still face a product design choice. Hosted frontier APIs keep logs, caches, and training policies inside the vendor’s walls. A commercial promise labeled zero data retention, ZDR for short, sounds like a hard delete. In practice it is a best-efforts contract term about what a vendor says it will not keep. It is not a substitute for controlling the hardware when the work is sensitive enough that leakage of method would hurt.</p>
+      <p>If that is your bar, the honest design is sovereign or tightly controlled infrastructure: your own stack, or a vendor arrangement where you understand where weights, logs, and caches live. Keep using frontier APIs for low-sensitivity work if you want. Do not confuse a press clearance on one investigation with a general rule that every chat is forever invisible to every future model.</p>
+    </section>
+
+    <section class="research-digest-section" id="take">
+      <h2>What to take from the claim</h2>
+      <p>OpenAI’s math announcement is best read as a systems result. Coordinating agents with tools, code, and a huge token budget can grind through search spaces humans cannot afford to grind by hand. That is real. Calling it a genius that transcends the harness is storytelling. Price the breakthrough as leverage plus spend. Price privacy as a stack decision, not as a slogan on a rate card.</p>
+    </section>
+
+    <div class="research-digest-legend research-digest-legend--inline">
+      {legend.map((line) => <p>{line}</p>)}
+    </div>
+
+    <p class="research-digest-closer">Whether the mathematical community accepts the proof as settled is a separate check from the engineering claim: parallel agents, tools, messages, and tokens.</p>
+
+    <p class="research-digest-related">Source: <a href="https://openai.com/index/navier-stokes-solution/">openai.com/index/navier-stokes-solution/</a>. OpenAI’s own accounting, not an independent audit.</p>
+  </article>
+</Layout>
+
+<script>
+  function bindDigestRail() {
+    const rail = document.querySelector("[data-digest-rail]");
+    const stack = rail?.querySelector(".research-digest-stack");
+    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
+
+    const wide = window.matchMedia("(min-width: 860px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sections = [...document.querySelectorAll("[data-digest-section]")];
+    const origin = document.getElementById("card-agents");
+    const brute = document.getElementById("card-tokens-all");
+
+    function activate(key) {
+      if (!wide.matches) {
+        stack.style.transform = "";
+        return;
+      }
+      const pin = key === "claimed" ? origin : brute;
+      if (!pin || !origin) return;
+      const offset = key === "claimed" ? 0 : pin.offsetTop - origin.offsetTop;
+      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
+    }
+
+    function currentKey() {
+      const mark = window.innerHeight * 0.28;
+      let key = "claimed";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= mark) {
+          key = section.getAttribute("data-digest-section") || key;
+        }
+      }
+      return key;
+    }
+
+    function sync() {
+      const viewport = stack.parentElement;
+      if (!wide.matches) {
+        stack.style.transform = "";
+        if (viewport) viewport.style.overflow = "";
+        return;
+      }
+      if (reduce.matches) {
+        stack.style.transform = "";
+        if (viewport) viewport.style.overflow = "auto";
+        return;
+      }
+      if (viewport) viewport.style.overflow = "hidden";
+      activate(currentKey());
+    }
+
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    wide.addEventListener("change", sync);
+    reduce.addEventListener("change", sync);
+  }
+
+  bindDigestRail();
+</script>

@@ -363,6 +363,19 @@ html:has(.risk-digest) .skip-link {
   height: calc(13.5rem + 0.85rem + 13.5rem);
 }
 
+.risk-digest--stack3 .risk-digest-viewport {
+  height: calc(10.55rem * 3 + 0.65rem * 2);
+}
+
+.risk-digest--stack3 .risk-digest-stack {
+  gap: 0.65rem;
+}
+
+.risk-digest--stack3 .risk-card {
+  min-height: 10.55rem;
+  padding: 0.8rem 0.9rem 0.85rem;
+}
+
 .risk-digest-kicker {
   margin: 0 0 0.7rem;
   font-family: var(--font-sans);

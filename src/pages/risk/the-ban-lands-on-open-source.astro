@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/risk.css';
+
+const title = 'A safety-framed AI rule can ban open-weight models after a scare';
+const subhead = 'The ban lands on open source';
+
+const cards = {
+  local: {
+    kicker: 'Open weight',
+    figure: 'Local files',
+    label: 'Published model files you run',
+    note: 'Download the files. Run them locally. You hold the weights, not a login. Not a paid doorway. Not a vendor computer.',
+  },
+  doorway: {
+    kicker: 'Frontier API',
+    figure: 'Paid doorway',
+    label: 'Weights stay on vendor computers',
+    note: 'You pay to call the door. Tokens come back. Weights do not. You hold access, not the files. Local run is not the product.',
+  },
+  gate: {
+    kicker: 'Gate → unmanaged risk',
+    figure: 'FDA-style',
+    label: 'Only closed vendors can clear',
+    note: 'Safety-framed gate. Closed vendors stand in it. Open weights sit outside the licensable door. Recast as unmanaged risk. The ban lands on open source.',
+  },
+  rent: {
+    kicker: 'Downstream · third',
+    figure: 'Rent / privacy',
+    label: 'Builders rent · local runs hurt',
+    note: 'If the files are unmanaged risk, builders rent tokens. The door stays open for those who can pay it. Local run is the open-weight use. A ban on the files hurts privacy runs. Context stays on-machine only if the files stay legal.',
+  },
+  fog: {
+    kicker: 'Downstream · fourth',
+    figure: 'Fog / concentrate',
+    label: 'Assurance harder · capability concentrates',
+    note: 'Outside the vendor door, assurance is harder to name. The gate licenses the closed path. It does not make the open path auditable. Capability concentrates at the doorway. Closed vendors clear the gate. Open files do not.',
+  },
+};
+
+const legend = [
+  'How to read this: Open weight = files you run. Frontier = paid doorway. Gate only closed vendors clear → open weights = unmanaged risk. Downstream is shape, not a cost percent.',
+  'Quiet: No talk-show cost percent as law. The ban lands on open source.',
+];
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description="A safety-framed AI rule can recast open-weight files as unmanaged risk. The ban lands on open source."
+  variant="risk"
+>
+  <article class="risk-digest risk-digest--stack3">
+    <header class="risk-digest-head">
+      <h1 class="risk-digest-title">{title}</h1>
+      <p class="risk-digest-subhead">{subhead}</p>
+    </header>
+
+    <aside class="risk-digest-rail" data-digest-rail aria-label="Digest, risk read">
+      <p class="risk-digest-kicker">Digest · Risk read</p>
+      <div class="risk-digest-viewport">
+        <div class="risk-digest-stack">
+          {Object.entries(cards).map(([key, card]) => (
+            <article class="risk-card" id={`card-${key}`} data-card={key}>
+              <p class="risk-card-kicker">{card.kicker}</p>
+              <p class="risk-card-figure">{card.figure}</p>
+              <p class="risk-card-label">{card.label}</p>
+              <p class="risk-card-note">{card.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="risk-digest-legend">
+        {legend.map((line) => <p>{line}</p>)}
+      </div>
+    </aside>
+
+    <p class="risk-digest-lede">Open weight means published model files you download and run locally. Frontier, sold as an API, is a paid doorway: the weights stay on vendor computers. After a scare, a safety-framed rule can treat the first as unmanaged risk. The sentence is written as safety. The ban lands on open source.</p>
+
+    <section class="risk-digest-section" id="file" data-digest-section="local">
+      <h2>Open weight is a file. Frontier is a doorway.</h2>
+      <p>The contrast is how the thing is held, not how much it costs. Open-weight files can be downloaded and run on a machine you control. The frontier product is a doorway you pay to use. You do not receive the weights. You receive tokens through a vendor computer. That is the whole how-it-works distinction this page needs.</p>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">{cards.local.kicker}</p>
+        <p class="risk-card-figure">{cards.local.figure}</p>
+        <p class="risk-card-label">{cards.local.label}</p>
+        <p class="risk-card-note">{cards.local.note}</p>
+      </article>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">{cards.doorway.kicker}</p>
+        <p class="risk-card-figure">{cards.doorway.figure}</p>
+        <p class="risk-card-label">{cards.doorway.label}</p>
+        <p class="risk-card-note">{cards.doorway.note}</p>
+      </article>
+    </section>
+
+    <section class="risk-digest-section" id="gate" data-digest-section="gate">
+      <h2>An FDA-style gate only closed vendors can clear</h2>
+      <p>A safety-framed gate, drawn like an FDA door, that only closed vendors can clear recasts open weights as unmanaged risk. The files you can run yourself sit outside the doorway that can be licensed. Closed vendors can stand in the gate. Open files cannot. The frame is safety. The effect is a ban that lands on open source.</p>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">{cards.gate.kicker}</p>
+        <p class="risk-card-figure">{cards.gate.figure}</p>
+        <p class="risk-card-label">{cards.gate.label}</p>
+        <p class="risk-card-note">{cards.gate.note}</p>
+      </article>
+    </section>
+
+    <section class="risk-digest-section" id="downstream" data-digest-section="downstream">
+      <h2>Downstream is a shape, not a cost percent</h2>
+      <p>If that gate holds, the next orders are already named. Builders rent tokens. Local and privacy runs hurt. Outside assurance gets harder. Capability concentrates. None of that is a talk-show cost percent treated as law.</p>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">{cards.rent.kicker}</p>
+        <p class="risk-card-figure">{cards.rent.figure}</p>
+        <p class="risk-card-label">{cards.rent.label}</p>
+        <p class="risk-card-note">{cards.rent.note}</p>
+      </article>
+      <article class="risk-card risk-card--inline">
+        <p class="risk-card-kicker">{cards.fog.kicker}</p>
+        <p class="risk-card-figure">{cards.fog.figure}</p>
+        <p class="risk-card-label">{cards.fog.label}</p>
+        <p class="risk-card-note">{cards.fog.note}</p>
+      </article>
+    </section>
+
+    <section class="risk-digest-section" id="first-order">
+      <h2>First order: the direct hit</h2>
+      <p>Scare campaigns around artificial intelligence often end in a call for a new federal department or an FDA-style review for models. FDA-style here means a gate like drug approval: slow submissions, official clearance, and a body that decides what may ship. The first-order move is not always a law that says “open source is illegal.” It is a rule set that only closed API vendors can clear.</p>
+      <p>License bans, export-style controls, and high-risk labels that require corporate submission infrastructure all land the same way. Open-weight projects are community-built. They can be forked. They often lack a single company that can staff regulatory filings the way a drug company staffs an FDA file. Once “safe to publish or host” means “passed our review,” the models that fail by design are the ones without a corporate submission desk. API-only vendors become the default gate. Local downloads and self-hosted runtimes become the problem to be managed.</p>
+      <p>That is the direct hit. Open weights stop being a normal way to ship capability. They become the thing the safety regime treats as unmanaged risk.</p>
+    </section>
+
+    <section class="risk-digest-section" id="third-order">
+      <h2>Third order: who else gets hurt after</h2>
+      <p>The second wave of damage is not the headline ban. It is who else pays when open weights get expensive or blocked.</p>
+      <p>Startups and independent builders lose the cheap path. They jump to closed APIs and pay rent on every token. Universities, clinics, and city IT shops lose the option to run models locally for privacy, air-gapped records, or research that cannot leave the building. Security researchers lose public probes against published weights. Overseas open stacks keep shipping. Mid-adoption firms that already built local retrieval systems and air-gap stacks get stranded. Their architecture assumed weights they could hold. The rule set assumed they would rent forever.</p>
+      <p>None of that needs a villain who hates open source by name. It only needs a review process that a community project cannot clear, and a scare that makes “stop the downloads” feel like prudence.</p>
+    </section>
+
+    <section class="risk-digest-section" id="fourth-order">
+      <h2>Fourth order: years later</h2>
+      <p>Years out, the map looks different.</p>
+      <p>Capability concentrates in a few APIs. The country still has AI. It has less of it outside the gate. Assurance gets harder, not easier. Assurance means the ability to check a safety claim. When weights are public, outsiders can probe, red-team, and falsify. When capability lives only behind closed doors, the public is asked to trust the vendor’s and the regulator’s word. The scare promised more safety. The structure delivers a thicker fog.</p>
+      <p>Geopolitics moves with the weights. Open models that cannot publish or host under U.S. rules still publish somewhere. Import dependence rises for anyone who still wants local runs. Capital floods closed platforms. Open infrastructure winters. “Safety” becomes a playbook of licenses and bans, not a scoreboard of measurable evaluations that anyone can reproduce.</p>
+      <p>That fourth-order world is the emerging-risk claim for this door. The ban did not need to say “kill open source.” It only needed to make open weights impossible to clear, then let the market and the agencies finish the job.</p>
+    </section>
+
+    <section class="risk-digest-section" id="scare">
+      <h2>How the scare clears the runway</h2>
+      <p>The pattern is familiar. A dramatic resignation or warning post gets amplified by organized safety groups and politicians within hours. News treats it as whistleblowing. The policy ask that follows is a pause, a ban on “superintelligence,” or a new federal AI regulator. Separate claims about job loss and doom timelines can fail against the data and still succeed as theater. The theater is enough if it stamps the public into demanding a gate.</p>
+      <p>Watch for the alliance that likes the outcome even when it debates the motive: ideologues who prefer centralized status solutions, politicians who gain power from fear, and closed labs that can live with a regulator they can clear while open weights cannot. The target that fits all three is not “AI” in the abstract. It is open weights that drop cost and escape the submission desk.</p>
+      <p>Treat campaign color carefully. Large cost-drop claims about open source versus closed APIs circulate in debate. Do not treat a round number from a talk show as a measured law of nature. The structural point does not need that number. Open weights remove the need for a third-party data center to try the technology. Closed API-only rules put that third party back in the middle.</p>
+    </section>
+
+    <section class="risk-digest-section" id="watch">
+      <h2>What to watch</h2>
+      <p>Bills and agency drafts that license frontier models and exclude open weights. Cloud and app-store blocks on local runtimes. Extinction rhetoric paired with open-source bans. Growing price and latency gaps after rules land. Where open weights publish next when one jurisdiction closes.</p>
+      <p>The ban lands on open source. It may arrive wearing a safety badge. The tail is not only fewer hobby downloads. The tail is fewer independent builders, weaker outside checks on closed labs, and a thicker concentration of who gets to decide what intelligence the public may run.</p>
+    </section>
+
+    <div class="risk-digest-legend risk-digest-legend--inline">
+      {legend.map((line) => <p>{line}</p>)}
+    </div>
+
+    <p class="risk-digest-closer">Read the gate as a door, not a score. Open weight is the file you can run. Frontier is the doorway you rent. A scare can close the file and leave the doorway.</p>
+
+    <p class="risk-digest-related">Related Risk essay: <a href="/risk/panic-before-the-breach/">/risk/panic-before-the-breach/</a>.</p>
+  </article>
+</Layout>
+
+<script>
+  function bindDigestRail() {
+    const rail = document.querySelector("[data-digest-rail]");
+    const stack = rail?.querySelector(".risk-digest-stack");
+    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
+
+    const wide = window.matchMedia("(min-width: 860px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sections = [...document.querySelectorAll("[data-digest-section]")];
+    const cards = {
+      local: document.getElementById("card-local"),
+      rent: document.getElementById("card-rent"),
+    };
+
+    function activate(key) {
+      if (!wide.matches) {
+        stack.style.transform = "";
+        return;
+      }
+      const pin = key === "downstream" ? "rent" : "local";
+      const card = cards[pin];
+      const origin = cards.local;
+      if (!card || !origin) return;
+      const offset = pin === "local" ? 0 : card.offsetTop - origin.offsetTop;
+      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
+    }
+
+    function currentKey() {
+      const mark = window.innerHeight * 0.28;
+      let key = "local";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= mark) {
+          key = section.getAttribute("data-digest-section") || key;
+        }
+      }
+      return key;
+    }
+
+    function sync() {
+      const viewport = stack.parentElement;
+      if (!wide.matches) {
+        stack.style.transform = "";
+        if (viewport) viewport.style.overflow = "";
+        return;
+      }
+      if (reduce.matches) {
+        stack.style.transform = "";
+        if (viewport) viewport.style.overflow = "auto";
+        return;
+      }
+      if (viewport) viewport.style.overflow = "hidden";
+      activate(currentKey());
+    }
+
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    wide.addEventListener("change", sync);
+    reduce.addEventListener("change", sync);
+  }
+
+  bindDigestRail();
+</script>
