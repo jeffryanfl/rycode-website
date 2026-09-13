@@ -514,11 +514,16 @@
     triggerDownload(url, `residual-risk-${stamp()}.png`);
   }
 
-  // CSV escape: wrap any field containing a comma, quote, or newline
-  // in double quotes, and double up any internal quotes. RFC 4180.
+  // CSV escape: RFC 4180 quoting, plus a formula guard. Excel and
+  // Sheets treat a cell that starts with =, +, -, @, tab, or CR as a
+  // formula. A pasted risk name like =HYPERLINK(...) would run when
+  // someone opens the file. Prefix those with a single quote (Excel's
+  // "this is text" marker) and always quote the field.
   function csvCell(v) {
-    const s = String(v);
-    if (/[",\n\r]/.test(s)) {
+    let s = String(v);
+    const formula = /^[=+\-@\t\r]/.test(s) || /^\s+[=+\-@]/.test(s);
+    if (formula) s = "'" + s;
+    if (formula || /[",\n\r]/.test(s)) {
       return `"${s.replace(/"/g, '""')}"`;
     }
     return s;
