@@ -50,7 +50,9 @@ html:has(.landing-stage--charcoal) body {
 .landing-stage--doors {
   --hub-ink: #f8fafc;
   --hub-ink-rest: 0.64;
-  --hub-ink-hover: 0.84;
+  --hub-ink-hover: 1;
+  /* Extra dim for 1px SVG glyphs so they match the anti-aliased PNGs. */
+  --hub-svg-ink: 0.52;
 }
 
 .hub-404-title {
@@ -84,17 +86,24 @@ html:has(.landing-stage--charcoal) body {
 
 .hub-mark {
   position: absolute;
-  top: 1.35rem;
-  right: 1.5rem;
+  top: 2rem;
+  right: 2.15rem;
   width: 2.65rem;
   height: 2.65rem;
   color: rgba(248, 250, 252, 0.52);
   text-decoration: none;
+  transform-origin: center;
 }
 
 .landing-stage--doors .hub-mark {
   color: var(--hub-ink);
   opacity: var(--hub-ink-rest);
+}
+
+.landing-stage--doors .hub-mark:hover,
+.landing-stage--doors .hub-mark:focus-visible {
+  opacity: 1;
+  animation: hub-icon-pulse 1.6s ease-in-out infinite;
 }
 
 .hub-mark svg,
@@ -153,6 +162,14 @@ html:has(.landing-stage--charcoal) body {
   display: block;
   width: 24px;
   height: 24px;
+  transform-origin: center;
+}
+
+/* 1px SVG strokes read brighter than the anti-aliased PNG marks.
+   Dim only the vector glyphs. Parent .hub-door opacity still handles
+   rest vs hover for the label and the rasters. */
+.hub-door svg.hub-glyph {
+  opacity: var(--hub-svg-ink, 0.52);
 }
 
 img.hub-glyph--raster {
@@ -165,7 +182,12 @@ img.hub-glyph--raster {
 .hub-door:hover,
 .hub-door:focus-visible {
   color: var(--hub-ink, #f8fafc);
-  opacity: var(--hub-ink-hover, 0.84);
+  opacity: var(--hub-ink-hover, 1);
+}
+
+.hub-door:hover .hub-glyph,
+.hub-door:focus-visible .hub-glyph {
+  animation: hub-icon-pulse 1.6s ease-in-out infinite;
 }
 
 .hub-door:focus-visible {
@@ -191,6 +213,7 @@ img.hub-glyph--raster {
   user-select: none;
   filter: none;
   box-shadow: none;
+  transform-origin: center;
 }
 
 .hub-brain-kicker {
@@ -205,7 +228,42 @@ img.hub-glyph--raster {
 .hub-brain:hover,
 .hub-brain:focus-visible {
   color: var(--hub-ink, #f8fafc);
-  opacity: var(--hub-ink-hover, 0.84);
+  opacity: var(--hub-ink-hover, 1);
+}
+
+.hub-brain:hover .hub-brain-mark,
+.hub-brain:focus-visible .hub-brain-mark {
+  animation: hub-icon-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes hub-icon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 3px rgba(248, 250, 252, 0.45));
+  }
+  50% {
+    transform: scale(1.08);
+    filter:
+      drop-shadow(0 0 5px rgba(248, 250, 252, 0.95))
+      drop-shadow(0 0 12px rgba(248, 250, 252, 0.65))
+      drop-shadow(0 0 18px rgba(248, 250, 252, 0.3));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-stage--doors .hub-mark:hover,
+  .landing-stage--doors .hub-mark:focus-visible,
+  .hub-door:hover .hub-glyph,
+  .hub-door:focus-visible .hub-glyph,
+  .hub-brain:hover .hub-brain-mark,
+  .hub-brain:focus-visible .hub-brain-mark {
+    animation: none;
+    transform: none;
+    filter:
+      drop-shadow(0 0 5px rgba(248, 250, 252, 0.85))
+      drop-shadow(0 0 12px rgba(248, 250, 252, 0.4));
+  }
 }
 
 .hub-brain:focus-visible {
@@ -255,8 +313,8 @@ img.hub-glyph--raster {
 
 @media (max-width: 720px) {
   .hub-mark {
-    top: 1.1rem;
-    right: 1.1rem;
+    top: 1.65rem;
+    right: 1.65rem;
     width: 2.35rem;
     height: 2.35rem;
   }
