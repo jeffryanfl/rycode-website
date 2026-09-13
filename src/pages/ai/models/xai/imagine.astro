@@ -1,0 +1,84 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Imagine — xAI — Rycode"
+  description="Grok Imagine image and video family."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">xAI · Grok lab</p>
+    <h1 class="ai-model-title">Imagine</h1>
+    <p class="ai-model-dek">Image and video generation family on the xAI API and on consumer Grok. Prices below are as published on docs.x.ai/developers/models, 13 Sep 2026. Re-check the live page before you quote a dollar.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Image</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Price (as published)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>grok-imagine-image-2.0</td>
+            <td>Text/Image → Image; 1K/2K</td>
+            <td>from ~$0.04/img</td>
+          </tr>
+          <tr>
+            <td>grok-imagine-image-quality</td>
+            <td>Higher-quality path. Retirement announced 2 Nov 2026 → served by image-2.0</td>
+            <td>$0.05/image</td>
+          </tr>
+          <tr>
+            <td>grok-imagine-image</td>
+            <td>1.0 family still listed</td>
+            <td>$0.02/image</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>x.ai/api also lists media input at $0.01/img. Cite both pages if you quote input cost.</p>
+
+    <h2 class="ai-model-section">Video</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Price (as published)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>grok-imagine-video-1.5</td>
+            <td>Text/Image/Audio → Video; up to 1080p on consumer/docs</td>
+            <td>$0.080/sec (models); x.ai/api “from $0.08/sec”</td>
+          </tr>
+          <tr>
+            <td>grok-imagine-video</td>
+            <td>Earlier video slug</td>
+            <td>$0.050/sec</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Consumer surface</h2>
+    <p>x.ai/grok marketing (as of the 13 Sep 2026 outline): Imagine images up to 2K; videos up to 15s / 720p on marketing; Plus advertises 1080p. Exact rate limits and which slug backs each consumer mode: UNKNOWN beyond plan marketing.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.x.ai/developers/models">Models</a> (fetched 13 Sep 2026)</li>
+      <li><a href="https://docs.x.ai/developers/release-notes">Release notes</a> — image-quality retirement 2 Nov 2026</li>
+      <li><a href="https://x.ai/api">x.ai/api</a></li>
+      <li><a href="https://x.ai/grok">x.ai/grok</a></li>
+    </ul>
+  </article>
+</Layout>

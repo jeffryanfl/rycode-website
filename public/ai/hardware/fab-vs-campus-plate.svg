@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980">
+  <defs>
+    <style type="text/css"><![CDATA[
+
+@font-face { font-family: Inter; src: url("file:///tmp/iconwork/fonts/Inter-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: Inter; src: url("file:///tmp/iconwork/fonts/Inter-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: Inter; src: url("file:///tmp/iconwork/fonts/Inter-SemiBold.ttf"); font-weight: 600; }
+@font-face { font-family: Inter; src: url("file:///tmp/iconwork/fonts/Inter-Bold.ttf"); font-weight: 700; }
+@font-face { font-family: Newsreader; src: url("file:///tmp/iconwork/fonts/Newsreader-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: Newsreader; src: url("file:///tmp/iconwork/fonts/Newsreader-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: Newsreader; src: url("file:///tmp/iconwork/fonts/Newsreader-Italic.ttf"); font-style: italic; }
+@font-face { font-family: GeistMono; src: url("file:///tmp/iconwork/fonts/GeistMono-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: GeistMono; src: url("file:///tmp/iconwork/fonts/GeistMono-Medium.ttf"); font-weight: 500; }
+
+text { -webkit-font-smoothing: antialiased; }
+    ]]></style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b919a"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="980" fill="#080a10"/>
+  <rect x="28.5" y="28.5" width="1343" height="923" fill="none" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+<text x="56" y="64" fill="#8b919a" font-family="GeistMono" font-size="12" letter-spacing="0.08em">RYCODE · HOW-IT-WORKS · PLATE 01</text>
+<text x="56" y="100" fill="#f8fafc" font-family="Inter" font-size="28" font-weight="600">Terafab vs Colossus — fab ≠ campus</text>
+<text x="56" y="128" fill="#8b919a" font-family="GeistMono" font-size="13">chip fab · SpaceX + Tesla · training campus · labels only</text>
+<rect x="56" y="164" width="616" height="478" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+<text x="76" y="196" fill="#f8fafc" font-family="Inter" font-size="15" font-weight="600">TERAFAB</text>
+<text x="76" y="222" fill="#8b919a" font-family="GeistMono" font-size="12">Chip fab. Silicon is made here.</text>
+<text x="76" y="240" fill="#8b919a" font-family="GeistMono" font-size="12">Not a training hall.</text>
+<rect x="76" y="268" width="172" height="100" fill="rgba(248,250,252,0.03)" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="88" y="294" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">1 · DESIGN</text>
+<text x="88" y="320" fill="#8b919a" font-family="GeistMono" font-size="12">Chip layouts</text>
+<text x="88" y="338" fill="#8b919a" font-family="GeistMono" font-size="12">leave CAD</text>
+<rect x="268" y="268" width="172" height="100" fill="rgba(248,250,252,0.03)" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="280" y="294" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">2 · FAB</text>
+<text x="280" y="320" fill="#8b919a" font-family="GeistMono" font-size="12">Wafers run</text>
+<text x="280" y="338" fill="#8b919a" font-family="GeistMono" font-size="12">the line</text>
+<rect x="460" y="268" width="172" height="100" fill="rgba(248,250,252,0.03)" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="472" y="294" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">3 · PACKAGE</text>
+<text x="472" y="320" fill="#8b919a" font-family="GeistMono" font-size="12">Dies become</text>
+<text x="472" y="338" fill="#8b919a" font-family="GeistMono" font-size="12">parts to ship</text>
+<line x1="248" y1="318" x2="268" y2="318" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="440" y1="318" x2="460" y2="318" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="76" y="400" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">WHAT IT IS</text>
+<text x="76" y="424" fill="#8b919a" font-family="GeistMono" font-size="12">Kind: semiconductor fabrication plant</text>
+<text x="76" y="442" fill="#8b919a" font-family="GeistMono" font-size="12">Partners named: SpaceX + Tesla</text>
+<text x="76" y="460" fill="#8b919a" font-family="GeistMono" font-size="12">Output: chips / packaged silicon</text>
+<text x="76" y="478" fill="#8b919a" font-family="GeistMono" font-size="12">Role: make the parts the campus burns</text>
+<line x1="76" y1="498" x2="648" y2="498" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="76" y="522" fill="#8b919a" font-family="GeistMono" font-size="12">Not a GPU hall.</text>
+<text x="76" y="540" fill="#8b919a" font-family="GeistMono" font-size="12">Not where weights are trained.</text>
+<text x="76" y="558" fill="#8b919a" font-family="GeistMono" font-size="12">Not Colossus by another name.</text>
+<text x="76" y="590" fill="#f8fafc" font-family="Newsreader" font-size="14" font-style="italic">Fab makes chips. Campus trains models.</text>
+<line x1="700" y1="200" x2="700" y2="606" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="700" y="188" fill="#8b919a" font-family="GeistMono" font-size="11" text-anchor="middle">≠</text>
+<rect x="728" y="164" width="616" height="478" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+<text x="748" y="196" fill="#f8fafc" font-family="Inter" font-size="15" font-weight="600">COLOSSUS</text>
+<text x="748" y="222" fill="#8b919a" font-family="GeistMono" font-size="12">Training campus. Models learn here.</text>
+<text x="748" y="240" fill="#8b919a" font-family="GeistMono" font-size="12">Not a chip foundry.</text>
+<rect x="748" y="268" width="172" height="100" fill="rgba(248,250,252,0.03)" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="760" y="294" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">1 · RACK</text>
+<text x="760" y="320" fill="#8b919a" font-family="GeistMono" font-size="12">Accelerators</text>
+<text x="760" y="338" fill="#8b919a" font-family="GeistMono" font-size="12">in the hall</text>
+<rect x="940" y="268" width="172" height="100" fill="rgba(248,250,252,0.03)" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="952" y="294" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">2 · TRAIN</text>
+<text x="952" y="320" fill="#8b919a" font-family="GeistMono" font-size="12">Weights move</text>
+<text x="952" y="338" fill="#8b919a" font-family="GeistMono" font-size="12">on the jobs</text>
+<rect x="1132" y="268" width="172" height="100" fill="rgba(248,250,252,0.03)" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="1144" y="294" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">3 · SERVE</text>
+<text x="1144" y="320" fill="#8b919a" font-family="GeistMono" font-size="12">Trained models</text>
+<text x="1144" y="338" fill="#8b919a" font-family="GeistMono" font-size="12">leave the campus</text>
+<line x1="920" y1="318" x2="940" y2="318" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="1112" y1="318" x2="1132" y2="318" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="748" y="400" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">WHAT IT IS</text>
+<text x="748" y="424" fill="#8b919a" font-family="GeistMono" font-size="12">Kind: training / inference campus</text>
+<text x="748" y="442" fill="#8b919a" font-family="GeistMono" font-size="12">Site role: run the learning jobs</text>
+<text x="748" y="460" fill="#8b919a" font-family="GeistMono" font-size="12">Input: chips + power + data</text>
+<text x="748" y="478" fill="#8b919a" font-family="GeistMono" font-size="12">Output: trained model weights</text>
+<line x1="748" y1="498" x2="1320" y2="498" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="748" y="522" fill="#8b919a" font-family="GeistMono" font-size="12">Not a wafer line.</text>
+<text x="748" y="540" fill="#8b919a" font-family="GeistMono" font-size="12">Not where silicon is fabricated.</text>
+<text x="748" y="558" fill="#8b919a" font-family="GeistMono" font-size="12">Not Terafab by another name.</text>
+<text x="748" y="590" fill="#f8fafc" font-family="Newsreader" font-size="14" font-style="italic">Campus trains. Fab does not.</text>
+<rect x="56" y="658" width="1288" height="92" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
+<text x="76" y="684" fill="#f8fafc" font-family="Inter" font-size="13" font-weight="600">CONTRAST · FAB ≠ CAMPUS  (labels only — no invented MW / $)</text>
+<text x="76" y="710" fill="#8b919a" font-family="GeistMono" font-size="12">Terafab: make chips · SpaceX + Tesla named on the fab path · silicon leaves the plant</text>
+<text x="76" y="728" fill="#8b919a" font-family="GeistMono" font-size="12">Colossus: train models · racks burn power on learning jobs · weights leave the campus</text>
+<text x="56" y="774" fill="#8b919a" font-family="GeistMono" font-size="11">LEGEND</text>
+<line x1="56" y1="794" x2="120" y2="794" stroke="rgba(248,250,252,0.28)" stroke-width="1.5"/>
+<text x="130" y="798" fill="#8b919a" font-family="GeistMono" font-size="11">process step</text>
+<text x="280" y="798" fill="#8b919a" font-family="GeistMono" font-size="11">Qualitative plate — no invented megawatts or dollar figures.</text>
+<text x="56" y="836" fill="#f8fafc" font-family="Inter" font-size="13">Figure. Terafab is the chip fab (SpaceX + Tesla on the fab path).</text>
+<text x="56" y="858" fill="#f8fafc" font-family="Inter" font-size="13">Colossus is the training campus. Fab ≠ campus — different kinds of plant.</text>
+<rect x="980" y="880" width="364" height="56" fill="none" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
+<text x="992" y="902" fill="#8b919a" font-family="GeistMono" font-size="10">RYCODE · HOW-IT-WORKS · FAB ≠ CAMPUS</text>
+<text x="992" y="922" fill="#8b919a" font-family="GeistMono" font-size="10">REV B · SHEET 1/1 · DRAFTING PLATE (no Excalidraw)</text>
+</svg>

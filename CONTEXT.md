@@ -8,7 +8,7 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Brain.** Overhead two-hemisphere wireframe under the door row. It is the hit target for A.I. Link to `/ai`. Not a glass window, not a chip card, not a hero.
 
-**A.I.** Charcoal branch at `/ai`: signed brain, Inter “A.I.”, italic dek, Deep dive row plus Models cards (Anthropic, OpenAI). No Grok. No cyan. Essay lives only at `/ai/next-token-engine/` on the newspaper chassis. Lab doors at `/ai/models/anthropic/` and `/ai/models/openai/`. Model pages under those paths from `docs/ai/models/`. Entered from the home brain. Not a Research piece and not a Tools clone.
+**A.I.** Charcoal branch at `/ai`: signed brain, Inter “A.I.”, italic dek, Deep dive row plus Models cards (Anthropic, OpenAI, xAI) and a Hardware row. No cyan. Essay lives only at `/ai/next-token-engine/` on the newspaper chassis. Lab doors at `/ai/models/anthropic/`, `/ai/models/openai/`, and `/ai/models/xai/` (five Grok doors: Models, Grok Build, Grok Bot, Imagine, Voice). Hardware hub at `/ai/hardware/` teaches fab ≠ campus: Terafab (chip fab) vs Memphis / Colossus (training campus). Model pages under lab paths from `docs/ai/`. Entered from the home brain. Not a Research piece and not a Tools clone. Do not invent benchmarks, average Colossus GPU counts, or call Terafab a data center.
 
 **Newspaper look.** Charcoal paper near `#080a10`, off-white ink, off-white hairlines. Newsreader for the claim and body, Inter for kickers and captions, Geist Mono for stage ticks and eval names. Square Ry. Used only by the A.I. essay at `/ai/next-token-engine/`. Not cream newsprint, not the chip photo, not coverflow, not cyan.
 

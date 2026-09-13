@@ -1,0 +1,62 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/xai/models/',
+    title: 'Models',
+    dek: 'Grok frontier lineup.',
+    meta: ['API · chat · reasoning · multimodal', 'Opens the models index →'],
+  },
+  {
+    href: '/ai/models/xai/grok-build/',
+    title: 'Grok Build',
+    dek: 'Agent that works the project.',
+    meta: ['IDE · repos · multi-step build loops', 'Opens Grok Build →'],
+  },
+  {
+    href: '/ai/models/xai/grok-bot/',
+    title: 'Grok Bot',
+    dek: 'Named Bots on a cloud computer.',
+    meta: ['Durable Bots · tools · cloud computer', 'Opens Grok Bot →'],
+  },
+  {
+    href: '/ai/models/xai/imagine/',
+    title: 'Imagine',
+    dek: 'Image generation door.',
+    meta: ['Prompt · image · edit · iterate', 'Opens Imagine →'],
+  },
+  {
+    href: '/ai/models/xai/voice/',
+    title: 'Voice',
+    dek: 'Spoken Grok surface.',
+    meta: ['Talk · listen · hands-free loops', 'Opens Voice →'],
+  },
+];
+---
+
+<Layout
+  title="xAI — A.I. — Rycode"
+  description="Grok lab doors"
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">xAI</h1>
+    <p class="ai-lab-dek">Grok lab doors</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>

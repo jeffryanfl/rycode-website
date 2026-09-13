@@ -1,0 +1,38 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Grok Build — xAI — Rycode"
+  description="Extensible coding agent: TUI, headless scripts, Agent Client Protocol."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">xAI · Grok lab</p>
+    <h1 class="ai-model-title">Grok Build</h1>
+    <p class="ai-model-dek">A public coding agent you can run as an interactive TUI, as headless scripts (<code>grok -p</code>), or through Agent Client Protocol (ACP). Distinct from the API slug <code>grok-build-0.1</code>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">What it is</h2>
+    <p>xAI publishes Grok Build as an extensible coding agent for professional software work. Install is documented as <code>curl -fsSL https://x.ai/cli/install.sh | bash</code> (PowerShell installer also documented). Early beta launched 25 May 2026 for SuperGrok and X Premium Plus. Later news (19 Aug 2026) says it is available on every plan on web and mobile. The harness was announced open source 15–16 Jul 2026.</p>
+
+    <h2 class="ai-model-section">Relation to models</h2>
+    <p>Build docs currently describe the CLI/product as powered by <strong>grok-4.6</strong>, and that model is on the xAI API. A separate API coding slug, <a href="/ai/models/xai/models/grok-build-0-1/"><code>grok-build-0.1</code></a>, is listed as early access / public beta. Keep the product and the slug distinct. Default model id inside every Build surface (TUI vs web vs mobile) over time: confirm on live docs; marketing has shifted 4.5 → 4.6.</p>
+
+    <h2 class="ai-model-section">Published capabilities</h2>
+    <p>Docs and marketing name plan mode, subagents/worktrees, skills/plugins/MCP/AGENTS.md, hooks, headless <code>/goal</code>, workflows, marketplace, and enterprise config scopes (<code>~/.grok/config.toml</code>, managed configs). Do not treat that list as an unpublished internal architecture.</p>
+
+    <h2 class="ai-model-section">UNKNOWN</h2>
+    <p>Whether “Composer 2.5” (news 1 Jun 2026) is an xAI model slug or a Build UI name: UNKNOWN without a models-page row. Secondary coverage of a July 2026 codebase-upload incident: treat incident narratives as secondary unless quoting an xAI news post. The open-source announcement itself is primary via x.ai/news.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.x.ai/build/overview">Grok Build overview</a></li>
+      <li><a href="https://x.ai/cli">x.ai/cli</a></li>
+      <li><a href="https://x.ai/news/grok-build-cli">Grok Build CLI (25 May 2026)</a></li>
+      <li><a href="https://x.ai/news">x.ai/news</a> (open source, 15–16 Jul 2026; every-plan availability, 19 Aug 2026)</li>
+      <li><a href="https://docs.x.ai/developers/models/grok-build-0.1">grok-build-0.1 model page</a></li>
+    </ul>
+  </article>
+</Layout>

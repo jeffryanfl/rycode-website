@@ -1,0 +1,74 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Grok 4.20 — xAI — Rycode"
+  description="Three published Grok 4.20 slugs: reasoning, non-reasoning, multi-agent."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Grok 4.20</h1>
+    <p class="ai-model-dek">Three IDs listed on models/pricing as of 13 Sep 2026: grok-4.20-0309-reasoning, grok-4.20-0309-non-reasoning, grok-4.20-multi-agent-0309. Same token band as grok-4.3. Deeper multi-agent behavior: UNKNOWN beyond the name and the pricing row.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Published IDs</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Model id</th>
+            <th scope="col">Notes (as published)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>grok-4.20-0309-reasoning</td>
+            <td>Listed on models/pricing. 1M context. Batch 20% off listed.</td>
+          </tr>
+          <tr>
+            <td>grok-4.20-0309-non-reasoning</td>
+            <td>Same band as the reasoning sibling. Batch 20% off listed.</td>
+          </tr>
+          <tr>
+            <td>grok-4.20-multi-agent-0309</td>
+            <td>Same band as grok-4.3. What “multi-agent” does at inference: UNKNOWN beyond the name + pricing row.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Pricing</h2>
+    <p>Per 1M tokens, as published on docs.x.ai/developers/models, 13 Sep 2026. Same band as grok-4.3.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Band</th>
+            <th scope="col">Input</th>
+            <th scope="col">Cached</th>
+            <th scope="col">Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 200k</td><td>$1.25</td><td>$0.20</td><td>$2.50</td></tr>
+          <tr><td>≥ 200k</td><td>$2.50</td><td>$0.40</td><td>$5.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>UNKNOWN. Do not invent scores.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Per-SKU silicon: UNKNOWN. See <a href="/ai/hardware/memphis-colossus/">Memphis / Colossus</a>.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.x.ai/developers/models">Models</a> (fetched 13 Sep 2026)</li>
+      <li><a href="https://docs.x.ai/developers/pricing">Pricing</a></li>
+    </ul>
+  </article>
+</Layout>

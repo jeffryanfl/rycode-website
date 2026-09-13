@@ -1,0 +1,61 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Grok 4.6 — xAI — Rycode"
+  description="Current Grok flagship on the API. Recommended for code and chat."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Grok 4.6</h1>
+    <p class="ai-model-dek">Current flagship on the API. Recommended for code and chat. Also powers Grok Build (docs). Model id: grok-4.6. Consumer SuperGrok lists “Grok 4.6”.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Knowledge cutoff: 1 Feb 2026 (docs note on the models page). Parameter count, FLOPs, dataset mix, and any RL recipe tied to this SKU: UNKNOWN. Do not invent scores or params.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Reasoning: low / medium / high (default) / xhigh. Batch: not supported. Modalities: text, image → text.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>500k context. Max output tokens: UNKNOWN except the published “no text output limit” note on the Grok 4.6 overview.</p>
+
+    <h2 class="ai-model-section">Pricing</h2>
+    <p>Per 1M tokens, as published on docs.x.ai/developers/models, 13 Sep 2026. Long-context tier applies when the prompt is ≥ 200k tokens (higher rate for all tokens in that request).</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Band</th>
+            <th scope="col">Input</th>
+            <th scope="col">Cached</th>
+            <th scope="col">Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 200k</td><td>$2.00</td><td>$0.50</td><td>$6.00</td></tr>
+          <tr><td>≥ 200k</td><td>$4.00</td><td>$1.00</td><td>$12.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Re-check the live models page before you quote a dollar.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>UNKNOWN on the models pages fetched for this card. Marketing says industry-leading coding / non-hallucination / tool calling and points at an announcement for “benchmark figures.” Do not invent scores. Pull only from that announcement page if you open it.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Per-SKU training or serving silicon: UNKNOWN. Grok training narratives name Colossus. That is a campus, not a chip fab. See <a href="/ai/hardware/memphis-colossus/">Memphis / Colossus</a>.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.x.ai/developers/models">Models</a> (fetched 13 Sep 2026)</li>
+      <li><a href="https://docs.x.ai/developers/models/grok-4.6">grok-4.6</a></li>
+      <li><a href="https://docs.x.ai/developers/grok-4-6">Grok 4.6 overview</a></li>
+      <li><a href="https://docs.x.ai/developers/pricing">Pricing</a></li>
+      <li><a href="https://x.ai/api">x.ai/api</a></li>
+    </ul>
+  </article>
+</Layout>

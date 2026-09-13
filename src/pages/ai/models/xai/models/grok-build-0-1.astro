@@ -1,0 +1,62 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="grok-build-0.1 — xAI — Rycode"
+  description="Dedicated coding model slug. Not the Grok Build product."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">grok-build-0.1</h1>
+    <p class="ai-model-dek">Dedicated coding model on the API. Release notes: early access / public beta (May 2026). Aliases include grok-code-fast-1, grok-code-fast, grok-code-fast-1-0825. Distinct from the <a href="/ai/models/xai/grok-build/">Grok Build</a> product, which docs currently describe as powered by grok-4.6.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Parameter count, cutoff, FLOPs: UNKNOWN. Do not invent.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Text, image → text. Batch: not supported.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>256k context. Max output tokens: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Pricing</h2>
+    <p>Per 1M tokens, as published on docs.x.ai/developers/models, 13 Sep 2026.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Band</th>
+            <th scope="col">Input</th>
+            <th scope="col">Cached</th>
+            <th scope="col">Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 200k</td><td>$1.00</td><td>$0.20</td><td>$2.00</td></tr>
+          <tr><td>≥ 200k</td><td>$2.00</td><td>$0.40</td><td>$4.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Migration</h2>
+    <p>Effective 15 May 2026 12:00 PM PT, <code>grok-code-fast-1</code> redirects to <code>grok-build-0.1</code> (<a href="https://docs.x.ai/developers/migration/may-15-retirement">May 15 retirement guide</a>).</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>UNKNOWN. Do not invent scores.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Per-SKU silicon: UNKNOWN. See <a href="/ai/hardware/memphis-colossus/">Memphis / Colossus</a>.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.x.ai/developers/models/grok-build-0.1">grok-build-0.1</a> (fetched 13 Sep 2026)</li>
+      <li><a href="https://docs.x.ai/developers/release-notes">Release notes</a></li>
+      <li><a href="https://docs.x.ai/developers/migration/may-15-retirement">May 15 retirement</a></li>
+      <li><a href="/ai/models/xai/grok-build/">Grok Build product door</a></li>
+    </ul>
+  </article>
+</Layout>

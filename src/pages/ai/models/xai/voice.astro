@@ -1,0 +1,62 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Voice — xAI — Rycode"
+  description="Grok Voice: speech-to-speech, speech-to-text, text-to-speech."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">xAI · Grok lab</p>
+    <h1 class="ai-model-title">Voice</h1>
+    <p class="ai-model-dek">Spoken Grok surface: speech-to-speech, speech-to-text, and text-to-speech. Prices below prefer the live docs.x.ai models table (fetched 13 Sep 2026) over marketing shorthand.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">API family (as published)</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Mode</th>
+            <th scope="col">Published id / notes</th>
+            <th scope="col">Price (docs.x.ai, 13 Sep 2026)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Speech to Speech</td>
+            <td>grok-voice-think-fast-2.0 — current STS on pricing</td>
+            <td>$0.08/min audio + $0.004 text input</td>
+          </tr>
+          <tr>
+            <td>Speech to Text</td>
+            <td>REST / Streaming</td>
+            <td>$0.10/hr REST, $0.20/hr Streaming</td>
+          </tr>
+          <tr>
+            <td>Text to Speech</td>
+            <td></td>
+            <td>$15.00 / 1M characters</td>
+          </tr>
+          <tr>
+            <td>grok-voice-think-fast-1.0</td>
+            <td>Marked Deprecated on the models Voice table</td>
+            <td>Confirm live status on docs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Reconcile against marketing</h2>
+    <p>x.ai/api’s marketing table has also shown “starting at $0.05/min” for speech-to-speech. That is not the same row as docs.x.ai’s $0.08/min + $0.004 text input. Prefer the models/pricing table when the two disagree, and date the quote.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.x.ai/developers/models">Models</a> (fetched 13 Sep 2026)</li>
+      <li><a href="https://docs.x.ai/developers/pricing">Pricing</a></li>
+      <li><a href="https://x.ai/api">x.ai/api</a> — marketing table, including the $0.05/min STS line</li>
+    </ul>
+  </article>
+</Layout>

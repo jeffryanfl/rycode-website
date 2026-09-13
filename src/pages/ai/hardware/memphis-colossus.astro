@@ -1,0 +1,131 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/ai.css';
+---
+
+<Layout
+  title="Memphis / Colossus — Hardware — Rycode"
+  description="Training campus. Dated GPU quotes only — never averaged."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Training campus</p>
+    <h1 class="ai-model-title">Memphis / Colossus</h1>
+    <p class="ai-model-dek">A hyperscale GPU campus that consumes chips and power. It is not Terafab. When company pages disagree on GPU counts, this page shows the dated quote. It does not average.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">What it is</h2>
+    <p>Colossus is published as an AI supercomputing / “gigafactory of compute” behind Grok. Company Memphis pages place it in the Memphis area — South Memphis / Southwest Memphis (former factory); community updates also reference Southaven, Mississippi, for temporary turbines. Pages currently brand as SpaceXAI after the SpaceX acquisition of xAI; product and news URLs remain under x.ai.</p>
+    <p>Facility footprint (leadership page): a vacant 1-million-square-foot factory in Southwest Memphis converted into a technology hub. Colossus 1 was later contracted as capacity for Anthropic (May 2026).</p>
+
+    <h2 class="ai-model-section">Dated GPU quotes — do not average</h2>
+    <p>Prefer “as of [date], [URL] said X.” Never write “Colossus has ~N GPUs” by averaging 180k and 200k, or by collapsing “H100 GPUs,” “Hopper GPUs,” “GPUs,” and “H100 equivalents” into one number.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Source</th>
+            <th scope="col">Quoted claim</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>23 Dec 2024</td>
+            <td><a href="https://x.ai/news/series-c">Series C</a></td>
+            <td>Colossus operational with 100,000 NVIDIA Hopper GPUs in 122 days; plan to double to a combined 200,000 Hopper GPUs (Spectrum-X called out).</td>
+          </tr>
+          <tr>
+            <td>Fetched 13 Sep 2026</td>
+            <td><a href="https://x.ai/colossus">x.ai/colossus</a></td>
+            <td>Built in 122 days, doubled in 92 days to 200k GPUs. Hero: 200,000 H100 GPUs in one cluster. Same page also shows 180K NVIDIA H100 GPUs in one cluster. Roadmap to 1M GPUs. Timeline graphic: 276 days, May 2024 → Feb 2025.</td>
+          </tr>
+          <tr>
+            <td>9 Jul 2025</td>
+            <td><a href="https://x.ai/news/grok-4">Grok 4 post</a></td>
+            <td>Training for Grok 4 used Colossus, “our 200,000 GPU cluster.”</td>
+          </tr>
+          <tr>
+            <td>6 Jan 2026</td>
+            <td><a href="https://x.ai/news/series-e">Series E</a></td>
+            <td>Colossus I and II — “ending the year with over one million H100 GPU equivalents.” Equivalents, not a raw GPU count. Combined I+II — no company split on that page.</td>
+          </tr>
+          <tr>
+            <td>Live Memphis copy</td>
+            <td><a href="https://x.ai/memphis">x.ai/memphis</a></td>
+            <td>Plan to equip “this facility” with 1 million GPUs by 2026. Roadmap / plan language — not installed inventory.</td>
+          </tr>
+          <tr>
+            <td>6 May 2026</td>
+            <td><a href="https://x.ai/news/anthropic-compute-partnership">Anthropic partnership</a></td>
+            <td>Colossus 1: over 220,000 NVIDIA GPUs (H100, H200, and GB200 called out).</td>
+          </tr>
+          <tr>
+            <td>6 May 2026</td>
+            <td><a href="https://www.anthropic.com/news/higher-limits-spacex">Anthropic post</a></td>
+            <td>Anthropic uses all Colossus 1 capacity: more than 300 MW and over 220,000 NVIDIA GPUs “within the month.”</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Power / IT load</h2>
+    <p>Epoch figures are methodology estimates (satellite + cooling model + disclosures), not a company S-1 excerpt. Label them as such.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Label</th>
+            <th scope="col">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Colossus 1 ~340 MW IT; ~230k GPUs / ~276k H100-eq; ~$12.9B</td>
+            <td>Epoch AI estimate</td>
+            <td><a href="https://epoch.ai/data/ai-data-centers/directory/colossus-1">Epoch Colossus 1</a></td>
+          </tr>
+          <tr>
+            <td>Colossus 2 ~946 MW IT</td>
+            <td>Epoch AI estimate</td>
+            <td><a href="https://epoch.ai/data/ai-data-centers/directory/colossus-2">Epoch Colossus 2</a></td>
+          </tr>
+          <tr>
+            <td>&gt;300 MW for Colossus 1 under the Anthropic deal</td>
+            <td>Company / partner announcement</td>
+            <td>Anthropic 6 May 2026; SpaceXAI partnership post aligns on GPU count</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Do not invent campus MW totals beyond those labeled rows. Do not assign Series E’s combined I+II “H100 equivalents” to Colossus 2 alone.</p>
+
+    <h2 class="ai-model-section">Capabilities (company-published)</h2>
+    <p>From the live Colossus page, fetched 13 Sep 2026 — teach as company-published system figures, not independently audited: 170 PB/s aggregate memory bandwidth; 2.8 Tb/s per-server network; 0.5 EB storage. Series C called out NVIDIA Spectrum-X Ethernet for the 100k→200k path.</p>
+
+    <h2 class="ai-model-section">Live vs roadmap</h2>
+    <p>Named, operational clusters with dated company or partner quotes are live. “1 million GPUs by 2026” on Memphis pages, and the Colossus-page “roadmap to 1M GPUs,” are plan language. Southaven temporary turbines (Memphis update 30 Jul 2026, MDEQ agreed order) are a power-side / permitting story, adjacent to the campus — not a GPU count.</p>
+
+    <h2 class="ai-model-section">Peer campus (not fab)</h2>
+    <p>Abilene / Crusoe “Stargate” flagship: OpenAI/Oracle path reported ~1.2 GW across ~8 buildings (AP / DCD-class press cited in the Terafab pack). Multi-party developer + hyperscaler tenants. Not Musk-owned. Label as press.</p>
+
+    <h2 class="ai-model-section">Do not claim</h2>
+    <p>A single official GPU count that reconciles 180k vs 200k on the Colossus page. That Memphis campus is Terafab. Invented turbine MW fleets. Compliance verdicts on water or emissions.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://x.ai/colossus">x.ai/colossus</a> (fetched 13 Sep 2026)</li>
+      <li><a href="https://x.ai/memphis">x.ai/memphis</a></li>
+      <li><a href="https://x.ai/memphis/xai">x.ai/memphis/xai</a></li>
+      <li><a href="https://x.ai/memphis/leadership">x.ai/memphis/leadership</a></li>
+      <li><a href="https://x.ai/news/series-c">Series C</a> — 23 Dec 2024</li>
+      <li><a href="https://x.ai/news/series-e">Series E</a> — 6 Jan 2026</li>
+      <li><a href="https://x.ai/news/anthropic-compute-partnership">Anthropic compute partnership</a> — 6 May 2026</li>
+      <li><a href="https://www.anthropic.com/news/higher-limits-spacex">Anthropic — higher limits / SpaceX</a> — 6 May 2026</li>
+      <li><a href="https://epoch.ai/data/ai-data-centers/directory/colossus-1">Epoch Colossus 1</a> — methodology estimate</li>
+      <li><a href="https://epoch.ai/data/ai-data-centers/directory/colossus-2">Epoch Colossus 2</a> — methodology estimate</li>
+      <li><a href="/ai/hardware/terafab/">Terafab</a> — the fab, not this campus</li>
+    </ul>
+  </article>
+</Layout>

@@ -1,0 +1,57 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Grok 4.3 — xAI — Rycode"
+  description="Grok 4.3: 1M context, Batch supported."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Grok 4.3</h1>
+    <p class="ai-model-dek">Available on the API. Alias: grok-4.3-latest. 1M context. Batch supported (20% off listed). Reasoning includes none.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Parameter count, cutoff, FLOPs: UNKNOWN on the pages used here. Do not invent.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Reasoning includes <code>none</code>. Batch supported at 20% off the listed token rates.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>1M context. Max output tokens: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Pricing</h2>
+    <p>Per 1M tokens, as published on docs.x.ai/developers/models, 13 Sep 2026.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Band</th>
+            <th scope="col">Input</th>
+            <th scope="col">Cached</th>
+            <th scope="col">Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 200k</td><td>$1.25</td><td>$0.20</td><td>$2.50</td></tr>
+          <tr><td>≥ 200k</td><td>$2.50</td><td>$0.40</td><td>$5.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>UNKNOWN. Do not invent scores.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Per-SKU silicon: UNKNOWN. See <a href="/ai/hardware/memphis-colossus/">Memphis / Colossus</a>.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.x.ai/developers/models/grok-4.3">grok-4.3</a> (fetched 13 Sep 2026)</li>
+      <li><a href="https://docs.x.ai/developers/pricing">Pricing</a></li>
+    </ul>
+  </article>
+</Layout>

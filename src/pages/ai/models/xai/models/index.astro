@@ -1,0 +1,62 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/xai/models/grok-4-6/',
+    title: 'Grok 4.6',
+    dek: 'Current flagship. Recommended for code and chat.',
+    meta: ['500k · $2/$6 (<200k) · reasoning default high · Batch not supported'],
+  },
+  {
+    href: '/ai/models/xai/models/grok-4-5/',
+    title: 'Grok 4.5',
+    dek: 'Available on the API.',
+    meta: ['500k · $2/$6 (<200k) · aliases grok-4.5-latest, grok-build-latest'],
+  },
+  {
+    href: '/ai/models/xai/models/grok-4-3/',
+    title: 'Grok 4.3',
+    dek: 'Longer context. Batch supported.',
+    meta: ['1M · $1.25/$2.50 (<200k) · reasoning includes none · Batch 20% off'],
+  },
+  {
+    href: '/ai/models/xai/models/grok-4-20/',
+    title: 'Grok 4.20',
+    dek: 'Reasoning, non-reasoning, and multi-agent slugs.',
+    meta: ['1M · same band as 4.3 · three published IDs, dated 13 Sep 2026'],
+  },
+  {
+    href: '/ai/models/xai/models/grok-build-0-1/',
+    title: 'grok-build-0.1',
+    dek: 'Dedicated coding slug. Not the Grok Build product.',
+    meta: ['256k · $1/$2 (<200k) · aliases include grok-code-fast-1'],
+  },
+];
+---
+
+<Layout
+  title="Grok models — xAI — Rycode"
+  description="Grok frontier lineup"
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">Models</h1>
+    <p class="ai-lab-dek">Grok frontier lineup. Pricing as published on docs.x.ai, 13 Sep 2026. Re-check the live models page before you quote a dollar.</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>

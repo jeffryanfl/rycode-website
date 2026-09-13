@@ -1,0 +1,123 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/hardware/terafab/',
+    title: 'Terafab',
+    dek: 'Chip fab. SpaceX + Tesla. Not a training hall.',
+    meta: ['Grimes County, TX · phase-1 company figure $16.8B · labels, not a data center'],
+  },
+  {
+    href: '/ai/hardware/memphis-colossus/',
+    title: 'Memphis / Colossus',
+    dek: 'Training campus. Models learn here. Not a chip foundry.',
+    meta: ['Dated GPU quotes only — never averaged · Epoch MW = estimates'],
+  },
+];
+---
+
+<Layout
+  title="Hardware — A.I. — Rycode"
+  description="Fab ≠ campus — Terafab (chip fab, SpaceX + Tesla) vs Colossus (training campus)."
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">Hardware</h1>
+    <p class="ai-lab-dek">Fab ≠ campus — Terafab (chip fab, SpaceX + Tesla) vs Colossus (training campus).</p>
+  </div>
+
+  <figure class="hw-plate" aria-labelledby="hw-plate-title">
+    <p class="hw-plate-kicker">Rycode · How-it-works · Plate 01</p>
+    <h2 class="hw-plate-title" id="hw-plate-title">Terafab vs Colossus — fab ≠ campus</h2>
+    <p class="hw-plate-sub">chip fab · SpaceX + Tesla · training campus · labels only</p>
+
+    <div class="hw-plate-split">
+      <section class="hw-plate-col" aria-labelledby="hw-terafab">
+        <h3 class="hw-plate-col-name" id="hw-terafab">Terafab</h3>
+        <p class="hw-plate-col-dek">Chip fab. Silicon is made here.<br />Not a training hall.</p>
+        <div class="hw-plate-steps">
+          <dl class="hw-plate-step">
+            <dt>1 · Design</dt>
+            <dd>Chip layouts<br />leave CAD</dd>
+          </dl>
+          <span class="hw-plate-arrow" aria-hidden="true">→</span>
+          <dl class="hw-plate-step">
+            <dt>2 · Fab</dt>
+            <dd>Wafers run<br />the line</dd>
+          </dl>
+          <span class="hw-plate-arrow" aria-hidden="true">→</span>
+          <dl class="hw-plate-step">
+            <dt>3 · Package</dt>
+            <dd>Dies become<br />parts to ship</dd>
+          </dl>
+        </div>
+        <p class="hw-plate-what">What it is</p>
+        <ul class="hw-plate-facts">
+          <li>Kind: semiconductor fabrication plant</li>
+          <li>Partners named: SpaceX + Tesla</li>
+          <li>Output: chips / packaged silicon</li>
+          <li>Role: make the parts the campus burns</li>
+        </ul>
+        <p class="hw-plate-not">Not a GPU hall.<br />Not where weights are trained.<br />Not Colossus by another name.</p>
+        <p class="hw-plate-claim">Fab makes chips. Campus trains models.</p>
+      </section>
+
+      <span class="hw-plate-neq" aria-hidden="true">≠</span>
+
+      <section class="hw-plate-col" aria-labelledby="hw-colossus">
+        <h3 class="hw-plate-col-name" id="hw-colossus">Colossus</h3>
+        <p class="hw-plate-col-dek">Training campus. Models learn here.<br />Not a chip foundry.</p>
+        <div class="hw-plate-steps">
+          <dl class="hw-plate-step">
+            <dt>1 · Rack</dt>
+            <dd>Accelerators<br />in the hall</dd>
+          </dl>
+          <span class="hw-plate-arrow" aria-hidden="true">→</span>
+          <dl class="hw-plate-step">
+            <dt>2 · Train</dt>
+            <dd>Weights move<br />on the jobs</dd>
+          </dl>
+          <span class="hw-plate-arrow" aria-hidden="true">→</span>
+          <dl class="hw-plate-step">
+            <dt>3 · Serve</dt>
+            <dd>Trained models<br />leave the campus</dd>
+          </dl>
+        </div>
+        <p class="hw-plate-what">What it is</p>
+        <ul class="hw-plate-facts">
+          <li>Kind: training / inference campus</li>
+          <li>Site role: run the learning jobs</li>
+          <li>Input: chips + power + data</li>
+          <li>Output: trained model weights</li>
+        </ul>
+        <p class="hw-plate-not">Not a wafer line.<br />Not where silicon is fabricated.<br />Not Terafab by another name.</p>
+        <p class="hw-plate-claim">Campus trains. Fab does not.</p>
+      </section>
+    </div>
+
+    <div class="hw-plate-contrast">
+      <h3>Contrast · Fab ≠ campus (labels only — no invented MW / $)</h3>
+      <p>Terafab: make chips · SpaceX + Tesla named on the fab path · silicon leaves the plant</p>
+      <p>Colossus: train models · racks burn power on learning jobs · weights leave the campus</p>
+    </div>
+    <p class="hw-plate-legend">Legend — process step. Qualitative plate — no invented megawatts or dollar figures.</p>
+    <p class="hw-plate-figure">Figure. Terafab is the chip fab (SpaceX + Tesla on the fab path). Colossus is the training campus. Fab ≠ campus — different kinds of plant.</p>
+    <p class="hw-plate-stamp">Rycode · How-it-works · Fab ≠ campus<br />Rev B · Sheet 1/1 · Drafting plate</p>
+  </figure>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>
