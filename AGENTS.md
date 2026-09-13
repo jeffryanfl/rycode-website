@@ -1,6 +1,6 @@
 # Rycode website
 
-Hub with five doors: Research, Tools, Economics, Risk, Systems. Live at https://rycode.dev. Built with Astro 6, deployed on Netlify.
+Hub with five doors: Research, Tools, Economics, Risk, Systems. Live at https://rycode.dev. Built with Astro 7, deployed on Netlify.
 
 This file is the map for Grok in T3 Code. Read `CONTEXT.md` for the site's words. Home is charcoal emptiness with five stroke doors. Systems goes out to https://grc.rycode.dev. Do not turn it into a conversion landing page unless Jeffrey asks. Do not copy openai.com, grok.com, or x.ai.
 
