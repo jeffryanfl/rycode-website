@@ -51,8 +51,9 @@ html:has(.landing-stage--charcoal) body {
   --hub-ink: #f8fafc;
   --hub-ink-rest: 0.64;
   --hub-ink-hover: 1;
-  /* Extra dim for 1px SVG glyphs so they match the anti-aliased PNGs. */
-  --hub-svg-ink: 0.52;
+  /* Same extra dim on every glyph (SVG, PNG, brain). Parent opacity
+     still fades the labels. Do not apply this to SVGs only. */
+  --hub-glyph-ink: 0.52;
 }
 
 .hub-404-title {
@@ -163,13 +164,7 @@ html:has(.landing-stage--charcoal) body {
   width: 24px;
   height: 24px;
   transform-origin: center;
-}
-
-/* 1px SVG strokes read brighter than the anti-aliased PNG marks.
-   Dim only the vector glyphs. Parent .hub-door opacity still handles
-   rest vs hover for the label and the rasters. */
-.hub-door svg.hub-glyph {
-  opacity: var(--hub-svg-ink, 0.52);
+  opacity: var(--hub-glyph-ink, 0.52);
 }
 
 img.hub-glyph--raster {
@@ -214,6 +209,7 @@ img.hub-glyph--raster {
   filter: none;
   box-shadow: none;
   transform-origin: center;
+  opacity: var(--hub-glyph-ink, 0.52);
 }
 
 .hub-brain-kicker {
