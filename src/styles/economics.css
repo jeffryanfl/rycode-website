@@ -333,6 +333,10 @@ h1.economics-identity {
   color: var(--digest-ink);
 }
 
+.econ-digest--body {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .econ-digest-head {
   grid-column: 1;
   margin: 0 0 1.35rem;
@@ -416,6 +420,27 @@ h1.economics-identity {
   margin-top: 0.15rem;
   font-size: 0.98rem;
   color: var(--digest-muted);
+}
+
+.econ-digest-sources ol {
+  margin: 0 0 1.35rem;
+  padding-left: 1.25rem;
+}
+
+.econ-digest-sources li {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--digest-muted);
+}
+
+.econ-digest-sources li:last-child {
+  margin-bottom: 0;
+}
+
+.econ-digest-sources a {
+  overflow-wrap: anywhere;
 }
 
 .econ-digest-rail {
