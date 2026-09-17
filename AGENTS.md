@@ -2,7 +2,7 @@
 
 Hub with five doors: Research, Tools, Economics, Risk, Systems. Live at https://rycode.dev. Built with Astro 6, deployed on Netlify.
 
-This file is the map for Grok in T3 Code. Read `CONTEXT.md` for the site's words. Home is charcoal emptiness with five stroke doors. Systems goes out to https://grc.rycode.dev. Do not turn it into a conversion landing page unless Jeffrey asks. Do not copy openai.com, grok.com, or x.ai.
+This file is the map for Grok in T3 Code. Read `CONTEXT.md` for the site's words. Home is charcoal emptiness with five stroke doors and a quiet bottom tape from `public/tape.json` (HOME only; links to `/economics`). Systems goes out to https://grc.rycode.dev. Do not turn it into a conversion landing page unless Jeffrey asks. Do not copy openai.com, grok.com, or x.ai.
 
 ## Commands
 
@@ -70,7 +70,7 @@ Astro is already the stack for `src/`. Do not add another framework. Do not rewr
 
 ## Look and feel
 
-Home is charcoal emptiness (`#080a10`): five 1px doors (Research lens SVG, Tools compass SVG, Economics chart PNG, Risk triangle PNG, Systems three-node triangle SVG) at `rgba(248, 250, 252, 0.52)`, small overhead brain, square Ry. Inter only. No dollar, shield, COSO cube, cyan, glass, or hero sentence. Systems is not a room on this site. Tools is a charcoal index, same ground as home. Research is charcoal journal. `/ai` is charcoal. `/economics` is a charcoal index. `/risk` is a charcoal index, not GRC; Risk analyses use the charcoal digest rail.
+Home is charcoal emptiness (`#080a10`): five 1px doors (Research lens SVG, Tools compass SVG, Economics chart PNG, Risk triangle PNG, Systems three-node triangle SVG) at `rgba(248, 250, 252, 0.52)`, small overhead brain, square Ry. Quiet charcoal tape at the bottom of HOME only, from `public/tape.json` (asOf + up to three `Tag · text` lines, whole strip to `/economics`). Do not put the tape on `/economics`, 404, or other doors. Do not invent prices or extra lines. Inter only. No dollar, shield, COSO cube, cyan, glass, or hero sentence. Systems is not a room on this site. Tools is a charcoal index, same ground as home. Research is charcoal journal. `/ai` is charcoal. `/economics` is a charcoal index. `/risk` is a charcoal index, not GRC; Risk analyses use the charcoal digest rail.
 
 - Type: Inter on the hub and on Economics/Risk. Newsreader for research claims. Geist Mono for research dates and data. Hardware plate uses Inter, Geist Mono, and italic Newsreader for the two claims.
 - Hub values live in `hub.css`. Landing values in `landing.css` are the charcoal shell for home + 404. `/tools` uses `tools.css`: ground `#080a10`, signed caliper, no cyan. `/research` uses `research.css`: ground `#080a10`, off-white ink, no cyan. `/economics` uses `economics.css`: charcoal index and essays, no cyan. `/ai` landing, lab doors, and model pages use `ai.css`: charcoal, no cyan. The A.I. essay at `/ai/next-token-engine/` uses `newspaper.css` (charcoal, off-white hairlines, no cyan). Risk analyses use `risk.css` digest. Cyan stays off the live journal.

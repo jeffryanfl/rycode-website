@@ -54,6 +54,115 @@ html:has(.landing-stage--charcoal) body {
   /* Same extra dim on every glyph (SVG, PNG, brain). Parent opacity
      still fades the labels. Do not apply this to SVGs only. */
   --hub-glyph-ink: 0.52;
+  padding-bottom: 2.35rem;
+}
+
+/* Quiet HOME tape. Charcoal strip, no cyan, no stock-ticker colors. */
+.editorial-shell--landing:has(.landing-stage--doors) {
+  --hub-tape-h: 2.15rem;
+}
+
+.hub-tape {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: var(--hub-tape-h, 2.15rem);
+  padding: 0.35rem 1.15rem;
+  padding-bottom: max(0.35rem, env(safe-area-inset-bottom));
+  background: #080a10;
+  border-top: 1px solid rgba(248, 250, 252, 0.08);
+  color: rgba(248, 250, 252, 0.42);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.hub-tape[hidden] {
+  display: none;
+}
+
+.hub-tape-asof {
+  flex: 0 0 auto;
+  color: rgba(248, 250, 252, 0.3);
+  white-space: nowrap;
+}
+
+.hub-tape-viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 0.7rem, #000 calc(100% - 0.7rem), transparent);
+}
+
+.hub-tape-track {
+  display: flex;
+  align-items: center;
+  gap: 2.35rem;
+  width: max-content;
+  white-space: nowrap;
+}
+
+.hub-tape-track--scroll {
+  animation: hub-tape-scroll 48s linear infinite;
+}
+
+.hub-tape-tag {
+  color: rgba(248, 250, 252, 0.52);
+}
+
+.hub-tape:hover,
+.hub-tape:focus-visible {
+  color: rgba(248, 250, 252, 0.68);
+}
+
+.hub-tape:hover .hub-tape-asof,
+.hub-tape:focus-visible .hub-tape-asof,
+.hub-tape:hover .hub-tape-tag,
+.hub-tape:focus-visible .hub-tape-tag {
+  color: rgba(248, 250, 252, 0.58);
+}
+
+.hub-tape:hover .hub-tape-track--scroll,
+.hub-tape:focus-visible .hub-tape-track--scroll {
+  animation-play-state: paused;
+}
+
+.hub-tape:focus-visible {
+  outline: 1px solid rgba(248, 250, 252, 0.52);
+  outline-offset: -1px;
+}
+
+@keyframes hub-tape-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-tape-track--scroll {
+    animation: none;
+  }
+
+  .hub-tape-viewport {
+    mask-image: none;
+  }
+
+  .hub-tape-track {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .hub-404-title {
@@ -308,6 +417,22 @@ img.hub-glyph--raster {
 }
 
 @media (max-width: 720px) {
+  .landing-stage--doors {
+    padding-bottom: 2.2rem;
+  }
+
+  .hub-tape {
+    gap: 0.65rem;
+    min-height: 2.05rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    font-size: 0.66rem;
+  }
+
+  .hub-tape-track {
+    gap: 1.7rem;
+  }
+
   .hub-mark {
     top: 1.65rem;
     right: 1.65rem;
