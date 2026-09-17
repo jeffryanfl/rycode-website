@@ -39,7 +39,9 @@
 #   default-src 'self'           — by default, only load from rycode.dev
 #   script-src                   — scripts from rycode.dev + Chart.js on
 #                                  jsdelivr + the one inline bootstrap
-#                                  script (allowed by its sha256 hash)
+#                                  script (allowed by its sha256 hash).
+#                                  Digest rails and the home tape must
+#                                  be public/*.js with src=, not inline.
 #   style-src 'self' 'unsafe-inline'
 #                                — needed because we set inline style
 #                                  attributes from JS (e.g. CSS custom

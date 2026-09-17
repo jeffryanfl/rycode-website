@@ -46,7 +46,7 @@ const legend = [
       <p class="risk-digest-dek">{dek}</p>
     </header>
 
-    <aside class="risk-digest-rail" data-digest-rail aria-label="Digest, risk read">
+    <aside class="risk-digest-rail" data-digest-rail data-digest-fallback="costume" aria-label="Digest, risk read">
       <p class="risk-digest-kicker">Digest · Risk read</p>
       <div class="risk-digest-viewport">
         <div class="risk-digest-stack">
@@ -110,76 +110,4 @@ const legend = [
   </article>
 </Layout>
 
-<script>
-  function bindDigestRail() {
-    const rail = document.querySelector("[data-digest-rail]");
-    const stack = rail?.querySelector(".risk-digest-stack");
-    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
-
-    const wide = window.matchMedia("(min-width: 860px)");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sections = [...document.querySelectorAll("[data-digest-section]")];
-    const cards = {
-      thin: document.getElementById("card-thin"),
-      costume: document.getElementById("card-costume"),
-      panic: document.getElementById("card-panic"),
-    };
-
-    function clearActive() {
-      Object.values(cards).forEach((card) => card?.removeAttribute("data-active"));
-    }
-
-    function activate(key) {
-      if (!wide.matches) {
-        stack.style.transform = "";
-        clearActive();
-        return;
-      }
-      const pin = key === "thin" ? "thin" : "costume";
-      const card = cards[pin];
-      const origin = cards.thin;
-      if (!card) return;
-      clearActive();
-      cards[key === "panic" ? "panic" : pin]?.setAttribute("data-active", "true");
-      const offset = pin === "thin" || !origin ? 0 : card.offsetTop - origin.offsetTop;
-      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
-    }
-
-    function currentKey() {
-      const mark = window.innerHeight * 0.28;
-      let key = "thin";
-      for (const section of sections) {
-        if (section.getBoundingClientRect().top <= mark) {
-          key = section.getAttribute("data-digest-section") || key;
-        }
-      }
-      return key;
-    }
-
-    function sync() {
-      const viewport = stack.parentElement;
-      if (!wide.matches) {
-        stack.style.transform = "";
-        clearActive();
-        if (viewport) viewport.style.overflow = "";
-        return;
-      }
-      if (reduce.matches) {
-        stack.style.transform = "";
-        clearActive();
-        if (viewport) viewport.style.overflow = "auto";
-        return;
-      }
-      if (viewport) viewport.style.overflow = "hidden";
-      activate(currentKey());
-    }
-
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    wide.addEventListener("change", sync);
-    reduce.addEventListener("change", sync);
-  }
-
-  bindDigestRail();
-</script>
+<script is:inline src="/digest-rail.js" defer></script>

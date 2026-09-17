@@ -18,7 +18,7 @@ const dek = 'August jobs print was strong. The interesting part is who the next 
       <p class="econ-digest-subhead">{subhead}</p>
     </header>
 
-    <aside class="econ-digest-rail" data-digest-rail aria-label="Digest, economics read">
+    <aside class="econ-digest-rail" data-digest-rail data-digest-fallback="mix" data-digest-stretch="mix" aria-label="Digest, economics read">
       <p class="econ-digest-kicker">Digest · Economics read</p>
       <div class="econ-digest-viewport">
         <div class="econ-digest-stack">
@@ -94,85 +94,4 @@ const dek = 'August jobs print was strong. The interesting part is who the next 
   </article>
 </Layout>
 
-<script>
-  function bindDigestRail() {
-    const rail = document.querySelector("[data-digest-rail]");
-    const stack = rail?.querySelector(".econ-digest-stack");
-    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
-
-    const wide = window.matchMedia("(min-width: 860px)");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sections = [...document.querySelectorAll("[data-digest-section]")];
-    const cards = {
-      print: document.getElementById("card-print"),
-      mix: document.getElementById("card-mix"),
-      doers: document.getElementById("card-doers"),
-    };
-
-    function clearActive() {
-      Object.values(cards).forEach((card) => card?.removeAttribute("data-active"));
-    }
-
-    function activate(key) {
-      if (!wide.matches) {
-        stack.style.transform = "";
-        clearActive();
-        return;
-      }
-      const pin = key === "print" ? "print" : "mix";
-      const card = cards[pin];
-      const origin = cards.print;
-      if (!card) return;
-      clearActive();
-      cards[key === "doers" ? "doers" : pin]?.setAttribute("data-active", "true");
-      if (cards.mix) {
-        if (pin === "mix" && stack.parentElement) {
-          const gap = 10;
-          const room = stack.parentElement.clientHeight - (cards.doers?.offsetHeight || 0) - gap;
-          cards.mix.style.minHeight = room > 0 ? `${room}px` : "";
-        } else {
-          cards.mix.style.minHeight = "";
-        }
-      }
-      const offset = pin === "print" || !origin ? 0 : card.offsetTop - origin.offsetTop;
-      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
-    }
-
-    function currentKey() {
-      const mark = window.innerHeight * 0.28;
-      let key = "print";
-      for (const section of sections) {
-        if (section.getBoundingClientRect().top <= mark) {
-          key = section.getAttribute("data-digest-section") || key;
-        }
-      }
-      return key;
-    }
-
-    function sync() {
-      const viewport = stack.parentElement;
-      if (!wide.matches) {
-        stack.style.transform = "";
-        clearActive();
-        if (viewport) viewport.style.overflow = "";
-        return;
-      }
-      if (reduce.matches) {
-        stack.style.transform = "";
-        clearActive();
-        if (viewport) viewport.style.overflow = "auto";
-        return;
-      }
-      if (viewport) viewport.style.overflow = "hidden";
-      activate(currentKey());
-    }
-
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    wide.addEventListener("change", sync);
-    reduce.addEventListener("change", sync);
-  }
-
-  bindDigestRail();
-</script>
+<script is:inline src="/digest-rail.js" defer></script>

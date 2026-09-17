@@ -114,7 +114,7 @@ const legend = [
       <p class="research-digest-subhead">{subhead}</p>
     </header>
 
-    <aside class="research-digest-rail" data-digest-rail aria-label="Digest, research read">
+    <aside class="research-digest-rail" data-digest-rail data-digest-pins="claimed:agents,brute:tokens-all" aria-label="Digest, research read">
       <p class="research-digest-kicker">Digest · Research read</p>
       <div class="research-digest-viewport">
         <div class="research-digest-stack">
@@ -201,62 +201,4 @@ const legend = [
   </article>
 </Layout>
 
-<script>
-  function bindDigestRail() {
-    const rail = document.querySelector("[data-digest-rail]");
-    const stack = rail?.querySelector(".research-digest-stack");
-    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
-
-    const wide = window.matchMedia("(min-width: 860px)");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sections = [...document.querySelectorAll("[data-digest-section]")];
-    const origin = document.getElementById("card-agents");
-    const brute = document.getElementById("card-tokens-all");
-
-    function activate(key) {
-      if (!wide.matches) {
-        stack.style.transform = "";
-        return;
-      }
-      const pin = key === "claimed" ? origin : brute;
-      if (!pin || !origin) return;
-      const offset = key === "claimed" ? 0 : pin.offsetTop - origin.offsetTop;
-      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
-    }
-
-    function currentKey() {
-      const mark = window.innerHeight * 0.28;
-      let key = "claimed";
-      for (const section of sections) {
-        if (section.getBoundingClientRect().top <= mark) {
-          key = section.getAttribute("data-digest-section") || key;
-        }
-      }
-      return key;
-    }
-
-    function sync() {
-      const viewport = stack.parentElement;
-      if (!wide.matches) {
-        stack.style.transform = "";
-        if (viewport) viewport.style.overflow = "";
-        return;
-      }
-      if (reduce.matches) {
-        stack.style.transform = "";
-        if (viewport) viewport.style.overflow = "auto";
-        return;
-      }
-      if (viewport) viewport.style.overflow = "hidden";
-      activate(currentKey());
-    }
-
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    wide.addEventListener("change", sync);
-    reduce.addEventListener("change", sync);
-  }
-
-  bindDigestRail();
-</script>
+<script is:inline src="/digest-rail.js" defer></script>

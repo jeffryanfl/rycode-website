@@ -78,7 +78,7 @@ const plates = [
       <p class="research-digest-dek">{dek}</p>
     </header>
 
-    <aside class="research-digest-rail" data-digest-rail aria-label="Exhibits">
+    <aside class="research-digest-rail" data-digest-rail data-digest-fallback="price" aria-label="Exhibits">
       <div class="research-digest-viewport">
         <div class="research-digest-stack">
           {plates.map((plate) => (
@@ -228,76 +228,4 @@ const plates = [
   </article>
 </Layout>
 
-<script>
-  function bindDigestRail() {
-    const rail = document.querySelector("[data-digest-rail]");
-    const stack = rail?.querySelector(".research-digest-stack");
-    if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
-
-    const wide = window.matchMedia("(min-width: 860px)");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sections = [...document.querySelectorAll("[data-digest-section]")];
-    const cards = {
-      multiple: document.getElementById("card-multiple"),
-      price: document.getElementById("card-price"),
-      grind: document.getElementById("card-grind"),
-    };
-
-    function clearActive() {
-      Object.values(cards).forEach((card) => card?.removeAttribute("data-active"));
-    }
-
-    function activate(key) {
-      if (!wide.matches) {
-        stack.style.transform = "";
-        clearActive();
-        return;
-      }
-      const pin = key === "multiple" ? "multiple" : "price";
-      const card = cards[pin];
-      const origin = cards.multiple;
-      if (!card) return;
-      clearActive();
-      cards[key === "grind" ? "grind" : pin]?.setAttribute("data-active", "true");
-      const offset = pin === "multiple" || !origin ? 0 : card.offsetTop - origin.offsetTop;
-      stack.style.transform = offset ? `translateY(-${offset}px)` : "";
-    }
-
-    function currentKey() {
-      const mark = window.innerHeight * 0.28;
-      let key = "multiple";
-      for (const section of sections) {
-        if (section.getBoundingClientRect().top <= mark) {
-          key = section.getAttribute("data-digest-section") || key;
-        }
-      }
-      return key;
-    }
-
-    function sync() {
-      const viewport = stack.parentElement;
-      if (!wide.matches) {
-        stack.style.transform = "";
-        clearActive();
-        if (viewport) viewport.style.overflow = "";
-        return;
-      }
-      if (reduce.matches) {
-        stack.style.transform = "";
-        clearActive();
-        if (viewport) viewport.style.overflow = "auto";
-        return;
-      }
-      if (viewport) viewport.style.overflow = "hidden";
-      activate(currentKey());
-    }
-
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    wide.addEventListener("change", sync);
-    reduce.addEventListener("change", sync);
-  }
-
-  bindDigestRail();
-</script>
+<script is:inline src="/digest-rail.js" defer></script>
