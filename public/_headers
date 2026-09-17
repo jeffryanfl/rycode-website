@@ -40,8 +40,9 @@
 #   script-src                   — scripts from rycode.dev + Chart.js on
 #                                  jsdelivr + the one inline bootstrap
 #                                  script (allowed by its sha256 hash).
-#                                  Digest rails and the home tape must
-#                                  be public/*.js with src=, not inline.
+#                                  Digest rails, the A.I. terms rail,
+#                                  and the home tape must be public/*.js
+#                                  with src=, not inline.
 #   style-src 'self' 'unsafe-inline'
 #                                — needed because we set inline style
 #                                  attributes from JS (e.g. CSS custom

@@ -483,26 +483,4 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
   </article>
 </Layout>
 
-<script>
-  function bindTerms() {
-    const rail = document.querySelector("[data-terms-rail]");
-    if (!(rail instanceof HTMLElement)) return;
-
-    const panels = rail.querySelectorAll("details");
-
-    document.querySelectorAll("[data-term]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-term");
-        const panel = document.getElementById(`term-${id}`);
-        if (!(panel instanceof HTMLDetailsElement)) return;
-        panels.forEach((item) => {
-          if (item !== panel) item.open = false;
-        });
-        panel.open = true;
-        panel.scrollIntoView({ block: "nearest" });
-      });
-    });
-  }
-
-  bindTerms();
-</script>
+<script is:inline src="/terms-rail.js" defer></script>
