@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-17T09:05:00-04:00",
-  "asOfLabel": "Thu 17 Sep · pre-open",
+  "updated": "2026-09-18T08:45:00-04:00",
+  "asOfLabel": "Fri 18 Sep · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Futures bounce ~1–1.6% after Warsh hike; oil softer, long yields cool a touch."
+      "text": "Nasdaq futures lead (~+0.6%); ES ~+0.3% as soft oil eases post-Warsh scare."
     },
     {
       "tag": "Oil",
-      "text": "Brent near $102 (−3%+); WTI under $100 as Oman extra-crude eases Yanbu scare."
+      "text": "Brent ~$103.8 (−1%); WTI ~$100.9 (−1%); third day giving back MidEast premium."
     },
     {
-      "tag": "Jobs",
-      "text": "Claims 196k (−10k); Aug starts 1.275M (−2.6%); permits 1.394M (−2.7%)."
+      "tag": "Rates",
+      "text": "10-year under 5% after Wed 5.01%; FedWatch still ~coin-flip for October hike."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-09-17"
+  "date": "2026-09-18"
 }
