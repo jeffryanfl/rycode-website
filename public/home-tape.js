@@ -4,7 +4,7 @@
    TABLE OF CONTENTS
    1. Shape helpers (door href, first three lines)
    2. Render asOf + Tag · text
-   3. Marquee only when the row overflows
+   3. Marquee after layout (always loop when lines exist)
    4. Fetch on DOMContentLoaded
 */
 
@@ -23,6 +23,28 @@
     return data.lines.slice(0, MAX_LINES).filter(
       (row) => row && typeof row.tag === 'string' && typeof row.text === 'string'
     );
+  }
+
+  function enableMarquee(track, viewport) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !(viewport instanceof HTMLElement) || !(track instanceof HTMLElement)) {
+      return;
+    }
+    if (track.children.length === 0) return;
+
+    // Always loop when we have lines. Measuring right after un-hiding
+    // [hidden] often under-reads width and skips the marquee.
+    track.classList.remove('hub-tape-track--scroll');
+    [...track.querySelectorAll('[data-hub-tape-clone]')].forEach(function (node) {
+      node.remove();
+    });
+    [...track.children].forEach(function (node) {
+      const clone = node.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.setAttribute('data-hub-tape-clone', '');
+      track.append(clone);
+    });
+    track.classList.add('hub-tape-track--scroll');
   }
 
   function render(root, data) {
@@ -50,20 +72,25 @@
     });
 
     root.setAttribute('href', doorHref(data.doorHref));
-    root.setAttribute('aria-label', asOfLabel ? `Economics tape, ${asOfLabel}` : 'Economics tape');
+    root.setAttribute(
+      'aria-label',
+      asOfLabel ? 'Economics tape, ' + asOfLabel : 'Economics tape'
+    );
     root.hidden = false;
 
-    window.requestAnimationFrame(function () {
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce || !(viewport instanceof HTMLElement)) return;
-      if (track.scrollWidth <= viewport.clientWidth + 4) return;
-      [...track.children].forEach(function (node) {
-        const clone = node.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        track.append(clone);
+    // Two frames + fonts: layout is ready after [hidden] is cleared.
+    function afterLayout() {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          enableMarquee(track, viewport);
+        });
       });
-      track.classList.add('hub-tape-track--scroll');
-    });
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(afterLayout).catch(afterLayout);
+    } else {
+      afterLayout();
+    }
 
     return true;
   }
