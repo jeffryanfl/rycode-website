@@ -1,18 +1,18 @@
 {
-  "updated": "2026-09-18T08:45:00-04:00",
-  "asOfLabel": "Fri 18 Sep · pre-open",
+  "updated": "2026-09-18T16:40:00-04:00",
+  "asOfLabel": "Fri 18 Sep · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Nasdaq futures lead (~+0.6%); ES ~+0.3% as soft oil eases post-Warsh scare."
-    },
-    {
-      "tag": "Oil",
-      "text": "Brent ~$103.8 (−1%); WTI ~$100.9 (−1%); third day giving back MidEast premium."
+      "text": "Close: SPX 7650.50 (+0.17%), Dow 51683 (−0.18%), Nasdaq 26523 (+0.40%)."
     },
     {
       "tag": "Rates",
-      "text": "10-year under 5% after Wed 5.01%; FedWatch still ~coin-flip for October hike."
+      "text": "Treasury CMT: 2y 4.76%, 10y 5.01% (back over 5%), 30y 5.34%."
+    },
+    {
+      "tag": "Oil",
+      "text": "WTI settle ~$96 (under $100); Brent near $99 as MidEast scare cools."
     }
   ],
   "doorHref": "/economics",
