@@ -1,11 +1,20 @@
 {
-  "updated": "2026-09-19T15:48:00-04:00",
-  "asOfLabel": "Sat 19 Sep · seed",
+  "updated": "2026-09-20T10:50:00-04:00",
+  "asOfLabel": "Sun 20 Sep · news seed",
   "lines": [
-    {"tag": "Models", "text": "OpenAI GPT-6 Astra: API id gpt-6-astra; $10/$50 per MTok; Enterprise off by default at launch."},
-    {"tag": "Labs", "text": "Anthropic Claude Fable 5.1 GA; Mythos 5.1 same weights, trusted-access cyber/life-science only."},
-    {"tag": "Models", "text": "xAI Grok 4.6 live: API + Grok Build/Cursor; from $2/$6 per MTok (x.ai/news/grok-4-6)."}
+    {
+      "tag": "Release",
+      "text": "TypeSafe ships Jev, first System One model: typed decisions for software, early access (Sep 14–15)."
+    },
+    {
+      "tag": "OpenWeight",
+      "text": "StepFun Step 5 Preview live on API (600B MoE / 27B active); open weights set for Oct 15."
+    },
+    {
+      "tag": "Policy",
+      "text": "OpenAI: will advance voluntary frontier AI standards with other labs, with or without government."
+    }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-19"
+  "date": "2026-09-20"
 }
