@@ -203,6 +203,10 @@ h1.ai-identity {
   padding: 0;
 }
 
+.ai-dive li + li {
+  margin-top: 1.15rem;
+}
+
 .ai-dive a {
   display: grid;
   grid-template-columns: 7.5rem minmax(0, 1fr);

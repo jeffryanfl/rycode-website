@@ -152,6 +152,13 @@ html:has(.editorial-shell--newspaper) body {
   min-width: 0;
 }
 
+.paper-grid--solo {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "head"
+    "main";
+}
+
 .paper-head {
   grid-area: head;
   padding-bottom: 1.15rem;
@@ -282,6 +289,17 @@ html:has(.editorial-shell--newspaper) body {
   letter-spacing: -0.018em;
   color: var(--ink);
   margin: 0;
+}
+
+.paper-dek {
+  margin: 0.65rem 0 0;
+  max-width: 38rem;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ink-muted);
 }
 
 .abstract-box {
@@ -553,6 +571,40 @@ html:has(.editorial-shell--newspaper) body {
 
 .paper-body p:last-child {
   margin-bottom: 0;
+}
+
+.paper-body code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+
+.paper-sources {
+  margin: 0 0 1.35rem;
+  padding-left: 1.25rem;
+}
+
+.paper-sources li {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+.paper-sources li:last-child {
+  margin-bottom: 0;
+}
+
+.paper-sources a {
+  overflow-wrap: anywhere;
+}
+
+.paper-related {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
 }
 
 .paper-skip {
@@ -1042,6 +1094,12 @@ html:has(.editorial-shell--newspaper) body {
     grid-template-areas:
       "head"
       "rail"
+      "main";
+  }
+
+  .paper-grid--solo {
+    grid-template-areas:
+      "head"
       "main";
   }
 

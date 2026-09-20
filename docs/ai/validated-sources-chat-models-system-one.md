@@ -1,4 +1,4 @@
-# Validated sources — chat-models-write-strings-system-one-returns-decisions (Research)
+# Validated sources — chat-models-write-strings-system-one-returns-decisions (A.I. Deep dive)
 QC re-gate PASS 20 Sep 2026 after Jeffrey meta/pipeline scrub. Claims unchanged vs Fact Sheet §A+§B. Primaries confirmed earlier same day.
 
 | Claim / number | Primary URL |
