@@ -1,0 +1,38 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/typesafe/jev/',
+    title: 'Jev',
+    dek: 'First public System One model. Typed decisions for software, not chat.',
+    meta: ['jev-latest · early access · $0.042/MTok input (vendor) · text only'],
+  },
+];
+---
+
+<Layout
+  title="TypeSafe — A.I. — Rycode"
+  description="System One decision models"
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">TypeSafe</h1>
+    <p class="ai-lab-dek">System One decision models.</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>
