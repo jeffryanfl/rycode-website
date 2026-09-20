@@ -1,0 +1,11 @@
+{
+  "updated": "2026-09-19T15:48:00-04:00",
+  "asOfLabel": "Sat 19 Sep · seed",
+  "lines": [
+    {"tag": "Models", "text": "OpenAI GPT-6 Astra: API id gpt-6-astra; $10/$50 per MTok; Enterprise off by default at launch."},
+    {"tag": "Labs", "text": "Anthropic Claude Fable 5.1 GA; Mythos 5.1 same weights, trusted-access cyber/life-science only."},
+    {"tag": "Models", "text": "xAI Grok 4.6 live: API + Grok Build/Cursor; from $2/$6 per MTok (x.ai/news/grok-4-6)."}
+  ],
+  "doorHref": "/ai",
+  "date": "2026-09-19"
+}
