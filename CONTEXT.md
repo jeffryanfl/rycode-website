@@ -4,7 +4,7 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Rycode.** A hub with five doors: Research, Tools, Economics, Risk, and Systems. Live site: https://rycode.dev. A.I. is a branch off home, not a sixth door. Systems goes out to https://grc.rycode.dev.
 
-**Home.** Charcoal `#080a10` emptiness at `/`. Five small 1px `#f8fafc` doors in a row (Research, Tools, Economics, Risk, Systems), then a small overhead wireframe brain for A.I. Square Ry 26 in a corner. Quiet charcoal tape at the bottom of HOME only (`public/tape.json`, fetch on the client, links to `/economics`). Not on other pages. Inter only. No cyan, no floor grid, no glass windows, no coverflow, no hero sentence.
+**Home.** Charcoal `#080a10` emptiness at `/`. Five small 1px `#f8fafc` doors in a row (Research, Tools, Economics, Risk, Systems), then a small overhead wireframe brain for A.I. Square Ry 26 in a corner. Quiet charcoal A.I. tape at the top of HOME only (`public/ai-tape.json`, fetch on the client, links to `/ai`). Quiet charcoal Macro tape at the bottom of HOME only (`public/tape.json`, fetch on the client, links to `/economics`). Not on other pages. Inter only. No cyan, no floor grid, no glass windows, no coverflow, no hero sentence.
 
 **Brain.** Overhead two-hemisphere wireframe under the door row. It is the hit target for A.I. Link to `/ai`. Not a glass window, not a chip card, not a hero.
 

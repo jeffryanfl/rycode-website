@@ -54,6 +54,7 @@ html:has(.landing-stage--charcoal) body {
   /* Same extra dim on every glyph (SVG, PNG, brain). Parent opacity
      still fades the labels. Do not apply this to SVGs only. */
   --hub-glyph-ink: 0.52;
+  padding-top: 2.35rem;
   padding-bottom: 2.35rem;
 }
 
@@ -140,6 +141,16 @@ html:has(.landing-stage--charcoal) body {
   outline-offset: -1px;
 }
 
+/* Quiet HOME A.I. tape. Same charcoal family, top of the hub only. */
+.hub-tape--top {
+  top: 0;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 1px solid rgba(248, 250, 252, 0.08);
+  padding-bottom: 0.35rem;
+  padding-top: max(0.35rem, env(safe-area-inset-top));
+}
+
 @keyframes hub-tape-scroll {
   from {
     transform: translateX(0);
@@ -206,6 +217,7 @@ html:has(.landing-stage--charcoal) body {
 }
 
 .landing-stage--doors .hub-mark {
+  top: calc(2rem + var(--hub-tape-h, 2.15rem));
   color: var(--hub-ink);
   opacity: var(--hub-ink-rest);
 }
@@ -418,7 +430,12 @@ img.hub-glyph--raster {
 
 @media (max-width: 720px) {
   .landing-stage--doors {
+    padding-top: 2.2rem;
     padding-bottom: 2.2rem;
+  }
+
+  .landing-stage--doors .hub-mark {
+    top: calc(1.65rem + 2.05rem);
   }
 
   .hub-tape {
