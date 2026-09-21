@@ -1,0 +1,47 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="DeepSeek API — A.I. — Rycode"
+  description="OpenAI-compatible and Anthropic-compatible DeepSeek endpoints. Current models: deepseek-flash and deepseek-v4-pro."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">DeepSeek · current</p>
+    <h1 class="ai-model-title">API</h1>
+    <p class="ai-model-dek">OpenAI-compatible and Anthropic-compatible endpoints. Current model ids: <code>deepseek-flash</code> and <code>deepseek-v4-pro</code>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Base URLs</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Surface</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>OpenAI base URL</td><td><code>https://api.deepseek.com</code></td></tr>
+          <tr><td>Anthropic base URL</td><td><code>https://api.deepseek.com/anthropic</code></td></tr>
+          <tr><td>Current models</td><td><code>deepseek-flash</code>, <code>deepseek-v4-pro</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>List models: <code>GET /models</code>. Pricing and feature matrix: Models &amp; Pricing (peak/off-peak, cache hit/miss).</p>
+
+    <h2 class="ai-model-section">Legacy aliases (archive)</h2>
+    <p><code>deepseek-chat</code> and <code>deepseek-reasoner</code> were scheduled for full retirement after 24 Jul 2026 15:59 UTC (V4 Preview notes / changelog). During transition they routed to V4-Flash non-thinking / thinking. Do not treat them as current product names on the lab index.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://api-docs.deepseek.com/">API docs</a> (fetched 21 Sep 2026)</li>
+      <li><a href="https://api-docs.deepseek.com/quick_start/pricing">Models &amp; Pricing</a></li>
+      <li><a href="https://api-docs.deepseek.com/api/list-models/">List models</a></li>
+      <li><a href="https://api-docs.deepseek.com/updates">Change log</a></li>
+      <li><a href="https://api-docs.deepseek.com/news/news260424">V4 Preview</a> — chat / reasoner retirement</li>
+    </ul>
+  </article>
+</Layout>

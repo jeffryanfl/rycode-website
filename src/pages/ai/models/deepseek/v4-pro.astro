@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="DeepSeek V4 Pro — A.I. — Rycode"
+  description="API id deepseek-v4-pro. Still listed on Models & Pricing. Changelog says API service continues after 14 Sep 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">DeepSeek · current</p>
+    <h1 class="ai-model-title">V4 Pro</h1>
+    <p class="ai-model-dek">API id: <code>deepseek-v4-pro</code>. Model version on Models &amp; Pricing (fetched 21 Sep 2026): <strong>DeepSeek-V4-Pro-0813</strong>. Still listed as its own SKU with its own prices. Flash is the recommended live path.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Phase / continue-service</h2>
+    <p>Two DeepSeek notes sit next to each other. The 10 Sep Flash announce said they were phasing out V4-Pro and, from 04:00 UTC on 14 Sep 2026, routing <code>deepseek-v4-pro</code> requests to V4.1-Flash at Flash rates until V4.1-Pro launches. The same day’s <a href="https://api-docs.deepseek.com/updates">changelog</a> then said, in response to user demand, API service for V4 Pro continues after 14 Sep 2026 with billing unchanged until further notice. The live pricing page still lists Pro separately. Prefer the changelog + pricing table until DeepSeek changes them again.</p>
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Parameter count and recipe for Pro-0813: UNKNOWN on the pricing page. Do not copy Flash’s 552B MoE numbers onto Pro. V4 Preview (24 Apr 2026) published Preview-era Pro figures (1.6T total / 49B active) — that is the Preview card, not a confirmed 0813 spec.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Thinking and non-thinking modes (default thinking). Tool calls, JSON, Responses API, Anthropic API. Vision: not supported on Pro (pricing table). FIM: non-thinking only.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>1M context. Max output 384K (same pricing table as Flash).</p>
+
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Same thinking effort controls as Flash (<code>low</code> / <code>high</code> / <code>max</code>). Exact RL recipe: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Do not invent scores. Flash announce claims Flash ahead of Pro on some vendor tests — company claim. Prefer DeepSeek changelog / tech reports if you quote a number.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>UNKNOWN for Pro serving silicon. Preview open weights lived in the DeepSeek V4 Hugging Face collection.</p>
+
+    <h2 class="ai-model-section">Access and pricing (vendor)</h2>
+    <p>Copied from Models &amp; Pricing, 21 Sep 2026. Per 1M tokens. Same peak-hour definition as Flash. Concurrency limit listed: 500.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Band</th>
+            <th scope="col">Off-peak</th>
+            <th scope="col">Peak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input cache hit</td><td>$0.022</td><td>$0.044</td></tr>
+          <tr><td>Input cache miss</td><td>$0.66</td><td>$1.32</td></tr>
+          <tr><td>Output</td><td>$1.98</td><td>$3.96</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Re-check the live pricing page before you quote a dollar.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://api-docs.deepseek.com/quick_start/pricing">Models &amp; Pricing</a> (fetched 21 Sep 2026)</li>
+      <li><a href="https://api-docs.deepseek.com/updates">Change log</a> — Pro continues after 14 Sep 2026</li>
+      <li><a href="https://api-docs.deepseek.com/news/news260910">V4.1-Flash announce</a> — earlier phase-out / route-to-Flash language</li>
+      <li><a href="https://api-docs.deepseek.com/news/news260424">V4 Preview</a></li>
+    </ul>
+  </article>
+</Layout>

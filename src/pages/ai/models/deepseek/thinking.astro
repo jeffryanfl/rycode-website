@@ -1,0 +1,45 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="DeepSeek thinking mode — A.I. — Rycode"
+  description="Thinking mode is on by default. Toggle it and set effort on Flash and Pro."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">DeepSeek · current</p>
+    <h1 class="ai-model-title">Thinking</h1>
+    <p class="ai-model-dek">Before the final answer, DeepSeek can emit chain-of-thought reasoning. Thinking mode is on by default (default effort <code>high</code>). You can turn it off or change effort. Same controls on Flash and Pro.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Controls</h2>
+    <p>Copied from the thinking-mode guide (fetched 21 Sep 2026).</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Goal</th>
+            <th scope="col">OpenAI-style Chat Completions</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Enable / disable</td><td><code>thinking.type</code> enabled or disabled</td><td>Pass via <code>extra_body</code> in the OpenAI SDK</td></tr>
+          <tr><td>Effort</td><td><code>reasoning_effort</code>: <code>low</code>, <code>high</code>, or <code>max</code></td><td>Same map for Flash and Pro</td></tr>
+          <tr><td>Responses API</td><td><code>reasoning.effort</code>: <code>none</code> / <code>low</code> / <code>high</code> / <code>max</code></td><td><code>none</code> disables thinking</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Limits</h2>
+    <p>Thinking mode does not support <code>temperature</code>, <code>top_p</code>, <code>presence_penalty</code>, or <code>frequency_penalty</code> (ignored for compatibility). Tool calls work with thinking; you must pass <code>reasoning_content</code> back on later turns or the API returns 400.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://api-docs.deepseek.com/guides/thinking_mode/">Thinking mode</a> (fetched 21 Sep 2026)</li>
+      <li><a href="https://api-docs.deepseek.com/quick_start/pricing">Models &amp; Pricing</a></li>
+    </ul>
+  </article>
+</Layout>

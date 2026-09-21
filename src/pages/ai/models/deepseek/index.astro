@@ -1,0 +1,87 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const current = [
+  {
+    href: '/ai/models/deepseek/flash/',
+    title: 'Flash',
+    dek: 'Current recommended API model. DeepSeek-V4.1-Flash.',
+    meta: ['deepseek-flash · 1M · lead card'],
+  },
+  {
+    href: '/ai/models/deepseek/v4-pro/',
+    title: 'V4 Pro',
+    dek: 'Still listed on Models & Pricing. Service continues after 14 Sep 2026 (changelog).',
+    meta: ['deepseek-v4-pro · DeepSeek-V4-Pro-0813'],
+  },
+  {
+    href: '/ai/models/deepseek/thinking/',
+    title: 'Thinking',
+    dek: 'Dual thinking / non-thinking mode, shared across Flash and Pro.',
+    meta: ['Default on · effort low / high / max'],
+  },
+  {
+    href: '/ai/models/deepseek/api/',
+    title: 'API',
+    dek: 'Base URLs, current model ids, and retired aliases.',
+    meta: ['api.deepseek.com · OpenAI and Anthropic formats'],
+  },
+];
+
+const archive = [
+  {
+    href: '/ai/models/deepseek/r1/',
+    title: 'R1',
+    dek: 'Landmark open reasoner (Jan 2025). Not the current API SKU.',
+    meta: ['Archive stub'],
+  },
+  {
+    href: '/ai/models/deepseek/v3/',
+    title: 'V3',
+    dek: 'Prior chat generation. API name deepseek-chat is retired.',
+    meta: ['Archive stub'],
+  },
+];
+---
+
+<Layout
+  title="DeepSeek — A.I. — Rycode"
+  description="Current API line is V4: deepseek-flash and deepseek-v4-pro. R1 and V3 are archive doors."
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">DeepSeek</h1>
+    <p class="ai-lab-dek">Current API line is V4: call <code>deepseek-flash</code> (DeepSeek-V4.1-Flash) or <code>deepseek-v4-pro</code>. R1 and V3 stay as archive doors — they made the lab famous, but those API names are retired.</p>
+  </div>
+
+  <h2 class="ai-lab-lane">Current</h2>
+  <ol class="ai-lab-rows">
+    {current.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  <h2 class="ai-lab-lane">Archive</h2>
+  <ol class="ai-lab-rows">
+    {archive.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>
