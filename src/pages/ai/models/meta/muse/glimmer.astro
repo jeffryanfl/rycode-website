@@ -1,0 +1,46 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Muse Glimmer — Meta — A.I. — Rycode"
+  description="Meta’s 30B open-weight multimodal model, distilled from Muse Spark. Apache 2.0."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Meta · Muse</p>
+    <h1 class="ai-model-title">Muse Glimmer</h1>
+    <p class="ai-model-dek">Muse Glimmer is Meta’s 30-billion-parameter open-weight multimodal model, distilled from Muse Spark and aimed at local agent workflows. Weights under Apache License 2.0. Not a Meta Model API chat SKU — you download the weights and serve them.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Dense, decoder-only multimodal transformer with a built-in vision encoder. Trained from Muse Spark’s outputs rather than from scratch (Meta docs). Trained on data from more than 100 languages. Full dataset mix and FLOPs: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Text and image in, text out. Runs locally via vLLM, SGLang, llama.cpp, ExecuTorch. Docs also point at partner hosts. No API key required for self-host. Hugging Face id in Meta docs: <code>meta-models/Muse-Glimmer-30B</code>.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>Default 128K tokens; longer contexts supported (Glimmer docs, fetched 20 Sep 2026). Exact published max beyond that default: see the live docs at ship.</p>
+
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Step-by-step reasoning before the answer (docs). Distilled from Spark. Chat template via the tokenizer’s <code>apply_chat_template</code>. Prompting guide lives on Meta’s Glimmer docs.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Public third-party score table for Glimmer: UNKNOWN in pages fetched for this card. Do not invent Arena / HLE numbers.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Self-hosted. Meta documents GGUF checkpoints and llama.cpp / ExecuTorch paths. Exact training cluster: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Access</h2>
+    <p>Apache 2.0. Hugging Face: <code>meta-models/Muse-Glimmer-30B</code> (and GGUF / ExecuTorch builds on the get-the-model docs). Not listed on Meta Model API <code>/v1</code> model catalog.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://ai.developer.meta.com/docs/muse-glimmer">Muse Glimmer overview</a> (fetched 20 Sep 2026)</li>
+      <li><a href="https://ai.developer.meta.com/docs/muse-glimmer/get-the-model">Get the model</a></li>
+      <li><a href="https://ai.developer.meta.com/docs/models">Models</a></li>
+      <li><a href="https://developer.meta.com/ai/resources/blog/build-with-muse-glimmer/">Build with Muse Glimmer</a></li>
+    </ul>
+  </article>
+</Layout>

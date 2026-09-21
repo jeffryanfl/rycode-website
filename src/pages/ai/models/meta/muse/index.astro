@@ -1,0 +1,62 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/meta/muse/spark/',
+    title: 'Muse Spark',
+    dek: 'Flagship reasoning / agentic / coding on Meta Model API and Meta AI.',
+    meta: ['muse-spark-1.3 · 1M · $1.25/$4.25 standard (vendor, 20 Sep 2026)'],
+  },
+  {
+    href: '/ai/models/meta/muse/glimmer/',
+    title: 'Muse Glimmer',
+    dek: 'Open-weight 30B multimodal, distilled from Spark.',
+    meta: ['Apache 2.0 · 128K default · local runtimes'],
+  },
+  {
+    href: '/ai/models/meta/muse/image/',
+    title: 'Muse Image',
+    dek: 'Image generation and edit on Meta Model API.',
+    meta: ['Stub · muse-image-1.0'],
+  },
+  {
+    href: '/ai/models/meta/muse/video/',
+    title: 'Muse Video',
+    dek: 'Video generation in the Muse family.',
+    meta: ['Stub · preview / coming-soon language on Meta’s blog'],
+  },
+  {
+    href: '/ai/models/meta/muse/code/',
+    title: 'Muse Code',
+    dek: 'Multi-agent coding in the terminal, built for Spark.',
+    meta: ['Stub · product surface, not weights'],
+  },
+];
+---
+
+<Layout
+  title="Muse — Meta — A.I. — Rycode"
+  description="Meta Superintelligence Labs model family. Separate from Llama."
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">Muse</h1>
+    <p class="ai-lab-dek">Muse is Meta’s model family from Meta Superintelligence Labs. It is separate from Llama. Spark is the closed / API multimodal reasoning line. Glimmer is the open-weight sibling distilled from Spark. Image and Video are media models. Code is a multi-agent coding product built around Spark.</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>

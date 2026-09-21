@@ -1,0 +1,89 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Muse Spark — Meta — A.I. — Rycode"
+  description="Meta Superintelligence Labs flagship Muse model on Meta Model API and Meta AI. Current developer page: Muse Spark 1.3."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Meta · Muse</p>
+    <h1 class="ai-model-title">Muse Spark</h1>
+    <p class="ai-model-dek">Muse Spark is Meta Superintelligence Labs’ flagship Muse model: a natively multimodal reasoning model for agentic work, coding, and Meta AI. The live developer model page (fetched 20 Sep 2026) highlights <strong>Muse Spark 1.3</strong>. Available through Meta AI products and the Meta Model API. Base URL on Meta docs: <code>https://api.meta.ai/v1</code>. OpenAI-compatible client language on Meta’s cookbooks.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>Company framing: rebuilt pre-training stack (architecture, optimization, data). The introduce blog claims Muse Spark reaches comparable capability with over an order of magnitude less training compute than Llama 4 Maverick. Treat that compute-efficiency claim as <strong>vendor</strong>. Exact parameter count, FLOPs table, and dataset mix for Spark 1.3: UNKNOWN on pages fetched 20 Sep 2026.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Developer page: trained for long-horizon agentic workflows; competitive coding; native multimodal perception (video, images, documents). Visual reasoning described as running through a real execution environment. Meta Model API docs: Muse Spark always reasons; <code>reasoning_effort: "none"</code> returns HTTP 400. 1.3 marketing: max reasoning for challenging reasoning and agentic tasks.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>1M token context on the live Muse Spark model page for both 1.3 SKUs. Overview docs also print 1,048,576 tokens. No long-context premium on Meta’s pricing page (same rate whether the window is empty or full).</p>
+
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Multimodal reasoning, tool use, multi-agent orchestration (MSL introduce blog and cookbooks). Exact train-time RL recipe: UNKNOWN.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Meta publishes a comparison table on the Muse Spark developer page. Figures below are <strong>vendor-reported</strong> (Spark 1.3 max column), copied 20 Sep 2026. That table also lists Muse Spark 1.2 (xhigh), GPT-5.6 Sol (max), and Opus 5 (max). Do not treat this as an independent scorecard. No Arena / HLE numbers invented here.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Benchmark</th>
+            <th scope="col">Spark 1.3 (max)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>GDPVal-AA v2</td><td>1754</td></tr>
+          <tr><td>JobBench</td><td>64.9</td></tr>
+          <tr><td>OSWorld 2.0</td><td>66.9 partial / 32.0 binary</td></tr>
+          <tr><td>DeepSearchQA</td><td>90.3</td></tr>
+          <tr><td>Agentic IF Index (internal)</td><td>57.8</td></tr>
+          <tr><td>AutomationBench</td><td>49.6</td></tr>
+          <tr><td>MRCR 256K–512K</td><td>98.5</td></tr>
+          <tr><td>MRCR 512K–1M</td><td>98.1</td></tr>
+          <tr><td>DeepSWE v1.1</td><td>75.4</td></tr>
+          <tr><td>SWEAtlas CodeBase QnA</td><td>59.4</td></tr>
+          <tr><td>Terminal-Bench 2.1</td><td>88.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Training / serving silicon and cluster size for Muse Spark: UNKNOWN on model pages fetched 20 Sep 2026. Hyperion and other infra claims belong on Hardware if Meta publishes them, not invented here.</p>
+
+    <h2 class="ai-model-section">Access and pricing (vendor)</h2>
+    <p>Copied from <a href="https://developer.meta.com/ai/models/muse-spark/">developer.meta.com/ai/models/muse-spark/</a> and the Model API pricing docs, 20 Sep 2026. Per 1M tokens. Contributor tier: used to improve Meta products. Standard tier: not used to improve products (Meta wording).</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Model id</th>
+            <th scope="col">Context</th>
+            <th scope="col">Input</th>
+            <th scope="col">Cached</th>
+            <th scope="col">Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>muse-spark-1.3-contributor</td><td>1M</td><td>$0.10</td><td>$0.002</td><td>$0.20</td></tr>
+          <tr><td>muse-spark-1.3</td><td>1M</td><td>$1.25</td><td>$0.15</td><td>$4.25</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Re-check the live model page before you quote a dollar.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://developer.meta.com/ai/models/muse-spark/">Muse Spark model page</a> (fetched 20 Sep 2026)</li>
+      <li><a href="https://ai.developer.meta.com/docs/pricing-rate-limits/">Pricing and rate limits</a></li>
+      <li><a href="https://ai.developer.meta.com/docs/overview/">Model API overview</a></li>
+      <li><a href="https://ai.meta.com/blog/introducing-muse-spark-msl/">Introducing Muse Spark</a></li>
+      <li><a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">Muse Spark on Meta Model API</a></li>
+      <li><a href="https://developer.meta.com/ai/">developer.meta.com/ai</a></li>
+    </ul>
+  </article>
+</Layout>

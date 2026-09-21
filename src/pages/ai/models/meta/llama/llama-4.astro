@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Llama 4 — Meta — A.I. — Rycode"
+  description="Meta’s current open-weight generation: Llama 4 Scout and Llama 4 Maverick."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Meta · Llama</p>
+    <h1 class="ai-model-title">Llama 4</h1>
+    <p class="ai-model-dek">Llama 4 is Meta’s current open-weight generation. Public cards center on <strong>Llama 4 Scout</strong> and <strong>Llama 4 Maverick</strong>. Natively multimodal (early fusion on Meta’s Llama 4 page). Optimized for deployment and efficiency per that page. License: Llama 4 Community License Agreement (not Apache). Do not invent a third Llama 4 SKU.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Training</h2>
+    <p>GitHub <code>meta-llama/llama-models</code> herd table (fetched 20 Sep 2026): Scout-17B-16E, Maverick-17B-128E. Mixture-of-experts naming. Full FLOPs and data mix: UNKNOWN unless a Meta model card states them. Knowledge cutoff on third-party cards is not copied here.</p>
+
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Open weights via Meta’s Llama download flow and Hugging Face <code>meta-llama</code> repos. Developer page: Scout is framed for single-H100 efficiency and long documents; Maverick for image and text understanding at low cost. Serving silicon for end users: the buyer’s hardware or cloud. Meta’s training cluster for Llama 4: UNKNOWN here.</p>
+
+    <h2 class="ai-model-section">Context</h2>
+    <p>Scout: 10M context on Meta’s live Llama 4 page (20 Sep 2026). Maverick: 1M on the GitHub herd table row for Llama 4 (same fetch). Confirm Maverick on live model cards if you need a second primary.</p>
+
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Open-weight Llama post-training stack. Native multimodality via early fusion (Meta Llama 4 page). Exact RL recipe for Scout/Maverick: UNKNOWN unless a model card says.</p>
+
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Copied from Meta’s Llama 4 developer page, 20 Sep 2026. Vendor-reported. 0-shot, temperature 0 notes are on that page. Do not invent HLE / Arena numbers.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Maverick</th>
+            <th scope="col">Scout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>MMMU</td><td>73.4</td><td>69.4</td></tr>
+          <tr><td>MathVista</td><td>73.7</td><td>70.7</td></tr>
+          <tr><td>ChartQA</td><td>90</td><td>88.8</td></tr>
+          <tr><td>DocVQA (test)</td><td>94.4</td><td>94.4</td></tr>
+          <tr><td>LiveCodeBench</td><td>43.4</td><td>32.8</td></tr>
+          <tr><td>MMLU Pro</td><td>80.5</td><td>74.3</td></tr>
+          <tr><td>Multilingual MMLU</td><td>84.6</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Meta also prints a self-host cost estimate on that page ($0.19/Mtok 3:1 blended for Maverick under distributed inference). That is not an API list price.</p>
+
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Per-SKU Meta training silicon: UNKNOWN. Buyers run weights on their own GPUs / hosts. Scout is marketed for single-H100 efficiency on Meta’s page.</p>
+
+    <h2 class="ai-model-section">Access</h2>
+    <p>Download through Meta’s Llama flow (accept the Llama 4 Community License) and Hugging Face <code>meta-llama</code>. Not Apache 2.0 — that license is Glimmer’s, not Llama 4’s.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://developer.meta.com/ai/models/llama-4/">Llama 4 developer page</a> (fetched 20 Sep 2026)</li>
+      <li><a href="https://github.com/meta-llama/llama-models/">github.com/meta-llama/llama-models</a></li>
+      <li><a href="https://developer.meta.com/ai/llama-downloads/">Llama downloads</a></li>
+    </ul>
+  </article>
+</Layout>
