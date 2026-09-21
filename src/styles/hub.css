@@ -53,7 +53,7 @@ html:has(.landing-stage--charcoal) body {
   --hub-ink-hover: 1;
   /* Same extra dim on every glyph (SVG, PNG, brain). Parent opacity
      still fades the labels. Do not apply this to SVGs only. */
-  --hub-glyph-ink: 0.52;
+  --hub-glyph-ink: 0.624;
   padding-top: 2.35rem;
   padding-bottom: 2.35rem;
 }
@@ -259,7 +259,7 @@ html:has(.landing-stage--charcoal) body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(1.5rem, 4.5vw, 3.25rem);
+  gap: clamp(2.4rem, 7vw, 5.5rem);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -295,6 +295,10 @@ img.hub-glyph--raster {
   user-select: none;
 }
 
+.hub-glyph--risk {
+  opacity: 1;
+}
+
 .hub-door:hover,
 .hub-door:focus-visible {
   color: var(--hub-ink, #f8fafc);
@@ -315,7 +319,7 @@ img.hub-glyph--raster {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2.15rem;
+  margin-top: 2.6rem;
   color: var(--hub-ink, #f8fafc);
   opacity: var(--hub-ink-rest, 0.64);
   text-decoration: none;
@@ -458,7 +462,7 @@ img.hub-glyph--raster {
   }
 
   .hub-doors {
-    gap: 1.05rem;
+    gap: 1.65rem;
   }
 
   .hub-door {
@@ -466,7 +470,7 @@ img.hub-glyph--raster {
   }
 
   .hub-brain {
-    margin-top: 1.85rem;
+    margin-top: 2.15rem;
   }
 
   .hub-branch-mark {
