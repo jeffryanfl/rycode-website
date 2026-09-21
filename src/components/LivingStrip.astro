@@ -1,0 +1,62 @@
+---
+import '../styles/living.css';
+
+interface LivingBullet {
+  id: string;
+  text: string;
+  source?: string;
+}
+
+interface LivingRevision {
+  date: string;
+  note: string;
+}
+
+interface LivingFacts {
+  asOfLabel?: string;
+  bullets?: LivingBullet[];
+  revisions?: LivingRevision[];
+}
+
+interface Props {
+  facts: LivingFacts;
+  part: 'strip' | 'log';
+}
+
+const { facts, part } = Astro.props;
+const bullets = Array.isArray(facts.bullets) ? facts.bullets : [];
+const revisions = Array.isArray(facts.revisions) ? facts.revisions : [];
+const asOfLabel = typeof facts.asOfLabel === 'string' ? facts.asOfLabel.trim() : '';
+---
+
+{part === 'strip' && bullets.length > 0 && (
+  <aside class="living-strip" aria-label={asOfLabel ? `As of ${asOfLabel}` : 'Living facts'}>
+    {asOfLabel && <p class="living-strip-asof">As of {asOfLabel}</p>}
+    <ul class="living-strip-list">
+      {bullets.map((bullet) => (
+        <li>
+          {bullet.source ? (
+            <a href={bullet.source}>{bullet.text}</a>
+          ) : (
+            bullet.text
+          )}
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+{part === 'log' && revisions.length > 0 && (
+  <section class="living-log" id="revisions" aria-labelledby="living-log-heading">
+    <h2 id="living-log-heading">Revision log</h2>
+    <ol>
+      {revisions.map((row) => (
+        <li>
+          <time datetime={row.date}>{row.date}</time>
+          {' — '}
+          {row.note}
+        </li>
+      ))}
+    </ol>
+  </section>
+)}

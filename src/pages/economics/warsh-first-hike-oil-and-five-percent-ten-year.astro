@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import LivingStrip from '../../components/LivingStrip.astro';
+import facts from '../../../docs/economics/warsh-first-hike-oil-and-five-percent-ten-year.facts.json';
 import '../../styles/economics.css';
 
 const title = 'Warsh’s first hike met oil above $100 and a five percent ten-year';
@@ -43,6 +45,7 @@ const sources = [
     <header class="econ-digest-head">
       <h1 class="econ-digest-title">{title}</h1>
       <p class="econ-digest-subhead">{subhead}</p>
+      <LivingStrip facts={facts} part="strip" />
     </header>
 
     <p class="econ-digest-lede">On September 16, 2026, the Federal Open Market Committee (the Fed body that sets the short-term policy rate) raised its target range for the federal funds rate (the overnight rate banks charge each other) by one quarter of a percentage point, to 3-3/4 to 4 percent. The vote was unanimous, twelve to zero. That is Kevin Warsh’s first rate increase as Chair under this meeting’s materials. It arrived clean on paper. The market’s reaction, the bond market’s level, and the oil price together say something harder. Policy can look decisive while the discount rate for equities stays high and energy keeps feeding inflation risk.</p>
@@ -85,6 +88,8 @@ const sources = [
       <p>Third, oil above $100 after a down day means the energy channel into inflation did not leave with the press release.</p>
       <p>If you own duration-sensitive equities, the question after Warsh’s first hike is not whether the Committee can raise rates by a quarter point. It already did. The question is whether five percent on the ten-year and triple-digit oil leave room for the multiples that priced a friendlier discount rate. On September 16 the bond market and the equity close answered first. The statement answered second. The oil market did not leave the room.</p>
     </section>
+
+    <LivingStrip facts={facts} part="log" />
 
     <section class="econ-digest-section econ-digest-sources" id="sources">
       <h2>Sources</h2>
