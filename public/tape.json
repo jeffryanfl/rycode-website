@@ -1,18 +1,18 @@
 {
-  "updated": "2026-09-21T08:55:00-04:00",
-  "asOfLabel": "Mon 21 Sep · pre-open",
+  "updated": "2026-09-21T16:40:00-04:00",
+  "asOfLabel": "Mon 21 Sep · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Premarket: ES ~+0.7%, NQ ~+1.0%, YM ~+0.8% (Reuters ~7:09 ET)."
+      "text": "Close: SPX 7767.50 (+1.53%), Dow 52063 (+0.74%), Nasdaq 27131 (+2.29%)."
     },
     {
       "tag": "Rates",
-      "text": "Fri CMT 10y 5.01%; overnight under 5%. FedWatch mid-50s Oct hike."
+      "text": "Treasury CMT: 2y 4.76%, 10y 4.96% (under 5%), 30y 5.29%."
     },
     {
       "tag": "Oil",
-      "text": "Crude ~−2% to ~11-day low; WTI still under $100 (Reuters)."
+      "text": "WTI mid-$90s (~−4%); Brent near $100–$101 (~−3%) as scare cools."
     }
   ],
   "doorHref": "/economics",
