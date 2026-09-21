@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-20T10:50:00-04:00",
-  "asOfLabel": "Sun 20 Sep · news seed",
+  "updated": "2026-09-21T08:57:00-04:00",
+  "asOfLabel": "Mon 21 Sep · morning",
   "lines": [
     {
-      "tag": "Release",
-      "text": "TypeSafe ships Jev, first System One model: typed decisions for software, early access (Sep 14–15)."
+      "tag": "Deal",
+      "text": "SoftBank launches $10B+ notes (plus €1B) to fund its OpenAI investment (Reuters, 21 Sep)."
+    },
+    {
+      "tag": "Deal",
+      "text": "Anthropic + Accenture: embedded evaluators; each plans ≥$1B over 5 years on AI safety."
     },
     {
       "tag": "OpenWeight",
-      "text": "StepFun Step 5 Preview live on API (600B MoE / 27B active); open weights set for Oct 15."
-    },
-    {
-      "tag": "Policy",
-      "text": "OpenAI: will advance voluntary frontier AI standards with other labs, with or without government."
+      "text": "DeepSeek V4.1-Flash live on API as deepseek-flash; HF weights; 552B MoE (lab claim)."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-20"
+  "date": "2026-09-21"
 }
