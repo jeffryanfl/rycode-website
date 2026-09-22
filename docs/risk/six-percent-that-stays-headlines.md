@@ -1,6 +1,6 @@
 # Six percent that stays
 
-The related essay is at /research/ten-trillion-to-roll/.
+The related essay is at /economics/ten-trillion-to-roll/.
 
 ## From the essay
 

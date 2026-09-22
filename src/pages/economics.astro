@@ -23,6 +23,19 @@ const pieces = [
     title: 'August jobs were strong. Who gets hired is the real story.',
     dek: 'The interesting part is who the next hire is.',
   },
+  {
+    href: '/economics/ten-trillion-to-roll/',
+    title: 'Near ten trillion of U.S. debt comes due and must be refinanced',
+    dek: 'Ten trillion to roll is the ordinary refinance. One trillion to buy is a checking account.',
+  },
+];
+
+const saas = [
+  {
+    href: '/economics/saas-barbell-2026/',
+    title: 'Software subscription stocks got cheaper. The industry did not die.',
+    dek: 'SaaS is a pricing and durability problem, not a dying industry.',
+  },
 ];
 ---
 
@@ -41,6 +54,18 @@ const pieces = [
 
   <ul class="economics-index">
     {pieces.map((piece) => (
+      <li>
+        <a href={piece.href}>
+          <span class="economics-index-title">{piece.title}</span>
+          <span class="economics-index-dek">{piece.dek}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="economics-section">SaaS</h2>
+  <ul class="economics-index">
+    {saas.map((piece) => (
       <li>
         <a href={piece.href}>
           <span class="economics-index-title">{piece.title}</span>

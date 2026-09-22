@@ -12,8 +12,16 @@
 /dashboards/build-vs-buy           /dashboards/build-vs-buy/index.html  200
 /dashboards/build-vs-buy/          /dashboards/build-vs-buy/index.html  200
 
-/research/saaspocalypse            /research/saas-barbell-2026/  301
-/research/saaspocalypse/           /research/saas-barbell-2026/  301
+/research/ten-trillion-to-roll         /economics/ten-trillion-to-roll/    301!
+/research/ten-trillion-to-roll/        /economics/ten-trillion-to-roll/    301!
+/research/saas-barbell-2026            /economics/saas-barbell-2026/       301!
+/research/saas-barbell-2026/           /economics/saas-barbell-2026/       301!
+/research/ten-thousand-agents-is-not-a-genius    /ai/ten-thousand-agents-is-not-a-genius/    301!
+/research/ten-thousand-agents-is-not-a-genius/   /ai/ten-thousand-agents-is-not-a-genius/    301!
+/research/saaspocalypse                /economics/saas-barbell-2026/       301!
+/research/saaspocalypse/               /economics/saas-barbell-2026/       301!
+/research                              /economics/    301!
+/research/                             /economics/    301!
 
 /systems                           https://grc.rycode.dev/  301
 /systems/                          https://grc.rycode.dev/  301

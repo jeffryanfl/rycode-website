@@ -31,7 +31,11 @@ export default defineConfig({
   site: 'https://rycode.dev',
   integrations: [sitemap()],
   redirects: {
-    '/research/saaspocalypse': '/research/saas-barbell-2026/',
+    '/research': '/economics/',
+    '/research/ten-trillion-to-roll': '/economics/ten-trillion-to-roll/',
+    '/research/saas-barbell-2026': '/economics/saas-barbell-2026/',
+    '/research/ten-thousand-agents-is-not-a-genius': '/ai/ten-thousand-agents-is-not-a-genius/',
+    '/research/saaspocalypse': '/economics/saas-barbell-2026/',
     '/systems': 'https://grc.rycode.dev/',
   },
   server: {

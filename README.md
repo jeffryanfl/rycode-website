@@ -1,6 +1,6 @@
 # Rycode
 
-Research, tools, economics, risk, and systems. Astro hub plus standalone HTML apps under `public/`. Deployed on Netlify.
+Economics, risk, and systems, plus an A.I. branch. Astro hub plus standalone HTML apps under `public/`. Deployed on Netlify.
 
 **Live:** https://rycode.dev
 
@@ -23,7 +23,7 @@ npm run preview    # serves dist/
 ## What's here
 
 ```
-src/pages/     home (`/`, five charcoal doors), Tools, Research (journal), Economics, Risk, A.I. (`/ai`), 404. Systems door goes to https://grc.rycode.dev.
+src/pages/     home (`/`, three charcoal doors plus the A.I. brain), Tools, Economics, Risk, A.I. (`/ai`), 404. Systems door goes to https://grc.rycode.dev. Old `/research` URLs redirect.
 src/           layouts, components, styles
 public/        fonts, logo, chrome, og-image.png. HTML apps go here when added.
 scripts/       local helpers, including og-image.html

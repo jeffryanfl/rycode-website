@@ -26,7 +26,7 @@
   function bindDigestRail() {
     const rail = document.querySelector('[data-digest-rail]');
     const stack = rail?.querySelector(
-      '.research-digest-stack, .risk-digest-stack, .econ-digest-stack',
+      '.research-digest-stack, .risk-digest-stack, .econ-digest-stack, .ai-digest-stack',
     );
     if (!(rail instanceof HTMLElement) || !(stack instanceof HTMLElement)) return;
 
