@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-21T16:40:00-04:00",
-  "asOfLabel": "Mon 21 Sep · after-close",
+  "updated": "2026-09-22T08:50:00-04:00",
+  "asOfLabel": "Tue 22 Sep · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Close: SPX 7767.50 (+1.53%), Dow 52063 (+0.74%), Nasdaq 27131 (+2.29%)."
+      "text": "Premarket steady after Mon AI rally; SPX closed ~7765–7768 (+~1.5%)."
     },
     {
       "tag": "Rates",
-      "text": "Treasury CMT: 2y 4.76%, 10y 4.96% (under 5%), 30y 5.29%."
+      "text": "Mon CMT 10y 4.96%; overnight mid-4.90s. FedWatch high-50s Oct hike."
     },
     {
       "tag": "Oil",
-      "text": "WTI mid-$90s (~−4%); Brent near $100–$101 (~−3%) as scare cools."
+      "text": "Brent ~$101–102; WTI mid-$90s — bounce after Mon settle pullback."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-09-21"
+  "date": "2026-09-22"
 }

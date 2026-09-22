@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-21T08:57:00-04:00",
-  "asOfLabel": "Mon 21 Sep · morning",
+  "updated": "2026-09-22T08:53:00-04:00",
+  "asOfLabel": "Tue 22 Sep · morning",
   "lines": [
     {
-      "tag": "Deal",
-      "text": "SoftBank launches $10B+ notes (plus €1B) to fund its OpenAI investment (Reuters, 21 Sep)."
-    },
-    {
-      "tag": "Deal",
-      "text": "Anthropic + Accenture: embedded evaluators; each plans ≥$1B over 5 years on AI safety."
-    },
-    {
       "tag": "OpenWeight",
-      "text": "DeepSeek V4.1-Flash live on API as deepseek-flash; HF weights; 552B MoE (lab claim)."
+      "text": "Xiaomi open-sources MiMo-V2.6; AA Index lists Pro at 46 (open-weight ceiling vs closed…"
+    },
+    {
+      "tag": "Release",
+      "text": "AA: Grok 4.7 scores 46 on Index (xhigh); Coding Agent Index 56 with Grok Build."
+    },
+    {
+      "tag": "Deal",
+      "text": "SoftBank ~$11B notes for OpenAI: price 24 Sep; $10B tranche due ~1 Oct (Reuters)."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-21"
+  "date": "2026-09-22"
 }
