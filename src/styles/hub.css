@@ -1,5 +1,5 @@
 /* ==================================================================
-   HUB — charcoal emptiness. Five stroke doors, small overhead brain.
+   HUB — charcoal emptiness. Four marks, two by two.
    Inter only. No cyan, no grid, no glass, no coverflow.
    ================================================================== */
 
@@ -256,10 +256,13 @@ html:has(.landing-stage--charcoal) body {
 }
 
 .hub-doors {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, 7.5rem);
   justify-content: center;
-  gap: clamp(2.4rem, 7vw, 5.5rem);
+  justify-items: center;
+  align-items: start;
+  column-gap: clamp(2.4rem, 7vw, 5rem);
+  row-gap: clamp(2.1rem, 5vw, 3rem);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -269,6 +272,7 @@ html:has(.landing-stage--charcoal) body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: 0.72rem;
   color: var(--hub-ink, #f8fafc);
   opacity: var(--hub-ink-rest, 0.64);
@@ -282,15 +286,15 @@ html:has(.landing-stage--charcoal) body {
 
 .hub-glyph {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   transform-origin: center;
   opacity: var(--hub-glyph-ink, 0.52);
 }
 
 img.hub-glyph--raster {
   width: auto;
-  height: 24px;
+  height: 36px;
   pointer-events: none;
   user-select: none;
 }
@@ -462,15 +466,13 @@ img.hub-glyph--raster {
   }
 
   .hub-doors {
-    gap: 1.65rem;
+    grid-template-columns: repeat(2, 6.75rem);
+    column-gap: 1.75rem;
+    row-gap: 1.85rem;
   }
 
   .hub-door {
     font-size: 0.72rem;
-  }
-
-  .hub-brain {
-    margin-top: 2.15rem;
   }
 
   .hub-branch-mark {
