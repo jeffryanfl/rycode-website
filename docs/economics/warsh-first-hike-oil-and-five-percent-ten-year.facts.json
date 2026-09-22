@@ -1,12 +1,12 @@
 {
   "slug": "warsh-first-hike-oil-and-five-percent-ten-year",
   "door": "economics",
-  "asOf": "2026-09-21T16:55:00-04:00",
-  "asOfLabel": "Mon 21 Sep · after-close living strip",
+  "asOf": "2026-09-22T12:35:00-04:00",
+  "asOfLabel": "Tue 22 Sep \u00b7 midday living strip (CA chassis unlock)",
   "bullets": [
     {
       "id": "ff_range",
-      "text": "Fed funds target 3.75%–4.00% (+25 bp 16 Sep 2026; vote 12–0).",
+      "text": "Fed funds target 3.75%\u20134.00% (+25 bp 16 Sep 2026; vote 12\u20130).",
       "asOf": "2026-09-16",
       "source": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf"
     },
@@ -18,25 +18,25 @@
     },
     {
       "id": "ust_10y",
-      "text": "10-year Treasury CMT 4.96% (Mon 21 Sep official; under 5%). Prior Fri 18 Sep was 5.01%.",
+      "text": "10-year Treasury CMT 4.96% (Mon 21 Sep official; under 5%). Fri 18 Sep was 5.01%. Tue 22 official CMT not published yet at midday.",
       "asOf": "2026-09-21",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
       "id": "oil",
-      "text": "Oil Mon 21 settle prints: WTI ~$95.78 (−4.5%); Brent ~$100.34 (−3.4%). EIA daily spot table still lags; refresh on next EIA print.",
-      "asOf": "2026-09-21",
-      "source": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm"
+      "text": "Early Tue 22 futures bounce vs Mon settle: WTI near ~$96.45; Brent near ~$101.53 (CNBC early Tuesday). Mon settle prints were WTI ~$95.78 / Brent ~$100.34. EIA daily spot table still lags.",
+      "asOf": "2026-09-22",
+      "source": "https://www.cnbc.com/2026/09/22/treasury-yield-us-bond-market-trump.html"
     },
     {
       "id": "spx",
-      "text": "S&P 500 close Mon 21 Sep 7,764.70 (+1.49% vs Fri 7,650.50).",
-      "asOf": "2026-09-21",
+      "text": "S&P 500 Tue 22 Sep midday ~7,760.77 (\u22120.05% vs Mon close 7,764.70). Mon close 7,764.70 (+1.49% vs Fri 7,650.50).",
+      "asOf": "2026-09-22",
       "source": "https://finance.yahoo.com/quote/%5EGSPC/history/"
     },
     {
       "id": "fed_context",
-      "text": "Statement: inflation remains elevated; activity solid. Next FOMC Oct 27–28 2026.",
+      "text": "Statement: inflation remains elevated; activity solid. Next FOMC Oct 27\u201328 2026.",
       "asOf": "2026-09-16",
       "source": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf"
     }
@@ -53,6 +53,10 @@
     {
       "date": "2026-09-21",
       "note": "Macro living refresh (after-close): official 10y 4.96%; SPX 7764.70; WTI/Brent settle pullback."
+    },
+    {
+      "date": "2026-09-22",
+      "note": "Macro chassis unlock pack: midday SPX; Tue oil futures labels; official 10y still Mon 4.96%."
     }
   ]
 }
