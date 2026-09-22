@@ -1,0 +1,56 @@
+{
+  "slug": "six-percent-that-stays",
+  "door": "risk",
+  "asOf": "2026-09-22T12:35:00-04:00",
+  "asOfLabel": "Tue 22 Sep \u00b7 first living-facts pack (ten-trillion Risk companion)",
+  "bullets": [
+    {
+      "id": "gao_fy26_roll",
+      "text": "GAO: Treasury must refinance about $9.7T of maturing securities in FY2026 (roll/refinance, not pay-down).",
+      "asOf": "2026-03-31",
+      "source": "https://www.gao.gov/products/gao-26-107529"
+    },
+    {
+      "id": "debt_stock",
+      "text": "Debt to the Penny (18 Sep 2026): TPDO ~$40.10T; debt held by the public ~$32.40T; intragovernmental ~$7.70T. Always name which stock.",
+      "asOf": "2026-09-18",
+      "source": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"
+    },
+    {
+      "id": "ust_30y",
+      "text": "30-year Treasury CMT 5.29% (Mon 21 Sep official). Six percent has not printed; watch hold through a long-term borrow date.",
+      "asOf": "2026-09-21",
+      "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+    },
+    {
+      "id": "ust_10y",
+      "text": "10-year Treasury CMT 4.96% (Mon 21 Sep official).",
+      "asOf": "2026-09-21",
+      "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+    },
+    {
+      "id": "tga",
+      "text": "Treasury General Account (Fed H.4.1): Wednesday 16 Sep 2026 level ~$991.7B (week-average ended 16 Sep ~$877.0B). Cash buffer, not a buyback program.",
+      "asOf": "2026-09-16",
+      "source": "https://www.federalreserve.gov/releases/h41/current/"
+    },
+    {
+      "id": "buyback_long_end",
+      "text": "Treasury long-end liquidity-support buybacks: at least $4B per operation in 10\u201320y and 20\u201330y nominal sectors, effective 9 Sep through 4 Nov 2026 (was $2B max).",
+      "asOf": "2026-08-19",
+      "source": "https://home.treasury.gov/news/press-releases/sb0607"
+    },
+    {
+      "id": "cbo_debt_gdp_2026",
+      "text": "CBO Outlook: debt held by the public ~101% of GDP in 2026 (context for 1pp full-stock thought experiment vs ~0.3% first-year cash on what rolls).",
+      "asOf": "2026-01-01",
+      "source": "https://www.cbo.gov/publication/61882"
+    }
+  ],
+  "revisions": [
+    {
+      "date": "2026-09-22",
+      "note": "ERM first living-facts pack for Risk companion /risk/six-percent-that-stays/; refreshed debt (18 Sep), 10y/30y CMT (21 Sep), TGA H.4.1 (16 Sep); GAO roll + buyback + CBO from essay primaries."
+    }
+  ]
+}

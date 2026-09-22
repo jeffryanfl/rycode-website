@@ -1,0 +1,56 @@
+{
+  "slug": "when-the-spender-runs-the-printer",
+  "door": "risk",
+  "asOf": "2026-09-22T12:35:00-04:00",
+  "asOfLabel": "Tue 22 Sep \u00b7 first living-facts pack",
+  "bullets": [
+    {
+      "id": "debt_stock",
+      "text": "Debt to the Penny (18 Sep 2026): TPDO ~$40.10T; debt held by the public ~$32.40T; intragovernmental ~$7.70T. Never swap stocks.",
+      "asOf": "2026-09-18",
+      "source": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"
+    },
+    {
+      "id": "cbo_path",
+      "text": "CBO Outlook: debt held by the public ~101% of GDP (2026) \u2192 ~120% (2036); deficits and rising net interest under current law (not a clean inflate-away reset).",
+      "asOf": "2026-01-01",
+      "source": "https://www.cbo.gov/publication/61882"
+    },
+    {
+      "id": "tic_foreign_official",
+      "text": "TIC Table 5: foreign official Treasury holdings ~$3,773.1B at end-Jul 2026 (watch item \u2014 do not claim dumping without a dated move).",
+      "asOf": "2026-07-31",
+      "source": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt"
+    },
+    {
+      "id": "cofer_usd",
+      "text": "IMF COFER: USD share ~57.13% of allocated FX reserves, 2026Q1 (provisional). Dollar remains largest; share moves over time \u2014 watch, not crash claim.",
+      "asOf": "2026-03-31",
+      "source": "https://data.imf.org/en/Dashboards/COFER%20Dashboard"
+    },
+    {
+      "id": "mspd_tips_frn",
+      "text": "MSPD 31 Aug 2026: TIPS outstanding ~$2.15T; FRNs ~$0.68T (limits pure inflate-away across the whole book).",
+      "asOf": "2026-08-31",
+      "source": "https://fiscaldata.treasury.gov/static-data/published-reports/mspd-entire/MonthlyStatementPublicDebt_Entire_202608.pdf"
+    },
+    {
+      "id": "genius_act",
+      "text": "GENIUS Act (payment stablecoins), Public Law 119-27, enacted 18 Jul 2025 \u2014 payment-rail concentration / control statute (not a CBDC essay).",
+      "asOf": "2025-07-18",
+      "source": "https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.pdf"
+    },
+    {
+      "id": "econ_bridge",
+      "text": "Closer bridge: fixed-coupon debt can lighten in real terms after inflation; that is not a clean fiscal reset when markets reprice yields and public debt still climbs vs GDP on the CBO path.",
+      "asOf": "2026-09-21",
+      "source": "https://rycode.dev/economics/post-inflation-dollars-pay-pre-inflation-debts/"
+    }
+  ],
+  "revisions": [
+    {
+      "date": "2026-09-22",
+      "note": "ERM first living-facts pack from QC-PASS Fact Sheet; debt stock refreshed to 18 Sep Debt to the Penny; TIC/COFER/MSPD/CBO/GENIUS unchanged from validated set."
+    }
+  ]
+}

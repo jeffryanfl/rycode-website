@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import LivingStrip from '../../components/LivingStrip.astro';
+import facts from '../../../docs/research/ten-trillion-to-roll.facts.json';
 import '../../styles/research.css';
 
 const title = 'Near ten trillion of U.S. debt comes due and must be refinanced';
@@ -76,6 +78,7 @@ const plates = [
       <h1 class="research-digest-title">{title}</h1>
       <p class="research-digest-subhead">{subhead}</p>
       <p class="research-digest-dek">{dek}</p>
+      <LivingStrip facts={facts} part="strip" />
     </header>
 
     <aside class="research-digest-rail" data-digest-rail aria-label="Exhibits">
@@ -222,6 +225,8 @@ const plates = [
       <p>The year that would actually break things is different. It would be the thirty-year interest rate going to about 6 percent and remaining there. Then the government would have to borrow its next long-term money at that higher rate, and home loans, which cost a little more than the government rate, would get more expensive too. Higher long-term rates would make the next round of borrowing cost more, which is the spiral. We are not in that year. We are still about three-quarters of a percentage point below it.</p>
       <p>Ten trillion to roll is the ordinary refinance. One trillion to buy is a checking account. Six percent is the danger, and it has not happened.</p>
     </section>
+
+    <LivingStrip facts={facts} part="log" />
 
     <div class="research-digest-closer">
       <p class="research-closer-kicker">Risk</p>
