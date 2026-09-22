@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import LivingStrip from '../../components/LivingStrip.astro';
+import facts from '../../../docs/risk/when-the-spender-runs-the-printer.facts.json';
 import '../../styles/risk.css';
 
 const title = 'Fiscal pressure on rates means inflation and repression, not a debt reset';
@@ -73,6 +75,7 @@ const sources = [
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
       <p class="risk-digest-dek">{dek}</p>
+      <LivingStrip facts={facts} part="strip" />
     </header>
 
     <aside class="risk-digest-rail" data-digest-rail data-digest-pins="hinge:stock,roll:path" data-digest-fallback="tail" aria-label="Digest, risk read">
@@ -154,6 +157,8 @@ const sources = [
       <p>Quiet: TPDO is the bigger headline. Do not swap it for debt held by the public.</p>
       <p>Quiet: TIC and COFER are watches, not a dump claim.</p>
     </div>
+
+    <LivingStrip facts={facts} part="log" />
 
     <div class="risk-digest-closer">
       <p class="risk-closer-kicker">Economics</p>

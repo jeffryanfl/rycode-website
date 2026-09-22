@@ -1,8 +1,8 @@
 {
   "slug": "warsh-first-hike-oil-and-five-percent-ten-year",
   "door": "economics",
-  "asOf": "2026-09-21T08:00:00-04:00",
-  "asOfLabel": "Mon 21 Sep \u00b7 living strip",
+  "asOf": "2026-09-22T12:35:00-04:00",
+  "asOfLabel": "Tue 22 Sep \u00b7 midday living strip (CA chassis unlock)",
   "bullets": [
     {
       "id": "ff_range",
@@ -18,20 +18,20 @@
     },
     {
       "id": "ust_10y",
-      "text": "10-year Treasury CMT 5.01% (Fri 18 Sep official); early Mon quotes still near ~5%.",
-      "asOf": "2026-09-18",
+      "text": "10-year Treasury CMT 4.96% (Mon 21 Sep official; under 5%). Fri 18 Sep was 5.01%. Tue 22 official CMT not published yet at midday.",
+      "asOf": "2026-09-21",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
       "id": "oil",
-      "text": "Oil Mon 21 morning: Brent ~$101.7; WTI front ~$98 (under $100). Intraday \u2014 refresh on CA passes.",
-      "asOf": "2026-09-21",
-      "source": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm"
+      "text": "Early Tue 22 futures bounce vs Mon settle: WTI near ~$96.45; Brent near ~$101.53 (CNBC early Tuesday). Mon settle prints were WTI ~$95.78 / Brent ~$100.34. EIA daily spot table still lags.",
+      "asOf": "2026-09-22",
+      "source": "https://www.cnbc.com/2026/09/22/treasury-yield-us-bond-market-trump.html"
     },
     {
       "id": "spx",
-      "text": "S&P 500 close Fri 18 Sep 7,650.50 (+0.17%). Mon pre-cash: ES higher (pre-open only).",
-      "asOf": "2026-09-18",
+      "text": "S&P 500 Tue 22 Sep midday ~7,760.77 (\u22120.05% vs Mon close 7,764.70). Mon close 7,764.70 (+1.49% vs Fri 7,650.50).",
+      "asOf": "2026-09-22",
       "source": "https://finance.yahoo.com/quote/%5EGSPC/history/"
     },
     {
@@ -48,7 +48,15 @@
     },
     {
       "date": "2026-09-21",
-      "note": "Macro living refresh: SEP path, Fri 10y/SPX, Mon oil/tape labels."
+      "note": "Macro living refresh (morning): SEP path, Fri 10y/SPX, Mon oil/tape labels."
+    },
+    {
+      "date": "2026-09-21",
+      "note": "Macro living refresh (after-close): official 10y 4.96%; SPX 7764.70; WTI/Brent settle pullback."
+    },
+    {
+      "date": "2026-09-22",
+      "note": "Macro chassis unlock pack: midday SPX; Tue oil futures labels; official 10y still Mon 4.96%."
     }
   ]
 }

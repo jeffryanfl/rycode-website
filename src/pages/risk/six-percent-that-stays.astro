@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import LivingStrip from '../../components/LivingStrip.astro';
+import facts from '../../../docs/risk/six-percent-that-stays.facts.json';
 import '../../styles/risk.css';
 
 const title = 'A long-term rate stuck near six percent is the debt danger that lasts';
@@ -17,6 +19,7 @@ const dek = 'A risk read of the same ten-trillion facts — not a second telling
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
       <p class="risk-digest-dek">{dek}</p>
+      <LivingStrip facts={facts} part="strip" />
     </header>
 
     <aside class="risk-digest-rail" data-digest-rail data-digest-fallback="tail" aria-label="Digest, risk read">
@@ -95,6 +98,8 @@ const dek = 'A risk read of the same ten-trillion facts — not a second telling
       <p>Quiet: ~$950B TGA · checking account, week cash — not a purchase program.</p>
       <p>Quiet: one-point rise ≈ 0.3% of output first year on debt that comes due.</p>
     </div>
+
+    <LivingStrip facts={facts} part="log" />
 
     <p class="risk-digest-related">Related Research essay: <a href="/research/ten-trillion-to-roll/">/research/ten-trillion-to-roll/</a>.</p>
   </article>
