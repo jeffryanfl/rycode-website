@@ -1,0 +1,56 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/google/gemini-flash/',
+    title: 'Gemini 3.8 Flash',
+    dek: 'Current Flash workhorse for long-horizon agents.',
+    meta: ['gemini-3.8-flash · $0.75 / $3.75 through 31 Dec 2026'],
+  },
+  {
+    href: '/ai/models/google/gemini-pro/',
+    title: 'Gemini 3.1 Pro Preview',
+    dek: 'Pro line for harder reasoning and tool use.',
+    meta: ['gemini-3.1-pro-preview · $2 / $12 under 200k'],
+  },
+  {
+    href: '/ai/models/google/gemini-flash-lite/',
+    title: 'Gemini 3.5 Flash-Lite',
+    dek: 'Low-latency Flash-Lite for high-throughput work.',
+    meta: ['Stub'],
+  },
+  {
+    href: '/ai/models/google/gemma/',
+    title: 'Gemma 4',
+    dek: 'Open-weight family, separate from hosted Gemini.',
+    meta: ['Stub'],
+  },
+];
+---
+
+<Layout
+  title="Google — A.I. — Rycode"
+  description="Gemini and Gemma lineup from Google DeepMind."
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">Google</h1>
+    <p class="ai-lab-dek">Google DeepMind’s Gemini family: hosted multimodal models, plus a short door for open-weight Gemma 4. Current learning cards are Gemini 3.8 Flash and Gemini 3.1 Pro Preview.</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>

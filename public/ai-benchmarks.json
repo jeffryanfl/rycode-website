@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-09-21",
-  "updated": "2026-09-21T16:59:00-04:00",
-  "note": "One highest-reasoning / flagship learning-hub model per lab for /ai landing comparison. Shared columns only when a lab primary publishes that eval for this SKU. Blank means no shared primary in this pack. Never invent. TypeSafe is a different product class (System One decisions). Meta open-weight lead remains Llama 4; row uses Muse Spark as Muse/API flagship.",
+  "asOf": "2026-09-22",
+  "updated": "2026-09-22T07:00:00-04:00",
+  "note": "One highest-reasoning / flagship learning-hub model per lab for /ai landing comparison. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only (Architect lock 22 Sep).",
   "columns": [
     {
       "id": "cursorBench",
@@ -38,6 +38,13 @@
       "id": "arcAgi",
       "label": "ARC-AGI",
       "notes": "version when cited"
+    },
+    {
+      "id": "aaIndex",
+      "label": "AA Intelligence Index",
+      "notes": "Artificial Analysis composite (Index v4.3.2 eval set on AA site). Independent of lab announces. Always store effort label (max/xhigh/high/\u2026). Do not mix with CursorBench, OSWorld, or ARC-AGI cells. sourceKind must be aa.",
+      "sourceKind": "aa",
+      "primaryUrl": "https://artificialanalysis.ai/leaderboards/models"
     }
   ],
   "labs": [
@@ -74,11 +81,22 @@
           "notes": "with tools; 60.9% no tools",
           "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
         },
-        "arcAgi": null
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 53,
+          "effort": "max",
+          "aaModelLabel": "Claude Fable 5.1 (max with fallback)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "sourceKind": "aa",
+          "fetched": "2026-09-22",
+          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh with fallback also 53 on same fetch."
+        }
       },
       "sources": [
         "https://www.anthropic.com/claude-fable-and-mythos-5-1",
-        "https://platform.claude.com/docs/en/about-claude/models/overview"
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://artificialanalysis.ai/leaderboards/models",
+        "https://artificialanalysis.ai/"
       ]
     },
     {
@@ -117,11 +135,22 @@
           "version": "ARC-AGI-3",
           "notes": "saturates",
           "source": "https://openai.com/index/gpt-6-astra/"
+        },
+        "aaIndex": {
+          "value": 53,
+          "effort": "max",
+          "aaModelLabel": "GPT-6 Astra (max)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "sourceKind": "aa",
+          "fetched": "2026-09-22",
+          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh is 52 on same fetch."
         }
       },
       "sources": [
         "https://openai.com/index/gpt-6-astra/",
-        "https://developers.openai.com/api/docs/models/gpt-6-astra"
+        "https://developers.openai.com/api/docs/models/gpt-6-astra",
+        "https://artificialanalysis.ai/leaderboards/models",
+        "https://artificialanalysis.ai/"
       ]
     },
     {
@@ -151,12 +180,23 @@
         "osworld": null,
         "automationBench": null,
         "hle": null,
-        "arcAgi": null
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 46,
+          "effort": "xhigh",
+          "aaModelLabel": "Grok 4.7 (xhigh)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "sourceKind": "aa",
+          "fetched": "2026-09-22",
+          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. high also 46 on same fetch."
+        }
       },
       "sources": [
         "https://x.ai/news/grok-4-7",
         "https://docs.x.ai/developers/models/grok-4.7",
-        "https://media.x.ai/v1/website/4p7card-5eccc980.pdf"
+        "https://media.x.ai/v1/website/4p7card-5eccc980.pdf",
+        "https://artificialanalysis.ai/leaderboards/models",
+        "https://artificialanalysis.ai/"
       ]
     },
     {
@@ -172,12 +212,23 @@
         "osworld": null,
         "automationBench": null,
         "hle": null,
-        "arcAgi": null
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 48,
+          "effort": "max",
+          "aaModelLabel": "Muse Spark 1.3 (max)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "sourceKind": "aa",
+          "fetched": "2026-09-22",
+          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh is 45 on same fetch."
+        }
       },
       "benchesNote": "Meta publishes AutomationBench and other scores on the Muse Spark developer page; re-fetch live table into cells at ship. Llama 4 Scout/Maverick stay on the Llama door.",
       "sources": [
         "https://developer.meta.com/ai/models/muse-spark/",
-        "https://ai.meta.com/blog/introducing-muse-spark-msl/"
+        "https://ai.meta.com/blog/introducing-muse-spark-msl/",
+        "https://artificialanalysis.ai/leaderboards/models",
+        "https://artificialanalysis.ai/"
       ]
     },
     {
@@ -193,36 +244,24 @@
         "osworld": null,
         "automationBench": null,
         "hle": null,
-        "arcAgi": null
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 39,
+          "effort": "max",
+          "aaModelLabel": "DeepSeek V4.1 Flash (max)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "sourceKind": "aa",
+          "fetched": "2026-09-22",
+          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score."
+        }
       },
       "benchesNote": "Lab publishes architecture and API facts; shared column scores not copied here without a matching primary table on api-docs.",
       "sources": [
         "https://api-docs.deepseek.com/news/news260910",
         "https://api-docs.deepseek.com/quick_start/pricing",
-        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
-      ]
-    },
-    {
-      "lab": "TypeSafe",
-      "model": "Jev",
-      "apiId": "jev-latest",
-      "doorHref": "/ai/models/typesafe/jev/",
-      "role": "System One decision model (not an RLHF chat flagship)",
-      "productClass": "system-one",
-      "benches": {
-        "cursorBench": null,
-        "deepSwe": null,
-        "terminalBench": null,
-        "osworld": null,
-        "automationBench": null,
-        "hle": null,
-        "arcAgi": null
-      },
-      "benchesNote": "TypeSafe refuses standard public bench tables; workflow evals are company-specific. Keep row for inventory; leave shared columns blank.",
-      "sources": [
-        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
-        "https://typesafe.ai/blog/antibenchmaxxing",
-        "https://docs.typesafe.ai/concepts/system-one.md"
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+        "https://artificialanalysis.ai/leaderboards/models",
+        "https://artificialanalysis.ai/"
       ]
     }
   ]

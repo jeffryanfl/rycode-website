@@ -1,0 +1,58 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="MiMo-V2.6-Pro (Xiaomi) — A.I. — Rycode"
+  description="MiMo-V2.6-Pro is Xiaomi’s flagship open-weight MiMo model. The 22 Sep 2026 announce describes a native multimodal series (Pro and Flash) trained with large-scale reinforcement lear"
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Open weight</p>
+    <h1 class="ai-model-title">MiMo-V2.6-Pro (Xiaomi)</h1>
+    <p class="ai-model-dek">MiMo-V2.6-Pro is Xiaomi’s flagship open-weight MiMo model. The 22 Sep 2026 announce describes a native multimodal series (Pro and Flash) trained with large-scale reinforcement learning aimed at self-improvement. Weights and a technical report are published on Hugging Face under the XiaomiMiMo collection.</p>
+    <hr class="ai-model-rule" />
+    <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET), <strong>MiMo-V2.6-Pro</strong> scores <strong>46</strong>. AA’s FAQ on that fetch names it the <strong>highest-ranked open weights model</strong>. Xiaomi’s announce cites the same Index figure and notes remaining gap to closed leaders Claude Fable 5.1 and GPT-6 Astra.</p>
+    <h2 class="ai-model-section">Training</h2>
+    <p>Xiaomi frames MiMo-V2.6 as scaling RL compute, task environments, and grader compute together. The announce describes mixed RL across coding, general, visual, and cyber domains, with live RL training reported over several days and large trajectory counts. Supporting RL environments, harness pieces, and a Distill-Qwen-9B research line are listed in the open-source section of the announce. Exact full pretrain recipes belong in the technical report.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>API model names (all lowercase per Xiaomi): <code>mimo-v2.6-pro</code>, <code>mimo-v2.6-flash</code>, and <code>mimo-v2.6-pro-ultraspeed</code>. The announce states V2.6 keeps V2.5 API pricing and that Pro offers an UltraSpeed mode (up to 20× inference speed on the platform). Serving docs on Hugging Face point to SGLang and vLLM recipes.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context length on the Hugging Face Pro-RL card: <strong>1M tokens</strong>. AA lists <strong>1M</strong>.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col"></th><th scope="col">Value (HF Pro-RL card / announce)</th></tr></thead>
+        <tbody>
+          <tr><td>Architecture</td><td>Sparse MoE</td></tr>
+          <tr><td>Total / active parameters</td><td>1.02T / 42B</td></tr>
+          <tr><td>Modalities</td><td>Text, image, video, audio</td></tr>
+          <tr><td>Vision encoder</td><td>MiMo ViT (~681M)</td></tr>
+          <tr><td>Speculative decoding</td><td>5-layer MTP / DFlash-style drafter</td></tr>
+        </tbody></table></div>
+    <p>Flash is a smaller sibling in the same series (309B total / 15B active in secondary summaries; confirm on Flash model card when citing).</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Xiaomi publishes agent and cyber tables on the Hugging Face card and announce. Prefer those for harness-specific claims. Prefer AA for Index. AA Index MiMo-V2.6-Pro: <strong>46</strong> (<a href="https://artificialanalysis.ai/leaderboards/models">leaderboard</a>, 22 Sep 2026 ET).</p>
+    <h2 class="ai-model-section">Hardware and weights</h2>
+    <ul class="ai-model-sources">
+      <li>Collection: <a href="https://huggingface.co/collections/XiaomiMiMo/mimo-v26">XiaomiMiMo/mimo-v26</a></li>
+      <li>Flagship checkpoint: <a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL">XiaomiMiMo/MiMo-V2.6-Pro-RL</a></li>
+      <li>License on that HF repo: <strong>MIT</strong> (<code>license:mit</code> tag)</li>
+    </ul>
+    <p>Disk / precision details (mxfp4 storage, FP8 compute) are documented in serving recipes; follow Xiaomi / vLLM / SGLang notes rather than inventing VRAM charts.</p>
+    <h2 class="ai-model-section">Access</h2>
+    <ul class="ai-model-sources">
+      <li>Announce: <a href="https://mimo.mi.com/docs/en-US/news/latest/v2-6">MiMo-V2.6 release post</a></li>
+      <li>Desktop client pointer on announce: mimo.xiaomimimo.com/desktop/</li>
+      <li>Open Platform API via Xiaomi MiMo (pricing stated unchanged vs V2.5 on the announce)</li>
+    </ul>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://mimo.mi.com/docs/en-US/news/latest/v2-6">Xiaomi MiMo-V2.6 announce</a></li>
+      <li><a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL">Hugging Face: MiMo-V2.6-Pro-RL</a></li>
+      <li><a href="https://huggingface.co/collections/XiaomiMiMo/mimo-v26">Hugging Face collection mimo-v26</a></li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">AA LLM leaderboard</a> (secondary, Index)</li>
+    </ul>
+  </article>
+</Layout>

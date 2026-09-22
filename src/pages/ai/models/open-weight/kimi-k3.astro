@@ -1,0 +1,52 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Kimi K3 (Moonshot) — A.I. — Rycode"
+  description="Kimi K3 is Moonshot AI’s open-weight flagship. The lab describes a native multimodal agentic model for long-horizon coding, knowledge work, and reasoning. Full weights ship on Hugg"
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Open weight</p>
+    <h1 class="ai-model-title">Kimi K3 (Moonshot)</h1>
+    <p class="ai-model-dek">Kimi K3 is Moonshot AI’s open-weight flagship. The lab describes a native multimodal agentic model for long-horizon coding, knowledge work, and reasoning. Full weights ship on Hugging Face as <code>moonshotai/Kimi-K3</code> under the Kimi K3 License.</p>
+    <hr class="ai-model-rule" />
+    <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET), <strong>Kimi K3 (max)</strong> scores <strong>44</strong>. AA’s open-weights FAQ on that fetch lists it third among open weights after MiMo-V2.6-Pro and GLM-5.3.</p>
+    <h2 class="ai-model-section">Training</h2>
+    <p>The paper *Kimi K3: Open Frontier Intelligence* (arXiv:2607.24653) and the Hugging Face card describe a Mixture-of-Experts model with Kimi Delta Attention (KDA), Attention Residuals, and Stable LatentMoE. Post-training emphasizes reinforcement learning across general, agentic, and coding domains with multiple reasoning-effort levels. Exact train FLOPs and full data recipes belong in the paper and card, not restated here beyond published summaries.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Thinking is always enabled; responses include reasoning content. Effort levels: <code>low</code>, <code>high</code>, and <code>max</code> (default <code>max</code>). Hosted API: <a href="https://platform.kimi.ai">platform.kimi.ai</a> with model <code>kimi-k3</code> (OpenAI / Anthropic compatible). Local serving guidance on the card points to vLLM, SGLang, and TokenSpeed.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context length on the model card: <strong>1,048,576</strong> tokens (about 1M). AA lists context about <strong>1.05M</strong>.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col"></th><th scope="col">Value (lab / HF card)</th></tr></thead>
+        <tbody>
+          <tr><td>Total parameters</td><td>2.8T</td></tr>
+          <tr><td>Activated parameters</td><td>104B</td></tr>
+          <tr><td>Experts</td><td>896 routed; 16 selected per token; 2 shared</td></tr>
+          <tr><td>Modalities</td><td>Text and image (card); native vision encoder MoonViT-V2</td></tr>
+          <tr><td>Quantization</td><td>MXFP4 weights / MXFP8 activations (QAT)</td></tr>
+        </tbody></table></div>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>The Hugging Face card publishes a large lab evaluation table (coding, agentic, vision). Prefer that table for harness-specific claims. Prefer AA for Index. AA Index Kimi K3 (max): <strong>44</strong>; Kimi K3 (low): <strong>34</strong>* (<a href="https://artificialanalysis.ai/leaderboards/models">leaderboard</a>, 22 Sep 2026 ET).</p>
+    <h2 class="ai-model-section">Hardware and weights</h2>
+    <p>Open weights: <a href="https://huggingface.co/moonshotai/Kimi-K3">moonshotai/Kimi-K3</a>. License: <a href="https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE">Kimi K3 License</a> (custom; includes commercial-scale conditions). Code and weights share that license per the card.</p>
+    <h2 class="ai-model-section">Access</h2>
+    <ul class="ai-model-sources">
+      <li>API: <a href="https://platform.kimi.ai">platform.kimi.ai</a> · model <code>kimi-k3</code></li>
+      <li>Weights: Hugging Face above</li>
+      <li>GitHub mirror / tooling: <a href="https://github.com/moonshotai/Kimi-K3">MoonshotAI/Kimi-K3</a></li>
+    </ul>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://huggingface.co/moonshotai/Kimi-K3">Hugging Face: moonshotai/Kimi-K3</a></li>
+      <li><a href="https://arxiv.org/abs/2607.24653">arXiv:2607.24653</a></li>
+      <li><a href="https://platform.kimi.ai">Kimi platform</a></li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">AA LLM leaderboard</a> (secondary, Index)</li>
+    </ul>
+  </article>
+</Layout>

@@ -1,0 +1,65 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Qwen3.8 Max (Alibaba) — A.I. — Rycode"
+  description="Qwen3.8 Max is Alibaba’s lead Qwen3.8 SKU for hosted API and product surfaces. The open-weight checkpoint tied to this generation is **Qwen3.8-2.4T-A95B** on Hugging Face. The HF c"
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Open weight</p>
+    <h1 class="ai-model-title">Qwen3.8 Max (Alibaba)</h1>
+    <p class="ai-model-dek">Qwen3.8 Max is Alibaba’s lead Qwen3.8 SKU for hosted API and product surfaces. The open-weight checkpoint tied to this generation is <strong>Qwen3.8-2.4T-A95B</strong> on Hugging Face. The HF card states that hosted <strong>Qwen3.8-Max</strong> builds on that checkpoint with extra features (vision input, non-thinking support, 1M context by default, built-in tools).</p>
+    <hr class="ai-model-rule" />
+    <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET):</p>
+    <p>- <strong>Qwen3.8 Max (0902)</strong> scores <strong>45</strong> on the main <a href="https://artificialanalysis.ai/leaderboards/models">leaderboard</a>
+- Open checkpoint <strong>Qwen3.8 2.4T A95B</strong> scores <strong>40</strong> on AA’s <a href="https://artificialanalysis.ai/models/open-source">open-source models</a> table</p>
+    <p>Treat Max (0902) and the downloadable 2.4T checkpoint as related but not identical SKUs when you compare Index rows.</p>
+    <h2 class="ai-model-section">Training</h2>
+    <p>Qwen materials describe Qwen3.8 as the strongest open-model generation in the Qwen family to date, with gains in coding, professional work, research, and long-horizon agents. Detailed pretrain mix and FLOPs belong in the lab blog / report when cited from primary pages.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Hosted Model Studio model id: <code>qwen3.8-max</code>. Snapshot <strong>qwen3.8-max-0902</strong> (alias <code>qwen3.8-max-2026-09-02</code>) is documented as an upgraded Max snapshot (coding, agents, vision refinements) with a 1M context window retained.</p>
+    <p>Open weights (<code>Qwen/Qwen3.8-2.4T-A95B</code>): text-only on the HF card; thinking mode required; reasoning effort levels include <code>xhigh</code> (default), <code>medium</code>, and <code>low</code>. Serving recipes: SGLang, vLLM, TokenSpeed.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <ul class="ai-model-sources">
+      <li>Hosted Max (Alibaba Cloud Model Studio): context window <strong>1,000,000</strong> tokens (docs table)</li>
+      <li>Open 2.4T card: <strong>262,144</strong> natively, extensible up to about <strong>1,010,000</strong> tokens</li>
+      <li>AA Max (0902) row: <strong>984k</strong> context</li>
+    </ul>
+    <h2 class="ai-model-section">Methods</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col"></th><th scope="col">Value (HF open card)</th></tr></thead>
+        <tbody>
+          <tr><td>Type</td><td>Causal MoE language model</td></tr>
+          <tr><td>Total / activated parameters</td><td>2.4T / ~95B</td></tr>
+          <tr><td>Experts</td><td>512 total; 10 routed + 1 shared activated</td></tr>
+        </tbody></table></div>
+    <p>Hosted Max adds multimodal and product features beyond the text-only open checkpoint per the HF note.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Qwen publishes large coding / agent / capability tables on the HF card (labeled under Qwen3.8-Max columns). Prefer lab primary for those harnesses. Prefer AA for Index, and keep Max (0902) <strong>45</strong> distinct from open 2.4T A95B <strong>40</strong>.</p>
+    <h2 class="ai-model-section">Hardware and weights</h2>
+    <ul class="ai-model-sources">
+      <li>Open weights: <a href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B">Qwen/Qwen3.8-2.4T-A95B</a></li>
+      <li>Blog pointer on card: <a href="https://qwen.ai/blog?id=qwen3.8">qwen.ai/blog?id=qwen3.8</a></li>
+      <li>GitHub: <a href="https://github.com/QwenLM/Qwen3.8">QwenLM/Qwen3.8</a></li>
+      <li>License: custom Max-line terms on the HF card (read before redistribution). Smaller Qwen dense releases may use different licenses; do not assume Apache-2.0 for the 2.4T Max-class weights.</li>
+    </ul>
+    <h2 class="ai-model-section">Access</h2>
+    <ul class="ai-model-sources">
+      <li>Alibaba Cloud Model Studio docs: <a href="https://www.alibabacloud.com/help/en/model-studio/qwen3-8-max">qwen3.8-max</a></li>
+      <li>Qwen Cloud / API for managed Max features</li>
+      <li>Self-host via HF checkpoint above</li>
+    </ul>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.alibabacloud.com/help/en/model-studio/qwen3-8-max">Alibaba Cloud: qwen3.8-max</a></li>
+      <li><a href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B">Hugging Face: Qwen3.8-2.4T-A95B</a></li>
+      <li><a href="https://qwen.ai/blog?id=qwen3.8">Qwen3.8 blog</a></li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">AA LLM leaderboard</a> (secondary, Index)</li>
+      <li><a href="https://artificialanalysis.ai/models/open-source">AA open-source models</a> (secondary, open 2.4T row)</li>
+    </ul>
+  </article>
+</Layout>

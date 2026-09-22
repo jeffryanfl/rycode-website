@@ -1,0 +1,50 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Gemini 3.8 Flash — A.I. — Rycode"
+  description="Gemini 3.8 Flash is Google DeepMind’s most intelligent Flash model in the Gemini 3 family. It targets long-horizon software engineering, autonomous agents, and complex enterprise w"
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Google · Gemini</p>
+    <h1 class="ai-model-title">Gemini 3.8 Flash</h1>
+    <p class="ai-model-dek">Gemini 3.8 Flash is Google DeepMind’s most intelligent Flash model in the Gemini 3 family. It targets long-horizon software engineering, autonomous agents, and complex enterprise workflows at Flash speed and cost. The stable Gemini API model code is <code>gemini-3.8-flash</code>. Google announced it on 2 Sep 2026 alongside a restricted Cyber variant.</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>The DeepMind model card (September 2026) describes 3.8 Flash as the next iteration after Gemini 3.7 Flash, with gains aimed at software engineering and agentic knowledge workflows. Architecture, training dataset, and data-processing details are deferred to the Gemini 3.7 Flash model card and are not restated on the 3.8 card. The knowledge cutoff listed for 3.8 Flash is March 2026, with some domains still limited to January 2025 in line with the Gemini 3 family. Parameter counts and training FLOPs are not published on the 3.8 primary pages used here.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Inputs are text, image, video, audio, and PDF. Output is text. Documented capabilities on the Gemini API model page include caching, code execution, computer use (preview), file search, function calling, grounding with Google Maps, search grounding, structured outputs, URL context, and thinking. Thinking levels are <code>low</code>, <code>medium</code>, and <code>high</code> (<code>minimal</code> is not supported and errors). Batch, Flex, and Priority consumption options are supported. Audio generation, image generation, and Live API are not supported on this endpoint.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>The Gemini API docs list an input token limit of 1,048,576 and an output token limit of 65,536. The DeepMind model card describes the same window as up to 1M input tokens and 64K output tokens.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Customizable effort (thinking) levels trade quality, cost, and latency. Google’s announce notes that on complex tasks the model may take extra reasoning steps and call tools iteratively, and may use more tokens at higher effort. Lower effort (or staying on 3.7 Flash) is the documented path when token efficiency comes first. Search grounding, Maps grounding, code execution, and computer use (preview) are available as tools on the API surface.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Lab-primary results on the DeepMind Gemini 3.8 Flash model card (as of September 2026) include DeepSWE v1.1 at 73.7%, Terminal-Bench 2.1 at 89.4%, Terminal-Bench 4.0 at 19.1%, HLE-Verified at 54.9%, OSWorld-2.0 (partial score, batch tool enabled) at 59.0%, CharXiv Reasoning (no tools) at 86.2%, Vals Finance Agent v2 at 61.4%, and Harvey’s Legal Agent Benchmark (all pass rate) at 10.0%. The Sep 2026 blog also cites HLE-Verified at 54.9%. Methodology: https://deepmind.google/models/evals-methodology/gemini-3-8-flash</p>
+    <p>Artificial Analysis Intelligence Index (secondary, not a Google score): Gemini 3.8 Flash (high) <strong>41</strong>, (medium) <strong>40</strong>, (low) <strong>33</strong> on https://artificialanalysis.ai/leaderboards/models (fetched 22 Sep 2026). These map to Google’s thinking levels, not separate SKUs.</p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>For Gemini API and AI Studio use, Google states there is no required local hardware or software. Training chip type, cluster size, and parameter counts are not published on the Gemini 3.8 Flash model card (it points back to earlier Flash cards for architecture and hardware continuity). Open weights are not offered for 3.8 Flash.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Available on the Gemini API (<code>gemini-3.8-flash</code>), Google AI Studio, Android Studio, Google Antigravity, Gemini Enterprise / Agent Platform, and to Google AI Pro and Ultra subscribers in the Gemini app, AI Mode in Search, and Gemini in Sheets (per the Sep 2026 announce).</p>
+    <p>Gemini Developer API <strong>Standard</strong> paid prices for <code>gemini-3.8-flash</code> (per 1M tokens, USD), as listed on the pricing page:</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col"></th><th scope="col">Through 31 Dec 2026</th><th scope="col">From 1 Jan 2027</th></tr></thead>
+        <tbody>
+          <tr><td>Input</td><td>$0.75</td><td>$1.50</td></tr>
+          <tr><td>Output (incl. thinking)</td><td>$3.75</td><td>$7.50</td></tr>
+        </tbody></table></div>
+    <p>Context caching, Batch, Flex, and Priority rates are also listed on the same pricing page. Free-tier input/output is listed as free of charge for this model on Standard. Grounding with Google Search: 5,000 free requests per month shared across Gemini 3.x, then $14 per 1,000 requests.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash">Gemini 3.8 Flash (API)</a></li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini Developer API pricing</a></li>
+      <li><a href="https://deepmind.google/models/model-cards/gemini-3-8-flash/">Gemini 3.8 Flash model card</a></li>
+      <li><a href="https://deepmind.google/models/evals-methodology/gemini-3-8-flash">Evals methodology (3.8 Flash)</a></li>
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/">Introducing Gemini 3.8 Flash and 3.8 Flash Cyber</a></li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis LLM leaderboard</a> (Index only)</li>
+    </ul>
+  </article>
+</Layout>

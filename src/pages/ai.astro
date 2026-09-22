@@ -16,82 +16,12 @@ import '../styles/ai.css';
     <p class="ai-identity-dek">How the models actually work. New pieces appear here as rows.</p>
   </div>
 
-  <div class="ai-split">
-    <section aria-labelledby="ai-deep-dive">
-      <h2 class="ai-kicker" id="ai-deep-dive">Deep dive</h2>
-      <ol class="ai-dive">
-        <li>
-          <a href="/ai/chat-models-write-strings-system-one-returns-decisions/">
-            <time class="ai-dive-date" datetime="2026-09-20">20 Sep 2026</time>
-            <span class="ai-dive-title">Chat models write strings. System One returns typed decisions.</span>
-            <span class="ai-dive-dek">Why Jev changes the scoreboard for software automation</span>
-          </a>
-        </li>
-        <li>
-          <a href="/ai/next-token-engine/">
-            <time class="ai-dive-date" datetime="2026-08-25">25 Aug 2026</time>
-            <span class="ai-dive-title">A next-token engine with an RLVR post-train and a tool loop.</span>
-            <span class="ai-dive-dek">How staged training and tools shape a next-token engine.</span>
-          </a>
-        </li>
-      </ol>
-    </section>
-
-    <section aria-labelledby="ai-models">
-      <h2 class="ai-kicker" id="ai-models">Models</h2>
-      <div class="ai-lab-list">
-        <a class="ai-lab-card" href="/ai/models/anthropic/">
-          <span>
-            <span class="ai-lab-card-title">Anthropic</span>
-            <span class="ai-lab-card-dek">Claude frontier lineup.</span>
-          </span>
-          <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="ai-lab-card" href="/ai/models/deepseek/">
-          <span>
-            <span class="ai-lab-card-title">DeepSeek</span>
-            <span class="ai-lab-card-dek">V4 Flash and Pro API line.</span>
-          </span>
-          <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="ai-lab-card" href="/ai/models/meta/">
-          <span>
-            <span class="ai-lab-card-title">Meta</span>
-            <span class="ai-lab-card-dek">Muse and Llama stacks.</span>
-          </span>
-          <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="ai-lab-card" href="/ai/models/openai/">
-          <span>
-            <span class="ai-lab-card-title">OpenAI</span>
-            <span class="ai-lab-card-dek">GPT frontier lineup.</span>
-          </span>
-          <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="ai-lab-card" href="/ai/models/typesafe/">
-          <span>
-            <span class="ai-lab-card-title">TypeSafe</span>
-            <span class="ai-lab-card-dek">System One decision models.</span>
-          </span>
-          <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="ai-lab-card" href="/ai/models/xai/">
-          <span>
-            <span class="ai-lab-card-title">xAI</span>
-            <span class="ai-lab-card-dek">Grok frontier lineup.</span>
-          </span>
-          <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
-        </a>
-      </div>
-    </section>
-  </div>
-
   <section class="ai-bench" id="aiBench" hidden aria-labelledby="ai-bench-heading">
     <div class="ai-bench-plate">
       <p class="ai-bench-kicker">Rycode · /ai · bench table · lane B</p>
       <h2 class="ai-bench-title" id="ai-bench-heading">Highest-reasoning / flagship by lab</h2>
       <p class="ai-bench-sub" data-ai-bench-asof>Shared benches · living pack</p>
-      <p class="ai-bench-read">Blanks mean no shared primary for that cell; bench versions differ by lab.</p>
+      <p class="ai-bench-read">Blanks mean no shared primary for that cell; bench versions differ by lab. AA Index is Artificial Analysis (v4.3.2), independent, not a lab announce score.</p>
       <div class="ai-bench-wrap">
         <table class="ai-bench-table">
           <thead></thead>
@@ -103,6 +33,77 @@ import '../styles/ai.css';
   </section>
   <script is:inline src="/ai-benchmarks.js" defer></script>
 
+  <section class="ai-band" aria-labelledby="ai-labs">
+    <h2 class="ai-section-label" id="ai-labs">Labs</h2>
+    <div class="ai-lab-list">
+      <a class="ai-lab-card" href="/ai/models/anthropic/">
+        <span>
+          <span class="ai-lab-card-title">Anthropic</span>
+          <span class="ai-lab-card-dek">Claude frontier lineup.</span>
+        </span>
+        <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+      </a>
+      <a class="ai-lab-card" href="/ai/models/openai/">
+        <span>
+          <span class="ai-lab-card-title">OpenAI</span>
+          <span class="ai-lab-card-dek">GPT frontier lineup.</span>
+        </span>
+        <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+      </a>
+      <a class="ai-lab-card" href="/ai/models/xai/">
+        <span>
+          <span class="ai-lab-card-title">xAI</span>
+          <span class="ai-lab-card-dek">Grok frontier lineup.</span>
+        </span>
+        <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+      </a>
+      <a class="ai-lab-card" href="/ai/models/google/">
+        <span>
+          <span class="ai-lab-card-title">Google</span>
+          <span class="ai-lab-card-dek">Gemini / Gemma lineup.</span>
+        </span>
+        <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+      </a>
+      <a class="ai-lab-card" href="/ai/models/meta/">
+        <span>
+          <span class="ai-lab-card-title">Meta</span>
+          <span class="ai-lab-card-dek">Muse and Llama stacks.</span>
+        </span>
+        <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+      </a>
+      <a class="ai-lab-card" href="/ai/models/deepseek/">
+        <span>
+          <span class="ai-lab-card-title">DeepSeek</span>
+          <span class="ai-lab-card-dek">V4 Flash and Pro API line.</span>
+        </span>
+        <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="ai-band" aria-labelledby="ai-open-weight">
+    <h2 class="ai-section-label" id="ai-open-weight">Open weight</h2>
+    <a class="ai-lab-card" href="/ai/models/open-weight/">
+      <span>
+        <span class="ai-lab-card-title">Open-weight frontier</span>
+        <span class="ai-lab-card-dek">Downloadable weights near the closed frontier. Llama stays under Meta.</span>
+      </span>
+      <span class="ai-open-chip">5 models</span>
+      <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+    </a>
+  </section>
+
+  <section class="ai-band" aria-labelledby="ai-system-one">
+    <h2 class="ai-section-label" id="ai-system-one">System One</h2>
+    <a class="ai-lab-card" href="/ai/models/typesafe/jev/">
+      <span>
+        <span class="ai-lab-card-title">TypeSafe · Jev</span>
+        <span class="ai-lab-card-dek">Typed decisions for software, not a chat flagship.</span>
+      </span>
+      <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
+    </a>
+  </section>
+
   <section class="ai-hardware" aria-labelledby="ai-hardware">
     <h2 class="ai-kicker" id="ai-hardware">Hardware</h2>
     <a class="ai-lab-card ai-hardware-card" href="/ai/hardware/">
@@ -112,5 +113,25 @@ import '../styles/ai.css';
       </span>
       <span class="ai-lab-card-chevron" aria-hidden="true">›</span>
     </a>
+  </section>
+
+  <section class="ai-band ai-dive-band" aria-labelledby="ai-deep-dive">
+    <h2 class="ai-section-label" id="ai-deep-dive">Deep dive</h2>
+    <ol class="ai-dive">
+      <li>
+        <a href="/ai/chat-models-write-strings-system-one-returns-decisions/">
+          <time class="ai-dive-date" datetime="2026-09-20">20 Sep 2026</time>
+          <span class="ai-dive-title">Chat models write strings. System One returns typed decisions.</span>
+          <span class="ai-dive-dek">Why Jev changes the scoreboard for software automation</span>
+        </a>
+      </li>
+      <li>
+        <a href="/ai/next-token-engine/">
+          <time class="ai-dive-date" datetime="2026-08-25">25 Aug 2026</time>
+          <span class="ai-dive-title">A next-token engine with an RLVR post-train and a tool loop.</span>
+          <span class="ai-dive-dek">How staged training and tools shape a next-token engine.</span>
+        </a>
+      </li>
+    </ol>
   </section>
 </Layout>

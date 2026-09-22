@@ -1,0 +1,51 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Gemini 3.1 Pro Preview — A.I. — Rycode"
+  description="Gemini 3.1 Pro Preview is Google DeepMind’s current Pro-line model on the Gemini API. It refines the Gemini 3 Pro series for harder reasoning, more reliable tool use, and agentic m"
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Google · Gemini</p>
+    <h1 class="ai-model-title">Gemini 3.1 Pro Preview</h1>
+    <p class="ai-model-dek">Gemini 3.1 Pro Preview is Google DeepMind’s current Pro-line model on the Gemini API. It refines the Gemini 3 Pro series for harder reasoning, more reliable tool use, and agentic multi-step work. The preview model code is <code>gemini-3.1-pro-preview</code>. A sibling endpoint, <code>gemini-3.1-pro-preview-customtools</code>, prioritizes custom tools (for example <code>view_file</code> or <code>search_code</code>) when mixed with bash. Google announced 3.1 Pro on 19 Feb 2026; API docs still list it as Preview as of this pack date.</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>The DeepMind model card (February 2026) describes Gemini 3.1 Pro as the next iteration after Gemini 3 Pro: a natively multimodal reasoning model for complex tasks across text, audio, images, video, and large codebases. Architecture, training dataset, and data-processing details are deferred to the Gemini 3 Pro model card and are not restated on the 3.1 card. Parameter counts and training FLOPs are not published on the 3.1 Pro primary pages used here.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Inputs are text, image, video, audio, and PDF. Output is text. The Gemini API model page lists caching, code execution, file search (AI Studio only), function calling, grounding with Google Maps, search grounding, structured outputs, thinking, and URL context. Audio generation, image generation, and Live API are not supported on this endpoint. Batch, Flex, and Priority consumption options are supported. DeepMind’s product page also highlights function calling, structured output, search as a tool, and code execution.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>The Gemini API docs list an input token limit of 1,048,576 and an output token limit of 65,536. DeepMind’s Gemini 3.1 Pro page states 1M input tokens and 64k output tokens.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Thinking is supported. The API docs position 3.1 Pro Preview for software engineering behavior, precise tool usage, and reliable multi-step execution. Use <code>gemini-3.1-pro-preview-customtools</code> when custom tools plus bash should be prioritized; Google notes quality can fluctuate on workloads that do not benefit from those tools. Frontier Safety Framework testing on the model card covers Deep Think mode in several risk domains; that is a safety evaluation mode, not a separate public API id on the Gemini API models page used here.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Lab-primary results on the DeepMind Gemini 3.1 Pro model card (Thinking High, as of February 2026) include Humanity’s Last Exam (no tools) at 44.4% and with search (blocklist) + code at 51.4%, ARC-AGI-2 (ARC Prize Verified) at 77.1%, GPQA Diamond (no tools) at 94.3%, Terminal-Bench 2.0 (Terminus-2 harness) at 68.5%, SWE-Bench Verified (single attempt) at 80.6%, SWE-Bench Pro Public (single attempt) at 54.2%, LiveCodeBench Pro Elo 2887, SciCode at 59%, MCP Atlas at 69.2%, BrowseComp (search + Python + browse) at 85.9%, and MMMU-Pro (no tools) at 80.5%. The Feb 2026 blog highlights the verified ARC-AGI-2 score of 77.1%. Methodology: https://deepmind.google/models/evals-methodology/gemini-3-1-pro</p>
+    <p>Artificial Analysis Intelligence Index (secondary, not a Google score): Gemini 3.1 Pro Preview <strong>30</strong> on https://artificialanalysis.ai/leaderboards/models (fetched 22 Sep 2026).</p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>For Gemini API, AI Studio, and Vertex / Gemini Enterprise Agent Platform use, Google states there is no required local hardware or software. Training chip type, cluster size, and parameter counts are not published on the Gemini 3.1 Pro model card (it points back to the Gemini 3 Pro card for architecture and hardware continuity). Open weights are not offered for 3.1 Pro.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Rolling out in preview via the Gemini API in Google AI Studio, Gemini CLI, Google Antigravity, Android Studio, Vertex AI / Gemini Enterprise Agent Platform, Gemini Enterprise, and to consumers on the Gemini app and NotebookLM (Pro and Ultra limits noted on the announce). Status remains Preview on the API models page.</p>
+    <p>Gemini Developer API <strong>Standard</strong> paid prices for <code>gemini-3.1-pro-preview</code> and <code>gemini-3.1-pro-preview-customtools</code> (per 1M tokens, USD):</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col"></th><th scope="col">Prompts ≤ 200k tokens</th><th scope="col">Prompts &gt; 200k tokens</th></tr></thead>
+        <tbody>
+          <tr><td>Input</td><td>$2.00</td><td>$4.00</td></tr>
+          <tr><td>Output (incl. thinking)</td><td>$12.00</td><td>$18.00</td></tr>
+        </tbody></table></div>
+    <p>Free tier is listed as not available for this model on Standard. Context caching, Batch, Flex, and Priority rates are on the same pricing page. Grounding with Google Search: 5,000 free requests per month shared across Gemini 3.x, then $14 per 1,000 requests.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview">Gemini 3.1 Pro Preview (API)</a></li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini Developer API pricing</a></li>
+      <li><a href="https://deepmind.google/models/model-cards/gemini-3-1-pro/">Gemini 3.1 Pro model card</a></li>
+      <li><a href="https://deepmind.google/models/gemini/pro/">Gemini 3.1 Pro (DeepMind product)</a></li>
+      <li><a href="https://deepmind.google/models/evals-methodology/gemini-3-1-pro">Evals methodology (3.1 Pro)</a></li>
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/">Gemini 3.1 Pro announce</a></li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis LLM leaderboard</a> (Index only)</li>
+    </ul>
+  </article>
+</Layout>

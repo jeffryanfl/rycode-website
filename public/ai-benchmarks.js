@@ -26,21 +26,34 @@
     return lab.lab || '';
   }
 
-  function headerLines(label) {
+  function headerLines(col) {
+    const label = col.label || col.id;
+    if (col.id === 'aaIndex') return ['AA Index', 'v4.3.2'];
     if (label === 'Terminal-Bench') return ['Terminal-', 'Bench'];
     if (label === 'AutomationBench') return ['Automation', 'Bench'];
     if (label === "Humanity's Last Exam") return ["Humanity's", 'Last Exam'];
     return [label];
   }
 
+  function orderedColumns(columns) {
+    const aa = columns.filter(function (col) { return col.id === 'aaIndex'; });
+    const rest = columns.filter(function (col) { return col.id !== 'aaIndex'; });
+    return aa.concat(rest);
+  }
+
   function fillNumber(parent, cell) {
-    const value = cell.value.trim();
+    const value = String(cell.value).trim();
     const dual = value.match(/^([\d.]+%)\s+partial\s*\/\s*([\d.]+%)\s+strict$/i);
     const num = document.createElement('span');
     num.className = 'ai-bench-num';
     num.textContent = dual ? dual[1] + ' / ' + dual[2] : value;
     parent.append(num);
-    if (dual) {
+    if (cell.effort) {
+      const note = document.createElement('span');
+      note.className = 'ai-bench-note';
+      note.textContent = cell.effort;
+      parent.append(note);
+    } else if (dual) {
       const note = document.createElement('span');
       note.className = 'ai-bench-note';
       note.textContent = 'partial / strict';
@@ -63,10 +76,12 @@
     modelTh.scope = 'col';
     modelTh.textContent = 'Model / lab';
     head.append(modelTh);
-    data.columns.forEach(function (col) {
+    const columns = orderedColumns(data.columns);
+    columns.forEach(function (col) {
       const th = document.createElement('th');
       th.scope = 'col';
-      headerLines(col.label || col.id).forEach(function (line, index) {
+      if (col.id === 'aaIndex') th.className = 'ai-bench-aa';
+      headerLines(col).forEach(function (line, index) {
         if (index) th.append(document.createElement('br'));
         th.append(document.createTextNode(line));
       });
@@ -90,10 +105,12 @@
       name.append(small);
       tr.append(name);
 
-      data.columns.forEach(function (col) {
+      columns.forEach(function (col) {
         const td = document.createElement('td');
+        if (col.id === 'aaIndex') td.className = 'ai-bench-aa';
         const cell = lab.benches ? lab.benches[col.id] : null;
-        if (!cell || typeof cell.value !== 'string' || !cell.value.trim()) {
+        const raw = cell && cell.value != null ? String(cell.value) : '';
+        if (!cell || !raw.trim()) {
           td.className = 'ai-bench-blank';
           td.textContent = BLANK;
         } else if (cell.source) {

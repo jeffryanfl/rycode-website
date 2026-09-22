@@ -1,0 +1,43 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="GLM-5.3 (Z.AI) — A.I. — Rycode"
+  description="GLM-5.3 is Z.AI’s flagship coding and agent model. The lab describes it as the same base as GLM-5.2 with gains from post-training. Weights are public on Hugging Face as `zai-org/GL"
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Open weight</p>
+    <h1 class="ai-model-title">GLM-5.3 (Z.AI)</h1>
+    <p class="ai-model-dek">GLM-5.3 is Z.AI’s flagship coding and agent model. The lab describes it as the same base as GLM-5.2 with gains from post-training. Weights are public on Hugging Face as <code>zai-org/GLM-5.3</code>. Hosted access runs through Z.AI’s API and Coding Plan products.</p>
+    <hr class="ai-model-rule" />
+    <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET), <strong>GLM-5.3 (max)</strong> scores <strong>45</strong>. The lighter sibling <strong>GLM-5.3-Flash</strong> scores <strong>42</strong>. AA lists MiMo-V2.6-Pro ahead of GLM-5.3 among open weights on that fetch.</p>
+    <h2 class="ai-model-section">Training</h2>
+    <p>Z.AI states that GLM-5.3 keeps the GLM-5.2 base and improves via post-training aimed at complex software engineering and long-horizon agent work. The research paper cited on the Hugging Face card is *GLM-5: from Vibe Coding to Agentic Engineering* (arXiv:2602.15763). Full dataset mix and FLOPs are not restated here beyond what the lab publishes.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Reasoning is always on. Effort levels are <code>low</code>, <code>high</code>, and <code>max</code> (default <code>max</code>). Text-only input on the docs page. Tool calling, streaming, structured output, and context caching are listed as supported. API protocols include OpenAI Chat Completions, OpenAI Responses, and Anthropic Messages via Z.AI endpoints.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Documented context window: <strong>1M tokens</strong>. Maximum output length on the docs page: <strong>128K tokens</strong>.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Mixture-of-Experts architecture. Hugging Face and AA open-source materials list about <strong>753B total</strong> parameters with about <strong>40B active</strong> at inference. Serving recipes exist for SGLang, vLLM, TokenSpeed, Transformers, KTransformers, and Unsloth.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Prefer Z.AI / Hugging Face tables for lab harness claims (coding, cyber, agent suites). Prefer AA for cross-lab Index comparison. Do not paste lab announce scores into AA Index cells. AA Index for GLM-5.3 (max): <strong>45</strong>; GLM-5.3-Flash: <strong>42</strong> (<a href="https://artificialanalysis.ai/leaderboards/models">leaderboard</a>, 22 Sep 2026 ET).</p>
+    <h2 class="ai-model-section">Hardware and weights</h2>
+    <p>Open weights: <a href="https://huggingface.co/zai-org/GLM-5.3">zai-org/GLM-5.3</a>. License on Hugging Face is tagged <code>other</code> (custom glm-5.3 license on the model card). Read that license before redistribution or commercial packaging.</p>
+    <h2 class="ai-model-section">Access</h2>
+    <ul class="ai-model-sources">
+      <li>Chat / product: <a href="https://z.ai/">z.ai</a></li>
+      <li>Docs: <a href="https://docs.z.ai/guides/llm/glm-5.3">GLM-5.3 guide</a></li>
+      <li>API model id commonly documented as <code>glm-5.3</code></li>
+    </ul>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.z.ai/guides/llm/glm-5.3">Z.AI GLM-5.3 docs</a></li>
+      <li><a href="https://huggingface.co/zai-org/GLM-5.3">Hugging Face: zai-org/GLM-5.3</a></li>
+      <li><a href="https://z.ai/">Z.AI home</a></li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">AA LLM leaderboard</a> (secondary, Index)</li>
+    </ul>
+  </article>
+</Layout>

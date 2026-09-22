@@ -1,0 +1,64 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const rows = [
+  {
+    href: '/ai/models/open-weight/mimo/',
+    title: 'MiMo-V2.6-Pro',
+    dek: 'Xiaomi. Downloadable weights near the closed frontier.',
+    meta: ['AA Index 46'],
+  },
+  {
+    href: '/ai/models/open-weight/glm-5-3/',
+    title: 'GLM-5.3',
+    dek: 'Z.AI. Max effort on the AA Index.',
+    meta: ['AA Index 45'],
+  },
+  {
+    href: '/ai/models/open-weight/qwen/',
+    title: 'Qwen3.8 Max',
+    dek: 'Alibaba. Open checkpoint noted beside the Max SKU.',
+    meta: ['AA Index 45'],
+  },
+  {
+    href: '/ai/models/open-weight/step-5/',
+    title: 'Step 5 Preview',
+    dek: 'StepFun. API live. Weights dated 15 Oct 2026.',
+    meta: ['Stub · AA Index 44'],
+  },
+  {
+    href: '/ai/models/open-weight/kimi-k3/',
+    title: 'Kimi K3',
+    dek: 'Moonshot. Max effort on the AA Index.',
+    meta: ['AA Index 44'],
+  },
+];
+---
+
+<Layout
+  title="Open-weight frontier — A.I. — Rycode"
+  description="Downloadable frontier weights. Llama stays under Meta."
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">Open-weight frontier</h1>
+    <p class="ai-lab-dek">Open weight means you can download the parameters and run them yourself. It does not always mean a permissive license. This hub is the Artificial Analysis open-weight head as of 22 Sep 2026. Llama stays under Meta. DeepSeek stays under its own lab.</p>
+  </div>
+
+  <ol class="ai-lab-rows">
+    {rows.map((row) => (
+      <li>
+        <a href={row.href}>
+          <span class="ai-lab-row-title">{row.title}</span>
+          <span class="ai-lab-row-dek">{row.dek}</span>
+          {row.meta.map((line) => (
+            <span class="ai-lab-row-meta">{line}</span>
+          ))}
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  <p class="ai-lab-note">AA Index is an independent composite (v4.3.2), not a lab announce score. Effort labels matter when you compare rows.</p>
+</Layout>
