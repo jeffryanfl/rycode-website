@@ -11,27 +11,22 @@ import '../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">Frontier models</p>
     <h1 class="ai-model-title">Claude Haiku 4.5</h1>
-    <p class="ai-model-dek">Fastest near-frontier model for cost-sensitive work and sub-agents.</p>
+    <p class="ai-model-dek">Claude Haiku 4.5 is Anthropic’s fastest near-frontier model for cost-sensitive work and sub-agents. The API id is <code>claude-haiku-4-5-20251001</code> (alias <code>claude-haiku-4-5</code>). Pricing is $1 input and $5 output per million tokens.</p>
     <hr class="ai-model-rule" />
-
     <h2 class="ai-model-section">Training</h2>
-    <p>Reliable knowledge cutoff: February 2025. Training data cutoff: July 2025 (older than the Claude 5.x line). Parameter count, FLOPs, dataset mix, and any RLHF / RLVR / RLAIF recipe tied to this SKU: UNKNOWN.</p>
-
+    <p>Anthropic lists a reliable knowledge cutoff of February 2025 and a training data cutoff of July 2025 (older than the Claude 5.x line). Parameter count, training FLOPs, and the full post-training recipe for this SKU are not published on the models overview or choosing guide.</p>
     <h2 class="ai-model-section">Inference</h2>
-    <p>Extended thinking (not adaptive). The effort parameter is not supported. Latency class is the fastest in the current Claude lineup.</p>
-
+    <p>Extended thinking is supported (not adaptive thinking). The effort parameter is not supported. Relative to the current Claude lineup, Haiku is the fastest latency class.</p>
     <h2 class="ai-model-section">Context</h2>
-    <p>200K token context window. 64K max output tokens. Modalities: text and image in, text out; multilingual; vision; tool use.</p>
-
+    <p>The documented context window is 200K tokens. Max output is 64K tokens. Inputs are text and images; output is text. The model supports multilingual use, vision, and tool use.</p>
     <h2 class="ai-model-section">Methods</h2>
-    <p>Extended thinking plus tools. Exact train-time RL recipe at SKU level: UNKNOWN.</p>
-
+    <p>Extended thinking plus tools are what Anthropic names for this SKU.</p>
     <h2 class="ai-model-section">Benchmarking</h2>
-    <p>UNKNOWN. No lab-published score table for Claude Haiku 4.5 appears in our sources. Do not invent scores.</p>
-
+    <p>Anthropic has not published a Haiku 4.5 score table on the models overview or choosing guide pages cited here.</p>
     <h2 class="ai-model-section">Hardware</h2>
-    <p>Anthropic trains and runs Claude on AWS Trainium, Google TPUs, and NVIDIA GPUs. Amazon is the primary cloud and training partner. More than 1 million Trainium2 chips in use as of April 2026. Per-SKU serving silicon: UNKNOWN. Buyers purchase API tokens, not a named Claude GPU SKU.</p>
-
+    <p>Anthropic trains and runs Claude on AWS Trainium, Google TPUs, and NVIDIA GPUs. Amazon is the primary cloud and training partner. Anthropic reported more than 1 million Trainium2 chips in use as of April 2026. Per-SKU serving silicon is not published. Buyers purchase API tokens, not a named Claude GPU SKU.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Pricing is $1 input and $5 output per million tokens.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://platform.claude.com/docs/en/models/overview">Models overview</a></li>

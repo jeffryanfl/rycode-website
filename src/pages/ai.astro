@@ -86,6 +86,23 @@ import '../styles/ai.css';
     </section>
   </div>
 
+  <section class="ai-bench" id="aiBench" hidden aria-labelledby="ai-bench-heading">
+    <div class="ai-bench-plate">
+      <p class="ai-bench-kicker">Rycode · /ai · bench table · lane B</p>
+      <h2 class="ai-bench-title" id="ai-bench-heading">Highest-reasoning / flagship by lab</h2>
+      <p class="ai-bench-sub" data-ai-bench-asof>Shared benches · living pack</p>
+      <p class="ai-bench-read">Blanks mean no shared primary for that cell; bench versions differ by lab.</p>
+      <div class="ai-bench-wrap">
+        <table class="ai-bench-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="ai-bench-feed">Feed ships as <code>public/ai-benchmarks.json</code></p>
+    </div>
+  </section>
+  <script is:inline src="/ai-benchmarks.js" defer></script>
+
   <section class="ai-hardware" aria-labelledby="ai-hardware">
     <h2 class="ai-kicker" id="ai-hardware">Hardware</h2>
     <a class="ai-lab-card ai-hardware-card" href="/ai/hardware/">

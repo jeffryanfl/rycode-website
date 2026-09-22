@@ -11,47 +11,34 @@ import '../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">TypeSafe · System One</p>
     <h1 class="ai-model-title">Jev</h1>
-    <p class="ai-model-dek">Jev is TypeSafe’s first public System One model: a decision model for software, not a chat model for people. You send program state plus typed questions; you get typed answers with probabilities (and confidence on Choice and Score). Early access as of the Sep 15, 2026 announce. Docs default / alias: <code>jev-latest</code> (also <code>jev-1.13</code> in jaggedness notes).</p>
+    <p class="ai-model-dek">Part of the <a href="/ai/models/typesafe/">TypeSafe</a> lab. Concept: <a href="/ai/models/typesafe/system-one/">System One</a>.</p>
     <p class="ai-model-note">Longer read: <a href="/ai/chat-models-write-strings-system-one-returns-decisions/">Chat models write strings. System One returns typed decisions.</a></p>
     <hr class="ai-model-rule" />
-
+    <p>Jev is TypeSafe’s first public System One model: a decision model for software, not a chat model for people. You send program state plus typed questions; you get typed answers with probabilities (and confidence on Choice and Score). Early access as of the 15 Sep 2026 announce. Docs default alias is <code>jev-latest</code> (also <code>jev-1.13</code> in jaggedness notes).</p>
     <h2 class="ai-model-section">Training</h2>
-    <p>Company training method name: Reinforcement Learning for Calibrated Decisions (RLCD). TypeSafe contrasts this with RLHF (human preference for chat) and RLVR (verifiable rewards). Parameter count, FLOPs, dataset mix, and full train recipe: UNKNOWN. Knowledge cutoff: UNKNOWN.</p>
-
+    <p>TypeSafe names the training method Reinforcement Learning for Calibrated Decisions (RLCD). The company contrasts RLCD with RLHF (human preference for chat) and RLVR (verifiable rewards). Parameter count, training FLOPs, dataset mix, and knowledge cutoff are not published on the announce or docs pages cited here.</p>
     <h2 class="ai-model-section">Inference</h2>
-    <p>Parallel sampling of decisions in one query (company claim), not autoregressive token generation. Claimed end-to-end response time on the announce page: about 70–500 ms for System One–shaped queries (vendor; West Coast laptop runs noted as nuance). HTTP: <code>POST /v1/systemone</code>. Input modalities today: text only (strings, JSON objects, arrays of text). Images, audio, and video: not supported yet. Output: typed structured values, not generated prose.</p>
-
+    <p>TypeSafe describes parallel sampling of decisions in one query, not autoregressive token generation. The announce page claims about 70–500 ms end-to-end response time for System One shaped queries (vendor timing; West Coast laptop runs noted as nuance). HTTP endpoint is <code>POST /v1/systemone</code>. Input modalities today are text only (strings, JSON objects, arrays of text). Images, audio, and video are not supported yet. Output is typed structured values, not generated prose.</p>
     <h2 class="ai-model-section">Context</h2>
-    <p>Exact context window size: UNKNOWN (docs point at a live Models page; numeric limit not pulled for this card). Company guidance: send only state the question needs; unrelated detail hurts accuracy (<code>jev-1.13</code> jaggedness).</p>
-
+    <p>TypeSafe has not published a numeric context window on the docs pages cited here. Company guidance: send only the state the question needs; unrelated detail hurts accuracy (<code>jev-1.13</code> jaggedness notes).</p>
     <h2 class="ai-model-section">Methods</h2>
     <p>Three primitives, mixable in one call, evaluated in parallel against the same state:</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
-        <thead>
-          <tr>
-            <th scope="col">Primitive</th>
-            <th scope="col">Returns (company docs)</th>
-          </tr>
-        </thead>
+        <thead><tr><th scope="col">Primitive</th><th scope="col">Returns (company docs)</th></tr></thead>
         <tbody>
           <tr><td>Choice</td><td>choice, probabilities, confidence</td></tr>
           <tr><td>Score</td><td>score, probabilities, confidence</td></tr>
           <tr><td>Noul</td><td>noul (0–1)</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Compose judgments in application code (branch, threshold, escalate). Docs say calibration is across groups of predictions and does not guarantee any single answer is correct. Generation of free text is out of scope. Use a generative model for that.</p>
-
+        </tbody></table></div>
+    <p>Compose judgments in application code (branch, threshold, escalate). Docs say calibration is across groups of predictions and does not guarantee any single answer is correct. Free-text generation is out of scope; use a generative model for that.</p>
+    <p>Use Jev for atomic decisions your code will act on: classify, route, score, extract, branch. Do not use it to write chat replies, generate code, or invent free text. Known sharp edges: <a href="/ai/models/typesafe/jaggedness/">Jaggedness</a>.</p>
     <h2 class="ai-model-section">Benchmarking</h2>
-    <p>TypeSafe’s public stance: no standard public-benchmark table in model releases; new evals as dated snapshots then retired (antibenchmaxxing post, Sep 11, 2026). Workflow evals on the announce page compare models inside fixed code graphs against a reference average of large chat models (blog names GPT-6 Astra and Claude Fable 5.1). Homepage markets “193.6x Faster, 444.6x Cheaper” on those System One workflow tasks. That figure is a vendor claim with blog caveats; not an independent third-party scorecard. Independent Arena / HLE / GPQA-style scores for Jev: UNKNOWN.</p>
-
+    <p>TypeSafe’s public stance is that it does not ship a standard public-benchmark table in model releases. New evals are dated snapshots, then retired (antibenchmaxxing post, 11 Sep 2026). Workflow evals on the announce page compare models inside fixed code graphs against a reference average of large chat models (the blog names GPT-6 Astra and Claude Fable 5.1). The homepage markets “193.6x Faster, 444.6x Cheaper” on those System One workflow tasks. That figure is a vendor claim with blog caveats, not an independent third-party scorecard. Independent Arena, HLE, or GPQA-style scores for Jev are not on the pages cited here.</p>
     <h2 class="ai-model-section">Hardware</h2>
-    <p>Training and serving silicon, cluster size, and chip counts: UNKNOWN on TypeSafe pages fetched 20 Sep 2026.</p>
-
-    <h2 class="ai-model-section">Access and pricing (vendor)</h2>
-    <p>Early access / waitlist. Announce comparison table: input $0.042 per million tokens ($42 per billion input tokens on the homepage); output tokens described as free / too cheap to meter. Sustainability of pricing: company says long-term proof still needed. Schema / type-matching: company claims type errors are structurally impossible given predefined output shapes; “zero hallucinations” marketing should be read as that claim, not as “never wrong.”</p>
-
+    <p>TypeSafe has not published training or serving silicon details for Jev on the pages cited here.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Early access / waitlist. The announce comparison table lists input at $0.042 per million tokens ($42 per billion input tokens on the homepage). Output tokens are described as free or too cheap to meter. The company says long-term pricing sustainability still needs proof. Schema and type-matching: TypeSafe claims type errors are structurally impossible given predefined output shapes. Marketing that says “zero hallucinations” should be read as that claim, not as “never wrong.”</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">Introducing System One Models &amp; Jev</a> (15 Sep 2026)</li>
@@ -59,7 +46,7 @@ import '../../../../styles/ai.css';
       <li><a href="https://typesafe.ai/">TypeSafe homepage</a></li>
       <li><a href="https://docs.typesafe.ai/introduction.md">Docs: Introduction</a></li>
       <li><a href="https://docs.typesafe.ai/concepts/system-one.md">Docs: System One</a></li>
-      <li><a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13.md">Docs: Jev 1.13 jaggedness</a> (reviewed 17 Sep 2026)</li>
+      <li><a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13.md">Docs: Jev 1.13 jaggedness</a></li>
     </ul>
   </article>
 </Layout>

@@ -11,78 +11,28 @@ import '../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">xAI · current</p>
     <h1 class="ai-model-title">Grok 4.7</h1>
-    <p class="ai-model-dek">Grok 4.7 is SpaceXAI / xAI’s frontier model for coding, agentic tasks, and knowledge work. API id: <code>grok-4.7</code>. Announce date: 21 Sep 2026. Available in Cursor, Grok Build, the Grok API, and partner harnesses / routers / clouds. Consumer web, mobile, and Grok-in-X: later (model card).</p>
+    <p class="ai-model-dek">Grok 4.7 is xAI’s frontier model for coding, agentic tasks, and knowledge work. The API id is <code>grok-4.7</code>. It shipped on 21 Sep 2026 for Cursor, Grok Build, the Grok API, and partner gateways. Consumer web, mobile, and Grok on X come later, per the model card.</p>
     <hr class="ai-model-rule" />
-
     <h2 class="ai-model-section">Training</h2>
-    <p>Company: new, larger base model than Grok 4.6; longer reinforcement-learning run on a harder task mix weighted toward multi-hour problems; improved self-verification and long-context management; trained to natively understand the Grok Bot harness. Model card notes supplemental training on anonymized Cursor workflow data. Parameter count, FLOPs, full dataset mix: UNKNOWN on announce and docs (do not use 2.1T rumor posts). Docs overview: knowledge cutoff May 2026. Model card (21 Sep 2026): pretraining data cutoff June 2026; supplemental training uses data generated as late as August 2026. Do not copy Grok 4.6’s Feb 1, 2026 cutoff onto 4.7.</p>
-
+    <p>xAI describes a larger base than Grok 4.6, with a longer reinforcement-learning run on harder multi-hour tasks, stronger self-checking, and better long-context management. The model was also trained to work natively with the Grok Bot harness. The model card notes supplemental training on anonymized Cursor workflow data. Pretraining data cuts off in June 2026. Supplemental training uses data generated as late as August 2026. Parameter count and training FLOPs are not published on the announce or docs pages.</p>
     <h2 class="ai-model-section">Inference</h2>
-    <p>Reasoning efforts: <code>low</code>, <code>medium</code>, <code>high</code> (default), <code>xhigh</code>. Function calling and structured outputs: yes. Modalities: text and image in, text out. Tools on the overview: function calling, web search, X search, code execution. Batch API: not supported. Rate limits (docs): 150 requests/sec; 50,000,000 tokens/min. Regions on the model page: us-east-1, us-west-2, us-central-1. Also served on the US regional endpoint <code>https://us.api.x.ai/v1</code> (10% token premium; fetched 21 Sep 2026).</p>
-    <p>Fast variant: same model on faster infrastructure, billed at twice the standard token rates. Live docs: available only in Cursor and Grok Build; not on the public xAI API; not in Grok Build’s free tier. No public API slug listed (not <code>grok-4.7-fast</code> on the models table).</p>
-
+    <p>Reasoning effort can be set to <code>low</code>, <code>medium</code>, <code>high</code> (default), or <code>xhigh</code>. The model accepts text and images and returns text. Function calling and structured outputs are supported. Batch API is not. xAI also serves a faster variant at twice the output speed and twice the price. Docs list rate limits of 150 requests per second and 50 million tokens per minute, in us-east-1, us-west-2, and us-central-1.</p>
     <h2 class="ai-model-section">Context</h2>
-    <p>500,000 token context window. No text output limit (overview).</p>
-
+    <p>The documented context window is 500,000 tokens.</p>
     <h2 class="ai-model-section">Methods</h2>
-    <p>Configurable reasoning effort. Exact train-time RL recipe beyond announce framing: UNKNOWN.</p>
-
+    <p>Grok 4.7 uses configurable reasoning effort for longer agent runs. The model docs list function calling and structured outputs. Reasoning effort can be set from low through xhigh.</p>
     <h2 class="ai-model-section">Benchmarking</h2>
-    <p>Vendor scores on the 21 Sep 2026 announce comparison table (vs Grok 4.6, GPT-5.6 Sol, Fable 5.1). Independent third-party leaderboards: UNKNOWN here. Do not invent.</p>
-    <div class="ai-model-table-wrap">
-      <table class="ai-model-table">
-        <thead>
-          <tr>
-            <th scope="col">Benchmark</th>
-            <th scope="col">Grok 4.7</th>
-            <th scope="col">Grok 4.6</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>CursorBench 4.0</td><td>46.3%</td><td>40.4%</td></tr>
-          <tr><td>DeepSWE v1.1</td><td>71.0%*</td><td>65.2%</td></tr>
-          <tr><td>EEBench</td><td>64.0%</td><td>53.0%</td></tr>
-          <tr><td>AA Briefcase v1.1</td><td>1,657</td><td>1,546</td></tr>
-          <tr><td>Terminal-Bench 4.0</td><td>38.0%</td><td>20.3%</td></tr>
-          <tr><td>Harvey Legal Agent Benchmark</td><td>19.6%</td><td>15.8%</td></tr>
-          <tr><td>HealthBench Professional</td><td>56.7%</td><td>48.5%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>* DeepSWE 4.7 is a high-effort score (announce). GPT-5.6 Sol and Fable 5.1 columns live on the same table; not copied as independent scores.</p>
-
+    <p>xAI publishes side-by-side scores on the announce page, including CursorBench 4.0, DeepSWE v1.1, EEBench, AA Briefcase v1.1, Terminal-Bench 4.0, the Harvey Legal Agent Benchmark, and HealthBench Professional. On that table, CursorBench 4.0 is 46.3% for Grok 4.7 versus 40.4% for Grok 4.6. DeepSWE v1.1 is 71.0% at high effort for Grok 4.7 versus 65.2% for Grok 4.6. The announce and model card are the sources for the figures above. The model card adds further coding, engineering, safety, and cyber results.</p>
     <h2 class="ai-model-section">Hardware</h2>
-    <p>Training / serving silicon and cluster size for Grok 4.7: UNKNOWN on announce and model docs. Campus context stays on <a href="/ai/hardware/memphis-colossus/">Memphis / Colossus</a> when published, not invented here.</p>
-
-    <h2 class="ai-model-section">Access and pricing (vendor)</h2>
-    <p>Copied from docs.x.ai, 21 Sep 2026. Per 1M tokens. Long-context tier applies when the prompt is ≥ 200k tokens (higher rate for all tokens in that request).</p>
-    <div class="ai-model-table-wrap">
-      <table class="ai-model-table">
-        <thead>
-          <tr>
-            <th scope="col">Band</th>
-            <th scope="col">Input</th>
-            <th scope="col">Cached</th>
-            <th scope="col">Output</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>&lt; 200k</td><td>$2.00</td><td>$0.50</td><td>$6.00</td></tr>
-          <tr><td>≥ 200k</td><td>$4.00</td><td>$1.00</td><td>$12.00</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Grok 4.7 Fast (Cursor and Grok Build only; not public API): twice those rates. Below 200k: $4 / $1 / $12. Above 200k: $6 / $1.50 / $18 (pricing page, 21 Sep 2026).</p>
-    <p>Re-check the live models page before you quote a dollar.</p>
-
+    <p>xAI has not published training or serving silicon details for Grok 4.7 on the announce or model docs. Campus-scale hardware belongs on the separate hardware map when those facts are public.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Under 200k prompt tokens, docs list $2.00 input, $0.50 cached input, and $6.00 output per million tokens. At or above 200k prompt tokens, those rates become $4.00, $1.00, and $12.00 for the whole request. The announce also describes a fast variant at twice the price for twice the output speed.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://x.ai/news/grok-4-7">Introducing Grok 4.7</a></li>
-      <li><a href="https://docs.x.ai/developers/models/grok-4.7">Docs: Grok 4.7</a> (fetched 21 Sep 2026)</li>
-      <li><a href="https://docs.x.ai/developers/grok-4-7">Grok 4.7 overview</a></li>
-      <li><a href="https://docs.x.ai/developers/models">Models index</a></li>
-      <li><a href="https://docs.x.ai/developers/pricing">Pricing</a></li>
+      <li><a href="https://docs.x.ai/developers/models/grok-4.7">Docs: Grok 4.7</a></li>
       <li><a href="https://media.x.ai/v1/website/4p7card-5eccc980.pdf">Model Card: Grok 4.7 (PDF)</a></li>
+      <li><a href="https://docs.x.ai/developers/models">Models index</a></li>
     </ul>
   </article>
 </Layout>

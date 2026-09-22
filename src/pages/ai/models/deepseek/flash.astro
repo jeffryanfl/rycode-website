@@ -10,53 +10,36 @@ import '../../../../styles/ai.css';
 >
   <article class="ai-model">
     <p class="ai-model-kicker">DeepSeek · current</p>
-    <h1 class="ai-model-title">Flash</h1>
-    <p class="ai-model-dek">API id: <code>deepseek-flash</code>. Model version on Models &amp; Pricing (fetched 21 Sep 2026): <strong>DeepSeek-V4.1-Flash</strong>. This is DeepSeek’s current recommended API model. Legacy names <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> still route here and bill at Flash prices.</p>
+    <h1 class="ai-model-title">DeepSeek Flash (V4.1-Flash)</h1>
+    <p class="ai-model-dek">DeepSeek Flash is DeepSeek’s current recommended API model. The API id is <code>deepseek-flash</code>. The pricing page lists the model version as DeepSeek-V4.1-Flash. Legacy names <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> still route here and bill at Flash prices.</p>
     <hr class="ai-model-rule" />
-
     <h2 class="ai-model-section">Training</h2>
-    <p>Company announce (10 Sep 2026): 552B-parameter MoE; new Causal Encoder–Decoder architecture with 8B active parameters for input and 16B for output; larger-scale RL post-training. Full dataset mix and FLOPs table: UNKNOWN on the pricing page. Knowledge cutoff: UNKNOWN on the pricing page.</p>
-
+    <p>DeepSeek’s 10 Sep 2026 announce describes a 552B-parameter MoE with a Causal Encoder–Decoder architecture (8B active parameters for input, 16B for output) and larger-scale RL post-training. Full dataset mix and FLOPs belong in the tech report on Hugging Face when cited. Knowledge cutoff is not published on the pricing page.</p>
     <h2 class="ai-model-section">Inference</h2>
-    <p>Thinking mode on by default; non-thinking available. Native vision (pricing table: Vision ✓). Tool calls, JSON output, Responses API, Anthropic-compatible API. FIM completion: non-thinking only (beta).</p>
-
+    <p>Thinking mode is on by default; non-thinking is available. Native vision is supported on Flash. Tool calls, JSON output, the Responses API, and an Anthropic-compatible API are supported. FIM completion is non-thinking only (beta).</p>
     <h2 class="ai-model-section">Context</h2>
-    <p>1M token context. Max output 384K (pricing page).</p>
-
+    <p>The documented context window is 1 million tokens. Max output is 384K tokens on the pricing page.</p>
     <h2 class="ai-model-section">Methods</h2>
-    <p>Dual thinking / non-thinking. Effort: <code>low</code> / <code>high</code> / <code>max</code> (docs). Exact train-time RL recipe beyond “larger-scale RL post-training”: UNKNOWN.</p>
-
+    <p>Dual thinking and non-thinking modes. Effort levels are <code>low</code>, <code>high</code>, and <code>max</code> in the docs. Beyond “larger-scale RL post-training,” the exact train-time RL recipe is not published on the announce page.</p>
     <h2 class="ai-model-section">Benchmarking</h2>
-    <p>Announce claims vendor results ahead of flagship models including DeepSeek-V4-Pro. Changelog (10 Sep 2026) prints a vendor eval list for V4.1-Flash. Independent Arena / HLE tables: do not invent. Prefer DeepSeek’s own changelog or tech report if you quote a number.</p>
-
+    <p>The announce claims benchmark results ahead of flagship models including DeepSeek-V4-Pro. Specific shared leaderboard numbers (HLE, Arena, and similar) are not copied here from that announce extract. Prefer the DeepSeek tech report or Hugging Face materials when you need dated figures.</p>
     <h2 class="ai-model-section">Hardware</h2>
-    <p>KV cache claim vs prior gen (vendor announce): 1/4 HBM and 1/8 SSD storage. Training cluster size: UNKNOWN. Open weights: <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash</a>.</p>
-
-    <h2 class="ai-model-section">Access and pricing (vendor)</h2>
-    <p>Copied from Models &amp; Pricing, 21 Sep 2026. Per 1M tokens. Off-peak is half of peak. Peak hours: 01:00–04:00 and 06:00–10:00 UTC, Monday–Friday, excluding Chinese public holidays. Concurrency limit listed: 2500.</p>
+    <p>The announce claims KV cache use of about 1/4 HBM and 1/8 SSD storage versus the prior generation. Training cluster size is not published. Open weights: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Base URL is <code>https://api.deepseek.com</code> (OpenAI format) or <code>https://api.deepseek.com/anthropic</code>. Peak and off-peak pricing (off-peak is half of peak). Per 1M tokens on the pricing page:</p>
     <div class="ai-model-table-wrap">
-      <table class="ai-model-table">
-        <thead>
-          <tr>
-            <th scope="col">Band</th>
-            <th scope="col">Off-peak</th>
-            <th scope="col">Peak</th>
-          </tr>
-        </thead>
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col"></th><th scope="col">Off-peak</th><th scope="col">Peak</th></tr></thead>
         <tbody>
           <tr><td>Input cache hit</td><td>$0.003</td><td>$0.006</td></tr>
           <tr><td>Input cache miss</td><td>$0.15</td><td>$0.30</td></tr>
           <tr><td>Output</td><td>$0.60</td><td>$1.20</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Re-check the live pricing page before you quote a dollar.</p>
-
+        </tbody></table></div>
+    <p>Peak hours (docs): 01:00–04:00 and 06:00–10:00 UTC, Monday through Friday, excluding Chinese public holidays. Concurrency limit listed: 2500.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
-      <li><a href="https://api-docs.deepseek.com/quick_start/pricing">Models &amp; Pricing</a> (fetched 21 Sep 2026)</li>
-      <li><a href="https://api-docs.deepseek.com/news/news260910">DeepSeek-V4.1-Flash announce</a></li>
-      <li><a href="https://api-docs.deepseek.com/updates">Change log</a></li>
+      <li><a href="https://api-docs.deepseek.com/quick_start/pricing">Models &amp; Pricing</a></li>
+      <li><a href="https://api-docs.deepseek.com/news/news260910">V4.1-Flash announce</a></li>
       <li><a href="https://api-docs.deepseek.com/guides/thinking_mode/">Thinking mode</a></li>
       <li><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">Hugging Face: DeepSeek-V4.1-Flash</a></li>
     </ul>

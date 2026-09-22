@@ -7,6 +7,7 @@
   --ai-paper: #080a10;
   --ai-ink: #f8fafc;
   --ai-dim: #8b919a;
+  --ai-faint: rgba(248, 250, 252, 0.42);
   --ai-hair: rgba(248, 250, 252, 0.16);
   --ai-pad: clamp(1.4rem, 5.2vw, 3.75rem);
   background: var(--ai-paper);
@@ -294,6 +295,151 @@ h1.ai-identity {
 .ai-lab-card:hover,
 .ai-lab-card:focus-visible {
   border-color: rgba(248, 250, 252, 0.32);
+}
+
+.ai-bench {
+  margin-top: 2.75rem;
+}
+
+.ai-bench[hidden] {
+  display: none;
+}
+
+.ai-bench-plate {
+  border: 1px solid rgba(248, 250, 252, 0.28);
+  padding: 1.15rem 1.15rem 0.95rem;
+}
+
+.ai-bench-kicker,
+.ai-bench-sub,
+.ai-bench-read,
+.ai-bench-feed {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  color: var(--ai-dim);
+}
+
+.ai-bench-title {
+  margin: 0.35rem 0 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ai-ink);
+}
+
+.ai-bench-sub {
+  margin-top: 0.2rem;
+}
+
+.ai-bench-read {
+  margin: 0.15rem 0 0.85rem;
+  letter-spacing: 0;
+}
+
+.ai-bench-wrap {
+  overflow-x: auto;
+}
+
+.ai-bench-table {
+  width: 100%;
+  min-width: 52rem;
+  border-collapse: collapse;
+  border: 1px solid rgba(248, 250, 252, 0.28);
+  background: rgba(248, 250, 252, 0.03);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.25;
+  color: var(--ai-ink);
+}
+
+.ai-bench-table th,
+.ai-bench-table td {
+  padding: 0.55rem 0.45rem;
+  border-bottom: 1px solid rgba(248, 250, 252, 0.14);
+  border-left: 1px solid rgba(248, 250, 252, 0.14);
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
+.ai-bench-table th:first-child,
+.ai-bench-table td:first-child,
+.ai-bench-table th[scope='row'] {
+  border-left: 0;
+  text-align: left;
+  padding-left: 0.7rem;
+  min-width: 9.5rem;
+}
+
+.ai-bench-table thead th {
+  background: rgba(248, 250, 252, 0.05);
+  color: var(--ai-dim);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  border-bottom-color: rgba(248, 250, 252, 0.28);
+}
+
+.ai-bench-table th[scope='row'] {
+  border-right: 1px solid rgba(248, 250, 252, 0.28);
+  font-weight: 400;
+}
+
+.ai-bench-stripe th,
+.ai-bench-stripe td {
+  background: rgba(248, 250, 252, 0.03);
+}
+
+.ai-bench-model {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ai-ink);
+  text-decoration: none;
+}
+
+.ai-bench-lab {
+  display: block;
+  margin-top: 0.12rem;
+  color: var(--ai-dim);
+  font-size: 0.64rem;
+  font-weight: 400;
+}
+
+.ai-bench-num,
+.ai-bench-table td a {
+  color: var(--ai-ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ai-bench-note {
+  display: block;
+  margin-top: 0.12rem;
+  color: var(--ai-dim);
+  font-size: 0.62rem;
+  font-weight: 400;
+}
+
+.ai-bench-blank {
+  color: var(--ai-dim);
+  font-weight: 400;
+}
+
+.ai-bench-feed {
+  margin-top: 0.7rem;
+  letter-spacing: 0;
+}
+
+.ai-bench-feed code {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .ai-hardware {
