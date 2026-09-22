@@ -23,7 +23,7 @@ sandbox/
 .claude/
 
 # Astro / Node dependencies and builds
-node_modules/
+node_modules
 .astro/
 dist/
 
