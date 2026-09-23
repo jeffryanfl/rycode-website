@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-22T08:53:00-04:00",
-  "asOfLabel": "Tue 22 Sep · morning",
+  "updated": "2026-09-23T05:15:00-04:00",
+  "asOfLabel": "Wed 23 Sep · morning",
   "lines": [
     {
-      "tag": "OpenWeight",
-      "text": "Xiaomi open-sources MiMo-V2.6; AA Index lists Pro at 46 (open-weight ceiling vs closed…"
+      "tag": "Release",
+      "text": "Anthropic ships Claude Opus 5.5; AA Intelligence Index 58 (max) leads closed models."
     },
     {
       "tag": "Release",
-      "text": "AA: Grok 4.7 scores 46 on Index (xhigh); Coding Agent Index 56 with Grok Build."
+      "text": "OpenAI GPT-6 Sol and Luna live; AA Index Sol 48 / Luna 37 at lower API prices."
     },
     {
       "tag": "Deal",
-      "text": "SoftBank ~$11B notes for OpenAI: price 24 Sep; $10B tranche due ~1 Oct (Reuters)."
+      "text": "SoftBank OpenAI junk notes: >$20B early books; price Thu 24 Sep (Japan Times)."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-22"
+  "date": "2026-09-23"
 }

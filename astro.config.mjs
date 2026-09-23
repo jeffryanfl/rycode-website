@@ -37,6 +37,7 @@ export default defineConfig({
     '/research/ten-thousand-agents-is-not-a-genius': '/ai/ten-thousand-agents-is-not-a-genius/',
     '/research/saaspocalypse': '/economics/saas-barbell-2026/',
     '/systems': 'https://grc.rycode.dev/',
+    '/ai/models/openai/gpt-5-6-sol': '/ai/models/openai/gpt-6-sol/',
   },
   server: {
     host: true,

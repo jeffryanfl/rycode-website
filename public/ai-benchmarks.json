@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-09-22",
-  "updated": "2026-09-22T07:00:00-04:00",
-  "note": "One highest-reasoning / flagship learning-hub model per lab for /ai landing comparison. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only (Architect lock 22 Sep).",
+  "asOf": "2026-09-23",
+  "updated": "2026-09-23T05:15:00-04:00",
+  "note": "One highest-reasoning / flagship learning-hub model per lab for /ai landing comparison. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only (Architect lock 22 Sep). 23 Sep patch: Anthropic living row swaps Fable 5.1 \u2192 Opus 5.5 (AA Index 58 lead; keep denser five-row / one-per-lab). Fable stays on Anthropic door cards. GPT-6 Sol (AA 48) does NOT displace Astra (53); Sol waits on Sol card. Do not expand to six rows for Sol.",
   "columns": [
     {
       "id": "cursorBench",
@@ -50,53 +50,57 @@
   "labs": [
     {
       "lab": "Anthropic",
-      "model": "Claude Fable 5.1",
-      "apiId": "claude-fable-5-1",
-      "doorHref": "/ai/models/anthropic/claude-fable-5-1/",
-      "role": "highest-reasoning widely released Claude",
+      "model": "Claude Opus 5.5",
+      "apiId": "claude-opus-5-5",
+      "doorHref": "/ai/models/anthropic/claude-opus-5-5/",
+      "role": "Claude 5.5 Opus flagship; AA Index lead on 22 Sep 2026 fetch",
       "benches": {
         "cursorBench": {
-          "value": "73.4%",
-          "version": "3.2.0",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "value": "57.8%",
+          "version": "4.0",
+          "notes": "Announce table at max effort. CursorBench 4.0 is not comparable to Fable's older 3.2.0 prints without naming versions.",
+          "source": "https://www.anthropic.com/claude-opus-5-5"
         },
         "deepSwe": null,
         "terminalBench": {
-          "value": "55.8%",
+          "value": "66.4%",
           "version": "4.0",
-          "notes": "Mythos 5.1 60.9% on same announce table",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "notes": "Opus 5.5 at xhigh per Anthropic footnote; production safeguards on.",
+          "source": "https://www.anthropic.com/claude-opus-5-5"
         },
         "osworld": {
-          "value": "77.9% partial / 41.7% strict",
-          "version": "2.0 Aug 2026 task release",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "value": "81.8% partial",
+          "version": "2.0",
+          "notes": "Strict score not printed on the Opus 5.5 announce table used for this pack.",
+          "source": "https://www.anthropic.com/claude-opus-5-5"
         },
         "automationBench": {
-          "value": "31.4%",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "value": "40.0%",
+          "notes": "Zapier early-access; no fallback (safeguard interventions count as failures).",
+          "source": "https://www.anthropic.com/claude-opus-5-5"
         },
         "hle": {
-          "value": "65.0%",
-          "notes": "with tools; 60.9% no tools",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "value": "67.7%",
+          "notes": "with tools",
+          "source": "https://www.anthropic.com/claude-opus-5-5"
         },
         "arcAgi": null,
         "aaIndex": {
-          "value": 53,
+          "value": 58,
           "effort": "max",
-          "aaModelLabel": "Claude Fable 5.1 (max with fallback)",
-          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "aaModelLabel": "Claude Opus 5.5 (max with fallback)",
+          "source": "https://artificialanalysis.ai/models/claude-opus-5-5",
           "sourceKind": "aa",
-          "fetched": "2026-09-22",
-          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh with fallback also 53 on same fetch."
+          "fetched": "2026-09-23",
+          "notes": "AA Intelligence Index from AA Opus 5.5 article/model page 22 Sep 2026; not a lab announce score. Highest Index AA reported on that article."
         }
       },
       "sources": [
-        "https://www.anthropic.com/claude-fable-and-mythos-5-1",
-        "https://platform.claude.com/docs/en/about-claude/models/overview",
-        "https://artificialanalysis.ai/leaderboards/models",
-        "https://artificialanalysis.ai/"
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf",
+        "https://artificialanalysis.ai/articles/claude-opus-5-5",
+        "https://artificialanalysis.ai/models/claude-opus-5-5",
+        "https://artificialanalysis.ai/leaderboards/models"
       ]
     },
     {
