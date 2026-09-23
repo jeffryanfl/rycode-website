@@ -1,18 +1,18 @@
 {
-  "updated": "2026-09-23T08:55:00-04:00",
-  "asOfLabel": "Wed 23 Sep \u00b7 pre-open",
+  "updated": "2026-09-23T16:40:00-04:00",
+  "asOfLabel": "Wed 23 Sep · after-close",
   "lines": [
     {
-      "tag": "Tape",
-      "text": "Premarket muted: ES ~flat, NQ soft after Tue Nasdaq record."
-    },
-    {
       "tag": "Rates",
-      "text": "Tue CMT 10y 4.96%; FedWatch ~50\u201354% Oct hike (secondary)."
+      "text": "CMT 10y 5.11% (+15bp); 2y 4.85%; FedWatch ~70s% Oct hike (sec.)."
     },
     {
-      "tag": "Oil",
-      "text": "Brent under $100; WTI near $89\u201390 on Iran-talk hopes."
+      "tag": "Tape",
+      "text": "Close: SPX 7706 (−0.75%), Dow 51512 (−0.68%), Nasdaq 26936 (−1.13%)."
+    },
+    {
+      "tag": "Fed",
+      "text": "Flash PMI composite 58.4; Barr: further policy adjustments likely."
     }
   ],
   "doorHref": "/economics",
