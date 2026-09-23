@@ -50,7 +50,7 @@ HTML/CSS/JS tools that ship as static files. No Astro in these folders. Live: Co
 | `public/anatomy/` | Explainers (when added) |
 | `public/lab/` | Experiments (when added) |
 | `public/projects/` | Case-study HTML (when added) |
-| `public/fonts/`, `logo.svg`, `og-image.png` | Shared assets |
+| `public/fonts/`, `logo.svg`, `og-hub.png` | Shared assets. Social card is charcoal square Ry over “Rycode”. |
 
 `public/` is copied to the site root. `/systems` is a redirect to https://grc.rycode.dev. A calculator is a file under `public/`.
 

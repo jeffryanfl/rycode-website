@@ -25,22 +25,22 @@ npm run preview    # serves dist/
 ```
 src/pages/     home (`/`, three charcoal doors plus the A.I. brain), Tools, Economics, Risk, A.I. (`/ai`), 404. Systems door goes to https://grc.rycode.dev. Old `/research` URLs redirect.
 src/           layouts, components, styles
-public/        fonts, logo, chrome, og-image.png. HTML apps go here when added.
-scripts/       local helpers, including og-image.html
+public/        fonts, logo, chrome, og-hub.png. HTML apps go here when added.
+scripts/       local helpers, including og-card.html
 ```
 
 The sitemap (`@astrojs/sitemap`) lists Astro routes only. Apps under `public/` ship with the build but are not sitemap entries.
 
 ## Social card
 
-`scripts/og-image.html` is the source for `public/og-image.png` (1200×630). The HTML is gitignored. To regenerate on macOS:
+`scripts/og-card.html` is the source for `public/og-hub.png` (1200×630). Charcoal square Ry over “Rycode”. To regenerate on macOS:
 
 ```bash
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
   --headless --disable-gpu --hide-scrollbars --window-size=1200,660 \
-  --screenshot=og-image-raw.png "file://$(pwd)/scripts/og-image.html"
-sips -c 630 1200 og-image-raw.png --out public/og-image.png
-rm og-image-raw.png
+  --screenshot=og-card-raw.png "file://$(pwd)/scripts/og-card.html"
+sips -c 630 1200 og-card-raw.png --out public/og-hub.png
+rm og-card-raw.png
 ```
 
 ## Deployment
