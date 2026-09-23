@@ -1,0 +1,83 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Claude Opus 5.5 — A.I. — Rycode"
+  description="Claude Opus 5.5 is the first model in Anthropic’s Claude 5.5 family, released 22 September 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Claude Opus 5.5</h1>
+    <p class="ai-model-dek">Claude Opus 5.5 is the first model in Anthropic’s Claude 5.5 family, released 22 September 2026. Anthropic says it matches Claude Fable 5.1 on most work and costs about 40% less to run than Opus 5 on typical workloads. The API id is <code>claude-opus-5-5</code>. Token prices are $4 input and $20 output per million, with cache reads at $0.20 per million.</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Anthropic has not published a parameter count, training FLOPs, or a full post-training recipe for Opus 5.5 on the announce page or system card summary used here. A reliable knowledge cutoff for this SKU was not listed on the Opus 5.5 announce at draft time. Treat cutoff as UNKNOWN until Anthropic’s models overview lists the card.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Adaptive thinking is on. Effort supports <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>. Anthropic reports more than 30% faster generation than Opus 5 at default settings. Fast mode is available in Claude Code and the Claude Platform at $8 input and $40 output per million tokens, up to about 2.5× speed.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context window is 1 million tokens, unchanged from Opus 5. Max output is 128K tokens on the Claude lineup shape used for Opus 5. Inputs are text and images. Output is text. Multilingual use, vision, and tool use apply as with current Claude Opus models.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Opus 5.5 is aimed at agentic coding, computer use, research, and long-horizon professional work. Anthropic ships it with Fable-class safeguards on biology and cybersecurity (fallback to other Claude models when classifiers fire), plus preserved-thinking anti-distillation controls for newer API accounts. External pre-release evaluators named on the announce include Frontier Design and METR. Sonnet 5.5 and Haiku 5.5 are stated as following in the coming weeks.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Numbers below are Anthropic’s Opus 5.5 announce table (adaptive thinking at max effort unless footnoted). Do not mix these with OpenAI harness prints or with Artificial Analysis Index scores.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Opus 5.5</th>
+            <th scope="col">Fable 5.1</th>
+            <th scope="col">Opus 5</th>
+            <th scope="col">GPT-6 Astra</th>
+            <th scope="col">GPT-5.6 Sol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Terminal-Bench 4.0</td><td>66.4%</td><td>55.8%</td><td>52.3%</td><td>57.9%</td><td>37.3%</td></tr>
+          <tr><td>FrontierCode v1.1 (Main)</td><td>54.4%</td><td>50.3%</td><td>48.0%</td><td>53.3%</td><td>47.5%</td></tr>
+          <tr><td>CursorBench 4.0</td><td>57.8%</td><td>51.8%</td><td>46.6%</td><td>-</td><td>41.7%</td></tr>
+          <tr><td>GDPval-AA v2.1 (Elo)</td><td>1846</td><td>1735</td><td>1708</td><td>1542</td><td>1588</td></tr>
+          <tr><td>AutomationBench</td><td>40.0%</td><td>31.4%</td><td>26.9%</td><td>41.4%</td><td>28.8%</td></tr>
+          <tr><td>Humanity&#x27;s Last Exam (with tools)</td><td>67.7%</td><td>65.6%</td><td>63.6%</td><td>57.2%</td><td>-</td></tr>
+          <tr><td>Terminal-Bench-Science 0.1</td><td>58.7%</td><td>52.6%</td><td>29.0%</td><td>64.6%</td><td>22.4%</td></tr>
+          <tr><td>OSWorld 2.0 (partial)</td><td>81.8%</td><td>80.7%</td><td>74.0%</td><td>-</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Anthropic footnotes: Terminal-Bench 4.0 for Opus 5.5 at xhigh; GPT-6 Astra Terminal-Bench at high as reported by OpenAI. Production safeguards were on for Claude runs. Cyber tasks that hit safeguards completed on Opus 4.8. Biology and frontier LLM-development tasks that hit safeguards completed on Opus 5. AutomationBench for Opus 5.5 is Zapier early-access with no fallback (safeguard interventions count as failures). CursorBench here is <strong>4.0</strong>, not the 3.2.0 prints on older Fable pages.</p>
+    <p>Independent Artificial Analysis Intelligence Index (not a lab announce score): Opus 5.5 at max effort with default fallback scores <strong>58</strong>, the highest Index AA reported on that article (22 Sep 2026). Source: <a href="https://artificialanalysis.ai/articles/claude-opus-5-5">AA Opus 5.5 article</a>. Do not paste Index into CursorBench, OSWorld, or ARC cells.</p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Anthropic trains and runs Claude on AWS Trainium, Google TPUs, and NVIDIA GPUs. Amazon is the primary cloud and training partner. Per-SKU serving silicon for Opus 5.5 is not published. Buyers purchase API tokens, not a named Claude GPU SKU.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Opus 5.5</th>
+            <th scope="col">Opus 5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>$4</td><td>$5</td></tr>
+          <tr><td>Output / MTok</td><td>$20</td><td>$25</td></tr>
+          <tr><td>Cache reads / MTok</td><td>$0.20</td><td>$0.50</td></tr>
+          <tr><td>Cache writes / MTok</td><td>$5</td><td>$6.25</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Anthropic states typical workload cost about 40% below Opus 5 after token prices and tokens-per-task. Available on Claude Platform, AWS, Google Cloud, and Microsoft Azure per the announce.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.anthropic.com/claude-opus-5-5">Introducing Claude Opus 5.5</a></li>
+      <li><a href="https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf">Claude Opus 5.5 System Card (PDF)</a></li>
+      <li><a href="https://artificialanalysis.ai/articles/claude-opus-5-5">AA: Claude Opus 5.5 Index article</a> (secondary, Index only)</li>
+      <li><a href="https://artificialanalysis.ai/models/claude-opus-5-5">AA model page</a> (secondary)</li>
+      <li><a href="https://www.anthropic.com/news/anthropic-amazon-compute">Amazon compute partnership (20 Apr 2026)</a> (company hardware context)</li>
+      <li><a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Google/Broadcom compute partnership (6 Apr 2026)</a> (company hardware context)</li>
+    </ul>
+  </article>
+</Layout>

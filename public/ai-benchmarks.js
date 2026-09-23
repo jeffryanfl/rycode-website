@@ -12,6 +12,7 @@
 
   function shortModel(lab) {
     const model = lab.model || lab.lab || '';
+    if (model.indexOf('Opus 5.5') !== -1) return 'Opus 5.5';
     if (model.indexOf('Fable') !== -1) return 'Fable 5.1';
     if (model.indexOf('Astra') !== -1) return 'Astra';
     if (model.indexOf('Grok') !== -1) return 'Grok 4.7';
@@ -58,6 +59,12 @@
       note.className = 'ai-bench-note';
       note.textContent = 'partial / strict';
       parent.append(note);
+    }
+    if (cell.version) {
+      const ver = document.createElement('span');
+      ver.className = 'ai-bench-note';
+      ver.textContent = String(cell.version);
+      parent.append(ver);
     }
   }
 

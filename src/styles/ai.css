@@ -324,6 +324,117 @@ h1.ai-identity {
   border-color: rgba(248, 250, 252, 0.32);
 }
 
+.ai-papers-kicker {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ai-dim);
+}
+
+.ai-papers-kicker + .ai-papers-chips,
+.ai-papers-homes + .ai-papers-kicker {
+  margin-top: 0.95rem;
+}
+
+.ai-papers-homes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.ai-papers-homes a {
+  color: var(--ai-ink);
+  text-decoration: none;
+}
+
+.ai-papers-homes a + a::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.72em;
+  margin: 0 0.7rem;
+  background: #8b919a;
+  vertical-align: -0.08em;
+}
+
+.ai-papers-homes a:hover,
+.ai-papers-homes a:focus-visible {
+  color: #ffffff;
+}
+
+.ai-papers-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ai-papers-chips a {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  max-width: 100%;
+  padding: 0.4rem 0.6rem;
+  background: #080a10;
+  border: 1px solid #8b919a;
+  color: var(--ai-ink);
+  text-decoration: none;
+}
+
+.ai-papers-chip-date {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: var(--ai-dim);
+}
+
+.ai-papers-chip-title {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ai-ink);
+}
+
+.ai-papers-chip-source {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ai-dim);
+}
+
+.ai-papers-chips a:hover .ai-papers-chip-title,
+.ai-papers-chips a:focus-visible .ai-papers-chip-title {
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .ai-papers-homes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 0.85rem;
+  }
+
+  .ai-papers-homes a + a::before {
+    content: none;
+  }
+
+  .ai-papers-chips {
+    flex-direction: column;
+  }
+}
+
 .ai-bench {
   margin-top: 0.25rem;
 }

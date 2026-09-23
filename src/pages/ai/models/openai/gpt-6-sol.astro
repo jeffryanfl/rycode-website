@@ -1,0 +1,59 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="GPT-6 Sol — A.I. — Rycode"
+  description="GPT-6 Sol is OpenAI’s GPT-6 mid-tier model for complex coding and agentic workflows, released 22 September 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">GPT-6 Sol</h1>
+    <p class="ai-model-dek">GPT-6 Sol is OpenAI’s GPT-6 mid-tier model for complex coding and agentic workflows, released 22 September 2026 alongside <a href="/ai/models/openai/gpt-6-luna/">GPT-6 Luna</a>. It builds on GPT-6 Astra’s alignment work at lower API prices than GPT-5.6 Sol. The model id is <code>gpt-6-sol</code>. Pricing is $2 input and $10 output per million tokens (cached input $0.20; cache writes $2.50).</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Knowledge cutoff on the Sol model page is April 20, 2026. Parameter count, training FLOPs, and the full train-time recipe are not published on the Sol docs page.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p><code>reasoning.effort</code> supports <code>none</code>, <code>low</code>, <code>medium</code> (default), <code>high</code>, <code>xhigh</code>, and <code>max</code>. Reasoning tokens are supported. Use the Responses API for built-in tools and function calling. Chat Completions supports function calling only with <code>reasoning_effort</code> set to <code>none</code>.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Documented context window is 1,050,000 tokens. Max output is 128,000 tokens. Text and image input; text output.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Named tools on the Responses API for this model include web search, file search, image generation, code interpreter, hosted shell, apply patch, skills, computer use, MCP, and tool search. Streaming and structured outputs are supported. Fine-tuning is not supported on the model page.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>OpenAI’s 22 Sep community announce and model pages emphasize cost and availability over a full new harness table for Sol. Prefer Astra announce columns for older GPT-5.6 Sol comparisons, and prefer Artificial Analysis for independent Index.</p>
+    <p>Independent Artificial Analysis (22 Sep 2026 article): GPT-6 Sol (max) scores <strong>48</strong> on the Intelligence Index, about level with GPT-5.6 Sol, at roughly half the cost per Index task. Coding Agent Index in Codex harness: Sol (max) <strong>57</strong> (+2 vs GPT-5.6 Sol). AA notes lower hallucination on AA-Omniscience and mixed regressions on GDPval-AA. Do not paste Index into CursorBench, OSWorld, or ARC cells.</p>
+    <p>Lab-primary CursorBench, OSWorld, ARC, and DeepSWE numbers for GPT-6 Sol were not on the Sol docs page at draft time. Mark those cells UNKNOWN until OpenAI publishes a Sol table or appends them to the Astra system-card appendix.</p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>OpenAI has not published training or serving silicon details for GPT-6 Sol on the model docs. Buyers purchase API tokens.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">GPT-6 Sol</th>
+            <th scope="col">GPT-5.6 Sol (prior)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>$2</td><td>$4</td></tr>
+          <tr><td>Output / MTok</td><td>$10</td><td>$20</td></tr>
+          <tr><td>Cached input / MTok</td><td>$0.20</td><td>(prior promo differed)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Available in the API, ChatGPT Work, and Codex for Plus, Pro, Business, Enterprise, and Edu per OpenAI’s announce. Prompts over 272K input tokens are priced at 2× input/cache and 1.5× output for the full request. Fast mode is 2× applicable rates.</p>
+    <p>Sibling <a href="/ai/models/openai/gpt-6-luna/">GPT-6 Luna</a> (<code>gpt-6-luna</code>): $0.10 / $0.50 per million input/output; same 1.05M / 128K shape; Free and Go users can try Luna in the desktop app.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://developers.openai.com/api/docs/models/gpt-6-sol">GPT-6 Sol model page</a></li>
+      <li><a href="https://developers.openai.com/api/docs/models/gpt-6-luna">GPT-6 Luna model page</a></li>
+      <li><a href="https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925">OpenAI community announce (Sol &amp; Luna)</a></li>
+      <li><a href="https://deploymentsafety.openai.com/gpt-6-astra/sec:appendix-sol-luna">GPT-6 Astra System Card appendix (Sol/Luna)</a></li>
+      <li><a href="https://artificialanalysis.ai/articles/gpt-6-sol-and-luna-push-the-cost-efficiency-frontier">AA: GPT-6 Sol and Luna cost efficiency</a> (secondary)</li>
+      <li><a href="https://artificialanalysis.ai/models/gpt-6-sol">AA GPT-6 Sol model page</a> (secondary)</li>
+    </ul>
+  </article>
+</Layout>

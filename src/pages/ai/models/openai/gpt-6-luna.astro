@@ -1,0 +1,38 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="GPT-6 Luna — A.I. — Rycode"
+  description="GPT-6 Luna is the cheaper, faster GPT-6 tier released with GPT-6 Sol on 22 September 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">GPT-6 Luna</h1>
+    <p class="ai-model-dek">GPT-6 Luna is the cheaper, faster GPT-6 tier released with <a href="/ai/models/openai/gpt-6-sol/">GPT-6 Sol</a> on 22 September 2026. The model id is <code>gpt-6-luna</code>. Pricing is $0.10 input and $0.50 output per million tokens.</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Parameter count, training FLOPs, and a knowledge cutoff for GPT-6 Luna are not in the sources listed on this page.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p><code>reasoning.effort</code> supports <code>none</code> through <code>max</code>.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context is 1,050,000 tokens. Max output is 128,000. That is the same family shape as Sol on the docs pages.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Luna is for high-volume, cost-sensitive work. It is not the OpenAI living-table flagship. That row stays <a href="/ai/models/openai/gpt-6-astra/">GPT-6 Astra</a>.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>GPT-6 Luna (max) scores <strong>37</strong> on the Artificial Analysis Intelligence Index (<a href="https://artificialanalysis.ai/models/gpt-6-luna">model page</a>, article dated 22 Sep 2026). Coding Agent Index regresses slightly versus GPT-5.6 Luna in AA’s write-up. Do not paste that Index into CursorBench, OSWorld, or ARC cells.</p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>OpenAI has not published training or serving silicon details for GPT-6 Luna on the sources listed here. Buyers purchase API tokens.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Pricing is $0.10 input and $0.50 output per million tokens. Availability: API, ChatGPT Work, and Codex for paid tiers; Free and Go desktop per OpenAI’s announce.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://developers.openai.com/api/docs/models/gpt-6-luna">GPT-6 Luna model page</a></li>
+      <li><a href="https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925">Community announce</a></li>
+      <li><a href="https://artificialanalysis.ai/articles/gpt-6-sol-and-luna-push-the-cost-efficiency-frontier">AA Sol &amp; Luna article</a></li>
+      <li><a href="/ai/models/openai/gpt-6-sol/">GPT-6 Sol</a> (sibling)</li>
+    </ul>
+  </article>
+</Layout>
