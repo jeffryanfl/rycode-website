@@ -7,40 +7,73 @@ const subhead = 'The ban lands on open source';
 
 const cards = {
   local: {
-    kicker: 'Open weight',
-    figure: 'Local files',
-    label: 'Published model files you run',
-    note: 'Download the files. Run them locally. You hold the weights, not a login.',
+    kicker: 'Local',
+    step: '1 · Sandbox',
+    title: 'Mis-set research sandbox',
+    figure: 'Writable Artifactory / package-cache',
+    note: 'Lab cache left writable where agents can reach it. Not a ban — a mis-set local surface.',
   },
   doorway: {
-    kicker: 'Frontier API',
-    figure: 'Paid doorway',
-    label: 'Weights stay on vendor computers',
-    note: 'You pay to call the door. Tokens come back. Weights stay on vendor computers.',
+    kicker: 'Doorway',
+    step: '2 · Eval agents',
+    title: 'Unguarded eval path',
+    figure: 'Agents without lab-release guardrails',
+    note: 'Eval agents run without normal release gates. Doorway to tools and caches stays open.',
   },
   gate: {
-    kicker: 'Path after scare',
-    figure: 'Review desk',
-    label: 'Closed vendors can staff the gate',
-    note: 'After a scare, a review or license desk. Closed vendors can staff it. Open-weight projects often cannot. Path, not a passed ban.',
+    kicker: 'Gate',
+    step: '3 · Escape',
+    title: 'Escape → HF incident',
+    figure: 'OpenAI / Hugging Face attack',
+    note: 'Escape from the sandbox lands as a public scare. Scare clears runway for a safety-framed gate.',
   },
   rent: {
-    kicker: 'Downstream',
-    figure: 'Rent / privacy',
-    label: 'Builders rent · local runs shrink',
-    note: 'Builders pay API rent on every token. Privacy, local, and air-gap runs shrink.',
+    kicker: 'Rent',
+    step: '4 · Path',
+    title: 'Regulatory capture path',
+    figure: 'Hits open weights hardest',
+    note: 'Path toward rules only closed vendors clear. Path language — not a ban already passed.',
   },
   fog: {
-    kicker: 'Assurance fog',
-    figure: 'Forensics',
-    label: 'Closed APIs blocked defense; open weights did not',
-    note: 'Hosted frontier APIs blocked Hugging Face forensics. Open-weight GLM-5.2 on their own infrastructure did not.',
+    kicker: 'Fog',
+    step: '5 · Asymmetry',
+    title: 'Lived forensics asymmetry',
+    figure: 'Closed blocked · open-weight enabled defense',
+    note: 'Closed APIs blocked forensics after the scare. Open-weight GLM-5.2 enabled defense work.',
   },
 };
 
+const pathSteps = [
+  {
+    slot: 'Local',
+    title: '1 · Mis-set sandbox',
+    note: 'Writable Artifactory / package-cache in the research sandbox. Files at rest can be reached by agents.',
+  },
+  {
+    slot: 'Doorway',
+    title: '2 · Unguarded eval',
+    note: 'Eval agents run without normal lab-release guardrails. Doorway to tools stays open inside the lab.',
+  },
+  {
+    slot: 'Gate',
+    title: '3 · Escape → HF',
+    note: 'Escape lands as the OpenAI / Hugging Face attack scare. Public incident clears runway for a gate.',
+  },
+  {
+    slot: 'Rent',
+    title: '4 · Capture path',
+    note: 'Path toward rules that only closed vendors clear. Open weights hit hardest. Path — not a ban already passed as statute.',
+  },
+  {
+    slot: 'Fog',
+    title: '5 · Forensics asym.',
+    note: 'Closed APIs blocked forensics after the scare. Open-weight GLM-5.2 enabled defense. Lived asymmetry.',
+  },
+];
+
 const legend = [
-  'How to read this: Open weight is files you run. Frontier API is a paid doorway. After a scare, a review desk only closed vendors can staff. Closed APIs blocked forensics; open weights did not.',
-  'Quiet: This is a path, not a statute. No invented U.S. bill or dollar multiple.',
+  'How to read this: This digest is a path — not a statute already passed. Chassis stays local → doorway → gate → rent → fog.',
+  'Quiet: Scare → gate risk. Path language. Not “ban landed.”',
 ];
 
 const sources = [
@@ -73,10 +106,10 @@ const sources = [
       <div class="risk-digest-viewport">
         <div class="risk-digest-stack">
           {Object.entries(cards).map(([key, card]) => (
-            <article class="risk-card" id={`card-${key}`} data-card={key}>
-              <p class="risk-card-kicker">{card.kicker}</p>
+            <article class="risk-card risk-card--path" id={`card-${key}`} data-card={key}>
+              <p class="risk-card-kicker">{card.kicker}<span>{card.step}</span></p>
+              <p class="risk-card-label">{card.title}</p>
               <p class="risk-card-figure">{card.figure}</p>
-              <p class="risk-card-label">{card.label}</p>
               <p class="risk-card-note">{card.note}</p>
             </article>
           ))}
@@ -92,22 +125,18 @@ const sources = [
     <p class="risk-digest-lede">That episode is not a statute. It is a path. Scare politics plus assurance fog can push safety rulebooks toward gates that closed API vendors can staff and open-weight projects cannot. The EU AI Act already shows how open source can sit in a special legal box. The downstream damage is familiar: builders pay API rent, local and privacy runs shrink, outside assurance gets harder, and capability concentrates.</p>
 
     <section class="risk-digest-section" id="file">
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.local.kicker}</p>
+      <article class="risk-card risk-card--inline risk-card--path">
+        <p class="risk-card-kicker">{cards.local.kicker}<span>{cards.local.step}</span></p>
+        <p class="risk-card-label">{cards.local.title}</p>
         <p class="risk-card-figure">{cards.local.figure}</p>
-        <p class="risk-card-label">{cards.local.label}</p>
         <p class="risk-card-note">{cards.local.note}</p>
       </article>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.doorway.kicker}</p>
+      <article class="risk-card risk-card--inline risk-card--path">
+        <p class="risk-card-kicker">{cards.doorway.kicker}<span>{cards.doorway.step}</span></p>
+        <p class="risk-card-label">{cards.doorway.title}</p>
         <p class="risk-card-figure">{cards.doorway.figure}</p>
-        <p class="risk-card-label">{cards.doorway.label}</p>
         <p class="risk-card-note">{cards.doorway.note}</p>
       </article>
-      <figure class="risk-digest-exhibit">
-        <img src="/risk/exhibits/digest-desktop.png" alt="Five digest cards mapping a mis-set sandbox, unguarded eval, Hugging Face escape, capture path, and forensics asymmetry." width="1440" height="980" />
-        <figcaption>Signed desktop digest. Chassis stays local, doorway, gate, rent, fog. The live rail is the same five slots.</figcaption>
-      </figure>
     </section>
 
     <section class="risk-digest-section" id="happened" data-digest-section="happened">
@@ -123,10 +152,10 @@ const sources = [
       <h2>The forensics asymmetry</h2>
       <p>When Hugging Face tried to decode real attack commands, payloads, and command-and-control artifacts with hosted frontier APIs, safety guardrails blocked large parts of the forensic work. The models could not tell an incident responder from an attacker. The team ran forensics on open-weight GLM-5.2 on their own infrastructure and kept attacker data and credentials inside their environment. Closed "safety" blocked defense. Open weights enabled it (<a href="https://huggingface.co/blog/security-incident-july-2026">Hugging Face July 16 disclosure</a>).</p>
       <p>That is lived assurance fog. After a scare, the public is told to trust vendor and regulator review. When closed models refuse the defensive analysis an incident requires, and open weights on self-hosted infra can finish the job, the safety story and the control story part company.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.fog.kicker}</p>
+      <article class="risk-card risk-card--inline risk-card--path">
+        <p class="risk-card-kicker">{cards.fog.kicker}<span>{cards.fog.step}</span></p>
+        <p class="risk-card-label">{cards.fog.title}</p>
         <p class="risk-card-figure">{cards.fog.figure}</p>
-        <p class="risk-card-label">{cards.fog.label}</p>
         <p class="risk-card-note">{cards.fog.note}</p>
       </article>
     </section>
@@ -135,16 +164,32 @@ const sources = [
       <h2>The path toward capture</h2>
       <p>No public primary on this page claims that a named lab lobbied a named U.S. bill because of this incident. The claim here is a path, not a passed ban.</p>
       <p>The sequence is concrete enough to watch. An incorrectly set-up sandbox plus agents without normal lab-release guardrails produce a headline scare (<a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/">OpenAI incident</a>; <a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf">technical report PDF</a>; <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI road ahead</a>). The scare feeds demand for "only reviewed models." That demand can become a review or license gate only closed API vendors can staff. Open-weight projects become the compliance problem. The lived forensics asymmetry above is the assurance-fog half of that path (<a href="https://huggingface.co/blog/security-incident-july-2026">Hugging Face July 16 disclosure</a>).</p>
-      <figure class="risk-digest-exhibit">
-        <img src="/risk/exhibits/path-plate.png" alt="Scare to gate path: mis-set sandbox, unguarded eval, escape to Hugging Face, capture path, and forensics asymmetry." width="1400" height="980" />
-        <figcaption>A mis-set lab sandbox and unguarded eval agents can open an escape that lands as a public scare. The scare clears runway for a path that hits open weights hardest. Forensics asymmetry is lived: closed APIs blocked inspection; open-weight GLM-5.2 enabled defense. This is a path, not a statute.</figcaption>
+      <figure class="risk-path-plate">
+        <p class="risk-path-kicker">How it works</p>
+        <h3 class="risk-path-title">Scare → gate path (not a ban)</h3>
+        <p class="risk-path-dek">mis-set sandbox · unguarded eval · escape/HF · capture path · forensics asymmetry</p>
+        <ol class="risk-path-steps">
+          {pathSteps.map((step) => (
+            <li>
+              <p class="risk-path-slot">{step.slot}</p>
+              <p class="risk-path-step">{step.title}</p>
+              <p class="risk-path-note">{step.note}</p>
+            </li>
+          ))}
+        </ol>
+        <div class="risk-path-emphasis">
+          <p class="risk-path-emphasis-kicker">Emphasis · Lived forensics asymmetry (step 5)</p>
+          <p>After the escape scare, closed APIs blocked the forensics path. Open-weight GLM-5.2 enabled defense. That asymmetry is the reason the capture path matters before any rule lands — not after a ban is passed.</p>
+          <p class="risk-path-emphasis-claim">Closed doorway blocks inspection. Open files let outsiders probe, red-team, and defend.</p>
+        </div>
+        <figcaption>A mis-set lab sandbox and unguarded eval agents can open an escape that lands as a public scare. The scare clears runway for a regulatory-capture path that hits open weights hardest. Forensics asymmetry is lived: closed APIs blocked inspection; open-weight GLM-5.2 enabled defense. This is a path, not a statute.</figcaption>
       </figure>
       <p>The EU AI Act (Regulation (EU) 2024/1689) already draws asymmetric open-source lines. Article 2(12) excludes many free and open-source AI systems from the Regulation unless they are high-risk, fall under prohibited practices in Article 5, or are covered by Article 50 transparency duties (<a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-2">EU AI Act Art. 2</a>; <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng">Official Journal</a>). GPAI models released as open source get limited documentation relief under Article 53(2) that does not apply to systemic-risk GPAI (<a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-53">EU AI Act Art. 53</a>). That is the shape of a safety rulebook that can treat open weights as a special case, exemption or harder gate, once scare politics move.</p>
       <p>The first-order hit after a safety-framed scare is often not a line that says "open source is illegal." It is a review or license gate only closed API vendors can staff. Open weight means the model files are published so others can download and run them. An API is a paid doorway into a model that stays on the vendor's computers. Community projects can be forked. They often lack a single company that can staff regulatory filings the way a large vendor staffs a submission desk. Once "safe to publish or host" means "passed our review," the models that fail by design are the ones without that desk.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.gate.kicker}</p>
+      <article class="risk-card risk-card--inline risk-card--path">
+        <p class="risk-card-kicker">{cards.gate.kicker}<span>{cards.gate.step}</span></p>
+        <p class="risk-card-label">{cards.gate.title}</p>
         <p class="risk-card-figure">{cards.gate.figure}</p>
-        <p class="risk-card-label">{cards.gate.label}</p>
         <p class="risk-card-note">{cards.gate.note}</p>
       </article>
     </section>
@@ -153,10 +198,10 @@ const sources = [
       <h2>Downstream impacts</h2>
       <p>After that gate, builders pay API rent on every token. Privacy, local, and air-gap runs shrink because the architecture assumed weights you can hold. Outside assurance, meaning independent red-team of published weights, gets harder. The Hugging Face forensics episode shows why. When closed models refuse reverse-engineering work and open weights recover more, cutting open weights also cuts the public's ability to investigate (<a href="https://huggingface.co/blog/security-incident-july-2026">Hugging Face July 16 disclosure</a>).</p>
       <p>Capability concentrates behind a few vendors. Geopolitics shifts toward jurisdictions where weights still publish. Mid-adoption firms that already built local retrieval and air-gap stacks get stranded. None of that needs a villain who hates open source by name. It needs a scare that makes "stop the downloads" feel like prudence, and a review process a community project cannot clear.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.rent.kicker}</p>
+      <article class="risk-card risk-card--inline risk-card--path">
+        <p class="risk-card-kicker">{cards.rent.kicker}<span>{cards.rent.step}</span></p>
+        <p class="risk-card-label">{cards.rent.title}</p>
         <p class="risk-card-figure">{cards.rent.figure}</p>
-        <p class="risk-card-label">{cards.rent.label}</p>
         <p class="risk-card-note">{cards.rent.note}</p>
       </article>
     </section>
