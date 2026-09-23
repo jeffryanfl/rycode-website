@@ -107,16 +107,6 @@ h1.ai-identity {
   color: var(--ai-ink);
 }
 
-.ai-identity-dek {
-  margin: 0.32rem 0 0 2.45rem;
-  font-family: var(--font-serif);
-  font-size: 0.98rem;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--ai-dim);
-}
-
 .ai-mark {
   flex-shrink: 0;
   width: 3.5rem;
@@ -1120,11 +1110,6 @@ h1.ai-identity {
   .ai-mark {
     width: 2.75rem;
     height: 2.75rem;
-  }
-
-  .ai-identity-dek {
-    margin-left: 2.05rem;
-    font-size: 0.9rem;
   }
 }
 

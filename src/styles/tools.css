@@ -109,16 +109,6 @@ h1.tools-identity {
   color: var(--tools-ink);
 }
 
-.tools-identity-dek {
-  margin: 0.32rem 0 0 1.55rem;
-  font-family: var(--font-serif);
-  font-size: 0.98rem;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--tools-muted);
-}
-
 .tools-mark {
   flex-shrink: 0;
   width: 3.5rem;
@@ -226,11 +216,6 @@ h1.tools-identity {
   .tools-mark {
     width: 2.75rem;
     height: 2.75rem;
-  }
-
-  .tools-identity-dek {
-    margin-left: 1.35rem;
-    font-size: 0.9rem;
   }
 }
 

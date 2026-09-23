@@ -38,6 +38,7 @@ export default defineConfig({
     '/research/saaspocalypse': '/economics/saas-barbell-2026/',
     '/systems': 'https://grc.rycode.dev/',
     '/ai/models/openai/gpt-5-6-sol': '/ai/models/openai/gpt-6-sol/',
+    '/risk/panic-before-the-breach': '/risk/the-ban-lands-on-open-source/',
   },
   server: {
     host: true,

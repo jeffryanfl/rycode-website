@@ -5,23 +5,21 @@ import '../styles/risk.css';
 const pieces = [
   {
     href: '/risk/when-the-spender-runs-the-printer/',
+    kicker: 'Paying Pre-Inflation Debt with Post-Inflation Cash',
     title: 'Fiscal pressure on rates means inflation and repression, not a debt reset',
     dek: 'When the spender runs the printer',
   },
   {
     href: '/risk/the-ban-lands-on-open-source/',
-    title: 'A safety-framed AI rule can ban open-weight models after a scare',
+    kicker: 'OpenAI / Hugging Face attack',
+    title: 'A mis-set lab sandbox can open a path to rules that hit open weights hardest',
     dek: 'The ban lands on open source',
   },
   {
     href: '/risk/six-percent-that-stays/',
+    kicker: 'Refinancing $10 Trillion in US Debt',
     title: 'A long-term rate stuck near six percent is the debt danger that lasts',
     dek: 'A 6 percent rate that lasts is the named tail.',
-  },
-  {
-    href: '/risk/panic-before-the-breach/',
-    title: 'Fear about AI agents reached politics before the security fixes did',
-    dek: 'A messy security slip got retold as civilization-ending artificial intelligence.',
   },
 ];
 ---
@@ -36,7 +34,6 @@ const pieces = [
       <img class="risk-glyph" src="/landing/hub-risk.png" alt="" width="978" height="887" />
       Risk
     </h1>
-    <p class="risk-identity-dek">Tails and what actually breaks. New pieces appear here as rows.</p>
   </div>
 
   <h2 class="risk-section">Emerging risks</h2>
@@ -44,6 +41,7 @@ const pieces = [
     {pieces.map((piece) => (
       <li>
         <a href={piece.href}>
+          <span class="risk-index-kicker">{piece.kicker}</span>
           <span class="risk-index-title">{piece.title}</span>
           <span class="risk-index-dek">{piece.dek}</span>
         </a>
