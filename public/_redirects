@@ -26,5 +26,5 @@
 /systems                           https://grc.rycode.dev/  301
 /systems/                          https://grc.rycode.dev/  301
 
-/ai/models/openai/gpt-5-6-sol      /ai/models/openai/gpt-6-sol/  301
-/ai/models/openai/gpt-5-6-sol/     /ai/models/openai/gpt-6-sol/  301
+/ai/models/openai/gpt-5-6-sol      /ai/models/openai/gpt-6-sol/  301!
+/ai/models/openai/gpt-5-6-sol/     /ai/models/openai/gpt-6-sol/  301!
