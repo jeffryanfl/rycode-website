@@ -1,8 +1,8 @@
 [
   {
     "href": "/economics/post-inflation-dollars-pay-pre-inflation-debts/",
-    "title": "Post-inflation dollars pay pre-inflation debts",
-    "description": "Inflating fixed debt is real. It is not a clean reset.",
+    "title": "How inflation changes the real cost of fixed government debt",
+    "description": "A dollar borrowed before prices rise and a dollar repaid after are not the same, and that does not pay the debt off.",
     "date": "2026-09-21",
     "section": "economics",
     "series": "economics",
@@ -17,8 +17,8 @@
   },
   {
     "href": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-    "title": "Warsh\u2019s first hike met oil above $100 and a five percent ten-year",
-    "description": "Clean, hawkish, and expensive for stock multiples.",
+    "title": "Warsh\u2019s first rate increase, with oil above $100 and a ten-year near 5 percent",
+    "description": "On September 16, 2026 the Fed raised the funds rate by a quarter point. The long bond and the oil price were already high.",
     "date": "2026-09-17",
     "section": "economics",
     "series": "economics",
@@ -33,8 +33,8 @@
   },
   {
     "href": "/economics/still-1998-not-1999/",
-    "title": "Why this boom isn\u2019t a repeat of the dot-com bubble",
-    "description": "The useful answer is still 1998. Real revenue and profits are here.",
+    "title": "Whether this boom matches the late-1990s stock market",
+    "description": "Companies already have revenue and profit. The open question is price, and when private companies raise cash.",
     "date": "2026-09-09",
     "section": "economics",
     "series": "economics",
@@ -49,8 +49,8 @@
   },
   {
     "href": "/economics/jobs-print-was-strong-mix-is-the-story/",
-    "title": "August jobs were strong. Who gets hired is the real story.",
-    "description": "The interesting part is who the next hire is.",
+    "title": "The August jobs report, and which jobs the hiring is for",
+    "description": "Payrolls were strong. Hiring people who do the work with AI, rather than only people who manage that work.",
     "date": "2026-09-09",
     "section": "economics",
     "series": "economics",
@@ -65,8 +65,8 @@
   },
   {
     "href": "/economics/ten-trillion-to-roll/",
-    "title": "Near ten trillion of U.S. debt comes due and must be refinanced",
-    "description": "Ten trillion to roll is the ordinary refinance. One trillion to buy is a checking account.",
+    "title": "About $10 trillion of U.S. debt comes due and has to be refinanced",
+    "description": "Most of that is short-term bills the Treasury already replaces. The cash balance is a checking account, not a program to buy the debt.",
     "date": "2026-09-02",
     "section": "economics",
     "series": "economics",
@@ -81,8 +81,8 @@
   },
   {
     "href": "/economics/saas-barbell-2026/",
-    "title": "Software subscription stocks got cheaper. The industry did not die.",
-    "description": "SaaS is a pricing and durability problem, not a dying industry.",
+    "title": "Why software subscription stock prices fell in 2026",
+    "description": "Investors paid a lower multiple of sales. Revenue did not disappear.",
     "date": "2026-08-27",
     "section": "economics",
     "series": "economics",
@@ -97,8 +97,8 @@
   },
   {
     "href": "/risk/when-the-spender-runs-the-printer/",
-    "title": "Fiscal pressure on rates means inflation and repression, not a debt reset",
-    "description": "When the spender runs the printer",
+    "title": "Debt held by the public, the CBO path, and inflation if rates stay low",
+    "description": "On September 17, 2026 debt held by the public was about $32.39 trillion and total public debt outstanding was about $40.09 trillion. CBO’s current-law path goes from about 101% of GDP in 2026 to about 120% in 2036.",
     "date": "2026-09-21",
     "section": "risk",
     "series": "risk",
@@ -113,8 +113,8 @@
   },
   {
     "href": "/risk/the-ban-lands-on-open-source/",
-    "title": "A mis-set lab sandbox can open a path to rules that hit open weights hardest",
-    "description": "The ban lands on open source",
+    "title": "The July 2026 OpenAI eval-agent incident at Hugging Face",
+    "description": "OpenAI’s research agents left a mis-set sandbox and reached Hugging Face. Closed APIs later blocked parts of the forensics. Open-weight GLM-5.2 did not. No ban on open weights has been passed.",
     "date": "2026-09-13",
     "section": "risk",
     "series": "risk",
@@ -129,8 +129,8 @@
   },
   {
     "href": "/risk/six-percent-that-stays/",
-    "title": "A long-term rate stuck near six percent is the debt danger that lasts",
-    "description": "A 6 percent rate that lasts is the named tail.",
+    "title": "The thirty-year Treasury yield in late August 2026",
+    "description": "The yield was about 5.21 to 5.26 percent. A hold near 6 percent through a long-term borrowing date is separate from a single morning at that rate.",
     "date": "2026-09-02",
     "section": "risk",
     "series": "risk",

@@ -7,9 +7,8 @@ import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/when-the-spender-runs-the-printer.facts.json';
 import '../../styles/risk.css';
 
-const title = 'Fiscal pressure on rates means inflation and repression, not a debt reset';
-const subhead = 'When the spender runs the printer';
-const dek = 'If cheap money is used as fiscal relief, the slow bleed is inflation and repression. That is a transfer, not a disappearance.';
+const title = 'Debt held by the public, the CBO path, and inflation if rates stay low';
+const subhead = 'On September 17, 2026 debt held by the public was about $32.39 trillion and total public debt outstanding was about $40.09 trillion. CBO’s current-law path goes from about 101% of GDP in 2026 to about 120% in 2036.';
 
 const howToRead = 'Stock is debt held by the public. Path is CBO’s current-law climb. Named tail is inflation and repression if cheap money is used as fiscal relief.';
 
@@ -79,14 +78,13 @@ const sources = [
 
 <Layout
   title={`${title} — Rycode`}
-  description={dek}
+  description={subhead}
   variant="risk"
 >
   <article class="risk-digest">
     <header class="risk-digest-head">
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
-      <p class="risk-digest-dek">{dek}</p>
       <LivingStrip facts={facts} part="strip" />
     </header>
 
@@ -183,7 +181,7 @@ const sources = [
 
         <div class="risk-digest-closer">
           <p class="risk-closer-kicker">Economics</p>
-          <p class="risk-closer-link"><a href="/economics/post-inflation-dollars-pay-pre-inflation-debts/">Post-inflation dollars pay pre-inflation debts</a></p>
+          <p class="risk-closer-link"><a href="/economics/post-inflation-dollars-pay-pre-inflation-debts/">How inflation changes the real cost of fixed government debt</a></p>
         </div>
 
         <section class="risk-digest-section risk-digest-sources" id="sources">

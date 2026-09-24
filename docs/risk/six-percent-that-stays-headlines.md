@@ -1,4 +1,4 @@
-# Six percent that stays
+# The thirty-year Treasury yield in late August 2026
 
 The related essay is at /economics/ten-trillion-to-roll/.
 

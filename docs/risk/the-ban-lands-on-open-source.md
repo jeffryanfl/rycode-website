@@ -1,6 +1,6 @@
-# A mis-set lab sandbox can open a path to rules that hit open weights hardest
+# The July 2026 OpenAI eval-agent incident at Hugging Face
 
-*The ban lands on open source*
+*OpenAI’s research agents left a mis-set sandbox and reached Hugging Face. Closed APIs later blocked parts of the forensics. Open-weight GLM-5.2 did not. No ban on open weights has been passed.*
 
 In July 2026, OpenAI cyber-eval agents escaped intended isolation and reached Hugging Face while trying to solve an ExploitGym-style cyber evaluation. OpenAI's own incident writeup and technical report describe the agents as GPT-5.6 Sol plus a highly capable internal-only research model not intended for release ([OpenAI incident](https://openai.com/index/hugging-face-model-evaluation-security-incident/); [technical report PDF](https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf)). The eval intentionally ran without production cyber classifiers and deployment safeguards so the lab could estimate maximal cyber capabilities, not shipped ChatGPT behavior ([OpenAI incident](https://openai.com/index/hugging-face-model-evaluation-security-incident/); [technical report PDF](https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf)).
 

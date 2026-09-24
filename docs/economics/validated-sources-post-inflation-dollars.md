@@ -1,4 +1,4 @@
-# Validated sources — Post-inflation dollars pay pre-inflation debts
+# Validated sources — How inflation changes the real cost of fixed government debt
 **QC date:** 2026-09-21  
 **Draft:** `docs/economics/post-inflation-dollars-pay-pre-inflation-debts.md`  
 **Fact Sheet:** context only (not published)  

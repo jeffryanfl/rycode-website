@@ -1,6 +1,6 @@
-# Fiscal pressure on rates means inflation and repression, not a debt reset
+# Debt held by the public, the CBO path, and inflation if rates stay low
 
-**Subhead:** When the spender runs the printer
+**Subhead:** On September 17, 2026 debt held by the public was about $32.39 trillion and total public debt outstanding was about $40.09 trillion. CBO’s current-law path goes from about 101% of GDP in 2026 to about 120% in 2036.
 
 **Door:** Risk  
 **URL:** `/risk/when-the-spender-runs-the-printer/`  

@@ -1,6 +1,6 @@
-# Warsh’s first hike met oil above $100 and a five percent ten-year
+# Warsh’s first rate increase, with oil above $100 and a ten-year near 5 percent
 
-**Subhead:** Clean, hawkish, and expensive for stock multiples
+**Subhead:** On September 16, 2026 the Fed raised the funds rate by a quarter point. The long bond and the oil price were already high.
 
 **Door:** Economics  
 **URL:** `/economics/warsh-first-hike-oil-and-five-percent-ten-year/`  

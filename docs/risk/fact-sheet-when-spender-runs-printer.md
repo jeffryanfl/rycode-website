@@ -1,7 +1,7 @@
-# Pre-draft Fact Sheet — When the spender runs the printer (Risk)
+# Pre-draft Fact Sheet — Debt held by the public, the CBO path, and inflation if rates stay low
 **Date:** 2026-09-21  
 **Door:** Risk (emerging-risk / tails only — not GRC or L2)  
-**Working title:** When the spender runs the printer  
+**Working title:** Debt held by the public, the CBO path, and inflation if rates stay low  
 **Closer from:** Economics essay `/economics/post-inflation-dollars-pay-pre-inflation-debts/`  
 **Source lock (context only; strip venue):** 2026-09-15 + ExogiCsqgNk — https://www.youtube.com/watch?v=ExogiCsqgNk  
 **For:** Ayn Writer. Use only these claims and URLs (or Hold).

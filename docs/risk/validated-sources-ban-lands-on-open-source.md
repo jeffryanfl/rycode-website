@@ -1,4 +1,4 @@
-# Validated sources — The ban lands on open source (Risk rewrite)
+# Validated sources — The July 2026 OpenAI eval-agent incident at Hugging Face
 **Door:** Risk · **URL:** https://rycode.dev/risk/the-ban-lands-on-open-source/  
 **Draft:** `/workspace/drafts/the-ban-lands-on-open-source.md`  
 **Fact Sheet:** `/workspace/drafts/fact-sheet-ban-lands-on-open-source-rewrite.md`  

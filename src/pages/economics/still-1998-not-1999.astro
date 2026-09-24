@@ -2,9 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/economics.css';
 
-const title = 'Why this boom isn’t a repeat of the dot-com bubble';
-const subhead = 'Still 1998, not 1999';
-const dek = 'The useful answer is still 1998. Real revenue and profits are here. Euphoria is a pricing and cash-timing story, not a crash call yet.';
+const title = 'Whether this boom matches the late-1990s stock market';
+const subhead = 'Companies already have revenue and profit. The open question is price, and when private companies raise cash.';
 
 const cards = {
   cycle: {
@@ -35,14 +34,13 @@ const legend = [
 
 <Layout
   title={`${title} — Rycode`}
-  description={dek}
+  description={subhead}
   variant="economics"
 >
   <article class="econ-digest">
     <header class="econ-digest-head">
       <h1 class="econ-digest-title">{title}</h1>
       <p class="econ-digest-subhead">{subhead}</p>
-      <p class="econ-digest-dek">{dek}</p>
     </header>
 
     <aside class="econ-digest-rail" data-digest-rail data-digest-fallback="froth" data-digest-stretch="froth" aria-label="Digest, economics read">

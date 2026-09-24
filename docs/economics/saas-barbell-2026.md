@@ -1,6 +1,6 @@
-# The SaaSpocalypse was a multiple, not a market.
+# Why software subscription stock prices fell in 2026
 
-SaaS is a pricing and durability problem, not a dying industry.
+Investors paid a lower multiple of sales. Revenue did not disappear.
 
 Software sold as a subscription (SaaS, for software as a service) had a scare label early in 2026. The label sounded like the industry was ending. What actually moved was how expensive investors were willing to pay for a dollar of software revenue. That price tag is called a multiple. This piece is about that multiple, about invoices that got more complicated, and about customers who mostly stayed. It is not a funeral notice.
 

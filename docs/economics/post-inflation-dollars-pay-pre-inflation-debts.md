@@ -1,6 +1,6 @@
-# Post-inflation dollars pay pre-inflation debts
+# How inflation changes the real cost of fixed government debt
 
-**Subhead:** Inflating fixed debt is real. It is not a clean reset.
+**Subhead:** A dollar borrowed before prices rise and a dollar repaid after are not the same, and that does not pay the debt off.
 
 **Door:** Economics  
 **URL:** `/economics/post-inflation-dollars-pay-pre-inflation-debts/`

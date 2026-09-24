@@ -1,4 +1,4 @@
-# Ten trillion to roll, one trillion to buy
+# About $10 trillion of U.S. debt comes due and has to be refinanced
 
 The United States government almost never pays its debt down the way a family pays off a house. When a Treasury security comes due, the Treasury sells a new one and uses that money to repay the old lender. That replacement is called a refinance. Over the next year a very large amount of existing government debt comes due and will have to be replaced this way. The Government Accountability Office puts the amount near $9.7 trillion for fiscal year 2026, which is about a third of all the debt the government currently owes. Round that to ten trillion and you have the number now being treated as a coming collision.
 
@@ -42,4 +42,4 @@ Ten trillion to roll is the ordinary refinance. One trillion to buy is a checkin
 
 Risk
 
-[Six percent that stays](/risk/six-percent-that-stays/)
+[The thirty-year Treasury yield in late August 2026](/risk/six-percent-that-stays/)

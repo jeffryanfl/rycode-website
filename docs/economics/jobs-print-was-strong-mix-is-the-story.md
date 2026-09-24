@@ -1,4 +1,4 @@
-# The jobs print was strong. The mix is the story.
+# The August jobs report, and which jobs the hiring is for
 
 The August jobs print was strong. That is not the interesting part. The interesting part is who the next hire is: someone who does the work with AI, not someone who only manages people who do.
 

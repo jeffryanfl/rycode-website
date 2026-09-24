@@ -7,9 +7,8 @@ import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/six-percent-that-stays.facts.json';
 import '../../styles/risk.css';
 
-const title = 'A long-term rate stuck near six percent is the debt danger that lasts';
-const subhead = 'Six percent that stays';
-const dek = 'A risk read of the same ten-trillion facts — not a second telling of bills or the checking account.';
+const title = 'The thirty-year Treasury yield in late August 2026';
+const subhead = 'The yield was about 5.21 to 5.26 percent. A hold near 6 percent through a long-term borrowing date is separate from a single morning at that rate.';
 
 const howToRead = 'Usual case is the late-August thirty-year. Named tail is ~6% that lasts through a long-term borrow. Watch is the hold — not a morning print.';
 
@@ -25,14 +24,13 @@ const watchItems = [
 
 <Layout
   title={`${title} — Rycode`}
-  description="A 6 percent rate that lasts is the named tail."
+  description={subhead}
   variant="risk"
 >
   <article class="risk-digest">
     <header class="risk-digest-head">
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
-      <p class="risk-digest-dek">{dek}</p>
       <LivingStrip facts={facts} part="strip" />
     </header>
 
@@ -67,7 +65,7 @@ const watchItems = [
           <figcaption>{howToRead}</figcaption>
         </figure>
 
-        <p class="risk-digest-lede">The essay on this site, <a href="/economics/ten-trillion-to-roll/">Near ten trillion of U.S. debt comes due and must be refinanced</a>, is the story of the number. This page is the risk read of the same facts. It is not a second telling of bills, the checking account, or the four-billion-dollar purchases.</p>
+        <p class="risk-digest-lede">The essay on this site, <a href="/economics/ten-trillion-to-roll/">About $10 trillion of U.S. debt comes due and has to be refinanced</a>, is the story of the number. This page is the risk read of the same facts. It is not a second telling of bills, the checking account, or the four-billion-dollar purchases.</p>
 
         <section class="risk-digest-section" id="usual" data-digest-section="usual">
           <h2>Usual case</h2>
@@ -111,7 +109,7 @@ const watchItems = [
 
         <div class="risk-digest-closer">
           <p class="risk-closer-kicker">From this essay</p>
-          <p class="risk-closer-link"><a href="/economics/ten-trillion-to-roll/">Near ten trillion of U.S. debt comes due and must be refinanced</a></p>
+          <p class="risk-closer-link"><a href="/economics/ten-trillion-to-roll/">About $10 trillion of U.S. debt comes due and has to be refinanced</a></p>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-# Validated sources — When the spender runs the printer
+# Validated sources — Debt held by the public, the CBO path, and inflation if rates stay low
 **QC date:** 2026-09-21  
 **Draft:** `/workspace/drafts/when-the-spender-runs-the-printer.md`  
 **Fact Sheet:** `/workspace/yt-ExogiCsqgNk/fact-sheet-spender-runs-printer-2026-09-21.md`  
