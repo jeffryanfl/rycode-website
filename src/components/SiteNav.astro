@@ -1,0 +1,40 @@
+---
+import { normalizePath } from '../lib/site';
+
+const path = normalizePath(Astro.url.pathname);
+
+type Current = 'page' | 'true';
+
+function sectionCurrent(href: string): Current | undefined {
+  if (path === href) return 'page';
+  if (href !== '/' && path.startsWith(href)) return 'true';
+  return undefined;
+}
+
+---
+
+<nav class="site-nav" aria-label="Sections">
+  <ul class="site-nav-list">
+    <li>
+      <a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a>
+    </li>
+    <li>
+      <a href="/economics/" aria-current={sectionCurrent('/economics/')}>Economics</a>
+    </li>
+    <li>
+      <a href="/risk/" aria-current={sectionCurrent('/risk/')}>Risk</a>
+    </li>
+    <li>
+      <a href="/ai/" aria-current={sectionCurrent('/ai/')}>A.I.</a>
+    </li>
+    <li>
+      <a href="https://systems.rycode.dev" target="_blank" rel="noopener noreferrer">Systems<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </li>
+    <li>
+      <a href="/about/" aria-current={sectionCurrent('/about/')}>About</a>
+    </li>
+    <li>
+      <a href="/contact/" aria-current={sectionCurrent('/contact/')}>Contact</a>
+    </li>
+  </ul>
+</nav>

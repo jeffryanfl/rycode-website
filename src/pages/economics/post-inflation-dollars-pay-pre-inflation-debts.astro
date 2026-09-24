@@ -78,10 +78,10 @@ const sources = [
       <ol>
         {sources.map((source) => (
           <li>
-            {source.text}: <a href={source.href}>{source.href}</a>
+            <a href={source.href}>{source.text}</a>
             {source.also && (
               <>
-                {' '}and <a href={source.also}>{source.also}</a>
+                {' '}(<a href={source.also}>{source.also.endsWith('.pdf') ? 'PDF' : 'same release'}</a>)
               </>
             )}
           </li>
@@ -94,6 +94,5 @@ const sources = [
       <p class="econ-closer-link"><a href="/risk/when-the-spender-runs-the-printer/">Fiscal pressure on rates means inflation and repression, not a debt reset</a></p>
     </div>
 
-    <p class="econ-digest-related">Related Economics essays: <a href="/economics/warsh-first-hike-oil-and-five-percent-ten-year/">/economics/warsh-first-hike-oil-and-five-percent-ten-year/</a> · <a href="/economics/still-1998-not-1999/">/economics/still-1998-not-1999/</a> · <a href="/economics/jobs-print-was-strong-mix-is-the-story/">/economics/jobs-print-was-strong-mix-is-the-story/</a>.</p>
   </article>
 </Layout>

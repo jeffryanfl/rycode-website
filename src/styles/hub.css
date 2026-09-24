@@ -7,12 +7,19 @@ html:has(.landing-stage--charcoal),
 html:has(.landing-stage--charcoal) body {
   background: #080a10;
   color-scheme: dark;
+  height: auto;
+  min-height: 100%;
+  overflow: auto;
 }
 
 .editorial-shell--landing:has(.landing-stage--charcoal) {
   background-color: #080a10;
   background-image: none;
   color: rgba(248, 250, 252, 0.52);
+  height: auto;
+  min-height: 100dvh;
+  max-height: none;
+  overflow: visible;
 }
 
 .editorial-shell--landing:has(.landing-stage--charcoal)::after {
@@ -26,15 +33,34 @@ html:has(.landing-stage--charcoal) body {
 }
 
 .editorial-shell--landing:has(.landing-stage--charcoal) .masthead--landing {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem 1rem;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0.7rem 1.15rem 0.45rem;
+  position: relative;
+  z-index: 5;
+  background: #080a10;
+}
+
+.editorial-shell--landing:has(.landing-stage--charcoal) .masthead-brand {
+  justify-content: flex-start;
+  padding: 0;
 }
 
 .editorial-shell--landing:has(.landing-stage--charcoal) .editorial-main-content {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .editorial-shell--landing:has(.landing-stage--charcoal) .editorial-footer {
-  display: none;
+  display: block;
+  position: relative;
+  z-index: 5;
+  background: #080a10;
 }
 
 .landing-stage--charcoal {

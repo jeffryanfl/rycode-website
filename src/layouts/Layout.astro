@@ -1,10 +1,16 @@
 ---
 import '../styles/global.css';
+import BrandMark from '../components/BrandMark.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ArticleTop from '../components/ArticleTop.astro';
+import ArticleTail from '../components/ArticleTail.astro';
+import { articleNav, normalizePath, ogImageFor } from '../lib/site';
 
 interface Props {
   title?: string;
   description?: string;
-  variant?: "journal" | "landing" | "newspaper" | "tools" | "risk" | "ai" | "economics";
+  variant?: "journal" | "landing" | "risk" | "ai" | "economics";
 }
 
 const {
@@ -14,15 +20,18 @@ const {
 } = Astro.props;
 
 const isLanding = variant === "landing";
-const isNewspaper = variant === "newspaper";
-const isTools = variant === "tools";
 const isRisk = variant === "risk";
 const isAi = variant === "ai";
 const isEconomics = variant === "economics";
 const isDark = true;
+const pathname = normalizePath(Astro.url.pathname);
+const isHome = pathname === "/";
+const showSectionMark = isRisk || isAi || isEconomics;
+const piece = articleNav(pathname);
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL('og-hub.png', Astro.site);
+const canonicalURL = new URL(pathname, Astro.site);
+const ogImageURL = new URL(ogImageFor(pathname), Astro.site);
+const rssURL = new URL("/rss.xml", Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -33,7 +42,7 @@ const ogImageURL = new URL('og-hub.png', Astro.site);
   <meta name="description" content={description} />
   <meta name="color-scheme" content={isDark ? "dark" : "light"} />
   <meta name="generator" content={Astro.generator} />
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
@@ -48,132 +57,57 @@ const ogImageURL = new URL('og-hub.png', Astro.site);
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageURL} />
   <link rel="canonical" href={canonicalURL} />
+  {isHome && <link rel="alternate" type="application/rss+xml" title="Rycode articles" href={rssURL} />}
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>{title}</title>
-
-  <!-- Typography is self-hosted via global.css @font-face (public/fonts). -->
 </head>
 <body>
   <a class="skip-link" href="#mainContent">Skip to content</a>
 
-  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--newspaper": isNewspaper, "editorial-shell--tools": isTools, "editorial-shell--risk": isRisk, "editorial-shell--ai": isAi, "editorial-shell--economics": isEconomics }]}>
-    <!-- TOP MASTHEAD (banner skipped on landing, newspaper, tools, risk, ai, and economics) -->
-    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--newspaper": isNewspaper, "masthead--tools": isTools, "masthead--risk": isRisk, "masthead--ai": isAi, "masthead--economics": isEconomics }]}>
-      {isTools ? (
-        <>
-          <div class="masthead-brand">
-            <slot name="tools-identity">
-              <a href="/tools" class="tools-identity">
-                <span class="tools-caliper" aria-hidden="true"></span>
-                Tools
-              </a>
-            </slot>
-          </div>
-          <a href="/" class="tools-mark" aria-label="Rycode Home">
-            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-              <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-              <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-              <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-            </svg>
-          </a>
-        </>
-      ) : isRisk ? (
-        <>
-          <div class="masthead-brand">
-            <slot name="risk-identity">
-              <a href="/risk" class="risk-identity">
-                <img class="risk-glyph" src="/landing/hub-risk.png" alt="" width="978" height="887" />
-                Risk
-              </a>
-            </slot>
-          </div>
-          <a href="/" class="risk-mark" aria-label="Rycode Home">
-            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-              <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-              <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-              <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-            </svg>
-          </a>
-        </>
-      ) : isAi ? (
-        <>
-          <div class="masthead-brand">
-            <slot name="ai-identity">
-              <a href="/ai" class="ai-identity">
-                <img class="ai-glyph" src="/landing/hub-brain-overhead.png" alt="" width="742" height="851" />
-                A.I.
-              </a>
-            </slot>
-          </div>
-          <a href="/" class="ai-mark" aria-label="Rycode Home">
-            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-              <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-              <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-              <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-            </svg>
-          </a>
-        </>
-      ) : isEconomics ? (
-        <>
-          <div class="masthead-brand">
-            <slot name="economics-identity">
-              <a href="/economics" class="economics-identity">
-                <img class="economics-glyph" src="/landing/hub-economics.png" alt="" width="880" height="784" />
-                Economics
-              </a>
-            </slot>
-          </div>
-          <a href="/" class="economics-mark" aria-label="Rycode Home">
-            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-              <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-              <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-              <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-            </svg>
-          </a>
-        </>
-      ) : isNewspaper ? (
-        <>
-          <div class="masthead-brand">
-            <slot name="newspaper-identity">
-              <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
-                <svg viewBox="0 0 56 56" fill="none" aria-hidden="true" width="40" height="40">
-                  <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-                  <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-                  <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-                </svg>
-                <span class="masthead-wordmark">Rycode</span>
-              </a>
-            </slot>
-          </div>
-          <slot name="newspaper-aside">
-            <p class="masthead-updated">Last updated Aug 2026</p>
-          </slot>
-        </>
-      ) : (
-        <>
-          <div class="masthead-brand">
-            <a href="/" class="masthead-logo-link" aria-label="Rycode Home">
-              <svg viewBox="0 0 56 56" fill="none" aria-hidden="true" width="40" height="40">
-                <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-                <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-                <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-              </svg>
+  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--risk": isRisk, "editorial-shell--ai": isAi, "editorial-shell--economics": isEconomics }]}>
+    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--risk": isRisk, "masthead--ai": isAi, "masthead--economics": isEconomics }]}>
+      <div class="masthead-brand">
+        {isRisk ? (
+          <slot name="risk-identity">
+            <a href="/risk/" class="risk-identity">
+              <img class="risk-glyph" src="/landing/hub-risk.webp" alt="" width="79" height="72" />
+              Risk
             </a>
-          </div>
-        </>
-      )}
+          </slot>
+        ) : isAi ? (
+          <slot name="ai-identity">
+            <a href="/ai/" class="ai-identity">
+              <img class="ai-glyph" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
+              A.I.
+            </a>
+          </slot>
+        ) : isEconomics ? (
+          <slot name="economics-identity">
+            <a href="/economics/" class="economics-identity">
+              <img class="economics-glyph" src="/landing/hub-economics.webp" alt="" width="81" height="72" />
+              Economics
+            </a>
+          </slot>
+        ) : (
+          <BrandMark />
+        )}
+      </div>
+      <SiteNav />
+      {showSectionMark && <BrandMark class="section-mark" />}
     </header>
 
-    <!-- MAIN EDITORIAL CONTENT -->
     <main id="mainContent" class="editorial-main-content" tabindex="-1">
+      {piece && <ArticleTop nav={piece} />}
       <slot />
+      {piece && (piece.article.series === 'economics' || piece.article.series === 'risk' || piece.article.series === 'ai-dive') && (
+        <ArticleTail nav={piece} />
+      )}
     </main>
 
-    <!-- FOOTER -->
     <footer class="editorial-footer">
       <div class="editorial-footer-inner">
-        <span>© {new Date().getFullYear()} Rycode</span>
+        <SiteFooter />
       </div>
     </footer>
   </div>

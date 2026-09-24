@@ -1,0 +1,21 @@
+---
+import type { ArticleNav } from '../lib/site';
+
+interface Props {
+  nav: ArticleNav;
+}
+
+const { nav } = Astro.props;
+const section = nav.article.crumbs[0];
+const siblings = [nav.prev, nav.next, ...nav.related].filter(
+  (item, index, list): item is NonNullable<typeof item> =>
+    Boolean(item) && list.findIndex((other) => other?.href === item?.href) === index,
+);
+---
+
+<p class="essay-siblings">
+  {section && <a href={section.href}>{section.label}</a>}
+  {siblings.map((item) => (
+    <a href={item.href}>{item.title}</a>
+  ))}
+</p>

@@ -82,12 +82,20 @@
 .masthead {
   width: 100%;
   margin: 0;
-  padding: 1.45rem var(--jc-pad) 1.05rem;
+  padding: 1.05rem var(--jc-pad) 0.85rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.65rem 0.55rem;
   border-bottom: 1px solid var(--jc-hair);
+}
+
+.tool-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
 }
 
 .tool-strip-identity {
@@ -113,8 +121,8 @@
   height: 1.25em;
   flex-shrink: 0;
   background: currentColor;
-  -webkit-mask: url("/landing/tools-caliper.png") center / contain no-repeat;
-  mask: url("/landing/tools-caliper.png") center / contain no-repeat;
+  -webkit-mask: url("/landing/tools-caliper.webp") center / contain no-repeat;
+  mask: url("/landing/tools-caliper.webp") center / contain no-repeat;
 }
 
 .tool-strip-sep {
@@ -134,16 +142,27 @@
 .tool-mark {
   margin-left: auto;
   flex-shrink: 0;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   color: rgba(248, 250, 252, 0.9);
   text-decoration: none;
 }
 
 .tool-mark svg {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.tool-mark .masthead-wordmark {
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1;
+  color: inherit;
 }
 
 .tool-mark text {
@@ -189,9 +208,9 @@
     padding-bottom: 0.95rem;
   }
 
-  .tool-mark {
-    width: 2.75rem;
-    height: 2.75rem;
+  .tool-mark svg {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .tool-strip-job {

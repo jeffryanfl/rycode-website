@@ -1,0 +1,1034 @@
+[
+  {
+    "href": "/economics/post-inflation-dollars-pay-pre-inflation-debts/",
+    "title": "Post-inflation dollars pay pre-inflation debts",
+    "description": "Inflating fixed debt is real. It is not a clean reset.",
+    "date": "2026-09-21",
+    "section": "economics",
+    "series": "economics",
+    "crumbs": [
+      {
+        "href": "/economics/",
+        "label": "Economics"
+      }
+    ],
+    "file": "src/pages/economics/post-inflation-dollars-pay-pre-inflation-debts.astro",
+    "slug": "economics-post-inflation-dollars-pay-pre-inflation-debts"
+  },
+  {
+    "href": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
+    "title": "Warsh\u2019s first hike met oil above $100 and a five percent ten-year",
+    "description": "Clean, hawkish, and expensive for stock multiples.",
+    "date": "2026-09-17",
+    "section": "economics",
+    "series": "economics",
+    "crumbs": [
+      {
+        "href": "/economics/",
+        "label": "Economics"
+      }
+    ],
+    "file": "src/pages/economics/warsh-first-hike-oil-and-five-percent-ten-year.astro",
+    "slug": "economics-warsh-first-hike-oil-and-five-percent-ten-year"
+  },
+  {
+    "href": "/economics/still-1998-not-1999/",
+    "title": "Why this boom isn\u2019t a repeat of the dot-com bubble",
+    "description": "The useful answer is still 1998. Real revenue and profits are here.",
+    "date": "2026-09-09",
+    "section": "economics",
+    "series": "economics",
+    "crumbs": [
+      {
+        "href": "/economics/",
+        "label": "Economics"
+      }
+    ],
+    "file": "src/pages/economics/still-1998-not-1999.astro",
+    "slug": "economics-still-1998-not-1999"
+  },
+  {
+    "href": "/economics/jobs-print-was-strong-mix-is-the-story/",
+    "title": "August jobs were strong. Who gets hired is the real story.",
+    "description": "The interesting part is who the next hire is.",
+    "date": "2026-09-09",
+    "section": "economics",
+    "series": "economics",
+    "crumbs": [
+      {
+        "href": "/economics/",
+        "label": "Economics"
+      }
+    ],
+    "file": "src/pages/economics/jobs-print-was-strong-mix-is-the-story.astro",
+    "slug": "economics-jobs-print-was-strong-mix-is-the-story"
+  },
+  {
+    "href": "/economics/ten-trillion-to-roll/",
+    "title": "Near ten trillion of U.S. debt comes due and must be refinanced",
+    "description": "Ten trillion to roll is the ordinary refinance. One trillion to buy is a checking account.",
+    "date": "2026-09-02",
+    "section": "economics",
+    "series": "economics",
+    "crumbs": [
+      {
+        "href": "/economics/",
+        "label": "Economics"
+      }
+    ],
+    "file": "src/pages/economics/ten-trillion-to-roll.astro",
+    "slug": "economics-ten-trillion-to-roll"
+  },
+  {
+    "href": "/economics/saas-barbell-2026/",
+    "title": "Software subscription stocks got cheaper. The industry did not die.",
+    "description": "SaaS is a pricing and durability problem, not a dying industry.",
+    "date": "2026-08-27",
+    "section": "economics",
+    "series": "economics",
+    "crumbs": [
+      {
+        "href": "/economics/",
+        "label": "Economics"
+      }
+    ],
+    "file": "src/pages/economics/saas-barbell-2026.astro",
+    "slug": "economics-saas-barbell-2026"
+  },
+  {
+    "href": "/risk/when-the-spender-runs-the-printer/",
+    "title": "Fiscal pressure on rates means inflation and repression, not a debt reset",
+    "description": "When the spender runs the printer",
+    "date": "2026-09-21",
+    "section": "risk",
+    "series": "risk",
+    "crumbs": [
+      {
+        "href": "/risk/",
+        "label": "Risk"
+      }
+    ],
+    "file": "src/pages/risk/when-the-spender-runs-the-printer.astro",
+    "slug": "risk-when-the-spender-runs-the-printer"
+  },
+  {
+    "href": "/risk/the-ban-lands-on-open-source/",
+    "title": "A mis-set lab sandbox can open a path to rules that hit open weights hardest",
+    "description": "The ban lands on open source",
+    "date": "2026-09-13",
+    "section": "risk",
+    "series": "risk",
+    "crumbs": [
+      {
+        "href": "/risk/",
+        "label": "Risk"
+      }
+    ],
+    "file": "src/pages/risk/the-ban-lands-on-open-source.astro",
+    "slug": "risk-the-ban-lands-on-open-source"
+  },
+  {
+    "href": "/risk/six-percent-that-stays/",
+    "title": "A long-term rate stuck near six percent is the debt danger that lasts",
+    "description": "A 6 percent rate that lasts is the named tail.",
+    "date": "2026-09-02",
+    "section": "risk",
+    "series": "risk",
+    "crumbs": [
+      {
+        "href": "/risk/",
+        "label": "Risk"
+      }
+    ],
+    "file": "src/pages/risk/six-percent-that-stays.astro",
+    "slug": "risk-six-percent-that-stays"
+  },
+  {
+    "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
+    "title": "Chat models write strings. System One returns typed decisions.",
+    "description": "Why Jev changes the scoreboard for software automation",
+    "date": "2026-09-20",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/chat-models-write-strings-system-one-returns-decisions.astro",
+    "slug": "ai-chat-models-write-strings-system-one-returns-decisions"
+  },
+  {
+    "href": "/ai/ten-thousand-agents-is-not-a-genius/",
+    "title": "The claimed math breakthrough was agent scale and token spend",
+    "description": "Ten thousand agents is not a genius",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/ten-thousand-agents-is-not-a-genius.astro",
+    "slug": "ai-ten-thousand-agents-is-not-a-genius"
+  },
+  {
+    "href": "/ai/next-token-engine/",
+    "title": "A next-token engine with an RLVR post-train and a tool loop.",
+    "description": "How staged training and tools shape a next-token engine.",
+    "date": "2026-08-25",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/next-token-engine.astro",
+    "slug": "ai-next-token-engine"
+  },
+  {
+    "href": "/ai/models/typesafe/jev/",
+    "title": "Jev",
+    "description": "Typed decisions for software, not a chat flagship.",
+    "date": "2026-09-20",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/typesafe/",
+        "label": "TypeSafe"
+      }
+    ],
+    "file": "src/pages/ai/models/typesafe/jev.astro",
+    "slug": "ai-models-typesafe-jev"
+  },
+  {
+    "href": "/ai/models/anthropic/claude-opus-5-5/",
+    "title": "Claude Opus 5.5",
+    "description": "First Claude 5.5 model.",
+    "date": "2026-09-23",
+    "section": "ai",
+    "series": "ai-anthropic",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/anthropic/",
+        "label": "Anthropic"
+      }
+    ],
+    "file": "src/pages/ai/models/anthropic/claude-opus-5-5.astro",
+    "slug": "ai-models-anthropic-claude-opus-5-5"
+  },
+  {
+    "href": "/ai/models/anthropic/claude-fable-5-1/",
+    "title": "Claude Fable 5.1",
+    "description": "Most capable widely released.",
+    "date": "2026-09-04",
+    "section": "ai",
+    "series": "ai-anthropic",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/anthropic/",
+        "label": "Anthropic"
+      }
+    ],
+    "file": "src/pages/ai/models/anthropic/claude-fable-5-1.astro",
+    "slug": "ai-models-anthropic-claude-fable-5-1"
+  },
+  {
+    "href": "/ai/models/anthropic/claude-opus-5/",
+    "title": "Claude Opus 5",
+    "description": "Default start.",
+    "date": "2026-09-04",
+    "section": "ai",
+    "series": "ai-anthropic",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/anthropic/",
+        "label": "Anthropic"
+      }
+    ],
+    "file": "src/pages/ai/models/anthropic/claude-opus-5.astro",
+    "slug": "ai-models-anthropic-claude-opus-5"
+  },
+  {
+    "href": "/ai/models/anthropic/claude-sonnet-5/",
+    "title": "Claude Sonnet 5",
+    "description": "Speed + intelligence.",
+    "date": "2026-09-04",
+    "section": "ai",
+    "series": "ai-anthropic",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/anthropic/",
+        "label": "Anthropic"
+      }
+    ],
+    "file": "src/pages/ai/models/anthropic/claude-sonnet-5.astro",
+    "slug": "ai-models-anthropic-claude-sonnet-5"
+  },
+  {
+    "href": "/ai/models/anthropic/claude-haiku-4-5/",
+    "title": "Claude Haiku 4.5",
+    "description": "Fastest.",
+    "date": "2026-09-04",
+    "section": "ai",
+    "series": "ai-anthropic",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/anthropic/",
+        "label": "Anthropic"
+      }
+    ],
+    "file": "src/pages/ai/models/anthropic/claude-haiku-4-5.astro",
+    "slug": "ai-models-anthropic-claude-haiku-4-5"
+  },
+  {
+    "href": "/ai/models/openai/gpt-6-astra/",
+    "title": "GPT-6 Astra",
+    "description": "Flagship for hard end-to-end work.",
+    "date": "2026-09-04",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6-astra.astro",
+    "slug": "ai-models-openai-gpt-6-astra"
+  },
+  {
+    "href": "/ai/models/openai/gpt-6-sol/",
+    "title": "GPT-6 Sol",
+    "description": "Mid-tier for complex coding and agentic work.",
+    "date": "2026-09-23",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6-sol.astro",
+    "slug": "ai-models-openai-gpt-6-sol"
+  },
+  {
+    "href": "/ai/models/openai/gpt-6-luna/",
+    "title": "GPT-6 Luna",
+    "description": "Cheaper, faster GPT-6 tier.",
+    "date": "2026-09-23",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6-luna.astro",
+    "slug": "ai-models-openai-gpt-6-luna"
+  },
+  {
+    "href": "/ai/models/xai/grok-4-7/",
+    "title": "Grok 4.7",
+    "description": "Current coding and knowledge-work frontier. API grok-4.7.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/grok-4-7.astro",
+    "slug": "ai-models-xai-grok-4-7"
+  },
+  {
+    "href": "/ai/models/xai/models/grok-4-6/",
+    "title": "Grok 4.6",
+    "description": "Prior flagship. Still on the API.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/models/grok-4-6.astro",
+    "slug": "ai-models-xai-models-grok-4-6"
+  },
+  {
+    "href": "/ai/models/xai/models/grok-4-5/",
+    "title": "Grok 4.5",
+    "description": "Available on the API.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/models/grok-4-5.astro",
+    "slug": "ai-models-xai-models-grok-4-5"
+  },
+  {
+    "href": "/ai/models/xai/models/grok-4-3/",
+    "title": "Grok 4.3",
+    "description": "Longer context. Batch supported.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/models/grok-4-3.astro",
+    "slug": "ai-models-xai-models-grok-4-3"
+  },
+  {
+    "href": "/ai/models/xai/models/grok-4-20/",
+    "title": "Grok 4.20",
+    "description": "Reasoning, non-reasoning, and multi-agent slugs.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/models/grok-4-20.astro",
+    "slug": "ai-models-xai-models-grok-4-20"
+  },
+  {
+    "href": "/ai/models/xai/models/grok-build-0-1/",
+    "title": "grok-build-0.1",
+    "description": "Dedicated coding slug. Not the Grok Build product.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/models/grok-build-0-1.astro",
+    "slug": "ai-models-xai-models-grok-build-0-1"
+  },
+  {
+    "href": "/ai/models/xai/grok-build/",
+    "title": "Grok Build",
+    "description": "Agent that works the project.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/grok-build.astro",
+    "slug": "ai-models-xai-grok-build"
+  },
+  {
+    "href": "/ai/models/xai/grok-bot/",
+    "title": "Grok Bot",
+    "description": "Named Bots on a cloud computer.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/grok-bot.astro",
+    "slug": "ai-models-xai-grok-bot"
+  },
+  {
+    "href": "/ai/models/xai/imagine/",
+    "title": "Imagine",
+    "description": "Image generation door.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/imagine.astro",
+    "slug": "ai-models-xai-imagine"
+  },
+  {
+    "href": "/ai/models/xai/voice/",
+    "title": "Voice",
+    "description": "Spoken Grok surface.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-xai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/xai/",
+        "label": "xAI"
+      }
+    ],
+    "file": "src/pages/ai/models/xai/voice.astro",
+    "slug": "ai-models-xai-voice"
+  },
+  {
+    "href": "/ai/models/google/gemini-flash/",
+    "title": "Gemini 3.8 Flash",
+    "description": "Current Flash workhorse for long-horizon agents.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-flash.astro",
+    "slug": "ai-models-google-gemini-flash"
+  },
+  {
+    "href": "/ai/models/google/gemini-pro/",
+    "title": "Gemini 3.1 Pro Preview",
+    "description": "Pro line for harder reasoning and tool use.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-pro.astro",
+    "slug": "ai-models-google-gemini-pro"
+  },
+  {
+    "href": "/ai/models/google/gemini-flash-lite/",
+    "title": "Gemini 3.5 Flash-Lite",
+    "description": "Low-latency Flash-Lite for high-throughput work.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-flash-lite.astro",
+    "slug": "ai-models-google-gemini-flash-lite"
+  },
+  {
+    "href": "/ai/models/google/gemma/",
+    "title": "Gemma 4",
+    "description": "Open-weight family, separate from hosted Gemini.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemma.astro",
+    "slug": "ai-models-google-gemma"
+  },
+  {
+    "href": "/ai/models/meta/muse/spark/",
+    "title": "Muse Spark",
+    "description": "Flagship reasoning / agentic / coding on Meta Model API and Meta AI.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-meta",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/meta/",
+        "label": "Meta"
+      }
+    ],
+    "file": "src/pages/ai/models/meta/muse/spark.astro",
+    "slug": "ai-models-meta-muse-spark"
+  },
+  {
+    "href": "/ai/models/meta/muse/glimmer/",
+    "title": "Muse Glimmer",
+    "description": "Open-weight 30B multimodal, distilled from Spark.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-meta",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/meta/",
+        "label": "Meta"
+      }
+    ],
+    "file": "src/pages/ai/models/meta/muse/glimmer.astro",
+    "slug": "ai-models-meta-muse-glimmer"
+  },
+  {
+    "href": "/ai/models/meta/muse/image/",
+    "title": "Muse Image",
+    "description": "Image generation and edit on Meta Model API.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-meta",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/meta/",
+        "label": "Meta"
+      }
+    ],
+    "file": "src/pages/ai/models/meta/muse/image.astro",
+    "slug": "ai-models-meta-muse-image"
+  },
+  {
+    "href": "/ai/models/meta/muse/video/",
+    "title": "Muse Video",
+    "description": "Video generation in the Muse family.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-meta",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/meta/",
+        "label": "Meta"
+      }
+    ],
+    "file": "src/pages/ai/models/meta/muse/video.astro",
+    "slug": "ai-models-meta-muse-video"
+  },
+  {
+    "href": "/ai/models/meta/muse/code/",
+    "title": "Muse Code",
+    "description": "Multi-agent coding in the terminal, built for Spark.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-meta",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/meta/",
+        "label": "Meta"
+      }
+    ],
+    "file": "src/pages/ai/models/meta/muse/code.astro",
+    "slug": "ai-models-meta-muse-code"
+  },
+  {
+    "href": "/ai/models/meta/llama/llama-4/",
+    "title": "Llama 4",
+    "description": "Current open-weight generation. Scout and Maverick.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-meta",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/meta/",
+        "label": "Meta"
+      }
+    ],
+    "file": "src/pages/ai/models/meta/llama/llama-4.astro",
+    "slug": "ai-models-meta-llama-llama-4"
+  },
+  {
+    "href": "/ai/models/deepseek/flash/",
+    "title": "Flash",
+    "description": "Current recommended API model. DeepSeek-V4.1-Flash.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-deepseek",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/deepseek/",
+        "label": "DeepSeek"
+      }
+    ],
+    "file": "src/pages/ai/models/deepseek/flash.astro",
+    "slug": "ai-models-deepseek-flash"
+  },
+  {
+    "href": "/ai/models/deepseek/v4-pro/",
+    "title": "V4 Pro",
+    "description": "Still listed on Models & Pricing. Service continues after 14 Sep 2026 (changelog).",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-deepseek",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/deepseek/",
+        "label": "DeepSeek"
+      }
+    ],
+    "file": "src/pages/ai/models/deepseek/v4-pro.astro",
+    "slug": "ai-models-deepseek-v4-pro"
+  },
+  {
+    "href": "/ai/models/deepseek/thinking/",
+    "title": "Thinking",
+    "description": "Dual thinking / non-thinking mode, shared across Flash and Pro.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-deepseek",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/deepseek/",
+        "label": "DeepSeek"
+      }
+    ],
+    "file": "src/pages/ai/models/deepseek/thinking.astro",
+    "slug": "ai-models-deepseek-thinking"
+  },
+  {
+    "href": "/ai/models/deepseek/api/",
+    "title": "API",
+    "description": "Base URLs, current model ids, and retired aliases.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-deepseek",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/deepseek/",
+        "label": "DeepSeek"
+      }
+    ],
+    "file": "src/pages/ai/models/deepseek/api.astro",
+    "slug": "ai-models-deepseek-api"
+  },
+  {
+    "href": "/ai/models/deepseek/r1/",
+    "title": "R1",
+    "description": "Landmark open reasoner (Jan 2025). Not the current API SKU.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-deepseek",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/deepseek/",
+        "label": "DeepSeek"
+      }
+    ],
+    "file": "src/pages/ai/models/deepseek/r1.astro",
+    "slug": "ai-models-deepseek-r1"
+  },
+  {
+    "href": "/ai/models/deepseek/v3/",
+    "title": "V3",
+    "description": "Prior chat generation. API name deepseek-chat is retired.",
+    "date": "2026-09-21",
+    "section": "ai",
+    "series": "ai-deepseek",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/deepseek/",
+        "label": "DeepSeek"
+      }
+    ],
+    "file": "src/pages/ai/models/deepseek/v3.astro",
+    "slug": "ai-models-deepseek-v3"
+  },
+  {
+    "href": "/ai/models/open-weight/mimo/",
+    "title": "MiMo-V2.6-Pro",
+    "description": "Xiaomi. Downloadable weights near the closed frontier.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-open-weight",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/open-weight/",
+        "label": "Open weight"
+      }
+    ],
+    "file": "src/pages/ai/models/open-weight/mimo.astro",
+    "slug": "ai-models-open-weight-mimo"
+  },
+  {
+    "href": "/ai/models/open-weight/glm-5-3/",
+    "title": "GLM-5.3",
+    "description": "Z.AI. Max effort on the AA Index.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-open-weight",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/open-weight/",
+        "label": "Open weight"
+      }
+    ],
+    "file": "src/pages/ai/models/open-weight/glm-5-3.astro",
+    "slug": "ai-models-open-weight-glm-5-3"
+  },
+  {
+    "href": "/ai/models/open-weight/qwen/",
+    "title": "Qwen3.8 Max",
+    "description": "Alibaba. Open checkpoint noted beside the Max SKU.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-open-weight",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/open-weight/",
+        "label": "Open weight"
+      }
+    ],
+    "file": "src/pages/ai/models/open-weight/qwen.astro",
+    "slug": "ai-models-open-weight-qwen"
+  },
+  {
+    "href": "/ai/models/open-weight/step-5/",
+    "title": "Step 5 Preview",
+    "description": "StepFun. API live. Weights dated 15 Oct 2026.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-open-weight",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/open-weight/",
+        "label": "Open weight"
+      }
+    ],
+    "file": "src/pages/ai/models/open-weight/step-5.astro",
+    "slug": "ai-models-open-weight-step-5"
+  },
+  {
+    "href": "/ai/models/open-weight/kimi-k3/",
+    "title": "Kimi K3",
+    "description": "Moonshot. Max effort on the AA Index.",
+    "date": "2026-09-22",
+    "section": "ai",
+    "series": "ai-open-weight",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/open-weight/",
+        "label": "Open weight"
+      }
+    ],
+    "file": "src/pages/ai/models/open-weight/kimi-k3.astro",
+    "slug": "ai-models-open-weight-kimi-k3"
+  },
+  {
+    "href": "/ai/hardware/terafab/",
+    "title": "Terafab",
+    "description": "Chip fab. SpaceX + Tesla. Not a training hall.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      }
+    ],
+    "file": "src/pages/ai/hardware/terafab.astro",
+    "slug": "ai-hardware-terafab"
+  },
+  {
+    "href": "/ai/hardware/memphis-colossus/",
+    "title": "Memphis / Colossus",
+    "description": "Training campus. Models learn here. Not a chip foundry.",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      }
+    ],
+    "file": "src/pages/ai/hardware/memphis-colossus.astro",
+    "slug": "ai-hardware-memphis-colossus"
+  }
+]

@@ -11,7 +11,7 @@ import '../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">TypeSafe · System One</p>
     <h1 class="ai-model-title">Jev</h1>
-    <p class="ai-model-dek">Part of the <a href="/ai/models/typesafe/">TypeSafe</a> lab. Concept: <a href="/ai/models/typesafe/system-one/">System One</a>.</p>
+    <p class="ai-model-dek">Part of the <a href="/ai/models/typesafe/">TypeSafe</a> lab. Concept: <a href="/ai/chat-models-write-strings-system-one-returns-decisions/">System One</a>.</p>
     <p class="ai-model-note">Longer read: <a href="/ai/chat-models-write-strings-system-one-returns-decisions/">Chat models write strings. System One returns typed decisions.</a></p>
     <hr class="ai-model-rule" />
     <p>Jev is TypeSafe’s first public System One model: a decision model for software, not a chat model for people. You send program state plus typed questions; you get typed answers with probabilities (and confidence on Choice and Score). Early access as of the 15 Sep 2026 announce. Docs default alias is <code>jev-latest</code> (also <code>jev-1.13</code> in jaggedness notes).</p>
@@ -32,7 +32,14 @@ import '../../../../styles/ai.css';
           <tr><td>Noul</td><td>noul (0–1)</td></tr>
         </tbody></table></div>
     <p>Compose judgments in application code (branch, threshold, escalate). Docs say calibration is across groups of predictions and does not guarantee any single answer is correct. Free-text generation is out of scope; use a generative model for that.</p>
-    <p>Use Jev for atomic decisions your code will act on: classify, route, score, extract, branch. Do not use it to write chat replies, generate code, or invent free text. Known sharp edges: <a href="/ai/models/typesafe/jaggedness/">Jaggedness</a>.</p>
+    <p>Use Jev for atomic decisions your code will act on: classify, route, score, extract, branch. Do not use it to write chat replies, generate code, or invent free text.</p>
+    <h2 class="ai-model-section">Jaggedness on jev-1.13</h2>
+    <ul>
+      <li>Send only the state the question needs. Unrelated detail hurts accuracy.</li>
+      <li>Calibration is across groups of predictions. It does not guarantee any single answer.</li>
+      <li>Free-text generation is out of scope. Chat replies, generated code, and invented prose are the wrong job.</li>
+      <li>These notes are for <code>jev-1.13</code>. The vendor writeup is in <a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13.md">Docs: Jev 1.13 jaggedness</a>.</li>
+    </ul>
     <h2 class="ai-model-section">Benchmarking</h2>
     <p>TypeSafe’s public stance is that it does not ship a standard public-benchmark table in model releases. New evals are dated snapshots, then retired (antibenchmaxxing post, 11 Sep 2026). Workflow evals on the announce page compare models inside fixed code graphs against a reference average of large chat models (the blog names GPT-6 Astra and Claude Fable 5.1). The homepage markets “193.6x Faster, 444.6x Cheaper” on those System One workflow tasks. That figure is a vendor claim with blog caveats, not an independent third-party scorecard. Independent Arena, HLE, or GPQA-style scores for Jev are not on the pages cited here.</p>
     <h2 class="ai-model-section">Hardware</h2>

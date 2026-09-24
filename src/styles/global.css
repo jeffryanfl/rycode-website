@@ -1,3 +1,5 @@
+@import "../../public/site-nav.css";
+
 /* Self-hosted OFL fonts (public/fonts). One @font-face source of truth for the editorial chrome. */
 @font-face {
   font-family: "Inter";
@@ -849,7 +851,7 @@ ul {
 .editorial-footer {
   border-top: 1px solid var(--border);
   background: var(--bg);
-  padding: 2rem 1.5rem;
+  padding: 0.45rem 1.5rem;
   margin-top: auto;
 }
 

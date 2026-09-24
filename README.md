@@ -23,13 +23,13 @@ npm run preview    # serves dist/
 ## What's here
 
 ```
-src/pages/     home (`/`, three charcoal doors plus the A.I. brain), Tools, Economics, Risk, A.I. (`/ai`), 404. Systems door goes to https://grc.rycode.dev. Old `/research` URLs redirect.
+src/pages/     home (`/`, Economics, Risk, and the A.I. brain), Economics, Risk, A.I. (`/ai`), About, Contact, 404. Old `/research` URLs redirect.
 src/           layouts, components, styles
 public/        fonts, logo, chrome, og-hub.png. HTML apps go here when added.
 scripts/       local helpers, including og-card.html
 ```
 
-The sitemap (`@astrojs/sitemap`) lists Astro routes only. Apps under `public/` ship with the build but are not sitemap entries.
+`/sitemap.xml` lists the Astro routes.
 
 ## Social card
 
@@ -45,7 +45,7 @@ rm og-card-raw.png
 
 ## Deployment
 
-Netlify runs `npm run build` and publishes `dist/`. GRC lives on a separate site at https://grc.rycode.dev/.
+Netlify runs `npm run build` and publishes `dist/`.
 
 ## License
 

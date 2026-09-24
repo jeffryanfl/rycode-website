@@ -1,0 +1,445 @@
+/* Shared section nav, footer, wordmark, and article chrome.
+   Astro pages bundle this file. Static dashboards link it directly. */
+
+.editorial-shell .masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.masthead-home,
+.section-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: auto;
+  height: auto;
+  flex-shrink: 0;
+  color: rgba(248, 250, 252, 0.9);
+  text-decoration: none;
+}
+
+.masthead-home svg,
+.section-mark svg {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+.masthead-wordmark {
+  font-family: Newsreader, Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: inherit;
+}
+
+.site-nav-list,
+.site-footer-links,
+.article-crumb ol,
+.article-related ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.site-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.35rem 0.95rem;
+}
+
+.site-nav a {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  color: rgba(248, 250, 252, 0.66);
+}
+
+.site-nav-tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.site-nav-sublink {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.editorial-shell .site-nav a[aria-current="page"],
+.editorial-shell .site-nav a[aria-current="true"],
+.site-nav a[aria-current="page"],
+.site-nav a[aria-current="true"] {
+  color: #d97706;
+}
+
+.editorial-shell .editorial-footer {
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.site-footer nav {
+  width: 100%;
+}
+
+.site-footer-links {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0.55rem 0.85rem;
+  white-space: nowrap;
+}
+
+.site-footer a {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  text-decoration: none;
+  color: rgba(248, 250, 252, 0.62);
+}
+
+.editorial-shell .site-footer a {
+  color: rgba(248, 250, 252, 0.62);
+}
+
+.editorial-shell .site-footer a:hover,
+.editorial-shell .site-footer a:focus-visible,
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: #d97706;
+}
+
+.site-footer-copy {
+  margin: 0 0 0 auto;
+  padding-left: 0.75rem;
+  color: rgba(248, 250, 252, 0.42);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .editorial-shell .editorial-footer,
+  .editorial-shell--economics .editorial-footer,
+  .editorial-shell--risk .editorial-footer,
+  .editorial-shell--ai .editorial-footer,
+  .editorial-shell--landing .editorial-footer {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+
+  .site-footer-links {
+    gap: 0.4rem;
+  }
+
+  .site-footer a,
+  .site-footer-copy {
+    font-size: 0.68rem;
+  }
+
+  .site-footer-copy {
+    padding-left: 0.35rem;
+  }
+}
+
+.article-top {
+  margin: 0 0 1rem;
+}
+
+.article-crumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.15rem;
+  margin-bottom: 0.45rem;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+}
+
+.article-crumb li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: rgba(248, 250, 252, 0.62);
+}
+
+.article-crumb li + li::before {
+  content: "/";
+  color: rgba(248, 250, 252, 0.32);
+}
+
+.article-meta {
+  margin: 0;
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  color: rgba(248, 250, 252, 0.52);
+}
+
+.article-tail {
+  margin-top: 2.25rem;
+}
+
+.article-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+
+.article-pager a,
+.article-related a {
+  text-decoration: none;
+}
+
+.editorial-shell .article-top a,
+.editorial-shell .article-tail a {
+  color: rgba(248, 250, 252, 0.84);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(248, 250, 252, 0.28);
+}
+
+.editorial-shell .article-top a:hover,
+.editorial-shell .article-tail a:hover,
+.editorial-shell .article-top a:focus-visible,
+.editorial-shell .article-tail a:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+  text-decoration-color: #d97706;
+}
+
+.article-pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.article-pager a[rel="next"] {
+  text-align: right;
+  grid-column: 2;
+}
+
+.article-pager-kicker,
+.article-related-kicker {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #d97706;
+  text-decoration: none;
+}
+
+.editorial-shell .article-pager-kicker,
+.editorial-shell .article-related-kicker {
+  text-decoration: none;
+  color: #d97706;
+}
+
+.article-pager-title {
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.article-related {
+  margin-top: 1.5rem;
+}
+
+.article-related-kicker {
+  margin: 0 0 0.55rem;
+}
+
+.article-related ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.article-related a {
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.editorial-shell--economics:has(.econ-digest) .article-top,
+.editorial-shell--economics:has(.econ-digest) .article-tail,
+.editorial-shell--risk:has(.risk-digest) .article-top,
+.editorial-shell--risk:has(.risk-digest) .article-tail,
+.editorial-shell--ai:has(.ai-digest) .article-top,
+.editorial-shell--ai:has(.ai-digest) .article-tail {
+  padding-left: clamp(1.4rem, 5.2vw, 3.75rem);
+  padding-right: clamp(1.4rem, 5.2vw, 3.75rem);
+}
+
+.editorial-shell--economics:has(.econ-digest) .article-top,
+.editorial-shell--risk:has(.risk-digest) .article-top,
+.editorial-shell--ai:has(.ai-digest) .article-top {
+  padding-top: 1.15rem;
+}
+
+.editorial-shell--ai:has(.paper) .article-top,
+.editorial-shell--ai:has(.paper) .article-tail {
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.editorial-shell--ai:has(.paper) .article-top {
+  padding-top: 1.25rem;
+}
+
+.editorial-shell--ai:has(.paper):has(.article-top) .paper {
+  padding-top: 0.35rem;
+}
+
+.plain-page {
+  max-width: 40rem;
+}
+
+.plain-page h1,
+.essay-siblings-title {
+  font-family: Newsreader, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.plain-page h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.plain-page p {
+  margin: 0 0 1rem;
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.12rem;
+  line-height: 1.6;
+}
+
+.essay-siblings {
+  list-style: none;
+  margin: 1.4rem 0 0;
+  padding: 0 0 2rem;
+}
+
+.editorial-shell--economics:has(.econ-digest) .essay-siblings,
+.editorial-shell--risk:has(.risk-digest) .essay-siblings,
+.editorial-shell--ai:has(.ai-digest) .essay-siblings,
+.editorial-shell--ai:has(.paper) .essay-siblings {
+  padding-left: clamp(1.4rem, 5.2vw, 3.75rem);
+  padding-right: clamp(1.4rem, 5.2vw, 3.75rem);
+}
+
+.essay-siblings a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid rgba(248, 250, 252, 0.16);
+  text-decoration: none;
+}
+
+.essay-siblings-title {
+  font-size: 1.35rem;
+}
+
+.essay-siblings-dek {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.92rem;
+  color: rgba(248, 250, 252, 0.52);
+}
+
+.systems-glyph {
+  display: block;
+  width: 1.05em;
+  height: 1.05em;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.systems-dek {
+  max-width: 36rem;
+  margin: 0 0 0.4rem;
+  color: rgba(248, 250, 252, 0.52);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+}
+
+@media (max-width: 800px) {
+  .site-nav {
+    flex: 1 0 100%;
+    order: 3;
+    justify-content: flex-start;
+  }
+
+  .site-nav-list,
+  .site-nav-tools {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .section-mark,
+  .masthead-home.section-mark {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .article-pager {
+    grid-template-columns: 1fr;
+  }
+
+  .article-pager a[rel="next"] {
+    text-align: left;
+    grid-column: auto;
+  }
+
+  .masthead-home svg,
+  .section-mark svg {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .masthead-wordmark {
+    font-size: 1.05rem;
+  }
+
+  .editorial-shell--ai:has(.paper) .article-top,
+  .editorial-shell--ai:has(.paper) .article-tail {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a,
+  .site-footer a,
+  .article-top a,
+  .article-tail a {
+    transition: none;
+  }
+}

@@ -9,60 +9,52 @@ import '../styles/hub.css';
   description="Economics, risk, and systems."
   variant="landing"
 >
-  <a class="hub-tape hub-tape--top" id="hubAiTape" href="/ai/" hidden aria-label="A.I. tape">
-    <span class="hub-tape-asof" data-hub-ai-tape-asof aria-hidden="true"></span>
-    <span class="hub-tape-viewport" data-hub-ai-tape-viewport aria-hidden="true">
-      <span class="hub-tape-track" data-hub-ai-tape-track></span>
-    </span>
-  </a>
-
   <section class="landing-stage landing-stage--charcoal landing-stage--doors">
     <h1 class="visually-hidden">Rycode</h1>
 
-    <a href="/" class="hub-mark" aria-label="Rycode Home">
-      <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-        <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-        <text x="9" y="19" fill="currentColor" font-size="11" font-weight="500">26</text>
-        <text x="28" y="44" text-anchor="middle" fill="currentColor" font-size="20" font-weight="650">Ry</text>
-      </svg>
+    <a class="hub-tape hub-tape--top" id="hubAiTape" href="/ai/" hidden aria-label="A.I. tape">
+      <span class="hub-tape-asof" data-hub-ai-tape-asof aria-hidden="true"></span>
+      <span class="hub-tape-viewport" data-hub-ai-tape-viewport aria-hidden="true">
+        <span class="hub-tape-track" data-hub-ai-tape-track></span>
+      </span>
     </a>
 
     <nav class="hub-cluster" aria-label="Doors">
       <ul class="hub-doors">
         <li>
           <a class="hub-door" href="/economics/">
-            <img class="hub-glyph hub-glyph--raster" src="/landing/hub-economics.png" alt="" width="880" height="784" />
+            <img class="hub-glyph hub-glyph--raster" src="/landing/hub-economics.webp" alt="" width="81" height="72" />
             <span>Economics</span>
           </a>
         </li>
         <li>
           <a class="hub-door" href="/risk/">
-            <img class="hub-glyph hub-glyph--raster hub-glyph--risk" src="/landing/hub-risk.png" alt="" width="978" height="887" />
+            <img class="hub-glyph hub-glyph--raster hub-glyph--risk" src="/landing/hub-risk.webp" alt="" width="79" height="72" />
             <span>Risk</span>
           </a>
         </li>
         <li>
-          <a class="hub-door" href="https://grc.rycode.dev">
-            <img class="hub-glyph hub-glyph--raster" src="/landing/hub-systems.png" alt="" width="890" height="800" />
-            <span>Systems</span>
+          <a class="hub-door" href="https://systems.rycode.dev" target="_blank" rel="noopener noreferrer">
+            <img class="hub-glyph hub-glyph--raster" src="/landing/hub-systems.webp" alt="" width="80" height="72" />
+            <span>Systems<span class="visually-hidden"> (opens in a new tab)</span></span>
           </a>
         </li>
         <li>
           <a class="hub-door" href="/ai/">
-            <img class="hub-glyph hub-glyph--raster" src="/landing/hub-brain-overhead.png" alt="" width="742" height="851" />
+            <img class="hub-glyph hub-glyph--raster" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
             <span>A.I.</span>
           </a>
         </li>
       </ul>
     </nav>
-  </section>
 
-  <a class="hub-tape" id="hubTape" href="/economics/" hidden aria-label="Economics tape">
-    <span class="hub-tape-asof" data-hub-tape-asof aria-hidden="true"></span>
-    <span class="hub-tape-viewport" data-hub-tape-viewport aria-hidden="true">
-      <span class="hub-tape-track" data-hub-tape-track></span>
-    </span>
-  </a>
+    <a class="hub-tape" id="hubTape" href="/economics/" hidden aria-label="Economics tape">
+      <span class="hub-tape-asof" data-hub-tape-asof aria-hidden="true"></span>
+      <span class="hub-tape-viewport" data-hub-tape-viewport aria-hidden="true">
+        <span class="hub-tape-track" data-hub-tape-track></span>
+      </span>
+    </a>
+  </section>
   <script is:inline src="/home-ai-tape.js" defer></script>
   <script is:inline src="/home-tape.js" defer></script>
 </Layout>

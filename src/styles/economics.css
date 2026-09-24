@@ -47,9 +47,10 @@ html:has(.editorial-shell--economics) .skip-link {
   margin: 0;
   padding: 1.45rem var(--econ-pad) 1.15rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.75rem 1rem;
   border-bottom: none;
   background: transparent;
 }
@@ -148,7 +149,7 @@ h1.economics-identity {
   background: transparent;
   border-top: none;
   margin-top: auto;
-  padding: 2rem var(--econ-pad) 1.4rem;
+  padding: 0.45rem var(--econ-pad);
 }
 
 .editorial-shell--economics .editorial-footer-inner {

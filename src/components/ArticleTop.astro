@@ -1,0 +1,29 @@
+---
+import { AUTHOR, formatDate, type ArticleNav } from '../lib/site';
+
+interface Props {
+  nav: ArticleNav;
+}
+
+const { nav } = Astro.props;
+const { article, minutes } = nav;
+---
+
+<div class="article-top">
+  <nav class="article-crumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      {article.crumbs.map((crumb) => (
+        <li><a href={crumb.href}>{crumb.label}</a></li>
+      ))}
+      <li aria-current="page">{article.title}</li>
+    </ol>
+  </nav>
+  <p class="article-meta">
+    <span class="article-byline">{AUTHOR}</span>
+    <span aria-hidden="true"> · </span>
+    <time datetime={article.date}>{formatDate(article.date)}</time>
+    <span aria-hidden="true"> · </span>
+    <span>{minutes} min read</span>
+  </p>
+</div>

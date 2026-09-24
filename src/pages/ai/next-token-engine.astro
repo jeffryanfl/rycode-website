@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import '../../styles/newspaper.css';
 import '../../styles/ai.css';
+import '../../styles/paper.css';
 
 const stages = [
   {
@@ -109,7 +109,7 @@ const terms = [
     id: 'ear',
     label: 'EAR',
     expand: 'Export Administration Regulations',
-    news: 'EAR and deemed export are a GRC pointer, not legal advice here.',
+    news: 'EAR and deemed export are a compliance pointer, not legal advice here.',
     more: 'Export control is live.',
   },
   {
@@ -138,18 +138,11 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
 <Layout
   title="A next-token engine with an RLVR post-train and a tool loop — Rycode"
   description="What each training stage actually buys, what still discriminates capability, and the hardware you actually purchase."
-  variant="newspaper"
+  variant="ai"
 >
-  <a slot="newspaper-identity" href="/ai" class="ai-identity">
-    <img class="ai-glyph" src="/landing/hub-brain-overhead.png" alt="" width="742" height="851" />
+  <a slot="ai-identity" href="/ai/" class="ai-identity">
+    <img class="ai-glyph" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
     A.I.
-  </a>
-  <a slot="newspaper-aside" href="/" class="ai-mark" aria-label="Rycode Home">
-    <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-      <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-      <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-    </svg>
   </a>
 
   <article class="paper">
@@ -455,7 +448,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
 
           <aside class="reg-note" aria-label="Regulatory note, not legal advice">
             <h3>Regulatory note (not legal advice)</h3>
-            <p>Export control is live. Export Administration Regulations (<button type="button" class="term-ref" data-term="ear" aria-controls="term-ear">EAR</button>) and deemed export are a GRC pointer, not legal advice here. In the EU, general-purpose AI (<button type="button" class="term-ref" data-term="gpai" aria-controls="term-gpai">GPAI</button>) duties have applied since 2 August 2025, with Commission and AI Office enforcement and fines since 2 August 2026, and a systemic-risk presumption at 10²⁵ FLOP.</p>
+            <p>Export control is live. Export Administration Regulations (<button type="button" class="term-ref" data-term="ear" aria-controls="term-ear">EAR</button>) and deemed export are a compliance pointer, not legal advice here. In the EU, general-purpose AI (<button type="button" class="term-ref" data-term="gpai" aria-controls="term-gpai">GPAI</button>) duties have applied since 2 August 2025, with Commission and AI Office enforcement and fines since 2 August 2026, and a systemic-risk presumption at 10²⁵ FLOP.</p>
           </aside>
         </section>
 

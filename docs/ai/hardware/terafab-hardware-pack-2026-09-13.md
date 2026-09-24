@@ -1,6 +1,6 @@
 # Terafab — Hardware learning pack (for Architect /ai)
 **Date:** 13 Sep 2026  
-**Lane:** `/ai` Hardware learning hub (facts), not a newspaper essay  
+**Lane:** `/ai` Hardware learning hub (facts), not a long essay  
 **Spelling:** **Terafab** (one word). Confirmed on company site https://terafab.ai/ and SpaceX Updates https://www.spacex.com/updates/terafab  
 **Hard distinction:** Terafab is a **planned semiconductor fabrication plant (chip fab)**. It is **not** an AI training data center. The Musk-orbit training campus people often confuse with it is **Colossus** (Memphis / Southaven) under SpaceXAI / former xAI.
 

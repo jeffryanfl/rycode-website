@@ -1,9 +1,8 @@
 # Rycode — robots.txt
 # Search engines are welcome to index the public surface of rycode.dev.
-# GRC lives at https://grc.rycode.dev/ on its own Netlify project. This
-# site does not proxy /grc/*, so there is no private path to Disallow.
+# Public pages on this origin are indexable.
 
 User-agent: *
 Allow: /
 
-Sitemap: https://rycode.dev/sitemap-index.xml
+Sitemap: https://rycode.dev/sitemap.xml

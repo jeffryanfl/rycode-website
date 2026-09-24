@@ -1,16 +1,6 @@
 # Rycode — Netlify redirects
 # ---------------------------------------------------------------
-# The GRC case-study page links out to https://grc.rycode.dev/,
-# which is the GRC site's own custom domain on its own Netlify
-# project. We do NOT proxy /grc/* from here — Netlify's Pro
-# password-protection renders a login form that only works when
-# served from the origin's own domain, not through a rewrite.
-#
-# Pretty URLs for vanilla apps under public/ (folder/index.html).
-/dashboards/control-effectiveness  /dashboards/control-effectiveness/index.html  200
-/dashboards/control-effectiveness/ /dashboards/control-effectiveness/index.html  200
-/dashboards/build-vs-buy           /dashboards/build-vs-buy/index.html  200
-/dashboards/build-vs-buy/          /dashboards/build-vs-buy/index.html  200
+# Old research URLs move to the subject pages.
 
 /research/ten-trillion-to-roll         /economics/ten-trillion-to-roll/    301!
 /research/ten-trillion-to-roll/        /economics/ten-trillion-to-roll/    301!
@@ -22,9 +12,6 @@
 /research/saaspocalypse/               /economics/saas-barbell-2026/       301!
 /research                              /economics/    301!
 /research/                             /economics/    301!
-
-/systems                           https://grc.rycode.dev/  301
-/systems/                          https://grc.rycode.dev/  301
 
 /ai/models/openai/gpt-5-6-sol      /ai/models/openai/gpt-6-sol/  301!
 /ai/models/openai/gpt-5-6-sol/     /ai/models/openai/gpt-6-sol/  301!

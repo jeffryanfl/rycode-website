@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import '../../styles/newspaper.css';
 import '../../styles/ai.css';
+import '../../styles/paper.css';
 
 const title = 'Chat models write strings. System One returns typed decisions.';
 const subhead = 'Why Jev changes the scoreboard for software automation';
@@ -33,18 +33,11 @@ const sources = [
 <Layout
   title={`${title} — Rycode`}
   description={subhead}
-  variant="newspaper"
+  variant="ai"
 >
-  <a slot="newspaper-identity" href="/ai" class="ai-identity">
-    <img class="ai-glyph" src="/landing/hub-brain-overhead.png" alt="" width="742" height="851" />
+  <a slot="ai-identity" href="/ai/" class="ai-identity">
+    <img class="ai-glyph" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
     A.I.
-  </a>
-  <a slot="newspaper-aside" href="/" class="ai-mark" aria-label="Rycode Home">
-    <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="54" height="54" stroke="currentColor" stroke-width="1" />
-      <text x="9" y="19" fill="currentColor" font-family="Inter, sans-serif" font-size="11" font-weight="500">26</text>
-      <text x="28" y="44" text-anchor="middle" fill="currentColor" font-family="Inter, sans-serif" font-size="20" font-weight="650">Ry</text>
-    </svg>
   </a>
 
   <article class="paper">
@@ -112,7 +105,7 @@ const sources = [
           <ol class="paper-sources">
             {sources.map((source) => (
               <li>
-                {source.text}: <a href={source.href}>{source.href}</a>
+                <a href={source.href}>{source.text}</a>
               </li>
             ))}
           </ol>

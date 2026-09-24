@@ -2,8 +2,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-
 /** Vite serves public/foo/index.html at /foo/index.html, not /foo/. Rewrite so hub cards can use pretty paths in `npm run dev`. */
 function servePublicIndex() {
   return {
@@ -29,14 +27,12 @@ function servePublicIndex() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rycode.dev',
-  integrations: [sitemap()],
   redirects: {
     '/research': '/economics/',
     '/research/ten-trillion-to-roll': '/economics/ten-trillion-to-roll/',
     '/research/saas-barbell-2026': '/economics/saas-barbell-2026/',
     '/research/ten-thousand-agents-is-not-a-genius': '/ai/ten-thousand-agents-is-not-a-genius/',
     '/research/saaspocalypse': '/economics/saas-barbell-2026/',
-    '/systems': 'https://grc.rycode.dev/',
     '/ai/models/openai/gpt-5-6-sol': '/ai/models/openai/gpt-6-sol/',
     '/risk/panic-before-the-breach': '/risk/the-ban-lands-on-open-source/',
   },
