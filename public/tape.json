@@ -1,18 +1,18 @@
 {
-  "updated": "2026-09-24T08:48:00-04:00",
-  "asOfLabel": "Thu 24 Sep \u00b7 pre-open",
+  "updated": "2026-09-24T16:30:00-04:00",
+  "asOfLabel": "Thu 24 Sep · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Premarket soft: ES \u22120.6%, NQ \u22121.1% after Wed SPX 7706."
+      "text": "Flat close: SPX 7704 (−0.02%), Dow −0.31%, Nasdaq +0.01% after soft futures."
     },
     {
       "tag": "Rates",
-      "text": "Wed CMT 10y 5.11%; claims 197k; Oct hike lean still on."
+      "text": "Treasury 10y 5.18% (up from 5.11%), 30y 5.47%, 2y 4.87%."
     },
     {
       "tag": "Oil",
-      "text": "WTI ~$94 (+~$1.70) on Mideast; Brent near $100."
+      "text": "WTI ~$95.4, up ~$3.20 (≈3.5%) on the day."
     }
   ],
   "doorHref": "/economics",
