@@ -283,11 +283,11 @@ html:has(.landing-stage--charcoal) body {
 
 .hub-doors {
   display: grid;
-  grid-template-columns: repeat(2, 7.5rem);
+  grid-template-columns: repeat(4, 7.5rem);
   justify-content: center;
   justify-items: center;
   align-items: start;
-  column-gap: clamp(2.4rem, 7vw, 5rem);
+  column-gap: clamp(1.6rem, 4vw, 3.25rem);
   row-gap: clamp(2.1rem, 5vw, 3rem);
   margin: 0;
   padding: 0;
@@ -300,8 +300,8 @@ html:has(.landing-stage--charcoal) body {
   align-items: center;
   width: 100%;
   gap: 0.72rem;
-  color: var(--hub-ink, #f8fafc);
-  opacity: var(--hub-ink-rest, 0.64);
+  color: rgba(248, 250, 252, 0.9);
+  opacity: 1;
   text-decoration: none;
   font-family: var(--font-sans);
   font-size: 0.84rem;
@@ -312,21 +312,27 @@ html:has(.landing-stage--charcoal) body {
 
 .hub-glyph {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  object-position: center;
   transform-origin: center;
-  opacity: var(--hub-glyph-ink, 0.52);
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 0 #f8fafc)
+    drop-shadow(0 0 0 #f8fafc)
+    drop-shadow(0 0 0 #f8fafc)
+    drop-shadow(0 0 0 #f8fafc)
+    drop-shadow(0 0 0 #f8fafc)
+    drop-shadow(0 0 0 #f8fafc)
+    drop-shadow(0 0 4px rgba(248, 250, 252, 0.45));
 }
 
 img.hub-glyph--raster {
-  width: auto;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   pointer-events: none;
   user-select: none;
-}
-
-.hub-glyph--risk {
-  opacity: 1;
 }
 
 .hub-door:hover,
@@ -391,14 +397,26 @@ img.hub-glyph--raster {
   0%,
   100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 3px rgba(248, 250, 252, 0.45));
+    filter:
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 5px rgba(248, 250, 252, 0.7));
   }
   50% {
     transform: scale(1.08);
     filter:
-      drop-shadow(0 0 5px rgba(248, 250, 252, 0.95))
-      drop-shadow(0 0 12px rgba(248, 250, 252, 0.65))
-      drop-shadow(0 0 18px rgba(248, 250, 252, 0.3));
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 6px rgba(248, 250, 252, 0.95))
+      drop-shadow(0 0 14px rgba(248, 250, 252, 0.55));
   }
 }
 
@@ -412,8 +430,13 @@ img.hub-glyph--raster {
     animation: none;
     transform: none;
     filter:
-      drop-shadow(0 0 5px rgba(248, 250, 252, 0.85))
-      drop-shadow(0 0 12px rgba(248, 250, 252, 0.4));
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 0 #f8fafc)
+      drop-shadow(0 0 6px rgba(248, 250, 252, 0.7));
   }
 }
 

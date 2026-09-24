@@ -54,6 +54,8 @@ export type ArticleNav = {
   article: Article;
   prev: Article | null;
   next: Article | null;
+  sectionPrev: Article | null;
+  sectionNext: Article | null;
   related: Article[];
   minutes: number;
 };
@@ -93,10 +95,18 @@ export function articleNav(pathname: string): ArticleNav | null {
     related = [...related, ...rest].slice(0, 3);
   }
 
+  const inSection = articles.filter((item) => item.section === article.section);
+  const sectionIndex = inSection.findIndex((item) => item.href === article.href);
+  const sectionPrev = sectionIndex > 0 ? inSection[sectionIndex - 1] : null;
+  const sectionNext =
+    sectionIndex >= 0 && sectionIndex < inSection.length - 1 ? inSection[sectionIndex + 1] : null;
+
   return {
     article,
     prev,
     next,
+    sectionPrev,
+    sectionNext,
     related,
     minutes: readingMinutes(article.file),
   };

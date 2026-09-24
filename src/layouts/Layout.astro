@@ -4,6 +4,7 @@ import BrandMark from '../components/BrandMark.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ArticleTop from '../components/ArticleTop.astro';
+import ArticlePager from '../components/ArticlePager.astro';
 import ArticleTail from '../components/ArticleTail.astro';
 import { articleNav, normalizePath, ogImageFor } from '../lib/site';
 
@@ -100,6 +101,7 @@ const rssURL = new URL("/rss.xml", Astro.site);
     <main id="mainContent" class="editorial-main-content" tabindex="-1">
       {piece && <ArticleTop nav={piece} />}
       <slot />
+      {piece && <ArticlePager nav={piece} />}
       {piece && (piece.article.series === 'economics' || piece.article.series === 'risk' || piece.article.series === 'ai-dive') && (
         <ArticleTail nav={piece} />
       )}

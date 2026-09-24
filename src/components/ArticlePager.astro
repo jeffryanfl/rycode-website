@@ -1,0 +1,26 @@
+---
+import type { ArticleNav } from '../lib/site';
+
+interface Props {
+  nav: ArticleNav;
+}
+
+const { sectionPrev, sectionNext } = Astro.props.nav;
+---
+
+{(sectionPrev || sectionNext) && (
+  <nav class="article-pager" aria-label="Articles in this section">
+    {sectionPrev && (
+      <a rel="prev" href={sectionPrev.href} aria-label="Previous article">
+        <span class="article-pager-arrow" aria-hidden="true">←</span>
+        <span>Previous: {sectionPrev.title}</span>
+      </a>
+    )}
+    {sectionNext && (
+      <a rel="next" href={sectionNext.href} aria-label="Next article">
+        <span>Next: {sectionNext.title}</span>
+        <span class="article-pager-arrow" aria-hidden="true">→</span>
+      </a>
+    )}
+  </nav>
+)}

@@ -340,6 +340,54 @@
   line-height: 1.6;
 }
 
+.article-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.25rem 2rem;
+  margin: 2rem 0 0;
+}
+
+.article-pager a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  max-width: 46%;
+  color: rgba(248, 250, 252, 0.84);
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.article-pager a[rel="next"] {
+  margin-left: auto;
+  text-align: right;
+}
+
+.article-pager-arrow {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #d97706;
+}
+
+.editorial-shell .article-pager a {
+  color: rgba(248, 250, 252, 0.84);
+  text-decoration: none;
+}
+
+.editorial-shell .article-pager a:hover,
+.editorial-shell .article-pager a:focus-visible {
+  color: rgba(248, 250, 252, 0.98);
+}
+
+.editorial-shell--economics:has(.econ-digest) .article-pager,
+.editorial-shell--risk:has(.risk-digest) .article-pager,
+.editorial-shell--ai:has(.ai-digest) .article-pager,
+.editorial-shell--ai:has(.paper) .article-pager {
+  padding-left: clamp(1.4rem, 5.2vw, 3.75rem);
+  padding-right: clamp(1.4rem, 5.2vw, 3.75rem);
+}
+
 .essay-siblings {
   list-style: none;
   margin: 1.4rem 0 0;
@@ -410,12 +458,15 @@
 
 @media (max-width: 720px) {
   .article-pager {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
   }
 
+  .article-pager a,
   .article-pager a[rel="next"] {
+    max-width: none;
+    margin-left: 0;
     text-align: left;
-    grid-column: auto;
   }
 
   .masthead-home svg,

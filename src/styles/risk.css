@@ -277,6 +277,40 @@ h1.risk-identity {
   color: var(--digest-muted);
 }
 
+.risk-path-diagram-scroll {
+  overflow-x: auto;
+  margin: 0 0 0.9rem;
+}
+
+.risk-path-diagram {
+  display: block;
+  width: 100%;
+  min-width: 44rem;
+  height: auto;
+  color: var(--digest-muted);
+}
+
+.risk-path-nodes rect {
+  fill: transparent;
+  stroke: var(--digest-hair);
+  stroke-width: 1;
+}
+
+.risk-path-node-name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--digest-ink);
+}
+
+.risk-path-node-detail {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  fill: var(--digest-muted);
+}
+
 .risk-path-steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
