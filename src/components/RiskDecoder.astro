@@ -1,0 +1,36 @@
+---
+/**
+ * Risk digest decoder.
+ * House terms get a gloss here before the article uses them.
+ * Do not add a metaphor that has no entry in this list.
+ */
+export interface RiskTerm {
+  term: string;
+  gloss: string;
+}
+
+interface Props {
+  lede?: string;
+  terms: RiskTerm[];
+  quiet?: string | string[];
+}
+
+const { lede, terms, quiet } = Astro.props;
+const quietLines = quiet == null ? [] : Array.isArray(quiet) ? quiet : [quiet];
+---
+
+<div class="risk-decoder">
+  <p class="risk-decoder-kicker">How to read this</p>
+  {lede && <p class="risk-decoder-lede">{lede}</p>}
+  <dl class="risk-decoder-list">
+    {terms.map((item) => (
+      <div>
+        <dt>{item.term}</dt>
+        <dd>{item.gloss}</dd>
+      </div>
+    ))}
+  </dl>
+  {quietLines.map((line) => (
+    <p class="risk-decoder-quiet">{line}</p>
+  ))}
+</div>

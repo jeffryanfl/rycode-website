@@ -1,0 +1,137 @@
+---
+/**
+ * Locked path diagram.
+ * Stages run left to right. Each node is the stage name plus one plain gloss.
+ * When outcomes are set, they branch from the last stage (Rent / Fog shape).
+ */
+export interface PathNode {
+  name: string;
+  lines: string[];
+}
+
+interface Props {
+  title: string;
+  desc: string;
+  stages: PathNode[];
+  outcomes?: PathNode[];
+}
+
+const { title, desc, stages, outcomes = [] } = Astro.props;
+const branched = outcomes.length > 0;
+const boxW = 148;
+const boxH = 78;
+const gap = 30;
+const pad = 8;
+
+const main = stages.map((stage, index) => {
+  const last = branched && index === stages.length - 1;
+  return {
+    ...stage,
+    x: pad + index * (boxW + gap),
+    y: branched ? (last ? 58 : 70) : pad,
+    w: last ? 168 : boxW,
+    h: last ? 102 : boxH,
+  };
+});
+
+const outcomeW = 268;
+const outcomeH = 62;
+const fork = main[main.length - 1];
+const outcomeX = fork.x + fork.w + 48;
+const outcomeBoxes = outcomes.map((node, index) => ({
+  ...node,
+  x: outcomeX,
+  y: index === 0 ? 12 : 144,
+  w: outcomeW,
+  h: outcomeH,
+}));
+
+const width = branched
+  ? outcomeX + outcomeW + 12
+  : pad + stages.length * boxW + (stages.length - 1) * gap + pad;
+const height = branched ? 220 : boxH + pad * 2;
+
+function arrow(x1: number, y1: number, x2: number) {
+  return {
+    line: `M${x1} ${y1} H${x2 - 8}`,
+    head: `M${x2 - 8} ${y1 - 4} L${x2} ${y1} L${x2 - 8} ${y1 + 4}`,
+  };
+}
+---
+
+<div class="risk-path-diagram-scroll">
+  <svg
+    class:list={['risk-path-diagram', { 'risk-path-diagram--line': !branched }]}
+    viewBox={`0 0 ${width} ${height}`}
+    role="img"
+  >
+    <title>{title}</title>
+    <desc>{desc}</desc>
+    <g class="risk-path-edges" fill="none" stroke="currentColor" stroke-width="1">
+      {main.slice(0, -1).map((box, index) => {
+        const next = main[index + 1];
+        const y = box.y + box.h / 2;
+        const mark = arrow(box.x + box.w, y, next.x);
+        return (
+          <g>
+            <path d={mark.line} />
+            <path d={mark.head} />
+          </g>
+        );
+      })}
+      {branched &&
+        outcomeBoxes.map((box) => {
+          const fromX = fork.x + fork.w;
+          const fromY = fork.y + fork.h / 2;
+          const toY = box.y + box.h / 2;
+          const joint = fromX + 24;
+          const mark = arrow(joint, toY, box.x);
+          return (
+            <g>
+              <path d={`M${fromX} ${fromY} H${joint} V${toY}`} />
+              <path d={mark.line} />
+              <path d={mark.head} />
+            </g>
+          );
+        })}
+    </g>
+    <g class="risk-path-nodes">
+      {main.map((box) => (
+        <g>
+          <rect x={box.x} y={box.y} width={box.w} height={box.h} />
+          <text class="risk-path-node-name" x={box.x + box.w / 2} y={box.y + 32} text-anchor="middle">
+            {box.name}
+          </text>
+          {box.lines.map((line, lineIndex) => (
+            <text
+              class="risk-path-node-detail"
+              x={box.x + box.w / 2}
+              y={box.y + 52 + lineIndex * 18}
+              text-anchor="middle"
+            >
+              {line}
+            </text>
+          ))}
+        </g>
+      ))}
+      {outcomeBoxes.map((box) => (
+        <g>
+          <rect x={box.x} y={box.y} width={box.w} height={box.h} />
+          <text class="risk-path-node-name" x={box.x + box.w / 2} y={box.y + 24} text-anchor="middle">
+            {box.name}
+          </text>
+          {box.lines.map((line, lineIndex) => (
+            <text
+              class="risk-path-node-detail"
+              x={box.x + box.w / 2}
+              y={box.y + 42 + lineIndex * 16}
+              text-anchor="middle"
+            >
+              {line}
+            </text>
+          ))}
+        </g>
+      ))}
+    </g>
+  </svg>
+</div>

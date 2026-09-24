@@ -479,7 +479,7 @@ h1.economics-identity {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  transition: transform 0.35s ease;
+
 }
 
 .econ-card {

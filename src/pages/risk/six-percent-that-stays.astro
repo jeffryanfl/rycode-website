@@ -1,12 +1,26 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import LivingStrip from '../../components/LivingStrip.astro';
+import RiskDecoder from '../../components/RiskDecoder.astro';
+import RiskPath from '../../components/RiskPath.astro';
+import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/six-percent-that-stays.facts.json';
 import '../../styles/risk.css';
 
 const title = 'A long-term rate stuck near six percent is the debt danger that lasts';
 const subhead = 'Six percent that stays';
 const dek = 'A risk read of the same ten-trillion facts — not a second telling of bills or the checking account.';
+
+const howToRead = 'Usual case is the late-August thirty-year. Named tail is ~6% that lasts through a long-term borrow. Watch is the hold — not a morning print.';
+
+const watchItems = [
+  'Whether the thirty-year holds above 5.75 percent, then 6 percent, through a long-term borrowing date, not for a single morning.',
+  'How well ten-year and thirty-year auctions clear.',
+  'The mortgage spread.',
+  'TGA as cash for the week.',
+  'Bills vs longer.',
+  'Purchases at least $4 billion through early November.',
+];
 ---
 
 <Layout
@@ -22,88 +36,110 @@ const dek = 'A risk read of the same ten-trillion facts — not a second telling
       <LivingStrip facts={facts} part="strip" />
     </header>
 
-    <aside class="risk-digest-rail" data-digest-rail data-digest-fallback="tail" aria-label="Digest, risk read">
-      <p class="risk-digest-kicker">Digest · Risk read</p>
-      <div class="risk-digest-viewport">
-      <div class="risk-digest-stack">
-        <article class="risk-card" id="card-usual" data-card="usual">
-          <p class="risk-card-kicker">Usual case</p>
-          <p class="risk-card-figure">5.21–5.26%</p>
-          <p class="risk-card-label">Thirty-year, late August</p>
-          <p class="risk-card-note">Expensive year. Not a crash.</p>
-        </article>
-        <article class="risk-card" id="card-tail" data-card="tail">
-          <p class="risk-card-kicker">Named tail</p>
-          <p class="risk-card-figure">~6%</p>
-          <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
-          <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
-        </article>
-        <article class="risk-card" id="card-watch" data-card="watch">
-          <p class="risk-card-kicker">Watch</p>
-          <p class="risk-card-figure">5.75% → 6%</p>
-          <p class="risk-card-label">Hold through a long-term borrow date</p>
-          <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
-        </article>
-      </div>
-      </div>
-      <div class="risk-digest-legend">
-        <p>How to read this: Usual case is the late-August thirty-year. Named tail is ~6% that lasts through a long-term borrow. Watch is the hold — not a morning print.</p>
-        <p>Quiet: ~$950B TGA · checking account, week cash — not a purchase program.</p>
-        <p>Quiet: one-point rise ≈ 0.3% of output first year on debt that comes due.</p>
-      </div>
-    </aside>
-
-    <p class="risk-digest-lede">The essay on this site, <a href="/economics/ten-trillion-to-roll/">Near ten trillion of U.S. debt comes due and must be refinanced</a>, is the story of the number. This page is the risk read of the same facts. It is not a second telling of bills, the checking account, or the four-billion-dollar purchases.</p>
-
-    <section class="risk-digest-section" id="usual" data-digest-section="usual">
-      <h2>Usual case</h2>
-      <p>The government will replace about ten trillion dollars of debt in the coming year. Most of that is short-term bills it already rolls every week. The thirty-year yield in late August was about 5.21 to 5.26 percent. That is an expensive year. It is not a crash.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">Usual case</p>
-        <p class="risk-card-figure">5.21–5.26%</p>
-        <p class="risk-card-label">Thirty-year, late August</p>
-        <p class="risk-card-note">Expensive year. Not a crash.</p>
-      </article>
-    </section>
-
-    <section class="risk-digest-section" id="named-tail" data-digest-section="tail">
-      <h2>The named tail</h2>
-      <p>The bad outcome that is not the usual case is the thirty-year Treasury yield going to about 6 percent and remaining there through at least one round of long-term borrowing. From late August that is a move of about three-quarters of a percentage point. A single print at 6 percent that fades is not the tail. A 6 percent rate that lasts is.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">Named tail</p>
-        <p class="risk-card-figure">~6%</p>
-        <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
-        <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
-      </article>
-    </section>
-
-    <section class="risk-digest-section" id="related-tails">
-      <h2>Related tails, not the same event</h2>
-      <p>Do not fold every bad rates story into 6 percent. Auction demand can weaken while the thirty-year is still 5.3 to 5.6. Home-loan spreads can widen so households feel 6 percent mortgage pain before the Treasury is at 6 percent. A failure of bill auctions is a different and more extreme event. It is not the lead.</p>
-    </section>
-
-    <section class="risk-digest-section" id="watch" data-digest-section="watch">
-      <h2>What to watch</h2>
-      <p>Whether the thirty-year holds above 5.75 percent, then 6 percent, through a long-term borrowing date, not for a single morning. How well ten-year and thirty-year auctions clear. The mortgage spread. TGA as cash for the week. Bills vs longer. Purchases at least $4 billion through early November.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">Watch</p>
-        <p class="risk-card-figure">5.75% → 6%</p>
-        <p class="risk-card-label">Hold through a long-term borrow date</p>
-        <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
-      </article>
-    </section>
-
-    <div class="risk-digest-legend risk-digest-legend--inline">
-      <p>How to read this: Usual case is the late-August thirty-year. Named tail is ~6% that lasts through a long-term borrow. Watch is the hold — not a morning print.</p>
-      <p>Quiet: ~$950B TGA · checking account, week cash — not a purchase program.</p>
-      <p>Quiet: one-point rise ≈ 0.3% of output first year on debt that comes due.</p>
+    <div class="risk-digest-preface">
+      <RiskDecoder
+        terms={[
+          { term: 'Usual case', gloss: 'the late-August thirty-year.' },
+          { term: 'Named tail', gloss: '~6% that lasts through a long-term borrow.' },
+          { term: 'Watch', gloss: 'the hold — not a morning print.' },
+        ]}
+        quiet={[
+          'Quiet: ~$950B TGA · checking account, week cash — not a purchase program.',
+          'Quiet: one-point rise ≈ 0.3% of output first year on debt that comes due.',
+        ]}
+      />
     </div>
 
-    <LivingStrip facts={facts} part="log" />
+    <div class="risk-digest-columns">
+      <div class="risk-digest-main">
+        <figure class="risk-path-plate">
+          <p class="risk-path-kicker">How it works</p>
+          <p class="risk-path-title">Usual case → named tail → watch</p>
+          <RiskPath
+            title="Usual case, named tail, and watch"
+            desc={howToRead}
+            stages={[
+              { name: 'Usual case', lines: ['late-August thirty-year'] },
+              { name: 'Named tail', lines: ['~6% that lasts'] },
+              { name: 'Watch', lines: ['hold, not a morning'] },
+            ]}
+          />
+          <figcaption>{howToRead}</figcaption>
+        </figure>
 
-    <div class="risk-digest-closer">
-      <p class="risk-closer-kicker">From this essay</p>
-      <p class="risk-closer-link"><a href="/economics/ten-trillion-to-roll/">Near ten trillion of U.S. debt comes due and must be refinanced</a></p>
+        <p class="risk-digest-lede">The essay on this site, <a href="/economics/ten-trillion-to-roll/">Near ten trillion of U.S. debt comes due and must be refinanced</a>, is the story of the number. This page is the risk read of the same facts. It is not a second telling of bills, the checking account, or the four-billion-dollar purchases.</p>
+
+        <section class="risk-digest-section" id="usual" data-digest-section="usual">
+          <h2>Usual case</h2>
+          <p>The government will replace about ten trillion dollars of debt in the coming year. Most of that is short-term bills it already rolls every week. The thirty-year yield in late August was about 5.21 to 5.26 percent. That is an expensive year. It is not a crash.</p>
+          <article class="risk-card risk-card--inline">
+            <p class="risk-card-kicker">Usual case</p>
+            <p class="risk-card-figure">5.21–5.26%</p>
+            <p class="risk-card-label">Thirty-year, late August</p>
+            <p class="risk-card-note">Expensive year. Not a crash.</p>
+          </article>
+        </section>
+
+        <section class="risk-digest-section" id="named-tail" data-digest-section="tail">
+          <h2>The named tail</h2>
+          <p>The bad outcome that is not the usual case is the thirty-year Treasury yield going to about 6 percent and remaining there through at least one round of long-term borrowing. From late August that is a move of about three-quarters of a percentage point. A single print at 6 percent that fades is not the tail. A 6 percent rate that lasts is.</p>
+          <article class="risk-card risk-card--inline">
+            <p class="risk-card-kicker">Named tail</p>
+            <p class="risk-card-figure">~6%</p>
+            <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
+            <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
+          </article>
+        </section>
+
+        <section class="risk-digest-section" id="related-tails">
+          <h2>Related tails, not the same event</h2>
+          <p>Do not fold every bad rates story into 6 percent. Auction demand can weaken while the thirty-year is still 5.3 to 5.6. Home-loan spreads can widen so households feel 6 percent mortgage pain before the Treasury is at 6 percent. A failure of bill auctions is a different and more extreme event. It is not the lead.</p>
+        </section>
+
+        <section class="risk-digest-section" id="watch" data-digest-section="watch">
+          <h2>What to watch</h2>
+          <RiskWatch items={watchItems} />
+          <article class="risk-card risk-card--inline">
+            <p class="risk-card-kicker">Watch</p>
+            <p class="risk-card-figure">5.75% → 6%</p>
+            <p class="risk-card-label">Hold through a long-term borrow date</p>
+            <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
+          </article>
+        </section>
+
+        <LivingStrip facts={facts} part="log" />
+
+        <div class="risk-digest-closer">
+          <p class="risk-closer-kicker">From this essay</p>
+          <p class="risk-closer-link"><a href="/economics/ten-trillion-to-roll/">Near ten trillion of U.S. debt comes due and must be refinanced</a></p>
+        </div>
+      </div>
+
+      <aside class="risk-digest-rail" data-digest-rail data-digest-fallback="tail" aria-label="Digest, risk read">
+        <p class="risk-digest-kicker">Digest · Risk read</p>
+        <div class="risk-digest-viewport">
+          <div class="risk-digest-stack">
+            <article class="risk-card" id="card-usual" data-card="usual">
+              <p class="risk-card-kicker">Usual case</p>
+              <p class="risk-card-figure">5.21–5.26%</p>
+              <p class="risk-card-label">Thirty-year, late August</p>
+              <p class="risk-card-note">Expensive year. Not a crash.</p>
+            </article>
+            <article class="risk-card" id="card-tail" data-card="tail">
+              <p class="risk-card-kicker">Named tail</p>
+              <p class="risk-card-figure">~6%</p>
+              <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
+              <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
+            </article>
+            <article class="risk-card" id="card-watch" data-card="watch">
+              <p class="risk-card-kicker">Watch</p>
+              <p class="risk-card-figure">5.75% → 6%</p>
+              <p class="risk-card-label">Hold through a long-term borrow date</p>
+              <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
+            </article>
+          </div>
+        </div>
+      </aside>
     </div>
   </article>
 </Layout>

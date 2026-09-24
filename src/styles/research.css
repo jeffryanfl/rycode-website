@@ -689,7 +689,7 @@ h1.research-identity {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
-  transition: transform 0.35s ease;
+
 }
 
 .research-plate {

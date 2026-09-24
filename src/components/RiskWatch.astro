@@ -1,0 +1,11 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="risk-watch">
+  {items.map((item) => <li>{item}</li>)}
+</ul>

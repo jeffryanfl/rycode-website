@@ -1,12 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import LivingStrip from '../../components/LivingStrip.astro';
+import RiskDecoder from '../../components/RiskDecoder.astro';
+import RiskPath from '../../components/RiskPath.astro';
+import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/when-the-spender-runs-the-printer.facts.json';
 import '../../styles/risk.css';
 
 const title = 'Fiscal pressure on rates means inflation and repression, not a debt reset';
 const subhead = 'When the spender runs the printer';
 const dek = 'If cheap money is used as fiscal relief, the slow bleed is inflation and repression. That is a transfer, not a disappearance.';
+
+const howToRead = 'Stock is debt held by the public. Path is CBO’s current-law climb. Named tail is inflation and repression if cheap money is used as fiscal relief.';
 
 const cards = {
   stock: {
@@ -28,6 +33,13 @@ const cards = {
     note: 'Households lose purchasing power. Watch TIC and COFER. Not an overnight crash.',
   },
 };
+
+const watchItems = [
+  'Foreign official and private holders can reassess duration and dollar exposure.',
+  'That is a watch, not a dump claim.',
+  'Watch TIC and COFER for movement.',
+  'A single snapshot is not a stampede.',
+];
 
 const sources = [
   {
@@ -78,108 +90,135 @@ const sources = [
       <LivingStrip facts={facts} part="strip" />
     </header>
 
-    <aside class="risk-digest-rail" data-digest-rail data-digest-pins="hinge:stock,roll:path" data-digest-fallback="tail" aria-label="Digest, risk read">
-      <p class="risk-digest-kicker">Digest · Risk read</p>
-      <div class="risk-digest-viewport">
-        <div class="risk-digest-stack">
-          {Object.entries(cards).map(([key, card]) => (
-            <article class="risk-card" id={`card-${key}`} data-card={key}>
-              <p class="risk-card-kicker">{card.kicker}</p>
-              <p class="risk-card-figure">{card.figure}</p>
-              <p class="risk-card-label">{card.label}</p>
-              <p class="risk-card-note">{card.note}</p>
-            </article>
-          ))}
+    <div class="risk-digest-preface">
+      <RiskDecoder
+        terms={[
+          { term: 'Stock', gloss: 'debt held by the public.' },
+          { term: 'Path', gloss: 'CBO’s current-law climb.' },
+          { term: 'Named tail', gloss: 'inflation and repression if cheap money is used as fiscal relief.' },
+        ]}
+        quiet={[
+          'Quiet: TPDO is the bigger headline. Do not swap it for debt held by the public.',
+          'Quiet: TIC and COFER are watches, not a dump claim.',
+        ]}
+      />
+    </div>
+
+    <div class="risk-digest-columns">
+      <div class="risk-digest-main">
+        <figure class="risk-path-plate">
+          <p class="risk-path-kicker">How it works</p>
+          <p class="risk-path-title">Stock → CBO path → named tail</p>
+          <RiskPath
+            title="Stock, CBO path, and named tail"
+            desc={howToRead}
+            stages={[
+              { name: 'Stock', lines: ['debt held by the public'] },
+              { name: 'CBO path', lines: ['current-law climb'] },
+              { name: 'Named tail', lines: ['inflation and repression'] },
+            ]}
+          />
+          <figcaption>{howToRead}</figcaption>
+        </figure>
+
+        <p class="risk-digest-lede">The Economics piece next door names a real mechanism. Fixed-coupon debt borrowed in pre-inflation dollars can be serviced with post-inflation dollars that buy less. That lightens the real burden of old claims. It is not a clean fiscal reset when markets reprice yields and debt held by the public still climbs as a share of GDP on the Congressional Budget Office path.</p>
+        <p class="risk-digest-lede">This Risk page asks what happens if fiscal pressure pushes the other way on rates. If the need to fund large deficits and a large stock of debt bends policy toward cheap money, the slow bleed is inflation and financial repression (keeping real returns on safe savings low so the borrower gets cheaper real funding). Households lose purchasing power. That is the mirror of the fiscal win on fixed coupons. It is a transfer, not a disappearance. Trust, reserve holdings, and payment rails can shift later. That is the tail. It is not a prediction of an overnight crash.</p>
+
+        <section class="risk-digest-section" id="hinge" data-digest-section="hinge">
+          <h2>The fiscal hinge, named correctly</h2>
+          <p>As of September 17, 2026, Treasury’s Debt to the Penny series showed total public debt outstanding (TPDO) near $40.09 trillion. Debt held by the public was near $32.39 trillion. Intragovernmental holdings were near $7.70 trillion. Those are different stocks. Market pressure and interest cost track debt held by the public. TPDO is the bigger headline. Mixing them is how a round number becomes a wrong claim.</p>
+          <article class="risk-card risk-card--inline">
+            <p class="risk-card-kicker">{cards.stock.kicker}</p>
+            <p class="risk-card-figure">{cards.stock.figure}</p>
+            <p class="risk-card-label">{cards.stock.label}</p>
+            <p class="risk-card-note">{cards.stock.note}</p>
+          </article>
+          <p>CBO’s current-law outlook projects debt held by the public rising from about 101% of GDP in 2026 to about 120% in 2036, with rising net interest as a main driver of larger deficits. That path is why “inflate it away” fails as a reset story. It is also why the temptation to keep money cheap can grow when the interest bill climbs.</p>
+          <p>Treasury Inflation-Protected Securities (TIPS) and Floating Rate Notes (FRNs) limit how far a pure inflate-away story travels across the whole book. As of the August 31, 2026 Monthly Statement of the Public Debt, TIPS were about $2.15 trillion and FRNs about $0.68 trillion. Fixed nominal debt can lose real weight under inflation. Indexed and floating debt do not give the same free pass.</p>
+        </section>
+
+        <section class="risk-digest-section" id="roll" data-digest-section="roll">
+          <h2>Second order: the roll gets more expensive</h2>
+          <p>If investors believe rate policy is being bent for fiscal relief, they can demand a higher term premium (extra yield for holding longer bonds) or shorten duration. Maturities that roll then reprice into higher cash interest. A “grow out of debt with cheap money” plan stalls if credit demand is weak and the interest bill still rises on the stock that must be refinanced. The Economics essay’s CBO interest path is the public check on that hope.</p>
+          <article class="risk-card risk-card--inline">
+            <p class="risk-card-kicker">{cards.path.kicker}</p>
+            <p class="risk-card-figure">{cards.path.figure}</p>
+            <p class="risk-card-label">{cards.path.label}</p>
+            <p class="risk-card-note">{cards.path.note}</p>
+          </article>
+        </section>
+
+        <section class="risk-digest-section" id="mirror" data-digest-section="mirror">
+          <h2>Third order: who pays the mirror</h2>
+          <p>The fiscal mechanism that lightens fixed coupons has a household face. Depositors and wage earners lose real purchasing power when prices rise faster than what their cash and savings earn. Credit unions and banks feel funding costs, net interest margins, and member stress. That is not a separate morality play. It is the same transfer viewed from the other side of the ledger.</p>
+          <p>Foreign official and private holders can reassess duration and dollar exposure. That is a watch, not a dump claim. As of July 2026, TIC Table 5 shows foreign official holdings of Treasuries near $3,773.1 billion. IMF COFER data show the U.S. dollar near 57.13% of allocated foreign-exchange reserves in 2026Q1 (provisional). Those series exist so you can track diversification at the margin. They do not, on these numbers alone, prove a flight.</p>
+        </section>
+
+        <section class="risk-digest-section" id="rails" data-digest-section="rails">
+          <h2>Fourth order: habit and rails</h2>
+          <p>If rate policy is repeatedly read as fiscal relief first, repression can become a habit. Real returns on safe savings stay compressed. The borrower keeps getting cheaper real funding. The saver keeps paying.</p>
+          <p>Payment rails can concentrate under statute at the same time. The GENIUS Act (Guiding and Establishing National Innovation for U.S. Stablecoins Act), Public Law 119-27 (July 18, 2025), regulates payment stablecoins. That is a real control surface for who can move money under rules written for those instruments. It is not a claim about a central-bank digital currency essay, and it does not prove any particular bank-consortium headcount. It is a concentration and access tail on the rails.</p>
+          <p>Reserve managers can keep diversifying at the margin. That is a quieter regime shift than an overnight crash headline. Watch TIC and COFER for movement. A single snapshot is not a stampede.</p>
+        </section>
+
+        <section class="risk-digest-section" id="tail" data-digest-section="tail">
+          <h2>The tail, named plainly</h2>
+          <p>This is an emerging-risk reading of fiscal pressure on the rate path. The slow bleed is inflation and repression. The mirror is household purchasing power. The later shifts are trust, reserve mix, and payment-rail concentration under rules that already exist.</p>
+          <article class="risk-card risk-card--inline">
+            <p class="risk-card-kicker">{cards.tail.kicker}</p>
+            <p class="risk-card-figure">{cards.tail.figure}</p>
+            <p class="risk-card-label">{cards.tail.label}</p>
+            <p class="risk-card-note">{cards.tail.note}</p>
+          </article>
+          <p>This is not a claim that inflation pays off the debt in full. CBO’s debt-to-GDP and net-interest path say otherwise. It is not a claim that any one country is dumping Treasuries, that gold is leaving U.S. vaults in a stated tonnage, that a named bank count runs a stablecoin consortium, or that any Fed-chair ultimatum quote is verified here. Those stay off the page until primaries exist.</p>
+          <p>Read it with the Economics essay. The mechanism that lightens fixed nominal debt is real. The Risk question is what you accept if cheap money is used as fiscal relief. You accept a transfer from savers and households, a harder roll when markets reprice, and a longer tail on trust, reserves, and rails.</p>
+        </section>
+
+        <section class="risk-digest-section" id="watch">
+          <h2>What to watch</h2>
+          <RiskWatch items={watchItems} />
+        </section>
+
+        <LivingStrip facts={facts} part="log" />
+
+        <div class="risk-digest-closer">
+          <p class="risk-closer-kicker">Economics</p>
+          <p class="risk-closer-link"><a href="/economics/post-inflation-dollars-pay-pre-inflation-debts/">Post-inflation dollars pay pre-inflation debts</a></p>
         </div>
+
+        <section class="risk-digest-section risk-digest-sources" id="sources">
+          <h2>Sources</h2>
+          <ol>
+            {sources.map((source) => (
+              <li>
+                <a href={source.href}>{source.text}</a>
+                {source.also && (
+                  <>
+                    {' '}(<a href={source.also}>{source.also.endsWith('.pdf') ? 'PDF' : 'same release'}</a>)
+                  </>
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
       </div>
-      <div class="risk-digest-legend">
-        <p>How to read this: Stock is debt held by the public. Path is CBO’s current-law climb. Named tail is inflation and repression if cheap money is used as fiscal relief.</p>
-        <p>Quiet: TPDO is the bigger headline. Do not swap it for debt held by the public.</p>
-        <p>Quiet: TIC and COFER are watches, not a dump claim.</p>
-      </div>
-    </aside>
 
-    <p class="risk-digest-lede">The Economics piece next door names a real mechanism. Fixed-coupon debt borrowed in pre-inflation dollars can be serviced with post-inflation dollars that buy less. That lightens the real burden of old claims. It is not a clean fiscal reset when markets reprice yields and debt held by the public still climbs as a share of GDP on the Congressional Budget Office path.</p>
-    <p class="risk-digest-lede">This Risk page asks what happens if fiscal pressure pushes the other way on rates. If the need to fund large deficits and a large stock of debt bends policy toward cheap money, the slow bleed is inflation and financial repression (keeping real returns on safe savings low so the borrower gets cheaper real funding). Households lose purchasing power. That is the mirror of the fiscal win on fixed coupons. It is a transfer, not a disappearance. Trust, reserve holdings, and payment rails can shift later. That is the tail. It is not a prediction of an overnight crash.</p>
-
-    <section class="risk-digest-section" id="hinge" data-digest-section="hinge">
-      <h2>The fiscal hinge, named correctly</h2>
-      <p>As of September 17, 2026, Treasury’s Debt to the Penny series showed total public debt outstanding (TPDO) near $40.09 trillion. Debt held by the public was near $32.39 trillion. Intragovernmental holdings were near $7.70 trillion. Those are different stocks. Market pressure and interest cost track debt held by the public. TPDO is the bigger headline. Mixing them is how a round number becomes a wrong claim.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.stock.kicker}</p>
-        <p class="risk-card-figure">{cards.stock.figure}</p>
-        <p class="risk-card-label">{cards.stock.label}</p>
-        <p class="risk-card-note">{cards.stock.note}</p>
-      </article>
-      <p>CBO’s current-law outlook projects debt held by the public rising from about 101% of GDP in 2026 to about 120% in 2036, with rising net interest as a main driver of larger deficits. That path is why “inflate it away” fails as a reset story. It is also why the temptation to keep money cheap can grow when the interest bill climbs.</p>
-      <p>Treasury Inflation-Protected Securities (TIPS) and Floating Rate Notes (FRNs) limit how far a pure inflate-away story travels across the whole book. As of the August 31, 2026 Monthly Statement of the Public Debt, TIPS were about $2.15 trillion and FRNs about $0.68 trillion. Fixed nominal debt can lose real weight under inflation. Indexed and floating debt do not give the same free pass.</p>
-    </section>
-
-    <section class="risk-digest-section" id="roll" data-digest-section="roll">
-      <h2>Second order: the roll gets more expensive</h2>
-      <p>If investors believe rate policy is being bent for fiscal relief, they can demand a higher term premium (extra yield for holding longer bonds) or shorten duration. Maturities that roll then reprice into higher cash interest. A “grow out of debt with cheap money” plan stalls if credit demand is weak and the interest bill still rises on the stock that must be refinanced. The Economics essay’s CBO interest path is the public check on that hope.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.path.kicker}</p>
-        <p class="risk-card-figure">{cards.path.figure}</p>
-        <p class="risk-card-label">{cards.path.label}</p>
-        <p class="risk-card-note">{cards.path.note}</p>
-      </article>
-    </section>
-
-    <section class="risk-digest-section" id="mirror" data-digest-section="mirror">
-      <h2>Third order: who pays the mirror</h2>
-      <p>The fiscal mechanism that lightens fixed coupons has a household face. Depositors and wage earners lose real purchasing power when prices rise faster than what their cash and savings earn. Credit unions and banks feel funding costs, net interest margins, and member stress. That is not a separate morality play. It is the same transfer viewed from the other side of the ledger.</p>
-      <p>Foreign official and private holders can reassess duration and dollar exposure. That is a watch, not a dump claim. As of July 2026, TIC Table 5 shows foreign official holdings of Treasuries near $3,773.1 billion. IMF COFER data show the U.S. dollar near 57.13% of allocated foreign-exchange reserves in 2026Q1 (provisional). Those series exist so you can track diversification at the margin. They do not, on these numbers alone, prove a flight.</p>
-    </section>
-
-    <section class="risk-digest-section" id="rails" data-digest-section="rails">
-      <h2>Fourth order: habit and rails</h2>
-      <p>If rate policy is repeatedly read as fiscal relief first, repression can become a habit. Real returns on safe savings stay compressed. The borrower keeps getting cheaper real funding. The saver keeps paying.</p>
-      <p>Payment rails can concentrate under statute at the same time. The GENIUS Act (Guiding and Establishing National Innovation for U.S. Stablecoins Act), Public Law 119-27 (July 18, 2025), regulates payment stablecoins. That is a real control surface for who can move money under rules written for those instruments. It is not a claim about a central-bank digital currency essay, and it does not prove any particular bank-consortium headcount. It is a concentration and access tail on the rails.</p>
-      <p>Reserve managers can keep diversifying at the margin. That is a quieter regime shift than an overnight crash headline. Watch TIC and COFER for movement. A single snapshot is not a stampede.</p>
-    </section>
-
-    <section class="risk-digest-section" id="tail" data-digest-section="tail">
-      <h2>The tail, named plainly</h2>
-      <p>This is an emerging-risk reading of fiscal pressure on the rate path. The slow bleed is inflation and repression. The mirror is household purchasing power. The later shifts are trust, reserve mix, and payment-rail concentration under rules that already exist.</p>
-      <article class="risk-card risk-card--inline">
-        <p class="risk-card-kicker">{cards.tail.kicker}</p>
-        <p class="risk-card-figure">{cards.tail.figure}</p>
-        <p class="risk-card-label">{cards.tail.label}</p>
-        <p class="risk-card-note">{cards.tail.note}</p>
-      </article>
-      <p>This is not a claim that inflation pays off the debt in full. CBO’s debt-to-GDP and net-interest path say otherwise. It is not a claim that any one country is dumping Treasuries, that gold is leaving U.S. vaults in a stated tonnage, that a named bank count runs a stablecoin consortium, or that any Fed-chair ultimatum quote is verified here. Those stay off the page until primaries exist.</p>
-      <p>Read it with the Economics essay. The mechanism that lightens fixed nominal debt is real. The Risk question is what you accept if cheap money is used as fiscal relief. You accept a transfer from savers and households, a harder roll when markets reprice, and a longer tail on trust, reserves, and rails.</p>
-    </section>
-
-    <div class="risk-digest-legend risk-digest-legend--inline">
-      <p>How to read this: Stock is debt held by the public. Path is CBO’s current-law climb. Named tail is inflation and repression if cheap money is used as fiscal relief.</p>
-      <p>Quiet: TPDO is the bigger headline. Do not swap it for debt held by the public.</p>
-      <p>Quiet: TIC and COFER are watches, not a dump claim.</p>
+      <aside class="risk-digest-rail" data-digest-rail data-digest-pins="hinge:stock,roll:path" data-digest-fallback="tail" aria-label="Digest, risk read">
+        <p class="risk-digest-kicker">Digest · Risk read</p>
+        <div class="risk-digest-viewport">
+          <div class="risk-digest-stack">
+            {Object.entries(cards).map(([key, card]) => (
+              <article class="risk-card" id={`card-${key}`} data-card={key}>
+                <p class="risk-card-kicker">{card.kicker}</p>
+                <p class="risk-card-figure">{card.figure}</p>
+                <p class="risk-card-label">{card.label}</p>
+                <p class="risk-card-note">{card.note}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </aside>
     </div>
-
-    <LivingStrip facts={facts} part="log" />
-
-    <div class="risk-digest-closer">
-      <p class="risk-closer-kicker">Economics</p>
-      <p class="risk-closer-link"><a href="/economics/post-inflation-dollars-pay-pre-inflation-debts/">Post-inflation dollars pay pre-inflation debts</a></p>
-    </div>
-
-    <section class="risk-digest-section risk-digest-sources" id="sources">
-      <h2>Sources</h2>
-      <ol>
-        {sources.map((source) => (
-          <li>
-            <a href={source.href}>{source.text}</a>
-            {source.also && (
-              <>
-                {' '}(<a href={source.also}>{source.also.endsWith('.pdf') ? 'PDF' : 'same release'}</a>)
-              </>
-            )}
-          </li>
-        ))}
-      </ol>
-    </section>
   </article>
 </Layout>
 

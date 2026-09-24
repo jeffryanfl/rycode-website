@@ -290,6 +290,10 @@ h1.risk-identity {
   color: var(--digest-muted);
 }
 
+.risk-path-diagram--line {
+  min-width: 34rem;
+}
+
 .risk-path-nodes rect {
   fill: transparent;
   stroke: var(--digest-hair);
@@ -364,6 +368,7 @@ h1.risk-identity {
   font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 600;
+  text-wrap: balance;
   color: var(--digest-ink);
 }
 
@@ -439,15 +444,31 @@ html:has(.risk-digest) .skip-link {
   --digest-muted: rgba(248, 250, 252, 0.52);
   --digest-faint: rgba(248, 250, 252, 0.4);
   --digest-hair: rgba(248, 250, 252, 0.16);
-  display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(17rem, 0.9fr);
-  column-gap: clamp(2rem, 6vw, 4.75rem);
-  row-gap: 0;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   max-width: none;
   margin: 0;
   padding: 1.35rem var(--digest-pad) 3.5rem;
   color: var(--digest-ink);
+}
+
+/* Decoder sits above the two columns so a house term is glossed before the rail uses it. */
+.risk-digest-preface {
+  margin: 0 0 1.45rem;
+  padding: 0 0 1.15rem;
+  border-bottom: 1px solid var(--digest-hair);
+}
+
+.risk-digest-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(17rem, 0.9fr);
+  column-gap: clamp(2rem, 6vw, 4.75rem);
+  align-items: start;
+}
+
+.risk-digest-main {
+  grid-column: 1;
+  min-width: 0;
 }
 
 .risk-digest-head {
@@ -578,7 +599,7 @@ html:has(.risk-digest) .skip-link {
 
 .risk-digest-rail {
   grid-column: 2;
-  grid-row: 1 / span 12;
+  grid-row: 1;
   position: sticky;
   top: 1rem;
   align-self: start;
@@ -620,7 +641,6 @@ html:has(.risk-digest) .skip-link {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  transition: transform 0.35s ease;
 }
 
 .risk-card {
@@ -666,6 +686,95 @@ html:has(.risk-digest) .skip-link {
   color: var(--digest-muted);
 }
 
+.risk-decoder-kicker {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--digest-faint);
+}
+
+.risk-decoder-lede,
+.risk-decoder-quiet {
+  margin: 0 0 0.75rem;
+  max-width: 46rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--digest-muted);
+}
+
+.risk-decoder-quiet {
+  margin-bottom: 0.45rem;
+  color: var(--digest-ink);
+}
+
+.risk-decoder-list {
+  margin: 0.15rem 0 0.85rem;
+  max-width: 52rem;
+}
+
+.risk-decoder-list div {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  column-gap: 0.85rem;
+  align-items: baseline;
+  margin: 0 0 0.45rem;
+}
+
+.risk-decoder-list dt {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--digest-ink);
+}
+
+.risk-decoder-list dd {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--digest-muted);
+}
+
+.risk-watch {
+  margin: 0.2rem 0 1.35rem;
+  padding: 0;
+  max-width: 40rem;
+  list-style: none;
+}
+
+.risk-watch li {
+  position: relative;
+  margin: 0 0 0.7rem;
+  padding-left: 1.15rem;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--digest-ink);
+}
+
+.risk-watch li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.38rem;
+  height: 0.38rem;
+  background: currentColor;
+}
+
+.risk-digest-main > .risk-path-emphasis {
+  max-width: 40rem;
+  margin-top: 0.4rem;
+}
+
 .risk-digest-legend {
   margin: 1.05rem 0 0;
   padding-top: 0.85rem;
@@ -689,11 +798,22 @@ html:has(.risk-digest) .skip-link {
   display: none;
 }
 
+@media (max-width: 720px) {
+  .risk-decoder-list div {
+    grid-template-columns: 1fr;
+    row-gap: 0.15rem;
+  }
+}
+
 @media (max-width: 859px) {
   .risk-digest {
     display: flex;
     flex-direction: column;
     padding: 0.85rem 1.25rem 2.75rem;
+  }
+
+  .risk-digest-columns {
+    display: block;
   }
 
   .risk-digest-rail {

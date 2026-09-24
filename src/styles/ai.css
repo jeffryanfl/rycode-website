@@ -1347,7 +1347,7 @@ h1.ai-identity {
 .ai-digest-stack {
   display: flex;
   flex-direction: column;
-  transition: transform 0.35s ease;
+
 }
 
 @media (max-width: 859px) {

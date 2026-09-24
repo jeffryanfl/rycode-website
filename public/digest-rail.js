@@ -4,7 +4,7 @@
 
    TABLE OF CONTENTS
    1. Read pin / fallback / stretch from [data-digest-rail]
-   2. Slide the stack so the matching card sits at the top
+   2. Move the stack with the scroll, not on a timer
    3. Stretch one card when two cards share the second slot
    4. Wide screens only; reduced-motion scrolls the rail instead
 */
@@ -78,63 +78,105 @@
       }
     }
 
-    function currentKey() {
-      const mark = window.innerHeight * 0.28;
-      let key = firstKey;
-      for (const section of sections) {
-        if (section.getBoundingClientRect().top <= mark) {
-          key = section.getAttribute('data-digest-section') || key;
-        }
-      }
-      return key;
-    }
-
-    function activate(key) {
-      if (!wide.matches) {
-        stack.style.transform = '';
-        clearActive();
-        resetStretch();
-        return;
-      }
-
-      const pinKey = pinFor(key);
-      const pinEl = card(pinKey);
-      if (!pinEl) return;
-
+    function resetMotion() {
+      stack.style.transform = '';
+      stack.style.transition = '';
       clearActive();
-      (card(key) || pinEl).setAttribute('data-active', 'true');
-      applyStretch(pinKey);
-
-      const offset =
-        pinKey === originKey || !origin ? 0 : pinEl.offsetTop - origin.offsetTop;
-      stack.style.transform = offset ? 'translateY(-' + offset + 'px)' : '';
+      resetStretch();
     }
 
-    function sync() {
+    let frame = 0;
+
+    function render() {
+      frame = 0;
       const viewport = stack.parentElement;
       if (!wide.matches) {
-        stack.style.transform = '';
-        clearActive();
-        resetStretch();
+        resetMotion();
         if (viewport) viewport.style.overflow = '';
         return;
       }
       if (reduce.matches) {
-        stack.style.transform = '';
-        clearActive();
-        resetStretch();
+        resetMotion();
         if (viewport) viewport.style.overflow = 'auto';
         return;
       }
       if (viewport) viewport.style.overflow = 'hidden';
-      activate(currentKey());
+      // The old 0.35s ease ran on a clock, so the cards lagged behind the scroll.
+      stack.style.transition = 'none';
+      if (!sections.length) return;
+
+      const mark = window.scrollY + window.innerHeight * 0.28;
+      const tops = sections.map(function (section) {
+        return section.getBoundingClientRect().top + window.scrollY;
+      });
+      let index = 0;
+      for (let i = 0; i < tops.length; i++) {
+        if (tops[i] <= mark) index = i;
+      }
+      const hereKey = sections[index].getAttribute('data-digest-section') || '';
+      applyStretch(pinFor(hereKey));
+
+      const points = [];
+      for (let i = 0; i < sections.length; i++) {
+        const key = sections[i].getAttribute('data-digest-section') || '';
+        const pinKey = pinFor(key);
+        const pinEl = card(pinKey);
+        if (!pinEl) continue;
+        const offset = !origin || pinKey === originKey ? 0 : pinEl.offsetTop - origin.offsetTop;
+        points.push({
+          key: key,
+          pinKey: pinKey,
+          top: sections[i].getBoundingClientRect().top + window.scrollY,
+          offset: offset,
+        });
+      }
+      if (!points.length) return;
+
+      let at = 0;
+      for (let i = 0; i < points.length; i++) {
+        if (points[i].top <= mark) at = i;
+      }
+      const here = points[at];
+      const next = points[at + 1];
+      let offset = here.offset;
+      let activeKey = here.key;
+      let activePin = here.pinKey;
+      if (next && next.offset !== here.offset) {
+        const span = Math.max(next.top - here.top, 1);
+        // Spread the move across this whole section so it stays locked to the scroll.
+        // A fixed timer made the cards lag, then jump.
+        const glide = span;
+        const start = here.top;
+        if (mark > start) {
+          let t = (mark - start) / glide;
+          if (t < 0) t = 0;
+          if (t > 1) t = 1;
+          t = t * t * (3 - 2 * t);
+          offset = here.offset + (next.offset - here.offset) * t;
+          if (t >= 0.5) {
+            activeKey = next.key;
+            activePin = next.pinKey;
+          }
+        }
+      }
+
+      clearActive();
+      const active = card(activeKey) || card(activePin);
+      if (active) active.setAttribute('data-active', 'true');
+      const y = Math.round(offset * 10) / 10;
+      stack.style.transform = y ? 'translate3d(0,' + -y + 'px,0)' : '';
     }
 
-    sync();
-    window.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync);
-    wide.addEventListener('change', sync);
-    reduce.addEventListener('change', sync);
+    function requestRender() {
+      if (frame) return;
+      frame = window.requestAnimationFrame(render);
+    }
+
+    render();
+    window.addEventListener('scroll', requestRender, { passive: true });
+    window.addEventListener('resize', requestRender);
+    wide.addEventListener('change', requestRender);
+    reduce.addEventListener('change', requestRender);
   }
 
   if (document.readyState === 'loading') {
