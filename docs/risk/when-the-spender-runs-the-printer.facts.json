@@ -1,30 +1,30 @@
 {
   "slug": "when-the-spender-runs-the-printer",
   "door": "risk",
-  "asOf": "2026-09-22T17:05:00-04:00",
-  "asOfLabel": "Tue 22 Sep · after-close living strip",
+  "asOf": "2026-09-23T17:08:00-04:00",
+  "asOfLabel": "Wed 23 Sep \u00b7 after-close living strip",
   "bullets": [
     {
       "id": "debt_stock",
-      "text": "Debt to the Penny (21 Sep 2026): TPDO ~$40.11T; debt held by the public ~$32.40T; intragovernmental ~$7.71T. Never swap stocks.",
-      "asOf": "2026-09-21",
+      "text": "Debt to the Penny (22 Sep 2026): TPDO ~$40.10T; debt held by the public ~$32.38T; intragovernmental ~$7.72T. Never swap stocks.",
+      "asOf": "2026-09-22",
       "source": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"
     },
     {
       "id": "cbo_path",
-      "text": "CBO Outlook: debt held by the public ~101% of GDP (2026) → ~120% (2036); deficits and rising net interest under current law (not a clean inflate-away reset).",
+      "text": "CBO Outlook: debt held by the public ~101% of GDP (2026) \u2192 ~120% (2036); deficits and rising net interest under current law (not a clean inflate-away reset).",
       "asOf": "2026-01-01",
       "source": "https://www.cbo.gov/publication/61882"
     },
     {
       "id": "tic_foreign_official",
-      "text": "TIC Table 5: foreign official Treasury holdings ~$3,773.1B at end-Jul 2026 (watch item — do not claim dumping without a dated move).",
+      "text": "TIC Table 5: foreign official Treasury holdings ~$3,773.1B at end-Jul 2026 (watch item \u2014 do not claim dumping without a dated move).",
       "asOf": "2026-07-31",
       "source": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt"
     },
     {
       "id": "cofer_usd",
-      "text": "IMF COFER: USD share ~57.13% of allocated FX reserves, 2026Q1 (provisional). Dollar remains largest; share moves over time — watch, not crash claim.",
+      "text": "IMF COFER: USD share ~57.13% of allocated FX reserves, 2026Q1 (provisional). Dollar remains largest; share moves over time \u2014 watch, not crash claim.",
       "asOf": "2026-03-31",
       "source": "https://data.imf.org/en/Dashboards/COFER%20Dashboard"
     },
@@ -36,7 +36,7 @@
     },
     {
       "id": "genius_act",
-      "text": "GENIUS Act (payment stablecoins), Public Law 119-27, enacted 18 Jul 2025 — payment-rail concentration / control statute (not a CBDC essay).",
+      "text": "GENIUS Act (payment stablecoins), Public Law 119-27, enacted 18 Jul 2025 \u2014 payment-rail concentration / control statute (not a CBDC essay).",
       "asOf": "2025-07-18",
       "source": "https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.pdf"
     },
@@ -55,6 +55,10 @@
     {
       "date": "2026-09-22",
       "note": "Macro after-close living refresh: Debt to the Penny 21 Sep only (slow bullets unchanged)."
+    },
+    {
+      "date": "2026-09-23",
+      "note": "Macro living refresh (after-close): Debt to the Penny 22 Sep only (slow bullets unchanged)."
     }
   ]
 }
