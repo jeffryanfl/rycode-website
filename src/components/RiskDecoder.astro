@@ -6,6 +6,8 @@
  */
 export interface RiskTerm {
   term: string;
+  /** Descriptive stage header. The term stays the small kicker. */
+  header?: string;
   gloss: string;
 }
 
@@ -26,7 +28,10 @@ const quietLines = quiet == null ? [] : Array.isArray(quiet) ? quiet : [quiet];
     {terms.map((item) => (
       <div>
         <dt>{item.term}</dt>
-        <dd>{item.gloss}</dd>
+        <dd>
+          {item.header && <span class="risk-decoder-header">{item.header}</span>}
+          {item.gloss}
+        </dd>
       </div>
     ))}
   </dl>

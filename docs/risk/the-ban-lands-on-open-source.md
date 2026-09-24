@@ -22,7 +22,7 @@ Secondary reporting from METR / Redwood Research, after an on-site review, descr
 
 When Hugging Face tried to decode real attack commands, payloads, and command-and-control artifacts with hosted frontier APIs, safety guardrails blocked large parts of the forensic work. The models could not tell an incident responder from an attacker. The team ran forensics on open-weight GLM-5.2 on their own infrastructure and kept attacker data and credentials inside their environment. Closed "safety" blocked defense. Open weights enabled it ([Hugging Face July 16 disclosure](https://huggingface.co/blog/security-incident-july-2026)).
 
-That is lived assurance fog. After a scare, the public is told to trust vendor and regulator review. When closed models refuse the defensive analysis an incident requires, and open weights on self-hosted infra can finish the job, the safety story and the control story part company.
+That is assurance fog in practice. After a scare, the public is told to trust vendor and regulator review. When closed models refuse the defensive analysis an incident requires, and open weights on self-hosted infra can finish the job, the safety story and the control story part company.
 
 ## The path toward capture
 
