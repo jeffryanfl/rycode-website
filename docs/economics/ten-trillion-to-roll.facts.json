@@ -1,42 +1,42 @@
 {
   "slug": "ten-trillion-to-roll",
   "door": "economics",
-  "asOf": "2026-09-22T17:05:00-04:00",
-  "asOfLabel": "Tue 22 Sep · after-close living strip",
+  "asOf": "2026-09-23T17:08:00-04:00",
+  "asOfLabel": "Wed 23 Sep \u00b7 after-close living strip",
   "bullets": [
     {
       "id": "refinance_fy26",
-      "text": "GAO: in FY2026 Treasury must refinance about $9.7T of maturing securities (order-of-magnitude “~$10T”; mostly bill rollovers, not a long coupon wall).",
+      "text": "GAO: in FY2026 Treasury must refinance about $9.7T of maturing securities (order-of-magnitude \u201c~$10T\u201d; mostly bill rollovers, not a long coupon wall).",
       "asOf": "2026-03-31",
       "source": "https://www.gao.gov/assets/gao-26-107529.pdf"
     },
     {
       "id": "debt_stock",
-      "text": "Debt to the Penny (21 Sep 2026): total public debt outstanding ~$40.11T; debt held by the public ~$32.40T; intragovernmental ~$7.71T. Name which stock when citing ~$40T.",
-      "asOf": "2026-09-21",
+      "text": "Debt to the Penny (22 Sep 2026): total public debt outstanding ~$40.10T; debt held by the public ~$32.38T; intragovernmental ~$7.72T. Name which stock when citing ~$40T.",
+      "asOf": "2026-09-22",
       "source": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page[size]=1"
     },
     {
       "id": "tga_cash",
-      "text": "Treasury General Account (DTS TGA Closing Balance open_today_bal) 21 Sep 2026: ~$1,004.4B (~$1.00T). Near-“$1T” is TGA cash, not a standing $1T buyback program. 18 Sep was ~$985.9B.",
-      "asOf": "2026-09-21",
+      "text": "Treasury General Account (DTS TGA Closing Balance open_today_bal) 22 Sep 2026: ~$957.4B. Near-\u201c$1T\u201d was 21 Sep (~$1,004.4B); cash buffer, not a standing $1T buyback program.",
+      "asOf": "2026-09-22",
       "source": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/operating_cash_balance?sort=-record_date&page[size]=5&filter=account_type:eq:Treasury General Account (TGA) Closing Balance"
     },
     {
       "id": "buybacks_long_end",
-      "text": "Treasury liquidity-support buybacks: long-end nominal ops at least $4B per operation (10y–20y and 20y–30y) from 9 Sep through 4 Nov 2026 (was $2B max). Not a $1T purchase program.",
+      "text": "Treasury liquidity-support buybacks: long-end nominal ops at least $4B per operation (10y\u201320y and 20y\u201330y) from 9 Sep through 4 Nov 2026 (was $2B max). Not a $1T purchase program.",
       "asOf": "2026-08-19",
       "source": "https://home.treasury.gov/news/press-releases/sb0607"
     },
     {
       "id": "ust_curve",
-      "text": "Official Treasury CMT (Tue 22 Sep): 2-year 4.71%; 10-year 4.96%; 30-year 5.29%.",
-      "asOf": "2026-09-22",
+      "text": "Official Treasury CMT (Wed 23 Sep): 2-year 4.85%; 10-year 5.11%; 30-year 5.40%.",
+      "asOf": "2026-09-23",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
       "id": "cbo_debt_gdp",
-      "text": "CBO Budget and Economic Outlook 2026–2036: debt held by the public about 101% of GDP in 2026, rising to about 120% by 2036 under current-law baseline.",
+      "text": "CBO Budget and Economic Outlook 2026\u20132036: debt held by the public about 101% of GDP in 2026, rising to about 120% by 2036 under current-law baseline.",
       "asOf": "2026-01-01",
       "source": "https://www.cbo.gov/publication/62105"
     }
@@ -48,7 +48,11 @@
     },
     {
       "date": "2026-09-22",
-      "note": "Macro after-close living refresh: door→economics; Debt to Penny 21 Sep; TGA ~$1.004T; Tue CMT 2y/10y/30y."
+      "note": "Macro after-close living refresh: door\u2192economics; Debt to Penny 21 Sep; TGA ~$1.004T; Tue CMT 2y/10y/30y."
+    },
+    {
+      "date": "2026-09-23",
+      "note": "Macro living refresh (after-close): Wed CMT 2y/10y/30y 4.85/5.11/5.40; Debt to Penny 22 Sep; TGA DTS ~$957.4B."
     }
   ]
 }
