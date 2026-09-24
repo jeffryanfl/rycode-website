@@ -409,7 +409,15 @@ h1.risk-identity {
 }
 
 .risk-card--path .risk-card-label {
+  font-size: 0.98rem;
   font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.risk-card--path .risk-card-note {
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 .risk-card--path .risk-card-figure {
@@ -614,8 +622,16 @@ html:has(.risk-digest) .skip-link {
   height: calc(13.5rem + 0.85rem + 13.5rem);
 }
 
+/* One full card in the window. Bodies are two or three sentences, so the old three-card
+   window clipped them. Height matches the card so the next stage does not slice mid-sentence.
+   16.25rem fits the narrow rail; a wider rail can use a shorter card. */
+.risk-digest--stack3 .risk-digest-rail {
+  container-name: risk-rail;
+  container-type: inline-size;
+}
+
 .risk-digest--stack3 .risk-digest-viewport {
-  height: calc(10.55rem * 3 + 0.65rem * 2);
+  height: 16.25rem;
 }
 
 .risk-digest--stack3 .risk-digest-stack {
@@ -623,8 +639,28 @@ html:has(.risk-digest) .skip-link {
 }
 
 .risk-digest--stack3 .risk-card {
-  min-height: 10.55rem;
-  padding: 0.8rem 0.9rem 0.85rem;
+  min-height: 16.25rem;
+  padding: 0.85rem 0.95rem 0.95rem;
+}
+
+@container risk-rail (min-width: 19.5rem) {
+  .risk-digest--stack3 .risk-digest-viewport {
+    height: 14rem;
+  }
+
+  .risk-digest--stack3 .risk-card {
+    min-height: 14rem;
+  }
+}
+
+@container risk-rail (min-width: 22rem) {
+  .risk-digest--stack3 .risk-digest-viewport {
+    height: 12.75rem;
+  }
+
+  .risk-digest--stack3 .risk-card {
+    min-height: 12.75rem;
+  }
 }
 
 .risk-digest-kicker {
@@ -734,6 +770,17 @@ html:has(.risk-digest) .skip-link {
   color: var(--digest-ink);
 }
 
+.risk-decoder-header {
+  display: block;
+  margin: 0 0 0.15rem;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--digest-ink);
+}
+
 .risk-decoder-list dd {
   margin: 0;
   font-family: var(--font-sans);
@@ -818,6 +865,90 @@ html:has(.risk-digest) .skip-link {
 
   .risk-digest-rail {
     display: none;
+  }
+
+  /* One card set: the rail's cards reflow into the article. No second copy. */
+  .risk-digest--one-set .risk-digest-columns {
+    display: flex;
+    flex-direction: column;
+    reading-flow: flex-visual;
+  }
+
+  .risk-digest--one-set .risk-digest-main,
+  .risk-digest--one-set .risk-digest-rail,
+  .risk-digest--one-set .risk-digest-viewport,
+  .risk-digest--one-set .risk-digest-stack {
+    display: contents;
+  }
+
+  .risk-digest--one-set .risk-digest-kicker {
+    display: none;
+  }
+
+  .risk-digest--one-set .risk-path-plate {
+    order: 10;
+  }
+
+  .risk-digest--one-set .risk-digest-lede {
+    order: 20;
+  }
+
+  .risk-digest--one-set #card-local {
+    order: 30;
+  }
+
+  .risk-digest--one-set #card-doorway {
+    order: 40;
+  }
+
+  .risk-digest--one-set #happened {
+    order: 50;
+  }
+
+  .risk-digest--one-set #forensics {
+    order: 60;
+  }
+
+  .risk-digest--one-set #card-fog {
+    order: 70;
+  }
+
+  .risk-digest--one-set #path {
+    order: 80;
+  }
+
+  .risk-digest--one-set #card-gate {
+    order: 90;
+  }
+
+  .risk-digest--one-set #downstream {
+    order: 100;
+  }
+
+  .risk-digest--one-set #card-rent {
+    order: 110;
+  }
+
+  .risk-digest--one-set #orders {
+    order: 120;
+  }
+
+  .risk-digest--one-set .risk-path-emphasis {
+    order: 130;
+  }
+
+  .risk-digest--one-set #watch {
+    order: 140;
+  }
+
+  .risk-digest--one-set #sources {
+    order: 150;
+  }
+
+  .risk-digest--one-set .risk-card {
+    max-width: 40rem;
+    min-height: 0;
+    margin: 0.35rem 0 1.6rem;
   }
 
   .risk-card--inline,
