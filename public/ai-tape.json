@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-24T08:59:00-04:00",
-  "asOfLabel": "Thu 24 Sep \u00b7 morning",
+  "updated": "2026-09-25T08:40:00-04:00",
+  "asOfLabel": "Fri 25 Sep · morning",
   "lines": [
     {
       "tag": "Deal",
-      "text": "SoftBank prices ~$11.1B notes for OpenAI $10B tranche; issue ~29 Sep (SBG)."
+      "text": "Akamai–Anthropic $11.6B / 7yr cloud; warrant up to ~5% AKAM (GlobeNewswire)."
     },
     {
-      "tag": "Policy",
-      "text": "Sanders\u2013Casar Ban ASI Act: new DoAI, pause advanced AI until rules (Sep 23)."
+      "tag": "News",
+      "text": "Fortune: OpenAI to preview GPT-6 Cyber + cyber deploy product near DevDay."
     },
     {
       "tag": "Release",
-      "text": "Google ships Gemini 3.8 Flash TTS + Flash-Lite TTS (AI Studio / API)."
+      "text": "Google ships Gemini 3.8 Live with Live Avatar in Enterprise (97 langs)."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-24"
+  "date": "2026-09-25"
 }
