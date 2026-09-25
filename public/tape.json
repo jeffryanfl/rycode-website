@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-24T16:30:00-04:00",
-  "asOfLabel": "Thu 24 Sep · after-close",
+  "updated": "2026-09-25T08:20:00-04:00",
+  "asOfLabel": "Fri 25 Sep · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Flat close: SPX 7704 (−0.02%), Dow −0.31%, Nasdaq +0.01% after soft futures."
+      "text": "Premarket bounce: ES +0.35%, NQ +0.6% after flat Thu SPX 7704."
     },
     {
       "tag": "Rates",
-      "text": "Treasury 10y 5.18% (up from 5.11%), 30y 5.47%, 2y 4.87%."
+      "text": "Thu CMT 10y still 5.18%; market ~5.16%. Funds 3.75–4.00%."
     },
     {
       "tag": "Oil",
-      "text": "WTI ~$95.4, up ~$3.20 (≈3.5%) on the day."
+      "text": "WTI ~$92.60, down ~$2 as midweek premium unwinds."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-09-24"
+  "date": "2026-09-25"
 }
