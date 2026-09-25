@@ -1,8 +1,8 @@
 {
   "slug": "six-percent-that-stays",
   "door": "risk",
-  "asOf": "2026-09-23T17:08:00-04:00",
-  "asOfLabel": "Wed 23 Sep \u00b7 after-close living strip",
+  "asOf": "2026-09-24T16:50:00-04:00",
+  "asOfLabel": "Thu 24 Sep · after-close living strip",
   "bullets": [
     {
       "id": "gao_fy26_roll",
@@ -12,31 +12,31 @@
     },
     {
       "id": "debt_stock",
-      "text": "Debt to the Penny (22 Sep 2026): TPDO ~$40.10T; debt held by the public ~$32.38T; intragovernmental ~$7.72T. Always name which stock.",
-      "asOf": "2026-09-22",
+      "text": "Debt to the Penny (23 Sep 2026): TPDO ~$40.07T; debt held by the public ~$32.38T; intragovernmental ~$7.70T. Always name which stock.",
+      "asOf": "2026-09-23",
       "source": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"
     },
     {
       "id": "ust_30y",
-      "text": "30-year Treasury CMT 5.40% (Wed 23 Sep official; +11 bp vs Tue 5.29%). Six percent has not printed; watch hold through a long-term borrow date.",
-      "asOf": "2026-09-23",
+      "text": "30-year Treasury CMT 5.47% (Thu 24 Sep official; +7 bp vs Wed 5.40%). Six percent has not printed; watch hold through a long-term borrow date.",
+      "asOf": "2026-09-24",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
       "id": "ust_10y",
-      "text": "10-year Treasury CMT 5.11% (Wed 23 Sep official; through 5%).",
-      "asOf": "2026-09-23",
+      "text": "10-year Treasury CMT 5.18% (Thu 24 Sep official; +7 bp vs Wed 5.11%).",
+      "asOf": "2026-09-24",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
       "id": "tga",
-      "text": "Treasury General Account (DTS TGA Closing Balance open_today_bal) 22 Sep 2026: ~$957.4B (was ~$1,004.4B on 21 Sep). Cash buffer, not a buyback program. (H.4.1 Wed 16 Sep week print was ~$991.7B level / ~$877.0B week-average.)",
-      "asOf": "2026-09-22",
+      "text": "Treasury General Account (DTS TGA Closing Balance open_today_bal) 23 Sep 2026: ~$947.3B (was ~$957.4B on 22 Sep). Cash buffer, not a buyback program. (H.4.1 Wed 16 Sep week print was ~$991.7B level / ~$877.0B week-average.)",
+      "asOf": "2026-09-23",
       "source": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/operating_cash_balance?sort=-record_date&page[size]=5&filter=account_type:eq:Treasury General Account (TGA) Closing Balance"
     },
     {
       "id": "buyback_long_end",
-      "text": "Treasury long-end liquidity-support buybacks: at least $4B per operation in 10\u201320y and 20\u201330y nominal sectors, effective 9 Sep through 4 Nov 2026 (was $2B max).",
+      "text": "Treasury long-end liquidity-support buybacks: at least $4B per operation in 10–20y and 20–30y nominal sectors, effective 9 Sep through 4 Nov 2026 (was $2B max).",
       "asOf": "2026-08-19",
       "source": "https://home.treasury.gov/news/press-releases/sb0607"
     },
@@ -59,6 +59,10 @@
     {
       "date": "2026-09-23",
       "note": "Macro living refresh (after-close): Wed CMT 10y/30y 5.11/5.40; Debt to Penny 22 Sep; TGA DTS ~$957.4B."
+    },
+    {
+      "date": "2026-09-24",
+      "note": "Macro living refresh (after-close): Thu CMT 10y/30y 5.18/5.47; Debt to Penny 23 Sep; TGA DTS ~$947.3B."
     }
   ]
 }

@@ -1,18 +1,18 @@
 {
-  "updated": "2026-09-25T08:20:00-04:00",
-  "asOfLabel": "Fri 25 Sep · pre-open",
+  "updated": "2026-09-25T16:15:00-04:00",
+  "asOfLabel": "Fri 25 Sep \u00b7 after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Premarket bounce: ES +0.35%, NQ +0.6% after flat Thu SPX 7704."
+      "text": "Fri bounce: SPX 7743 (+0.51%), Dow +0.93%, Nasdaq +0.48%."
     },
     {
       "tag": "Rates",
-      "text": "Thu CMT 10y still 5.18%; market ~5.16%. Funds 3.75–4.00%."
+      "text": "CMT 10y 5.17% (still >5%); 2y 4.81%; 30y 5.49%."
     },
     {
       "tag": "Oil",
-      "text": "WTI ~$92.60, down ~$2 as midweek premium unwinds."
+      "text": "WTI ~$92.3 (\u2212~3.7%); Michigan final 48.1; durables flat."
     }
   ],
   "doorHref": "/economics",
