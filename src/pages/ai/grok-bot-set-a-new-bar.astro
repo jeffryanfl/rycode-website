@@ -1,0 +1,242 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/ai.css';
+import '../../styles/paper.css';
+
+const title = "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.";
+const subhead = 'What these agent harnesses can actually do today, one capability at a time';
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description={subhead}
+  variant="ai"
+>
+  <a slot="ai-identity" href="/ai/" class="ai-identity">
+    <img class="ai-glyph" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
+    A.I.
+  </a>
+
+  <article class="paper">
+    <div class="paper-grid paper-grid--solo">
+      <header class="paper-head">
+        <p class="paper-kicker">A.I.</p>
+        <h1 class="paper-claim">{title}</h1>
+        <p class="paper-dek">{subhead}</p>
+      </header>
+
+      <div class="paper-main">
+        <div class="paper-body">
+          <p>For most of the last few years, using AI meant opening a chat box, typing a question, and reading the answer. The AI waited for you, and when you closed the tab, it stopped. That model was already breaking down before this summer. On August 11, 2026, xAI launched <a href="/ai/models/xai/grok-bot/">Grok Bot</a> in public beta, and it packed what earlier agents offered in pieces into one app: a team of AI coworkers sharing an always-on cloud computer, with memory, routines, and the ability to hand work to each other (<a href="https://x.ai/news/introducing-grok-bot">xAI, Introducing Grok Bot</a>; <a href="https://docs.x.ai/grok-bot/overview">xAI, Grok Bot overview</a>). Four weeks later, on September 8, Meta&#x27;s <a href="/ai/models/meta/muse/">Muse</a> raised the stakes: a personal agent with its own secure cloud computer, free for most uses in the United States and reachable right inside WhatsApp (<a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">Meta, Introducing Muse</a>).</p>
+          <p>The contest is no longer about which chatbot gives the best answer. It is about which harness does the most useful work while you are away. A harness is everything built around the AI model: its computer, its memory, its tools, its schedule, and its safety checks. This piece walks through what those harnesses can do today, where Grok Bot and Muse differ, and what you can do with each capability.</p>
+        </div>
+        <section class="paper-section" aria-labelledby="already-underway">
+          <h2 class="paper-h2" id="already-underway">A race that was already underway</h2>
+        <div class="paper-body">
+          <p>Grok Bot did not invent the idea of an AI that acts on its own. Cognition&#x27;s Devin, announced in March 2024, was an AI software engineer working in its own sandbox with a shell, a code editor, and a browser, but it did only coding (<a href="https://cognition.ai/blog/introducing-devin">Cognition, Introducing Devin</a>). In October 2024, Anthropic released computer use, a model that can operate a desktop from screenshots, as a public beta for developers rather than a consumer product (<a href="https://www.anthropic.com/news/3-5-models-and-computer-use">Anthropic, Computer use announcement</a>). In July 2025, OpenAI&#x27;s ChatGPT agent gave each task &quot;its own virtual computer&quot; with a browser and terminal, connected apps, approval before consequential actions, and the option to schedule tasks to recur (<a href="https://openai.com/index/introducing-chatgpt-agent/">OpenAI, Introducing ChatGPT agent</a>). The same month, Lindy began &quot;giving Lindy agents their own cloud-based computers&quot; for business automation (<a href="https://www.lindy.ai/blog/lindy-3-0">Lindy 3.0</a>).</p>
+          <p>By January 2026, the open-source OpenClaw project offered an always-on personal agent you could reach through WhatsApp and Slack, with memory files, scheduled jobs, skills, and helper agents, though you had to host it yourself, on your own machine or a remote server (<a href="https://openclaw.ai/">OpenClaw</a>; <a href="https://github.com/openclaw/openclaw/releases/tag/v2026.1.12">OpenClaw release, January 13, 2026</a>; <a href="https://docs.openclaw.ai/help/faq">OpenClaw FAQ</a>). In April 2026, OpenAI launched workspace agents for business plans: shared team agents that &quot;run in the cloud, so they can keep working even when you&#x27;re not,&quot; with memory, skills, connected apps, and schedules (<a href="https://openai.com/index/introducing-workspace-agents-in-chatgpt/">OpenAI, Workspace agents in ChatGPT</a>).</p>
+          <p>Each of those had part of the picture. What Grok Bot added was the whole set in one subscription app: a persistent cloud computer with a browser and desktop that all your agents share, memory, reusable skills, routines that run on a schedule or after an event, and a team of named agents that message each other and hand off work ([4]; <a href="https://docs.x.ai/grok-bot/skills-routines-and-automations">xAI, Skills, routines, and automations</a>; <a href="https://docs.x.ai/grok-bot/chat-and-collaboration">xAI, Chat and collaboration</a>). That is an analysis of the public record, not a first that anyone has certified: I could not find an earlier product that documented all of those pieces together. Its launch post describes people inside xAI running &quot;multiple Bots in parallel, with one to manage the others. A chief of staff sits on top, with a specialist for each lane,&quot; so &quot;you&#x27;re not the middleman&quot; ([1]).</p>
+          <p>At launch, Grok Bot was limited to xAI&#x27;s and Cursor&#x27;s top paid plans: SuperGrok Heavy, Cursor Ultra, and Cursor Teams Premium (<a href="https://forum.cursor.com/t/introducing-grok-bot/168053">Cursor forum, Introducing Grok Bot, August 11, 2026</a>). On August 26, it expanded to all SuperGrok tiers and most Cursor paid plans, and on September 2 it reached Android (<a href="https://x.ai/news/grok-bot-more-plans">xAI, Grok Bot on more plans</a>; <a href="https://forum.cursor.com/t/grok-bot-is-now-live-on-android/170384">Cursor forum, Grok Bot on Android</a>).</p>
+          <p>Then Meta arrived. Muse is one personal agent per person, pitched as needing &quot;no technical experience.&quot; You share a goal, and Meta says Muse develops &quot;a personalized plan&quot; and &quot;advances the work on its own,&quot; coming back &quot;when it needs approval.&quot; It launched in the United States on iPhone, Android, the web, and WhatsApp, free for most of what people need, with subscription plans ([11]). Meta also built the model underneath for this kind of work. Its Muse Spark model family first shipped in April 2026, and Meta says Muse Spark 1.1, released July 9, is trained to act as a main agent that hands work to parallel helper agents, or as a helper that &quot;knows when to escalate back&quot; (<a href="https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/">Meta, Introducing Muse Spark</a>; <a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">Meta AI, Muse Spark model API</a>).</p>
+          <p>Meta&#x27;s leadership treats this as central. CNBC reports Mark Zuckerberg telling investors on the July earnings call that personal agents are &quot;the foundation for our next wave of products and revenue lines&quot; (<a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a>). In my reading, Grok Bot set the bar for what a working agent team can do in one app. Muse took the same basic bet to consumers, with a free tier and a route through a messaging app people already use. There are no official Muse user numbers yet, so how far that widens the audience is still unmeasured.</p>
+        </div>
+        </section>
+        <section class="paper-section" aria-labelledby="why-the-harness">
+          <h2 class="paper-h2" id="why-the-harness">Why the harness matters as much as the model</h2>
+        <div class="paper-body">
+          <p>An AI model on its own reads text and writes text. It cannot click a button or remember last week. When it wants something done, it writes a tool call, a small structured request such as &quot;open this web page&quot; or &quot;save this file.&quot; The harness runs the request and hands back the result, and the model decides the next step. OpenAI documents this as a loop, and an agent is that loop running many times (<a href="https://platform.openai.com/docs/guides/function-calling">OpenAI, Function calling</a>; <a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic, Tool use overview</a>). LangChain sums it up as &quot;Agent = Model + Harness&quot; (<a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness">LangChain, The anatomy of an agent harness</a>).</p>
+          <p>The harness changes measured ability, not only convenience. Epoch AI, an independent research group, found that swapping only the harness, with the same model underneath, moved scores on a well-known software bug-fixing test by up to 11 percent for GPT-5 and up to 15 percent for Kimi K2 Thinking. Epoch calls the choice of harness &quot;the single biggest impact&quot; on those results (<a href="https://epoch.ai/gradient-updates/why-benchmarking-is-hard">Epoch AI, Why benchmarking is hard</a>). When you pick an agent product, you are picking a harness as much as a model.</p>
+        </div>
+        </section>
+        <section class="paper-section" aria-labelledby="side-by-side">
+          <h2 class="paper-h2" id="side-by-side">The two side by side</h2>
+        <div class="paper-table-wrap">
+          <table class="paper-table">
+            <thead><tr>
+              <th>Capability</th>
+              <th>Grok Bot</th>
+              <th>Muse</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>Cloud computer</td>
+                <td>One persistent computer per account, with browser, files, and terminal, shared by all your Bots</td>
+                <td>A dedicated secure cloud computer per person, with a browser, holding the agent and your data</td>
+              </tr>
+              <tr>
+                <td>Memory</td>
+                <td>Each Bot keeps preferences, role context, and summaries of past work</td>
+                <td>Memory files you can read, edit, and tell it to forget</td>
+              </tr>
+              <tr>
+                <td>Skills</td>
+                <td>Reusable instructions shared across Bots, learnable from a demonstration</td>
+                <td>Meta-written skills for each connector; Muse can write its own</td>
+              </tr>
+              <tr>
+                <td>Routines and triggers</td>
+                <td>Schedules or events such as a Slack message, up to 50 per Bot</td>
+                <td>Recurring tasks and reminders by time or location, which you can view, change, and cancel; no triggers from outside apps documented</td>
+              </tr>
+              <tr>
+                <td>Agents messaging each other</td>
+                <td>Bots message each other, join group chats, and pass ownership</td>
+                <td>Internal helper agents; messaging other agents not documented</td>
+              </tr>
+              <tr>
+                <td>Connectors</td>
+                <td>Plugins such as Gmail, Notion, and Slack, shared by all Bots</td>
+                <td>Connectors to third-party services and Meta apps; can write its own</td>
+              </tr>
+              <tr>
+                <td>Browser and desktop</td>
+                <td>Computer use for apps and sites, which you can watch and take over</td>
+                <td>A browser you can watch and take over; works with files and apps like Messages, Notes, and Mail on your Mac; a graphical desktop in its cloud machine not documented</td>
+              </tr>
+              <tr>
+                <td>Safety gate</td>
+                <td>Auto Review, a separate AI reviewer beside the agent</td>
+                <td>Sentinel, a separate gatekeeper outside the agent&#x27;s sandbox</td>
+              </tr>
+              <tr>
+                <td>Credentials and approvals</td>
+                <td>Bots act as you; tokens stay on Cursor&#x27;s servers; logins and payments handed to you</td>
+                <td>Agent sees stand-in tokens; Sentinel inserts real ones; approvals can be one-time to permanent</td>
+              </tr>
+              <tr>
+                <td>Who it is for</td>
+                <td>People and teams at work, on paid plans</td>
+                <td>Everyday consumers in the U.S., free for most uses</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paper-body">
+          <p>Sources for each row appear in the sections below.</p>
+        </div>
+        </section>
+        <section class="paper-section" aria-labelledby="capabilities">
+          <h2 class="paper-h2" id="capabilities">The capabilities, one at a time</h2>
+        <div class="paper-body">
+          <h3>An always-on cloud computer</h3>
+          <p>This is the foundation everything else sits on. Instead of living inside a browser tab on your device, the agent has its own computer in a data center, and it keeps working when your laptop is closed or your phone is in your pocket.</p>
+          <p>On Grok Bot, one persistent cloud computer per account has a web browser, a file system, and a terminal (a text window for running commands), and all your Bots share it, each with its own screen. Shared means what it sounds like: a file one Bot saves is there for every other Bot (<a href="https://docs.x.ai/grok-bot/computer-and-apps">xAI, Computer and apps</a>). On Muse, each person gets a dedicated cloud machine that Meta calls Muse Secure VM. It has a browser and holds both the agent and that person&#x27;s data, and it keeps working after you close the app ([11]; <a href="https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse">Meta, How we built safety into Muse</a>).</p>
+          <p>What you can do with it: Before bed you hand the agent next month&#x27;s family travel. It compares airlines and mid-week windows, saves a fare spreadsheet on its cloud machine, drafts an email shortlist to your partner, and leaves the draft for your approval. You wake to the comparison done without leaving a laptop on.</p>
+          <h3>Memory</h3>
+          <p>A model can only hold so much text at once, and that working window gets less reliable as it fills. Anthropic calls the decline &quot;context rot&quot; (<a href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows">Anthropic, Context windows</a>). So long-term memory in these systems is mostly notes the harness saves outside the model and reads back when needed (<a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/memory-tool">Anthropic, Memory tool</a>).</p>
+          <p>On Grok Bot, each Bot keeps stable preferences, context about its role, and summaries of past work. xAI&#x27;s documentation warns that this memory is &quot;not a substitute for an authoritative source,&quot; meaning you should still check facts that matter against the original (<a href="https://docs.x.ai/grok-bot/bots">xAI, Bots</a>). On Muse, memory persists across conversations and is stored as memory files you can read and edit, and you can tell it to forget things (<a href="https://introducing.muse.ai/">Muse</a>; [11]).</p>
+          <p>What you can do with it: Over weeks you teach household rules such as kids&#x27; pickup times, allergies, your home airport, a preferred hotel chain, and existing vendors. Later trips or contractor asks apply those rules without another briefing. On Muse you can open and edit memory files; on Grok Bot you check a Bot&#x27;s role notes and correct them.</p>
+          <h3>Skills</h3>
+          <p>A skill is a written procedure for how to do a particular task, saved so the agent does it the same way every time. On Grok Bot, skills are reusable instructions shared across all your Bots. A Bot can learn one by watching you demonstrate a task on screen for up to ten minutes, and there is a marketplace of packaged skills ([7]). On Muse, Meta wrote detailed skill instructions for each connected service, and Muse can develop custom skills and build its own tools ([13]; [12]).</p>
+          <p>What you can do with it: Record yourself once filing a monthly expense report: download the statement, match email receipts, fill the form, attach the PDF, and save it to a shared drive. Save that as a named skill. Next month you say the skill name and it runs the same procedure, stopping only where approval is required to submit.</p>
+          <h3>Routines and triggers</h3>
+          <p>A routine says which agent runs a task and when. On Grok Bot, a routine gives one Bot a schedule, such as every weekday at 7 a.m., or starts it when something happens, such as a Slack message or a GitHub notification. Each Bot can have up to 50 routines ([7]). Muse also lets you set routines. Meta&#x27;s help pages say you can &quot;create recurring tasks&quot; that repeat daily, weekly, or on a custom interval, and you can view, change, or cancel them later. Muse reminders can also fire when you are near a specific place. Meta adds that Muse &quot;continues to work on a schedule and in response to relevant events&quot; toward goals you set (<a href="https://www.meta.com/help/artificial-intelligence/1484325780075655">Meta Help Center, How to manage reminders and scheduled tasks with Muse</a>; [12]). The difference is what can start the work. Muse&#x27;s documented triggers are a time or a place. Grok Bot can also start work when something happens in another app, such as a new Slack message or a GitHub notification. Muse documents no trigger of that kind.</p>
+          <p>What you can do with it: Set a weekday 6:30 a.m. brief that covers your calendar, overnight email that needs a reply, and weather for cities you travel to, plus a location reminder when you are near the dry cleaner. On Grok Bot a Slack review request or a GitHub pull-request assignment can also wake a Bot that summarizes the change and drafts a review note for your approval. Muse can own calendar and location routines; it does not document waking on Slack or GitHub events.</p>
+          <blockquote><p><strong>Example from a working newsroom.</strong> On one AI-run publishing site, the market and AI news tickers publish every weekday in two scheduled batches, one in the morning and one after the market closes, with no human approval. The owner approved that scope once. Full articles never publish that way.</p></blockquote>
+          <h3>Agents messaging each other and handing off work</h3>
+          <p>This is where Grok Bot goes furthest. Its Bots send each other messages, join group chats of two to six Bots, and pass ownership of a task. The receiving Bot wakes up and replies later, the way a coworker answers a message ([8]). That is what makes the chief-of-staff setup possible: one Bot coordinates while specialists handle their lanes ([1]). Muse is one agent per person. Internally, Meta says it &quot;launches swarms of subagents&quot; and hands work to them ([13]). Messaging other agents, whether your own or someone else&#x27;s, is not documented.</p>
+          <p>What you can do with it: Give one Bot household bills, one trip planning, and one for the calendar. For a spring-break trip under a hard budget, the trip Bot asks the bills Bot about the deposit, checks the calendar Bot for school blackouts, then drafts a booking for your approval. On Muse the same coordination happens inside one agent and its helper swarm; no separate named agents messaging across roles.</p>
+          <blockquote><p><strong>Example: a chief of staff routing work.</strong> On that same site, a chief-of-staff bot owns completion. It assigns work to lane specialists for economics, AI, risk, layout, design, and writing, chases anything stalled, and is the only bot allowed to push back on the owner about efficiency.</p></blockquote>
+          <blockquote><p><strong>Example: agent-to-agent mail.</strong> Two agents on that site, the chief of staff and a reviewer, pass work through a dedicated agent-only mail channel, separate from human email. Every handoff uses the same five parts: the ask, when it is needed, what done looks like, the relevant files, and whether the owner has to approve.</p></blockquote>
+          <blockquote><p><strong>Example: a contrarian on the other platform.</strong> The site&#x27;s contrarian reviewer, Devie, runs on Muse. Its job is to disagree. After one of its reviews, the owner approved new layout rules that the rest of the team now follows.</p></blockquote>
+          <h3>Connectors</h3>
+          <p>A connector links the agent to an app or service you already use, such as email, a calendar, or a notes app, so it can read and act there directly. On Grok Bot, connectors are called plugins, and they include services such as Gmail, Notion, and Slack. A plugin you install is available to all your Bots (<a href="https://cursor.com/help/grok-bot/connect-plugins">Cursor, Connect plugins</a>; [4]). Muse launched with an initial set of connectors to outside services and to Meta&#x27;s own apps such as Instagram and Facebook, built with each provider, and Muse can write its own connectors for services that offer a programming interface ([13]).</p>
+          <p>What you can do with it: Connect email, calendar, and notes. Ask the agent to find contractor quotes from this week, log bids and due dates in a renovation tracker, put site-visit holds on the calendar, and draft one comparison email to your partner; you approve before send. On Grok Bot, one plugin install is available to every Bot on the account.</p>
+          <h3>Browser and desktop use</h3>
+          <p>When there is no connector, the agent can use a website or app the way a person does. Screenshots go in, clicks and keystrokes come out. Anthropic lists the weak spots of this approach: it is slow, it can misjudge where to click, and the model sometimes &quot;assumes outcomes&quot; without checking them. The fix is to check the screen after every step (<a href="https://docs.anthropic.com/en/docs/agents-and-tools/computer-use">Anthropic, Computer use</a>).</p>
+          <p>On Grok Bot, computer use covers apps and websites that have no connector, and you can watch the agent&#x27;s screen and take over ([5]). On Muse, a helper agent runs a Chromium web browser, and you can watch and &quot;take over at any time.&quot; Muse&#x27;s cloud machine also has &quot;a file system and a terminal, so it can write its own code and build the tools a task needs&quot; ([12]). Muse can also work on your own Mac. Meta&#x27;s help pages say it can use local files and can read and interact with apps like Messages, Notes, and Mail (<a href="https://www.meta.com/help/artificial-intelligence/1126304576638594">Meta Help Center, How Muse works with files and apps in your Mac</a>). What Meta does not document is a full graphical desktop, with windows and a mouse, inside Muse&#x27;s cloud machine.</p>
+          <p>What you can do with it: Hand the agent a business-license renewal or several school waitlist apps that have no connector. It fills from memory and saved docs, pauses for login or payment, and you watch and take over on a captcha or a weird layout. On Muse it can also pull from Messages, Notes, or Mail on your Mac when the form needs something already local.</p>
+          <h3>The safety gate: Auto Review versus Sentinel</h3>
+          <p>This is where the two products differ most, and it may decide which one people trust.</p>
+          <p>Grok Bot uses Auto Review, which xAI describes as &quot;an independent review model,&quot; a second AI that looks at risky actions before they run. It checks shell commands, plugin calls, computer use, changes to routines, and the launch of other agents. For each one it can allow the action, ask a human, or deny it. It does not cover memory writes (<a href="https://docs.x.ai/grok-bot/security">xAI, Security</a>). The reviewer sits beside the agent and inspects what it is about to do.</p>
+          <p>Muse uses Sentinel, a separate agent on the host machine, kept outside Muse&#x27;s own sandbox. Sentinel is the only authority for connector actions and all internet traffic. Once a process has read your personal data, Sentinel applies tighter checks to anything it tries to send out, which Meta calls &quot;tainted egress&quot; ([13]). The gatekeeper sits between the agent and the internet, so the agent cannot reach the outside world without going through it.</p>
+          <p>In plain terms, Grok Bot puts a reviewer next to the worker, and Muse puts a guard at the door. Each design leaves different gaps.</p>
+          <blockquote><p><strong>Example: a check before a human reads.</strong> On that AI-run site, a quality-check bot tests every material claim in an essay against a source link before the owner reads the prose. A claim with no checkable link fails.</p></blockquote>
+          <h3>Credentials and approvals</h3>
+          <p>An agent that acts for you needs access to your accounts, and that is where the risk concentrates. The two products handle it differently.</p>
+          <p>On Grok Bot, Bots act as you and hold no identity of their own. Connector access tokens stay on Cursor&#x27;s servers, and steps such as logging in, two-factor codes, and payments are handed back to you. When an action needs your approval, you can allow it once, always allow it, or deny it ([9]). xAI&#x27;s documentation advises letting agents automate preparation and requiring approval for sending, purchasing, deleting, and publishing ([7]).</p>
+          <p>On Muse, the agent never holds your real passwords or access keys. It sees stand-in tokens, and Sentinel inserts the real credentials only at the network edge. Approval requests appear outside the chat, and they can be granted once, for a session, for a task, for a set time, or permanently ([13]). Muse asks before sending email or making a purchase ([11]).</p>
+          <p>What you can do with it: During a household move, the agent drafts utility start and stop emails, fills packing-supply carts, and stages address-change forms. Each send and each purchase stops for one-tap approval. You keep the consequential button.</p>
+        </div>
+        </section>
+        <section class="paper-section" aria-labelledby="open-problems">
+          <h2 class="paper-h2" id="open-problems">The open problems</h2>
+        <div class="paper-body">
+          <p>Neither company claims these are solved.</p>
+          <p>Safety checks are partial. Beyond Auto Review&#x27;s gap on memory writes, xAI says its defenses against prompt injection, where hidden instructions in a web page or document try to hijack an agent, &quot;reduce, but do not eliminate&quot; the risk ([9]). A guard at the door and a reviewer beside the worker are both real protections. Neither is a guarantee.</p>
+          <p>Trust follows from that. An agent that works while you sleep, holds access to your accounts, and acts under your name is more useful than a chatbot for exactly the reason it is more dangerous.</p>
+          <p>Cost is built in. Each time an agent takes a step, the harness sends the model the whole conversation so far, so long tasks keep paying for their own history. The main discount is prompt caching, which reuses the unchanged start of a request. Anthropic bills cached input at a tenth of the normal price and keeps the cache for five minutes by default. Each screenshot an agent reads costs roughly 1,000 to 1,800 tokens, the units models are billed in (<a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching">Anthropic, Prompt caching</a>; [29]).</p>
+          <p>Reliability is the deepest problem. METR, an independent research group, measures a time horizon: the length of task, by how long it takes a skilled person, that an agent finishes half the time. In METR&#x27;s original study, agents succeeded almost every time on tasks that take a person under four minutes and less than 10 percent of the time on tasks that take more than about four hours (<a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">METR, Measuring AI ability to complete long tasks</a>). Small mistakes compound over long runs. That is why approval points and review still matter, however capable the agent looks.</p>
+        </div>
+        </section>
+        <section class="paper-section" aria-labelledby="predictions">
+          <h2 class="paper-h2" id="predictions">Predictions</h2>
+        <div class="paper-body">
+          <p>These are forecasts, labeled as such.</p>
+          <p><strong>Prediction: every large AI company will ship an always-on agent.</strong> Meta is already there and says personal agents are the foundation of its next products ([34]). The Associated Press quoted Zuckerberg&#x27;s line that &quot;your agent will work 24/7 on your behalf&quot; (<a href="https://www.pbs.org/newshour/nation/meta-launches-personal-ai-agent-muse-to-help-with-everyday-tasks">AP via PBS News</a>). That is a statement of intent, not a result.</p>
+          <p><strong>Prediction: the length of work you can hand an agent will keep growing.</strong> METR&#x27;s time horizon has been rising steadily, and its live page tracks the current rate (<a href="https://metr.org/time-horizons/">METR, Time horizons</a>). Projecting that forward is a forecast, and even a longer horizon means even odds, not certainty, on the longest tasks.</p>
+          <p><strong>Prediction: the competition will move to the safety gate.</strong> As the basic capabilities converge, where the approval checkpoint sits and how much it misses will separate the products people trust with their accounts from the ones they do not.</p>
+        </div>
+        </section>
+        <section class="paper-section" aria-labelledby="watch">
+          <h2 class="paper-h2" id="watch">What to watch</h2>
+        <div class="paper-body">
+          <ul>
+            <li>Whether Muse publishes user numbers that show how far a free, WhatsApp-reachable agent widens the audience.</li>
+            <li>Whether Grok Bot adds a network gatekeeper like Sentinel, or Muse adds a reviewer like Auto Review.</li>
+            <li>Whether either company closes the gaps it already discloses, such as unreviewed memory writes and incomplete prompt-injection defenses.</li>
+            <li>Whether Muse documents messaging between agents or triggers from outside apps, and whether Grok Bot moves toward a free consumer tier.</li>
+            <li>Whether independent time-horizon measurements keep rising, and whether they test harnesses that look like these products.</li>
+            <li>Whether benchmark results start reporting the model and the harness together.</li>
+          </ul>
+        </div>
+        </section>
+        <section class="paper-section" aria-labelledby="sources">
+          <h2 class="paper-h2" id="sources">Sources</h2>
+          <ol class="paper-sources">
+            <li><a href="https://x.ai/news/introducing-grok-bot">xAI, Introducing Grok Bot (August 11, 2026)</a></li>
+            <li><a href="https://x.ai/news/grok-bot-more-plans">xAI, Grok Bot on more plans (August 26, 2026)</a></li>
+            <li><a href="https://forum.cursor.com/t/grok-bot-is-now-live-on-android/170384">Cursor forum, Grok Bot is now live on Android</a></li>
+            <li><a href="https://docs.x.ai/grok-bot/overview">xAI, Grok Bot overview</a></li>
+            <li><a href="https://docs.x.ai/grok-bot/computer-and-apps">xAI, Grok Bot computer and apps</a></li>
+            <li><a href="https://docs.x.ai/grok-bot/bots">xAI, Grok Bot bots</a></li>
+            <li><a href="https://docs.x.ai/grok-bot/skills-routines-and-automations">xAI, Grok Bot skills, routines, and automations</a></li>
+            <li><a href="https://docs.x.ai/grok-bot/chat-and-collaboration">xAI, Grok Bot chat and collaboration</a></li>
+            <li><a href="https://docs.x.ai/grok-bot/security">xAI, Grok Bot security</a></li>
+            <li><a href="https://cursor.com/help/grok-bot/connect-plugins">Cursor, Connect plugins to Grok Bot</a></li>
+            <li><a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">Meta, Introducing Muse, a personal AI agent (September 8, 2026)</a></li>
+            <li><a href="https://introducing.muse.ai/">Muse, How We Designed Muse</a></li>
+            <li><a href="https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse">Meta, How We Built Safety Into Muse</a></li>
+            <li><a href="https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/">Meta, Introducing Muse Spark</a></li>
+            <li><a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">Meta AI, Introducing Muse Spark 1.1</a></li>
+            <li><a href="https://cognition.ai/blog/introducing-devin">Cognition, Introducing Devin</a></li>
+            <li><a href="https://www.anthropic.com/news/3-5-models-and-computer-use">Anthropic, Claude 3.5 models and computer use</a></li>
+            <li><a href="https://openai.com/index/introducing-chatgpt-agent/">OpenAI, Introducing ChatGPT agent</a></li>
+            <li><a href="https://www.lindy.ai/blog/lindy-3-0">Lindy, Lindy 3.0</a></li>
+            <li><a href="https://openclaw.ai/">OpenClaw</a></li>
+            <li><a href="https://github.com/openclaw/openclaw/releases/tag/v2026.1.12">OpenClaw, release v2026.1.12</a></li>
+            <li><a href="https://docs.openclaw.ai/help/faq">OpenClaw, FAQ</a></li>
+            <li><a href="https://openai.com/index/introducing-workspace-agents-in-chatgpt/">OpenAI, Introducing workspace agents in ChatGPT</a></li>
+            <li><a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness">LangChain, The anatomy of an agent harness</a></li>
+            <li><a href="https://platform.openai.com/docs/guides/function-calling">OpenAI, Function calling</a></li>
+            <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic, Tool use overview</a></li>
+            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows">Anthropic, Context windows</a></li>
+            <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/memory-tool">Anthropic, Memory tool</a></li>
+            <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/computer-use">Anthropic, Computer use</a></li>
+            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching">Anthropic, Prompt caching</a></li>
+            <li><a href="https://epoch.ai/gradient-updates/why-benchmarking-is-hard">Epoch AI, Why benchmarking is hard</a></li>
+            <li><a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">METR, Measuring AI ability to complete long tasks</a></li>
+            <li><a href="https://metr.org/time-horizons/">METR, Time horizons</a></li>
+            <li><a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC, Meta personal AI agents face public reckoning on privacy and safety</a></li>
+            <li><a href="https://www.pbs.org/newshour/nation/meta-launches-personal-ai-agent-muse-to-help-with-everyday-tasks">Associated Press (via PBS News), Meta launches personal AI agent, Muse, to help with everyday tasks</a></li>
+            <li><a href="https://forum.cursor.com/t/introducing-grok-bot/168053">Cursor forum, Introducing Grok Bot (August 11, 2026)</a></li>
+            <li><a href="https://www.meta.com/help/artificial-intelligence/1484325780075655">Meta Help Center, How to manage reminders and scheduled tasks with Muse</a></li>
+            <li><a href="https://www.meta.com/help/artificial-intelligence/1126304576638594">Meta Help Center, How Muse works with files and apps in your Mac</a></li>
+          </ol>
+        </section>
+
+        <p class="paper-related">Product doors: <a href="/ai/models/xai/grok-bot/">Grok Bot</a> · <a href="/ai/models/meta/muse/">Muse</a></p>
+      </div>
+    </div>
+  </article>
+</Layout>

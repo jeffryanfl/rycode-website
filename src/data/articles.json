@@ -144,6 +144,22 @@
     "slug": "risk-six-percent-that-stays"
   },
   {
+    "href": "/ai/grok-bot-set-a-new-bar/",
+    "title": "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.",
+    "description": "What these agent harnesses can actually do today, one capability at a time",
+    "date": "2026-09-25",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/grok-bot-set-a-new-bar.astro",
+    "slug": "ai-grok-bot-set-a-new-bar"
+  },
+  {
     "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
     "title": "Chat models write strings. System One returns typed decisions.",
     "description": "Why Jev changes the scoreboard for software automation",

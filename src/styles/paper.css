@@ -579,6 +579,53 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   font-size: 0.86em;
 }
 
+.paper-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 1.85rem 0 0.75rem;
+}
+
+.paper-body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.paper-body blockquote {
+  margin: 0 0 1.2rem;
+  padding: 0.1rem 0 0.1rem 1rem;
+  border-left: 1px solid var(--hair-strong);
+}
+
+.paper-body blockquote p {
+  margin: 0;
+  color: var(--ink);
+}
+
+.paper-body ul {
+  margin: 0 0 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.paper-body li {
+  position: relative;
+  margin: 0 0 0.7rem;
+  padding-left: 1.15rem;
+}
+
+.paper-body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.38rem;
+  height: 0.38rem;
+  background: currentColor;
+}
+
 .paper-sources {
   margin: 0 0 1.35rem;
   padding-left: 1.25rem;
