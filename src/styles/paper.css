@@ -99,7 +99,9 @@ html:has(.editorial-shell--ai:has(.paper)) body {
 }
 
 .editorial-shell--ai:has(.paper) .editorial-footer-inner {
-  max-width: 1100px;
+  max-width: none;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
   color: var(--ink-faint);
 }
 

@@ -68,7 +68,10 @@ html:has(.editorial-shell--landing) body {
 }
 
 .editorial-shell--landing .editorial-footer-inner {
-  max-width: min(1100px, 90vw);
+  max-width: none;
+  margin: 0;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
   color: rgba(248, 250, 252, 0.4);
 }
 
