@@ -104,6 +104,12 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "what-an-agent-swarm-is.astro":
         # Explainer date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-27"
+    elif target.name == "frontier-price-meets-open-weight-ipo.astro":
+        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-27"
+    elif target.name == "grok-bot-set-a-new-bar.astro":
+        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-25"
     else:
         date = git_date(target)
     if target.name == "next-token-engine.astro":
@@ -137,9 +143,19 @@ def build_catalog_real() -> list[dict]:
     ai_crumbs = [{"href": "/ai/", "label": "A.I."}]
     dives = [
         {
+            "href": "/ai/frontier-price-meets-open-weight-ipo/",
+            "title": "Frontier price meets open-weight, and the IPO clock",
+            "description": "Open-weight cost curves are colliding with frontier listing calendars",
+        },
+        {
             "href": "/ai/swarms/what-an-agent-swarm-is/",
             "title": "What an agent swarm is, and what 10,000 of them can do",
             "description": "Two swarms, two breakthroughs, every metric on the table.",
+        },
+        {
+            "href": "/ai/grok-bot-set-a-new-bar/",
+            "title": "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.",
+            "description": "What these agent harnesses can actually do today, one capability at a time",
         },
         {
             "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
