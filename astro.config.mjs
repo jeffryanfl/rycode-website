@@ -30,7 +30,9 @@ function conceptMapDrift() {
         );
         const { uncovered, missing } = conceptDrift(articleRoutes, sitemapPaths, data.concepts);
         const warning = driftWarning(uncovered, missing);
-        if (warning) console.warn(`\n${warning}\n`);
+        if (warning) {
+          throw new Error(`\n${warning}\n`);
+        }
       },
     },
   };
