@@ -56,7 +56,6 @@
       "label": "Agent swarms",
       "blurb": "Many agents on one job, spending tokens and messages to reach a result one model does not.",
       "articles": [
-        "/ai/frontier-price-meets-open-weight-ipo/",
         "/ai/swarms/what-an-agent-swarm-is/",
         "/ai/grok-bot-set-a-new-bar/",
         "/ai/models/meta/muse/code/",
@@ -99,9 +98,7 @@
       "id": "assurance-fog",
       "label": "Assurance fog",
       "blurb": "After a scare, closed APIs can block the forensic read that open weights on your own machines can finish.",
-      "articles": [
-        "/risk/the-ban-lands-on-open-source/"
-      ],
+      "articles": [],
       "links": [
         "evals-safety",
         "regulatory-capture"
@@ -141,8 +138,7 @@
       "label": "Data-center financing",
       "blurb": "How AI campuses raise money through leases and private placements before the revenue arrives.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
-        "/risk/when-force-majeure-hits-the-ai-build-out/"
+        "/economics/long-yields-hike-ai-credit-stress/"
       ],
       "links": [
         "force-majeure",
@@ -170,10 +166,7 @@
       "id": "ai-capex",
       "label": "AI capex",
       "blurb": "Capital spending on AI campuses that has to be financed before the revenue shows up.",
-      "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
-        "/risk/when-force-majeure-hits-the-ai-build-out/"
-      ],
+      "articles": [],
       "links": [
         "force-majeure",
         "power-energy",
@@ -205,7 +198,6 @@
       "label": "Fed policy",
       "blurb": "The short-term rate the Fed sets, and the inflation and geopolitics it names when it moves.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
         "/risk/when-the-spender-runs-the-printer/",
         "/economics/warsh-first-hike-oil-and-five-percent-ten-year/"
       ],
@@ -234,9 +226,7 @@
       "id": "mortgages-housing",
       "label": "Mortgages",
       "blurb": "The 30-year mortgage rate buyers face when the long Treasury yield is high.",
-      "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/"
-      ],
+      "articles": [],
       "links": [
         "treasury-yields",
         "fed-policy"
