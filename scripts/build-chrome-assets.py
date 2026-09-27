@@ -107,6 +107,9 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "frontier-price-meets-open-weight-ipo.astro":
         # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-27"
+    elif target.name == "long-yields-hike-ai-credit-stress.astro":
+        # Economics card date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-27"
     elif target.name == "grok-bot-set-a-new-bar.astro":
         # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-25"

@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/economics.css';
+
+const title = 'Long yields, a hike into geopolitics, and AI credit under stress';
+const subhead = "The same week's bond tape, Fed hike, and data-center financing stress are one story, not three.";
+
+const sources = [
+  {
+    href: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026',
+    text: 'U.S. Department of the Treasury, Daily Treasury Par Yield Curve Rates (CMT; 25 Sep 2026: 2y 4.81%, 10y 5.17%, 30y 5.49%)',
+  },
+  {
+    href: 'https://www.freddiemac.com/pmms',
+    text: 'Freddie Mac, Primary Mortgage Market Survey (30-year fixed averaged 7.03% as of 24 Sep 2026; prior week 6.95%)',
+  },
+  {
+    href: 'https://home.treasury.gov/news/press-releases/sb0607',
+    text: 'U.S. Department of the Treasury, Treasury Announces Increased Sizes of Nominal Long-End Liquidity Support Buybacks Beginning September 9 (at least $4B per operation; was $2B max)',
+  },
+  {
+    href: 'https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=1',
+    text: 'U.S. Treasury Fiscal Data, Debt to the Penny API (24 Sep 2026: total public debt outstanding ≈ $40.07T; debt held by the public ≈ $32.36T)',
+  },
+  {
+    href: 'https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf',
+    text: 'Board of Governors of the Federal Reserve System, Federal Open Market Committee statement (16 Sep 2026; funds rate raised 25 bp to 3.75-4.00%; inflation remains elevated; geopolitics flagged)',
+  },
+  {
+    href: 'https://query1.finance.yahoo.com/v8/finance/chart/CL=F?range=1mo&interval=1d',
+    text: 'Yahoo Finance, WTI Crude Oil Futures (CL=F) daily chart API (15 Sep 2026 close ≈ $105.83; 25 Sep 2026 close ≈ $92.41)',
+  },
+  {
+    href: 'https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/',
+    text: 'TechCrunch, Oracle sends force majeure notice on its New Mexico Stargate data center',
+  },
+  {
+    href: 'https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/',
+    text: 'El Paso Matters, Oracle could defer Project Jupiter rent payments over power supply delays',
+  },
+  {
+    href: 'https://www.wsj.com/economy/the-ai-build-out-is-becoming-the-biggest-economic-bet-in-u-s-history-c60716dd',
+    text: 'Wall Street Journal, The AI Build-Out Is Becoming the Biggest Economic Bet in U.S. History',
+  },
+];
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description={subhead}
+  variant="economics"
+>
+  <article class="econ-digest econ-digest--body">
+    <header class="econ-digest-head">
+      <h1 class="econ-digest-title">{title}</h1>
+      <p class="econ-digest-subhead">{subhead}</p>
+    </header>
+
+    <p class="econ-digest-lede">Late September 2026 did not deliver three separate market stories. It delivered one financing story told in three rooms.</p>
+    <p class="econ-digest-lede">In the first room, long Treasury yields sat high enough that a 30-year mortgage cleared above 7 percent and housing purchase math stayed hard. In the second, the Federal Reserve raised the policy rate into inflation it still called elevated, and named geopolitics as part of why uncertainty was high. In the third, a flagship AI data-center campus showed how private-credit and lease cash flows can reprice when power commitments slip. The bond market, the policy meeting, and the AI build-out balance sheet are reading the same constraint: debt before revenue, priced against energy, permits, and duration.</p>
+    <p class="econ-digest-lede">This essay owns the rates, debt stock, and credit-scale reading. The companion Risk digest <a href="/risk/when-force-majeure-hits-the-ai-build-out/">When force majeure hits the AI build-out</a> owns the contract outs, energy gates, and who holds the paper. Cross-read them. Do not treat them as alternate weeks.</p>
+
+    <section class="econ-digest-section" id="long-end">
+      <h2>What the long end was saying</h2>
+      <p>On Friday, September 25, 2026, the <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026">U.S. Treasury daily par yield curve</a> (Constant Maturity Treasury, or CMT, rates interpolated from the official curve) printed a <strong>2-year at 4.81%</strong>, a <strong>10-year at 5.17%</strong>, and a <strong>30-year at 5.49%</strong>. Those are the official levels. They are not a screen grab from a show, and they are not a reason to invent a freeze in mortgage applications.</p>
+      <p>Mortgages track that long end with a lag and a spread. <a href="https://www.freddiemac.com/pmms">Freddie Mac's Primary Mortgage Market Survey</a> put the U.S. average <strong>30-year fixed mortgage at 7.03%</strong> as of September 24, 2026, up from <strong>6.95%</strong> the prior week. Above 7 percent is the useful frame. It does not by itself prove purchase volume collapsed. It does mean a buyer who locked in the mid-6s years ago and a buyer shopping now are not in the same market.</p>
+      <p>Treasury is also working the long end directly. In an August 19 press release, the <a href="https://home.treasury.gov/news/press-releases/sb0607">Department of the Treasury</a> said it would raise nominal long-end liquidity-support buyback sizes so each operation is <strong>at least $4 billion</strong> in the 10-year to 20-year and 20-year to 30-year sectors, effective September 9, 2026, through that refunding window. The prior maximum was $2 billion per operation. That is liquidity support for longer-dated coupons, not a mass purchase program and not a claim about auction strength without a primary. It is still a signal that the long curve matters enough for Debt Management to double the size of those ops.</p>
+      <p>Name the debt stock carefully. On September 24, 2026, Treasury's <a href="https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=1">Debt to the Penny</a> series showed <strong>total public debt outstanding</strong> of about <strong>$40.07 trillion</strong> and <strong>debt held by the public</strong> of about <strong>$32.36 trillion</strong>. Total public debt outstanding is the headline pile. Debt held by the public is the market-facing stock that usually drives duration and interest-cost talk. Mixing them turns a round number into a wrong claim. The ~$40 trillion figure is real on this primary when you name which stock you mean.</p>
+      <p>Put those four facts together. Long CMT yields at 5.17% on the 10-year and 5.49% on the 30-year, mortgages above 7%, larger long-end buybacks, and a public debt stock that needs continuous refinancing are one tape. They are the financing weather the AI build-out has to borrow in.</p>
+    </section>
+
+    <section class="econ-digest-section" id="hike">
+      <h2>A hike into elevated inflation, with geopolitics named</h2>
+      <p>On September 16, 2026, the Federal Open Market Committee <a href="https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf">raised the federal funds target range by 25 basis points to 3.75-4.00%</a>. A basis point is one-hundredth of a percentage point. The federal funds rate is the overnight policy rate the Fed steers. The statement said inflation "remains elevated," that today's action would support a timelier return to the 2 percent goal, and that uncertainty remains elevated "owing, in part, to <strong>geopolitical developments</strong>." Domestic spending was called resilient. Job gains were said to have kept pace with the workforce.</p>
+      <p>That is a hike into inflation the Committee still flags as elevated, with geopolitics written into the uncertainty sentence. It is not an invented probability of another hike in October. It is not a CPI print this essay cannot open. It is the policy stance on the same week the long end was telling you duration is expensive.</p>
+      <p>Energy prices are part of that geopolitical inflation path, but the path is not a frozen headline. Front-month WTI crude futures (<a href="https://query1.finance.yahoo.com/v8/finance/chart/CL=F?range=1mo&interval=1d">CL=F</a>) closed above $100 in mid-September 2026, including about <strong>$105.83 on September 15</strong>, then fell to about <strong>$92.41 by September 25</strong>. Mid-month spike, then a pullback into the Friday close. Anyone who says oil was "still above $103" on the last Friday of the month is reading the wrong day on the chart.</p>
+      <p>So the policy week is: tighten while inflation is elevated, name geopolitics, and watch energy prices move hard and then ease. That is supply-shock language without pretending the Friday close matched the mid-month peak.</p>
+    </section>
+
+    <section class="econ-digest-section" id="ai-credit">
+      <h2>AI credit under the same roof</h2>
+      <p>The AI data-center build-out is not a side essay. The <a href="https://www.wsj.com/economy/the-ai-build-out-is-becoming-the-biggest-economic-bet-in-u-s-history-c60716dd">Wall Street Journal</a> has framed it as among the largest economic bets in U.S. history. That scale is the backdrop: huge capital spending before the revenue that is supposed to pay for it, financed through leases, private credit, and hyperscaler balance sheets.</p>
+      <p>Late September put a live stress test on that stack. <a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">TechCrunch</a> and <a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">El Paso Matters</a> reported that Oracle sent a force majeure notice on the New Mexico Project Jupiter / Stargate-class campus. Force majeure is a contract out that can excuse or defer obligations when events outside a party's control intervene. Reporting framed the structure around <strong>deferring rent or payments</strong> if power commitments slip, not around Oracle walking away as main tenant. Oracle said the project remains on its planned schedule. Blue Owl Capital, whose unit sits in the reported notice chain, said the notice does not change financial commitments to the multi-year project ([7]; [8]).</p>
+      <p>That is the Economics handoff, not a second Risk essay. When long yields are elevated, the Fed is still hiking into geopolitically flagged inflation, and a campus lease can defer cash when power slips, "committed" AI capacity is credit. Rent timing, developer equity returns, and private-credit underwriting move when the out is tied to power. The Risk digest on contract outs and energy gates walks Local → Doorway → Gate → Rent → Fog. This page only needs the bridge: the same week's financing story includes packaged AI infra credit under energy-gated stress.</p>
+      <p>The verified claim for this page is narrow: the notice, the rent-deferral structure tied to power, Blue Owl in the reported notice chain, and the scale backdrop. Stock moves and rating actions belong to other primaries.</p>
+    </section>
+
+    <section class="econ-digest-section" id="tape">
+      <h2>How to read this week's tape</h2>
+      <p>If you are watching rates and AI financing as one book, treat the week as a checklist, not a mood.</p>
+      <p><strong>Scenario 1. Purchase mortgage buyer.</strong> You are shopping a conforming 30-year loan the week after Freddie printed 7.03%. You open Freddie Mac's PMMS ([2]) for the survey average, then open the Treasury CMT table ([1]) for the 10-year and 30-year so you know whether your lender's quote is moving with the official curve or with a local spread. You lock only after you can say which rate moved: the Treasury curve, the mortgage survey, or the lender's margin. You do not invent a national "freeze" from the 7.03% print alone. You do ask whether your payment still clears stress at a rate a half-point higher than the quote, because the long end has already shown it can reprice in days.</p>
+      <p><strong>Scenario 2. Credit officer on an AI campus package.</strong> You underwrite a data-center lease backed by hyperscaler demand and sponsor equity. Before you treat leased megawatts as firm cash flow, you read the force majeure and payment-deferral language for ties to <strong>power commitments</strong>, generation online dates, or fuel delivery. You check whether the notice chain includes a private-credit or developer counterparty (Blue Owl-class), and whether public "on schedule" language sits next to an event-driven out ([7]; [8]). You price the package against the same week's long yields and the Fed's hike into geopolitically elevated inflation, because refinance and takeout rates are not independent of that tape. You escalate to legal and energy diligence before you call the capacity "sold." The Risk companion owns the full gate map. Your job on this page is to refuse a rates-blind credit memo.</p>
+      <p><strong>Scenario 3. Macro reader reconciling the debt headline.</strong> Someone says "the debt just hit $40 trillion." You open Debt to the Penny ([4]), name <strong>total public debt outstanding</strong> versus <strong>debt held by the public</strong>, and refuse to mix them. You then ask how that stock refinances while the 10-year CMT is above 5% and Treasury has already raised long-end liquidity buybacks to at least $4 billion per operation ([1]; [3]; [4]). That is the fiscal-duration read that sits next to AI's debt-before-revenue bet, not a rival story.</p>
+    </section>
+
+    <section class="econ-digest-section" id="one-story">
+      <h2>One financing story</h2>
+      <p>The week is easier if you stop splitting it.</p>
+      <p>Long CMT yields at 4.81% / 5.17% / 5.49% on the 2-year, 10-year, and 30-year, a 30-year mortgage at 7.03%, larger long-end buybacks, and a named debt stock near $40 trillion total / $32 trillion held by the public are the cost of duration ([1]; [2]; [3]; [4]). A 25 bp hike to 3.75-4.00% into elevated inflation, with geopolitics in the uncertainty line, is the policy stance ([5]). A mid-September WTI spike near $106 that settles near $92 by Friday is the energy path, not a frozen "$103 forever" headline ([6]). An AI campus force majeure framed as rent deferral if power slips, against a build-out the Journal calls a historic bet, is the credit bridge ([7]; [8]; [9]).</p>
+      <p>Rates set the weather. Policy names the shock. AI infra shows how private credit and leases reprice when energy gates open. Read them as one financing story. For the contract outs and energy gates themselves, use the Risk companion <a href="/risk/when-force-majeure-hits-the-ai-build-out/">When force majeure hits the AI build-out</a>.</p>
+    </section>
+
+    <section class="econ-digest-section econ-digest-sources" id="sources">
+      <h2>Sources</h2>
+      <ol>
+        {sources.map((source) => (
+          <li>
+            <a href={source.href}>{source.text}</a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <div class="econ-digest-closer">
+      <p class="econ-closer-kicker">Risks this calls out</p>
+      <p class="econ-closer-link"><a href="/risk/when-force-majeure-hits-the-ai-build-out/">When force majeure hits the AI build-out</a></p>
+    </div>
+  </article>
+</Layout>
