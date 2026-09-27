@@ -98,7 +98,14 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     target = href_to_file(row["href"])
     if target is None or target.name == "index.astro":
         raise SystemExit(f"not an article: {row['href']}")
-    date = git_date(target)
+    if target.name == "when-force-majeure-hits-the-ai-build-out.astro":
+        # Digest date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-26"
+    elif target.name == "what-an-agent-swarm-is.astro":
+        # Explainer date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-27"
+    else:
+        date = git_date(target)
     if target.name == "next-token-engine.astro":
         # The A.I. index already publishes this date. The file landed earlier.
         date = "2026-08-25"
@@ -130,6 +137,11 @@ def build_catalog_real() -> list[dict]:
     ai_crumbs = [{"href": "/ai/", "label": "A.I."}]
     dives = [
         {
+            "href": "/ai/swarms/what-an-agent-swarm-is/",
+            "title": "What an agent swarm is, and what 10,000 of them can do",
+            "description": "Two swarms, two breakthroughs, every metric on the table.",
+        },
+        {
             "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
             "title": "Chat models write strings. System One returns typed decisions.",
             "description": "Why Jev changes the scoreboard for software automation",
@@ -154,6 +166,8 @@ def build_catalog_real() -> list[dict]:
         crumbs = ai_crumbs
         if row["href"].endswith("/jev/"):
             crumbs = ai_crumbs + [{"href": "/ai/models/typesafe/", "label": "TypeSafe"}]
+        if row["href"].startswith("/ai/swarms/"):
+            crumbs = ai_crumbs + [{"href": "/ai/swarms/", "label": "Agent swarms"}]
         items.append(article_from(row, "ai", "ai-dive", crumbs))
 
     labs = [

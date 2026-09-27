@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/ai.css';
+import '../styles/hub.css';
 ---
 
 <Layout
@@ -14,6 +15,78 @@ import '../styles/ai.css';
       A.I.
     </h1>
   </div>
+
+  <nav class="hub-cluster" aria-label="A.I. sections">
+    <ul class="hub-doors">
+      <li>
+        <a class="hub-door" href="#ai-labs">
+          <svg class="hub-glyph" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 6h8M18 8v5l-7 14h18l-7-14V8" />
+            <path d="M13 22h14" />
+          </svg>
+          <span>Labs</span>
+        </a>
+      </li>
+      <li>
+        <a class="hub-door" href="#ai-papers">
+          <svg class="hub-glyph" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 6h9l7 7v21H13z" />
+            <path d="M22 6v7h7M17 20h8M17 25h8M17 30h5" />
+          </svg>
+          <span>Papers</span>
+        </a>
+      </li>
+      <li>
+        <a class="hub-door" href="#ai-open-weight">
+          <svg class="hub-glyph" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 16l12-6 12 6-12 6z" />
+            <path d="M8 16v10l12 6V22M32 16v10l-12 6" />
+          </svg>
+          <span>Open weight</span>
+        </a>
+      </li>
+      <li>
+        <a class="hub-door" href="#ai-system-one">
+          <svg class="hub-glyph" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="13" y="13" width="14" height="14" rx="1" />
+            <path d="M17 13V8M23 13V8M17 32v-5M23 32v-5M13 17H8M13 23H8M32 17h-5M32 23h-5" />
+          </svg>
+          <span>System One</span>
+        </a>
+      </li>
+      <li>
+        <a class="hub-door" href="#ai-hardware">
+          <svg class="hub-glyph" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="11" y="6" width="18" height="7" rx="1" />
+            <rect x="11" y="16.5" width="18" height="7" rx="1" />
+            <rect x="11" y="27" width="18" height="7" rx="1" />
+            <path d="M15 9.5h4M15 20h4M15 30.5h4" />
+          </svg>
+          <span>Hardware</span>
+        </a>
+      </li>
+      <li>
+        <a class="hub-door" href="#ai-deep-dive">
+          <svg class="hub-glyph" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="17" cy="17" r="8" />
+            <path d="M23 23 L32 32" />
+          </svg>
+          <span>Deep dive</span>
+        </a>
+      </li>
+      <li>
+        <a class="hub-door" href="/ai/swarms/">
+          <svg class="hub-glyph" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="20" cy="9" r="3" />
+            <circle cx="9" cy="29" r="3" />
+            <circle cx="31" cy="29" r="3" />
+            <path d="M20 12 L11 26M20 12 L29 26M12 29h16" />
+          </svg>
+          <span>Swarms</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
   <section class="ai-bench" id="aiBench" hidden aria-labelledby="ai-bench-heading">
     <div class="ai-bench-plate">

@@ -1,0 +1,205 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SwarmStat from '../../../components/SwarmStat.astro';
+import '../../../styles/ai.css';
+import '../../../styles/paper.css';
+
+const title = 'What an agent swarm is, and what 10,000 of them can do';
+const subhead = 'Two swarms, two breakthroughs, every metric on the table.';
+
+const sources = [
+  { text: 'Quanta Magazine, AI has solved one of math’s $1 million Millennium Prize problems', href: 'https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/' },
+  { text: 'DeepLearning.AI, The Batch: inside the dispute over a landmark agent-driven mathematical proof', href: 'https://www.deeplearning.ai/the-batch/inside-the-dispute-over-a-landmark-agent-driven-mathematical-proof' },
+  { text: 'NPR Illinois, AI solved one of math’s hardest problems. Humanity learned nothing so far', href: 'https://www.nprillinois.org/2026-09-22/ai-solved-one-of-maths-hardest-problems-humanity-learned-nothing-so-far' },
+  { text: 'Tech Insider, OpenAI and 100 math problems solved in 24 days', href: 'https://tech-insider.org/openai-100-math-problems-solved-24-days-2026/' },
+  { text: 'DigWatch, Anthropic Claude discovers a novel enzyme system', href: 'https://dig.watch/updates/anthropic-claude-discovers-novel-enzyme-system' },
+  { text: 'MetirAI, Anthropic Claude and the ART enzyme system', href: 'https://www.metirai.com/blog/anthropic-claude-art-enzyme-system-ai-discovery-2026' },
+  { text: 'AllSci, AI enzyme discovery in bacteriophages', href: 'https://allsci.com/news/research/ai-enzyme-discovery-bacteriophages-anthropic-uses/' },
+  { text: 'Forkast, Anthropic’s 950 AI agents uncover a CRISPR-like enzyme system', href: 'https://forkast.news/anthropics-950-ai-agents-uncover-crispr-like-enzyme-system-a-new-frontier-in-biological-discovery/' },
+];
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description={subhead}
+  variant="ai"
+>
+  <a slot="ai-identity" href="/ai/" class="ai-identity">
+    <img class="ai-glyph" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
+    A.I.
+  </a>
+
+  <article class="paper">
+    <div class="paper-grid paper-grid--solo">
+      <header class="paper-head">
+        <p class="paper-kicker">A.I. · Agent swarms</p>
+        <h1 class="paper-claim">{title}</h1>
+        <p class="paper-dek">{subhead}</p>
+      </header>
+
+      <div class="paper-main">
+        <section class="paper-section" aria-labelledby="definition">
+          <h2 class="paper-h2" id="definition">Definition</h2>
+          <div class="paper-body">
+            <p>A swarm is many agent instances pointed at one shared objective. They coordinate by messaging each other. They divide the labor. They write shared artifacts, such as notes, proofs, and candidate lists, that the rest of the swarm can read.</p>
+            <p>A single agent with a harness is one loop. The harness is the computer, memory, and schedule around that one model. <a href="/ai/grok-bot-set-a-new-bar/">Grok Bot and Muse</a> are that story. This page is the sequel: what changes when the loop is copied many times and the copies talk.</p>
+            <p>The Navier-Stokes run also has its own essay, <a href="/ai/ten-thousand-agents-is-not-a-genius/">Ten thousand agents is not a genius</a>. That page stays the deep dive. This one puts two swarms on the same six-field row. The <a href="/ai/swarms/">Agent swarms</a> hub is where that row is defined.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="drivers">
+          <h2 class="paper-h2" id="drivers">The three drivers</h2>
+          <div class="paper-body">
+            <h3>Speed</h3>
+            <p>Parallelism compresses wall-clock time. Many agents work at once, so the clock measures the job, not the sum of every agent's hours.</p>
+            <p>OpenAI's Navier-Stokes run, announced Sept 8, 2026, used ~10,000 concurrent agents and finished in 88 hours of wall-clock time, Sept 1–5. Before that scale-up, ~100 agents spent ~50 hours on an Euler warm-up. Anthropic's enzyme preprint, Sept 23, 2026, used ~950 Claude agents (~949 sessions) and finished in ~21 hours of wall-clock time.</p>
+            <h3>Insight</h3>
+            <p>Diverse attack angles, plus cross-checking. Separate agents can try different approaches, then test what the others return.</p>
+            <p>On the math run, agents exchanged 2.7–4.9M messages. Reports differ, so the figure stays a range. The enzyme swarm searched ~1.9B protein clusters, identified 200,000+ reverse transcriptases, and scored ~3,500 candidate partner-gene systems.</p>
+            <h3>Coordination</h3>
+            <p>Coordination is message passing, task decomposition, and a handoff from machine search to a human-readable write-up.</p>
+            <p>The math swarm's handoff includes +17 hours in which GPT-6 Astra formalized the argument in Lean. The enzyme swarm handed ~19 finalist reports to human scientists. Those scientists ran every wet-lab experiment. Claude does not control lab equipment.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="navier-stokes">
+          <h2 class="paper-h2" id="navier-stokes">Case 1 · Navier-Stokes, OpenAI</h2>
+          <div class="paper-body">
+            <p>OpenAI announced the result on Sept 8, 2026. The run itself was Sept 1–5: ~10,000 concurrent agents, 88 hours of wall-clock time. The Euler warm-up came first, ~100 agents for ~50 hours, and then the run scaled up.</p>
+            <p>Output tokens on the Navier-Stokes run were 130B. Across the full effort they were 300B. Inter-agent messages are reported as 2.7–4.9M. The reports disagree, so this page prints the range and does not pick an endpoint.</p>
+            <p>OpenAI has not disclosed the compute cost. Press estimates put the bill at $2M–$22.5M. The Navier-Stokes run is commonly estimated at $6–10M. After the 88 hours, GPT-6 Astra spent +17 hours formalizing the argument in Lean. The Clay Millennium Prize is $1M. OpenAI has not claimed it.</p>
+            <p>On Sept 21, a follow-up said 100+ additional open problems had been resolved in 24 days. No public list, proofs, or methodology have been released for that claim.</p>
+          </div>
+          <SwarmStat
+            name="Navier-Stokes · OpenAI · announced Sept 8, 2026"
+            agents="~10,000 concurrent"
+            hours="88 hours (Sept 1–5). Euler warm-up: ~100 agents, ~50 hours, before the scale-up."
+            tokens="130B output tokens on the Navier-Stokes run (300B across the full effort)"
+            messages="2.7–4.9M. Reports differ."
+            cost="Not disclosed by OpenAI. Press estimates $2M–$22.5M. The Navier-Stokes run is commonly estimated at $6–10M."
+            human="not disclosed"
+          />
+          <div class="paper-body">
+            <p>The credit dispute between Buckmaster and Alpöge is live. Mathematicians have called the paper "terribly written." Clay requires publication plus a two-year review. 25 Fields Medalists issued a warning letter on AI-company incentives versus mathematics. None of that is a verdict on the proof. It is why the announcement and a settled theorem are not the same sentence.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="art">
+          <h2 class="paper-h2" id="art">Case 2 · ART enzyme system, Anthropic</h2>
+          <div class="paper-body">
+            <p>Anthropic's preprint is dated Sept 23, 2026. The swarm was ~950 Claude agents, about ~949 sessions, over ~21 hours of wall-clock time, using 210M tokens.</p>
+            <p>The search covered ~1.9B protein clusters. It identified 200,000+ reverse transcriptases. It scored ~3,500 candidate partner-gene systems. It sent ~19 finalist reports to human scientists. One new system was named: array-associated reverse transcriptases (ART). Its biological function is unknown.</p>
+            <p>Anthropic estimates the same search would take an expert researcher weeks to months by hand. That is the human-equivalent figure on the row. A message count and a compute cost were not disclosed.</p>
+            <p>The agents were computational only. Every wet-lab experiment was run by human scientists. Claude does not control lab equipment.</p>
+          </div>
+          <SwarmStat
+            name="ART enzyme system · Anthropic · preprint Sept 23, 2026"
+            agents="~950 Claude agents (~949 sessions)"
+            hours="~21 hours"
+            tokens="210M"
+            messages="not disclosed"
+            cost="not disclosed"
+            human="Anthropic estimates weeks to months for an expert researcher by hand."
+          />
+          <div class="paper-body">
+            <p>The paper is a preprint. It is not peer-reviewed. The function of ART is unknown. A CRISPR-like structure is a resemblance. It is not a demonstrated gene-editing result.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="comparison">
+          <h2 class="paper-h2" id="comparison">Side by side</h2>
+          <div class="paper-table-wrap">
+            <table class="paper-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Navier-Stokes, OpenAI</th>
+                  <th>ART, Anthropic</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Agents</td>
+                  <td>~10,000 concurrent. Euler warm-up: ~100 agents for ~50 hours, then the scale-up.</td>
+                  <td>~950 Claude agents (~949 sessions)</td>
+                </tr>
+                <tr>
+                  <td>Wall-clock hours</td>
+                  <td>88 hours (Sept 1–5)</td>
+                  <td>~21 hours</td>
+                </tr>
+                <tr>
+                  <td>Tokens</td>
+                  <td>130B output tokens on the Navier-Stokes run (300B across the full effort)</td>
+                  <td>210M</td>
+                </tr>
+                <tr>
+                  <td>Messages between agents</td>
+                  <td>2.7–4.9M. Reports differ.</td>
+                  <td>not disclosed</td>
+                </tr>
+                <tr>
+                  <td>Est. compute cost</td>
+                  <td>Not disclosed by OpenAI. Press estimates $2M–$22.5M. The Navier-Stokes run is commonly estimated at $6–10M.</td>
+                  <td>not disclosed</td>
+                </tr>
+                <tr>
+                  <td>Human-equivalent hours</td>
+                  <td>not disclosed</td>
+                  <td>Anthropic estimates weeks to months for an expert researcher by hand.</td>
+                </tr>
+                <tr>
+                  <td>Handoff after the run</td>
+                  <td>+17 hours to formalize in Lean (GPT-6 Astra)</td>
+                  <td>~19 finalist reports to human scientists. Every wet-lab experiment was run by people. Claude does not control lab equipment.</td>
+                </tr>
+                <tr>
+                  <td>What was named</td>
+                  <td>Navier-Stokes result, announced Sept 8, 2026. $1M Clay Millennium Prize, not claimed by OpenAI.</td>
+                  <td>1 new system: array-associated reverse transcriptases (ART). Biological function unknown. Search scale: ~1.9B protein clusters, 200,000+ reverse transcriptases, ~3,500 candidate partner-gene systems scored.</td>
+                </tr>
+                <tr>
+                  <td>Later claim</td>
+                  <td>Sept 21 follow-up: 100+ additional open problems claimed resolved in 24 days. No public list, proofs, or methodology have been released.</td>
+                  <td>Preprint Sept 23, 2026. Not peer-reviewed. CRISPR-like structure is resemblance, not demonstrated gene editing.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="caveats">
+          <h2 class="paper-h2" id="caveats">Caveats</h2>
+          <div class="paper-body">
+            <p>On the math result, the Buckmaster/Alpöge credit dispute is live. Mathematicians called the paper "terribly written." Clay requires publication plus a two-year review before a Millennium Prize is settled. 25 Fields Medalists issued a warning letter on AI-company incentives versus mathematics. The Sept 21 claim of 100+ further problems has no public list, proofs, or methodology.</p>
+            <p>On the enzyme result, the work is a preprint, not a peer-reviewed paper. ART's biological function is unknown. The CRISPR-like look is a resemblance, not a demonstrated editor. The swarm did not touch the bench: people ran the wet lab.</p>
+            <p>Where a company or a reporter did not publish a number, the cell says "not disclosed." The message count that reports split is left as 2.7–4.9M. The cost range is left as $2M–$22.5M, with the Navier-Stokes run commonly estimated at $6–10M.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="watch">
+          <h2 class="paper-h2" id="watch">What to watch</h2>
+          <div class="paper-body">
+            <ul>
+              <li>Whether OpenAI publishes the list, proofs, and methodology behind the Sept 21 claim of 100+ problems in 24 days.</li>
+              <li>Whether the Buckmaster/Alpöge credit dispute is settled in the public record.</li>
+              <li>Whether a journal publishes the Navier-Stokes paper, which is what starts Clay's two-year review. The $1M prize is not claimed.</li>
+              <li>Whether the Fields Medalists' warning changes how labs publish agent-written mathematics.</li>
+              <li>Whether the ART preprint is peer-reviewed, and whether anyone demonstrates a biological function or gene editing. Resemblance to CRISPR is not that demonstration.</li>
+              <li>Whether later swarms fill all six fields, including messages, compute cost, and human-equivalent hours, or keep printing "not disclosed."</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="sources">
+          <h2 class="paper-h2" id="sources">Sources</h2>
+          <ol class="paper-sources">
+            {sources.map((source) => (
+              <li><a href={source.href}>{source.text}</a></li>
+            ))}
+          </ol>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>

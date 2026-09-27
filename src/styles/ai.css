@@ -1375,3 +1375,93 @@ h1.ai-identity {
     margin-top: 1.6rem;
   }
 }
+
+/* Six-field swarm row. Same charcoal, hairline, and mono as the bench table. */
+.swarm-stat {
+  margin: 0.85rem 0 1.35rem;
+}
+
+.swarm-stat-name {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ai-dim);
+}
+
+.swarm-stat-scroll {
+  overflow-x: auto;
+}
+
+.swarm-stat table {
+  width: 100%;
+  min-width: 52rem;
+  border-collapse: collapse;
+}
+
+.swarm-stat th,
+.swarm-stat td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.55rem 0.85rem 0.55rem 0;
+  border-bottom: 1px solid var(--ai-hair);
+}
+
+.swarm-stat th {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ai-dim);
+}
+
+.swarm-stat td {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--ai-ink);
+}
+
+/* Seven section doors. Homepage hub.css stays four across.
+   These rules only let that same door row fit seven labels on this page. */
+.editorial-shell--ai .hub-cluster {
+  --hub-ink: #f8fafc;
+  --hub-ink-rest: 0.64;
+  --hub-ink-hover: 1;
+  --hub-glyph-ink: 0.624;
+  margin: 0 0 2.2rem;
+}
+
+.editorial-shell--ai .hub-doors {
+  grid-template-columns: repeat(7, minmax(0, 7.5rem));
+  width: 100%;
+  max-width: 68rem;
+}
+
+.editorial-shell--ai a.hub-door {
+  color: rgba(248, 250, 252, 0.9);
+  text-decoration: none;
+}
+
+.editorial-shell--ai a.hub-door:hover,
+.editorial-shell--ai a.hub-door:focus-visible {
+  color: var(--hub-ink, #f8fafc);
+}
+
+.editorial-shell--ai a.hub-door:focus-visible {
+  outline: 1px solid var(--hub-ink, #f8fafc);
+  outline-offset: 8px;
+}
+
+@media (max-width: 720px) {
+  .editorial-shell--ai .hub-doors {
+    grid-template-columns: repeat(2, 6.75rem);
+    column-gap: 1.75rem;
+    row-gap: 1.85rem;
+  }
+
+  .editorial-shell--ai .hub-door {
+    font-size: 0.72rem;
+  }
+}

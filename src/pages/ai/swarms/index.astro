@@ -1,0 +1,93 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SwarmStat from '../../../components/SwarmStat.astro';
+import '../../../styles/ai.css';
+
+const title = 'Agent swarms';
+const dek = 'What thousands of AI agents accomplish together — speed, insight, and coordination, with every number called out.';
+
+const pieces = [
+  {
+    href: '/ai/swarms/what-an-agent-swarm-is/',
+    title: 'What an agent swarm is, and what 10,000 of them can do',
+    dek: 'Two swarms, two breakthroughs, every metric on the table.',
+    meta: '27 Sep 2026',
+  },
+  {
+    href: '/ai/ten-thousand-agents-is-not-a-genius/',
+    title: 'The claimed math breakthrough was agent scale and token spend',
+    dek: 'Navier-Stokes deep dive.',
+    meta: '13 Sep 2026',
+  },
+];
+---
+
+<Layout
+  title={`${title} — A.I. — Rycode`}
+  description={dek}
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">{title}</h1>
+    <p class="ai-lab-dek">{dek}</p>
+  </div>
+
+  <section aria-labelledby="swarm-primer">
+    <h2 class="ai-section-label" id="swarm-primer">Primer</h2>
+    <p class="ai-lab-note">A swarm is many agent instances pointed at one shared objective. They coordinate by messaging each other, they divide the labor, and they write shared artifacts the rest of the swarm can read.</p>
+    <p class="ai-lab-note">That is different from a single agent with a harness. A harness is the computer, memory, and schedule around one model loop. <a href="/ai/grok-bot-set-a-new-bar/">Grok Bot and Muse</a> are that story: one agent, or a small team, inside a harness. A swarm copies the loop many times and has the copies talk.</p>
+  </section>
+
+  <section aria-labelledby="swarm-speed">
+    <h2 class="ai-section-label" id="swarm-speed">Speed</h2>
+    <p class="ai-lab-note">Parallelism compresses wall-clock time. Many agents work at once, so the clock measures the job, not the sum of every agent's hours.</p>
+  </section>
+
+  <section aria-labelledby="swarm-insight">
+    <h2 class="ai-section-label" id="swarm-insight">Insight</h2>
+    <p class="ai-lab-note">Diverse attack angles, plus cross-checking. Separate agents can try different approaches, then test what the others return.</p>
+  </section>
+
+  <section aria-labelledby="swarm-coordination">
+    <h2 class="ai-section-label" id="swarm-coordination">Coordination</h2>
+    <p class="ai-lab-note">Message passing, task decomposition, and handoffs from machine search to human-readable write-ups.</p>
+  </section>
+
+  <section aria-labelledby="swarm-stat-row">
+    <h2 class="ai-section-label" id="swarm-stat-row">The stat row</h2>
+    <p class="ai-lab-note">Every swarm on this hub uses the same six fields. An unknown cell says "not disclosed." Where reports disagree, the cell stays a range. This page does not invent a figure, and it does not collapse a range into one number.</p>
+    <SwarmStat
+      name="Navier-Stokes · OpenAI · announced Sept 8, 2026"
+      agents="~10,000 concurrent"
+      hours="88 hours (Sept 1–5). Euler warm-up: ~100 agents, ~50 hours, before the scale-up."
+      tokens="130B output tokens on the Navier-Stokes run (300B across the full effort)"
+      messages="2.7–4.9M. Reports differ."
+      cost="Not disclosed by OpenAI. Press estimates $2M–$22.5M. The Navier-Stokes run is commonly estimated at $6–10M."
+      human="not disclosed"
+    />
+    <SwarmStat
+      name="ART enzyme system · Anthropic · preprint Sept 23, 2026"
+      agents="~950 Claude agents (~949 sessions)"
+      hours="~21 hours"
+      tokens="210M"
+      messages="not disclosed"
+      cost="not disclosed"
+      human="Anthropic estimates weeks to months for an expert researcher by hand."
+    />
+  </section>
+
+  <section aria-labelledby="swarm-index">
+    <h2 class="ai-section-label" id="swarm-index">From this hub</h2>
+    <ol class="ai-lab-rows">
+      {pieces.map((piece) => (
+        <li>
+          <a href={piece.href}>
+            <span class="ai-lab-row-title">{piece.title}</span>
+            <span class="ai-lab-row-dek">{piece.dek}</span>
+            <span class="ai-lab-row-meta">{piece.meta}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Layout>

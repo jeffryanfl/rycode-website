@@ -1,0 +1,45 @@
+---
+/**
+ * The six-field row used for every swarm on this site.
+ * Unknown cells stay "not disclosed". Ranges stay ranges.
+ */
+interface Props {
+  name: string;
+  agents: string;
+  hours: string;
+  tokens: string;
+  messages: string;
+  cost: string;
+  human: string;
+}
+
+const { name, agents, hours, tokens, messages, cost, human } = Astro.props;
+---
+
+<figure class="swarm-stat">
+  <figcaption class="swarm-stat-name">{name}</figcaption>
+  <div class="swarm-stat-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Agents</th>
+          <th scope="col">Wall-clock hours</th>
+          <th scope="col">Tokens</th>
+          <th scope="col">Messages between agents</th>
+          <th scope="col">Est. compute cost</th>
+          <th scope="col">Human-equivalent hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{agents}</td>
+          <td>{hours}</td>
+          <td>{tokens}</td>
+          <td>{messages}</td>
+          <td>{cost}</td>
+          <td>{human}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</figure>

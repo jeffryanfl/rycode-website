@@ -96,6 +96,22 @@
     "slug": "economics-saas-barbell-2026"
   },
   {
+    "href": "/risk/when-force-majeure-hits-the-ai-build-out/",
+    "title": "Committed AI capacity can exit through contract outs and energy gates",
+    "description": "When force majeure hits the AI build-out",
+    "date": "2026-09-26",
+    "section": "risk",
+    "series": "risk",
+    "crumbs": [
+      {
+        "href": "/risk/",
+        "label": "Risk"
+      }
+    ],
+    "file": "src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro",
+    "slug": "risk-when-force-majeure-hits-the-ai-build-out"
+  },
+  {
     "href": "/risk/when-the-spender-runs-the-printer/",
     "title": "Debt held by the public, the CBO path, and inflation if rates stay low",
     "description": "On September 17, 2026 debt held by the public was about $32.39 trillion and total public debt outstanding was about $40.09 trillion. CBO’s current-law path goes from about 101% of GDP in 2026 to about 120% in 2036.",
@@ -142,6 +158,26 @@
     ],
     "file": "src/pages/risk/six-percent-that-stays.astro",
     "slug": "risk-six-percent-that-stays"
+  },
+  {
+    "href": "/ai/swarms/what-an-agent-swarm-is/",
+    "title": "What an agent swarm is, and what 10,000 of them can do",
+    "description": "Two swarms, two breakthroughs, every metric on the table.",
+    "date": "2026-09-27",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/swarms/",
+        "label": "Agent swarms"
+      }
+    ],
+    "file": "src/pages/ai/swarms/what-an-agent-swarm-is.astro",
+    "slug": "ai-swarms-what-an-agent-swarm-is"
   },
   {
     "href": "/ai/grok-bot-set-a-new-bar/",
