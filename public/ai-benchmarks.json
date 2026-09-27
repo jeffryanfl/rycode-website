@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-09-23",
-  "updated": "2026-09-23T05:15:00-04:00",
-  "note": "One highest-reasoning / flagship learning-hub model per lab for /ai landing comparison. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only (Architect lock 22 Sep). 23 Sep patch: Anthropic living row swaps Fable 5.1 \u2192 Opus 5.5 (AA Index 58 lead; keep denser five-row / one-per-lab). Fable stays on Anthropic door cards. GPT-6 Sol (AA 48) does NOT displace Astra (53); Sol waits on Sol card. Do not expand to six rows for Sol.",
+  "asOf": "2026-09-27",
+  "updated": "2026-09-27T17:34:00-04:00",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Five rows (Jeffrey lock 27 Sep): Claude Opus 5.5 + Claude Fable 5.1 (two Anthropic) · GPT-6 Astra · GPT-6 Sol · Grok 4.7. Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
   "columns": [
     {
       "id": "cursorBench",
@@ -42,7 +42,7 @@
     {
       "id": "aaIndex",
       "label": "AA Intelligence Index",
-      "notes": "Artificial Analysis composite (Index v4.3.2 eval set on AA site). Independent of lab announces. Always store effort label (max/xhigh/high/\u2026). Do not mix with CursorBench, OSWorld, or ARC-AGI cells. sourceKind must be aa.",
+      "notes": "Artificial Analysis composite (Index v4.3.2 eval set on AA site). Independent of lab announces. Always store effort label (max/xhigh/high/…). Do not mix with CursorBench, OSWorld, or ARC-AGI cells. sourceKind must be aa.",
       "sourceKind": "aa",
       "primaryUrl": "https://artificialanalysis.ai/leaderboards/models"
     }
@@ -104,6 +104,58 @@
       ]
     },
     {
+      "lab": "Anthropic",
+      "model": "Claude Fable 5.1",
+      "apiId": "claude-fable-5-1",
+      "doorHref": "/ai/models/anthropic/claude-fable-5-1/",
+      "role": "highest-reasoning widely released Claude sibling; restored to living table 27 Sep",
+      "benches": {
+        "cursorBench": {
+          "value": "73.4%",
+          "version": "3.2.0",
+          "notes": "CursorBench 3.2.0 on Fable announce — not comparable to Opus 5.5 / Grok CursorBench 4.0 without naming versions.",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+        },
+        "deepSwe": null,
+        "terminalBench": {
+          "value": "55.8%",
+          "version": "4.0",
+          "notes": "Mythos 5.1 60.9% on same announce table",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+        },
+        "osworld": {
+          "value": "77.9% partial / 41.7% strict",
+          "version": "2.0 Aug 2026 task release",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+        },
+        "automationBench": {
+          "value": "31.4%",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+        },
+        "hle": {
+          "value": "65.0%",
+          "notes": "with tools; 60.9% no tools",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+        },
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 53,
+          "effort": "max",
+          "aaModelLabel": "Claude Fable 5.1 (max with fallback)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "sourceKind": "aa",
+          "fetched": "2026-09-22",
+          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh with fallback also 53 on same fetch."
+        }
+      },
+      "sources": [
+        "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://artificialanalysis.ai/leaderboards/models",
+        "https://artificialanalysis.ai/"
+      ]
+    },
+    {
       "lab": "OpenAI",
       "model": "GPT-6 Astra",
       "apiId": "gpt-6-astra",
@@ -158,6 +210,56 @@
       ]
     },
     {
+      "lab": "OpenAI",
+      "model": "GPT-6 Sol",
+      "apiId": "gpt-6-sol",
+      "doorHref": "/ai/models/openai/gpt-6-sol/",
+      "role": "GPT-6 mid-tier coding / agentic; cost-efficiency sibling to Astra",
+      "benches": {
+        "cursorBench": null,
+        "deepSwe": {
+          "value": "68.8%",
+          "version": "v1.1",
+          "notes": "max effort on Sol announce",
+          "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        "terminalBench": null,
+        "osworld": {
+          "value": "60.5%",
+          "version": "2.0 offline partial reward",
+          "notes": "xhigh effort; partial reward on offline set from v2026.08.08 release per Sol announce.",
+          "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        "automationBench": {
+          "value": "33.2%",
+          "version": "1.0.6",
+          "notes": "xhigh effort on Sol announce table",
+          "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        "hle": null,
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 48,
+          "effort": "max",
+          "aaModelLabel": "GPT-6 Sol (max)",
+          "source": "https://artificialanalysis.ai/models/gpt-6-sol",
+          "sourceKind": "aa",
+          "fetched": "2026-09-27",
+          "notes": "AA Intelligence Index from AA Sol model page / Sol-Luna cost article; not a lab announce score."
+        }
+      },
+      "benchesNote": "Shared lab columns filled only where OpenAI Sol announce prints that eval. CursorBench / Terminal-Bench / HLE / ARC-AGI blank — not on Sol primary table. Do not paste AA Terminal-Bench or Coding Agent Index into lab columns.",
+      "sources": [
+        "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+        "https://developers.openai.com/api/docs/models/gpt-6-sol",
+        "https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925",
+        "https://deploymentsafety.openai.com/gpt-6-astra/sec:appendix-sol-luna",
+        "https://artificialanalysis.ai/models/gpt-6-sol",
+        "https://artificialanalysis.ai/articles/gpt-6-sol-and-luna-push-the-cost-efficiency-frontier",
+        "https://artificialanalysis.ai/leaderboards/models"
+      ]
+    },
+    {
       "lab": "xAI",
       "model": "Grok 4.7",
       "apiId": "grok-4.7",
@@ -199,71 +301,6 @@
         "https://x.ai/news/grok-4-7",
         "https://docs.x.ai/developers/models/grok-4.7",
         "https://media.x.ai/v1/website/4p7card-5eccc980.pdf",
-        "https://artificialanalysis.ai/leaderboards/models",
-        "https://artificialanalysis.ai/"
-      ]
-    },
-    {
-      "lab": "Meta",
-      "model": "Muse Spark 1.3",
-      "apiId": "muse-spark-1.3",
-      "doorHref": "/ai/models/meta/muse/spark/",
-      "role": "Muse / Meta AI / API flagship (not Llama 4 open-weight lead)",
-      "benches": {
-        "cursorBench": null,
-        "deepSwe": null,
-        "terminalBench": null,
-        "osworld": null,
-        "automationBench": null,
-        "hle": null,
-        "arcAgi": null,
-        "aaIndex": {
-          "value": 48,
-          "effort": "max",
-          "aaModelLabel": "Muse Spark 1.3 (max)",
-          "source": "https://artificialanalysis.ai/leaderboards/models",
-          "sourceKind": "aa",
-          "fetched": "2026-09-22",
-          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh is 45 on same fetch."
-        }
-      },
-      "benchesNote": "Meta publishes AutomationBench and other scores on the Muse Spark developer page; re-fetch live table into cells at ship. Llama 4 Scout/Maverick stay on the Llama door.",
-      "sources": [
-        "https://developer.meta.com/ai/models/muse-spark/",
-        "https://ai.meta.com/blog/introducing-muse-spark-msl/",
-        "https://artificialanalysis.ai/leaderboards/models",
-        "https://artificialanalysis.ai/"
-      ]
-    },
-    {
-      "lab": "DeepSeek",
-      "model": "DeepSeek-V4.1-Flash",
-      "apiId": "deepseek-flash",
-      "doorHref": "/ai/models/deepseek/flash/",
-      "role": "current API flagship; thinking mode default",
-      "benches": {
-        "cursorBench": null,
-        "deepSwe": null,
-        "terminalBench": null,
-        "osworld": null,
-        "automationBench": null,
-        "hle": null,
-        "arcAgi": null,
-        "aaIndex": {
-          "value": 39,
-          "effort": "max",
-          "aaModelLabel": "DeepSeek V4.1 Flash (max)",
-          "source": "https://artificialanalysis.ai/leaderboards/models",
-          "sourceKind": "aa",
-          "fetched": "2026-09-22",
-          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score."
-        }
-      },
-      "benchesNote": "Lab publishes architecture and API facts; shared column scores not copied here without a matching primary table on api-docs.",
-      "sources": [
-        "https://api-docs.deepseek.com/news/news260910",
-        "https://api-docs.deepseek.com/quick_start/pricing",
-        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
         "https://artificialanalysis.ai/leaderboards/models",
         "https://artificialanalysis.ai/"
       ]
