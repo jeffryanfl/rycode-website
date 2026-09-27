@@ -1,7 +1,40 @@
 // @ts-check
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
+import {
+  articleRoutesFromPages,
+  conceptDrift,
+  driftWarning,
+  pathsFromSitemapXml,
+} from './src/lib/concept-drift.mjs';
+
+function conceptMapDrift() {
+  return {
+    name: 'concept-map-drift',
+    hooks: {
+      'astro:build:done': ({ dir }) => {
+        const outDir = typeof dir === 'string' ? dir : fileURLToPath(dir);
+        const sitemapPath = path.join(outDir, 'sitemap.xml');
+        if (!fs.existsSync(sitemapPath)) {
+          console.warn(
+            'CONCEPT MAP DRIFT: build finished without dist/sitemap.xml, so the map was not checked.',
+          );
+          return;
+        }
+        const sitemapPaths = pathsFromSitemapXml(fs.readFileSync(sitemapPath, 'utf8'));
+        const articleRoutes = articleRoutesFromPages(path.join(process.cwd(), 'src', 'pages'));
+        const data = JSON.parse(
+          fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'concepts.json'), 'utf8'),
+        );
+        const { uncovered, missing } = conceptDrift(articleRoutes, sitemapPaths, data.concepts);
+        const warning = driftWarning(uncovered, missing);
+        if (warning) console.warn(`\n${warning}\n`);
+      },
+    },
+  };
+}
 /** Vite serves public/foo/index.html at /foo/index.html, not /foo/. Rewrite so hub cards can use pretty paths in `npm run dev`. */
 function servePublicIndex() {
   return {
@@ -27,6 +60,7 @@ function servePublicIndex() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rycode.dev',
+  integrations: [conceptMapDrift()],
   redirects: {
     '/research': '/economics/',
     '/research/ten-trillion-to-roll': '/economics/ten-trillion-to-roll/',

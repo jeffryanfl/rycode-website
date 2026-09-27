@@ -1,0 +1,364 @@
+{
+  "concepts": [
+    {
+      "id": "open-weights",
+      "label": "Open weights",
+      "blurb": "Published model weights you can download and run yourself, versus renting a frontier API.",
+      "articles": [
+        "/ai/frontier-price-meets-open-weight-ipo/",
+        "/ai/models/open-weight/glm-5-3/",
+        "/ai/models/google/gemma/",
+        "/ai/models/open-weight/kimi-k3/",
+        "/ai/models/open-weight/mimo/",
+        "/ai/models/open-weight/qwen/",
+        "/ai/models/deepseek/flash/",
+        "/ai/models/meta/llama/llama-4/",
+        "/ai/models/meta/muse/glimmer/",
+        "/ai/models/deepseek/r1/",
+        "/risk/the-ban-lands-on-open-source/"
+      ],
+      "links": [
+        "frontier-pricing",
+        "agent-swarms",
+        "ipo-liquidity",
+        "model-releases",
+        "regulatory-capture"
+      ]
+    },
+    {
+      "id": "frontier-pricing",
+      "label": "Frontier pricing",
+      "blurb": "What a closed lab charges for tokens, and how an open-weight price pulls that number down.",
+      "articles": [
+        "/ai/frontier-price-meets-open-weight-ipo/"
+      ],
+      "links": [
+        "open-weights",
+        "ipo-liquidity",
+        "equity-prices"
+      ]
+    },
+    {
+      "id": "ipo-liquidity",
+      "label": "IPO liquidity",
+      "blurb": "When a frontier lab lists shares, and what moves the date or the voting control.",
+      "articles": [
+        "/ai/frontier-price-meets-open-weight-ipo/"
+      ],
+      "links": [
+        "open-weights",
+        "frontier-pricing",
+        "equity-prices"
+      ]
+    },
+    {
+      "id": "agent-swarms",
+      "label": "Agent swarms",
+      "blurb": "Many agents on one job, spending tokens and messages to reach a result one model does not.",
+      "articles": [
+        "/ai/frontier-price-meets-open-weight-ipo/",
+        "/ai/swarms/what-an-agent-swarm-is/",
+        "/ai/grok-bot-set-a-new-bar/",
+        "/ai/models/meta/muse/code/",
+        "/ai/models/xai/grok-bot/",
+        "/ai/ten-thousand-agents-is-not-a-genius/"
+      ],
+      "links": [
+        "open-weights",
+        "model-releases",
+        "evals-safety"
+      ]
+    },
+    {
+      "id": "evals-safety",
+      "label": "Evals and safety",
+      "blurb": "Tests that measure raw capability, and what happens when those tests leave the lab.",
+      "articles": [
+        "/risk/the-ban-lands-on-open-source/"
+      ],
+      "links": [
+        "agent-swarms",
+        "regulatory-capture",
+        "assurance-fog"
+      ]
+    },
+    {
+      "id": "regulatory-capture",
+      "label": "Regulatory capture",
+      "blurb": "A review desk that closed vendors can staff and open-weight projects often cannot.",
+      "articles": [
+        "/risk/the-ban-lands-on-open-source/"
+      ],
+      "links": [
+        "open-weights",
+        "evals-safety",
+        "assurance-fog"
+      ]
+    },
+    {
+      "id": "assurance-fog",
+      "label": "Assurance fog",
+      "blurb": "After a scare, closed APIs can block the forensic read that open weights on your own machines can finish.",
+      "articles": [
+        "/risk/the-ban-lands-on-open-source/"
+      ],
+      "links": [
+        "evals-safety",
+        "regulatory-capture"
+      ]
+    },
+    {
+      "id": "force-majeure",
+      "label": "Force majeure",
+      "blurb": "Contract outs that let a committed AI campus slip when power, permits, or fuel fail.",
+      "articles": [
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
+      ],
+      "links": [
+        "power-energy",
+        "data-center-financing",
+        "private-credit",
+        "ai-capex"
+      ]
+    },
+    {
+      "id": "power-energy",
+      "label": "Power and energy",
+      "blurb": "The electricity, gas, and permits a training campus has to hold before the models run.",
+      "articles": [
+        "/risk/when-force-majeure-hits-the-ai-build-out/",
+        "/ai/hardware/memphis-colossus/"
+      ],
+      "links": [
+        "force-majeure",
+        "hardware-compute",
+        "data-center-financing",
+        "ai-capex"
+      ]
+    },
+    {
+      "id": "data-center-financing",
+      "label": "Data-center financing",
+      "blurb": "How AI campuses raise money through leases and private placements before the revenue arrives.",
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/",
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
+      ],
+      "links": [
+        "force-majeure",
+        "private-credit",
+        "ai-capex",
+        "power-energy",
+        "treasury-yields"
+      ]
+    },
+    {
+      "id": "private-credit",
+      "label": "Private credit",
+      "blurb": "Loans and private placements that fund data-center builds outside the public bond market.",
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/",
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
+      ],
+      "links": [
+        "force-majeure",
+        "data-center-financing",
+        "ai-capex"
+      ]
+    },
+    {
+      "id": "ai-capex",
+      "label": "AI capex",
+      "blurb": "Capital spending on AI campuses that has to be financed before the revenue shows up.",
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/",
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
+      ],
+      "links": [
+        "force-majeure",
+        "power-energy",
+        "data-center-financing",
+        "private-credit",
+        "jobs-labor"
+      ]
+    },
+    {
+      "id": "treasury-yields",
+      "label": "Treasury yields",
+      "blurb": "What the Treasury curve charges to borrow for 2, 10, and 30 years.",
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/",
+        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
+        "/economics/ten-trillion-to-roll/",
+        "/risk/six-percent-that-stays/"
+      ],
+      "links": [
+        "fed-policy",
+        "debt-stock",
+        "mortgages-housing",
+        "data-center-financing",
+        "oil-prices"
+      ]
+    },
+    {
+      "id": "fed-policy",
+      "label": "Fed policy",
+      "blurb": "The short-term rate the Fed sets, and the inflation and geopolitics it names when it moves.",
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/",
+        "/risk/when-the-spender-runs-the-printer/",
+        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/"
+      ],
+      "links": [
+        "treasury-yields",
+        "debt-stock",
+        "oil-prices",
+        "mortgages-housing"
+      ]
+    },
+    {
+      "id": "debt-stock",
+      "label": "Debt stock",
+      "blurb": "The stock of federal debt, the pile that comes due, and what inflation does to old fixed claims.",
+      "articles": [
+        "/risk/when-the-spender-runs-the-printer/",
+        "/economics/post-inflation-dollars-pay-pre-inflation-debts/",
+        "/economics/ten-trillion-to-roll/"
+      ],
+      "links": [
+        "treasury-yields",
+        "fed-policy"
+      ]
+    },
+    {
+      "id": "mortgages-housing",
+      "label": "Mortgages",
+      "blurb": "The 30-year mortgage rate buyers face when the long Treasury yield is high.",
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/"
+      ],
+      "links": [
+        "treasury-yields",
+        "fed-policy"
+      ]
+    },
+    {
+      "id": "oil-prices",
+      "label": "Oil prices",
+      "blurb": "Where crude sits when the Fed moves, because that price is already in the room.",
+      "articles": [
+        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/"
+      ],
+      "links": [
+        "fed-policy",
+        "treasury-yields"
+      ]
+    },
+    {
+      "id": "jobs-labor",
+      "label": "Jobs",
+      "blurb": "Who got hired, and whether the jobs are for doing the work with AI or only managing it.",
+      "articles": [
+        "/economics/jobs-print-was-strong-mix-is-the-story/"
+      ],
+      "links": [
+        "ai-capex",
+        "model-releases"
+      ]
+    },
+    {
+      "id": "equity-prices",
+      "label": "Equity prices",
+      "blurb": "What investors will pay for a dollar of revenue, and whether this boom already has earnings.",
+      "articles": [
+        "/economics/still-1998-not-1999/",
+        "/economics/saas-barbell-2026/"
+      ],
+      "links": [
+        "frontier-pricing",
+        "ipo-liquidity"
+      ]
+    },
+    {
+      "id": "model-releases",
+      "label": "Model releases",
+      "blurb": "The models and product surfaces the labs have shipped, and what each one is for.",
+      "articles": [
+        "/ai/models/anthropic/claude-opus-5-5/",
+        "/ai/models/openai/gpt-6-luna/",
+        "/ai/models/openai/gpt-6-sol/",
+        "/ai/models/open-weight/glm-5-3/",
+        "/ai/models/google/gemini-pro/",
+        "/ai/models/google/gemini-flash-lite/",
+        "/ai/models/google/gemini-flash/",
+        "/ai/models/google/gemma/",
+        "/ai/models/open-weight/kimi-k3/",
+        "/ai/models/open-weight/mimo/",
+        "/ai/models/open-weight/qwen/",
+        "/ai/models/open-weight/step-5/",
+        "/ai/models/deepseek/api/",
+        "/ai/models/deepseek/flash/",
+        "/ai/models/xai/grok-4-7/",
+        "/ai/models/meta/llama/llama-4/",
+        "/ai/models/meta/muse/code/",
+        "/ai/models/meta/muse/glimmer/",
+        "/ai/models/meta/muse/image/",
+        "/ai/models/meta/muse/spark/",
+        "/ai/models/meta/muse/video/",
+        "/ai/models/deepseek/r1/",
+        "/ai/models/deepseek/thinking/",
+        "/ai/models/deepseek/v3/",
+        "/ai/models/deepseek/v4-pro/",
+        "/ai/chat-models-write-strings-system-one-returns-decisions/",
+        "/ai/models/typesafe/jev/",
+        "/ai/models/xai/models/grok-4-20/",
+        "/ai/models/xai/models/grok-4-3/",
+        "/ai/models/xai/models/grok-4-5/",
+        "/ai/models/xai/models/grok-4-6/",
+        "/ai/models/xai/grok-bot/",
+        "/ai/models/xai/grok-build/",
+        "/ai/models/xai/imagine/",
+        "/ai/models/xai/voice/",
+        "/ai/models/xai/models/grok-build-0-1/",
+        "/ai/models/anthropic/claude-fable-5-1/",
+        "/ai/models/anthropic/claude-haiku-4-5/",
+        "/ai/models/anthropic/claude-opus-5/",
+        "/ai/models/anthropic/claude-sonnet-5/",
+        "/ai/models/openai/gpt-6-astra/"
+      ],
+      "links": [
+        "open-weights",
+        "agent-swarms",
+        "hardware-compute",
+        "jobs-labor",
+        "training-loop"
+      ]
+    },
+    {
+      "id": "hardware-compute",
+      "label": "Hardware",
+      "blurb": "Where the chips are fabricated, and where the training campus consumes them.",
+      "articles": [
+        "/ai/hardware/memphis-colossus/",
+        "/ai/hardware/terafab/"
+      ],
+      "links": [
+        "model-releases",
+        "power-energy",
+        "training-loop"
+      ]
+    },
+    {
+      "id": "training-loop",
+      "label": "Training loop",
+      "blurb": "A language model as a next-token predictor, shaped by staged training and a tool loop.",
+      "articles": [
+        "/ai/next-token-engine/"
+      ],
+      "links": [
+        "model-releases",
+        "hardware-compute"
+      ]
+    }
+  ]
+}

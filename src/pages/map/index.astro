@@ -1,0 +1,289 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import conceptsFile from '../../data/concepts.json';
+import thesesFile from '../../data/article-theses.json';
+import { articles, formatDate } from '../../lib/site';
+import '../../styles/concept-map.css';
+
+const title = 'Concept map — Rycode';
+const description = 'Concepts on this site, and the articles that carry each one.';
+
+const byHref = new Map(articles.map((article) => [article.href, article]));
+const theses = thesesFile as Record<string, string>;
+
+const clusters = {
+  macro: {
+    id: 'macro',
+    label: 'Macro & rates',
+    ids: ['oil-prices', 'fed-policy', 'mortgages-housing', 'treasury-yields', 'jobs-labor', 'debt-stock', 'equity-prices', 'ipo-liquidity'],
+  },
+  build: {
+    id: 'build',
+    label: 'Build-out & energy',
+    ids: ['ai-capex', 'data-center-financing', 'private-credit', 'force-majeure', 'power-energy'],
+  },
+  models: {
+    id: 'models',
+    label: 'Models & safety',
+    ids: ['model-releases', 'open-weights', 'frontier-pricing', 'agent-swarms', 'evals-safety', 'regulatory-capture', 'assurance-fog', 'training-loop', 'hardware-compute'],
+  },
+} as const;
+
+const clusterOf = new Map<string, { id: string; label: string }>();
+for (const cluster of Object.values(clusters)) {
+  for (const id of cluster.ids) clusterOf.set(id, { id: cluster.id, label: cluster.label });
+}
+
+/** Same top and bottom for every column, so a short column does not leave an empty quadrant. */
+function spreadY(count: number) {
+  const top = 58;
+  const bottom = 620;
+  if (count <= 1) return [Math.round((top + bottom) / 2)];
+  return Array.from({ length: count }, (_, index) =>
+    Math.round(top + (index * (bottom - top)) / (count - 1)),
+  );
+}
+
+const columns = [
+  ['oil-prices', 'mortgages-housing', 'jobs-labor', 'equity-prices'],
+  ['fed-policy', 'treasury-yields', 'debt-stock', 'ipo-liquidity'],
+  clusters.build.ids,
+  ['evals-safety', 'regulatory-capture', 'assurance-fog', 'training-loop', 'hardware-compute'],
+  ['model-releases', 'open-weights', 'frontier-pricing', 'agent-swarms'],
+];
+const columnX = [120, 340, 570, 810, 1040];
+
+const position = new Map<string, { x: number; y: number }>();
+columns.forEach((column, columnIndex) => {
+  const ys = spreadY(column.length);
+  column.forEach((id, row) => position.set(id, { x: columnX[columnIndex], y: ys[row] }));
+});
+
+type ConceptIn = (typeof conceptsFile.concepts)[number];
+
+function radius(count: number) {
+  return Math.round(13 + Math.min(18, Math.sqrt(count) * 2.8));
+}
+
+const concepts = conceptsFile.concepts.map((concept: ConceptIn) => {
+  const at = position.get(concept.id);
+  const cluster = clusterOf.get(concept.id);
+  if (!at || !cluster) throw new Error(`Concept map is missing a place or cluster for ${concept.id}`);
+  const detailed = concept.articles.flatMap((slug) => {
+    const article = byHref.get(slug);
+    if (!article) return [];
+    const thesis = theses[slug];
+    if (!thesis) throw new Error(`Concept map is missing a thesis for ${slug}`);
+    return [{
+      href: slug,
+      title: article.title,
+      thesis,
+      date: article.date,
+      dateLabel: formatDate(article.date),
+    }];
+  });
+  return {
+    ...concept,
+    x: at.x,
+    y: at.y,
+    r: radius(concept.articles.length),
+    cluster: cluster.id,
+    clusterLabel: cluster.label,
+    articles: detailed,
+  };
+});
+
+const byId = new Map(concepts.map((concept) => [concept.id, concept]));
+
+const conceptsWithBridge = concepts.map((concept) => {
+  const seen = new Set<string>([concept.cluster]);
+  for (const dest of concept.links) {
+    const other = byId.get(dest);
+    if (other) seen.add(other.cluster);
+  }
+  return { ...concept, bridge: seen.size >= 2 };
+});
+
+function edgePath(fromId: string, toId: string) {
+  const a = byId.get(fromId);
+  const b = byId.get(toId);
+  if (!a || !b) return { d: '', length: 0 };
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len;
+  const uy = dy / len;
+  const bend = 18;
+  const mx = (a.x + b.x) / 2 - uy * bend;
+  const my = (a.y + b.y) / 2 + ux * bend;
+  const x1 = a.x + ux * a.r;
+  const y1 = a.y + uy * a.r;
+  const x2 = b.x - ux * b.r;
+  const y2 = b.y - uy * b.r;
+  return {
+    d: `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`,
+    length: len,
+  };
+}
+
+const seenEdges = new Set<string>();
+const edges = conceptsWithBridge.flatMap((concept) =>
+  concept.links.flatMap((dest) => {
+    const key = [concept.id, dest].sort().join('|');
+    if (seenEdges.has(key) || !byId.has(dest)) return [];
+    seenEdges.add(key);
+    const drawn = edgePath(concept.id, dest);
+    return [{ key, from: concept.id, to: dest, d: drawn.d, long: drawn.length > 460 }];
+  }),
+);
+
+let minX = Infinity;
+let minY = Infinity;
+let maxX = -Infinity;
+let maxY = -Infinity;
+for (const concept of conceptsWithBridge) {
+  const labelHalf = (concept.label.length * 6.4) / 2;
+  minX = Math.min(minX, concept.x - Math.max(concept.r, labelHalf));
+  maxX = Math.max(maxX, concept.x + Math.max(concept.r, labelHalf));
+  minY = Math.min(minY, concept.y - concept.r - 8);
+  maxY = Math.max(maxY, concept.y + concept.r + 22);
+}
+const pad = 28;
+const viewX = Math.floor(minX - pad);
+const viewY = Math.floor(minY - pad);
+const viewWidth = Math.ceil(maxX - minX + pad * 2);
+const viewHeight = Math.ceil(maxY - minY + pad * 2);
+
+const clientData = conceptsWithBridge.map((concept) => ({
+  id: concept.id,
+  label: concept.label,
+  blurb: concept.blurb,
+  cluster: concept.cluster,
+  clusterLabel: concept.clusterLabel,
+  bridge: concept.bridge,
+  articles: concept.articles,
+  links: concept.links.map((id) => ({ id, label: byId.get(id)?.label ?? id })),
+}));
+
+const legend = [
+  { id: 'macro', label: clusters.macro.label },
+  { id: 'build', label: clusters.build.label },
+  { id: 'models', label: clusters.models.label },
+];
+---
+
+<Layout title={title} description={description}>
+  <article class="concept-map" id="concept-map">
+    <h1>Concept map</h1>
+    <p class="concept-map-intro">{description}</p>
+    <ul class="concept-map-legend">
+      {legend.map((item) => (
+        <li>
+          <span class:list={['concept-swatch', `cluster-${item.id}`]} aria-hidden="true"></span>
+          {item.label}
+        </li>
+      ))}
+      <li>
+        <span class="concept-swatch concept-swatch-bridge" aria-hidden="true"></span>
+        Ring: links reach more than one cluster
+      </li>
+    </ul>
+
+    <div class="concept-map-stage">
+      <div class="concept-map-canvas">
+        <div class="concept-map-bar">
+          <div class="concept-map-search">
+            <label class="visually-hidden" for="concept-search">Find a concept or article</label>
+            <input
+              id="concept-search"
+              type="search"
+              placeholder="Find a concept or article"
+              autocomplete="off"
+              role="combobox"
+              aria-expanded="false"
+              aria-controls="concept-search-list"
+              aria-autocomplete="list"
+            />
+            <ul id="concept-search-list" class="concept-search-list" role="listbox" hidden></ul>
+          </div>
+          <div class="concept-map-tools">
+            <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+            <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+            <button type="button" data-zoom="reset">Reset</button>
+          </div>
+        </div>
+        <svg
+          id="concept-map-svg"
+          class="concept-map-svg"
+          viewBox={`${viewX} ${viewY} ${viewWidth} ${viewHeight}`}
+          role="group"
+          aria-label="Concept map"
+        >
+          {edges.map((edge) => (
+            <path
+              class:list={['concept-edge', { 'is-long': edge.long }]}
+              data-from={edge.from}
+              data-to={edge.to}
+              d={edge.d}
+            />
+          ))}
+          {conceptsWithBridge.map((concept) => (
+            <g
+              class:list={[
+                'concept-node',
+                `cluster-${concept.cluster}`,
+                { 'is-bridge': concept.bridge },
+              ]}
+              data-concept={concept.id}
+              role="button"
+              tabindex="0"
+              aria-label={`${concept.label}, ${concept.articles.length} articles`}
+            >
+              {concept.bridge && (
+                <circle class="concept-bridge-ring" cx={concept.x} cy={concept.y} r={concept.r + 6} />
+              )}
+              <circle class="concept-disc" cx={concept.x} cy={concept.y} r={concept.r} />
+              <text class="concept-count" x={concept.x} y={concept.y}>{concept.articles.length}</text>
+              <text class="concept-label" x={concept.x} y={concept.y + concept.r + 16}>{concept.label}</text>
+            </g>
+          ))}
+        </svg>
+      </div>
+
+      <aside class="concept-panel" aria-live="polite">
+        <p id="concept-panel-empty" class="concept-panel-empty">Select a concept.</p>
+        <div id="concept-panel-body" hidden>
+          <p id="concept-panel-kicker" class="concept-panel-kicker"></p>
+          <h2 id="concept-panel-title"></h2>
+          <p id="concept-panel-blurb" class="concept-panel-blurb"></p>
+          <h3>Articles</h3>
+          <ul id="concept-panel-articles"></ul>
+          <h3>Linked concepts</h3>
+          <ul id="concept-panel-links"></ul>
+        </div>
+      </aside>
+    </div>
+
+    <section class="concept-map-fallback">
+      <h2>All concepts</h2>
+      {conceptsWithBridge.map((concept) => (
+        <article>
+          <h3>{concept.label}</h3>
+          <p>{concept.blurb}</p>
+          <ul>
+            {concept.articles.map((article) => (
+              <li>
+                <a href={article.href}>{article.title}</a>
+                <span>{article.thesis}</span>
+                <time datetime={article.date}>{article.dateLabel}</time>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <script id="concept-map-data" type="application/json" set:html={JSON.stringify(clientData)} />
+    <script is:inline src="/concept-map.js"></script>
+  </article>
+</Layout>
