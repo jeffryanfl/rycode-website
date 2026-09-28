@@ -49,6 +49,95 @@
   text-decoration-color: rgba(248, 250, 252, 0.5);
 }
 
+/* Thin charcoal ticker. Motion matches the HOME tape. No hub.css, no cyan. */
+.living-strip--ticker {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: none;
+  margin: 0.85rem 0 0;
+  padding: 0.4rem 0;
+  border-top: 1px solid rgba(139, 145, 154, 0.45);
+  background: #080a10;
+  color: #8b919a;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.living-strip--ticker .living-strip-asof {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #8b919a;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.living-strip-viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 0.7rem, #000 calc(100% - 0.7rem), transparent);
+}
+
+.living-strip-track {
+  display: flex;
+  align-items: center;
+  gap: 2.35rem;
+  width: max-content;
+  white-space: nowrap;
+  animation: living-strip-scroll 48s linear infinite;
+}
+
+.living-strip-item {
+  color: #8b919a;
+}
+
+.living-strip-tag {
+  color: #f8fafc;
+}
+
+.living-strip--ticker a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.living-strip--ticker a:hover,
+.living-strip--ticker a:focus-visible {
+  color: #f8fafc;
+}
+
+.living-strip--ticker:hover .living-strip-track,
+.living-strip--ticker:focus-within .living-strip-track {
+  animation-play-state: paused;
+}
+
+@keyframes living-strip-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .living-strip-track {
+    animation: none;
+  }
+
+  .living-strip-viewport {
+    mask-image: none;
+  }
+
+  .living-strip-track [aria-hidden='true'] {
+    display: none;
+  }
+}
+
 .living-log {
   grid-column: 1;
   max-width: 40rem;

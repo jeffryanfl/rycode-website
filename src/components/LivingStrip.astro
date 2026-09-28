@@ -20,13 +20,20 @@ interface LivingFacts {
 
 interface Props {
   facts: LivingFacts;
-  part: 'strip' | 'log';
+  part: 'strip' | 'ticker' | 'log';
 }
 
 const { facts, part } = Astro.props;
 const bullets = Array.isArray(facts.bullets) ? facts.bullets : [];
 const revisions = Array.isArray(facts.revisions) ? facts.revisions : [];
 const asOfLabel = typeof facts.asOfLabel === 'string' ? facts.asOfLabel.trim() : '';
+
+/** Short label from the bullet id. "debt_stock" becomes "debt". Empty id means no tag. */
+function tapeTag(id: string): string {
+  const raw = typeof id === 'string' ? id.trim() : '';
+  if (!raw) return '';
+  return raw.split('_')[0] || raw;
+}
 ---
 
 {part === 'strip' && bullets.length > 0 && (
@@ -43,6 +50,36 @@ const asOfLabel = typeof facts.asOfLabel === 'string' ? facts.asOfLabel.trim() :
         </li>
       ))}
     </ul>
+  </aside>
+)}
+
+{part === 'ticker' && bullets.length > 0 && (
+  <aside class="living-strip living-strip--ticker" aria-label={asOfLabel ? `Living facts, ${asOfLabel}` : 'Living facts'}>
+    {asOfLabel && <p class="living-strip-asof">{asOfLabel}</p>}
+    <div class="living-strip-viewport">
+      <div class="living-strip-track">
+        {bullets.map((bullet) => {
+          const tag = tapeTag(bullet.id);
+          return (
+            <span class="living-strip-item">
+              {tag && <span class="living-strip-tag">{tag}</span>}
+              {tag ? ' · ' : ''}
+              {bullet.source ? <a href={bullet.source}>{bullet.text}</a> : bullet.text}
+            </span>
+          );
+        })}
+        {bullets.map((bullet) => {
+          const tag = tapeTag(bullet.id);
+          return (
+            <span class="living-strip-item" aria-hidden="true">
+              {tag && <span class="living-strip-tag">{tag}</span>}
+              {tag ? ' · ' : ''}
+              {bullet.text}
+            </span>
+          );
+        })}
+      </div>
+    </div>
   </aside>
 )}
 

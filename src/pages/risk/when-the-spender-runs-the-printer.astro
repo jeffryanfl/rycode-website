@@ -2,15 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import LivingStrip from '../../components/LivingStrip.astro';
 import RiskDecoder from '../../components/RiskDecoder.astro';
-import RiskPath from '../../components/RiskPath.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/when-the-spender-runs-the-printer.facts.json';
 import '../../styles/risk.css';
 
 const title = 'Debt held by the public, the CBO path, and inflation if rates stay low';
 const subhead = 'On September 17, 2026 debt held by the public was about $32.39 trillion and total public debt outstanding was about $40.09 trillion. CBO’s current-law path goes from about 101% of GDP in 2026 to about 120% in 2036.';
-
-const howToRead = 'Stock is debt held by the public. Path is CBO’s current-law climb. Named tail is inflation and repression if cheap money is used as fiscal relief.';
 
 const cards = {
   stock: {
@@ -85,7 +82,7 @@ const sources = [
     <header class="risk-digest-head">
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
-      <LivingStrip facts={facts} part="strip" />
+      <LivingStrip facts={facts} part="ticker" />
     </header>
 
     <div class="risk-digest-preface">
@@ -104,21 +101,6 @@ const sources = [
 
     <div class="risk-digest-columns">
       <div class="risk-digest-main">
-        <figure class="risk-path-plate">
-          <p class="risk-path-kicker">How it works</p>
-          <p class="risk-path-title">Stock → CBO path → named tail</p>
-          <RiskPath
-            title="Stock, CBO path, and named tail"
-            desc={howToRead}
-            stages={[
-              { name: 'Stock', lines: ['debt held by the public'] },
-              { name: 'CBO path', lines: ['current-law climb'] },
-              { name: 'Named tail', lines: ['inflation and repression'] },
-            ]}
-          />
-          <figcaption>{howToRead}</figcaption>
-        </figure>
-
         <p class="risk-digest-lede">The Economics piece next door names a real mechanism. Fixed-coupon debt borrowed in pre-inflation dollars can be serviced with post-inflation dollars that buy less. That lightens the real burden of old claims. It is not a clean fiscal reset when markets reprice yields and debt held by the public still climbs as a share of GDP on the Congressional Budget Office path.</p>
         <p class="risk-digest-lede">This Risk page asks what happens if fiscal pressure pushes the other way on rates. If the need to fund large deficits and a large stock of debt bends policy toward cheap money, the slow bleed is inflation and financial repression (keeping real returns on safe savings low so the borrower gets cheaper real funding). Households lose purchasing power. That is the mirror of the fiscal win on fixed coupons. It is a transfer, not a disappearance. Trust, reserve holdings, and payment rails can shift later. That is the tail. It is not a prediction of an overnight crash.</p>
 
