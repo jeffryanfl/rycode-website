@@ -2,48 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import RiskDecoder from '../../components/RiskDecoder.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
+import facts from '../../../docs/risk/when-force-majeure-hits-the-ai-build-out.facts.json';
 import '../../styles/risk.css';
 
 const title = 'Committed AI capacity can exit through contract outs and energy gates';
 const subhead = 'When force majeure hits the AI build-out';
-
-const cards = [
-  {
-    id: 'local',
-    kicker: 'Local',
-    step: '1',
-    title: 'Committed campus',
-    figure: 'Megawatts leased and marketed as sold before the power is wired',
-  },
-  {
-    id: 'doorway',
-    kicker: 'Doorway',
-    step: '2',
-    title: 'Force-majeure outs',
-    figure: 'Buyers can defer rent if the online date slips',
-  },
-  {
-    id: 'gate',
-    kicker: 'Gate',
-    step: '3',
-    title: 'The power gate',
-    figure: 'Gas supply, air permits, and ~2.45 GW of fuel-cell generation (Bloom; Green Chile ~Feb 1 2027; air permit pending)',
-  },
-  {
-    id: 'rent',
-    kicker: 'Rent',
-    step: '4',
-    title: 'Deferred rent',
-    figure: 'The squeeze on equity returns and private-credit underwriting',
-  },
-  {
-    id: 'fog',
-    kicker: 'Fog',
-    step: '5',
-    title: 'Assurance fog',
-    figure: 'Outs stay event-driven while no one sees who holds the paper',
-  },
-];
 
 const watchItems = [
   'Force majeure or similar outs filed on AI campuses, especially notices framed as deferral of rent or payments rather than tenant exit.',
@@ -76,7 +39,7 @@ const sources = [
   description={subhead}
   variant="risk"
 >
-  <article class="risk-digest risk-digest--stack3">
+  <article class="risk-digest risk-digest--stack3 risk-digest--metrics">
     <header class="risk-digest-head">
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
@@ -239,15 +202,16 @@ const sources = [
         </section>
       </div>
 
-      <aside class="risk-digest-rail" data-digest-rail aria-label="Digest, risk read">
-        <p class="risk-digest-kicker">Digest · Risk read</p>
+      <aside class="risk-digest-rail" data-digest-rail aria-label="Campus metrics">
+        <p class="risk-digest-kicker">Digest · Metrics</p>
+        {facts.asOfLabel && <p class="risk-digest-asof">{facts.asOfLabel}</p>}
         <div class="risk-digest-viewport">
           <div class="risk-digest-stack">
-            {cards.map((card) => (
-              <article class="risk-card risk-card--path" id={`card-${card.id}`} data-card={card.id}>
-                <p class="risk-card-kicker">{card.kicker}<span>{card.step}</span></p>
-                <p class="risk-card-label">{card.title}</p>
-                <p class="risk-card-figure">{card.figure}</p>
+            {facts.metrics.map((m) => (
+              <article class="risk-card" id={`card-${m.id}`} data-card={m.id}>
+                <p class="risk-card-kicker">{m.label}</p>
+                <p class="risk-card-figure">{m.value}</p>
+                <p class="risk-card-note">{m.note}</p>
               </article>
             ))}
           </div>
@@ -258,3 +222,20 @@ const sources = [
 </Layout>
 
 <script is:inline src="/digest-rail.js" defer></script>
+
+<style>
+  /* Six metric cards. The shared stack window is three cards tall and looks for the old stage ids. */
+  .risk-digest--metrics .risk-digest-viewport {
+    height: auto;
+    overflow: visible !important;
+  }
+
+  .risk-digest--metrics .risk-digest-asof {
+    margin: -0.25rem 0 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    color: var(--digest-faint);
+  }
+</style>
