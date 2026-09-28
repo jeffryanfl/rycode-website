@@ -1,18 +1,18 @@
 {
-  "updated": "2026-09-28T08:30:00-04:00",
-  "asOfLabel": "Mon 28 Sep \u00b7 pre-open",
+  "updated": "2026-09-28T16:14:00-04:00",
+  "asOfLabel": "Mon 28 Sep \u00b7 after-close",
   "lines": [
     {
-      "tag": "Oil",
-      "text": "WTI near $95, up ~$3 from Fri after Hormuz/Iran headline risk premium."
-    },
-    {
       "tag": "Tape",
-      "text": "ES ~7779 (~25 pts soft vs Fri futures settle); NQ softer into the open."
+      "text": "Mon soft: SPX 7683.69 (\u22120.77%), Dow \u22120.67%, Nasdaq \u22120.92%."
     },
     {
       "tag": "Rates",
-      "text": "Fri CMT still in force: 2y 4.81% / 10y 5.17% / 30y 5.49% until cash reprints."
+      "text": "CMT 10y 5.24% (from Fri 5.17%); 2y 4.92%; 30y 5.56%."
+    },
+    {
+      "tag": "Oil",
+      "text": "WTI ~$93 after ~$95 Hormuz spike faded; Brent ~$98."
     }
   ],
   "doorHref": "/economics",
