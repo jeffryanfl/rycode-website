@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-25T16:15:00-04:00",
-  "asOfLabel": "Fri 25 Sep \u00b7 after-close",
+  "updated": "2026-09-28T08:30:00-04:00",
+  "asOfLabel": "Mon 28 Sep \u00b7 pre-open",
   "lines": [
     {
+      "tag": "Oil",
+      "text": "WTI near $95, up ~$3 from Fri after Hormuz/Iran headline risk premium."
+    },
+    {
       "tag": "Tape",
-      "text": "Fri bounce: SPX 7743 (+0.51%), Dow +0.93%, Nasdaq +0.48%."
+      "text": "ES ~7779 (~25 pts soft vs Fri futures settle); NQ softer into the open."
     },
     {
       "tag": "Rates",
-      "text": "CMT 10y 5.17% (still >5%); 2y 4.81%; 30y 5.49%."
-    },
-    {
-      "tag": "Oil",
-      "text": "WTI ~$92.3 (\u2212~3.7%); Michigan final 48.1; durables flat."
+      "text": "Fri CMT still in force: 2y 4.81% / 10y 5.17% / 30y 5.49% until cash reprints."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-09-25"
+  "date": "2026-09-28"
 }
