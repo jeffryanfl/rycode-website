@@ -62,7 +62,8 @@
         "/ai/models/meta/muse/code/",
         "/ai/models/xai/grok-bot/",
         "/ai/ten-thousand-agents-is-not-a-genius/",
-        "/ai/glossary/"
+        "/ai/glossary/",
+        "/ai/meta-named-an-enterprise-stack/"
       ],
       "links": [
         "open-weights",
@@ -347,7 +348,8 @@
       "blurb": "A language model as a next-token predictor, shaped by staged training and a tool loop.",
       "articles": [
         "/ai/next-token-engine/",
-        "/ai/glossary/"
+        "/ai/glossary/",
+        "/ai/meta-named-an-enterprise-stack/"
       ],
       "links": [
         "model-releases",

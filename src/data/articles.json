@@ -176,6 +176,22 @@
     "slug": "risk-six-percent-that-stays"
   },
   {
+    "href": "/ai/meta-named-an-enterprise-stack/",
+    "title": "Meta named an enterprise stack. It did not ship a new buyer.",
+    "description": "The company is trying to sell the consumer agent line as a second business.",
+    "date": "2026-09-28",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/meta-named-an-enterprise-stack.astro",
+    "slug": "ai-meta-named-an-enterprise-stack"
+  },
+  {
     "href": "/ai/glossary/",
     "title": "AI glossary",
     "description": "Twenty plain terms for models, serving, and agents on this site",
