@@ -36,24 +36,7 @@ function tapeTag(id: string): string {
 }
 ---
 
-{part === 'strip' && bullets.length > 0 && (
-  <aside class="living-strip" aria-label={asOfLabel ? `As of ${asOfLabel}` : 'Living facts'}>
-    {asOfLabel && <p class="living-strip-asof">As of {asOfLabel}</p>}
-    <ul class="living-strip-list">
-      {bullets.map((bullet) => (
-        <li>
-          {bullet.source ? (
-            <a href={bullet.source}>{bullet.text}</a>
-          ) : (
-            bullet.text
-          )}
-        </li>
-      ))}
-    </ul>
-  </aside>
-)}
-
-{part === 'ticker' && bullets.length > 0 && (
+{(part === 'strip' || part === 'ticker') && bullets.length > 0 && (
   <aside class="living-strip living-strip--ticker" aria-label={asOfLabel ? `Living facts, ${asOfLabel}` : 'Living facts'}>
     {asOfLabel && <p class="living-strip-asof">{asOfLabel}</p>}
     <div class="living-strip-viewport">
