@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import LivingStrip from '../../components/LivingStrip.astro';
-import RiskDecoder from '../../components/RiskDecoder.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/when-the-spender-runs-the-printer.facts.json';
 import '../../styles/risk.css';
@@ -84,20 +83,6 @@ const sources = [
       <p class="risk-digest-subhead">{subhead}</p>
       <LivingStrip facts={facts} part="ticker" />
     </header>
-
-    <div class="risk-digest-preface">
-      <RiskDecoder
-        terms={[
-          { term: 'Stock', gloss: 'debt held by the public.' },
-          { term: 'Path', gloss: 'CBO’s current-law climb.' },
-          { term: 'Named tail', gloss: 'inflation and repression if cheap money is used as fiscal relief.' },
-        ]}
-        quiet={[
-          'Quiet: TPDO is the bigger headline. Do not swap it for debt held by the public.',
-          'Quiet: TIC and COFER are watches, not a dump claim.',
-        ]}
-      />
-    </div>
 
     <div class="risk-digest-columns">
       <div class="risk-digest-main">

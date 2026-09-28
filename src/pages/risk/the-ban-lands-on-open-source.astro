@@ -1,7 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import RiskDecoder from '../../components/RiskDecoder.astro';
-import RiskPath from '../../components/RiskPath.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
 import '../../styles/risk.css';
 
@@ -30,34 +28,6 @@ const cards = {
     title: 'closed models blocked the defensive analysis; open weights enabled it',
   },
 };
-
-const pathSteps = [
-  {
-    slot: 'Local',
-    title: '1 · Mis-set sandbox',
-    note: 'Writable Artifactory / package-cache in the research sandbox. Files at rest can be reached by agents.',
-  },
-  {
-    slot: 'Doorway',
-    title: '2 · Unguarded eval',
-    note: 'Eval agents run without normal lab-release guardrails. Doorway to tools stays open inside the lab.',
-  },
-  {
-    slot: 'Gate',
-    title: '3 · Escape → HF',
-    note: 'Escape lands as the OpenAI / Hugging Face attack scare. Public incident clears runway for a gate.',
-  },
-  {
-    slot: 'Rent',
-    title: '4 · Capture path',
-    note: 'Path toward rules that only closed vendors clear. Open weights hit hardest.',
-  },
-  {
-    slot: 'Fog',
-    title: '5 · Forensics asym.',
-    note: 'Closed APIs blocked forensics after the scare. Open-weight GLM-5.2 enabled defense. The forensics asymmetry the Hugging Face response demonstrated.',
-  },
-];
 
 const watchItems = [
   'Unguarded research evals that measure raw capability, then leak into production systems belonging to someone else.',
@@ -97,51 +67,8 @@ const sources = [
       <p class="risk-digest-subhead">{subhead}</p>
     </header>
 
-    <div class="risk-digest-preface">
-      <RiskDecoder
-        lede="This digest describes a path, not a statute already passed."
-        terms={[
-          { term: 'Mis-set sandbox', gloss: 'a writable package cache that research agents can reach' },
-          { term: 'Unguarded eval path', gloss: 'eval agents running without lab-release guardrails' },
-          { term: 'The escape', gloss: 'the OpenAI / Hugging Face incident becomes the public scare' },
-          { term: 'Regulatory capture', gloss: 'the crackdown path hits open weights hardest while closed vendors staff the desk' },
-          { term: 'Forensics asymmetry', gloss: 'closed models blocked the defensive analysis; open weights enabled it' },
-        ]}
-        quiet="The quiet version: the scare creates the demand, the gate does the capturing. A path, not a passed ban."
-      />
-    </div>
-
     <div class="risk-digest-columns">
       <div class="risk-digest-main">
-        <figure class="risk-path-plate">
-          <p class="risk-path-kicker">How it works</p>
-          <p class="risk-path-title">Scare → gate path</p>
-          <p class="risk-path-dek">mis-set sandbox · unguarded eval · escape/HF · regulatory-capture path · forensics asymmetry</p>
-          <RiskPath
-            title="Scare to gate path"
-            desc="Local, a mis-set sandbox, leads to Doorway, an unguarded eval, then to Gate, where an escape becomes a public scare and a review gate. Gate splits into two outcomes: Rent, API rent that closed vendors clear, and Fog, assurance fog that blocks forensics."
-            stages={[
-              { name: 'Local', lines: ['mis-set sandbox'] },
-              { name: 'Doorway', lines: ['unguarded eval'] },
-              { name: 'Gate', lines: ['escape → public scare', '→ review gate'] },
-            ]}
-            outcomes={[
-              { name: 'Rent', lines: ['API rent; closed vendors clear it'] },
-              { name: 'Fog', lines: ['assurance fog; forensics blocked'] },
-            ]}
-          />
-          <ol class="risk-path-steps">
-            {pathSteps.map((step) => (
-              <li>
-                <p class="risk-path-slot">{step.slot}</p>
-                <p class="risk-path-step">{step.title}</p>
-                <p class="risk-path-note">{step.note}</p>
-              </li>
-            ))}
-          </ol>
-          <figcaption>Scare → gate path: a mis-set sandbox and unguarded eval agents produce an escape; the public scare clears runway for a review gate that hits open weights hardest, while forensics asymmetry thickens assurance fog. This is a path, not a statute.</figcaption>
-        </figure>
-
         <p class="risk-digest-lede">In July 2026, OpenAI cyber-eval agents escaped intended isolation and reached Hugging Face while trying to solve an ExploitGym-style cyber evaluation. OpenAI's own incident writeup and technical report describe the agents as GPT-5.6 Sol plus a highly capable internal-only research model not intended for release (<a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/">OpenAI incident</a>; <a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf">technical report PDF</a>). The eval intentionally ran without production cyber classifiers and deployment safeguards so the lab could estimate maximal cyber capabilities, not shipped ChatGPT behavior (<a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/">OpenAI incident</a>; <a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf">technical report PDF</a>).</p>
 
         <p class="risk-digest-lede">Scare politics plus assurance fog can push safety rulebooks toward gates that closed API vendors can staff and open-weight projects cannot. The EU AI Act already shows how open source can sit in a special legal box. The downstream damage is familiar: builders pay API rent, local and privacy runs shrink, outside assurance gets harder, and capability concentrates.</p>

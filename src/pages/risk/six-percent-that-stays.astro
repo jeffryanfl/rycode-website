@@ -1,16 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import LivingStrip from '../../components/LivingStrip.astro';
-import RiskDecoder from '../../components/RiskDecoder.astro';
-import RiskPath from '../../components/RiskPath.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/six-percent-that-stays.facts.json';
 import '../../styles/risk.css';
 
 const title = 'The thirty-year Treasury yield in late August 2026';
 const subhead = 'The yield was about 5.21 to 5.26 percent. A hold near 6 percent through a long-term borrowing date is separate from a single morning at that rate.';
-
-const howToRead = 'Usual case is the late-August thirty-year. Named tail is ~6% that lasts through a long-term borrow. Watch is the hold — not a morning print.';
 
 const watchItems = [
   'Whether the thirty-year holds above 5.75 percent, then 6 percent, through a long-term borrowing date, not for a single morning.',
@@ -34,37 +30,8 @@ const watchItems = [
       <LivingStrip facts={facts} part="strip" />
     </header>
 
-    <div class="risk-digest-preface">
-      <RiskDecoder
-        terms={[
-          { term: 'Usual case', gloss: 'the late-August thirty-year.' },
-          { term: 'Named tail', gloss: '~6% that lasts through a long-term borrow.' },
-          { term: 'Watch', gloss: 'the hold — not a morning print.' },
-        ]}
-        quiet={[
-          'Quiet: ~$950B TGA · checking account, week cash — not a purchase program.',
-          'Quiet: one-point rise ≈ 0.3% of output first year on debt that comes due.',
-        ]}
-      />
-    </div>
-
     <div class="risk-digest-columns">
       <div class="risk-digest-main">
-        <figure class="risk-path-plate">
-          <p class="risk-path-kicker">How it works</p>
-          <p class="risk-path-title">Usual case → named tail → watch</p>
-          <RiskPath
-            title="Usual case, named tail, and watch"
-            desc={howToRead}
-            stages={[
-              { name: 'Usual case', lines: ['late-August thirty-year'] },
-              { name: 'Named tail', lines: ['~6% that lasts'] },
-              { name: 'Watch', lines: ['hold, not a morning'] },
-            ]}
-          />
-          <figcaption>{howToRead}</figcaption>
-        </figure>
-
         <p class="risk-digest-lede">The essay on this site, <a href="/economics/ten-trillion-to-roll/">About $10 trillion of U.S. debt comes due and has to be refinanced</a>, is the story of the number. This page is the risk read of the same facts. It is not a second telling of bills, the checking account, or the four-billion-dollar purchases.</p>
 
         <section class="risk-digest-section" id="usual" data-digest-section="usual">

@@ -24,7 +24,6 @@ const plates = [
     },
     quiet: 'Quiet note: 1pp rise ≈ 0.3% of GDP on rolls (vs 1.25% whole-stock thought experiment).',
     caption: 'Refinance is huge. The checking account is not a buying program.',
-    how: 'How to read this: Left is debt coming due this year. Right is cash on hand — not a purchase program.',
   },
   {
     id: 'bills',
@@ -44,7 +43,6 @@ const plates = [
     },
     quiet: '',
     caption: 'Most of the ten trillion is weekly bill rolls, not a wall of long bonds.',
-    how: 'How to read this: Ordinary weekly refinance vs the scare story.',
   },
   {
     id: 'cash',
@@ -62,7 +60,6 @@ const plates = [
     },
     quiet: '',
     caption: 'Buybacks are a trading tool. They do not absorb ten trillion.',
-    how: 'How to read this: Cash balance vs small buyback ops — not the same size as the roll.',
   },
 ];
 ---
@@ -100,7 +97,6 @@ const plates = [
               {plate.quiet && <p class="econ-plate-quiet">{plate.quiet}</p>}
               <figcaption>
                 <p>{plate.caption}</p>
-                <p>{plate.how}</p>
               </figcaption>
             </figure>
           ))}
@@ -121,7 +117,6 @@ const plates = [
             {plates[0].quiet && <p class="econ-plate-quiet">{plates[0].quiet}</p>}
             <figcaption>
               <p>{plates[0].caption}</p>
-              <p>{plates[0].how}</p>
             </figcaption>
           </figure>
         </div>
@@ -147,7 +142,6 @@ const plates = [
         {plates[0].quiet && <p class="econ-plate-quiet">{plates[0].quiet}</p>}
         <figcaption>
           <p>{plates[0].caption}</p>
-          <p>{plates[0].how}</p>
         </figcaption>
       </figure>
     </section>
@@ -172,7 +166,6 @@ const plates = [
         </div>
         <figcaption>
           <p>{plates[1].caption}</p>
-          <p>{plates[1].how}</p>
         </figcaption>
       </figure>
     </section>
@@ -198,7 +191,6 @@ const plates = [
         </div>
         <figcaption>
           <p>{plates[2].caption}</p>
-          <p>{plates[2].how}</p>
         </figcaption>
       </figure>
     </section>

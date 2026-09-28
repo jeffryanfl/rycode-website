@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import RiskDecoder from '../../components/RiskDecoder.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
 import facts from '../../../docs/risk/when-force-majeure-hits-the-ai-build-out.facts.json';
 import '../../styles/risk.css';
@@ -45,85 +44,8 @@ const sources = [
       <p class="risk-digest-subhead">{subhead}</p>
     </header>
 
-    <div class="risk-digest-preface">
-      <RiskDecoder
-        lede="Five stages, remapped for contract outs and energy permitting."
-        terms={[
-          { term: 'Local', gloss: 'Committed campus. Megawatts leased and marketed as sold before the power is wired.' },
-          { term: 'Doorway', gloss: 'Force-majeure outs. Buyers can defer rent if the online date slips.' },
-          { term: 'Gate', gloss: 'The power gate. Gas supply, air permits, and ~2.45 GW of fuel-cell generation (Bloom; Green Chile ~Feb 1 2027; air permit pending).' },
-          { term: 'Rent', gloss: 'Deferred rent. The squeeze on equity returns and private-credit underwriting.' },
-          { term: 'Fog', gloss: 'Assurance fog. Outs stay event-driven while no one sees who holds the paper.' },
-        ]}
-      />
-    </div>
-
     <div class="risk-digest-columns">
       <div class="risk-digest-main">
-        <figure class="risk-path-plate">
-          <div class="risk-path-diagram-scroll">
-            <svg class="risk-path-diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" role="img" aria-labelledby="fm-title fm-desc">
-              <title id="fm-title">Force majeure path. Local to Doorway to Gate, then Rent and Fog</title>
-              <desc id="fm-desc">Causal diagram with a Gate detail strip: Bloom fuel cells, the Green Chile pipeline, and the air permit. The path then branches to deferred rent and financing-chill fog.</desc>
-              <defs>
-                <marker id="fm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b919a"/>
-                </marker>
-              </defs>
-
-              <rect width="1100" height="640" fill="#080a10"/>
-              <rect x="20.5" y="20.5" width="1059" height="599" fill="none" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
-
-              <text x="40" y="48" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="0.08em">RYCODE · RISK DIGEST · CAUSAL</text>
-              <text x="40" y="78" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="600">Committed capacity exits through outs and energy gates</text>
-              <text x="40" y="102" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12">Gate carries the energy choke detail</text>
-
-              <rect x="40" y="132" width="300" height="118" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
-              <text x="56" y="156" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="0.06em">LOCAL</text>
-              <text x="56" y="182" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600">Committed campus / leased MW</text>
-              <text x="56" y="208" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12">Capacity that looks sold on a slide.</text>
-
-              <line x1="340" y1="191" x2="378" y2="191" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#fm-arrow)"/>
-
-              <rect x="380" y="132" width="300" height="118" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
-              <text x="396" y="156" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="0.06em">DOORWAY</text>
-              <text x="396" y="182" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600">Force majeure / defer rent</text>
-              <text x="396" y="208" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12">Out preserves rights if online slips.</text>
-
-              <line x1="680" y1="191" x2="718" y2="191" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#fm-arrow)"/>
-
-              <rect x="720" y="132" width="340" height="118" fill="rgba(248,250,252,0.07)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
-              <text x="736" y="156" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="0.06em">GATE</text>
-              <text x="736" y="182" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600">Power commitments</text>
-              <text x="736" y="208" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12">Gas · generation · air permit</text>
-
-              <rect x="40" y="268" width="1020" height="56" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.14)" stroke-width="1"/>
-              <text x="56" y="292" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="0.06em">GATE DETAIL</text>
-              <text x="56" y="312" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">Bloom ~2.45 GW fuel cells · Green Chile pipeline ~ Feb 1, 2027 · air-quality permit pending</text>
-              <line x1="890" y1="250" x2="890" y2="268" stroke="rgba(248,250,252,0.28)" stroke-width="1.5"/>
-
-              <line x1="550" y1="324" x2="550" y2="352" stroke="rgba(248,250,252,0.28)" stroke-width="1.5"/>
-              <line x1="220" y1="352" x2="880" y2="352" stroke="rgba(248,250,252,0.28)" stroke-width="1.5"/>
-              <line x1="220" y1="352" x2="220" y2="380" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#fm-arrow)"/>
-              <line x1="880" y1="352" x2="880" y2="380" stroke="rgba(248,250,252,0.28)" stroke-width="1.5" marker-end="url(#fm-arrow)"/>
-
-              <rect x="40" y="382" width="360" height="120" fill="rgba(248,250,252,0.07)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
-              <text x="56" y="408" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="0.06em">RENT</text>
-              <text x="56" y="434" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600">Deferred payments / underwriting</text>
-              <text x="56" y="460" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12">Developer equity · private credit · cash timing.</text>
-
-              <rect x="700" y="382" width="360" height="120" fill="rgba(248,250,252,0.04)" stroke="rgba(248,250,252,0.28)" stroke-width="1"/>
-              <text x="716" y="408" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="0.06em">FOG</text>
-              <text x="716" y="434" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600">On-schedule talk vs contract outs</text>
-              <text x="716" y="460" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12">Financing chill · who holds the paper.</text>
-
-              <text x="40" y="540" fill="#8b919a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11">LEGEND · Gate detail is the energy choke · Rent + Fog branch after the choke</text>
-              <text x="40" y="572" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">Figure. The Gate energy blockers are called out in a strip so the branch</text>
-              <text x="40" y="592" fill="#f8fafc" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">into deferred rent and assurance fog is clearly power-tied.</text>
-            </svg>
-          </div>
-        </figure>
-
         <p class="risk-digest-lede">In late September 2026, Oracle sent a force majeure notice to the developer of Project Jupiter, a New Mexico Stargate-class data-center campus. A force majeure clause is a contract out that can excuse or defer obligations when events outside a party's control intervene. Bloomberg first reported the notice. Primary writeups from <a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">TechCrunch</a> and <a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">El Paso Matters</a> frame it as a path to <strong>defer rent or payments</strong> if the campus misses its planned online date, not as Oracle walking away as main tenant. Oracle publicly says the project remains on its planned schedule.</p>
 
         <p class="risk-digest-lede">That episode is not a brand wipeout story. It is a path. Once contract outs fire, and once energy cost and availability sit inside those outs, "committed" AI capacity and spend can reprice or exit faster than equity narratives assume. The <a href="https://www.wsj.com/economy/the-ai-build-out-is-becoming-the-biggest-economic-bet-in-u-s-history-c60716dd">Wall Street Journal</a> has cast the AI data-center build-out as the biggest economic bet in U.S. history. The bet runs through leases, power commitments, pipelines, and permits. Those are the stages to watch.</p>

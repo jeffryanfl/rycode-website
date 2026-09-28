@@ -22,7 +22,6 @@ const plates = [
     },
     quiet: 'Quiet dim: BVP avg 7.8x (mega-cap tape, not the median name).',
     caption: 'Equal-weight median is not the market-cap average, and neither is the top ten.',
-    how: 'How to read this: Left is the typical software name. Right is the top ten — a different asset class.',
   },
   {
     id: 'price',
@@ -42,7 +41,6 @@ const plates = [
     },
     quiet: '',
     caption: 'The invoice got more complicated. The customer did not leave.',
-    how: 'How to read this: Higher bill on the left. Still paying / expanding on the right.',
   },
   {
     id: 'grind',
@@ -60,7 +58,6 @@ const plates = [
     },
     quiet: 'Quiet: Software spend $1,271B→$1,468B (Gartner).',
     caption: 'Spend up, equal-weight multiple down.',
-    how: 'How to read this: Operating metrics stepped lower and held — not a cliff.',
   },
 ];
 ---
@@ -97,7 +94,6 @@ const plates = [
               {plate.quiet && <p class="econ-plate-quiet">{plate.quiet}</p>}
               <figcaption>
                 <p>{plate.caption}</p>
-                <p>{plate.how}</p>
               </figcaption>
             </figure>
           ))}
@@ -124,7 +120,6 @@ const plates = [
         {plates[0].quiet && <p class="econ-plate-quiet">{plates[0].quiet}</p>}
         <figcaption>
           <p>{plates[0].caption}</p>
-          <p>{plates[0].how}</p>
         </figcaption>
       </figure>
     </section>
@@ -164,7 +159,6 @@ const plates = [
         </div>
         <figcaption>
           <p>{plates[1].caption}</p>
-          <p>{plates[1].how}</p>
         </figcaption>
       </figure>
     </section>
@@ -194,7 +188,6 @@ const plates = [
         {plates[2].quiet && <p class="econ-plate-quiet">{plates[2].quiet}</p>}
         <figcaption>
           <p>{plates[2].caption}</p>
-          <p>{plates[2].how}</p>
         </figcaption>
       </figure>
     </section>

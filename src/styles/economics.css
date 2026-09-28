@@ -324,15 +324,17 @@ h1.economics-identity {
 }
 
 .econ-digest-head {
-  grid-column: 1;
+  grid-column: 1 / -1;
   margin: 0 0 1.35rem;
   padding: 0 0 1.15rem;
   border-bottom: 1px solid var(--digest-hair);
-  max-width: 42rem;
+  max-width: none;
+  width: 100%;
 }
 
 .econ-digest-title {
   margin: 0 0 0.55rem;
+  max-width: none;
   font-family: var(--font-serif);
   font-size: clamp(1.85rem, 4vw, 2.75rem);
   font-weight: 500;
@@ -343,7 +345,7 @@ h1.economics-identity {
 
 .econ-digest-subhead {
   margin: 0 0 0.55rem;
-  max-width: 38rem;
+  max-width: none;
   font-family: var(--font-serif);
   font-size: 1.12rem;
   font-style: italic;
@@ -450,7 +452,7 @@ h1.economics-identity {
 
 .econ-digest-rail {
   grid-column: 2;
-  grid-row: 1 / span 10;
+  grid-row: 2 / span 10;
   position: sticky;
   top: 1rem;
   align-self: start;
@@ -582,7 +584,7 @@ h1.economics-identity {
 
 /* Two-panel exhibits for the treasury and SaaS essays. */
 .econ-digest--plates .econ-digest-rail {
-  grid-row: 1 / span 16;
+  grid-row: 2 / span 16;
 }
 
 .econ-digest--plates .econ-digest-viewport {

@@ -472,15 +472,17 @@ html:has(.risk-digest) .skip-link {
 }
 
 .risk-digest-head {
-  grid-column: 1;
+  grid-column: 1 / -1;
   margin: 0 0 1.35rem;
   padding: 0 0 1.15rem;
   border-bottom: 1px solid var(--digest-hair);
-  max-width: 40rem;
+  max-width: none;
+  width: 100%;
 }
 
 .risk-digest-title {
   margin: 0 0 0.55rem;
+  max-width: none;
   font-family: var(--font-serif);
   font-size: clamp(1.85rem, 4vw, 2.75rem);
   font-weight: 500;
@@ -491,7 +493,7 @@ html:has(.risk-digest) .skip-link {
 
 .risk-digest-subhead {
   margin: 0 0 0.55rem;
-  max-width: 36rem;
+  max-width: none;
   font-family: var(--font-serif);
   font-size: 1.12rem;
   font-style: italic;
