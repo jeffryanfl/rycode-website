@@ -1,0 +1,319 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/ai.css';
+import '../../styles/paper.css';
+
+const title = 'AI glossary';
+const subhead = 'Twenty plain terms for models, serving, and agents on this site';
+
+const sources = [
+  {
+    href: 'https://arxiv.org/abs/2309.06180',
+    text: 'Kwon et al., Efficient Memory Management for Large Language Model Serving with PagedAttention',
+  },
+  {
+    href: 'https://blog.vllm.ai/2023/06/20/vllm.html',
+    text: 'vLLM: Easy, Fast, and Cheap LLM Serving with PagedAttention',
+  },
+  {
+    href: 'https://docs.vllm.ai/en/latest/design/paged_attention.html',
+    text: 'vLLM documentation: Paged Attention',
+  },
+  {
+    href: 'https://www.anthropic.com/news/model-context-protocol',
+    text: 'Anthropic, Introducing the Model Context Protocol',
+  },
+  {
+    href: 'https://modelcontextprotocol.io/',
+    text: 'Model Context Protocol docs home',
+  },
+  {
+    href: 'https://github.com/modelcontextprotocol/specification',
+    text: 'Model Context Protocol specification',
+  },
+  {
+    href: 'https://owasp.org/www-project-top-10-for-large-language-model-applications/',
+    text: 'OWASP Top 10 for Large Language Model Applications',
+  },
+  {
+    href: 'https://arxiv.org/abs/1706.03762',
+    text: 'Vaswani et al., Attention Is All You Need',
+  },
+  {
+    href: 'https://arxiv.org/abs/2205.14135',
+    text: 'Dao et al., FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness',
+  },
+  {
+    href: 'https://github.com/Dao-AILab/flash-attention',
+    text: 'Dao-AILab / flash-attention',
+  },
+  {
+    href: 'https://openai.com/index/why-language-models-hallucinate/',
+    text: 'OpenAI, Why language models hallucinate',
+  },
+  {
+    href: 'https://artificialanalysis.ai/methodology',
+    text: 'Artificial Analysis methodology',
+  },
+  {
+    href: 'https://metr.org/',
+    text: 'METR',
+  },
+  {
+    href: 'https://osworld-v2.xlang.ai/',
+    text: 'OSWorld',
+  },
+  {
+    href: 'https://github.com/xlang-ai/OSWorld',
+    text: 'xlang-ai / OSWorld',
+  },
+  {
+    href: 'https://arcprize.org/',
+    text: 'ARC Prize',
+  },
+];
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description={subhead}
+  variant="ai"
+>
+  <a slot="ai-identity" href="/ai/" class="ai-identity">
+    <img class="ai-glyph" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
+    A.I.
+  </a>
+
+  <article class="paper">
+    <div class="paper-grid paper-grid--solo">
+      <header class="paper-head">
+        <p class="paper-kicker">A.I.</p>
+        <h1 class="paper-claim">{title}</h1>
+        <p class="paper-dek">{subhead}</p>
+      </header>
+
+      <div class="paper-main">
+        <div class="paper-body">
+          <p>A short glossary for the terms that show up most when you read about models, serving, and agents on this site. Each entry starts with a plain definition. Related terms jump to other entries on this page.</p>
+          <p>This page explains mechanisms. It does not rank models, quote prices, or assert benchmark scores.</p>
+        </div>
+
+        <nav aria-label="Contents">
+          <ol class="paper-sources">
+            <li><a href="#token">Token</a></li>
+            <li><a href="#parameter-weights">Parameter / Weights</a></li>
+            <li><a href="#context-window">Context Window</a></li>
+            <li><a href="#kv-cache">KV Cache (Key-Value Cache)</a></li>
+            <li><a href="#inference">Inference</a></li>
+            <li><a href="#quantization">Quantization</a></li>
+            <li><a href="#open-weight-model">Open-Weight Model</a></li>
+            <li><a href="#closed-proprietary-model">Closed / Proprietary Model</a></li>
+            <li><a href="#mixture-of-experts">Mixture-of-Experts (MoE)</a></li>
+            <li><a href="#agentic-ai">Agentic AI / Agentic Systems</a></li>
+            <li><a href="#tool-calling">Tool Calling</a></li>
+            <li><a href="#rag">RAG (Retrieval-Augmented Generation)</a></li>
+            <li><a href="#reasoning-models">Reasoning Models / Test-Time Compute</a></li>
+            <li><a href="#mcp">Model Context Protocol (MCP)</a></li>
+            <li><a href="#prompt-injection-guardrails">Prompt Injection &amp; Guardrails</a></li>
+            <li><a href="#transformer-attention">Transformer / Attention</a></li>
+            <li><a href="#prefill-vs-decode">Prefill vs Decode</a></li>
+            <li><a href="#hallucination">Hallucination</a></li>
+            <li><a href="#computer-use">Computer use</a></li>
+            <li><a href="#eval-contamination-scaffold">Eval contamination / scaffold</a></li>
+          </ol>
+        </nav>
+
+        <section class="paper-section" aria-labelledby="token">
+          <h2 class="paper-h2" id="token">Token</h2>
+          <div class="paper-body">
+            <p>A token is the smallest chunk of text a language model reads and writes. In English it is often a word piece, not a whole word, and about three-quarters of a word on average, though the split depends on the tokenizer.</p>
+            <p>Think of tokens as Lego bricks. The model builds meaning from those bricks rather than from whole sentences at once.</p>
+            <p>Context limits, pricing, and memory use are usually counted in tokens. See also <a href="#context-window">Context Window</a>, <a href="#kv-cache">KV Cache (Key-Value Cache)</a>, <a href="#inference">Inference</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="parameter-weights">
+          <h2 class="paper-h2" id="parameter-weights">Parameter / Weights</h2>
+          <div class="paper-body">
+            <p>Parameters (also called weights) are the huge set of adjustable numbers inside a trained model. After training, those numbers are what the model uses to turn input tokens into output tokens. A larger model has more of them.</p>
+            <p>You can picture them as dials on a vast mixing board. Training sets the dials. Inference uses the dial settings as they are.</p>
+            <p>File size grows with parameter count and with how many bits you store per number. Quantization stores those numbers with fewer bits so the same model takes less memory. See also <a href="#quantization">Quantization</a>, <a href="#open-weight-model">Open-Weight Model</a>, <a href="#mixture-of-experts">Mixture-of-Experts (MoE)</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="context-window">
+          <h2 class="paper-h2" id="context-window">Context Window</h2>
+          <div class="paper-body">
+            <p>The context window is how much text the model can see at once, measured in tokens. It covers both what you put in and what the model generates in that turn.</p>
+            <p>It is short-term working space, like the size of a whiteboard the model can look at while it answers.</p>
+            <p>Longer windows help with long documents, retrieval, and multi-step agents. They also cost more memory and usually more latency, because the key-value cache grows with length. See also <a href="#token">Token</a>, <a href="#kv-cache">KV Cache (Key-Value Cache)</a>, <a href="#rag">RAG (Retrieval-Augmented Generation)</a>, <a href="#agentic-ai">Agentic AI / Agentic Systems</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="kv-cache">
+          <h2 class="paper-h2" id="kv-cache">KV Cache (Key-Value Cache)</h2>
+          <div class="paper-body">
+            <p>The key-value cache is a memory store built during inference. As the model reads the prompt and then writes new tokens, it saves intermediate attention values so it does not recompute them from scratch for every new token.</p>
+            <p>It is like keeping a running notebook of what you already figured out, instead of re-deriving the whole page each time you write the next word.</p>
+            <p>That cache is why long context is memory-hungry, and why serving engines spend so much effort paging and compressing it. <a href="https://arxiv.org/abs/2309.06180">PagedAttention</a> is one widely used approach. It pages the cache during serving so memory can be shared more efficiently across requests. It is a cache pager, not a different attention formula. See also the <a href="https://blog.vllm.ai/2023/06/20/vllm.html">vLLM announcement</a> and <a href="https://docs.vllm.ai/en/latest/design/paged_attention.html">design notes</a>. See also <a href="#context-window">Context Window</a>, <a href="#inference">Inference</a>, <a href="#prefill-vs-decode">Prefill vs Decode</a>, <a href="#quantization">Quantization</a>, <a href="#transformer-attention">Transformer / Attention</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="inference">
+          <h2 class="paper-h2" id="inference">Inference</h2>
+          <div class="paper-body">
+            <p>Inference is running a trained model to produce an output. Chatting with a model, generating code, or calling tools through a model are all inference.</p>
+            <p>Training is studying for the exam. Inference is sitting down and answering the questions.</p>
+            <p>For text, inference is usually autoregressive. The model predicts one token, appends it, and repeats. Cost and speed depend on hardware, batching, quantization, and how the key-value cache is managed. See also <a href="#token">Token</a>, <a href="#kv-cache">KV Cache (Key-Value Cache)</a>, <a href="#quantization">Quantization</a>, <a href="#prefill-vs-decode">Prefill vs Decode</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="quantization">
+          <h2 class="paper-h2" id="quantization">Quantization</h2>
+          <div class="paper-body">
+            <p>Quantization reduces how precisely each parameter is stored, for example from 16-bit floating point down to 8-bit or 4-bit integers. The model gets smaller and often cheaper to run. Quality usually drops a little, and sometimes more than a little, depending on the method and the task.</p>
+            <p>It is like compressing a high-resolution photo into a smaller file that still looks good enough for most uses.</p>
+            <p>People use quantization to fit larger models on smaller GPUs, to cut serving cost, and to run models locally. See also <a href="#parameter-weights">Parameter / Weights</a>, <a href="#inference">Inference</a>, <a href="#open-weight-model">Open-Weight Model</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="open-weight-model">
+          <h2 class="paper-h2" id="open-weight-model">Open-Weight Model</h2>
+          <div class="paper-body">
+            <p>An open-weight model is one whose trained parameters are published for download. Subject to the license, you can run it, inspect it, fine-tune it, quantize it, and serve it on your own machines.</p>
+            <p>The restaurant publishes the recipe. You can cook it yourself, change it, or serve it under your own roof. The license still sets the rules.</p>
+            <p>Open weights do not automatically mean open training data, open training code, or a permissive license. They also do not guarantee parity with whatever closed model shipped the same week. You gain control of hosting and data residency. You also take on serving, safety, and operations. See also <a href="#closed-proprietary-model">Closed / Proprietary Model</a>, <a href="#quantization">Quantization</a>, <a href="#parameter-weights">Parameter / Weights</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="closed-proprietary-model">
+          <h2 class="paper-h2" id="closed-proprietary-model">Closed / Proprietary Model</h2>
+          <div class="paper-body">
+            <p>A closed or proprietary model keeps its weights private. You use it through the vendor’s API or app. You do not download the parameter files.</p>
+            <p>You eat at the restaurant. You do not get the recipe.</p>
+            <p>You usually get strong capability without owning hardware. You also accept the vendor’s pricing, rate limits, deprecations, safety filters, and retention policy. A common hedge is to keep prompts and evals portable, and to keep an open-weight fallback where that fits the job. See also <a href="#open-weight-model">Open-Weight Model</a>, <a href="#agentic-ai">Agentic AI / Agentic Systems</a>, <a href="#tool-calling">Tool Calling</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="mixture-of-experts">
+          <h2 class="paper-h2" id="mixture-of-experts">Mixture-of-Experts (MoE)</h2>
+          <div class="paper-body">
+            <p>A mixture-of-experts model is built from many specialist sub-networks called experts. For each token, a router activates only a small subset of those experts. Total parameter count can be very large while the compute per token stays closer to a smaller dense model.</p>
+            <p>Instead of one giant generalist brain, you have a bench of specialists and only call the ones that fit this question.</p>
+            <p>The catch is memory. Idle experts still have to sit in memory (or be sharded across machines), so serving cost tracks active compute while hardware pressure tracks total size. When you read a model card, “total parameters” and “active parameters” answer different questions. See also <a href="#parameter-weights">Parameter / Weights</a>, <a href="#inference">Inference</a>, <a href="#open-weight-model">Open-Weight Model</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="agentic-ai">
+          <h2 class="paper-h2" id="agentic-ai">Agentic AI / Agentic Systems</h2>
+          <div class="paper-body">
+            <p>Agentic systems put a model in a loop with tools, memory or state, and a stop condition. The system plans, calls tools, reads results, and continues until the goal is met or something stops it. That is different from a single question and a single answer.</p>
+            <p>It is the difference between a librarian who answers one question and a research assistant who goes do the work and comes back with results.</p>
+            <p>Most of the value and most of the risk live here. Failures look like compounding errors, stale context, unverified actions, and runaway spend. Tight permissions, sandboxes, verifiable checks, step and spend caps, and treating tool output as untrusted input all matter. See also <a href="#tool-calling">Tool Calling</a>, <a href="#computer-use">Computer use</a>, <a href="#mcp">Model Context Protocol (MCP)</a>, <a href="#rag">RAG (Retrieval-Augmented Generation)</a>, <a href="#prompt-injection-guardrails">Prompt Injection &amp; Guardrails</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="tool-calling">
+          <h2 class="paper-h2" id="tool-calling">Tool Calling</h2>
+          <div class="paper-body">
+            <p>Tool calling is the model choosing when to invoke an external tool (search, code runner, API, database, and so on), emitting a structured call with arguments, and then using the returned result in the next step.</p>
+            <p>It is the assistant who knows when to look something up or run a calculation instead of guessing.</p>
+            <p>Without tool calling, you do not get modern agents, retrieval loops, or computer-use products. Reliability depends on clear tool descriptions, validated arguments, good error messages back to the model, and treating every tool result as untrusted. See also <a href="#agentic-ai">Agentic AI / Agentic Systems</a>, <a href="#rag">RAG (Retrieval-Augmented Generation)</a>, <a href="#mcp">Model Context Protocol (MCP)</a>, <a href="#inference">Inference</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="rag">
+          <h2 class="paper-h2" id="rag">RAG (Retrieval-Augmented Generation)</h2>
+          <div class="paper-body">
+            <p>Retrieval-augmented generation looks up relevant material from an external store, puts that material into the prompt, and only then asks the model to answer. The store is often a vector database of document chunks, but the idea is broader. Retrieve first, generate second.</p>
+            <p>Instead of relying only on what the model memorized in training, you let it consult a library you trust before it answers.</p>
+            <p>RAG can reduce hallucinations on questions that have an answer in your corpus. It does not delete hallucination. Chunking, embedding quality, and how you stuff the context window all affect the result. See also <a href="#context-window">Context Window</a>, <a href="#hallucination">Hallucination</a>, <a href="#tool-calling">Tool Calling</a>, <a href="#agentic-ai">Agentic AI / Agentic Systems</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="reasoning-models">
+          <h2 class="paper-h2" id="reasoning-models">Reasoning Models / Test-Time Compute</h2>
+          <div class="paper-body">
+            <p>Reasoning models are trained so that longer, checkable intermediate work pays off, and they are often allowed to spend extra compute at inference time before the final answer. Both pieces matter. The training changes what the model does. The extra inference compute is how long it is allowed to work.</p>
+            <p>A student is drilled on showing correct working, then also given extra time and scratch paper on exam day.</p>
+            <p>That usually helps on math, hard coding, and multi-step logic. It also raises latency and token cost per query, and it can make immediate streaming harder. See also <a href="#inference">Inference</a>, <a href="#token">Token</a>, <a href="#eval-contamination-scaffold">Eval contamination / scaffold</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="mcp">
+          <h2 class="paper-h2" id="mcp">Model Context Protocol (MCP)</h2>
+          <div class="paper-body">
+            <p>Model Context Protocol is an open standard for connecting models and agents to external tools and data sources in a consistent way. Clients talk to MCP servers that expose prompts, readable resources, and callable tools. <a href="https://www.anthropic.com/news/model-context-protocol">Anthropic introduced MCP</a> as that shared protocol; the <a href="https://modelcontextprotocol.io/">Model Context Protocol docs home</a> and <a href="https://github.com/modelcontextprotocol/specification">specification</a> describe the same design.</p>
+            <p>It is meant to work like a shared plug standard. One tool server can serve many clients, instead of every app inventing its own connector.</p>
+            <p>MCP does not replace tool calling. It standardizes how tools and context are published and consumed across hosts. See also <a href="#tool-calling">Tool Calling</a>, <a href="#agentic-ai">Agentic AI / Agentic Systems</a>, <a href="#rag">RAG (Retrieval-Augmented Generation)</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="prompt-injection-guardrails">
+          <h2 class="paper-h2" id="prompt-injection-guardrails">Prompt Injection &amp; Guardrails</h2>
+          <div class="paper-body">
+            <p>Prompt injection is when untrusted text (a user message, an email, a web page, a retrieved document) tries to override the instructions the system meant to follow. Guardrails are the checks and limits meant to catch or contain that.</p>
+            <p>Injection is a forged note to the guard that says ignore prior orders. Guardrails are the screening that tries to spot the forgery.</p>
+            <p>Direct injection attacks the chat. Indirect injection hides instructions in content the agent retrieves or reads. The <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a> is a common independent framing for these risks in LLM apps. This is a first-order risk for agents with tools. Treat tool and retrieval output as untrusted. See also <a href="#agentic-ai">Agentic AI / Agentic Systems</a>, <a href="#tool-calling">Tool Calling</a>, <a href="#rag">RAG (Retrieval-Augmented Generation)</a>, <a href="#hallucination">Hallucination</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="transformer-attention">
+          <h2 class="paper-h2" id="transformer-attention">Transformer / Attention</h2>
+          <div class="paper-body">
+            <p>The transformer is the architecture almost all frontier text models use. Attention is the mechanism inside it that lets each token look at other tokens in the context and decide what matters for the next prediction. The line of work starts with <a href="https://arxiv.org/abs/1706.03762">Vaswani et al., Attention Is All You Need</a>.</p>
+            <p>Imagine a meeting where everyone can glance at everyone else’s notes, with learned importance weights, instead of passing a single hat down the table.</p>
+            <p>Attention is also why the key-value cache exists and why long context is expensive. <a href="https://arxiv.org/abs/2205.14135">FlashAttention</a> is an IO-aware exact-attention kernel. It is a fast way to compute the same attention, not a different architecture (<a href="https://github.com/Dao-AILab/flash-attention">implementation</a>). Paging tricks such as [1] manage the cache during serving. They are not a different attention formula. See also <a href="#kv-cache">KV Cache (Key-Value Cache)</a>, <a href="#token">Token</a>, <a href="#inference">Inference</a>, <a href="#prefill-vs-decode">Prefill vs Decode</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="prefill-vs-decode">
+          <h2 class="paper-h2" id="prefill-vs-decode">Prefill vs Decode</h2>
+          <div class="paper-body">
+            <p>Transformer inference has two phases. Prefill reads the whole prompt and builds the key-value cache. Decode then emits new tokens one at a time, mostly limited by how fast memory can be read.</p>
+            <p>You read the whole exam paper at once, then write the answer word by word.</p>
+            <p>Time to first token is mostly prefill. Tokens per second after that are mostly decode. Long prompts hurt the first wait. Long answers hurt ongoing cost. Flat “per token” pricing can hide that split. See also <a href="#inference">Inference</a>, <a href="#kv-cache">KV Cache (Key-Value Cache)</a>, <a href="#token">Token</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="hallucination">
+          <h2 class="paper-h2" id="hallucination">Hallucination</h2>
+          <div class="paper-body">
+            <p>Hallucination is when the model produces a confident falsehood. That can be a fake citation, a wrong fact, or an invented API. Next-token prediction rewards a fluent continuation. It does not reward a well-calibrated “I do not know.”</p>
+            <p>A student would rather invent a footnote than leave the line blank.</p>
+            <p>This is not a separate module you can switch off. <a href="https://openai.com/index/why-language-models-hallucinate/">OpenAI’s public explainer</a> frames the failure as partly a test-taking incentive under next-token prediction. Retrieval and tools help when the model actually uses the evidence. They do not erase the failure mode. For risk work, treat an ungrounded assertion as a control miss, not a personality quirk. See also <a href="#rag">RAG (Retrieval-Augmented Generation)</a>, <a href="#prompt-injection-guardrails">Prompt Injection &amp; Guardrails</a>, <a href="#tool-calling">Tool Calling</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="computer-use">
+          <h2 class="paper-h2" id="computer-use">Computer use</h2>
+          <div class="paper-body">
+            <p>Computer use means the model operates a real computer interface (mouse, keyboard, browser, terminal, files). It is not limited to a chat box or a single clean API call.</p>
+            <p>You hand the intern the desk, not only a comment form.</p>
+            <p>The loop is usually see the screen (or accessibility tree), choose an action, observe what changed, repeat. Variance is higher than calling a well-typed API. Wrong clicks stick. Loops happen. You want a sandbox and a clear autonomy slider. See also <a href="#agentic-ai">Agentic AI / Agentic Systems</a>, <a href="#tool-calling">Tool Calling</a>, <a href="#prompt-injection-guardrails">Prompt Injection &amp; Guardrails</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="eval-contamination-scaffold">
+          <h2 class="paper-h2" id="eval-contamination-scaffold">Eval contamination / scaffold</h2>
+          <div class="paper-body">
+            <p>Two common ways a benchmark score can mislead. Contamination means some of the test items leaked into training data. Scaffold means extra tools, prompts, retries, or voting around the model that the headline number does not explain.</p>
+            <p>Seeing last year’s exam, or taking the test with a tutor and then quoting only your name on the scoreboard.</p>
+            <p>When you read a leaderboard, ask what was public, what tools were allowed, and whether the metric is a single try or many tries. Treat vendor slides as claims until you know the setup. Independent eval homes that document methods (without any scores asserted here) include <a href="https://artificialanalysis.ai/methodology">Artificial Analysis methodology</a>, <a href="https://metr.org/">METR</a>, <a href="https://osworld-v2.xlang.ai/">OSWorld</a> (<a href="https://github.com/xlang-ai/OSWorld">repo</a>), and <a href="https://arcprize.org/">ARC Prize</a>. See also <a href="#reasoning-models">Reasoning Models / Test-Time Compute</a>, <a href="#open-weight-model">Open-Weight Model</a>, <a href="#closed-proprietary-model">Closed / Proprietary Model</a>.</p>
+          </div>
+        </section>
+
+        <section class="paper-section" aria-labelledby="sources">
+          <h2 class="paper-h2" id="sources">Sources</h2>
+          <ol class="paper-sources">
+            {sources.map((source) => (
+              <li>
+                <a href={source.href}>{source.text}</a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>

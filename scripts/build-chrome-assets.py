@@ -113,6 +113,9 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "grok-bot-set-a-new-bar.astro":
         # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-25"
+    elif target.name == "glossary.astro":
+        # Glossary card date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-28"
     else:
         date = git_date(target)
     if target.name == "next-token-engine.astro":
@@ -145,6 +148,11 @@ def build_catalog_real() -> list[dict]:
 
     ai_crumbs = [{"href": "/ai/", "label": "A.I."}]
     dives = [
+        {
+            "href": "/ai/glossary/",
+            "title": "AI glossary",
+            "description": "Twenty plain terms for models, serving, and agents on this site",
+        },
         {
             "href": "/ai/frontier-price-meets-open-weight-ipo/",
             "title": "Frontier price meets open-weight, and the IPO clock",

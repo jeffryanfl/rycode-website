@@ -15,7 +15,8 @@
         "/ai/models/meta/llama/llama-4/",
         "/ai/models/meta/muse/glimmer/",
         "/ai/models/deepseek/r1/",
-        "/risk/the-ban-lands-on-open-source/"
+        "/risk/the-ban-lands-on-open-source/",
+        "/ai/glossary/"
       ],
       "links": [
         "frontier-pricing",
@@ -60,12 +61,14 @@
         "/ai/grok-bot-set-a-new-bar/",
         "/ai/models/meta/muse/code/",
         "/ai/models/xai/grok-bot/",
-        "/ai/ten-thousand-agents-is-not-a-genius/"
+        "/ai/ten-thousand-agents-is-not-a-genius/",
+        "/ai/glossary/"
       ],
       "links": [
         "open-weights",
         "model-releases",
-        "evals-safety"
+        "evals-safety",
+        "training-loop"
       ]
     },
     {
@@ -343,11 +346,13 @@
       "label": "Training loop",
       "blurb": "A language model as a next-token predictor, shaped by staged training and a tool loop.",
       "articles": [
-        "/ai/next-token-engine/"
+        "/ai/next-token-engine/",
+        "/ai/glossary/"
       ],
       "links": [
         "model-releases",
-        "hardware-compute"
+        "hardware-compute",
+        "agent-swarms"
       ]
     }
   ]

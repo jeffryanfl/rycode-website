@@ -176,6 +176,22 @@
     "slug": "risk-six-percent-that-stays"
   },
   {
+    "href": "/ai/glossary/",
+    "title": "AI glossary",
+    "description": "Twenty plain terms for models, serving, and agents on this site",
+    "date": "2026-09-28",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/glossary.astro",
+    "slug": "ai-glossary"
+  },
+  {
     "href": "/ai/frontier-price-meets-open-weight-ipo/",
     "title": "Frontier price meets open-weight, and the IPO clock",
     "description": "Open-weight cost curves are colliding with frontier listing calendars",
