@@ -1,0 +1,56 @@
+{
+  "slug": "when-force-majeure-hits-the-ai-build-out",
+  "door": "risk",
+  "asOf": "2026-09-28",
+  "asOfLabel": "28 Sep 2026 · campus metrics",
+  "metrics": [
+    {
+      "id": "generation",
+      "value": "~2.45 GW",
+      "label": "On-site Bloom fuel cells",
+      "note": "Project Jupiter design capacity",
+      "source": "https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/"
+    },
+    {
+      "id": "pipeline",
+      "value": "1 Feb 2027",
+      "label": "Green Chile in-service",
+      "note": "Energy Transfer / Transwestern, after State Land Office route denials",
+      "source": "https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/"
+    },
+    {
+      "id": "permit",
+      "value": "23 Nov",
+      "label": "Air-permit decision deadline",
+      "note": "State decision on the fuel-cell plant",
+      "source": "https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/"
+    },
+    {
+      "id": "deferral",
+      "value": "up to 3 yrs",
+      "label": "Rent deferral if power outs hold",
+      "note": "If the parties treat force majeure as tied to power commitments",
+      "source": "https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/"
+    },
+    {
+      "id": "equity",
+      "value": "~$3B",
+      "label": "Blue Owl equity in the campus",
+      "note": "STACK Infrastructure unit; Reuters source familiar with the deal",
+      "source": "https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/"
+    },
+    {
+      "id": "servers",
+      "value": "~7%",
+      "label": "Server share of commercial load",
+      "note": "EIA estimate for 2025; servers only",
+      "source": "https://www.eia.gov/todayinenergy/detail.php?id=67704"
+    }
+  ],
+  "revisions": [
+    {
+      "date": "2026-09-28",
+      "note": "First metric rail pack. Values taken from the essay primaries; replace a value here when a print or date moves."
+    }
+  ]
+}
