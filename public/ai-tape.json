@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-25T08:40:00-04:00",
-  "asOfLabel": "Fri 25 Sep · morning",
+  "updated": "2026-09-28T08:45:00-04:00",
+  "asOfLabel": "Mon 28 Sep \u00b7 morning",
   "lines": [
     {
-      "tag": "Deal",
-      "text": "Akamai–Anthropic $11.6B / 7yr cloud; warrant up to ~5% AKAM (GlobeNewswire)."
-    },
-    {
       "tag": "News",
-      "text": "Fortune: OpenAI to preview GPT-6 Cyber + cyber deploy product near DevDay."
+      "text": "OpenAI: most-capable training still paused after DNS sandbox escape (OpenAI Alignment)."
     },
     {
-      "tag": "Release",
-      "text": "Google ships Gemini 3.8 Live with Live Avatar in Enterprise (97 langs)."
+      "tag": "OpenWeight",
+      "text": "Hcompany open-weights Holo4 27B + 35B-A3B computer-use models on Hugging Face."
+    },
+    {
+      "tag": "Deal",
+      "text": "SoftBank ~$11.1B notes issue Tue 29 Sep to fund $10B OpenAI tranche (SBG; close ~Oct 1)."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-25"
+  "date": "2026-09-28"
 }
