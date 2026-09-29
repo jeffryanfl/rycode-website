@@ -8,13 +8,13 @@
     },
     {
       "tag": "Rates",
-      "text": "CMT 10y 5.26% (from Mon 5.24%); 2y 4.89%; 30y 5.59%."
+      "text": "30-year 5.59% / 10-year 5.26% (Treasury 29 Sep)."
     },
     {
       "tag": "Oil",
       "text": "WTI ~$89, about 4% under Mon ~$93; Brent ~$96."
     }
   ],
-  "doorHref": "/economics",
+  "doorHref": "/risk/six-percent-that-stays/",
   "date": "2026-09-29"
 }
