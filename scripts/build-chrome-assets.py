@@ -119,6 +119,12 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "meta-named-an-enterprise-stack.astro":
         # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-28"
+    elif target.name == "terafab.astro":
+        # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-13"
+    elif target.name == "memphis-colossus.astro":
+        # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-13"
     else:
         date = git_date(target)
     if target.name == "next-token-engine.astro":
@@ -223,8 +229,27 @@ def build_catalog_real() -> list[dict]:
             items.append(article_from(row, "ai", f"ai-{series}", crumbs))
 
     hw_crumbs = ai_crumbs + [{"href": "/ai/hardware/", "label": "Hardware"}]
-    for row in rows_from(ROOT / "src/pages/ai/hardware/index.astro"):
-        items.append(article_from(row, "ai", "ai-hardware", hw_crumbs))
+    # The hub lists five themes. These two leaves are the plant essays.
+    # The fabric card links to the campus page, so it is not a second essay.
+    hardware_rows = [
+        {
+            "href": "/ai/hardware/chips/terafab/",
+            "title": "Terafab",
+            "description": "Chip fab. SpaceX + Tesla. Not a training hall.",
+        },
+        {
+            "href": "/ai/hardware/data-centers/memphis-colossus/",
+            "title": "Memphis / Colossus",
+            "description": "Training campus. Models learn here. Not a chip foundry.",
+        },
+    ]
+    for row in hardware_rows:
+        theme_crumb = (
+            [{"href": "/ai/hardware/chips/", "label": "Chips"}]
+            if "/chips/" in row["href"]
+            else [{"href": "/ai/hardware/data-centers/", "label": "Data centers"}]
+        )
+        items.append(article_from(row, "ai", "ai-hardware", hw_crumbs + theme_crumb))
     return items
 
 

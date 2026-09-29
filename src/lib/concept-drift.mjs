@@ -17,12 +17,22 @@ export function articleRoutesFromPages(pagesDir) {
       if (!entry.name.endsWith('.astro')) continue;
       const rel = path.relative(pagesDir, full).split(path.sep).join('/');
       if (!isArticleFile(rel)) continue;
+      if (isRedirectStub(full)) continue;
       routes.push(routeFromRel(rel));
     }
   }
 
   walk(pagesDir);
   return routes.sort();
+}
+
+/** A page that only redirects is not an essay. The plant body lives at the new path. */
+function isRedirectStub(full) {
+  const text = fs.readFileSync(full, 'utf8');
+  if (!/return\s+Astro\.redirect\(/.test(text)) return false;
+  const parts = text.split('---');
+  const body = (parts.length >= 3 ? parts.slice(2).join('---') : '').trim();
+  return body.length === 0;
 }
 
 function isArticleFile(rel) {

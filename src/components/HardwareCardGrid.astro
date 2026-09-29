@@ -1,0 +1,37 @@
+---
+import type { HardwareCard } from '../lib/hardware';
+
+interface Props {
+  cards: HardwareCard[];
+  listLabel: string;
+  /** Shown when this theme has no plant page. No number and no link. */
+  emptyTitle?: string;
+}
+
+const { cards, listLabel, emptyTitle } = Astro.props;
+---
+
+<ul class="hw-card-grid" aria-label={listLabel}>
+  {cards.length === 0 && emptyTitle ? (
+    <li>
+      <div class="hw-card hw-card--quiet">
+        <h2 class="hw-card-title">{emptyTitle}</h2>
+      </div>
+    </li>
+  ) : (
+    cards.map((card) => (
+      <li>
+        <a class="hw-card" href={card.href}>
+          <h2 class="hw-card-title">{card.title}</h2>
+          {card.value ? (
+            <p class="hw-card-metric">
+              <span class="hw-card-value">{card.value}</span>
+              <span class="hw-card-label">{card.label}</span>
+            </p>
+          ) : null}
+          <p class="hw-card-dek">{card.dek}</p>
+        </a>
+      </li>
+    ))
+  )}
+</ul>

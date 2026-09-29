@@ -1108,7 +1108,7 @@
     "slug": "ai-models-open-weight-kimi-k3"
   },
   {
-    "href": "/ai/hardware/terafab/",
+    "href": "/ai/hardware/chips/terafab/",
     "title": "Terafab",
     "description": "Chip fab. SpaceX + Tesla. Not a training hall.",
     "date": "2026-09-13",
@@ -1122,13 +1122,17 @@
       {
         "href": "/ai/hardware/",
         "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
       }
     ],
-    "file": "src/pages/ai/hardware/terafab.astro",
-    "slug": "ai-hardware-terafab"
+    "file": "src/pages/ai/hardware/chips/terafab.astro",
+    "slug": "ai-hardware-chips-terafab"
   },
   {
-    "href": "/ai/hardware/memphis-colossus/",
+    "href": "/ai/hardware/data-centers/memphis-colossus/",
     "title": "Memphis / Colossus",
     "description": "Training campus. Models learn here. Not a chip foundry.",
     "date": "2026-09-13",
@@ -1142,9 +1146,13 @@
       {
         "href": "/ai/hardware/",
         "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/data-centers/",
+        "label": "Data centers"
       }
     ],
-    "file": "src/pages/ai/hardware/memphis-colossus.astro",
-    "slug": "ai-hardware-memphis-colossus"
+    "file": "src/pages/ai/hardware/data-centers/memphis-colossus.astro",
+    "slug": "ai-hardware-data-centers-memphis-colossus"
   }
 ]

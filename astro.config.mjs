@@ -71,6 +71,8 @@ export default defineConfig({
     '/research/saaspocalypse': '/economics/saas-barbell-2026/',
     '/ai/models/openai/gpt-5-6-sol': '/ai/models/openai/gpt-6-sol/',
     '/risk/panic-before-the-breach': '/risk/the-ban-lands-on-open-source/',
+    '/ai/hardware/terafab': '/ai/hardware/chips/terafab/',
+    '/ai/hardware/memphis-colossus': '/ai/hardware/data-centers/memphis-colossus/',
   },
   server: {
     host: true,

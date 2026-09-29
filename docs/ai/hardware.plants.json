@@ -1,0 +1,8 @@
+{
+  "asOfLabel": "13 Sep 2026 · hardware pack",
+  "plants": [
+    { "id": "terafab", "theme": "chips", "href": "/ai/hardware/chips/terafab/", "title": "Terafab", "dek": "Wafer fab. SpaceX + Tesla. Not a training hall.", "value": "$16.8B", "label": "Phase 1 · company figure · Aug 2026" },
+    { "id": "colossus", "theme": "data-centers", "href": "/ai/hardware/data-centers/memphis-colossus/", "title": "Memphis / Colossus", "dek": "Training campus. Not a chip foundry.", "value": "170 PB/s", "label": "Memory bandwidth · company · fetched 13 Sep 2026" },
+    { "id": "colossus-fabric", "theme": "networks", "href": "/ai/hardware/data-centers/memphis-colossus/", "title": "Colossus fabric", "dek": "Per-server network on the same campus page.", "value": "2.8 Tb/s", "label": "Company · fetched 13 Sep 2026" }
+  ]
+}

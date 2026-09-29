@@ -18,3 +18,8 @@
 
 /risk/panic-before-the-breach      /risk/the-ban-lands-on-open-source/  301!
 /risk/panic-before-the-breach/     /risk/the-ban-lands-on-open-source/  301!
+
+/ai/hardware/terafab                  /ai/hardware/chips/terafab/  301!
+/ai/hardware/terafab/                 /ai/hardware/chips/terafab/  301!
+/ai/hardware/memphis-colossus         /ai/hardware/data-centers/memphis-colossus/  301!
+/ai/hardware/memphis-colossus/        /ai/hardware/data-centers/memphis-colossus/  301!

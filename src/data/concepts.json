@@ -128,7 +128,7 @@
       "blurb": "The electricity, gas, and permits a training campus has to hold before the models run.",
       "articles": [
         "/risk/when-force-majeure-hits-the-ai-build-out/",
-        "/ai/hardware/memphis-colossus/"
+        "/ai/hardware/data-centers/memphis-colossus/"
       ],
       "links": [
         "force-majeure",
@@ -333,8 +333,8 @@
       "label": "Hardware",
       "blurb": "Where the chips are fabricated, and where the training campus consumes them.",
       "articles": [
-        "/ai/hardware/memphis-colossus/",
-        "/ai/hardware/terafab/"
+        "/ai/hardware/data-centers/memphis-colossus/",
+        "/ai/hardware/chips/terafab/"
       ],
       "links": [
         "model-releases",
