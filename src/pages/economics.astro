@@ -5,41 +5,38 @@ import '../styles/economics.css';
 const pieces = [
   {
     href: '/economics/long-yields-hike-ai-credit-stress/',
-    title: 'Long yields, a hike into geopolitics, and AI credit under stress',
-    dek: "The same week's bond tape, Fed hike, and data-center financing stress are one story, not three.",
+    title: 'Long yields, the hike, and AI credit stress hit in the same week.',
+    dek: 'The bond tape, the Fed vote, and data-center financing belong in one read.',
   },
   {
     href: '/economics/post-inflation-dollars-pay-pre-inflation-debts/',
-    title: 'How inflation changes the real cost of fixed government debt',
-    dek: 'A dollar borrowed before prices rise and a dollar repaid after are not the same, and that does not pay the debt off.',
+    title: 'Inflation changes the real cost of fixed government debt.',
+    dek: 'Repayment dollars buy less than the dollars borrowed. That does not pay the debt off.',
   },
   {
     href: '/economics/warsh-first-hike-oil-and-five-percent-ten-year/',
-    title: 'Warsh’s first rate increase, with oil above $100 and a ten-year near 5 percent',
-    dek: 'On September 16, 2026 the Fed raised the funds rate by a quarter point. The long bond and the oil price were already high.',
+    title: 'The first hike arrived with oil above $100 and the ten-year near 5 percent.',
+    dek: 'The 16 September 2026 vote was a quarter point. Energy and long rates were already tight.',
   },
   {
     href: '/economics/still-1998-not-1999/',
-    title: 'Whether this boom matches the late-1990s stock market',
-    dek: 'Companies already have revenue and profit. The open question is price, and when private companies raise cash.',
+    title: 'This boom already has revenue and profit.',
+    dek: 'The open question is the price paid for those earnings, and when private companies raise cash.',
+  },
+  {
+    href: '/economics/saas-barbell-2026/',
+    title: 'Software subscription stock prices fell in 2026 because the multiple fell.',
+    dek: 'Investors paid less for a dollar of sales. Revenue did not disappear.',
   },
   {
     href: '/economics/jobs-print-was-strong-mix-is-the-story/',
-    title: 'The August jobs report, and which jobs the hiring is for',
-    dek: 'Payrolls were strong. Hiring people who do the work with AI, rather than only people who manage that work.',
+    title: 'August payrolls were strong. The mix of jobs is the story.',
+    dek: 'Hiring people who do the work with AI, not only people who manage that work.',
   },
   {
     href: '/economics/ten-trillion-to-roll/',
-    title: 'About $10 trillion of U.S. debt comes due and has to be refinanced',
-    dek: 'Most of that is short-term bills the Treasury already replaces. The cash balance is a checking account, not a program to buy the debt.',
-  },
-];
-
-const saas = [
-  {
-    href: '/economics/saas-barbell-2026/',
-    title: 'Why software subscription stock prices fell in 2026',
-    dek: 'Investors paid a lower multiple of sales. Revenue did not disappear.',
+    title: 'About $10 trillion of U.S. debt comes due and has to be refinanced.',
+    dek: 'Most of that is short-term bills the Treasury already replaces. The cash balance is a checking account, not a purchase program.',
   },
 ];
 ---
@@ -58,18 +55,6 @@ const saas = [
 
   <ul class="economics-index">
     {pieces.map((piece) => (
-      <li>
-        <a href={piece.href}>
-          <span class="economics-index-title">{piece.title}</span>
-          <span class="economics-index-dek">{piece.dek}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
-
-  <h2 class="economics-section">SaaS</h2>
-  <ul class="economics-index">
-    {saas.map((piece) => (
       <li>
         <a href={piece.href}>
           <span class="economics-index-title">{piece.title}</span>
