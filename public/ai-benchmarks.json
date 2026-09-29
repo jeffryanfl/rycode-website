@@ -2,7 +2,7 @@
   "schema": "ai-benchmarks-v1",
   "asOf": "2026-09-29",
   "updated": "2026-09-29",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Six rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0 only; aaIndex blank until an AA primary exists), Claude Fable 5.1 · GPT-6 Astra · GPT-6 Sol · Grok 4.7. Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Seven rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0 only; aaIndex blank until an AA primary exists), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench from that same chart; aaIndex blank) · GPT-6 Sol · Grok 4.7. Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
   "columns": [
     {
       "id": "cursorBench",
@@ -235,6 +235,44 @@
         "https://developers.openai.com/api/docs/models/gpt-6-astra",
         "https://artificialanalysis.ai/leaderboards/models",
         "https://artificialanalysis.ai/"
+      ]
+    },
+    {
+      "lab": "OpenAI",
+      "model": "GPT-6.1 Sol",
+      "apiId": "gpt-6.1-sol",
+      "doorHref": "/ai/models/openai/gpt-6.1-sol/",
+      "role": "GPT-6.1 mid-tier complement to Astra",
+      "benches": {
+        "cursorBench": null,
+        "deepSwe": {
+          "value": "75.2%",
+          "version": "v1.1",
+          "notes": "Company announce chart High effort 0.7522. Not Astra's 74.1% cell.",
+          "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
+        },
+        "terminalBench": null,
+        "osworld": {
+          "value": "71.4%",
+          "version": "2.0 max offline",
+          "notes": "Company announce chart, max effort, offline set (0.7142).",
+          "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
+        },
+        "automationBench": {
+          "value": "31.7%",
+          "version": "1.0.6 medium",
+          "notes": "Company announce chart, medium effort (0.317).",
+          "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
+        },
+        "hle": null,
+        "arcAgi": null,
+        "aaIndex": null
+      },
+      "sources": [
+        "https://openai.com/index/introducing-gpt-6-1-sol/",
+        "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "https://cdn.openai.com/pdf/38e3efcf-545e-44cd-99ec-2b7eb395f4cc/oai_GPT_6_1_Sol.pdf",
+        "https://openai.com/index/devday-2026-recap/"
       ]
     },
     {

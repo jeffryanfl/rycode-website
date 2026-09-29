@@ -468,6 +468,46 @@
     "slug": "ai-models-openai-gpt-6-astra"
   },
   {
+    "href": "/ai/models/openai/gpt-6.1-sol/",
+    "title": "GPT-6.1 Sol",
+    "description": "Near-Astra mid-tier at Sol list price.",
+    "date": "2026-09-29",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6.1-sol.astro",
+    "slug": "ai-models-openai-gpt-6.1-sol"
+  },
+  {
+    "href": "/ai/models/openai/dots/",
+    "title": "Dots",
+    "description": "Always-on agent. Own cloud computer. Astra.",
+    "date": "2026-09-29",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/dots.astro",
+    "slug": "ai-models-openai-dots"
+  },
+  {
     "href": "/ai/models/openai/gpt-6-sol/",
     "title": "GPT-6 Sol",
     "description": "Mid-tier for complex coding and agentic work.",

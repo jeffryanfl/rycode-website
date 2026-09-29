@@ -26,6 +26,8 @@
   "/ai/models/anthropic/claude-sonnet-5/": "Claude Sonnet 5 is Anthropic's faster everyday model for coding and agents, at $2 per million input tokens and $10 per million output tokens.",
   "/ai/models/anthropic/claude-haiku-4-5/": "Claude Haiku 4.5 is Anthropic's fastest near-frontier model, priced for cost-sensitive work and sub-agents.",
   "/ai/models/openai/gpt-6-astra/": "GPT-6 Astra is OpenAI's flagship for hard end-to-end work: reasoning, coding, computer use, research, and documents.",
+  "/ai/models/openai/gpt-6.1-sol/": "GPT-6.1 Sol is an upgrade to GPT-6 Sol, released 29 September 2026, at $2 input, $0.10 cached input, and $10 output per million tokens.",
+  "/ai/models/openai/dots/": "Dots is an always-on ChatGPT agent powered by GPT-6 Astra, with its own cloud computer and browser.",
   "/ai/models/openai/gpt-6-sol/": "GPT-6 Sol is OpenAI's mid-tier GPT-6 model for complex coding and agent work, released 22 September 2026 at $2 and $10 per million tokens.",
   "/ai/models/openai/gpt-6-luna/": "GPT-6 Luna is the cheaper, faster GPT-6 tier released with Sol on 22 September 2026, at $0.10 and $0.50 per million tokens.",
   "/ai/models/xai/grok-4-7/": "Grok 4.7 is xAI's current model for coding, agents, and knowledge work, API id grok-4.7, shipped 21 September 2026.",

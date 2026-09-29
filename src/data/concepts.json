@@ -319,7 +319,9 @@
         "/ai/models/anthropic/claude-haiku-4-5/",
         "/ai/models/anthropic/claude-opus-5/",
         "/ai/models/anthropic/claude-sonnet-5/",
-        "/ai/models/openai/gpt-6-astra/"
+        "/ai/models/openai/gpt-6-astra/",
+        "/ai/models/openai/gpt-6.1-sol/",
+        "/ai/models/openai/dots/"
       ],
       "links": [
         "open-weights",
