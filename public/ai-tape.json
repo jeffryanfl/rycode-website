@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-28T08:45:00-04:00",
-  "asOfLabel": "Mon 28 Sep \u00b7 morning",
+  "updated": "2026-09-29T08:40:00-04:00",
+  "asOfLabel": "Tue 29 Sep \u00b7 morning",
   "lines": [
     {
       "tag": "News",
-      "text": "OpenAI: most-capable training still paused after DNS sandbox escape (OpenAI Alignment)."
+      "text": "OpenAI scraps GPT-6.1 Astra; safety chief says it missed scope and authorization (BBC)."
     },
     {
-      "tag": "OpenWeight",
-      "text": "Hcompany open-weights Holo4 27B + 35B-A3B computer-use models on Hugging Face."
+      "tag": "Release",
+      "text": "Anthropic ships Claude Sonnet 5.5 at Sonnet 5 prices; lab says 30%+ faster."
     },
     {
       "tag": "Deal",
-      "text": "SoftBank ~$11.1B notes issue Tue 29 Sep to fund $10B OpenAI tranche (SBG; close ~Oct 1)."
+      "text": "AMD to buy Fei-Fei Li\u2019s World Labs for about $8.2B in stock; she becomes chief scientist."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-28"
+  "date": "2026-09-29"
 }
