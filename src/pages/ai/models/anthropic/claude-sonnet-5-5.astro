@@ -1,0 +1,71 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Claude Sonnet 5.5 — A.I. — Rycode"
+  description="Claude Sonnet 5.5 is the second model in Anthropic’s Claude 5.5 family, released 28 September 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Claude Sonnet 5.5</h1>
+    <p class="ai-model-dek">Claude Sonnet 5.5 is the second model in Anthropic’s Claude 5.5 family, released 28 September 2026. Anthropic says it is a clear upgrade over Claude Sonnet 5, runs 30%+ faster, and costs up to 30% less for most work. The API id is <code>claude-sonnet-5-5</code>. Token prices are $2 input and $10 output per million, with cache reads at $0.20 per million.</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Anthropic has not published a parameter count or training FLOPs for Sonnet 5.5 on the announce page, the models overview, or the system card sections used here. The system card says training used a proprietary mix of public web data, public and private datasets, and synthetic data, with cleaning steps that include deduplication and classification. The models overview lists a reliable knowledge cutoff and a training-data cutoff of June 2026.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Adaptive thinking is on by default. Effort supports <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>. The Claude API default is <code>high</code>. Anthropic says Claude Code and the Claude apps default to medium, and the Claude Platform defaults to high. The lowest thinking setting is <code>between_tools</code>, which turns off up-front thinking and works at <code>high</code> effort or below. Anthropic reports output generation 30%+ faster than Sonnet 5.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context window is 1 million tokens. Max output is 128K tokens on the synchronous Messages API. On the Message Batches API, up to 300K output tokens is available with the <code>output-300k-2026-03-24</code> beta header. Inputs are text and images. Output is text.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Sonnet 5.5 is a faster, lower-cost complement to Opus 5.5. Anthropic says it is strongest at well-scoped everyday tasks, fixing bugs, and creating polished documents, slides, and spreadsheets, and that it has a sharp eye for design. Cybersecurity capability is comparable to Opus 5, so this is the first Sonnet model to launch with cyber safeguards and fallbacks. Higher-risk cybersecurity tasks fall back to Sonnet 5. Biology safeguards are the same as Sonnet 5. It is also the first Sonnet model to launch with classifiers that block reasoning extraction, and it expands preserved thinking so a thinking block stays tied to the account that created it.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Numbers below are Anthropic’s Sonnet 5.5 announce and system card. Do not mix these with an Artificial Analysis Intelligence Index.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Sonnet 5.5</th>
+            <th scope="col">Sonnet 5</th>
+            <th scope="col">Opus 5.5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Terminal-Bench 4.0</td><td>70.6%</td><td>10.3%</td><td>66.4% at Xhigh</td></tr>
+          <tr><td>CursorBench 4.0</td><td>55.5%</td><td>34.1%</td><td>57.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Effort is not the same across the Terminal-Bench row. Sonnet 5.5 at 70.6% is max effort on the system card. Opus 5.5 at 66.4% is Xhigh. Sonnet 5 at 10.3% has no effort named on the announce.</p>
+    <p>Anthropic also publishes GDPval-AA v2.1 at max effort (Sonnet 5.5 1844, Sonnet 5 1449, Opus 5.5 1846). Artificial Analysis ran that eval on a pre-release Sonnet 5.5 deployment that Anthropic says had a structured-output bug, since fixed, and expects any effect to be small and to understate the score.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Sonnet 5.5</th>
+            <th scope="col">Opus 5.5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>$2</td><td>$4</td></tr>
+          <tr><td>Output / MTok</td><td>$10</td><td>$20</td></tr>
+          <tr><td>Cache reads / MTok</td><td>$0.20</td><td>$0.20</td></tr>
+          <tr><td>Cache writes / MTok</td><td>$2.50</td><td>$5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Sticker prices match Sonnet 5. Anthropic says a typical task costs up to 30% less than Sonnet 5 because the model uses fewer tokens. The models overview also lists a 1-hour cache write at $4 per million tokens, and batch requests at half the input and output price. US-only inference is 1.1× on input and output tokens. Available on the Claude API, Amazon Bedrock, Google Cloud, Microsoft Foundry, and Claude Platform on AWS. Anthropic says zero data retention is available, as with Opus 5.5 and Sonnet 5.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.anthropic.com/claude-sonnet-5-5">Introducing Claude Sonnet 5.5</a></li>
+      <li><a href="https://platform.claude.com/docs/en/models/sonnet-5-5/overview.md">Claude Sonnet 5.5 overview</a></li>
+      <li><a href="https://www.anthropic.com/claude/sonnet">Claude Sonnet</a></li>
+      <li><a href="https://www.anthropic.com/claude-sonnet-5-5-system-card">Claude Sonnet 5.5 System Card</a></li>
+    </ul>
+  </article>
+</Layout>

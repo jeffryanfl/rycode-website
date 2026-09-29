@@ -279,6 +279,7 @@
       "blurb": "The models and product surfaces the labs have shipped, and what each one is for.",
       "articles": [
         "/ai/models/anthropic/claude-opus-5-5/",
+        "/ai/models/anthropic/claude-sonnet-5-5/",
         "/ai/models/openai/gpt-6-luna/",
         "/ai/models/openai/gpt-6-sol/",
         "/ai/models/open-weight/glm-5-3/",
