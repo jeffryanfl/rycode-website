@@ -38,7 +38,7 @@ export const GET: APIRoute = () => {
       <guid isPermaLink="true">${link}</guid>
       <pubDate>${pubDate}</pubDate>
       <description>${esc(item.description)}</description>
-      <author>rycode@jryanpost.com (${esc(AUTHOR)})</author>
+      <author>contact@rycode.dev (${esc(AUTHOR)})</author>
     </item>`;
       })
       .join('\n    ')}
