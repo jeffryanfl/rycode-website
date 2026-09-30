@@ -118,6 +118,46 @@ h1.opinions-identity {
   background: transparent;
 }
 
+/* Essay pages reuse the paper chassis. The index keeps the padded card grid. */
+.editorial-shell--opinions:has(.paper) {
+  --paper: #080a10;
+  --ink: #e8eaee;
+  --ink-muted: rgba(232, 234, 238, 0.74);
+  --ink-faint: rgba(232, 234, 238, 0.46);
+  --ink-sat: rgba(232, 234, 238, 0.38);
+  --cyan: rgba(248, 250, 252, 0.72);
+  --hair: rgba(248, 250, 252, 0.16);
+  --hair-strong: rgba(248, 250, 252, 0.28);
+}
+
+.editorial-shell--opinions:has(.paper) .masthead--opinions {
+  border-bottom: 1px solid var(--hair);
+  padding: 0.85rem 1.75rem 0.7rem;
+}
+
+.editorial-shell--opinions:has(.paper) .editorial-main-content {
+  padding: 0;
+}
+
+.editorial-shell--opinions:has(.paper) .paper a {
+  color: var(--cyan);
+}
+
+.editorial-shell--opinions:has(.paper) .paper a:hover,
+.editorial-shell--opinions:has(.paper) .paper a:focus-visible {
+  color: var(--ink);
+}
+
+.editorial-shell--opinions .paper-body h2 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 2.2rem 0 0.9rem;
+}
+
 .editorial-shell--opinions .editorial-footer {
   background: transparent;
   border-top: none;
@@ -144,7 +184,7 @@ h1.opinions-identity {
   color: var(--opinions-muted);
 }
 
-.opinions-grid {
+.op-card-grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -291,13 +331,13 @@ a.opinions-card:focus-visible .opinions-card-title {
 }
 
 @media (max-width: 1080px) {
-  .opinions-grid {
+  .op-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 720px) {
-  .opinions-grid {
+  .op-card-grid {
     grid-template-columns: 1fr;
   }
 }

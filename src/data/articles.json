@@ -176,6 +176,22 @@
     "slug": "risk-six-percent-that-stays"
   },
   {
+    "href": "/opinions/the-license-starts-at-their-scale/",
+    "title": "The Safety Facade: How AI Giants are Engineering Regulatory Capture",
+    "description": "They asked Washington for an oversite bar only a handful of firms can reach. That is capture with a safety facade, and the scare they used is one their own eval agents created.",
+    "date": "2026-09-30",
+    "section": "opinions",
+    "series": "opinions",
+    "crumbs": [
+      {
+        "href": "/opinions/",
+        "label": "Opinions"
+      }
+    ],
+    "file": "src/pages/opinions/the-license-starts-at-their-scale.astro",
+    "slug": "opinions-the-license-starts-at-their-scale"
+  },
+  {
     "href": "/ai/meta-named-an-enterprise-stack/",
     "title": "Meta named an enterprise stack. It did not ship a new buyer.",
     "description": "The company is trying to sell the consumer agent line as a second business.",

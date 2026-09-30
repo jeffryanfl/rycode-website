@@ -131,6 +131,9 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "dots.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-29"
+    elif target.name == "the-license-starts-at-their-scale.astro":
+        # Opinion card date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-09-30"
     else:
         date = git_date(target)
     if target.name == "next-token-engine.astro":
@@ -256,6 +259,25 @@ def build_catalog_real() -> list[dict]:
             else [{"href": "/ai/hardware/data-centers/", "label": "Data centers"}]
         )
         items.append(article_from(row, "ai", "ai-hardware", hw_crumbs + theme_crumb))
+
+    opinion_crumbs = [{"href": "/opinions/", "label": "Opinions"}]
+    opinion_rows = json.loads((ROOT / "src" / "data" / "opinions.json").read_text())
+    for row in opinion_rows:
+        target = href_to_file(row["href"])
+        if target is None or target.name == "index.astro":
+            continue
+        items.append(
+            article_from(
+                {
+                    "href": row["href"],
+                    "title": row["title"],
+                    "description": row["dek"],
+                },
+                "opinions",
+                "opinions",
+                opinion_crumbs,
+            )
+        )
     return items
 
 
@@ -376,7 +398,12 @@ def main() -> None:
     for key, (name, dek) in sections.items():
         card_section(name, dek, OG / "sections" / f"{key}.png")
     for article in articles:
-        label = {"economics": "Economics", "risk": "Risk", "ai": "A.I."}[article["section"]]
+        label = {
+            "economics": "Economics",
+            "risk": "Risk",
+            "ai": "A.I.",
+            "opinions": "Opinions",
+        }[article["section"]]
         card_article(label, article["title"], OG / "articles" / f"{article['slug']}.png")
     print("og bytes", sum(p.stat().st_size for p in OG.rglob("*.png")))
 

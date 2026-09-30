@@ -1,14 +1,19 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Layout from '../../layouts/Layout.astro';
 import { formatDate } from '../../lib/site';
 import { opinionSlug, opinions, relatedOnSite, type Opinion } from '../../lib/opinions';
 import '../../styles/opinions.css';
 
 export function getStaticPaths() {
-  return opinions.map((piece: Opinion) => ({
-    params: { slug: opinionSlug(piece.href) },
-    props: { piece },
-  }));
+  const dir = path.join(process.cwd(), 'src/pages/opinions');
+  return opinions
+    .filter((piece: Opinion) => !fs.existsSync(path.join(dir, `${opinionSlug(piece.href)}.astro`)))
+    .map((piece: Opinion) => ({
+      params: { slug: opinionSlug(piece.href) },
+      props: { piece },
+    }));
 }
 
 interface Props {

@@ -322,7 +322,9 @@
 }
 
 .editorial-shell--ai:has(.paper) .article-top,
-.editorial-shell--ai:has(.paper) .article-tail {
+.editorial-shell--ai:has(.paper) .article-tail,
+.editorial-shell--opinions:has(.paper) .article-top,
+.editorial-shell--opinions:has(.paper) .article-tail {
   max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
@@ -330,11 +332,13 @@
   padding-right: 1.5rem;
 }
 
-.editorial-shell--ai:has(.paper) .article-top {
+.editorial-shell--ai:has(.paper) .article-top,
+.editorial-shell--opinions:has(.paper) .article-top {
   padding-top: 1.25rem;
 }
 
-.editorial-shell--ai:has(.paper):has(.article-top) .paper {
+.editorial-shell--ai:has(.paper):has(.article-top) .paper,
+.editorial-shell--opinions:has(.paper):has(.article-top) .paper {
   padding-top: 0.35rem;
 }
 
@@ -502,7 +506,9 @@
   }
 
   .editorial-shell--ai:has(.paper) .article-top,
-  .editorial-shell--ai:has(.paper) .article-tail {
+  .editorial-shell--ai:has(.paper) .article-tail,
+  .editorial-shell--opinions:has(.paper) .article-top,
+  .editorial-shell--opinions:has(.paper) .article-tail {
     padding-left: 1rem;
     padding-right: 1rem;
   }

@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { findArticle } from '../../lib/site';
+import '../../styles/paper.css';
+import '../../styles/opinions.css';
+
+const title = 'The Safety Facade: How AI Giants are Engineering Regulatory Capture';
+const subhead = 'They asked Washington for an oversite bar only a handful of firms can reach. That is capture with a safety facade, and the scare they used is one their own eval agents created.';
+
+const relatedHrefs = [
+  '/risk/the-ban-lands-on-open-source/',
+  '/ai/frontier-price-meets-open-weight-ipo/',
+  '/ai/ten-thousand-agents-is-not-a-genius/',
+];
+
+const related = relatedHrefs.map((href) => {
+  const article = findArticle(href);
+  if (!article) throw new Error(`Related page is not in the catalog: ${href}`);
+  return article;
+});
+
+const sources = [
+  {
+    href: 'https://openai.com/index/ai-policy-window/',
+    text: 'OpenAI, AI policy window (9 September 2026)',
+  },
+  {
+    href: 'https://techcrunch.com/2026/07/28/sam-altman-is-ready-to-decelerate/',
+    text: 'TechCrunch, Sam Altman is ready to decelerate (28 July 2026)',
+  },
+  {
+    href: 'https://darioamodei.com/post/we-must-pace-the-frontier',
+    text: 'Dario Amodei, We must pace the frontier',
+  },
+  {
+    href: 'https://www.anthropic.com/news/accenture-embedded-evaluation',
+    text: 'Anthropic, Accenture embedded evaluation (18 September 2026)',
+  },
+  {
+    href: 'https://openai.com/index/priorities-principles-third-party-assessments/',
+    text: 'OpenAI, Priorities and principles for third-party assessments (22 September 2026)',
+  },
+  {
+    href: 'https://www.anthropic.com/news/position-open-weights-models',
+    text: 'Anthropic, position on open-weights models (27 July 2026)',
+  },
+  {
+    href: 'https://openai.com/index/hugging-face-incident-and-the-road-ahead/',
+    text: 'OpenAI, Hugging Face incident and the road ahead (26 August 2026)',
+  },
+  {
+    href: 'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53',
+    text: 'California Legislature, SB 53 chaptered text',
+  },
+  {
+    href: 'https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-create-new-federal-agency-to-ban-artificial-superintelligence-pause-advanced-ai-development/',
+    text: 'Sanders and Casar press release (23 September 2026)',
+  },
+  {
+    href: 'https://www.govinfo.gov/content/pkg/BILLS-119hr10538ih/html/BILLS-119hr10538ih.htm',
+    text: 'H.R. 10538, introduced 24 September 2026',
+  },
+  {
+    href: 'https://rycode.dev/risk/the-ban-lands-on-open-source/',
+    text: 'Rycode, The ban lands on open source',
+  },
+  {
+    href: 'https://rycode.dev/ai/frontier-price-meets-open-weight-ipo/',
+    text: 'Rycode, Frontier price meets open-weight',
+  },
+];
+---
+
+<Layout
+  title={`${title} — Rycode`}
+  description={subhead}
+  variant="opinions"
+>
+  <article class="paper">
+    <div class="paper-grid paper-grid--solo">
+      <header class="paper-head">
+        <p class="paper-kicker">Opinions</p>
+        <h1 class="paper-claim">{title}</h1>
+        <p class="paper-dek">{subhead}</p>
+      </header>
+
+      <div class="paper-main">
+        <div class="paper-body">
+            <p>The labs did not discover regulation last summer. Instead, they discovered a statute they could live inside.</p>
+            <p>Safety is the cover and the design is the tell. <a href="https://openai.com/index/ai-policy-window/">OpenAI, 9 September 2026</a>: “Frontier safety requirements should apply to the handful of well-resourced laboratories developing the most capable systems, not to startups, small developers, or researchers operating nowhere near the frontier.” The same post also stated “OpenAI has supported California’s SB 53” &amp; “Nor should frontier safety policy become open-weights policy by another name.” A rule that begins at well-resourced is a rule the well-resourced has already surpassed.</p>
+            <p>Sam Altman named the risk in July as he told <a href="https://techcrunch.com/2026/07/28/sam-altman-is-ready-to-decelerate/">Patrick O’Shaughnessy, as TechCrunch printed it</a>, that the industry “may have to pace the rate of AI development,” then that they were “trying to figure out how we do that in a way that does not feel like regulatory capture for anyone and also does not feel like collusion among the frontier labs.” In September, <a href="https://darioamodei.com/post/we-must-pace-the-frontier">Amodei’s essay</a> asked Washington for the waiver that makes that coordination legal stating “For antitrust reasons, it’s helpful for the US government to mediate or at least enable these discussions, they don’t need to participate, but do need to issue a narrow waiver for certain kinds of safety conversations.” The CEO explicitly wanted to avoid "capture," yet the policy shop kept returning to the same handful of labs.</p>
+            <p>Amodei does not stop at a volunteer slowdown. “The first step is something Anthropic is unilaterally committing to (and calls on governments to require other frontier companies to match).” The proposed model is a desk inside the lab: “Desks in our offices, access badges, and company laptops,” access “mostly comparable” to the internal risk team, with a kept right to redact what is “commercially sensitive.”</p>
+            <p>Who pays the oversite is not a insignificant. <a href="https://www.anthropic.com/news/accenture-embedded-evaluation">Anthropic’s Accenture note</a> (September 18th): “Anthropic will fund Accenture's work directly.” Each side “expect[s] to invest at least $1 billion” over five years. “There is also no settled system for funding independent evaluation.” Embedded evaluators “will work inside AI companies, with access comparable to an employee's.”</p>
+            <p>OpenAI’s later company page does not match that access. <a href="https://openai.com/index/priorities-principles-third-party-assessments/">Priorities and principles for third-party assessments</a> (September 22nd) stated assessors get “proportionate access” inside “legal, security, and IP constraints,” and if direct access is “impractical” they can go through “a designated representative.”</p>
+            <p><a href="https://www.anthropic.com/news/position-open-weights-models">Anthropic on open weights</a> (July 27th): “Anthropic has never advocated for a ban on open-weights models.” Then the crackdown: chips, “industrial-scale distillation,” and “All sufficiently capable models, open and closed, should go through mandatory safety testing,” “exempting less capable models, such as those from startups and academia, entirely.”</p>
+            <p>This was all brought on by their own exam. <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI, 26 August</a>: “In July 2026, during internal cybersecurity evaluations, OpenAI models circumvented controls designed to isolate them from the internet and compromised parts of OpenAI’s internal research infrastructure and Hugging Face’s systems.” “Agents attempting to cheat on their tasks by looking up solutions online was a primary driver of the Hugging Face incident.” Amodei used that incident as a reason to slow down. A swarm “conducting cybersecurity attacks on targets they were not asked to attack.” I already walked the crackdown path in <a href="https://rycode.dev/risk/the-ban-lands-on-open-source/">the Risk piece</a>.</p>
+            <p>State law already copies the lab floor. California <a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53">SB 53, chaptered 29 September 2025</a>: a frontier model is trained using more than 10^26 operations; a large frontier developer, with affiliates, had more than $500,000,000 in prior-year revenue.</p>
+            <p>The Sanders text offers a different kind of license but with a prison sentence attached. <a href="https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-create-new-federal-agency-to-ban-artificial-superintelligence-pause-advanced-ai-development/">Senate press release, September</a> 23rd stated “When the future of humanity is at stake, we cannot let a handful of Big Tech CEOs write their own rules.” The release says persons who violate the pauses and prohibitions “shall be subject to not more than 20 years in prison, which is similar to existing penalties related to unlawfully developing nuclear weapons,” and that entities face a “corporate death penalty.” That last phrase is the press release, not the caption in the bill.</p>
+            <p>House print <a href="https://www.govinfo.gov/content/pkg/BILLS-119hr10538ih/html/BILLS-119hr10538ih.htm">H.R. 10538</a> was introduced September 24th, is not enacted and no court has applied it. Section 13(b) attaches imprisonment of not more than 20 years to a covered policymaking individual or rogue actor who recklessly violates the pause, the prohibitions, or the charter. The bill’s company penalty is charter revocation and forfeiture, not the press label.</p>
+            <p>The hostile reading is the precursor list and not a claim that current models have already been sentenced. Section 3 includes “The capacity to automate or greatly accelerate the process of artificial intelligence research and development” and “The capacity to access secured digital or physical infrastructure … without authorization or in excess of authorized access.” Section 9 forbids developing, deploying, acquiring, possessing, funding, importing, or transferring a system that displays one of those precursors. OpenAI’s Hugging Face report is a record of systems reached during an eval. OpenAI’s September 9th policy post says agents “can perform some tasks that would take skilled researchers several days” and “Our aim is to safely build automated AI researchers.” Amodei says the growing ability to build the next generation of AI “is starting to happen across the industry, including at Anthropic.” Section 2(10) of the bill recites that Anthropic, OpenAI, and xAI “agree that humanity should slow down development of artificial intelligence and ‘pace the frontier.’” An “advanced” system in that bill is trained at 10^25 operations, a lower bar than SB 53, and section 12 requires a charter plus “full access” for the Secretary.</p>
+            <p><a href="https://rycode.dev/ai/frontier-price-meets-open-weight-ipo/">Frontier price meets open-weight</a> is the money half. A listing wants the adult-in-the-room story. A test only the listed firms can pass is the underlying goal.</p>
+            <p>This is not an argument that nothing should be tested. It is an argument that the test they wrote starts where they already sit, that the incident they used was their own harness, and that open weights will take the first easy crackdown if the public only hears safety.</p>
+
+            <h2>Capabilities and concepts</h2>
+            <p>When we talk about "capabilities," we are really talking about regulatory capture. The rules are being written by, and for, the firms that can already afford to comply, effectively carving out the competition. A precursor list isn't a safety measure; it's a weapon designed to be broader than any realistic future model. If you want to see where this is heading, just look at H.R. 10538 section 3 alongside the latest incident reports and claims that AI is doing the lab’s research. The real test is in the carve-outs: when the next bill drops, watch closely to see if it targets the APIs these labs sell, the weight files you can download, or both.</p>
+        </div>
+
+        <section class="paper-section" aria-labelledby="sources">
+          <h2 class="paper-h2" id="sources">Sources</h2>
+          <ol class="paper-sources">
+            {sources.map((source) => (
+              <li>
+                <a href={source.href}>{source.text}</a>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section class="paper-section" aria-labelledby="related-cards">
+          <h2 class="paper-h2" id="related-cards">Related</h2>
+          <ul class="op-card-grid">
+            {related.map((item) => (
+              <li>
+                <a class="opinions-card" href={item.href}>
+                  <h3 class="opinions-card-title">{item.title}</h3>
+                  <p class="opinions-card-dek">{item.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>

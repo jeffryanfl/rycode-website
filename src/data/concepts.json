@@ -16,7 +16,8 @@
         "/ai/models/meta/muse/glimmer/",
         "/ai/models/deepseek/r1/",
         "/risk/the-ban-lands-on-open-source/",
-        "/ai/glossary/"
+        "/ai/glossary/",
+        "/opinions/the-license-starts-at-their-scale/"
       ],
       "links": [
         "frontier-pricing",
@@ -63,7 +64,8 @@
         "/ai/models/xai/grok-bot/",
         "/ai/ten-thousand-agents-is-not-a-genius/",
         "/ai/glossary/",
-        "/ai/meta-named-an-enterprise-stack/"
+        "/ai/meta-named-an-enterprise-stack/",
+        "/opinions/the-license-starts-at-their-scale/"
       ],
       "links": [
         "open-weights",
@@ -77,7 +79,8 @@
       "label": "Evals and safety",
       "blurb": "Tests that measure raw capability, and what happens when those tests leave the lab.",
       "articles": [
-        "/risk/the-ban-lands-on-open-source/"
+        "/risk/the-ban-lands-on-open-source/",
+        "/opinions/the-license-starts-at-their-scale/"
       ],
       "links": [
         "agent-swarms",
@@ -90,7 +93,8 @@
       "label": "Regulatory capture",
       "blurb": "A review desk that closed vendors can staff and open-weight projects often cannot.",
       "articles": [
-        "/risk/the-ban-lands-on-open-source/"
+        "/risk/the-ban-lands-on-open-source/",
+        "/opinions/the-license-starts-at-their-scale/"
       ],
       "links": [
         "open-weights",

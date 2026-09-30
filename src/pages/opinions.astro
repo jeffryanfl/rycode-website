@@ -20,7 +20,7 @@ import '../styles/opinions.css';
   {opinions.length === 0 ? (
     <p class="opinions-empty">Cards appear here when a piece is published.</p>
   ) : (
-    <ul class="opinions-grid" aria-label="Opinions">
+    <ul class="op-card-grid" aria-label="Opinions">
       {opinions.map((piece) => (
         <li>
           <a class="opinions-card" href={piece.href}>

@@ -3,7 +3,7 @@ door: opinions
 slug: the-license-starts-at-their-scale
 href: /opinions/the-license-starts-at-their-scale/
 kicker: Opinions
-title: The frontier license the labs want starts at their own scale
+title: The Safety Facade: How AI Giants are Engineering Regulatory Capture
 dek: They asked Washington for an oversite bar only a handful of firms can reach. That is capture with a safety facade, and the scare they used is one their own eval agents created.
 date: 2026-09-30
 qc: PASS (claims on prior draft; body is Jeffrey Notion rewrite 2026-09-30)
