@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-29T08:40:00-04:00",
-  "asOfLabel": "Tue 29 Sep \u00b7 morning",
+  "updated": "2026-09-30T08:40:00-04:00",
+  "asOfLabel": "Wed 30 Sep · morning",
   "lines": [
     {
-      "tag": "News",
-      "text": "OpenAI scraps GPT-6.1 Astra; safety chief says it missed scope and authorization (BBC)."
+      "tag": "Release",
+      "text": "OpenAI ships Dots, always-on Astra agents with their own computer, on paid plans."
     },
     {
       "tag": "Release",
-      "text": "Anthropic ships Claude Sonnet 5.5 at Sonnet 5 prices; lab says 30%+ faster."
+      "text": "GPT-6.1 Sol ships at $2/$10 per million tokens; AA has it one point under Astra."
     },
     {
-      "tag": "Deal",
-      "text": "AMD to buy Fei-Fei Li\u2019s World Labs for about $8.2B in stock; she becomes chief scientist."
+      "tag": "Policy",
+      "text": "Six AI firms sign a voluntary White House audit pledge that names no auditor."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-29"
+  "date": "2026-09-30"
 }
