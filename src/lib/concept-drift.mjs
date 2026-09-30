@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SECTION_ROOTS = new Set(['ai.astro', 'economics.astro', 'risk.astro']);
+const SECTION_ROOTS = new Set(['ai.astro', 'economics.astro', 'risk.astro', 'opinions.astro']);
 
 /** Leaf essay and model pages. Section landings and site chrome are not articles. */
 export function articleRoutesFromPages(pagesDir) {
@@ -23,7 +23,18 @@ export function articleRoutesFromPages(pagesDir) {
   }
 
   walk(pagesDir);
-  return routes.sort();
+
+  const opinionsFile = path.join(pagesDir, '..', 'data', 'opinions.json');
+  if (fs.existsSync(opinionsFile)) {
+    const rows = JSON.parse(fs.readFileSync(opinionsFile, 'utf8'));
+    for (const row of rows) {
+      if (!row?.href) continue;
+      const href = row.href.endsWith('/') ? row.href : `${row.href}/`;
+      routes.push(href);
+    }
+  }
+
+  return [...new Set(routes)].sort();
 }
 
 /** A page that only redirects is not an essay. The plant body lives at the new path. */
@@ -37,11 +48,12 @@ function isRedirectStub(full) {
 
 function isArticleFile(rel) {
   if (!rel.endsWith('.astro')) return false;
+  if (rel.includes('[')) return false;
   if (rel === '404.astro' || rel === 'index.astro') return false;
   if (rel.endsWith('/index.astro')) return false;
   if (SECTION_ROOTS.has(rel)) return false;
   const top = rel.split('/')[0].replace(/\.astro$/, '');
-  return top === 'economics' || top === 'risk' || top === 'ai';
+  return top === 'economics' || top === 'risk' || top === 'ai' || top === 'opinions';
 }
 
 function routeFromRel(rel) {

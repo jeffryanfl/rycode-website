@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { formatDate } from '../../lib/site';
+import { opinionSlug, opinions, relatedOnSite, type Opinion } from '../../lib/opinions';
+import '../../styles/opinions.css';
+
+export function getStaticPaths() {
+  return opinions.map((piece: Opinion) => ({
+    params: { slug: opinionSlug(piece.href) },
+    props: { piece },
+  }));
+}
+
+interface Props {
+  piece: Opinion;
+}
+
+const { piece } = Astro.props;
+const related = relatedOnSite(piece.related ?? []);
+---
+
+<Layout
+  title={`${piece.title} — Opinions — Rycode`}
+  description={piece.dek}
+  variant="opinions"
+>
+  <article class="opinions-piece">
+    <h1 class="opinions-claim">{piece.title}</h1>
+    <p class="opinions-dek">{piece.dek}</p>
+    <time class="opinions-date" datetime={piece.date}>{formatDate(piece.date)}</time>
+    {piece.image ? (
+      <img class="opinions-piece-image" src={piece.image} alt="" />
+    ) : null}
+    {related.length > 0 && (
+      <section class="opinions-also" aria-labelledby="opinions-also-heading">
+        <h2 id="opinions-also-heading">Also on this site</h2>
+        <ul>
+          {related.map((item) => (
+            <li>
+              <a href={item.href}>{item.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+</Layout>

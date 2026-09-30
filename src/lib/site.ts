@@ -11,7 +11,7 @@ export type Article = {
   title: string;
   description: string;
   date: string;
-  section: 'economics' | 'risk' | 'ai';
+  section: 'economics' | 'risk' | 'ai' | 'opinions';
   series: string;
   crumbs: Crumb[];
   file: string;
@@ -119,6 +119,7 @@ export function ogImageFor(pathname: string): string {
   if (current.startsWith('/economics/')) return '/og/sections/economics.png';
   if (current.startsWith('/risk/')) return '/og/sections/risk.png';
   if (current.startsWith('/ai/')) return '/og/sections/ai.png';
+  if (current.startsWith('/opinions/')) return '/og/sections/home.png';
   if (current.startsWith('/about/')) return '/og/sections/about.png';
   if (current.startsWith('/contact/')) return '/og/sections/contact.png';
   return '/og/sections/home.png';

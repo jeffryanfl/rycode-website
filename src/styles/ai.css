@@ -1274,7 +1274,7 @@ a.hw-card:focus-visible .hw-card-title {
   color: var(--ai-ink);
 }
 
-/* Eight section doors. Homepage hub.css stays four across.
+/* Eight section doors. Homepage hub.css stays five across.
    These rules only let that same door row fit eight labels on this page. */
 .editorial-shell--ai .hub-cluster {
   --hub-ink: #f8fafc;

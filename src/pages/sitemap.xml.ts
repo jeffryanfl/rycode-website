@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { articles } from '../lib/site';
+import { opinionPaths } from '../lib/opinions';
 
 export const prerender = true;
 
@@ -16,9 +17,12 @@ function pageRoutes(): string[] {
       paths.add('/');
       continue;
     }
+    if (route.includes('[')) continue;
     if (route.endsWith('/index')) route = route.slice(0, -'/index'.length);
     paths.add(`/${route}/`);
   }
+
+  for (const href of opinionPaths()) paths.add(href);
 
   return [...paths].sort((a, b) => a.localeCompare(b));
 }

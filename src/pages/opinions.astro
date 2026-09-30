@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { formatDate } from '../lib/site';
+import { opinions } from '../lib/opinions';
+import '../styles/opinions.css';
+---
+
+<Layout
+  title="Opinions — Rycode"
+  description="Short takes, tied back to pieces on this site."
+  variant="opinions"
+>
+  <div slot="opinions-identity" class="opinions-identity-block">
+    <h1 class="opinions-identity">
+      <img class="opinions-glyph" src="/landing/hub-opinions.webp" alt="" width="80" height="72" />
+      Opinions
+    </h1>
+  </div>
+
+  {opinions.length === 0 ? (
+    <p class="opinions-empty">Cards appear here when a piece is published.</p>
+  ) : (
+    <ul class="opinions-grid" aria-label="Opinions">
+      {opinions.map((piece) => (
+        <li>
+          <a class="opinions-card" href={piece.href}>
+            {piece.image ? (
+              <img class="opinions-card-image" src={piece.image} alt="" />
+            ) : null}
+            <h2 class="opinions-card-title">{piece.title}</h2>
+            <p class="opinions-card-dek">{piece.dek}</p>
+            <time class="opinions-card-date" datetime={piece.date}>{formatDate(piece.date)}</time>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</Layout>

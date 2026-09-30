@@ -11,7 +11,7 @@ import { articleNav, normalizePath, ogImageFor } from '../lib/site';
 interface Props {
   title?: string;
   description?: string;
-  variant?: "journal" | "landing" | "risk" | "ai" | "economics";
+  variant?: "journal" | "landing" | "risk" | "ai" | "economics" | "opinions";
 }
 
 const {
@@ -24,10 +24,11 @@ const isLanding = variant === "landing";
 const isRisk = variant === "risk";
 const isAi = variant === "ai";
 const isEconomics = variant === "economics";
+const isOpinions = variant === "opinions";
 const isDark = true;
 const pathname = normalizePath(Astro.url.pathname);
 const isHome = pathname === "/";
-const showSectionMark = isRisk || isAi || isEconomics;
+const showSectionMark = isRisk || isAi || isEconomics || isOpinions;
 const piece = articleNav(pathname);
 
 const canonicalURL = new URL(pathname, Astro.site);
@@ -66,8 +67,8 @@ const rssURL = new URL("/rss.xml", Astro.site);
 <body>
   <a class="skip-link" href="#mainContent">Skip to content</a>
 
-  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--risk": isRisk, "editorial-shell--ai": isAi, "editorial-shell--economics": isEconomics }]}>
-    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--risk": isRisk, "masthead--ai": isAi, "masthead--economics": isEconomics }]}>
+  <div class:list={["editorial-shell", { "editorial-shell--landing": isLanding, "editorial-shell--risk": isRisk, "editorial-shell--ai": isAi, "editorial-shell--economics": isEconomics, "editorial-shell--opinions": isOpinions }]}>
+    <header class:list={["masthead", { "masthead--landing": isLanding, "masthead--risk": isRisk, "masthead--ai": isAi, "masthead--economics": isEconomics, "masthead--opinions": isOpinions }]}>
       <div class="masthead-brand">
         {isRisk ? (
           <slot name="risk-identity">
@@ -88,6 +89,13 @@ const rssURL = new URL("/rss.xml", Astro.site);
             <a href="/economics/" class="economics-identity">
               <img class="economics-glyph" src="/landing/hub-economics.webp" alt="" width="81" height="72" />
               Economics
+            </a>
+          </slot>
+        ) : isOpinions ? (
+          <slot name="opinions-identity">
+            <a href="/opinions/" class="opinions-identity">
+              <img class="opinions-glyph" src="/landing/hub-opinions.webp" alt="" width="80" height="72" />
+              Opinions
             </a>
           </slot>
         ) : (

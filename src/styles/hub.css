@@ -1,5 +1,5 @@
 /* ==================================================================
-   HUB — charcoal emptiness. Four marks, two by two.
+   HUB — charcoal emptiness. Five marks in a row.
    Inter only. No cyan, no grid, no glass, no coverflow.
    ================================================================== */
 
@@ -82,6 +82,7 @@ html:has(.landing-stage--charcoal) body {
   --hub-glyph-ink: 0.624;
   padding-top: 2.35rem;
   padding-bottom: 2.35rem;
+  overflow: visible;
 }
 
 /* Quiet HOME tape. Charcoal strip, no cyan, no stock-ticker colors. */
@@ -276,6 +277,8 @@ html:has(.landing-stage--charcoal) body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
   filter: none;
   box-shadow: none;
   background: none;
@@ -283,14 +286,17 @@ html:has(.landing-stage--charcoal) body {
 
 .hub-doors {
   display: grid;
-  grid-template-columns: repeat(4, 7.5rem);
+  grid-template-columns: repeat(5, minmax(0, 7.5rem));
   justify-content: center;
   justify-items: center;
   align-items: start;
-  column-gap: clamp(1.6rem, 4vw, 3.25rem);
+  column-gap: clamp(0.85rem, 2.8vw, 3.25rem);
   row-gap: clamp(2.1rem, 5vw, 3rem);
+  width: min(100%, 58rem);
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0 0.75rem;
   list-style: none;
 }
 

@@ -2,9 +2,9 @@
 
 Glossary for this repo. Use these words in conversation and in code names.
 
-**Rycode.** A hub with four HOME marks in a two-by-two: Economics, Risk, Systems, and A.I. Live site: https://rycode.dev. A.I. is the brain mark. Systems opens https://systems.rycode.dev in a new tab. There is no Research door and no Insights door.
+**Rycode.** A hub with five HOME marks in a row: Economics, Risk, Systems, A.I., and Opinions. Live site: https://rycode.dev. A.I. is the brain mark. Opinions is the chat-bubble mark. Systems opens https://systems.rycode.dev in a new tab. There is no Research door and no Insights door.
 
-**Home.** Charcoal `#080a10` emptiness at `/`. Four marks in a two-by-two: Economics and Risk on top, Systems and A.I. on the bottom. The A.I. mark is the brain drawing at `public/landing/hub-brain.webp`. Square Ry 26 in a corner. Quiet charcoal A.I. tape at the top of HOME only (`public/ai-tape.json`, fetch on the client, links to `/ai`). Quiet charcoal Macro tape at the bottom of HOME only (`public/tape.json`, fetch on the client, links to `/economics`). Not on other pages. Inter only. No cyan, no floor grid, no glass windows, no coverflow, no hero sentence.
+**Home.** Charcoal `#080a10` emptiness at `/`. Five marks in a row: Economics, Risk, Systems, A.I., Opinions. The A.I. mark is the brain drawing at `public/landing/hub-brain.webp`. The Opinions mark is the chat bubble at `public/landing/hub-opinions.webp`. Square Ry 26 in a corner. Quiet charcoal A.I. tape at the top of HOME only (`public/ai-tape.json`, fetch on the client, links to `/ai`). Quiet charcoal Macro tape at the bottom of HOME only (`public/tape.json`, fetch on the client, links to `/economics`). Not on other pages. Inter only. No cyan, no floor grid, no glass windows, no coverflow, no hero sentence.
 
 **Brain.** The supplied brain drawing at `public/landing/hub-brain.webp`. It is the A.I. HOME door, in a 40px box, linking to `/ai`. Same white weight as the other three doors. The overhead wireframe webp stays on the A.I. masthead. Not a glass window, not a chip card, not a hero.
 
@@ -12,7 +12,9 @@ Glossary for this repo. Use these words in conversation and in code names.
 
 **Paper look.** Charcoal paper near `#080a10`, off-white ink, off-white hairlines. Newsreader for the claim and body, Inter for kickers and captions, Geist Mono for stage ticks and eval names. Square Ry. Used by A.I. Deep dive essays (`/ai/next-token-engine/`, `/ai/chat-models-write-strings-system-one-returns-decisions/`). Not cream newsprint, not the chip photo, not coverflow, not cyan.
 
-**Section page.** `/economics` is a charcoal index: signed chart, Inter title, rows, plus a SaaS section. `/risk` is a charcoal index: signed triangle, Inter title, named sections, charcoal topic chips, rows. Logo goes home. No pillar rail. `/ai` is not a section page. Old `/research` links 301 to `/economics/` or to the rehomed essay.
+**Section page.** `/economics` is a charcoal index: signed chart, Inter title, rows, plus a SaaS section. `/risk` is a charcoal index: signed triangle, Inter title, named sections, charcoal topic chips, rows. `/opinions` is a charcoal card grid: signed chat bubble, Inter title, cards from `src/data/opinions.json` when that array has rows. Logo goes home. No pillar rail. `/ai` is not a section page. Old `/research` links 301 to `/economics/` or to the rehomed essay.
+
+**Opinions.** Charcoal `#080a10` at `/opinions`, same ground as home. Chat-bubble mark from `/landing/hub-opinions.webp`, Inter “Opinions”. Square Ry, 1px hairline, then a visual card grid. Empty until `src/data/opinions.json` has rows. No “Coming soon”. No cyan. A row is `href`, `title`, `dek`, `date`, `related` (other pages on this site), optional `image`. Piece pages are `/opinions/{slug}/` from `src/pages/opinions/[slug].astro`. Also-on-this-site lists `related[]`. Register each piece in `articles.json` (`section` `opinions`), `article-theses.json`, and `concepts.json` article arrays. Do not invent copy.
 
 **Research.** Not a HOME door and not a landing. `/research` and `/research/` 301 to `/economics/`. Old essay URLs 301 to the subject page. `/research/saaspocalypse` and `/research/saaspocalypse/` 301 to `/economics/saas-barbell-2026/`. Do not add an Insights door. The lens PNG stays at `/landing/hub-research.png` and is not on HOME. `src/styles/research.css` is unused. Do not wire `variant="research"` back.
 
