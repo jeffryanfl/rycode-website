@@ -1,6 +1,13 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
+import EconomicsRail from '../components/EconomicsRail.astro';
 import '../styles/economics.css';
+
+const rail = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), 'public', 'economics-rail.json'), 'utf8'),
+);
 
 const pieces = [
   {
@@ -53,14 +60,17 @@ const pieces = [
     </h1>
   </div>
 
-  <ul class="economics-index">
-    {pieces.map((piece) => (
-      <li>
-        <a href={piece.href}>
-          <span class="economics-index-title">{piece.title}</span>
-          <span class="economics-index-dek">{piece.dek}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
+  <div class="economics-landing">
+    <ul class="economics-index">
+      {pieces.map((piece) => (
+        <li>
+          <a href={piece.href}>
+            <span class="economics-index-title">{piece.title}</span>
+            <span class="economics-index-dek">{piece.dek}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <EconomicsRail rail={rail} />
+  </div>
 </Layout>

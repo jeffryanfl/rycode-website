@@ -141,7 +141,8 @@ h1.economics-identity {
   background: transparent;
 }
 
-.editorial-shell--economics:has(.economics-article) .editorial-main-content {
+.editorial-shell--economics:has(.economics-article) .editorial-main-content,
+.editorial-shell--economics:has(.economics-landing) .editorial-main-content {
   padding-bottom: 3.5rem;
 }
 

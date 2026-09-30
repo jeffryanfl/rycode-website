@@ -1,0 +1,286 @@
+---
+import '../styles/economics-rail.css';
+
+interface RailLine {
+  key: string;
+  label: string;
+  color: string;
+}
+
+interface RailPoint {
+  date: string;
+  [key: string]: string | number | null | undefined;
+}
+
+interface RailSeries {
+  id: string;
+  title: string;
+  unit: string;
+  tabs: string[];
+  source?: string | null;
+  sourceLabel?: string;
+  lines: RailLine[];
+  points: RailPoint[];
+}
+
+interface RailFile {
+  series: RailSeries[];
+}
+
+interface Props {
+  rail: RailFile;
+}
+
+const { rail } = Astro.props;
+const series = Array.isArray(rail?.series) ? rail.series : [];
+
+type Grain = 'daily' | 'weekly' | 'monthly' | 'yearly';
+
+type Plot = {
+  id: string;
+  heading: string | null;
+  unit: string;
+  lines: RailLine[];
+  points: RailPoint[];
+  tabs: string[];
+};
+
+type Card = {
+  id: string;
+  title: string;
+  source?: string | null;
+  sourceLabel?: string;
+  plots: Plot[];
+};
+
+function toCards(items: RailSeries[]): Card[] {
+  return items.map((item) => {
+    if (item.id === 'yields') {
+      return {
+        id: item.id,
+        title: item.title,
+        source: item.source,
+        sourceLabel: item.sourceLabel,
+        plots: item.lines.map((line) => ({
+          id: `${item.id}-${line.key}`,
+          heading: line.label,
+          unit: item.unit,
+          lines: [line],
+          points: item.points,
+          tabs: item.tabs,
+        })),
+      };
+    }
+    return {
+      id: item.id,
+      title: item.title,
+      source: item.source,
+      sourceLabel: item.sourceLabel,
+      plots: [
+        {
+          id: item.id,
+          heading: null,
+          unit: item.unit,
+          lines: item.lines,
+          points: item.points,
+          tabs: item.tabs,
+        },
+      ],
+    };
+  });
+}
+
+const cards = toCards(series);
+
+function isoWeekKey(date: string): string {
+  const d = new Date(`${date}T12:00:00Z`);
+  const day = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const week = Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+  return `${d.getUTCFullYear()}-W${String(week).padStart(2, '0')}`;
+}
+
+function bucket(points: RailPoint[], grain: Grain): RailPoint[] {
+  if (grain === 'daily') return points;
+  const last = new Map<string, RailPoint>();
+  for (const point of points) {
+    const key =
+      grain === 'weekly'
+        ? isoWeekKey(point.date)
+        : grain === 'monthly'
+          ? point.date.slice(0, 7)
+          : point.date.slice(0, 4);
+    last.set(key, point);
+  }
+  return [...last.values()];
+}
+
+// Tabs zoom the window. Resampling 1990–now at every grain draws the same
+// long arc. Daily is the recent tape. Yearly is the full history.
+const LOOKBACK_DAYS: Record<Grain, number | null> = {
+  daily: 90,
+  weekly: 365 * 2,
+  monthly: 365 * 10,
+  yearly: null,
+};
+
+function viewPoints(points: RailPoint[], grain: Grain): RailPoint[] {
+  const sorted = [...points].filter((p) => typeof p.date === 'string').sort((a, b) => a.date.localeCompare(b.date));
+  const days = LOOKBACK_DAYS[grain];
+  let windowed = sorted;
+  if (days != null && sorted.length > 0) {
+    const end = sorted[sorted.length - 1].date;
+    const cutoff = new Date(`${end}T12:00:00Z`);
+    cutoff.setUTCDate(cutoff.getUTCDate() - days);
+    const cut = cutoff.toISOString().slice(0, 10);
+    windowed = sorted.filter((p) => p.date >= cut);
+  }
+  return bucket(windowed, grain);
+}
+
+function formatY(value: number, unit: string): string {
+  const abs = Math.abs(value);
+  const sign = value < 0 ? '−' : '';
+  if (unit === 'percent') return `${sign}${abs.toFixed(1)}%`;
+  if (abs >= 1e12) return `${sign}$${(abs / 1e12).toFixed(1)}T`;
+  if (abs >= 1e9) {
+    const billions = abs / 1e9;
+    return `${sign}$${billions >= 100 ? billions.toFixed(0) : billions.toFixed(1)}B`;
+  }
+  if (abs >= 1e6) return `${sign}$${(abs / 1e6).toFixed(0)}M`;
+  return `${sign}$${abs.toFixed(0)}`;
+}
+
+function formatX(date: string, first: string, last: string): string {
+  const span = (Date.parse(`${last}T12:00:00Z`) - Date.parse(`${first}T12:00:00Z`)) / 86400000;
+  if (!Number.isFinite(span) || span > 500) return date.slice(0, 4);
+  if (span > 40) return date.slice(0, 7);
+  return date.slice(5);
+}
+
+function chart(points: RailPoint[], lines: RailLine[], unit: string) {
+  const w = 280;
+  const h = 120;
+  const pad = { t: 10, r: 10, b: 20, l: 50 };
+  const plotW = w - pad.l - pad.r;
+  const plotH = h - pad.t - pad.b;
+  const nums: number[] = [];
+  for (const point of points) {
+    for (const line of lines) {
+      const value = point[line.key];
+      if (typeof value === 'number' && Number.isFinite(value)) nums.push(value);
+    }
+  }
+  if (points.length === 0 || nums.length === 0) return null;
+  const min = Math.min(...nums);
+  const max = Math.max(...nums);
+  const span = max - min || 1;
+  const last = points.length - 1;
+  const xAt = (i: number) =>
+    points.length === 1 ? pad.l + plotW / 2 : pad.l + (i * plotW) / last;
+  const yAt = (value: number) => pad.t + (1 - (value - min) / span) * plotH;
+  const paths = lines.map((line) => {
+    const cmds: string[] = [];
+    points.forEach((point, i) => {
+      const value = point[line.key];
+      if (typeof value !== 'number' || !Number.isFinite(value)) return;
+      cmds.push(`${cmds.length ? 'L' : 'M'}${xAt(i).toFixed(1)} ${yAt(value).toFixed(1)}`);
+    });
+    return { ...line, d: cmds.join(' ') };
+  });
+  const yValues = [max, (max + min) / 2, min];
+  const yTicks = yValues
+    .map((value) => ({ value, label: formatY(value, unit), y: yAt(value) }))
+    .filter((tick, i, all) => all.findIndex((other) => other.label === tick.label) === i);
+  const firstDate = points[0].date;
+  const lastDate = points[last].date;
+  const xIndex = points.length === 1 ? [0] : points.length === 2 ? [0, last] : [0, Math.round(last / 2), last];
+  const xTicks = xIndex.map((i, order, all) => ({
+    label: formatX(points[i].date, firstDate, lastDate),
+    x: xAt(i),
+    anchor: order === 0 ? 'start' : order === all.length - 1 ? 'end' : 'middle',
+  }));
+  return { w, h, pad, paths, yTicks, xTicks };
+}
+
+const tabLabel: Record<string, string> = {
+  daily: 'Daily',
+  weekly: 'Weekly',
+  monthly: 'Monthly',
+  yearly: 'Yearly',
+};
+---
+
+<aside class="econ-rail" aria-label="Economics series">
+  {cards.map((card) => (
+    <section class="econ-rail-card" aria-labelledby={`econ-rail-${card.id}-title`}>
+      <h2 id={`econ-rail-${card.id}-title`}>{card.title}</h2>
+      {card.plots.map((plot) => (
+        <div class="econ-rail-plot">
+          {plot.heading ? <h3>{plot.heading}</h3> : null}
+          {plot.points.length === 0 ? (
+            <p class="econ-rail-empty">No points yet.</p>
+          ) : (
+            <div class="econ-rail-tabs">
+              {plot.tabs.map((tab, index) => {
+                const drawn = chart(viewPoints(plot.points, tab as Grain), plot.lines, plot.unit);
+                const inputId = `econ-rail-${plot.id}-${tab}`;
+                const name = `econ-rail-${plot.id}`;
+                return (
+                  <>
+                    <input
+                      class="econ-rail-tab-input"
+                      type="radio"
+                      name={name}
+                      id={inputId}
+                      checked={index === 0}
+                    />
+                    <label class="econ-rail-tab" for={inputId}>{tabLabel[tab] || tab}</label>
+                    <div class="econ-rail-panel">
+                      {drawn ? (
+                        <svg viewBox={`0 0 ${drawn.w} ${drawn.h}`} role="img" aria-label={`${card.title}${plot.heading ? ` ${plot.heading}` : ''}, ${tabLabel[tab] || tab}`}>
+                          <line class="econ-rail-axis" x1={drawn.pad.l} y1={drawn.pad.t} x2={drawn.pad.l} y2={drawn.h - drawn.pad.b} />
+                          <line class="econ-rail-axis" x1={drawn.pad.l} y1={drawn.h - drawn.pad.b} x2={drawn.w - drawn.pad.r} y2={drawn.h - drawn.pad.b} />
+                          {drawn.yTicks.map((tick, i) => (
+                            <g>
+                              <line class="econ-rail-grid" x1={drawn.pad.l} y1={tick.y} x2={drawn.w - drawn.pad.r} y2={tick.y} />
+                              <text class="econ-rail-tick" x={drawn.pad.l - 5} y={tick.y + (i === 0 ? 3 : i === drawn.yTicks.length - 1 ? -1 : 3)} text-anchor="end">{tick.label}</text>
+                            </g>
+                          ))}
+                          {drawn.xTicks.map((tick) => (
+                            <text class="econ-rail-tick" x={tick.x} y={drawn.h - 5} text-anchor={tick.anchor}>{tick.label}</text>
+                          ))}
+                          {drawn.paths.map((path) => (
+                            path.d && <path d={path.d} fill="none" stroke={path.color} stroke-width="1.5" />
+                          ))}
+                        </svg>
+                      ) : (
+                        <p class="econ-rail-empty">No points yet.</p>
+                      )}
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          )}
+          {plot.lines.length > 1 && (
+            <ul class="econ-rail-legend">
+              {plot.lines.map((line) => (
+                <li>
+                  <span class="econ-rail-swatch" style={`background:${line.color}`} />
+                  {line.label}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+      {card.source ? (
+        <a class="econ-rail-source" href={card.source}>{card.sourceLabel}</a>
+      ) : (
+        card.sourceLabel && <p class="econ-rail-source">{card.sourceLabel}</p>
+      )}
+    </section>
+  ))}
+</aside>

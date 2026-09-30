@@ -1,0 +1,136 @@
+/* Economics landing right rail. Charcoal. Muted lines. No cyan. */
+
+.economics-landing {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+  gap: 2.5rem 2rem;
+  align-items: start;
+}
+
+.econ-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin: 0;
+}
+
+.econ-rail-card h2 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(248, 250, 252, 0.62);
+}
+
+.econ-rail-plot + .econ-rail-plot {
+  margin-top: 1.05rem;
+}
+
+.econ-rail-plot h3 {
+  margin: 0 0 0.28rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(248, 250, 252, 0.55);
+}
+
+.econ-rail-empty,
+.econ-rail-source {
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(248, 250, 252, 0.4);
+}
+
+.econ-rail-tabs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.55rem;
+}
+
+.econ-rail-tab-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.econ-rail-tab {
+  font-size: 0.72rem;
+  color: rgba(248, 250, 252, 0.45);
+  cursor: pointer;
+}
+
+.econ-rail-tab-input:checked + .econ-rail-tab {
+  color: rgba(248, 250, 252, 0.88);
+}
+
+.econ-rail-tab-input:focus-visible + .econ-rail-tab {
+  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline-offset: 3px;
+}
+
+.econ-rail-panel {
+  flex: 1 0 100%;
+  order: -1;
+  display: none;
+}
+
+.econ-rail-tab-input:checked + .econ-rail-tab + .econ-rail-panel {
+  display: block;
+}
+
+.econ-rail-panel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.econ-rail-axis {
+  stroke: rgba(248, 250, 252, 0.22);
+  stroke-width: 1;
+}
+
+.econ-rail-grid {
+  stroke: rgba(248, 250, 252, 0.08);
+  stroke-width: 1;
+}
+
+.econ-rail-tick {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  fill: rgba(248, 250, 252, 0.48);
+}
+
+.econ-rail-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.72rem;
+  color: rgba(248, 250, 252, 0.55);
+}
+
+.econ-rail-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.econ-rail-swatch {
+  width: 0.7rem;
+  height: 2px;
+  display: inline-block;
+}
+
+@media (max-width: 800px) {
+  .economics-landing {
+    grid-template-columns: 1fr;
+  }
+}
