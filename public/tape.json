@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-30T16:15:00-04:00",
-  "asOfLabel": "Wed 30 Sep · after-close",
+  "updated": "2026-10-01T08:04:00-04:00",
+  "asOfLabel": "Thu 1 Oct · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Wed: SPX 7651.54 (−0.25%), Dow −0.86%, Nasdaq +0.24%."
+      "text": "Thu open: ES ~7743 (+0.4%); NQ ~30859 (+0.5%); YM ~51460 (+0.4%)."
     },
     {
       "tag": "Rates",
-      "text": "CMT 10y 5.29% (from Tue 5.26%); 2y 4.88%; 30y 5.64%."
+      "text": "Wed CMT still baseline: 2y 4.88% / 10y 5.29% / 30y 5.64%."
     },
     {
-      "tag": "Tape",
-      "text": "Aug PCE 3.4% over the year; core 3.0%. Q2 GDP third 2.2%."
+      "tag": "Oil",
+      "text": "WTI ~$91.70 (+1.4% vs Wed futures); Brent front-month ~$99.97."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-09-30"
+  "date": "2026-10-01"
 }
