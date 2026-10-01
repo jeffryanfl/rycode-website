@@ -9,6 +9,18 @@ import {
   driftWarning,
   pathsFromSitemapXml,
 } from './src/lib/concept-drift.mjs';
+import { assertRiskCards } from './src/lib/risk-card-drift.mjs';
+
+function riskCardDrift() {
+  return {
+    name: 'risk-card-drift',
+    hooks: {
+      'astro:build:start': () => {
+        assertRiskCards();
+      },
+    },
+  };
+}
 
 function conceptMapDrift() {
   return {
@@ -62,7 +74,7 @@ function servePublicIndex() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rycode.dev',
-  integrations: [conceptMapDrift()],
+  integrations: [riskCardDrift(), conceptMapDrift()],
   redirects: {
     '/research': '/economics/',
     '/research/ten-trillion-to-roll': '/economics/ten-trillion-to-roll/',

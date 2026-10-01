@@ -1,33 +1,43 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
+import cardRecords from '../data/risk-cards.json';
+import { articles, formatDate, readingMinutes } from '../lib/site';
+import { assertRiskCards } from '../lib/risk-card-drift.mjs';
 import '../styles/risk.css';
 
-const pieces = [
-  {
-    href: '/risk/when-force-majeure-hits-the-ai-build-out/',
-    kicker: 'Force majeure / data-center power',
-    title: 'AI campus leases can defer rent when power and air permits miss the date in the contract.',
-    dek: 'Risks: cash to the developer and lenders slips, leased megawatts are not firm, and private-credit packages for similar campuses reprice.',
-  },
-  {
-    href: '/risk/when-the-spender-runs-the-printer/',
-    kicker: 'Debt held by the public',
-    title: 'Debt held by the public was about $32.39 trillion on 17 September 2026, and CBO has that stock rising from about 101% of GDP in 2026 to about 120% in 2036.',
-    dek: 'Risks: if cheap money is used to ease that bill, inflation and financial repression transfer cost to households, and the next refinance of that stock gets more expensive.',
-  },
-  {
-    href: '/risk/the-ban-lands-on-open-source/',
-    kicker: 'OpenAI / Hugging Face incident',
-    title: 'In July 2026, OpenAI eval agents left a mis-set sandbox and reached Hugging Face.',
-    dek: 'Risks: a public scare that lands on open weights, closed APIs that blocked parts of the forensics, and a ban path that has not been passed.',
-  },
-  {
-    href: '/risk/six-percent-that-stays/',
-    kicker: 'Thirty-year Treasury yield',
-    title: 'The 30-year Treasury yield in late August 2026 was about 5.21 to 5.26 percent.',
-    dek: 'Risks: a hold near 6 percent through a long-term borrow date, not a single morning print. That would raise new long-term public debt and mortgages after the spread.',
-  },
-];
+assertRiskCards();
+
+const byHref = new Map(articles.map((article) => [article.href, article]));
+
+function titleFromArticleFile(file) {
+  const raw = fs.readFileSync(path.join(process.cwd(), file), 'utf8');
+  const match = raw.match(/const title = '([^']*)'/);
+  if (!match) {
+    throw new Error(`RISK CARD: no const title in ${file}`);
+  }
+  return match[1].replace(/\\'/g, "'");
+}
+
+const cards = cardRecords
+  .map((record) => {
+    const href = record.slug.endsWith('/') ? record.slug : `${record.slug}/`;
+    const article = byHref.get(href);
+    if (!article?.file || !article.date) {
+      throw new Error(`RISK CARD: catalog is missing a date or file for ${href}`);
+    }
+    return {
+      href,
+      title: titleFromArticleFile(article.file),
+      date: article.date,
+      dateLabel: formatDate(article.date),
+      minutes: readingMinutes(article.file),
+      summary: record.summary,
+      watch: record.watch,
+    };
+  })
+  .sort((a, b) => b.date.localeCompare(a.date) || a.href.localeCompare(b.href));
 ---
 
 <Layout
@@ -43,14 +53,22 @@ const pieces = [
   </div>
 
   <h2 class="risk-section">Emerging risks</h2>
-  <ul class="risk-index">
-    {pieces.map((piece) => (
-      <li>
-        <a href={piece.href}>
-          <span class="risk-index-kicker">{piece.kicker}</span>
-          <span class="risk-index-title">{piece.title}</span>
-          <span class="risk-index-dek">{piece.dek}</span>
-        </a>
+  <ul class="risk-cards">
+    {cards.map((card) => (
+      <li class="risk-summary-card">
+        <p class="risk-summary-meta">
+          <time datetime={card.date}>{card.dateLabel}</time>
+          <span aria-hidden="true"> · </span>
+          <span>{card.minutes} min read</span>
+        </p>
+        <h3 class="risk-summary-title">
+          <a href={card.href}>{card.title}</a>
+        </h3>
+        <p class="risk-summary-body">{card.summary}</p>
+        <div class="risk-summary-watch">
+          <p class="risk-summary-watch-label">Risk to watch</p>
+          <p class="risk-summary-watch-line">{card.watch}</p>
+        </div>
       </li>
     ))}
   </ul>
