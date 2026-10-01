@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import EconomicsRail from '../components/EconomicsRail.astro';
+import { findArticle, formatDate } from '../lib/site';
 import '../styles/economics.css';
 
 const rail = JSON.parse(
@@ -46,6 +47,16 @@ const pieces = [
     dek: 'Most of that is short-term bills the Treasury already replaces. The cash balance is a checking account, not a purchase program.',
   },
 ];
+
+// Date comes from the article catalog, the same date the essay header uses.
+const cards = pieces.map((piece) => {
+  const article = findArticle(piece.href);
+  return {
+    ...piece,
+    date: article?.date ?? '',
+    dateLabel: article?.date ? formatDate(article.date) : '',
+  };
+});
 ---
 
 <Layout
@@ -62,12 +73,17 @@ const pieces = [
 
   <div class="economics-landing">
     <ul class="economics-index">
-      {pieces.map((piece) => (
-        <li>
-          <a href={piece.href}>
-            <span class="economics-index-title">{piece.title}</span>
-            <span class="economics-index-dek">{piece.dek}</span>
-          </a>
+      {cards.map((piece) => (
+        <li class="economics-piece-card">
+          {piece.dateLabel && (
+            <p class="economics-piece-meta">
+              <time datetime={piece.date}>{piece.dateLabel}</time>
+            </p>
+          )}
+          <h2 class="economics-piece-title">
+            <a href={piece.href}>{piece.title}</a>
+          </h2>
+          <p class="economics-piece-dek">{piece.dek}</p>
         </li>
       ))}
     </ul>

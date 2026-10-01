@@ -164,43 +164,60 @@ h1.economics-identity {
 
 .economics-index {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
   margin: 0;
   padding: 0;
   max-width: none;
 }
 
-.economics-index li {
-  border: none;
+.economics-piece-card {
+  padding: 1.25rem 1.3rem 1.15rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: var(--radius-card, 14px);
+  background: var(--surface, #101828);
 }
 
-.economics-index a {
-  display: flex;
-  flex-direction: column;
-  gap: 0.28rem;
-  padding: 0.15rem 0 1.2rem;
-  color: inherit;
+.economics-piece-meta {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: var(--econ-faint);
+}
+
+.economics-piece-title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.economics-piece-meta + .economics-piece-title {
+  margin-top: 0.45rem;
+}
+
+.economics-piece-title a {
+  color: var(--econ-ink);
   text-decoration: none;
 }
 
-.economics-index a:hover .economics-index-title,
-.economics-index a:focus-visible .economics-index-title {
-  color: rgba(248, 250, 252, 0.98);
+.economics-piece-title a:hover,
+.economics-piece-title a:focus-visible {
+  color: #ffffff;
 }
 
-.economics-index-title {
+.economics-piece-dek {
+  margin: 0.75rem 0 0;
   font-family: var(--font-sans);
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: var(--econ-ink);
-}
-
-.economics-index-dek {
-  font-family: var(--font-sans);
-  font-size: 0.98rem;
+  font-size: 0.9375rem;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.65;
   color: var(--econ-muted);
 }
 
@@ -489,6 +506,7 @@ h1.economics-identity {
   min-height: 13.5rem;
   padding: 0.8rem 0.95rem 0.9rem;
   border: 1px solid var(--digest-hair);
+  border-radius: var(--radius-card, 14px);
   background: transparent;
 }
 
@@ -604,6 +622,8 @@ h1.economics-identity {
 .econ-plate {
   margin: 0;
   min-height: 19rem;
+  border-radius: var(--radius-card, 14px);
+  overflow: hidden;
 }
 
 .econ-plate-kicker {
@@ -611,6 +631,8 @@ h1.economics-identity {
   padding: 0.7rem 0.85rem 0.55rem;
   border: 1px solid var(--digest-hair);
   border-bottom: none;
+  border-top-left-radius: var(--radius-card, 14px);
+  border-top-right-radius: var(--radius-card, 14px);
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 500;
@@ -634,6 +656,8 @@ h1.economics-identity {
   border-left: 1px solid var(--digest-hair);
   border-right: 1px solid var(--digest-hair);
   border-bottom: 1px solid var(--digest-hair);
+  border-bottom-left-radius: var(--radius-card, 14px);
+  border-bottom-right-radius: var(--radius-card, 14px);
   font-family: var(--font-sans);
   font-size: 0.72rem;
   line-height: 1.4;
@@ -642,6 +666,8 @@ h1.economics-identity {
 
 .econ-plate:not(:has(.econ-plate-quiet)) .econ-plate-pair {
   border-bottom: 1px solid var(--digest-hair);
+  border-bottom-left-radius: var(--radius-card, 14px);
+  border-bottom-right-radius: var(--radius-card, 14px);
   padding-bottom: 0.85rem;
 }
 
@@ -649,6 +675,7 @@ h1.economics-identity {
   min-height: 8.5rem;
   padding: 0.7rem 0.75rem 0.8rem;
   border: 1px solid var(--digest-hair);
+  border-radius: var(--radius-card, 14px);
 }
 
 .econ-plate-pane--fill {

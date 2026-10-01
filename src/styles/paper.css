@@ -180,6 +180,7 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   position: sticky;
   top: 0.75rem;
   border: 1px solid var(--hair);
+  border-radius: var(--radius-card, 14px);
   padding: 0.85rem 0.9rem 0.5rem;
   background: #07090f;
 }
@@ -316,12 +317,14 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   margin: 0 0 1.15rem;
   padding: 0.95rem 1.05rem;
   border: 1px solid var(--hair);
+  border-radius: var(--radius-card, 14px);
 }
 
 .exec-box {
   margin: 0 0 0.5rem;
   padding: 0.95rem 1.05rem 0.35rem;
   border: 1px solid var(--hair);
+  border-radius: var(--radius-card, 14px);
 }
 
 .exec-box .paper-h2 {
@@ -382,6 +385,7 @@ html:has(.editorial-shell--ai:has(.paper)) body {
 .fold {
   margin: 1.35rem 0 0;
   border: 1px solid var(--hair);
+  border-radius: var(--radius-card, 14px);
 }
 
 .fold > summary {
@@ -442,6 +446,7 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   margin: 1.25rem 0 0;
   padding: 0.95rem 1.05rem;
   border: 1px solid var(--hair);
+  border-radius: var(--radius-card, 14px);
 }
 
 .reg-note h3 {
@@ -501,6 +506,8 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   gap: 0;
   margin: 0 0 1.5rem;
   border: 1px solid var(--hair);
+  border-radius: var(--radius-card, 14px);
+  overflow: hidden;
 }
 
 .eval-board .eval-col {
@@ -682,6 +689,7 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   margin: 0 0 1.75rem;
   padding: 1.15rem 1.15rem 1.05rem;
   border: 1px solid var(--hair);
+  border-radius: var(--radius-card, 14px);
   background: #07090f;
 }
 

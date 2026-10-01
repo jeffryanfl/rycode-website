@@ -260,6 +260,7 @@ h1.ai-identity {
   flex: 0 0 auto;
   padding: 0.15rem 0.45rem;
   border: 1px solid var(--ai-hair);
+  border-radius: var(--radius-card, 14px);
   font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.04em;
@@ -273,6 +274,7 @@ h1.ai-identity {
   gap: 1rem;
   padding: 1.05rem 1.15rem;
   border: 1px solid var(--ai-hair);
+  border-radius: var(--radius-card, 14px);
   text-decoration: none;
   color: inherit;
 }
@@ -369,6 +371,7 @@ h1.ai-identity {
   padding: 0.4rem 0.6rem;
   background: #080a10;
   border: 1px solid #8b919a;
+  border-radius: var(--radius-card, 14px);
   color: var(--ai-ink);
   text-decoration: none;
 }
@@ -427,6 +430,7 @@ h1.ai-identity {
 
 .ai-bench-plate {
   border: 1px solid rgba(248, 250, 252, 0.28);
+  border-radius: var(--radius-card, 14px);
   padding: 1.15rem 1.15rem 0.95rem;
 }
 
@@ -463,6 +467,7 @@ h1.ai-identity {
 
 .ai-bench-wrap {
   overflow-x: auto;
+  border-radius: var(--radius-card, 14px);
 }
 
 .ai-bench-table {
@@ -591,6 +596,7 @@ h1.ai-identity {
   height: 100%;
   padding: 1rem 1rem 1.1rem;
   border: 1px solid rgba(248, 250, 252, 0.28);
+  border-radius: var(--radius-card, 14px);
   background: rgba(248, 250, 252, 0.04);
   text-decoration: none;
   color: inherit;
@@ -1136,6 +1142,7 @@ a.hw-card:focus-visible .hw-card-title {
   min-height: 6.95rem;
   padding: 0.65rem 0.8rem 0.7rem;
   border: 1px solid var(--digest-hair);
+  border-radius: var(--radius-card, 14px);
   background: transparent;
 }
 
