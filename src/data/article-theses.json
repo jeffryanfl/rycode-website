@@ -63,5 +63,6 @@
   "/ai/models/open-weight/step-5/": "Step 5 Preview is StepFun's agent model on the API now, and the weights are dated 15 October 2026.",
   "/ai/models/open-weight/kimi-k3/": "Kimi K3 is Moonshot's open-weight flagship for long-horizon coding and knowledge work.",
   "/ai/hardware/chips/terafab/": "Terafab is a planned chip factory from SpaceX and Tesla, and it is a different site from the Colossus training campus.",
-  "/ai/hardware/data-centers/memphis-colossus/": "Memphis Colossus is a hyperscale training campus that uses chips and power, and it does not make the chips."
+  "/ai/hardware/data-centers/memphis-colossus/": "Memphis Colossus is a hyperscale training campus that uses chips and power, and it does not make the chips.",
+  "/ai/models/google/gemini-4-argon/": "Gemini 4 Argon was announced 30 September 2026 for trusted cyber defenders, not the public, at an intro price of $2 input and $10 output per million tokens."
 }

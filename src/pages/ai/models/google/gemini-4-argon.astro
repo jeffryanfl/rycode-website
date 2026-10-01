@@ -1,0 +1,72 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Gemini 4 Argon — A.I. — Rycode"
+  description="Gemini 4 Argon was announced 30 September 2026 for trusted cyber defenders, not the public."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Gemini 4 Argon</h1>
+    <p class="ai-model-dek">Gemini 4 Argon is a Google DeepMind model announced 30 September 2026. First access is trusted cyber defenders through the <a href="https://deepmind.google/fairwind-program/">Fairwind Program</a>, not the public. Google says it is in the U.S. government’s voluntary process for pre-release model access, and that broader access will start later with paid API customers and Google AI Ultra subscribers. No date is given. There is no public API id. Introductory price is $2 input and $10 output per million tokens. Cached input is 95% off the input price. After the introductory period the post lists $4 and $20. The post does not say when the intro ends.</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Google says it trained Argon for cybersecurity defense, and that prompt-injection robustness included adversarial training. Google says it monitored training runs, sent alerts to an incident-response team, and did not feed those findings back into training so the model would not learn to hide from the monitor. Parameter count, training compute, dataset, and knowledge cutoff are not in the 30 September post. No DeepMind model card was up on 1 October 2026.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Google does not publish tokens per second, rate limits, regions, or thinking-level controls in the announce. Artificial Analysis lists speed as unknown for Gemini 4 Argon (High), and says that page is the reasoning version. Google says the model is multimodal. Google does not publish an input and output modality list.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Google says the output token limit is 1 million tokens, up from 64,000. Google does not state an input context limit in the announce. Artificial Analysis lists a 1 million token context window for Gemini 4 Argon (High). That figure is Artificial Analysis’s, not a second Google sentence.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>For trusted defenders and Google’s own teams, Google says it is releasing Argon without cyber guardrails. The broader model is designed to refuse harmful cyber and chemical, biological, radiological, and nuclear requests, under Google’s Frontier Safety Framework. Google says it monitors internal activations for misuse, and that misalignment checks watch the chain of thought and the actions and can stop execution. Google says Argon is its most resilient model yet against indirect prompt injection, and that it is leading on Gray Swan’s Indirect Prompt Injection benchmark. The post does not give that score. Public tool names and an API method are not in the post.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Artificial Analysis scores Gemini 4 Argon (High) at 53 on its Intelligence Index, fetched 1 October 2026. That is an independent score, not a Google chart number.</p>
+    <p>The cells below are Google’s 30 September post. They are lab claims.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Gemini 4 Argon</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>DeepSWE v1.1</td><td>77.9%</td><td>Lab claim. Google calls it state of the art.</td></tr>
+          <tr><td>AutomationBench</td><td>51.3%</td><td>Lab claim. Zapier. Google says rank 1.</td></tr>
+          <tr><td>LVBench</td><td>91.7%</td><td>Lab claim. Long video. Google calls it state of the art.</td></tr>
+          <tr><td>CWE-bench v1</td><td>68%</td><td>Lab claim. Vulnerability remediation. Google says a tie for first.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The post names Vals, Harvey’s Legal Agent Benchmark, and Gray Swan without a number. Those stay off this card.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Now: trusted cyber defenders through the Fairwind Program, plus Google’s own internal use. Not the public. No Gemini API model page was up on 1 October 2026. Broader access, when it comes, starts with paid API customers and Google AI Ultra subscribers. No date.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Intro</th>
+            <th scope="col">After intro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>$2</td><td>$4</td></tr>
+          <tr><td>Cached input</td><td>95% off the input price</td><td>95% off the input price</td></tr>
+          <tr><td>Output / MTok</td><td>$10</td><td>$20</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The post does not say when the introductory price ends.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">Gemini 4 Argon</a></li>
+      <li><a href="https://deepmind.google/fairwind-program/">Fairwind Program</a></li>
+      <li><a href="https://deepmind.google/blog/strengthening-our-frontier-safety-framework/">Frontier Safety Framework</a></li>
+      <li><a href="https://artificialanalysis.ai/models/gemini-4-argon">Artificial Analysis, Gemini 4 Argon (High)</a></li>
+    </ul>
+  </article>
+</Layout>

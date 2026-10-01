@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-09-29",
-  "updated": "2026-09-29",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Seven rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0 only; aaIndex blank until an AA primary exists), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench from that same chart; aaIndex blank) · GPT-6 Sol · Grok 4.7. Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
+  "asOf": "2026-10-01",
+  "updated": "2026-10-01T08:40:00-04:00",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Seven rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0 only; aaIndex blank until an AA primary exists), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench from that same chart; aaIndex blank) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
   "columns": [
     {
       "id": "cursorBench",
@@ -276,56 +276,6 @@
       ]
     },
     {
-      "lab": "OpenAI",
-      "model": "GPT-6 Sol",
-      "apiId": "gpt-6-sol",
-      "doorHref": "/ai/models/openai/gpt-6-sol/",
-      "role": "GPT-6 mid-tier coding / agentic; cost-efficiency sibling to Astra",
-      "benches": {
-        "cursorBench": null,
-        "deepSwe": {
-          "value": "68.8%",
-          "version": "v1.1",
-          "notes": "max effort on Sol announce",
-          "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
-        },
-        "terminalBench": null,
-        "osworld": {
-          "value": "60.5%",
-          "version": "2.0 offline partial reward",
-          "notes": "xhigh effort; partial reward on offline set from v2026.08.08 release per Sol announce.",
-          "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
-        },
-        "automationBench": {
-          "value": "33.2%",
-          "version": "1.0.6",
-          "notes": "xhigh effort on Sol announce table",
-          "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
-        },
-        "hle": null,
-        "arcAgi": null,
-        "aaIndex": {
-          "value": 48,
-          "effort": "max",
-          "aaModelLabel": "GPT-6 Sol (max)",
-          "source": "https://artificialanalysis.ai/models/gpt-6-sol",
-          "sourceKind": "aa",
-          "fetched": "2026-09-27",
-          "notes": "AA Intelligence Index from AA Sol model page / Sol-Luna cost article; not a lab announce score."
-        }
-      },
-      "benchesNote": "Shared lab columns filled only where OpenAI Sol announce prints that eval. CursorBench / Terminal-Bench / HLE / ARC-AGI blank — not on Sol primary table. Do not paste AA Terminal-Bench or Coding Agent Index into lab columns.",
-      "sources": [
-        "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
-        "https://developers.openai.com/api/docs/models/gpt-6-sol",
-        "https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925",
-        "https://deploymentsafety.openai.com/gpt-6-astra/sec:appendix-sol-luna",
-        "https://artificialanalysis.ai/models/gpt-6-sol",
-        "https://artificialanalysis.ai/articles/gpt-6-sol-and-luna-push-the-cost-efficiency-frontier",
-        "https://artificialanalysis.ai/leaderboards/models"
-      ]
-    },
-    {
       "lab": "xAI",
       "model": "Grok 4.7",
       "apiId": "grok-4.7",
@@ -369,6 +319,46 @@
         "https://media.x.ai/v1/website/4p7card-5eccc980.pdf",
         "https://artificialanalysis.ai/leaderboards/models",
         "https://artificialanalysis.ai/"
+      ]
+    },
+    {
+      "lab": "Google DeepMind",
+      "model": "Gemini 4 Argon",
+      "apiId": null,
+      "doorHref": "/ai/models/google/gemini-4-argon/",
+      "role": "Announced 30 Sep 2026. Not public. Fairwind cyber defenders first.",
+      "benches": {
+        "cursorBench": null,
+        "deepSwe": {
+          "value": "77.9%",
+          "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+          "sourceKind": "lab",
+          "version": "v1.1",
+          "notes": "Lab claim. Google calls it state of the art."
+        },
+        "terminalBench": null,
+        "osworld": null,
+        "automationBench": {
+          "value": "51.3%",
+          "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+          "sourceKind": "lab",
+          "notes": "Lab claim. Zapier AutomationBench. Google says rank 1."
+        },
+        "hle": null,
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 53,
+          "effort": "high",
+          "aaModelLabel": "Gemini 4 Argon (High)",
+          "source": "https://artificialanalysis.ai/models/gemini-4-argon",
+          "sourceKind": "aa",
+          "fetched": "2026-10-01",
+          "notes": "Artificial Analysis Intelligence Index from the model page fetched 1 Oct 2026. Not a lab score."
+        }
+      },
+      "sources": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+        "https://artificialanalysis.ai/models/gemini-4-argon"
       ]
     }
   ]

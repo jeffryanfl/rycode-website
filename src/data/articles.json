@@ -764,6 +764,26 @@
     "slug": "ai-models-xai-voice"
   },
   {
+    "href": "/ai/models/google/gemini-4-argon/",
+    "title": "Gemini 4 Argon",
+    "description": "Announced 30 September 2026 for trusted cyber defenders, not the public.",
+    "date": "2026-10-01",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-4-argon.astro",
+    "slug": "ai-models-google-gemini-4-argon"
+  },
+  {
     "href": "/ai/models/google/gemini-flash/",
     "title": "Gemini 3.8 Flash",
     "description": "Current Flash workhorse for long-horizon agents.",
