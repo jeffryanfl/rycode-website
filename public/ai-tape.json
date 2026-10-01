@@ -1,20 +1,20 @@
 {
-  "updated": "2026-09-30T08:40:00-04:00",
-  "asOfLabel": "Wed 30 Sep · morning",
+  "updated": "2026-10-01T07:34:00-04:00",
+  "asOfLabel": "Thu 1 Oct · morning",
   "lines": [
     {
       "tag": "Release",
-      "text": "OpenAI ships Dots, always-on Astra agents with their own computer, on paid plans."
+      "text": "Google announces Gemini 4 Argon for trusted cyber defenders, not the public."
     },
     {
       "tag": "Release",
-      "text": "GPT-6.1 Sol ships at $2/$10 per million tokens; AA has it one point under Astra."
+      "text": "Gemini 4 Argon intro price is $2/$10 per million tokens, then $4/$20."
     },
     {
-      "tag": "Policy",
-      "text": "Six AI firms sign a voluntary White House audit pledge that names no auditor."
+      "tag": "Labs",
+      "text": "Artificial Analysis scores Gemini 4 Argon (High) at 53 on its Intelligence Index."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-09-30"
+  "date": "2026-10-01"
 }
