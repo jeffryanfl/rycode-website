@@ -1,8 +1,8 @@
 {
   "slug": "warsh-first-hike-oil-and-five-percent-ten-year",
   "door": "economics",
-  "asOf": "2026-09-29T16:53:00-04:00",
-  "asOfLabel": "Tue 29 Sep \u00b7 after-close living strip",
+  "asOf": "2026-09-30T16:52:00-04:00",
+  "asOfLabel": "Wed 30 Sep \u00b7 after-close living strip",
   "bullets": [
     {
       "id": "ff_range",
@@ -18,20 +18,20 @@
     },
     {
       "id": "ust_10y",
-      "text": "10-year Treasury CMT 5.26% (Tue 29 Sep official; +2 bp vs Mon 5.24%). Still above 5%.",
-      "asOf": "2026-09-29",
+      "text": "10-year Treasury CMT 5.29% (Wed 30 Sep official; +3 bp vs Tue 5.26%). Still above 5%.",
+      "asOf": "2026-09-30",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
       "id": "oil",
-      "text": "Tue 29 Sep NYMEX WTI futures (Yahoo CL=F ~4:05pm ET) ~$88.99 (~4% under Mon Yahoo ~$93.26). Brent Yahoo BZ=F ~$95.72 \u2014 aligns with Macro after-close tape (~$88.99 / ~$95.72).",
-      "asOf": "2026-09-29",
+      "text": "Wed 30 Sep NYMEX WTI futures (Yahoo CL=F ~4:15pm ET) ~$90.62 (~2% above Tue Yahoo ~$88.99). Brent Yahoo BZ=F ~$98.17 \u2014 aligns with Macro after-close tape (~$90.62 / ~$98.17).",
+      "asOf": "2026-09-30",
       "source": "https://finance.yahoo.com/quote/CL=F/history/"
     },
     {
       "id": "spx",
-      "text": "S&P 500 Tue 29 Sep close 7,670.84 (\u22120.17% vs Mon close 7,683.69).",
-      "asOf": "2026-09-29",
+      "text": "S&P 500 Wed 30 Sep close 7,651.54 (\u22120.25% vs Tue close 7,670.84).",
+      "asOf": "2026-09-30",
       "source": "https://finance.yahoo.com/quote/%5EGSPC/history/"
     },
     {
@@ -81,6 +81,10 @@
     {
       "date": "2026-09-29",
       "note": "Macro living refresh (after-close): official CMT 10y 5.26%; SPX 7,670.84; WTI/Brent Yahoo ~$88.99/~$95.72."
+    },
+    {
+      "date": "2026-09-30",
+      "note": "Macro living refresh (after-close): official CMT 10y 5.29%; SPX 7,651.54; WTI/Brent Yahoo ~$90.62/~$98.17."
     }
   ]
 }

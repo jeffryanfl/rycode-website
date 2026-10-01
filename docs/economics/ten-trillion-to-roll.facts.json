@@ -1,8 +1,8 @@
 {
   "slug": "ten-trillion-to-roll",
   "door": "economics",
-  "asOf": "2026-09-29T16:53:00-04:00",
-  "asOfLabel": "Tue 29 Sep \u00b7 after-close living strip",
+  "asOf": "2026-09-30T16:52:00-04:00",
+  "asOfLabel": "Wed 30 Sep \u00b7 after-close living strip",
   "bullets": [
     {
       "id": "refinance_fy26",
@@ -12,14 +12,14 @@
     },
     {
       "id": "debt_stock",
-      "text": "Debt to the Penny (28 Sep 2026): total public debt outstanding ~$40.10T; debt held by the public ~$32.39T; intragovernmental ~$7.72T. Name which stock when citing ~$40T.",
-      "asOf": "2026-09-28",
+      "text": "Debt to the Penny (29 Sep 2026): total public debt outstanding ~$40.10T; debt held by the public ~$32.37T; intragovernmental ~$7.73T. Name which stock when citing ~$40T.",
+      "asOf": "2026-09-29",
       "source": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page[size]=1"
     },
     {
       "id": "tga_cash",
-      "text": "Treasury General Account (DTS TGA Closing Balance open_today_bal) 28 Sep 2026: ~$959.6B (was ~$945.3B on 25 Sep). Cash buffer, not a standing $1T buyback program.",
-      "asOf": "2026-09-28",
+      "text": "Treasury General Account (DTS TGA Closing Balance open_today_bal) 29 Sep 2026: ~$936.6B (was ~$959.6B on 28 Sep). Cash buffer, not a standing $1T buyback program.",
+      "asOf": "2026-09-29",
       "source": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/operating_cash_balance?sort=-record_date&page[size]=5&filter=account_type:eq:Treasury General Account (TGA) Closing Balance"
     },
     {
@@ -30,8 +30,8 @@
     },
     {
       "id": "ust_curve",
-      "text": "Official Treasury CMT (Tue 29 Sep): 2-year 4.89%; 10-year 5.26%; 30-year 5.59%.",
-      "asOf": "2026-09-29",
+      "text": "Official Treasury CMT (Wed 30 Sep): 2-year 4.88%; 10-year 5.29%; 30-year 5.64%.",
+      "asOf": "2026-09-30",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
@@ -69,6 +69,10 @@
     {
       "date": "2026-09-29",
       "note": "Macro living refresh (after-close): Tue CMT 2y/10y/30y 4.89/5.26/5.59; Debt to Penny 28 Sep; TGA DTS ~$959.6B."
+    },
+    {
+      "date": "2026-09-30",
+      "note": "Macro living refresh (after-close): Wed CMT 2y/10y/30y 4.88/5.29/5.64; Debt to Penny 29 Sep; TGA DTS ~$936.6B."
     }
   ]
 }

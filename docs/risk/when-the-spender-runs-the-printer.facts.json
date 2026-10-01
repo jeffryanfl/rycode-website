@@ -1,13 +1,13 @@
 {
   "slug": "when-the-spender-runs-the-printer",
   "door": "risk",
-  "asOf": "2026-09-29T16:53:00-04:00",
-  "asOfLabel": "Tue 29 Sep \u00b7 after-close living strip",
+  "asOf": "2026-09-30T16:52:00-04:00",
+  "asOfLabel": "Wed 30 Sep \u00b7 after-close living strip",
   "bullets": [
     {
       "id": "debt_stock",
-      "text": "Debt to the Penny (28 Sep 2026): TPDO ~$40.10T; debt held by the public ~$32.39T; intragovernmental ~$7.72T. Never swap stocks.",
-      "asOf": "2026-09-28",
+      "text": "Debt to the Penny (29 Sep 2026): TPDO ~$40.10T; debt held by the public ~$32.37T; intragovernmental ~$7.73T. Never swap stocks.",
+      "asOf": "2026-09-29",
       "source": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"
     },
     {
@@ -75,6 +75,10 @@
     {
       "date": "2026-09-29",
       "note": "Macro living refresh (after-close): Debt to the Penny 28 Sep only (slow bullets unchanged)."
+    },
+    {
+      "date": "2026-09-30",
+      "note": "Macro living refresh (after-close): Debt to the Penny 29 Sep only (slow bullets unchanged)."
     }
   ]
 }
