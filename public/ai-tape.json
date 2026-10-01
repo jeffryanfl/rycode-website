@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-01T07:34:00-04:00",
-  "asOfLabel": "Thu 1 Oct · morning",
+  "updated": "2026-10-01T08:36:00-04:00",
+  "asOfLabel": "Thu 1 Oct \u00b7 morning",
   "lines": [
     {
       "tag": "Release",
@@ -11,8 +11,8 @@
       "text": "Gemini 4 Argon intro price is $2/$10 per million tokens, then $4/$20."
     },
     {
-      "tag": "Labs",
-      "text": "Artificial Analysis scores Gemini 4 Argon (High) at 53 on its Intelligence Index."
+      "tag": "Deal",
+      "text": "SoftBank completes the final $10B OpenAI tranche; follow-on total is $30B."
     }
   ],
   "doorHref": "/ai",
