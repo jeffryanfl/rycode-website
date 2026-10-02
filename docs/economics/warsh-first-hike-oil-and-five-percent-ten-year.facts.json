@@ -1,12 +1,12 @@
 {
   "slug": "warsh-first-hike-oil-and-five-percent-ten-year",
   "door": "economics",
-  "asOf": "2026-09-30T16:52:00-04:00",
-  "asOfLabel": "Wed 30 Sep \u00b7 after-close living strip",
+  "asOf": "2026-10-01T16:45:00-04:00",
+  "asOfLabel": "Thu 1 Oct · after-close living strip",
   "bullets": [
     {
       "id": "ff_range",
-      "text": "Fed funds target 3.75%\u20134.00% (+25 bp 16 Sep 2026; vote 12\u20130).",
+      "text": "Fed funds target 3.75%–4.00% (+25 bp 16 Sep 2026; vote 12–0).",
       "asOf": "2026-09-16",
       "source": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf"
     },
@@ -18,25 +18,25 @@
     },
     {
       "id": "ust_10y",
-      "text": "10-year Treasury CMT 5.29% (Wed 30 Sep official; +3 bp vs Tue 5.26%). Still above 5%.",
-      "asOf": "2026-09-30",
+      "text": "10-year Treasury CMT 5.24% (Thu 1 Oct official; −5 bp vs Wed 5.29%). Still above 5%.",
+      "asOf": "2026-10-01",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
     },
     {
       "id": "oil",
-      "text": "Wed 30 Sep NYMEX WTI futures (Yahoo CL=F ~4:15pm ET) ~$90.62 (~2% above Tue Yahoo ~$88.99). Brent Yahoo BZ=F ~$98.17 \u2014 aligns with Macro after-close tape (~$90.62 / ~$98.17).",
-      "asOf": "2026-09-30",
+      "text": "Thu 1 Oct NYMEX WTI futures (Yahoo CL=F ~4:00pm ET / Macro after-close) ~$93.29 (~3% above Wed Yahoo ~$90.62). Brent front-month Yahoo BZ=F ~$102.66 (Wed Macro ~$98.17) — Brent day-to-day gap unclean on front-month roll (same caveat as Macro after-close tape); Yahoo daily bars ~$92.84 / ~$102.22.",
+      "asOf": "2026-10-01",
       "source": "https://finance.yahoo.com/quote/CL=F/history/"
     },
     {
       "id": "spx",
-      "text": "S&P 500 Wed 30 Sep close 7,651.54 (\u22120.25% vs Tue close 7,670.84).",
-      "asOf": "2026-09-30",
+      "text": "S&P 500 Thu 1 Oct close 7,666.45 (+0.2% vs Wed close 7,651.54).",
+      "asOf": "2026-10-01",
       "source": "https://finance.yahoo.com/quote/%5EGSPC/history/"
     },
     {
       "id": "fed_context",
-      "text": "Statement: inflation remains elevated; activity solid. Next FOMC Oct 27\u201328 2026.",
+      "text": "Statement: inflation remains elevated; activity solid. Next FOMC Oct 27–28 2026.",
       "asOf": "2026-09-16",
       "source": "https://www.federalreserve.gov/monetarypolicy/files/monetary20260916a1.pdf"
     }
@@ -85,6 +85,10 @@
     {
       "date": "2026-09-30",
       "note": "Macro living refresh (after-close): official CMT 10y 5.29%; SPX 7,651.54; WTI/Brent Yahoo ~$90.62/~$98.17."
+    },
+    {
+      "date": "2026-10-01",
+      "note": "Macro living refresh (after-close): official CMT 10y 5.24%; SPX 7,666.45; WTI Yahoo ~$93.29; Brent front-month ~$102.66 (roll caveat)."
     }
   ]
 }
