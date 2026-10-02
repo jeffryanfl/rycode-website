@@ -3,16 +3,16 @@
   "asOfLabel": "Fri 2 Oct · morning",
   "lines": [
     {
-      "tag": "Release",
-      "text": "Anthropic ships Claude Code mods, unsandboxed TypeScript that rewrites prompts and tools."
+      "tag": "Policy",
+      "text": "California AG subpoenas OpenAI over cybersecurity incidents tied to its models."
     },
     {
-      "tag": "Release",
-      "text": "Microsoft ships a streaming transcription model and two voice models for live agents."
+      "tag": "News",
+      "text": "OpenAI says it cut three safety researchers over mishandled sensitive information."
     },
     {
-      "tag": "Release",
-      "text": "OpenAI says Astra Ultrafast is up to 8x faster than Standard, live in the API."
+      "tag": "Deal",
+      "text": "Banks line up $60B so Broadcom can fund AI chips for Anthropic and others."
     }
   ],
   "doorHref": "/ai",
