@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-01T08:36:00-04:00",
-  "asOfLabel": "Thu 1 Oct \u00b7 morning",
+  "updated": "2026-10-02T08:37:00-04:00",
+  "asOfLabel": "Fri 2 Oct · morning",
   "lines": [
     {
       "tag": "Release",
-      "text": "Google announces Gemini 4 Argon for trusted cyber defenders, not the public."
+      "text": "Anthropic ships Claude Code mods, unsandboxed TypeScript that rewrites prompts and tools."
     },
     {
       "tag": "Release",
-      "text": "Gemini 4 Argon intro price is $2/$10 per million tokens, then $4/$20."
+      "text": "Microsoft ships a streaming transcription model and two voice models for live agents."
     },
     {
-      "tag": "Deal",
-      "text": "SoftBank completes the final $10B OpenAI tranche; follow-on total is $30B."
+      "tag": "Release",
+      "text": "OpenAI says Astra Ultrafast is up to 8x faster than Standard, live in the API."
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-01"
+  "date": "2026-10-02"
 }
