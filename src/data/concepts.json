@@ -106,7 +106,9 @@
       "id": "assurance-fog",
       "label": "Assurance fog",
       "blurb": "After a scare, closed APIs can block the forensic read that open weights on your own machines can finish.",
-      "articles": [],
+      "articles": [
+        "/risk/the-ban-lands-on-open-source/"
+      ],
       "links": [
         "evals-safety",
         "regulatory-capture"
@@ -174,7 +176,10 @@
       "id": "ai-capex",
       "label": "AI capex",
       "blurb": "Capital spending on AI campuses that has to be financed before the revenue shows up.",
-      "articles": [],
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/",
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
+      ],
       "links": [
         "force-majeure",
         "power-energy",
@@ -234,7 +239,10 @@
       "id": "mortgages-housing",
       "label": "Mortgages",
       "blurb": "The 30-year mortgage rate buyers face when the long Treasury yield is high.",
-      "articles": [],
+      "articles": [
+        "/economics/long-yields-hike-ai-credit-stress/",
+        "/risk/six-percent-that-stays/"
+      ],
       "links": [
         "treasury-yields",
         "fed-policy"

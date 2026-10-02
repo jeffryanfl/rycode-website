@@ -1,6 +1,6 @@
 {
   "schema": "economics-rail-v1",
-  "updated": "2026-09-30T05:04:12-04:00",
+  "updated": "2026-10-02T15:01:38-04:00",
   "append": "Daily tracking adds one object to series[].points when that date is not already there. It does not rewrite older points, does not rebuild weekly/monthly/yearly, and does not edit essay pages. Those tabs are views of points. Oil points are the Yahoo bar. Do not splice the after-close tape over them.",
   "series": [
     {
@@ -55190,6 +55190,18 @@
           "y2": 4.89,
           "y10": 5.26,
           "y30": 5.59
+        },
+        {
+          "date": "2026-09-30",
+          "y2": 4.88,
+          "y10": 5.29,
+          "y30": 5.64
+        },
+        {
+          "date": "2026-10-01",
+          "y2": 4.78,
+          "y10": 5.24,
+          "y30": 5.61
         }
       ]
     },
@@ -87986,6 +87998,16 @@
           "date": "2026-09-29",
           "wti": 89.38,
           "brent": 102.59
+        },
+        {
+          "date": "2026-09-30",
+          "wti": 90.42,
+          "brent": 103.53
+        },
+        {
+          "date": "2026-10-01",
+          "wti": 92.87,
+          "brent": 102.31
         }
       ]
     },
@@ -130022,6 +130044,16 @@
           "date": "2026-09-28",
           "tpdo": 40102185696865.37,
           "public": 32386263609755.87
+        },
+        {
+          "date": "2026-09-29",
+          "tpdo": 40096954633566.68,
+          "public": 32367872193303.63
+        },
+        {
+          "date": "2026-09-30",
+          "tpdo": 40171825101340.31,
+          "public": 32425012546390.57
         }
       ]
     },
@@ -134503,6 +134535,14 @@
         {
           "date": "2026-09-28",
           "tga": 959572000000.0
+        },
+        {
+          "date": "2026-09-29",
+          "tga": 936600000000.0
+        },
+        {
+          "date": "2026-09-30",
+          "tga": 984046000000.0
         }
       ]
     }

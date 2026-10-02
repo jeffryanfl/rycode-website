@@ -66,6 +66,12 @@
       ver.textContent = String(cell.version);
       parent.append(ver);
     }
+    if (cell.sourceKind === 'lab') {
+      const claim = document.createElement('span');
+      claim.className = 'ai-bench-note';
+      claim.textContent = 'lab claim';
+      parent.append(claim);
+    }
   }
 
   function render(root, data) {
