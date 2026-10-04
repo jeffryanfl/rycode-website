@@ -1206,7 +1206,7 @@
   {
     "href": "/ai/hardware/chips/terafab/",
     "title": "Terafab",
-    "description": "Chip fab. SpaceX + Tesla. Not a training hall.",
+    "description": "Chip fab. SpaceX and Tesla. Phase 1 is $16.8B.",
     "date": "2026-09-13",
     "section": "ai",
     "series": "ai-hardware",
@@ -1230,7 +1230,7 @@
   {
     "href": "/ai/hardware/data-centers/memphis-colossus/",
     "title": "Memphis / Colossus",
-    "description": "Training campus. Models learn here. Not a chip foundry.",
+    "description": "Training campus in Memphis. 170 PB/s memory bandwidth and 2.8 Tb/s per server.",
     "date": "2026-09-13",
     "section": "ai",
     "series": "ai-hardware",
@@ -1250,5 +1250,197 @@
     ],
     "file": "src/pages/ai/hardware/data-centers/memphis-colossus.astro",
     "slug": "ai-hardware-data-centers-memphis-colossus"
+  },
+  {
+    "href": "/ai/hardware/chips/mtia/",
+    "title": "MTIA",
+    "description": "MTIA 300 is in production for ranking and ads. MTIA 400 finished lab tests. MTIA 450 and MTIA 500 are planned for general-AI inference.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/mtia.astro",
+    "slug": "ai-hardware-chips-mtia"
+  },
+  {
+    "href": "/ai/hardware/chips/meta-broadcom/",
+    "title": "Broadcom for Meta",
+    "description": "Partnership through 2029. A 2-nanometer accelerator, starting at more than 1 gigawatt, then multiple gigawatts.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta-broadcom.astro",
+    "slug": "ai-hardware-chips-meta-broadcom"
+  },
+  {
+    "href": "/ai/hardware/chips/meta-nvidia/",
+    "title": "Nvidia for Meta",
+    "description": "On 17 February 2026 Nvidia said millions of Blackwell and Rubin chips.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta-nvidia.astro",
+    "slug": "ai-hardware-chips-meta-nvidia"
+  },
+  {
+    "href": "/ai/hardware/chips/meta-amd/",
+    "title": "AMD Instinct for Meta",
+    "description": "Up to 6 gigawatts of Instinct chips. The first gigawatt would be a custom MI450, expected in the second half of 2026.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta-amd.astro",
+    "slug": "ai-hardware-chips-meta-amd"
+  },
+  {
+    "href": "/ai/hardware/data-centers/prometheus/",
+    "title": "Prometheus",
+    "description": "New Albany, Ohio. Over 1 gigawatt and tens of thousands of graphics chips once complete.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/data-centers/",
+        "label": "Data centers"
+      }
+    ],
+    "file": "src/pages/ai/hardware/data-centers/prometheus.astro",
+    "slug": "ai-hardware-data-centers-prometheus"
+  },
+  {
+    "href": "/ai/hardware/data-centers/hyperion/",
+    "title": "Hyperion",
+    "description": "Richland Parish, Louisiana. 5 gigawatts and more than $50 billion.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/data-centers/",
+        "label": "Data centers"
+      }
+    ],
+    "file": "src/pages/ai/hardware/data-centers/hyperion.astro",
+    "slug": "ai-hardware-data-centers-hyperion"
+  },
+  {
+    "href": "/ai/hardware/data-centers/eagle-mountain/",
+    "title": "Eagle Mountain",
+    "description": "Utah. Raised to more than $3 billion on 14 September 2026.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/data-centers/",
+        "label": "Data centers"
+      }
+    ],
+    "file": "src/pages/ai/hardware/data-centers/eagle-mountain.astro",
+    "slug": "ai-hardware-data-centers-eagle-mountain"
+  },
+  {
+    "href": "/ai/hardware/power/meta-nuclear/",
+    "title": "Meta nuclear package",
+    "description": "Up to 6.6 gigawatts by 2035.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/power/",
+        "label": "Power"
+      }
+    ],
+    "file": "src/pages/ai/hardware/power/meta-nuclear.astro",
+    "slug": "ai-hardware-power-meta-nuclear"
   }
 ]

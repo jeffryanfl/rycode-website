@@ -589,6 +589,10 @@ h1.ai-identity {
   gap: 0.85rem;
 }
 
+.hw-lab + .hw-lab .ai-lab-lane {
+  margin-top: 2.15rem;
+}
+
 .hw-card {
   display: flex;
   flex-direction: column;
@@ -624,6 +628,13 @@ h1.ai-identity {
   letter-spacing: -0.03em;
   line-height: 1.08;
   color: var(--ai-ink);
+}
+
+.hw-card-value--text {
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 .hw-card-label,

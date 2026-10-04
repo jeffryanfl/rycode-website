@@ -1,8 +1,16 @@
 {
-  "asOfLabel": "13 Sep 2026 · hardware pack",
+  "asOfLabel": "4 Oct 2026 · hardware pack",
   "plants": [
-    { "id": "terafab", "theme": "chips", "href": "/ai/hardware/chips/terafab/", "title": "Terafab", "dek": "Wafer fab. SpaceX + Tesla. Not a training hall.", "value": "$16.8B", "label": "Phase 1 · company figure · Aug 2026" },
-    { "id": "colossus", "theme": "data-centers", "href": "/ai/hardware/data-centers/memphis-colossus/", "title": "Memphis / Colossus", "dek": "Training campus. Not a chip foundry.", "value": "170 PB/s", "label": "Memory bandwidth · company · fetched 13 Sep 2026" },
-    { "id": "colossus-fabric", "theme": "networks", "href": "/ai/hardware/data-centers/memphis-colossus/", "title": "Colossus fabric", "dek": "Per-server network on the same campus page.", "value": "2.8 Tb/s", "label": "Company · fetched 13 Sep 2026" }
+    { "id": "terafab", "lab": "SpaceX + Tesla", "theme": "chips", "href": "/ai/hardware/chips/terafab/", "title": "Terafab", "dek": "Wafer fab. SpaceX and Tesla. Phase 1 is $16.8B.", "value": "$16.8B", "label": "Phase 1 · company figure · Aug 2026" },
+    { "id": "colossus", "lab": "xAI", "theme": "data-centers", "href": "/ai/hardware/data-centers/memphis-colossus/", "title": "Memphis / Colossus", "dek": "Training campus in Memphis.", "value": "170 PB/s", "label": "Memory bandwidth · company · fetched 13 Sep 2026" },
+    { "id": "colossus-fabric", "lab": "xAI", "theme": "networks", "href": "/ai/hardware/data-centers/memphis-colossus/", "title": "Colossus fabric", "dek": "Per-server network on the Colossus campus.", "value": "2.8 Tb/s", "label": "Company · fetched 13 Sep 2026" },
+    { "id": "mtia", "lab": "Meta", "theme": "chips", "href": "/ai/hardware/chips/mtia/", "title": "MTIA", "dek": "MTIA 300 trains ranking and ads models. MTIA 400 finished lab tests. MTIA 450 and MTIA 500 are planned for general-AI inference.", "value": "MTIA 300", "label": "In production · 11 Mar 2026" },
+    { "id": "meta-broadcom", "lab": "Meta", "theme": "chips", "href": "/ai/hardware/chips/meta-broadcom/", "title": "Broadcom for Meta", "dek": "Partnership through 2029. A 2-nanometer AI accelerator. Starts at more than 1 gigawatt, then multiple gigawatts.", "value": ">1 GW", "label": "14 Apr 2026" },
+    { "id": "meta-nvidia", "lab": "Meta", "theme": "chips", "href": "/ai/hardware/chips/meta-nvidia/", "title": "Nvidia for Meta", "dek": "Nvidia said millions of Blackwell and Rubin chips on 17 February 2026.", "value": "", "label": "" },
+    { "id": "meta-amd", "lab": "Meta", "theme": "chips", "href": "/ai/hardware/chips/meta-amd/", "title": "AMD Instinct for Meta", "dek": "Up to 6 gigawatts of Instinct chips. The first gigawatt would be a custom MI450, expected in the second half of 2026.", "value": "MI450", "label": "Custom first gigawatt · expected 2H 2026" },
+    { "id": "prometheus", "lab": "Meta", "theme": "data-centers", "href": "/ai/hardware/data-centers/prometheus/", "title": "Prometheus", "dek": "New Albany, Ohio. Over 1 gigawatt and tens of thousands of graphics chips once complete.", "value": ">1 GW", "label": "Once complete" },
+    { "id": "hyperion", "lab": "Meta", "theme": "data-centers", "href": "/ai/hardware/data-centers/hyperion/", "title": "Hyperion", "dek": "Richland Parish, Louisiana.", "value": "5 GW", "label": "More than $50 billion" },
+    { "id": "eagle-mountain", "lab": "Meta", "theme": "data-centers", "href": "/ai/hardware/data-centers/eagle-mountain/", "title": "Eagle Mountain", "dek": "Utah. Raised to more than $3 billion on 14 September 2026.", "value": ">$3B", "label": "14 Sep 2026" },
+    { "id": "meta-nuclear", "lab": "Meta", "theme": "power", "href": "/ai/hardware/power/meta-nuclear/", "title": "Meta nuclear package", "dek": "Up to 6.6 gigawatts by 2035.", "value": "6.6 GW", "label": "Up to · by 2035 · January 2026" }
   ]
 }

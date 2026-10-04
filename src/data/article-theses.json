@@ -62,7 +62,16 @@
   "/ai/models/open-weight/qwen/": "Qwen3.8 Max is Alibaba's lead hosted Qwen model, with an open checkpoint beside it on Hugging Face.",
   "/ai/models/open-weight/step-5/": "Step 5 Preview is StepFun's agent model on the API now, and the weights are dated 15 October 2026.",
   "/ai/models/open-weight/kimi-k3/": "Kimi K3 is Moonshot's open-weight flagship for long-horizon coding and knowledge work.",
-  "/ai/hardware/chips/terafab/": "Terafab is a planned chip factory from SpaceX and Tesla, and it is a different site from the Colossus training campus.",
-  "/ai/hardware/data-centers/memphis-colossus/": "Memphis Colossus is a hyperscale training campus that uses chips and power, and it does not make the chips.",
-  "/ai/models/google/gemini-4-argon/": "Gemini 4 Argon was announced 30 September 2026 for trusted cyber defenders, not the public, at an intro price of $2 input and $10 output per million tokens."
+  "/ai/hardware/chips/terafab/": "Terafab is a planned chip factory from SpaceX and Tesla in Grimes County, Texas, with a Phase 1 figure of $16.8B.",
+  "/ai/hardware/data-centers/memphis-colossus/": "Memphis Colossus is a hyperscale training campus. The company page lists 170 PB/s of aggregate memory bandwidth and 2.8 Tb/s per server.",
+  "/ai/models/google/gemini-4-argon/": "Gemini 4 Argon was announced 30 September 2026 for trusted cyber defenders, not the public, at an intro price of $2 input and $10 output per million tokens.",
+  "/ai/what-xai-has-running/": "SpaceX told investors on 12 June 2026 that Colossus and Colossus II together provide about 1 gigawatt of compute power, and the Colossus page lists 170 PB/s and 2.8 Tb/s.",
+  "/ai/hardware/chips/mtia/": "MTIA 300 is in production for ranking and ads models, MTIA 400 has finished lab tests, and MTIA 450 and MTIA 500 are planned for general-AI inference.",
+  "/ai/hardware/chips/meta-broadcom/": "The Broadcom partnership runs through 2029 and names a 2-nanometer accelerator, starting at more than 1 gigawatt and then multiple gigawatts.",
+  "/ai/hardware/chips/meta-nvidia/": "On 17 February 2026 Nvidia said millions of Blackwell and Rubin chips.",
+  "/ai/hardware/chips/meta-amd/": "AMD said up to 6 gigawatts of Instinct chips, with the first gigawatt a custom MI450 expected in the second half of 2026.",
+  "/ai/hardware/data-centers/prometheus/": "Prometheus in New Albany, Ohio is over 1 gigawatt and tens of thousands of graphics chips once complete.",
+  "/ai/hardware/data-centers/hyperion/": "Hyperion in Richland Parish, Louisiana is published at 5 gigawatts and more than $50 billion.",
+  "/ai/hardware/data-centers/eagle-mountain/": "Eagle Mountain in Utah was raised to more than $3 billion on 14 September 2026.",
+  "/ai/hardware/power/meta-nuclear/": "Meta's January 2026 nuclear package is up to 6.6 gigawatts by 2035."
 }

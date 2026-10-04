@@ -1,18 +1,18 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
-import HardwareCardGrid from '../../../../components/HardwareCardGrid.astro';
+import HardwarePlantGroups from '../../../../components/HardwarePlantGroups.astro';
 import HardwareCrumb from '../../../../components/HardwareCrumb.astro';
-import { hardwarePlants, hardwareTheme } from '../../../../lib/hardware';
+import { hardwareTheme } from '../../../../lib/hardware';
 import '../../../../styles/ai.css';
 
 const theme = hardwareTheme('power');
 ---
 
-<Layout title={`${theme.title} — Hardware — Rycode`} description={theme.dek} variant="ai">
+<Layout title={`${theme.title} - Hardware - Rycode`} description={theme.dek} variant="ai">
   <div class="ai-lab-head">
     <HardwareCrumb current={theme.title} />
     <h1 class="ai-lab-title">{theme.title}</h1>
     <p class="ai-lab-dek">{theme.dek}</p>
   </div>
-  <HardwareCardGrid cards={hardwarePlants('power')} listLabel={theme.title} emptyTitle="No named plant yet" />
+  <HardwarePlantGroups themeId="power" listLabel={theme.title} emptyTitle="" />
 </Layout>

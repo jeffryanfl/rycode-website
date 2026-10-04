@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/ai.css';
+import '../../styles/paper.css';
+
+const title = 'What xAI has running';
+const filing = 'https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm';
+---
+
+<Layout
+  title={`${title} - Rycode`}
+  description="Colossus and Colossus II together provide about 1 gigawatt of compute power. The Colossus page lists 170 PB/s of memory bandwidth and 2.8 Tb/s per server."
+  variant="ai"
+>
+  <a slot="ai-identity" href="/ai/" class="ai-identity">
+    <img class="ai-glyph" src="/landing/hub-brain-overhead.webp" alt="" width="63" height="72" />
+    A.I.
+  </a>
+
+  <article class="paper">
+    <div class="paper-grid paper-grid--solo">
+      <header class="paper-head">
+        <p class="paper-kicker">A.I. · <time datetime="2026-10-04">4 October 2026</time></p>
+        <h1 class="paper-claim">{title}</h1>
+      </header>
+
+      <div class="paper-main">
+        <div class="paper-body">
+          <p>SpaceX, which bought xAI in February 2026, told investors on <a href={filing}>12 June 2026</a> that Colossus and Colossus II together provide about 1 gigawatt of compute power, with more power capacity available. A gigawatt is a billion watts. The filing says the first Colossus cluster came online in 122 days, and the first Colossus II cluster in 91 days.</p>
+          <p>Colossus is the flagship site on Paul R. Lowry Road in Memphis. Colossus II is data centers in Memphis and in Southaven, Mississippi. On 6 May 2026 the company said Colossus 1 had over 220,000 Nvidia graphics chips, including H100, H200, and GB200. On 6 January 2026 it said Colossus I and II ended 2025 above one million H100-equivalents. The Colossus page, fetched 13 September 2026, lists 170 PB/s aggregate memory bandwidth, 2.8 Tb/s per-server network, and 0.5 EB of storage.</p>
+          <p>On 30 July 2026 the company said 69 temporary gas turbines were powering the Southaven site at 2875 Stanton Road, and that a 1.2 gigawatt plant of 41 permanent turbines was under construction. A Mississippi order the same day confirms the 69 turbines and a permit from 11 March 2026 to build the 41.</p>
+          <p>On 24 August 2026 Nvidia said it will put Vera processors and Vera Rubin chips into this build, including a planned Starmind satellite. Terafab is a separate chip factory planned by SpaceX and Tesla. Phase 1 is $16.8B.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

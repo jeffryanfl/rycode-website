@@ -1,0 +1,26 @@
+---
+import HardwareCardGrid from './HardwareCardGrid.astro';
+import { hardwarePlantsByLab } from '../lib/hardware';
+
+interface Props {
+  themeId: string;
+  listLabel: string;
+  emptyTitle: string;
+}
+
+const { themeId, listLabel, emptyTitle } = Astro.props;
+const groups = hardwarePlantsByLab(themeId);
+---
+
+{
+  groups.length === 0 ? (
+    <HardwareCardGrid cards={[]} listLabel={listLabel} emptyTitle={emptyTitle} />
+  ) : (
+    groups.map((group) => (
+      <div class="hw-lab">
+        <h2 class="ai-lab-lane">{group.lab}</h2>
+        <HardwareCardGrid cards={group.cards} listLabel={`${listLabel}, ${group.lab}`} />
+      </div>
+    ))
+  )
+}

@@ -132,7 +132,13 @@
       "blurb": "The electricity, gas, and permits a training campus has to hold before the models run.",
       "articles": [
         "/risk/when-force-majeure-hits-the-ai-build-out/",
-        "/ai/hardware/data-centers/memphis-colossus/"
+        "/ai/hardware/data-centers/memphis-colossus/",
+        "/ai/what-xai-has-running/",
+        "/ai/hardware/chips/meta-broadcom/",
+        "/ai/hardware/chips/meta-amd/",
+        "/ai/hardware/data-centers/prometheus/",
+        "/ai/hardware/data-centers/hyperion/",
+        "/ai/hardware/power/meta-nuclear/"
       ],
       "links": [
         "force-majeure",
@@ -342,7 +348,16 @@
       "blurb": "Where the chips are fabricated, and where the training campus consumes them.",
       "articles": [
         "/ai/hardware/data-centers/memphis-colossus/",
-        "/ai/hardware/chips/terafab/"
+        "/ai/hardware/chips/terafab/",
+        "/ai/what-xai-has-running/",
+        "/ai/hardware/chips/mtia/",
+        "/ai/hardware/chips/meta-broadcom/",
+        "/ai/hardware/chips/meta-nvidia/",
+        "/ai/hardware/chips/meta-amd/",
+        "/ai/hardware/data-centers/prometheus/",
+        "/ai/hardware/data-centers/hyperion/",
+        "/ai/hardware/data-centers/eagle-mountain/",
+        "/ai/hardware/power/meta-nuclear/"
       ],
       "links": [
         "model-releases",
