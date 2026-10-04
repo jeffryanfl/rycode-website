@@ -1254,7 +1254,7 @@
   {
     "href": "/ai/hardware/chips/mtia/",
     "title": "MTIA",
-    "description": "MTIA 300 is in production for ranking and ads. MTIA 400 finished lab tests. MTIA 450 and MTIA 500 are planned for general-AI inference.",
+    "description": "MTIA 300 is in production for ranking and ads, with 216 GB HBM3E. MTIA 400 finished lab tests. MTIA 450 is early 2027 mass deployment and MTIA 500 is 2027 mass deployment, for general-AI inference.",
     "date": "2026-10-04",
     "section": "ai",
     "series": "ai-hardware",
@@ -1326,7 +1326,7 @@
   {
     "href": "/ai/hardware/chips/meta-amd/",
     "title": "AMD Instinct for Meta",
-    "description": "Up to 6 gigawatts of Instinct chips. The first gigawatt would be a custom MI450, expected in the second half of 2026.",
+    "description": "On 24 February 2026 AMD said up to 6 gigawatts of Instinct chips. The first gigawatt is a custom MI450, with shipments in the second half of 2026.",
     "date": "2026-10-04",
     "section": "ai",
     "series": "ai-hardware",

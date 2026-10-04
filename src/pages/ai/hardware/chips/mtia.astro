@@ -5,13 +5,13 @@ import '../../../../styles/ai.css';
 
 <Layout
   title="MTIA - Hardware - Rycode"
-  description="MTIA 300 is in production for ranking and ads models. MTIA 400 finished lab tests. MTIA 450 and MTIA 500 are planned for general-AI inference."
+  description="MTIA 300 is in production for ranking and ads, with 216 GB HBM3E. MTIA 400 finished lab tests. MTIA 450 is early 2027 mass deployment and MTIA 500 is 2027 mass deployment, for general-AI inference."
   variant="ai"
 >
   <article class="ai-model">
     <p class="ai-model-kicker">Hardware · Chips</p>
     <h1 class="ai-model-title">MTIA</h1>
-    <p class="ai-model-dek">Meta's own chips. MTIA 300 trains ranking and ads models. MTIA 400 finished lab tests. MTIA 450 and MTIA 500 are planned for general-AI inference.</p>
+    <p class="ai-model-dek">Meta's own chips. MTIA 300 is in production for ranking and ads, with 216 GB HBM3E. MTIA 400 finished lab tests. MTIA 450 is early 2027 mass deployment and MTIA 500 is 2027 mass deployment, for general-AI inference.</p>
     <hr class="ai-model-rule" />
 
     <h2 class="ai-model-section">Dated claims</h2>
@@ -21,33 +21,34 @@ import '../../../../styles/ai.css';
           <tr>
             <th scope="col">Chip</th>
             <th scope="col">Status</th>
-            <th scope="col">What it is for</th>
+            <th scope="col">Capability</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>MTIA 300</td>
             <td>In production 11 March 2026</td>
-            <td>Training ranking and ads models.</td>
+            <td>Ranking and ads. 216 GB HBM3E. Two network chiplets, 1.2 TB/s total I/O. Scale-up within a rack of 16 nodes at up to 1 TB/s. 12 by 6 processing elements.</td>
           </tr>
           <tr>
             <td>MTIA 400</td>
             <td>Finished lab tests</td>
-            <td>On the path into data centers.</td>
+            <td>Two compute chiplets. 72-accelerator rack. 400% higher FP8 FLOPS and 51% higher HBM bandwidth than the 300.</td>
           </tr>
           <tr>
             <td>MTIA 450</td>
-            <td>Planned early 2027</td>
-            <td>General-AI inference. Inference means running a model.</td>
+            <td>Mass deployment early 2027</td>
+            <td>General-AI inference. Inference means running a model. Doubled HBM bandwidth vs the 400. MX4 FLOPS up 75%.</td>
           </tr>
           <tr>
             <td>MTIA 500</td>
-            <td>Planned 2027</td>
-            <td>General-AI inference. Inference means running a model.</td>
+            <td>Mass deployment 2027</td>
+            <td>General-AI inference. 50% higher HBM bandwidth than the 450, up to 80% higher HBM capacity, and 43% higher MX4 FLOPS. From the 300 to the 500, HBM bandwidth is 4.5x and compute FLOPS is 25x.</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <p>MTIA 300 source: Meta, 11 March 2026, and Engineering at Meta, 24 August 2026.</p>
 
   </article>
 </Layout>
