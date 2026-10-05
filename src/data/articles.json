@@ -136,6 +136,22 @@
     "slug": "ai-swarms-what-an-agent-swarm-is"
   },
   {
+    "href": "/ai/what-xai-has-running/",
+    "title": "What xAI has running",
+    "description": "A first-cluster claim, not a finished campus.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/what-xai-has-running.astro",
+    "slug": "ai-what-xai-has-running"
+  },
+  {
     "href": "/ai/models/typesafe/jev/",
     "title": "Jev",
     "description": "Typed decisions for software, not a chat flagship.",
@@ -578,7 +594,7 @@
   {
     "href": "/ai/models/google/gemini-4-argon/",
     "title": "Gemini 4 Argon",
-    "description": "Announced 30 September 2026 for trusted cyber defenders, not the public.",
+    "description": "Announced 30 Sep 2026. Trusted cyber defenders first, not the public.",
     "date": "2026-10-01",
     "section": "ai",
     "series": "ai-google",
