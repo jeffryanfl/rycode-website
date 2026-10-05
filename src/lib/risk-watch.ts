@@ -272,6 +272,8 @@ export interface ChainStep {
   extra: { label: string; href?: string; value: string; dateLabel: string; status?: string } | null;
   compare: { text: string; average: string; label: string; flag: string | null } | null;
   list: { date: string; label: string; value: string; status?: string }[] | null;
+  /** One short phrase for the collapsed chain summary, e.g. "Chips 4.3 pts from correction". */
+  headline: string;
 }
 
 export interface ChainRow {
@@ -303,6 +305,24 @@ function peakDistance(below: number, lines: PeakLine[]): string {
     }
   }
   return `In a ${sorted[sorted.length - 1].label}`;
+}
+
+/** Shorter value for a summary line: millions of dollars read as billions once past $1,000M. */
+function shortValue(value: number, kind: Format): string {
+  if (kind === 'millions' && Math.abs(value) >= 1000) return `$${(value / 1000).toFixed(2)}B`;
+  return format(value, kind);
+}
+
+function peakShort(below: number, lines: PeakLine[]): string {
+  const sorted = [...lines].sort((a, b) => a.fromPeak - b.fromPeak);
+  for (let i = 0; i < sorted.length; i++) {
+    const level = sorted[i].fromPeak * 100;
+    if (below < level) {
+      const prefix = i > 0 ? `in ${sorted[i - 1].label}, ` : '';
+      return `${prefix}${(level - below).toFixed(1)} pts from ${sorted[i].label}`;
+    }
+  }
+  return `in ${sorted[sorted.length - 1].label}`;
 }
 
 export function riskWatchChains(): ChainRow[] {
@@ -348,10 +368,12 @@ export function riskWatchChains(): ChainRow[] {
 
       let lines: ChainStep['lines'] = [];
       let peak: ChainStep['peak'] = null;
+      let belowPeak: number | null = null;
       if (step.riskLines?.length) {
         const peakPoint = windowPoints.reduce((a, b) => ((b[key] as number) >= (a[key] as number) ? b : a));
         const peakValue = peakPoint[key] as number;
         const below = (1 - latest / peakValue) * 100;
+        belowPeak = Math.max(below, 0);
         const deepest = Math.max(...step.riskLines.map((l) => l.fromPeak)) * 100;
         lines = step.riskLines.map((l) => ({
           value: peakValue * (1 - l.fromPeak),
@@ -446,6 +468,11 @@ export function riskWatchChains(): ChainRow[] {
         extra,
         compare,
         list,
+        headline: `${step.step.replace(/^\d+\s*/, '')} ${
+          belowPeak !== null && step.riskLines?.length
+            ? peakShort(belowPeak, step.riskLines)
+            : shortValue(latest, reading.format)
+        }`,
       };
     }),
   }));

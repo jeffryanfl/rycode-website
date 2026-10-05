@@ -73,6 +73,11 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
           />
         </div>
 
+        <details class="rw-more rw-range-wrap">
+          <summary class="rw-more-summary">
+            <span class="rw-chevron" aria-hidden="true"></span>
+            <span>High and low</span>
+          </summary>
         <table class="rw-range">
           <thead>
             <tr>
@@ -94,18 +99,33 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
             </tr>
           </tbody>
         </table>
+        </details>
       </li>
     ))}
     {chains.map((chain) => (
       <li class="rw-chain">
+        <details class="rw-chain-details">
+        <summary class="rw-chain-summary">
+          <span class="rw-chevron" aria-hidden="true"></span>
+          <span class="rw-chain-summary-text">
+            <span class="rw-name">{chain.risk}</span>
+            <span class="rw-chain-headlines">
+              {chain.steps.map((step, i) => (
+                <>{i > 0 && <><span class="rw-sep" aria-hidden="true"> · </span><span class="rw-sr">, </span></>}<span class="rw-chain-headline">{step.headline}</span></>
+              ))}
+            </span>
+            {chain.steps.filter((step) => step.compare?.flag).map((step) => (
+              <span class="rw-flag rw-flag-inline">{step.compare?.flag}</span>
+            ))}
+          </span>
+        </summary>
         <div class="rw-chain-head">
           <p class="rw-name-line">
-            <span class="rw-name">{chain.risk}</span>
+            <span class="rw-why">{chain.why}</span>
             {chain.brief && (
               <a class="rw-brief" href={chain.brief} aria-label={`Brief: ${chain.risk}`}>brief</a>
             )}
           </p>
-          <p class="rw-why">{chain.why}</p>
           {chain.key && <p class="rw-chain-key">{chain.key}</p>}
         </div>
         <ol class="rw-steps">
@@ -174,7 +194,10 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
               )}
               {step.list && (
                 <details class="rw-step-list">
-                  <summary>All {step.windowLabel}</summary>
+                  <summary class="rw-more-summary">
+                    <span class="rw-chevron" aria-hidden="true"></span>
+                    <span>All {step.windowLabel}</span>
+                  </summary>
                   <table>
                     <tbody>
                       {[...step.list].reverse().map((p) => (
@@ -192,6 +215,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
             </li>
           ))}
         </ol>
+        </details>
       </li>
     ))}
   </ul>
@@ -416,8 +440,112 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
   }
 
   .rw-chain {
-    padding: 1rem 0 1.1rem;
+    padding: 0;
     border-bottom: 1px solid var(--risk-hair, rgba(248, 250, 252, 0.16));
+  }
+
+  /* Native disclosure: no script. The chevron turns when open. */
+  .rw-chain-summary,
+  .rw-more-summary {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .rw-chain-summary::-webkit-details-marker,
+  .rw-more-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .rw-chain-summary:focus-visible,
+  .rw-more-summary:focus-visible {
+    outline: 2px solid #e39a45;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .rw-chevron {
+    flex: none;
+    display: inline-block;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-0.12rem) rotate(-45deg);
+    transition: transform 0.15s ease;
+    color: #e39a45;
+  }
+
+  details[open] > summary > .rw-chevron {
+    transform: translateY(-0.2rem) rotate(45deg);
+  }
+
+  .rw-chain-summary {
+    padding: 0.95rem 0;
+  }
+
+  .rw-chain-summary:hover .rw-name {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .rw-chain-summary-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.9rem;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .rw-chain-headlines {
+    line-height: 1.6;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-chain-headline {
+    white-space: nowrap;
+  }
+
+  .rw-sep {
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-flag-inline {
+    padding: 0.05rem 0.45rem;
+    border: 1px solid rgba(227, 154, 69, 0.6);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e39a45;
+  }
+
+  .rw-chain-details[open] {
+    padding-bottom: 1.1rem;
+  }
+
+  .rw-more-summary {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+  }
+
+  .rw-more-summary .rw-chevron {
+    width: 0.34rem;
+    height: 0.34rem;
+  }
+
+  .rw-range-wrap[open] > .rw-more-summary {
+    margin-bottom: 0.3rem;
   }
 
   .rw-chain-head p {
@@ -592,13 +720,6 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     color: var(--risk-ink, rgba(248, 250, 252, 0.92));
   }
 
-  .rw-step-list summary {
-    cursor: pointer;
-    font-size: 0.58rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
-  }
 
   .rw-step-list table {
     width: 100%;
@@ -686,7 +807,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
       max-width: 10rem;
     }
 
-    .rw-range {
+    .rw-range-wrap {
       grid-area: range;
     }
   }
