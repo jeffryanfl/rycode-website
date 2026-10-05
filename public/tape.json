@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-02T16:12:00-04:00",
-  "asOfLabel": "Fri 2 Oct · after-close",
+  "updated": "2026-10-05T08:13:00-04:00",
+  "asOfLabel": "Mon 5 Oct · pre-open",
   "lines": [
     {
-      "tag": "Jobs",
-      "text": "Sep payrolls +29,000, preliminary. Unemployment 4.2%, from 4.1%."
-    },
-    {
       "tag": "Tape",
-      "text": "Fri: S&P 7,722.72 (+0.7%). Dow +0.5%. Nasdaq +1.2%."
+      "text": "Mon: ES ~7,779 flat. NQ −0.1%. YM ~51,518."
     },
     {
       "tag": "Rates",
-      "text": "CMT 10y 5.28% (Thu 5.24%). 2y 4.83%. 30y 5.63%."
+      "text": "Last CMT Fri: 10y 5.28%. 2y 4.83%. 30y 5.63%."
+    },
+    {
+      "tag": "Oil",
+      "text": "WTI Nov ~$89.95 (Fri close $91.11). Soft overnight."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-10-02"
+  "date": "2026-10-05"
 }

@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-02T08:37:00-04:00",
-  "asOfLabel": "Fri 2 Oct · morning",
+  "updated": "2026-10-05T08:44:00-04:00",
+  "asOfLabel": "Mon 5 Oct · morning",
   "lines": [
     {
       "tag": "Policy",
-      "text": "California AG subpoenas OpenAI over cybersecurity incidents tied to its models."
+      "text": "Trump names Jay Clayton AI czar to lead a new White House Super Intelligence Force"
     },
     {
-      "tag": "News",
-      "text": "OpenAI says it cut three safety researchers over mishandled sensitive information."
+      "tag": "Policy",
+      "text": "OpenAI, Anthropic, Google and Meta testify under oath at New York City Council AI hearing"
     },
     {
-      "tag": "Deal",
-      "text": "Banks line up $60B so Broadcom can fund AI chips for Anthropic and others."
+      "tag": "OpenWeight",
+      "text": "Aleph Alpha releases Kolibri, a 78B open-weight German-English model, under Apache 2.0"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-02"
+  "date": "2026-10-05"
 }
