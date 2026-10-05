@@ -37,9 +37,10 @@
   }
 
   function orderedColumns(columns) {
-    const aa = columns.filter(function (col) { return col.id === 'aaIndex'; });
-    const rest = columns.filter(function (col) { return col.id !== 'aaIndex'; });
-    return aa.concat(rest);
+    // AA Index and Terminal-Bench are the charts above this table.
+    return columns.filter(function (col) {
+      return col.id !== 'aaIndex' && col.id !== 'terminalBench';
+    });
   }
 
   function fillNumber(parent, cell) {
@@ -88,10 +89,20 @@
       const th = document.createElement('th');
       th.scope = 'col';
       if (col.id === 'aaIndex') th.className = 'ai-bench-aa';
-      headerLines(col).forEach(function (line, index) {
-        if (index) th.append(document.createElement('br'));
-        th.append(document.createTextNode(line));
+      const lines = headerLines(col);
+      const holder = col.href ? document.createElement('a') : document.createDocumentFragment();
+      if (col.href) {
+        const link = holder;
+        link.className = 'ai-bench-exam';
+        link.href = col.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+      lines.forEach(function (line, index) {
+        if (index) holder.append(document.createElement('br'));
+        holder.append(document.createTextNode(line));
       });
+      th.append(holder);
       head.append(th);
     });
     thead.append(head);

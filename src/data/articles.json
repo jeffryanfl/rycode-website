@@ -1254,7 +1254,7 @@
   {
     "href": "/ai/hardware/chips/mtia/",
     "title": "MTIA",
-    "description": "MTIA 300 is in production for ranking and ads, with 216 GB HBM3E. MTIA 400 finished lab tests. MTIA 450 is early 2027 mass deployment and MTIA 500 is 2027 mass deployment, for general-AI inference.",
+    "description": "MTIA 300, 400, 450, and 500. The 300 is in production with 216 GB HBM3E. The 400 is a 72-accelerator rack. Compute FLOPS from the 300 to the 500 is 25x.",
     "date": "2026-10-04",
     "section": "ai",
     "series": "ai-hardware",
@@ -1276,9 +1276,9 @@
     "slug": "ai-hardware-chips-mtia"
   },
   {
-    "href": "/ai/hardware/chips/meta-broadcom/",
-    "title": "Broadcom for Meta",
-    "description": "Partnership through 2029. A 2-nanometer accelerator, starting at more than 1 gigawatt, then multiple gigawatts.",
+    "href": "/ai/hardware/chips/blackwell/",
+    "title": "Blackwell",
+    "description": "GB300 NVL72 is 72 Blackwell Ultra GPUs and 36 Grace CPUs, with 20 TB of GPU memory, 130 TB/s NVLink, and 1,440 PFLOPS of FP4 Tensor Core with sparsity.",
     "date": "2026-10-04",
     "section": "ai",
     "series": "ai-hardware",
@@ -1296,13 +1296,13 @@
         "label": "Chips"
       }
     ],
-    "file": "src/pages/ai/hardware/chips/meta-broadcom.astro",
-    "slug": "ai-hardware-chips-meta-broadcom"
+    "file": "src/pages/ai/hardware/chips/blackwell.astro",
+    "slug": "ai-hardware-chips-blackwell"
   },
   {
-    "href": "/ai/hardware/chips/meta-nvidia/",
-    "title": "Nvidia for Meta",
-    "description": "On 17 February 2026 Nvidia said millions of Blackwell and Rubin chips.",
+    "href": "/ai/hardware/chips/rubin/",
+    "title": "Rubin",
+    "description": "The Rubin GPU is 50 PFLOPS of NVFP4 inference and 288 GB of HBM4. Vera Rubin NVL72 is 72 Rubin GPUs and 36 Vera CPUs.",
     "date": "2026-10-04",
     "section": "ai",
     "series": "ai-hardware",
@@ -1320,13 +1320,13 @@
         "label": "Chips"
       }
     ],
-    "file": "src/pages/ai/hardware/chips/meta-nvidia.astro",
-    "slug": "ai-hardware-chips-meta-nvidia"
+    "file": "src/pages/ai/hardware/chips/rubin.astro",
+    "slug": "ai-hardware-chips-rubin"
   },
   {
-    "href": "/ai/hardware/chips/meta-amd/",
-    "title": "AMD Instinct for Meta",
-    "description": "On 24 February 2026 AMD said up to 6 gigawatts of Instinct chips. The first gigawatt is a custom MI450, with shipments in the second half of 2026.",
+    "href": "/ai/hardware/chips/instinct/",
+    "title": "Instinct",
+    "description": "The custom Instinct GPU is based on the MI450 architecture, with Venice EPYC CPUs, ROCm, and Helios. MI300 and MI350 are the series Meta already runs.",
     "date": "2026-10-04",
     "section": "ai",
     "series": "ai-hardware",
@@ -1344,8 +1344,32 @@
         "label": "Chips"
       }
     ],
-    "file": "src/pages/ai/hardware/chips/meta-amd.astro",
-    "slug": "ai-hardware-chips-meta-amd"
+    "file": "src/pages/ai/hardware/chips/instinct.astro",
+    "slug": "ai-hardware-chips-instinct"
+  },
+  {
+    "href": "/ai/hardware/chips/meta/",
+    "title": "Meta stack",
+    "description": "Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta.astro",
+    "slug": "ai-hardware-chips-meta"
   },
   {
     "href": "/ai/hardware/data-centers/prometheus/",

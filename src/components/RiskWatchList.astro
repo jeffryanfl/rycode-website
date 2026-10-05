@@ -1,0 +1,693 @@
+---
+/**
+ * /risk watch list: one row per risk. The number that moves it, today's
+ * reading and date, distance to the risk line (when the linked page names
+ * one), a small trend line, and the high and low over the trend and the last
+ * 52 weeks. Rows come from src/data/risk-watch.json; readings resolve against
+ * their feeds at build time.
+ */
+import BenchChart from './BenchChart.astro';
+import { dateLabel, riskWatchChains, riskWatchRows } from '../lib/risk-watch';
+
+const rows = riskWatchRows();
+const chains = riskWatchChains();
+const explainBasisPoints = rows.some((row) => row.usesBasisPoints);
+const short = (label: string) => label.replace(/ \d{4}$/, '');
+---
+
+<section class="rw" aria-labelledby="risk-watch-heading">
+  <h2 class="risk-section" id="risk-watch-heading">Watch list</h2>
+  {explainBasisPoints && <p class="rw-key">A basis point is a hundredth of a percent. The dashed line is the level the risk is about.</p>}
+  <div class="rw-head" aria-hidden="true">
+    <span>Risk</span>
+    <span>Reading</span>
+    <span>Trend</span>
+    <span>High and low</span>
+  </div>
+  <ul class="rw-list">
+    {rows.map((row) => (
+      <li class="rw-row">
+        <div class="rw-risk">
+          <p class="rw-name-line">
+            <span class="rw-name">{row.risk}</span>
+            {row.brief && (
+              <a class="rw-brief" href={row.brief} aria-label={`Brief: ${row.risk}`}>brief</a>
+            )}
+          </p>
+          <p class="rw-why">{row.why}</p>
+        </div>
+
+        <div class="rw-reading">
+          <a class="rw-tracker" href={row.trackerHref}>{row.tracker}</a>
+          <p class="rw-value-line">
+            <span class="rw-value">{row.value}</span>
+            <time class="rw-date" datetime={row.date}>{row.dateLabel}</time>
+          </p>
+          {row.riskLine && (
+            <div class="rw-line">
+              <p class="rw-distance">{row.riskLine.distance}</p>
+              <div
+                class="rw-gauge"
+                role="img"
+                aria-label={`${row.value} sits between the 52-week low of ${row.riskLine.low} and ${row.riskLine.label}`}
+              >
+                <span class="rw-gauge-track"><span class="rw-gauge-mark" style={`left: ${row.riskLine.pct.toFixed(1)}%`}></span></span>
+                <span class="rw-gauge-ends" aria-hidden="true">
+                  <span>{row.riskLine.low} low</span>
+                  <span>{row.riskLine.label}</span>
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div class="rw-trend">
+          <BenchChart
+            kind="spark"
+            title={`${row.tracker} since ${dateLabel(row.trendFrom)}, high ${row.periodHigh.value}, low ${row.periodLow.value}`}
+            points={row.trend}
+            highLabel={row.periodHigh.value}
+            lowLabel={row.periodLow.value}
+            refValue={row.riskLine?.value}
+            refLabel={row.riskLine?.label}
+          />
+        </div>
+
+        <table class="rw-range">
+          <thead>
+            <tr>
+              <th scope="col"><span class="rw-sr">Measure</span></th>
+              <th scope="col">Since {short(dateLabel(row.trendFrom))}</th>
+              <th scope="col">52 weeks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">High</th>
+              <td>{row.periodHigh.value}<time datetime={row.periodHigh.date}>{row.periodHigh.dateLabel}</time></td>
+              <td>{row.yearHigh.value}<time datetime={row.yearHigh.date}>{row.yearHigh.dateLabel}</time></td>
+            </tr>
+            <tr>
+              <th scope="row">Low</th>
+              <td>{row.periodLow.value}<time datetime={row.periodLow.date}>{row.periodLow.dateLabel}</time></td>
+              <td>{row.yearLow.value}<time datetime={row.yearLow.date}>{row.yearLow.dateLabel}</time></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    ))}
+    {chains.map((chain) => (
+      <li class="rw-chain">
+        <div class="rw-chain-head">
+          <p class="rw-name-line">
+            <span class="rw-name">{chain.risk}</span>
+            {chain.brief && (
+              <a class="rw-brief" href={chain.brief} aria-label={`Brief: ${chain.risk}`}>brief</a>
+            )}
+          </p>
+          <p class="rw-why">{chain.why}</p>
+          {chain.key && <p class="rw-chain-key">{chain.key}</p>}
+        </div>
+        <ol class="rw-steps">
+          {chain.steps.map((step, i) => (
+            <li class="rw-step">
+              <p class="rw-step-label">
+                <span>{step.step}</span>
+                <span class={i < chain.steps.length - 1 ? 'rw-step-arrow' : 'rw-step-arrow rw-step-arrow-end'} aria-hidden="true">→</span>
+              </p>
+              <p class="rw-step-title">{step.title}</p>
+              <a class="rw-tracker" href={step.trackerHref}>{step.tracker}</a>
+              <p class="rw-value-line">
+                <span class="rw-value">{step.value}</span>
+                <time class="rw-date" datetime={step.date}>{step.dateLabel}{step.status ? `, ${step.status}` : ''}</time>
+              </p>
+              {step.compare && (
+                <div class="rw-line">
+                  <p class="rw-distance">{step.compare.text}</p>
+                  {step.compare.flag && <p class="rw-flag">{step.compare.flag}</p>}
+                </div>
+              )}
+              {step.peak && (
+                <div class="rw-line">
+                  <p class="rw-distance">{step.peak.distance}</p>
+                  <p class="rw-step-sub">{step.peak.below} of {step.peak.value} on {step.peak.dateLabel}</p>
+                  <div
+                    class="rw-gauge"
+                    role="img"
+                    aria-label={`${step.peak.below}. The bar runs from the peak to a 20% drop.`}
+                  >
+                    <span class="rw-gauge-track rw-gauge-peak">
+                      {step.peak.markPct.slice(0, -1).map((m) => <span class="rw-gauge-tick" style={`left: ${m.toFixed(1)}%`}></span>)}
+                      <span class="rw-gauge-mark" style={`left: ${step.peak.pct.toFixed(1)}%`}></span>
+                    </span>
+                    <span class="rw-gauge-ends" aria-hidden="true">
+                      <span>peak</span>
+                      {step.lines.map((l) => <span>{l.short}</span>)}
+                    </span>
+                  </div>
+                </div>
+              )}
+              <div class="rw-step-spark">
+                <BenchChart
+                  kind="spark"
+                  title={`${step.tracker}, last ${step.windowLabel}, high ${step.high.value}, low ${step.low.value}${step.compare ? `, ${step.compare.label} ${step.compare.average}` : ''}`}
+                  points={step.trend}
+                  highLabel={step.high.value}
+                  lowLabel={step.low.value}
+                  refs={step.lines.map((l) => ({ value: l.value, label: l.short }))}
+                  refLabelSide="start"
+                  sparkWidth={260}
+                  sparkHeight={84}
+                />
+              </div>
+              <p class="rw-step-range">
+                <span>{step.windowLabel}</span>
+                <span>High {step.high.value} <time datetime={step.high.date}>{step.high.dateLabel}</time></span>
+                <span>Low {step.low.value} <time datetime={step.low.date}>{step.low.dateLabel}</time></span>
+              </p>
+              {step.extra && (
+                <p class="rw-step-extra">
+                  {step.extra.href ? <a href={step.extra.href}>{step.extra.label}</a> : <span class="rw-step-extra-label">{step.extra.label}</span>}
+                  <span class="rw-step-extra-value">{step.extra.value}</span>
+                  <span class="rw-date">{step.extra.dateLabel}{step.extra.status ? `, ${step.extra.status}` : ''}</span>
+                </p>
+              )}
+              {step.list && (
+                <details class="rw-step-list">
+                  <summary>All {step.windowLabel}</summary>
+                  <table>
+                    <tbody>
+                      {[...step.list].reverse().map((p) => (
+                        <tr>
+                          <th scope="row"><time datetime={p.date}>{p.label}</time></th>
+                          <td>{p.value}</td>
+                          <td class={p.status === 'estimate' ? 'rw-est' : undefined}>{p.status}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </details>
+              )}
+              <p class="rw-step-why">{step.why}</p>
+            </li>
+          ))}
+        </ol>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .rw {
+    margin: 0 0 2.4rem;
+  }
+
+  .rw-key {
+    margin: -0.45rem 0 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-head,
+  .rw-row {
+    display: grid;
+    grid-template-columns: minmax(13rem, 1.4fr) 10.5rem 10rem minmax(14rem, 1fr);
+    gap: 0.5rem 1.4rem;
+    align-items: start;
+  }
+
+  .rw-head {
+    padding: 0 0 0.45rem;
+    border-bottom: 1px solid var(--risk-hair, rgba(248, 250, 252, 0.16));
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rw-row {
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--risk-hair, rgba(248, 250, 252, 0.16));
+  }
+
+  .rw-risk p,
+  .rw-reading p {
+    margin: 0;
+  }
+
+  .rw-name-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.7rem;
+  }
+
+  .rw-name {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-brief {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e39a45;
+    text-decoration: none;
+  }
+
+  .rw-brief:hover,
+  .rw-tracker:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .rw-brief:hover {
+    color: #e39a45;
+  }
+
+  .rw-tracker:hover {
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-risk .rw-why,
+  .rw-chain-head .rw-why {
+    margin-top: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+  }
+
+  .rw-reading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .rw-tracker {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    line-height: 1.3;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+    text-decoration: none;
+  }
+
+  .rw-value-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.1rem 0.5rem;
+  }
+
+  .rw-value {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-date {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-line {
+    margin-top: 0.3rem;
+  }
+
+  .rw-distance {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #e39a45;
+  }
+
+  .rw-gauge {
+    margin-top: 0.35rem;
+  }
+
+  .rw-gauge-track {
+    position: relative;
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.12), rgba(227, 154, 69, 0.55));
+  }
+
+  .rw-gauge-mark {
+    position: absolute;
+    top: -3px;
+    width: 2px;
+    height: 10px;
+    margin-left: -1px;
+    background: #f8fafc;
+  }
+
+  .rw-gauge-ends {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-trend {
+    padding-top: 0.1rem;
+  }
+
+  .rw-range {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-range th,
+  .rw-range td {
+    padding: 0.18rem 0.35rem 0.18rem 0;
+    text-align: left;
+    vertical-align: top;
+    font-weight: 400;
+  }
+
+  .rw-range thead th {
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-range tbody th {
+    font-size: 0.62rem;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+    width: 2.4rem;
+  }
+
+  .rw-range time {
+    display: block;
+    font-size: 0.58rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .rw-chain {
+    padding: 1rem 0 1.1rem;
+    border-bottom: 1px solid var(--risk-hair, rgba(248, 250, 252, 0.16));
+  }
+
+  .rw-chain-head p {
+    margin: 0;
+  }
+
+  .rw-chain-head {
+    max-width: 44rem;
+  }
+
+  .rw-chain-head .rw-chain-key {
+    margin-top: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-steps {
+    list-style: none;
+    margin: 0.85rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .rw-step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+    padding: 0.8rem 0.9rem 0.85rem;
+    border: 1px solid var(--risk-hair, rgba(248, 250, 252, 0.16));
+    border-radius: var(--radius-card, 14px);
+    background: rgba(248, 250, 252, 0.02);
+  }
+
+  .rw-step p {
+    margin: 0;
+  }
+
+  .rw-step-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e39a45;
+  }
+
+  .rw-step-arrow {
+    letter-spacing: 0;
+    font-size: 0.95rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-step-arrow-end {
+    visibility: hidden;
+  }
+
+  .rw-step-title {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-step .rw-step-sub {
+    margin-top: 0.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-gauge-peak {
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.12), rgba(227, 154, 69, 0.6));
+  }
+
+  .rw-gauge-tick {
+    position: absolute;
+    top: -2px;
+    width: 1px;
+    height: 8px;
+    background: rgba(227, 154, 69, 0.9);
+  }
+
+  .rw-step-spark {
+    margin-top: 0.35rem;
+  }
+
+  .rw-step-spark :global(.bc-spark) {
+    max-width: 100%;
+  }
+
+  /* Keep reference labels readable where the trend line crosses them. */
+  .rw-step-spark :global(.bc-spark-ref-text) {
+    paint-order: stroke;
+    stroke: var(--risk-paper, #080a10);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  .rw-step-range {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-step-range > span:first-child {
+    width: 100%;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-step-range time {
+    font-size: 0.58rem;
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-step .rw-step-extra {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.1rem 0.5rem;
+    margin-top: 0.3rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid rgba(248, 250, 252, 0.1);
+  }
+
+  .rw-step-extra a {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+    text-decoration: none;
+  }
+
+  .rw-step-extra a,
+  .rw-step-extra-label {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+  }
+
+  .rw-step .rw-flag {
+    align-self: flex-start;
+    margin-top: 0.3rem;
+    padding: 0.1rem 0.45rem;
+    border: 1px solid rgba(227, 154, 69, 0.6);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e39a45;
+  }
+
+  .rw-step-list {
+    margin-top: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-step-list summary {
+    cursor: pointer;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+  }
+
+  .rw-step-list table {
+    width: 100%;
+    margin-top: 0.3rem;
+    border-collapse: collapse;
+  }
+
+  .rw-step-list th,
+  .rw-step-list td {
+    padding: 0.1rem 0.4rem 0.1rem 0;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .rw-step-list th {
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+  }
+
+  .rw-step-list td:nth-child(2) {
+    text-align: right;
+  }
+
+  .rw-step-list td:last-child {
+    color: var(--risk-faint, rgba(248, 250, 252, 0.4));
+  }
+
+  .rw-step-list .rw-est {
+    color: #e39a45;
+  }
+
+  .rw-step-extra a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .rw-step-extra-value {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--risk-ink, rgba(248, 250, 252, 0.92));
+  }
+
+  .rw-step .rw-step-why {
+    margin-top: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--risk-muted, rgba(248, 250, 252, 0.52));
+  }
+
+  @media (max-width: 860px) {
+    .rw-steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .rw-step-arrow {
+      transform: rotate(90deg);
+    }
+
+    .rw-head {
+      display: none;
+    }
+
+    .rw-row {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        'risk risk'
+        'reading trend'
+        'range range';
+      gap: 0.7rem 1rem;
+      padding: 1rem 0;
+    }
+
+    .rw-risk {
+      grid-area: risk;
+    }
+
+    .rw-reading {
+      grid-area: reading;
+    }
+
+    .rw-trend {
+      grid-area: trend;
+      justify-self: end;
+      width: 100%;
+      max-width: 10rem;
+    }
+
+    .rw-range {
+      grid-area: range;
+    }
+  }
+</style>

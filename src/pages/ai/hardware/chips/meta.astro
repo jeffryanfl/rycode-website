@@ -1,0 +1,38 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Meta stack - Hardware - Rycode"
+  description="Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Stack</p>
+    <h1 class="ai-model-title">Meta stack</h1>
+    <p class="ai-model-dek">Who Meta is buying and building. Chip specs are on the family pages: <a href="/ai/hardware/chips/mtia/">MTIA</a>, <a href="/ai/hardware/chips/blackwell/">Blackwell</a>, <a href="/ai/hardware/chips/rubin/">Rubin</a>, and <a href="/ai/hardware/chips/instinct/">Instinct</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">MTIA</h2>
+    <p>On 11 March 2026 Meta said MTIA 300 is already in production for ranking and recommendations training, and that hundreds of thousands of MTIA chips are deployed for inference across organic content and ads. MTIA 400, 450, and 500 will handle all workloads, used primarily for GenAI inference production in the near future and into 2027. The 450 and 500 are optimized first for GenAI inference. Compute tables are on the <a href="/ai/hardware/chips/mtia/">MTIA</a> page.</p>
+
+    <h2 class="ai-model-section">Broadcom</h2>
+    <p>On 14 April 2026 Meta and Broadcom announced a partnership through 2029. Broadcom will deliver technology supporting MTIA chips. The release calls it the industry's first 2nm AI compute accelerator. The initial commitment exceeds 1 gigawatt and is the first phase of a multi-gigawatt rollout. Zuckerberg, in the same release, said more than 1 gigawatt of custom silicon to start and then multiple gigawatts over time. The Ethernet fabric is described for tens of thousands of nodes.</p>
+
+    <h2 class="ai-model-section">Nvidia</h2>
+    <p>On 17 February 2026 Nvidia said the Meta partnership deploys CPUs and millions of Blackwell and Rubin GPUs, including GB300-based systems. Grace CPU deployment is called the first large-scale Grace-only deployment. Vera CPUs have the potential for large-scale deployment in 2027. Rack and FLOPS tables are on the <a href="/ai/hardware/chips/blackwell/">Blackwell</a> and <a href="/ai/hardware/chips/rubin/">Rubin</a> pages.</p>
+
+    <h2 class="ai-model-section">AMD</h2>
+    <p>On 24 February 2026 AMD said up to 6 gigawatts of Instinct GPUs. The first deployment is a custom Instinct GPU based on the MI450 architecture. Shipments for the first gigawatt begin in the second half of 2026, with 6th Gen EPYC CPUs codenamed Venice, ROCm, and Helios racks. Meta already runs millions of EPYC CPUs and significant deployments of MI300 and MI350 series GPUs. The chip page is <a href="/ai/hardware/chips/instinct/">Instinct</a>.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://about.fb.com/news/2026/03/expanding-metas-custom-silicon-to-power-our-ai-workloads/">Meta, 11 March 2026</a></li>
+      <li><a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-announces-extended-partnership-meta-deploy-technology">Broadcom, 14 April 2026</a></li>
+      <li><a href="https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/">Meta and Broadcom, 14 April 2026</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia">NVIDIA, 17 February 2026</a></li>
+      <li><a href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus">AMD, 24 February 2026</a></li>
+    </ul>
+  </article>
+</Layout>

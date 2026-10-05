@@ -23,3 +23,10 @@
 /ai/hardware/terafab/                 /ai/hardware/chips/terafab/  301!
 /ai/hardware/memphis-colossus         /ai/hardware/data-centers/memphis-colossus/  301!
 /ai/hardware/memphis-colossus/        /ai/hardware/data-centers/memphis-colossus/  301!
+
+/ai/hardware/chips/meta-nvidia        /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-nvidia/       /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-amd           /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-amd/          /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-broadcom      /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-broadcom/     /ai/hardware/chips/meta/  301!

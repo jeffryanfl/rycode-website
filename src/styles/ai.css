@@ -424,6 +424,10 @@ h1.ai-identity {
   margin-top: 0.25rem;
 }
 
+.ai-bench-lines {
+  margin-top: 1.15rem;
+}
+
 .ai-bench[hidden] {
   display: none;
 }
@@ -505,14 +509,6 @@ h1.ai-identity {
   background: #080a10;
 }
 
-.ai-bench-table thead th:nth-child(2),
-.ai-bench-table td:nth-child(2) {
-  position: sticky;
-  left: 9.5rem;
-  z-index: 1;
-  background: #0d1016;
-}
-
 .ai-bench-table thead th {
   background: rgba(248, 250, 252, 0.05);
   color: var(--ai-dim);
@@ -520,6 +516,18 @@ h1.ai-identity {
   font-weight: 400;
   letter-spacing: 0.02em;
   border-bottom-color: rgba(248, 250, 252, 0.28);
+}
+
+.ai-bench-table thead a.ai-bench-exam {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-color: rgba(248, 250, 252, 0.45);
+}
+
+.ai-bench-table thead a.ai-bench-exam:hover {
+  color: var(--ai-ink);
+  text-decoration-color: var(--ai-ink);
 }
 
 .ai-bench-table th[scope='row'] {

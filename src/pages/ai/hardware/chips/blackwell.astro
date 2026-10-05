@@ -1,0 +1,105 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Blackwell - Hardware - Rycode"
+  description="GB300 NVL72 is 72 Blackwell Ultra GPUs and 36 Grace CPUs, with 20 TB of GPU memory, 130 TB/s NVLink, and 1,440 PFLOPS of FP4 Tensor Core with sparsity."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Blackwell</h1>
+    <p class="ai-model-dek">NVIDIA GB300 NVL72. 72 Blackwell Ultra GPUs and 36 Grace CPUs in one rack. <a href="/ai/hardware/chips/rubin/">Rubin</a> is the next Nvidia family. Meta's buy is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">GB300 NVL72</h2>
+    <p>Announced 18 March 2025. The rack connects 72 Blackwell Ultra GPUs and 36 Arm Neoverse-based Grace CPUs and acts as a single GPU built for test-time scaling. AI performance is 1.5x the GB200 NVL72. Partner products start in the second half of 2025. The product page also says 1.5x more dense FP4 Tensor Core FLOPS and 2x higher attention performance compared with Blackwell GPUs.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">GB300 NVL72</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPUs</td>
+            <td>72 Blackwell Ultra</td>
+          </tr>
+          <tr>
+            <td>CPUs</td>
+            <td>36 Grace</td>
+          </tr>
+          <tr>
+            <td>CPU cores</td>
+            <td>2,592 Arm Neoverse V2</td>
+          </tr>
+          <tr>
+            <td>Fast memory</td>
+            <td>37 TB</td>
+          </tr>
+          <tr>
+            <td>GPU memory</td>
+            <td>20 TB at up to 576 TB/s</td>
+          </tr>
+          <tr>
+            <td>CPU memory</td>
+            <td>17 TB LPDDR5X at 14 TB/s</td>
+          </tr>
+          <tr>
+            <td>NVLink</td>
+            <td>130 TB/s</td>
+          </tr>
+          <tr>
+            <td>FP4 Tensor Core, with sparsity</td>
+            <td>1,440 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP4 Tensor Core, without sparsity</td>
+            <td>1,080 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP8/FP6 Tensor Core</td>
+            <td>720 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>INT8 Tensor Core</td>
+            <td>24 POPS</td>
+          </tr>
+          <tr>
+            <td>FP16/BF16 Tensor Core</td>
+            <td>360 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>TF32 Tensor Core</td>
+            <td>180 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP32</td>
+            <td>6 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP64 and FP64 Tensor Core</td>
+            <td>100 TFLOPS</td>
+          </tr>
+          <tr>
+            <td>Network, per GPU</td>
+            <td>ConnectX-8 at 800 Gb/s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Tensor Core figures on the product page are with sparsity unless a figure is marked without it. The second FP4 figure is without sparsity.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Blackwell-Ultra-AI-Factory-Platform-Paves-Way-for-Age-of-AI-Reasoning/default.aspx">NVIDIA, 18 March 2025</a></li>
+      <li><a href="https://www.nvidia.com/en-us/data-center/gb300-nvl72/">NVIDIA GB300 NVL72</a></li>
+      <li><a href="/ai/hardware/chips/rubin/">Rubin</a></li>
+      <li><a href="/ai/hardware/chips/meta/">Meta stack</a></li>
+    </ul>
+  </article>
+</Layout>

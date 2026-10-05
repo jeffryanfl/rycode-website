@@ -125,6 +125,19 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "memphis-colossus.astro":
         # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-13"
+    elif target.name in {
+        "mtia.astro",
+        "blackwell.astro",
+        "rubin.astro",
+        "instinct.astro",
+        "meta.astro",
+        "prometheus.astro",
+        "hyperion.astro",
+        "eagle-mountain.astro",
+        "meta-nuclear.astro",
+    }:
+        # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-10-04"
     elif target.name == "gpt-6.1-sol.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-29"
@@ -238,27 +251,73 @@ def build_catalog_real() -> list[dict]:
             items.append(article_from(row, "ai", f"ai-{series}", crumbs))
 
     hw_crumbs = ai_crumbs + [{"href": "/ai/hardware/", "label": "Hardware"}]
-    # The hub lists five themes. These two leaves are the plant essays.
+    # Chip cards are families. Meta's buy is one stack page. Terafab is the factory.
     # The fabric card links to the campus page, so it is not a second essay.
     hardware_rows = [
         {
             "href": "/ai/hardware/chips/terafab/",
             "title": "Terafab",
-            "description": "Chip fab. SpaceX + Tesla. Not a training hall.",
+            "description": "Chip fab. SpaceX and Tesla. Phase 1 is $16.8B.",
         },
         {
             "href": "/ai/hardware/data-centers/memphis-colossus/",
             "title": "Memphis / Colossus",
-            "description": "Training campus. Models learn here. Not a chip foundry.",
+            "description": "Training campus in Memphis. 170 PB/s memory bandwidth and 2.8 Tb/s per server.",
+        },
+        {
+            "href": "/ai/hardware/chips/mtia/",
+            "title": "MTIA",
+            "description": "MTIA 300, 400, 450, and 500. The 300 is in production with 216 GB HBM3E. The 400 is a 72-accelerator rack. Compute FLOPS from the 300 to the 500 is 25x.",
+        },
+        {
+            "href": "/ai/hardware/chips/blackwell/",
+            "title": "Blackwell",
+            "description": "GB300 NVL72 is 72 Blackwell Ultra GPUs and 36 Grace CPUs, with 20 TB of GPU memory, 130 TB/s NVLink, and 1,440 PFLOPS of FP4 Tensor Core with sparsity.",
+        },
+        {
+            "href": "/ai/hardware/chips/rubin/",
+            "title": "Rubin",
+            "description": "The Rubin GPU is 50 PFLOPS of NVFP4 inference and 288 GB of HBM4. Vera Rubin NVL72 is 72 Rubin GPUs and 36 Vera CPUs.",
+        },
+        {
+            "href": "/ai/hardware/chips/instinct/",
+            "title": "Instinct",
+            "description": "The custom Instinct GPU is based on the MI450 architecture, with Venice EPYC CPUs, ROCm, and Helios. MI300 and MI350 are the series Meta already runs.",
+        },
+        {
+            "href": "/ai/hardware/chips/meta/",
+            "title": "Meta stack",
+            "description": "Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct.",
+        },
+        {
+            "href": "/ai/hardware/data-centers/prometheus/",
+            "title": "Prometheus",
+            "description": "New Albany, Ohio. Over 1 gigawatt and tens of thousands of graphics chips once complete.",
+        },
+        {
+            "href": "/ai/hardware/data-centers/hyperion/",
+            "title": "Hyperion",
+            "description": "Richland Parish, Louisiana. 5 gigawatts and more than $50 billion.",
+        },
+        {
+            "href": "/ai/hardware/data-centers/eagle-mountain/",
+            "title": "Eagle Mountain",
+            "description": "Utah. Raised to more than $3 billion on 14 September 2026.",
+        },
+        {
+            "href": "/ai/hardware/power/meta-nuclear/",
+            "title": "Meta nuclear package",
+            "description": "Up to 6.6 gigawatts by 2035.",
         },
     ]
+    theme_crumbs = {
+        "chips": {"href": "/ai/hardware/chips/", "label": "Chips"},
+        "data-centers": {"href": "/ai/hardware/data-centers/", "label": "Data centers"},
+        "power": {"href": "/ai/hardware/power/", "label": "Power"},
+    }
     for row in hardware_rows:
-        theme_crumb = (
-            [{"href": "/ai/hardware/chips/", "label": "Chips"}]
-            if "/chips/" in row["href"]
-            else [{"href": "/ai/hardware/data-centers/", "label": "Data centers"}]
-        )
-        items.append(article_from(row, "ai", "ai-hardware", hw_crumbs + theme_crumb))
+        theme = next(name for name in theme_crumbs if f"/{name}/" in row["href"])
+        items.append(article_from(row, "ai", "ai-hardware", hw_crumbs + [theme_crumbs[theme]]))
 
     opinion_crumbs = [{"href": "/opinions/", "label": "Opinions"}]
     opinion_rows = json.loads((ROOT / "src" / "data" / "opinions.json").read_text())

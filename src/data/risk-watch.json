@@ -1,0 +1,274 @@
+{
+  "schema": "risk-watch-v1",
+  "note": "Rows for the /risk watch list. Each reading points at a feed; the number, its date, the trend, and the highs and lows come from the feeds at build time. history names the longer feed used for the 52-week high and low (points after its last date come from the reading feed). riskLine is only a level the linked page already names, with the sentence it came from; null means none stated. Feeds are read-only here. A row with kind \"chain\" shows steps side by side; each step points at its own feed. riskLines with fromPeak are drops from the 52-week closing peak. compare draws a dashed line at a recent average: prior is the n readings before the latest, trailing is the n readings ending with the latest.",
+  "rows": [
+    {
+      "id": "thirty-year",
+      "risk": "The 30-year yield holds near 6%",
+      "brief": "/risk/six-percent-that-stays/",
+      "tracker": "30-year Treasury yield",
+      "trackerHref": "/economics/#econ-rail-yields-title",
+      "reading": {
+        "feed": "public/macro-history.json",
+        "key": "y30",
+        "format": "percent"
+      },
+      "history": {
+        "feed": "public/economics-rail.json",
+        "series": "yields",
+        "key": "y30"
+      },
+      "trend": {
+        "points": 13
+      },
+      "riskLine": {
+        "value": 6,
+        "label": "6%",
+        "source": "/risk/six-percent-that-stays/",
+        "quote": "The bad outcome that is not the usual case is the thirty-year Treasury yield going to about 6 percent and remaining there through at least one round of long-term borrowing."
+      },
+      "why": "A hold near 6% raises the cost of new long-term government debt and mortgages."
+    },
+    {
+      "id": "wti",
+      "risk": "Oil keeps prices and rates high",
+      "brief": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
+      "tracker": "WTI crude oil",
+      "trackerHref": "/economics/#econ-rail-oil-title",
+      "reading": {
+        "feed": "public/macro-history.json",
+        "key": "wti",
+        "format": "dollars"
+      },
+      "history": {
+        "feed": "public/economics-rail.json",
+        "series": "oil",
+        "key": "wti"
+      },
+      "trend": {
+        "points": 13
+      },
+      "riskLine": {
+        "value": 100,
+        "label": "$100",
+        "source": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
+        "quote": "The first hike arrived with oil above $100 and the ten-year near 5 percent."
+      },
+      "why": "Oil was above $100 at the first rate hike. Higher oil pushes prices up and keeps rates high."
+    },
+    {
+      "id": "ai-contagion",
+      "kind": "chain",
+      "risk": "AI build-out contagion",
+      "brief": "/risk/when-force-majeure-hits-the-ai-build-out/",
+      "why": "A slip in AI campus spending can travel to chip stocks and then to the whole market.",
+      "key": "A correction is a 10% drop from the peak. A bear market is a 20% drop.",
+      "steps": [
+        {
+          "id": "build",
+          "step": "1 Build",
+          "title": "Build-outs slip",
+          "tracker": "US private data-center construction, monthly",
+          "trackerHref": "https://www.census.gov/construction/c30/historical_data.html",
+          "reading": {
+            "feed": "public/ai-contagion.json",
+            "series": "datacenter",
+            "key": "value",
+            "format": "millions",
+            "frequency": "monthly"
+          },
+          "trend": {
+            "points": 24
+          },
+          "riskLines": [],
+          "why": "This is the money going into AI campuses. A slip here cuts chip orders."
+        },
+        {
+          "id": "chips",
+          "step": "2 Chips",
+          "title": "The market reacts",
+          "tracker": "SMH chip stock fund, daily close",
+          "trackerHref": "https://finance.yahoo.com/quote/SMH/history/",
+          "reading": {
+            "feed": "public/ai-contagion.json",
+            "series": "smh",
+            "key": "close",
+            "format": "dollars"
+          },
+          "trend": {
+            "weeks": 52
+          },
+          "riskLines": [
+            {
+              "fromPeak": 0.1,
+              "label": "correction"
+            },
+            {
+              "fromPeak": 0.2,
+              "label": "bear market"
+            }
+          ],
+          "why": "Chip makers sell into the build-out, so their stocks react to a slip first."
+        },
+        {
+          "id": "market",
+          "step": "3 Market",
+          "title": "The broad market drops",
+          "tracker": "S&P 500, daily close",
+          "trackerHref": "https://finance.yahoo.com/quote/%5EGSPC/history/",
+          "reading": {
+            "feed": "public/macro-history.json",
+            "key": "spx",
+            "format": "index"
+          },
+          "history": {
+            "feed": "public/ai-contagion.json",
+            "series": "gspc",
+            "key": "close"
+          },
+          "trend": {
+            "weeks": 52
+          },
+          "riskLines": [
+            {
+              "fromPeak": 0.1,
+              "label": "correction"
+            },
+            {
+              "fromPeak": 0.2,
+              "label": "bear market"
+            }
+          ],
+          "extra": {
+            "label": "Top 10 companies' share of SPY",
+            "href": "https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-spy.xlsx",
+            "reading": {
+              "feed": "public/ai-contagion.json",
+              "series": "spyTop10",
+              "key": "share",
+              "format": "percent"
+            }
+          },
+          "why": "A few big AI names carry a large share of the index, so their drop pulls the whole market."
+        }
+      ]
+    },
+    {
+      "id": "debt-refi",
+      "kind": "chain",
+      "risk": "Debt refinancing",
+      "brief": "/risk/when-the-spender-runs-the-printer/",
+      "why": "Treasury has to sell more debt at auction. When buyers bid less, yields rise and the cost reaches mortgages.",
+      "key": "Each dashed line is the recent average the latest reading is compared with.",
+      "steps": [
+        {
+          "id": "borrow",
+          "step": "1 Borrow",
+          "title": "Treasury borrows more",
+          "tracker": "Treasury net marketable borrowing, by quarter",
+          "trackerHref": "https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/most-recent-quarterly-refunding-documents",
+          "reading": {
+            "feed": "public/debt-refi.json",
+            "series": "borrowing",
+            "key": "value",
+            "format": "billions",
+            "frequency": "quarterly"
+          },
+          "trend": {
+            "all": true,
+            "unit": "quarters"
+          },
+          "compare": {
+            "type": "prior",
+            "n": 4,
+            "label": "4-quarter average",
+            "short": "4-qtr avg"
+          },
+          "extra": {
+            "label": "Latest actual",
+            "where": {
+              "key": "status",
+              "equals": "actual"
+            },
+            "reading": {
+              "feed": "public/debt-refi.json",
+              "series": "borrowing",
+              "key": "value",
+              "format": "billions",
+              "frequency": "quarterly"
+            }
+          },
+          "list": true,
+          "why": "This is new debt sold to private buyers. More of it means more to sell at each auction."
+        },
+        {
+          "id": "auctions",
+          "step": "2 Auctions",
+          "title": "Buyers bid at auction",
+          "tracker": "10-year note auctions, bid-to-cover",
+          "trackerHref": "https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/auctions",
+          "reading": {
+            "feed": "public/debt-refi.json",
+            "series": "auctions10y",
+            "key": "bidToCover",
+            "format": "ratio"
+          },
+          "trend": {
+            "all": true,
+            "unit": "auctions"
+          },
+          "compare": {
+            "type": "prior",
+            "n": 6,
+            "label": "6-auction average",
+            "short": "6-auction avg",
+            "flagBelow": "weaker than recent"
+          },
+          "extra": {
+            "label": "High yield at this auction",
+            "reading": {
+              "feed": "public/debt-refi.json",
+              "series": "auctions10y",
+              "key": "highYield",
+              "format": "percent3"
+            }
+          },
+          "why": "Bid-to-cover is the dollars bid for each dollar sold. Lower means weaker demand, and the sale clears at a higher yield."
+        },
+        {
+          "id": "costs",
+          "step": "3 Costs",
+          "title": "Borrowing costs rise",
+          "tracker": "Freddie Mac 30-year mortgage rate, weekly",
+          "trackerHref": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+          "reading": {
+            "feed": "public/debt-refi.json",
+            "series": "mortgage30",
+            "key": "rate",
+            "format": "percent"
+          },
+          "trend": {
+            "weeks": 52
+          },
+          "compare": {
+            "type": "trailing",
+            "n": 13,
+            "label": "13-week average",
+            "short": "13-wk avg"
+          },
+          "extra": {
+            "label": "Prior week",
+            "pick": "previous",
+            "reading": {
+              "feed": "public/debt-refi.json",
+              "series": "mortgage30",
+              "key": "rate",
+              "format": "percent"
+            }
+          },
+          "why": "Mortgage rates follow Treasury yields, so weak auctions reach household loans."
+        }
+      ]
+    }
+  ]
+}

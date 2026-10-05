@@ -1,0 +1,758 @@
+{
+  "schema": "debt-refi-v1",
+  "updated": "2026-10-05T08:05:17.024Z",
+  "note": "Feed for the Debt refinancing row on /risk/. Refresh with node scripts/update-debt-refi.mjs. Not part of the tape ship. Final values only: borrowing points carry estimate or actual.",
+  "series": [
+    {
+      "id": "borrowing",
+      "title": "Privately-held net marketable borrowing by quarter",
+      "unit": "usd_billions",
+      "frequency": "quarterly",
+      "source": "https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/quarterly-refunding-archives/quarterly-refunding-financing-estimates-by-calendar-year",
+      "sourceLabel": "Treasury quarterly refunding financing estimates; each point is the latest estimate or the actual",
+      "latestRelease": "https://home.treasury.gov/news/press-releases/sb0584",
+      "points": [
+        {
+          "date": "2023-07-01",
+          "quarter": "Jul to Sep 2023",
+          "value": 1010,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/jy1851",
+          "released": "October 30, 2023"
+        },
+        {
+          "date": "2023-10-01",
+          "quarter": "Oct to Dec 2023",
+          "value": 776,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/jy2054",
+          "released": "January 29, 2024"
+        },
+        {
+          "date": "2024-01-01",
+          "quarter": "Jan to Mar 2024",
+          "value": 748,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/jy2304",
+          "released": "April 29, 2024"
+        },
+        {
+          "date": "2024-04-01",
+          "quarter": "Apr to Jun 2024",
+          "value": 234,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/jy2506",
+          "released": "July 29, 2024"
+        },
+        {
+          "date": "2024-07-01",
+          "quarter": "Jul to Sep 2024",
+          "value": 762,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/jy2688",
+          "released": "October 28, 2024"
+        },
+        {
+          "date": "2024-10-01",
+          "quarter": "Oct to Dec 2024",
+          "value": 620,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0007",
+          "released": "February 3, 2025"
+        },
+        {
+          "date": "2025-01-01",
+          "quarter": "Jan to Mar 2025",
+          "value": 369,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0115",
+          "released": "April 28, 2025"
+        },
+        {
+          "date": "2025-04-01",
+          "quarter": "Apr to Jun 2025",
+          "value": 65,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0209",
+          "released": "July 28, 2025"
+        },
+        {
+          "date": "2025-07-01",
+          "quarter": "Jul to Sep 2025",
+          "value": 1058,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0300",
+          "released": "November 3, 2025"
+        },
+        {
+          "date": "2025-10-01",
+          "quarter": "Oct to Dec 2025",
+          "value": 550,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0377",
+          "released": "February 2, 2026"
+        },
+        {
+          "date": "2026-01-01",
+          "quarter": "Jan to Mar 2026",
+          "value": 577,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0485",
+          "released": "May 4, 2026"
+        },
+        {
+          "date": "2026-04-01",
+          "quarter": "Apr to Jun 2026",
+          "value": 190,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0584",
+          "released": "August 3, 2026"
+        },
+        {
+          "date": "2026-07-01",
+          "quarter": "Jul to Sep 2026",
+          "value": 739,
+          "status": "estimate",
+          "release": "https://home.treasury.gov/news/press-releases/sb0584",
+          "released": "August 3, 2026"
+        },
+        {
+          "date": "2026-10-01",
+          "quarter": "Oct to Dec 2026",
+          "value": 628,
+          "status": "estimate",
+          "release": "https://home.treasury.gov/news/press-releases/sb0584",
+          "released": "August 3, 2026"
+        }
+      ]
+    },
+    {
+      "id": "auctions10y",
+      "title": "10-year note auctions, new issues and reopenings",
+      "unit": "ratio",
+      "frequency": "per auction",
+      "source": "https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/auctions",
+      "sourceLabel": "FiscalData Treasury securities auctions data; nominal 10-year notes, TIPS excluded; final results only",
+      "points": [
+        {
+          "date": "2024-10-09",
+          "bidToCover": 2.48,
+          "highYield": 4.066,
+          "status": "reopening",
+          "cusip": "91282CLF6",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2024-11-05",
+          "bidToCover": 2.58,
+          "highYield": 4.347,
+          "status": "new issue",
+          "cusip": "91282CLW9",
+          "term": "10-Year"
+        },
+        {
+          "date": "2024-12-11",
+          "bidToCover": 2.7,
+          "highYield": 4.235,
+          "status": "reopening",
+          "cusip": "91282CLW9",
+          "term": "9-Year 11-Month"
+        },
+        {
+          "date": "2025-01-07",
+          "bidToCover": 2.53,
+          "highYield": 4.68,
+          "status": "reopening",
+          "cusip": "91282CLW9",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2025-02-12",
+          "bidToCover": 2.48,
+          "highYield": 4.632,
+          "status": "new issue",
+          "cusip": "91282CMM0",
+          "term": "10-Year"
+        },
+        {
+          "date": "2025-03-12",
+          "bidToCover": 2.59,
+          "highYield": 4.31,
+          "status": "reopening",
+          "cusip": "91282CMM0",
+          "term": "9-Year 11-Month"
+        },
+        {
+          "date": "2025-04-09",
+          "bidToCover": 2.67,
+          "highYield": 4.435,
+          "status": "reopening",
+          "cusip": "91282CMM0",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2025-05-06",
+          "bidToCover": 2.6,
+          "highYield": 4.342,
+          "status": "new issue",
+          "cusip": "91282CNC1",
+          "term": "10-Year"
+        },
+        {
+          "date": "2025-06-11",
+          "bidToCover": 2.52,
+          "highYield": 4.421,
+          "status": "reopening",
+          "cusip": "91282CNC1",
+          "term": "9-Year 11-Month"
+        },
+        {
+          "date": "2025-07-09",
+          "bidToCover": 2.61,
+          "highYield": 4.362,
+          "status": "reopening",
+          "cusip": "91282CNC1",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2025-08-06",
+          "bidToCover": 2.35,
+          "highYield": 4.255,
+          "status": "new issue",
+          "cusip": "91282CNT4",
+          "term": "10-Year"
+        },
+        {
+          "date": "2025-09-10",
+          "bidToCover": 2.65,
+          "highYield": 4.033,
+          "status": "reopening",
+          "cusip": "91282CNT4",
+          "term": "9-Year 11-Month"
+        },
+        {
+          "date": "2025-10-08",
+          "bidToCover": 2.48,
+          "highYield": 4.117,
+          "status": "reopening",
+          "cusip": "91282CNT4",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2025-11-12",
+          "bidToCover": 2.43,
+          "highYield": 4.074,
+          "status": "new issue",
+          "cusip": "91282CPJ4",
+          "term": "10-Year"
+        },
+        {
+          "date": "2025-12-09",
+          "bidToCover": 2.55,
+          "highYield": 4.175,
+          "status": "reopening",
+          "cusip": "91282CPJ4",
+          "term": "9-Year 11-Month"
+        },
+        {
+          "date": "2026-01-12",
+          "bidToCover": 2.55,
+          "highYield": 4.173,
+          "status": "reopening",
+          "cusip": "91282CPJ4",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2026-02-11",
+          "bidToCover": 2.39,
+          "highYield": 4.177,
+          "status": "new issue",
+          "cusip": "91282CPZ8",
+          "term": "10-Year"
+        },
+        {
+          "date": "2026-03-11",
+          "bidToCover": 2.45,
+          "highYield": 4.217,
+          "status": "reopening",
+          "cusip": "91282CPZ8",
+          "term": "9-Year 11-Month"
+        },
+        {
+          "date": "2026-04-08",
+          "bidToCover": 2.43,
+          "highYield": 4.282,
+          "status": "reopening",
+          "cusip": "91282CPZ8",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2026-05-12",
+          "bidToCover": 2.4,
+          "highYield": 4.468,
+          "status": "new issue",
+          "cusip": "91282CQQ7",
+          "term": "10-Year"
+        },
+        {
+          "date": "2026-06-10",
+          "bidToCover": 2.57,
+          "highYield": 4.538,
+          "status": "reopening",
+          "cusip": "91282CQQ7",
+          "term": "9-Year 11-Month"
+        },
+        {
+          "date": "2026-07-08",
+          "bidToCover": 2.59,
+          "highYield": 4.58,
+          "status": "reopening",
+          "cusip": "91282CQQ7",
+          "term": "9-Year 10-Month"
+        },
+        {
+          "date": "2026-08-12",
+          "bidToCover": 2.53,
+          "highYield": 4.683,
+          "status": "new issue",
+          "cusip": "91282CRF0",
+          "term": "10-Year"
+        },
+        {
+          "date": "2026-09-09",
+          "bidToCover": 2.71,
+          "highYield": 4.834,
+          "status": "reopening",
+          "cusip": "91282CRF0",
+          "term": "9-Year 11-Month"
+        }
+      ]
+    },
+    {
+      "id": "mortgage30",
+      "title": "Freddie Mac 30-year fixed mortgage rate",
+      "unit": "percent",
+      "frequency": "weekly",
+      "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US",
+      "sourceLabel": "FRED MORTGAGE30US, Freddie Mac Primary Mortgage Market Survey",
+      "points": [
+        {
+          "date": "2024-10-10",
+          "rate": 6.32
+        },
+        {
+          "date": "2024-10-17",
+          "rate": 6.44
+        },
+        {
+          "date": "2024-10-24",
+          "rate": 6.54
+        },
+        {
+          "date": "2024-10-31",
+          "rate": 6.72
+        },
+        {
+          "date": "2024-11-07",
+          "rate": 6.79
+        },
+        {
+          "date": "2024-11-14",
+          "rate": 6.78
+        },
+        {
+          "date": "2024-11-21",
+          "rate": 6.84
+        },
+        {
+          "date": "2024-11-27",
+          "rate": 6.81
+        },
+        {
+          "date": "2024-12-05",
+          "rate": 6.69
+        },
+        {
+          "date": "2024-12-12",
+          "rate": 6.6
+        },
+        {
+          "date": "2024-12-19",
+          "rate": 6.72
+        },
+        {
+          "date": "2024-12-26",
+          "rate": 6.85
+        },
+        {
+          "date": "2025-01-02",
+          "rate": 6.91
+        },
+        {
+          "date": "2025-01-09",
+          "rate": 6.93
+        },
+        {
+          "date": "2025-01-16",
+          "rate": 7.04
+        },
+        {
+          "date": "2025-01-23",
+          "rate": 6.96
+        },
+        {
+          "date": "2025-01-30",
+          "rate": 6.95
+        },
+        {
+          "date": "2025-02-06",
+          "rate": 6.89
+        },
+        {
+          "date": "2025-02-13",
+          "rate": 6.87
+        },
+        {
+          "date": "2025-02-20",
+          "rate": 6.85
+        },
+        {
+          "date": "2025-02-27",
+          "rate": 6.76
+        },
+        {
+          "date": "2025-03-06",
+          "rate": 6.63
+        },
+        {
+          "date": "2025-03-13",
+          "rate": 6.65
+        },
+        {
+          "date": "2025-03-20",
+          "rate": 6.67
+        },
+        {
+          "date": "2025-03-27",
+          "rate": 6.65
+        },
+        {
+          "date": "2025-04-03",
+          "rate": 6.64
+        },
+        {
+          "date": "2025-04-10",
+          "rate": 6.62
+        },
+        {
+          "date": "2025-04-17",
+          "rate": 6.83
+        },
+        {
+          "date": "2025-04-24",
+          "rate": 6.81
+        },
+        {
+          "date": "2025-05-01",
+          "rate": 6.76
+        },
+        {
+          "date": "2025-05-08",
+          "rate": 6.76
+        },
+        {
+          "date": "2025-05-15",
+          "rate": 6.81
+        },
+        {
+          "date": "2025-05-22",
+          "rate": 6.86
+        },
+        {
+          "date": "2025-05-29",
+          "rate": 6.89
+        },
+        {
+          "date": "2025-06-05",
+          "rate": 6.85
+        },
+        {
+          "date": "2025-06-12",
+          "rate": 6.84
+        },
+        {
+          "date": "2025-06-18",
+          "rate": 6.81
+        },
+        {
+          "date": "2025-06-26",
+          "rate": 6.77
+        },
+        {
+          "date": "2025-07-03",
+          "rate": 6.67
+        },
+        {
+          "date": "2025-07-10",
+          "rate": 6.72
+        },
+        {
+          "date": "2025-07-17",
+          "rate": 6.75
+        },
+        {
+          "date": "2025-07-24",
+          "rate": 6.74
+        },
+        {
+          "date": "2025-07-31",
+          "rate": 6.72
+        },
+        {
+          "date": "2025-08-07",
+          "rate": 6.63
+        },
+        {
+          "date": "2025-08-14",
+          "rate": 6.58
+        },
+        {
+          "date": "2025-08-21",
+          "rate": 6.58
+        },
+        {
+          "date": "2025-08-28",
+          "rate": 6.56
+        },
+        {
+          "date": "2025-09-04",
+          "rate": 6.5
+        },
+        {
+          "date": "2025-09-11",
+          "rate": 6.35
+        },
+        {
+          "date": "2025-09-18",
+          "rate": 6.26
+        },
+        {
+          "date": "2025-09-25",
+          "rate": 6.3
+        },
+        {
+          "date": "2025-10-02",
+          "rate": 6.34
+        },
+        {
+          "date": "2025-10-09",
+          "rate": 6.3
+        },
+        {
+          "date": "2025-10-16",
+          "rate": 6.27
+        },
+        {
+          "date": "2025-10-23",
+          "rate": 6.19
+        },
+        {
+          "date": "2025-10-30",
+          "rate": 6.17
+        },
+        {
+          "date": "2025-11-06",
+          "rate": 6.22
+        },
+        {
+          "date": "2025-11-13",
+          "rate": 6.24
+        },
+        {
+          "date": "2025-11-20",
+          "rate": 6.26
+        },
+        {
+          "date": "2025-11-26",
+          "rate": 6.23
+        },
+        {
+          "date": "2025-12-04",
+          "rate": 6.19
+        },
+        {
+          "date": "2025-12-11",
+          "rate": 6.22
+        },
+        {
+          "date": "2025-12-18",
+          "rate": 6.21
+        },
+        {
+          "date": "2025-12-24",
+          "rate": 6.18
+        },
+        {
+          "date": "2025-12-31",
+          "rate": 6.15
+        },
+        {
+          "date": "2026-01-08",
+          "rate": 6.16
+        },
+        {
+          "date": "2026-01-15",
+          "rate": 6.06
+        },
+        {
+          "date": "2026-01-22",
+          "rate": 6.09
+        },
+        {
+          "date": "2026-01-29",
+          "rate": 6.1
+        },
+        {
+          "date": "2026-02-05",
+          "rate": 6.11
+        },
+        {
+          "date": "2026-02-12",
+          "rate": 6.09
+        },
+        {
+          "date": "2026-02-19",
+          "rate": 6.01
+        },
+        {
+          "date": "2026-02-26",
+          "rate": 5.98
+        },
+        {
+          "date": "2026-03-05",
+          "rate": 6
+        },
+        {
+          "date": "2026-03-12",
+          "rate": 6.11
+        },
+        {
+          "date": "2026-03-19",
+          "rate": 6.22
+        },
+        {
+          "date": "2026-03-26",
+          "rate": 6.38
+        },
+        {
+          "date": "2026-04-02",
+          "rate": 6.46
+        },
+        {
+          "date": "2026-04-09",
+          "rate": 6.37
+        },
+        {
+          "date": "2026-04-16",
+          "rate": 6.3
+        },
+        {
+          "date": "2026-04-23",
+          "rate": 6.23
+        },
+        {
+          "date": "2026-04-30",
+          "rate": 6.3
+        },
+        {
+          "date": "2026-05-07",
+          "rate": 6.37
+        },
+        {
+          "date": "2026-05-14",
+          "rate": 6.36
+        },
+        {
+          "date": "2026-05-21",
+          "rate": 6.51
+        },
+        {
+          "date": "2026-05-28",
+          "rate": 6.53
+        },
+        {
+          "date": "2026-06-04",
+          "rate": 6.48
+        },
+        {
+          "date": "2026-06-11",
+          "rate": 6.52
+        },
+        {
+          "date": "2026-06-18",
+          "rate": 6.47
+        },
+        {
+          "date": "2026-06-25",
+          "rate": 6.49
+        },
+        {
+          "date": "2026-07-02",
+          "rate": 6.43
+        },
+        {
+          "date": "2026-07-09",
+          "rate": 6.49
+        },
+        {
+          "date": "2026-07-16",
+          "rate": 6.55
+        },
+        {
+          "date": "2026-07-23",
+          "rate": 6.58
+        },
+        {
+          "date": "2026-07-30",
+          "rate": 6.66
+        },
+        {
+          "date": "2026-08-06",
+          "rate": 6.69
+        },
+        {
+          "date": "2026-08-13",
+          "rate": 6.67
+        },
+        {
+          "date": "2026-08-20",
+          "rate": 6.65
+        },
+        {
+          "date": "2026-08-27",
+          "rate": 6.66
+        },
+        {
+          "date": "2026-09-03",
+          "rate": 6.71
+        },
+        {
+          "date": "2026-09-10",
+          "rate": 6.76
+        },
+        {
+          "date": "2026-09-17",
+          "rate": 6.95
+        },
+        {
+          "date": "2026-09-24",
+          "rate": 7.03
+        },
+        {
+          "date": "2026-10-01",
+          "rate": 7.28
+        }
+      ]
+    }
+  ]
+}

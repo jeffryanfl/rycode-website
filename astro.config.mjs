@@ -85,6 +85,9 @@ export default defineConfig({
     '/risk/panic-before-the-breach': '/risk/the-ban-lands-on-open-source/',
     '/ai/hardware/terafab': '/ai/hardware/chips/terafab/',
     '/ai/hardware/memphis-colossus': '/ai/hardware/data-centers/memphis-colossus/',
+    '/ai/hardware/chips/meta-broadcom': '/ai/hardware/chips/meta/',
+    '/ai/hardware/chips/meta-nvidia': '/ai/hardware/chips/meta/',
+    '/ai/hardware/chips/meta-amd': '/ai/hardware/chips/meta/',
   },
   server: {
     host: true,
