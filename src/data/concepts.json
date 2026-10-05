@@ -5,7 +5,6 @@
       "label": "Open weights",
       "blurb": "Published model weights you can download and run yourself, versus renting a frontier API.",
       "articles": [
-        "/ai/frontier-price-meets-open-weight-ipo/",
         "/ai/models/open-weight/glm-5-3/",
         "/ai/models/google/gemma/",
         "/ai/models/open-weight/kimi-k3/",
@@ -15,9 +14,7 @@
         "/ai/models/meta/llama/llama-4/",
         "/ai/models/meta/muse/glimmer/",
         "/ai/models/deepseek/r1/",
-        "/risk/the-ban-lands-on-open-source/",
-        "/ai/glossary/",
-        "/opinions/the-license-starts-at-their-scale/"
+        "/ai/glossary/"
       ],
       "links": [
         "frontier-pricing",
@@ -31,9 +28,7 @@
       "id": "frontier-pricing",
       "label": "Frontier pricing",
       "blurb": "What a closed lab charges for tokens, and how an open-weight price pulls that number down.",
-      "articles": [
-        "/ai/frontier-price-meets-open-weight-ipo/"
-      ],
+      "articles": [],
       "links": [
         "open-weights",
         "ipo-liquidity",
@@ -44,9 +39,7 @@
       "id": "ipo-liquidity",
       "label": "IPO liquidity",
       "blurb": "When a frontier lab lists shares, and what moves the date or the voting control.",
-      "articles": [
-        "/ai/frontier-price-meets-open-weight-ipo/"
-      ],
+      "articles": [],
       "links": [
         "open-weights",
         "frontier-pricing",
@@ -59,13 +52,9 @@
       "blurb": "Many agents on one job, spending tokens and messages to reach a result one model does not.",
       "articles": [
         "/ai/swarms/what-an-agent-swarm-is/",
-        "/ai/grok-bot-set-a-new-bar/",
         "/ai/models/meta/muse/code/",
         "/ai/models/xai/grok-bot/",
-        "/ai/ten-thousand-agents-is-not-a-genius/",
-        "/ai/glossary/",
-        "/ai/meta-named-an-enterprise-stack/",
-        "/opinions/the-license-starts-at-their-scale/"
+        "/ai/glossary/"
       ],
       "links": [
         "open-weights",
@@ -78,10 +67,7 @@
       "id": "evals-safety",
       "label": "Evals and safety",
       "blurb": "Tests that measure raw capability, and what happens when those tests leave the lab.",
-      "articles": [
-        "/risk/the-ban-lands-on-open-source/",
-        "/opinions/the-license-starts-at-their-scale/"
-      ],
+      "articles": [],
       "links": [
         "agent-swarms",
         "regulatory-capture",
@@ -92,10 +78,7 @@
       "id": "regulatory-capture",
       "label": "Regulatory capture",
       "blurb": "A review desk that closed vendors can staff and open-weight projects often cannot.",
-      "articles": [
-        "/risk/the-ban-lands-on-open-source/",
-        "/opinions/the-license-starts-at-their-scale/"
-      ],
+      "articles": [],
       "links": [
         "open-weights",
         "evals-safety",
@@ -150,9 +133,7 @@
       "id": "data-center-financing",
       "label": "Data-center financing",
       "blurb": "How AI campuses raise money through leases and private placements before the revenue arrives.",
-      "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/"
-      ],
+      "articles": [],
       "links": [
         "force-majeure",
         "private-credit",
@@ -166,7 +147,6 @@
       "label": "Private credit",
       "blurb": "Loans and private placements that fund data-center builds outside the public bond market.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
         "/risk/when-force-majeure-hits-the-ai-build-out/"
       ],
       "links": [
@@ -193,9 +173,7 @@
       "label": "Treasury yields",
       "blurb": "What the Treasury curve charges to borrow for 2, 10, and 30 years.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
         "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-        "/economics/ten-trillion-to-roll/",
         "/risk/six-percent-that-stays/"
       ],
       "links": [
@@ -226,9 +204,7 @@
       "label": "Debt stock",
       "blurb": "The stock of federal debt, the pile that comes due, and what inflation does to old fixed claims.",
       "articles": [
-        "/risk/when-the-spender-runs-the-printer/",
-        "/economics/post-inflation-dollars-pay-pre-inflation-debts/",
-        "/economics/ten-trillion-to-roll/"
+        "/risk/when-the-spender-runs-the-printer/"
       ],
       "links": [
         "treasury-yields",
@@ -274,8 +250,7 @@
       "label": "Equity prices",
       "blurb": "What investors will pay for a dollar of revenue, and whether this boom already has earnings.",
       "articles": [
-        "/economics/still-1998-not-1999/",
-        "/economics/saas-barbell-2026/"
+        "/economics/still-1998-not-1999/"
       ],
       "links": [
         "frontier-pricing",
@@ -314,7 +289,6 @@
         "/ai/models/deepseek/thinking/",
         "/ai/models/deepseek/v3/",
         "/ai/models/deepseek/v4-pro/",
-        "/ai/chat-models-write-strings-system-one-returns-decisions/",
         "/ai/models/typesafe/jev/",
         "/ai/models/xai/models/grok-4-20/",
         "/ai/models/xai/models/grok-4-3/",
@@ -370,9 +344,7 @@
       "label": "Training loop",
       "blurb": "A language model as a next-token predictor, shaped by staged training and a tool loop.",
       "articles": [
-        "/ai/next-token-engine/",
-        "/ai/glossary/",
-        "/ai/meta-named-an-enterprise-stack/"
+        "/ai/glossary/"
       ],
       "links": [
         "model-releases",

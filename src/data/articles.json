@@ -1,37 +1,5 @@
 [
   {
-    "href": "/economics/long-yields-hike-ai-credit-stress/",
-    "title": "Long yields, the hike, and AI credit stress hit in the same week.",
-    "description": "The bond tape, the Fed vote, and data-center financing belong in one read.",
-    "date": "2026-09-27",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/long-yields-hike-ai-credit-stress.astro",
-    "slug": "economics-long-yields-hike-ai-credit-stress"
-  },
-  {
-    "href": "/economics/post-inflation-dollars-pay-pre-inflation-debts/",
-    "title": "Inflation changes the real cost of fixed government debt.",
-    "description": "Repayment dollars buy less than the dollars borrowed. That does not pay the debt off.",
-    "date": "2026-09-21",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/post-inflation-dollars-pay-pre-inflation-debts.astro",
-    "slug": "economics-post-inflation-dollars-pay-pre-inflation-debts"
-  },
-  {
     "href": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
     "title": "The first hike arrived with oil above $100 and the ten-year near 5 percent.",
     "description": "The 16 September 2026 vote was a quarter point. Energy and long rates were already tight.",
@@ -80,38 +48,6 @@
     "slug": "economics-jobs-print-was-strong-mix-is-the-story"
   },
   {
-    "href": "/economics/ten-trillion-to-roll/",
-    "title": "About $10 trillion of U.S. debt comes due and has to be refinanced.",
-    "description": "Most of that is short-term bills the Treasury already replaces. The cash balance is a checking account, not a purchase program.",
-    "date": "2026-09-02",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/ten-trillion-to-roll.astro",
-    "slug": "economics-ten-trillion-to-roll"
-  },
-  {
-    "href": "/economics/saas-barbell-2026/",
-    "title": "Software subscription stock prices fell in 2026 because the multiple fell.",
-    "description": "Investors paid less for a dollar of sales. Revenue did not disappear.",
-    "date": "2026-08-27",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/saas-barbell-2026.astro",
-    "slug": "economics-saas-barbell-2026"
-  },
-  {
     "href": "/risk/when-force-majeure-hits-the-ai-build-out/",
     "title": "AI campus leases can defer rent when power and air permits miss the date in the contract.",
     "description": "Risks: cash to the developer and lenders slips, leased megawatts are not firm, and private-credit packages for similar campuses reprice.",
@@ -144,22 +80,6 @@
     "slug": "risk-when-the-spender-runs-the-printer"
   },
   {
-    "href": "/risk/the-ban-lands-on-open-source/",
-    "title": "In July 2026, OpenAI eval agents left a mis-set sandbox and reached Hugging Face.",
-    "description": "Risks: a public scare that lands on open weights, closed APIs that blocked parts of the forensics, and a ban path that has not been passed.",
-    "date": "2026-09-13",
-    "section": "risk",
-    "series": "risk",
-    "crumbs": [
-      {
-        "href": "/risk/",
-        "label": "Risk"
-      }
-    ],
-    "file": "src/pages/risk/the-ban-lands-on-open-source.astro",
-    "slug": "risk-the-ban-lands-on-open-source"
-  },
-  {
     "href": "/risk/six-percent-that-stays/",
     "title": "The 30-year Treasury yield in late August 2026 was about 5.21 to 5.26 percent.",
     "description": "Risks: a hold near 6 percent through a long-term borrow date, not a single morning print. That would raise new long-term public debt and mortgages after the spread.",
@@ -176,38 +96,6 @@
     "slug": "risk-six-percent-that-stays"
   },
   {
-    "href": "/opinions/the-license-starts-at-their-scale/",
-    "title": "The Safety Facade: How AI Giants are Engineering Regulatory Capture",
-    "description": "They asked Washington for an oversite bar only a handful of firms can reach. That is capture with a safety facade, and the scare they used is one their own eval agents created.",
-    "date": "2026-09-30",
-    "section": "opinions",
-    "series": "opinions",
-    "crumbs": [
-      {
-        "href": "/opinions/",
-        "label": "Opinions"
-      }
-    ],
-    "file": "src/pages/opinions/the-license-starts-at-their-scale.astro",
-    "slug": "opinions-the-license-starts-at-their-scale"
-  },
-  {
-    "href": "/ai/meta-named-an-enterprise-stack/",
-    "title": "Meta named an enterprise stack. It did not ship a new buyer.",
-    "description": "The company is trying to sell the consumer agent line as a second business.",
-    "date": "2026-09-28",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/meta-named-an-enterprise-stack.astro",
-    "slug": "ai-meta-named-an-enterprise-stack"
-  },
-  {
     "href": "/ai/glossary/",
     "title": "AI glossary",
     "description": "Twenty plain terms for models, serving, and agents on this site",
@@ -222,22 +110,6 @@
     ],
     "file": "src/pages/ai/glossary.astro",
     "slug": "ai-glossary"
-  },
-  {
-    "href": "/ai/frontier-price-meets-open-weight-ipo/",
-    "title": "Frontier price meets open-weight, and the IPO clock",
-    "description": "Open-weight cost curves are colliding with frontier listing calendars",
-    "date": "2026-09-27",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/frontier-price-meets-open-weight-ipo.astro",
-    "slug": "ai-frontier-price-meets-open-weight-ipo"
   },
   {
     "href": "/ai/swarms/what-an-agent-swarm-is/",
@@ -258,70 +130,6 @@
     ],
     "file": "src/pages/ai/swarms/what-an-agent-swarm-is.astro",
     "slug": "ai-swarms-what-an-agent-swarm-is"
-  },
-  {
-    "href": "/ai/grok-bot-set-a-new-bar/",
-    "title": "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.",
-    "description": "What these agent harnesses can actually do today, one capability at a time",
-    "date": "2026-09-25",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/grok-bot-set-a-new-bar.astro",
-    "slug": "ai-grok-bot-set-a-new-bar"
-  },
-  {
-    "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
-    "title": "Chat models write strings. System One returns typed decisions.",
-    "description": "Why Jev changes the scoreboard for software automation",
-    "date": "2026-09-20",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/chat-models-write-strings-system-one-returns-decisions.astro",
-    "slug": "ai-chat-models-write-strings-system-one-returns-decisions"
-  },
-  {
-    "href": "/ai/ten-thousand-agents-is-not-a-genius/",
-    "title": "The claimed math breakthrough was agent scale and token spend",
-    "description": "Ten thousand agents is not a genius",
-    "date": "2026-09-13",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/ten-thousand-agents-is-not-a-genius.astro",
-    "slug": "ai-ten-thousand-agents-is-not-a-genius"
-  },
-  {
-    "href": "/ai/next-token-engine/",
-    "title": "A next-token engine with an RLVR post-train and a tool loop.",
-    "description": "How staged training and tools shape a next-token engine.",
-    "date": "2026-08-25",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/next-token-engine.astro",
-    "slug": "ai-next-token-engine"
   },
   {
     "href": "/ai/models/typesafe/jev/",
