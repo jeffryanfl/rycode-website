@@ -1,0 +1,201 @@
+{
+  "schema": "risk-watch-v1",
+  "note": "Rows for the /economics watch list, read by src/lib/risk-watch.ts with list \"economics\". Same rules as risk-watch.json: every number comes from a feed at build time; levels are only levels a linked page or the named source states. group chains sit side by side without arrows. Oil and the 30-year yield stay on /risk/ (their briefs live there); the 10-year and the yield curve live here.",
+  "rows": [
+    {
+      "id": "hiring",
+      "kind": "chain",
+      "risk": "Hiring slows",
+      "brief": "/economics/jobs-print-was-strong-mix-is-the-story/",
+      "why": "Fewer jobs added each month, and more people out of work, would mean the labor market is cooling.",
+      "key": "Payroll months are first estimates, revised in each of the next two reports. The dashed lines are the prior 3-month average and the August unemployment rate.",
+      "group": true,
+      "steps": [
+        {
+          "id": "payrolls",
+          "step": "1 Payrolls",
+          "title": "Jobs added each month",
+          "tracker": "Nonfarm payrolls, monthly change",
+          "trackerHref": "https://www.bls.gov/ces/",
+          "reading": { "feed": "public/jobs.json", "series": "payrolls", "key": "change", "format": "jobs", "frequency": "monthly" },
+          "trend": { "points": 24 },
+          "compare": { "type": "prior", "n": 3, "label": "prior 3-month average", "short": "3-mo avg", "flagBelow": "slower than recent" },
+          "extra": {
+            "label": "Average hourly earnings, over the year",
+            "href": "https://www.bls.gov/ces/",
+            "reading": { "feed": "public/jobs.json", "series": "earnings", "key": "yoy", "format": "percent1", "frequency": "monthly" }
+          },
+          "why": "The number of jobs employers added or cut, from the payroll survey of businesses."
+        },
+        {
+          "id": "unemployment",
+          "step": "2 Unemployment",
+          "title": "Share of workers without a job",
+          "tracker": "Unemployment rate, monthly",
+          "trackerHref": "https://www.bls.gov/cps/",
+          "reading": { "feed": "public/jobs.json", "series": "unemployment", "key": "rate", "format": "percent1", "frequency": "monthly" },
+          "trend": { "points": 24 },
+          "levels": [
+            {
+              "value": 4.1,
+              "label": "Aug 4.1%",
+              "source": "https://www.bls.gov/news.release/archives/empsit_09042026.htm",
+              "quote": "The unemployment rate was unchanged at 4.1 percent in August"
+            }
+          ],
+          "why": "People looking for work as a share of everyone working or looking, from the household survey."
+        },
+        {
+          "id": "claims",
+          "step": "3 Claims",
+          "title": "New claims for unemployment benefits",
+          "tracker": "Initial jobless claims, weekly",
+          "trackerHref": "https://fred.stlouisfed.org/series/ICSA",
+          "reading": { "feed": "public/jobs.json", "series": "claims", "key": "claims", "format": "count" },
+          "trend": { "weeks": 52 },
+          "compare": { "type": "trailing", "n": 4, "label": "4-week average", "short": "4-wk avg" },
+          "why": "People filing a first claim for unemployment benefits. It comes out every Thursday, between the monthly reports."
+        }
+      ]
+    },
+    {
+      "id": "inflation",
+      "kind": "chain",
+      "risk": "Inflation",
+      "why": "Prices compared with a year earlier, against the Fed's 2% target.",
+      "key": "Core leaves out food and energy, which jump around. The Fed's 2% target is set on PCE; CPI is shown against the same line.",
+      "group": true,
+      "steps": [
+        {
+          "id": "core-pce",
+          "step": "1 Core PCE",
+          "title": "The Fed's preferred gauge",
+          "tracker": "Core PCE prices, over the year",
+          "trackerHref": "https://www.bea.gov/data/personal-consumption-expenditures-price-index",
+          "reading": { "feed": "public/inflation.json", "series": "corePce", "key": "yoy", "format": "percent1", "frequency": "monthly" },
+          "trend": { "points": 24 },
+          "levels": [
+            {
+              "value": 2,
+              "label": "2% target",
+              "source": "https://www.federalreserve.gov/faqs/economy_14400.htm",
+              "quote": "the Federal Open Market Committee (FOMC) judges that inflation of 2 percent over the longer run, as measured by the annual change in the price index for personal consumption expenditures, is most consistent with the Federal Reserve's mandate for maximum employment and price stability."
+            }
+          ],
+          "extra": {
+            "label": "All-items PCE, over the year",
+            "href": "https://www.bea.gov/data/personal-consumption-expenditures-price-index",
+            "reading": { "feed": "public/inflation.json", "series": "pce", "key": "yoy", "format": "percent1", "frequency": "monthly" }
+          },
+          "why": "Personal consumption expenditures prices, from the Commerce Department. The newest month is revised in the next report."
+        },
+        {
+          "id": "core-cpi",
+          "step": "2 Core CPI",
+          "title": "Consumer prices",
+          "tracker": "Core CPI, over the year",
+          "trackerHref": "https://www.bls.gov/cpi/",
+          "reading": { "feed": "public/inflation.json", "series": "coreCpi", "key": "yoy", "format": "percent1", "frequency": "monthly" },
+          "trend": { "points": 24 },
+          "levels": [
+            {
+              "value": 2,
+              "label": "2% target",
+              "source": "https://www.federalreserve.gov/faqs/economy_14400.htm",
+              "quote": "the Federal Open Market Committee (FOMC) judges that inflation of 2 percent over the longer run, as measured by the annual change in the price index for personal consumption expenditures, is most consistent with the Federal Reserve's mandate for maximum employment and price stability."
+            }
+          ],
+          "extra": {
+            "label": "All-items CPI, over the year",
+            "href": "https://www.bls.gov/cpi/",
+            "reading": { "feed": "public/inflation.json", "series": "cpi", "key": "yoy", "format": "percent1", "frequency": "monthly" }
+          },
+          "why": "The consumer price index, from the Bureau of Labor Statistics. It comes out about two weeks before PCE."
+        }
+      ]
+    },
+    {
+      "id": "rates",
+      "kind": "chain",
+      "risk": "Rates and the yield curve",
+      "why": "What the government pays to borrow for two and ten years, and the gap between them.",
+      "key": "A basis point is a hundredth of a percent. When the 2-year yield is above the 10-year, the curve is inverted and the gap is below zero.",
+      "group": true,
+      "steps": [
+        {
+          "id": "two-year",
+          "step": "1 Two-year",
+          "title": "Short-term borrowing",
+          "tracker": "2-year Treasury yield",
+          "trackerHref": "/economics/#econ-rail-yields-title",
+          "reading": { "feed": "public/macro-history.json", "key": "y2", "format": "percent" },
+          "history": { "feed": "public/economics-rail.json", "series": "yields", "key": "y2" },
+          "trend": { "weeks": 52 },
+          "why": "Moves with where traders expect the Fed's short-term rate to go."
+        },
+        {
+          "id": "ten-year",
+          "step": "2 Ten-year",
+          "title": "Long-term borrowing",
+          "tracker": "10-year Treasury yield",
+          "trackerHref": "/economics/#econ-rail-yields-title",
+          "reading": { "feed": "public/macro-history.json", "key": "y10", "format": "percent" },
+          "history": { "feed": "public/economics-rail.json", "series": "yields", "key": "y10" },
+          "trend": { "weeks": 52 },
+          "levels": [
+            {
+              "value": 5,
+              "label": "5%",
+              "source": "/risk/oil-and-the-100-line/",
+              "quote": "The second is 5% for the 10-year Treasury yield, the rate the government pays to borrow for ten years."
+            }
+          ],
+          "why": "A high 10-year yield makes future company profits worth less today, which weighs on stock prices."
+        },
+        {
+          "id": "curve",
+          "step": "3 Curve",
+          "title": "Ten-year minus two-year",
+          "tracker": "10-year minus 2-year yield",
+          "trackerHref": "/economics/#econ-rail-yields-title",
+          "reading": { "feed": "public/macro-history.json", "key": "y10", "minus": "y2", "format": "points" },
+          "history": { "feed": "public/economics-rail.json", "series": "yields", "key": "y10", "minus": "y2" },
+          "trend": { "weeks": 52 },
+          "levels": [{ "value": 0, "label": "zero" }],
+          "why": "A positive gap means lenders want more to tie money up for longer."
+        }
+      ]
+    },
+    {
+      "id": "paying-up",
+      "kind": "chain",
+      "risk": "Paying up for the boom",
+      "brief": "/economics/still-1998-not-1999/",
+      "why": "How far the S&P 500 sits below its 52-week high, and how much of the index a few companies make up.",
+      "key": "A correction is a 10% drop from the peak. A bear market is a 20% drop.",
+      "group": true,
+      "steps": [
+        {
+          "id": "spx",
+          "step": "1 S&P 500",
+          "title": "Distance from the peak",
+          "tracker": "S&P 500, daily close",
+          "trackerHref": "https://finance.yahoo.com/quote/%5EGSPC/history/",
+          "reading": { "feed": "public/macro-history.json", "key": "spx", "format": "index" },
+          "history": { "feed": "public/ai-contagion.json", "series": "gspc", "key": "close" },
+          "trend": { "weeks": 52 },
+          "riskLines": [
+            { "fromPeak": 0.1, "label": "correction" },
+            { "fromPeak": 0.2, "label": "bear market" }
+          ],
+          "extra": {
+            "label": "Top 10 companies' share of SPY",
+            "href": "https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-spy.xlsx",
+            "reading": { "feed": "public/ai-contagion.json", "series": "spyTop10", "key": "share", "format": "percent" }
+          },
+          "why": "A 10% drop from the high is a correction and a 20% drop is a bear market. The top-10 share shows how much a few big names carry."
+        }
+      ]
+    }
+  ]
+}

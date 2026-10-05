@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import EconomicsRail from '../components/EconomicsRail.astro';
+import RiskWatchList from '../components/RiskWatchList.astro';
 import { findArticle, formatDate } from '../lib/site';
 import '../styles/economics.css';
 
@@ -44,6 +45,10 @@ const cards = pieces.map((piece) => {
       <img class="economics-glyph" src="/landing/hub-economics.webp" alt="" width="81" height="72" />
       Economics
     </h1>
+  </div>
+
+  <div class="economics-watch">
+    <RiskWatchList list="economics" headingClass="economics-section" />
   </div>
 
   <div class="economics-landing">

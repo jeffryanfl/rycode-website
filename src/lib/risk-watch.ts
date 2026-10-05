@@ -5,14 +5,27 @@
  * low over the trend and over the last 52 weeks, and the distance to the risk
  * line when the row has one. No number lives in the rows file except riskLine,
  * which is a level the linked page already names.
+ *
+ * Two lists share this code: the /risk watch list (src/data/risk-watch.json) and
+ * the /economics watch list (src/data/economics-watch.json). Every export takes
+ * the list name and defaults to "risk".
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import watchFile from '../data/risk-watch.json';
+import riskWatchFile from '../data/risk-watch.json';
+import economicsWatchFile from '../data/economics-watch.json';
 
-type Format = 'percent' | 'percent3' | 'dollars' | 'trillions' | 'billions' | 'millions' | 'index' | 'ratio';
+type Format = 'percent' | 'percent1' | 'percent3' | 'dollars' | 'trillions' | 'billions' | 'millions' | 'index' | 'ratio' | 'jobs' | 'count' | 'points';
+/** A FeedRef with minus reads key minus that second key (for example the 10-year minus the 2-year yield). */
+type FeedRef = { feed: string; series?: string; key: string; minus?: string };
+
+export type WatchListName = 'risk' | 'economics';
+const LISTS: Record<WatchListName, unknown> = { risk: riskWatchFile, economics: economicsWatchFile };
+function watchRows(list: WatchListName): any[] {
+  const file = LISTS[list] as { rows?: unknown[] };
+  return Array.isArray(file?.rows) ? file.rows : [];
+}
 type Point = { date: string; [key: string]: unknown };
-type FeedRef = { feed: string; series?: string; key: string };
 
 interface RiskLine {
   value: number;
@@ -81,9 +94,12 @@ function pointsFor(ref: FeedRef): Point[] {
     if (!found) throw new Error(`RISK WATCH: no series "${ref.series}" in ${ref.feed}`);
     points = Array.isArray(found.points) ? found.points : [];
   }
-  return points
-    .filter((p) => typeof p?.date === 'string' && typeof p[ref.key] === 'number')
+  const valid = points
+    .filter((p) => typeof p?.date === 'string' && typeof p[ref.key] === 'number' && (!ref.minus || typeof p[ref.minus] === 'number'))
     .sort((a, b) => a.date.localeCompare(b.date));
+  if (!ref.minus) return valid;
+  const minus = ref.minus;
+  return valid.map((p) => ({ ...p, [ref.key]: roundTo((p[ref.key] as number) - (p[minus] as number), 2) }));
 }
 
 /**
@@ -104,6 +120,10 @@ export function feedPoints(ref: FeedRef): Point[] {
 
 function format(value: number, kind: Format): string {
   if (kind === 'percent') return `${value.toFixed(2)}%`;
+  if (kind === 'percent1') return `${value.toFixed(1)}%`;
+  if (kind === 'jobs') return `${value < 0 ? '-' : '+'}${Math.round(Math.abs(value) * 1000).toLocaleString('en-US')}`;
+  if (kind === 'count') return Math.round(value).toLocaleString('en-US');
+  if (kind === 'points') return `${value < 0 ? '-' : ''}${Math.abs(value).toFixed(2)} pts`;
   if (kind === 'percent3') return `${value.toFixed(3)}%`;
   if (kind === 'ratio') return value.toFixed(2);
   if (kind === 'billions') return `${value < 0 ? '-' : ''}$${Math.round(Math.abs(value)).toLocaleString('en-US')}B`;
@@ -132,6 +152,10 @@ function roundTo(value: number, digits: number): number {
 
 const DIGITS: Record<Format, number> = {
   percent: 2,
+  percent1: 1,
+  jobs: 0,
+  count: 0,
+  points: 2,
   percent3: 3,
   dollars: 2,
   trillions: 2,
@@ -140,6 +164,20 @@ const DIGITS: Record<Format, number> = {
   index: 2,
   ratio: 2,
 };
+
+/** A distance between two readings in plain words: basis points for yields and spreads, points for one-decimal rates. */
+function gapText(abs: number, kind: Format): string {
+  if (kind === 'percent' || kind === 'points') {
+    const bp = Math.round(abs * 100);
+    return `${bp} basis ${bp === 1 ? 'point' : 'points'}`;
+  }
+  if (kind === 'percent1') {
+    const pts = roundTo(abs, 1);
+    return `${pts.toFixed(1)} ${pts === 1 ? 'point' : 'points'}`;
+  }
+  if (kind === 'jobs') return `${Math.round(abs * 1000).toLocaleString('en-US')} jobs`;
+  return format(abs, kind);
+}
 
 export function dateLabel(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
@@ -207,8 +245,8 @@ export interface RowWindow {
 }
 
 /** Raw readings behind one single row, so a brief's numbers match the row. */
-export function rowWindows(rowId: string): RowWindow {
-  const row = (watchFile as unknown as { rows: (RowSpec & { kind?: string })[] }).rows.find((r) => !r.kind && r.id === rowId);
+export function rowWindows(rowId: string, list: WatchListName = 'risk'): RowWindow {
+  const row = (watchRows(list) as (RowSpec & { kind?: string })[]).find((r) => !r.kind && r.id === rowId);
   if (!row) throw new Error(`RISK WATCH: no row "${rowId}"`);
   const { key, points, last, year } = rowWindow(row);
   return {
@@ -221,8 +259,8 @@ export function rowWindows(rowId: string): RowWindow {
   };
 }
 
-export function riskWatchRows(): WatchRow[] {
-  const rows = (watchFile as unknown as { rows: (RowSpec & { kind?: string })[] }).rows.filter((r) => !r.kind);
+export function riskWatchRows(list: WatchListName = 'risk'): WatchRow[] {
+  const rows = (watchRows(list) as (RowSpec & { kind?: string })[]).filter((r) => !r.kind);
   return rows.map((row) => {
     const { reading, history, trend: trendSpec, riskLine, ...rest } = row;
     const { key, last, shown, year } = rowWindow(row);
@@ -277,6 +315,8 @@ interface StepSpec {
   history?: FeedRef | null;
   trend: { points?: number; weeks?: number; all?: boolean; unit?: string };
   riskLines?: PeakLine[];
+  /* Fixed levels a linked page or source names (for example the Fed's 2% target), drawn as dashed lines with a distance. */
+  levels?: { value: number; label: string; source?: string; quote?: string }[];
   /* Average line. prior: the n readings before the latest. trailing: the n readings ending with the latest. */
   compare?: { type: 'prior' | 'trailing'; n: number; label: string; short: string; flagBelow?: string };
   extra?: {
@@ -297,6 +337,8 @@ interface ChainSpec {
   brief?: string;
   why: string;
   key?: string;
+  /** Steps that sit side by side without one causing the next: no arrows. */
+  group?: boolean;
   steps: StepSpec[];
 }
 
@@ -319,6 +361,7 @@ export interface ChainStep {
   peak: { value: string; dateLabel: string; below: string; distance: string; pct: number; markPct: number[] } | null;
   extra: { label: string; href?: string; value: string; dateLabel: string; status?: string } | null;
   compare: { text: string; average: string; label: string; flag: string | null } | null;
+  levels: { text: string; label: string }[];
   list: { date: string; label: string; value: string; status?: string }[] | null;
   /** One short phrase for the collapsed chain summary, e.g. "Chips 4.3 pts from correction". */
   headline: string;
@@ -330,6 +373,7 @@ export interface ChainRow {
   brief?: string;
   why: string;
   key?: string;
+  group: boolean;
   steps: ChainStep[];
 }
 
@@ -438,8 +482,8 @@ export interface StepWindow {
 }
 
 /** Raw readings and windows for each step of one chain, keyed by step id. Pages that write about a chain use this so their numbers match the row. */
-export function chainStepWindows(chainId: string): Record<string, StepWindow> {
-  const row = (watchFile as unknown as { rows: (ChainSpec | RowSpec)[] }).rows.find(
+export function chainStepWindows(chainId: string, list: WatchListName = 'risk'): Record<string, StepWindow> {
+  const row = (watchRows(list) as (ChainSpec | RowSpec)[]).find(
     (r): r is ChainSpec => (r as ChainSpec).kind === 'chain' && r.id === chainId,
   );
   if (!row) throw new Error(`RISK WATCH: no chain "${chainId}"`);
@@ -462,8 +506,8 @@ export function chainStepWindows(chainId: string): Record<string, StepWindow> {
   return out;
 }
 
-export function riskWatchChains(): ChainRow[] {
-  const rows = (watchFile as unknown as { rows: (ChainSpec | RowSpec)[] }).rows.filter(
+export function riskWatchChains(list: WatchListName = 'risk'): ChainRow[] {
+  const rows = (watchRows(list) as (ChainSpec | RowSpec)[]).filter(
     (r): r is ChainSpec => (r as ChainSpec).kind === 'chain',
   );
   return rows.map((row) => ({
@@ -472,6 +516,7 @@ export function riskWatchChains(): ChainRow[] {
     brief: row.brief,
     why: row.why,
     key: row.key,
+    group: Boolean(row.group),
     steps: row.steps.map((step) => {
       const { reading } = step;
       const key = reading.key;
@@ -513,13 +558,7 @@ export function riskWatchChains(): ChainRow[] {
         {
           const { average, diff } = cmp;
           const side = diff > 0 ? 'above' : 'below';
-          let gap: string;
-          if (reading.format === 'percent') {
-            const bp = Math.round(Math.abs(diff) * 100);
-            gap = `${bp} basis ${bp === 1 ? 'point' : 'points'}`;
-          } else {
-            gap = format(Math.abs(diff), reading.format);
-          }
+          const gap = gapText(Math.abs(diff), reading.format);
           const avgText = format(average, reading.format);
           compare = {
             text: diff === 0 ? `Level with its ${c.label} of ${avgText}` : `${gap} ${side} its ${c.label} of ${avgText}`,
@@ -530,6 +569,15 @@ export function riskWatchChains(): ChainRow[] {
           lines = [...lines, { value: average, label: c.label, short: `${c.short} ${avgText}` }];
         }
       }
+
+      const levels: ChainStep['levels'] = (step.levels ?? []).map((lv) => {
+        const diff = roundTo(latest - lv.value, DIGITS[reading.format]);
+        lines = [...lines, { value: lv.value, label: lv.label, short: lv.label }];
+        return {
+          label: lv.label,
+          text: diff === 0 ? `At ${lv.label}` : `${gapText(Math.abs(diff), reading.format)} ${diff > 0 ? 'above' : 'below'} ${lv.label}`,
+        };
+      });
 
       let extra: ChainStep['extra'] = null;
       if (step.extra) {
@@ -575,6 +623,7 @@ export function riskWatchChains(): ChainRow[] {
         peak,
         extra,
         compare,
+        levels,
         list,
         headline: `${step.step.replace(/^\d+\s*/, '')} ${
           belowPeak !== null && step.riskLines?.length

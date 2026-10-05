@@ -7,23 +7,32 @@
  * their feeds at build time.
  */
 import BenchChart from './BenchChart.astro';
-import { dateLabel, riskWatchChains, riskWatchRows } from '../lib/risk-watch';
+import { dateLabel, riskWatchChains, riskWatchRows, type WatchListName } from '../lib/risk-watch';
 
-const rows = riskWatchRows();
-const chains = riskWatchChains();
+interface Props {
+  /** Which rows file to read: "risk" (src/data/risk-watch.json) or "economics" (src/data/economics-watch.json). */
+  list?: WatchListName;
+  headingClass?: string;
+}
+const { list = 'risk', headingClass = 'risk-section' } = Astro.props;
+const headingId = `${list}-watch-heading`;
+const rows = riskWatchRows(list);
+const chains = riskWatchChains(list);
 const explainBasisPoints = rows.some((row) => row.usesBasisPoints);
 const short = (label: string) => label.replace(/ \d{4}$/, '');
 ---
 
-<section class="rw" aria-labelledby="risk-watch-heading">
-  <h2 class="risk-section" id="risk-watch-heading">Watch list</h2>
+<section class={`rw rw--${list}`} aria-labelledby={headingId}>
+  <h2 class={headingClass} id={headingId}>Watch list</h2>
   {explainBasisPoints && <p class="rw-key">A basis point is a hundredth of a percent. The dashed line is the level the risk is about.</p>}
-  <div class="rw-head" aria-hidden="true">
-    <span>Risk</span>
-    <span>Reading</span>
-    <span>Trend</span>
-    <span>High and low</span>
-  </div>
+  {rows.length > 0 && (
+    <div class="rw-head" aria-hidden="true">
+      <span>Risk</span>
+      <span>Reading</span>
+      <span>Trend</span>
+      <span>High and low</span>
+    </div>
+  )}
   <ul class="rw-list">
     {rows.map((row) => (
       <li class="rw-row">
@@ -128,12 +137,12 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
           </p>
           {chain.key && <p class="rw-chain-key">{chain.key}</p>}
         </div>
-        <ol class="rw-steps">
+        <ol class="rw-steps" style={`--rw-steps: ${chain.steps.length}`}>
           {chain.steps.map((step, i) => (
             <li class="rw-step">
               <p class="rw-step-label">
                 <span>{step.step}</span>
-                <span class={i < chain.steps.length - 1 ? 'rw-step-arrow' : 'rw-step-arrow rw-step-arrow-end'} aria-hidden="true">→</span>
+                {!chain.group && <span class={i < chain.steps.length - 1 ? 'rw-step-arrow' : 'rw-step-arrow rw-step-arrow-end'} aria-hidden="true">→</span>}
               </p>
               <p class="rw-step-title">{step.title}</p>
               <a class="rw-tracker" href={step.trackerHref}>{step.tracker}</a>
@@ -147,6 +156,11 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
                   {step.compare.flag && <p class="rw-flag">{step.compare.flag}</p>}
                 </div>
               )}
+              {step.levels.map((lv) => (
+                <div class="rw-line">
+                  <p class="rw-distance">{lv.text}</p>
+                </div>
+              ))}
               {step.peak && (
                 <div class="rw-line">
                   <p class="rw-distance">{step.peak.distance}</p>
@@ -568,7 +582,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     margin: 0.85rem 0 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--rw-steps, 3), minmax(0, 1fr));
     gap: 0.85rem;
   }
 

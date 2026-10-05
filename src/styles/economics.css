@@ -759,3 +759,18 @@ h1.economics-identity {
     transition: none;
   }
 }
+
+/* Watch list on /economics, shared with /risk (src/components/RiskWatchList.astro). */
+.economics-watch {
+  margin: 0 0 1.2rem;
+}
+
+.economics-section {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  color: rgba(248, 250, 252, 0.4);
+}
