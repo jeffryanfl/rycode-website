@@ -31,7 +31,7 @@
     },
     {
       "id": "wti",
-      "risk": "Oil above $100 keeps prices and rates high",
+      "risk": "Oil and the $100 line",
       "brief": "/risk/oil-and-the-100-line/",
       "tracker": "WTI crude oil",
       "trackerHref": "/economics/#econ-rail-oil-title",

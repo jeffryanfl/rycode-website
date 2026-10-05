@@ -1,6 +1,6 @@
 ---
 /**
- * Brief behind the "Oil above $100 keeps prices and rates high" row on /risk/.
+ * Brief behind the "Oil and the $100 line" row on /risk/.
  * Backstory is dated text. Where we stand and the levels in What we're
  * watching are built from the row's feeds at build time (src/lib/briefs.ts),
  * so they move with every feed push. No oil number is written by hand on this
@@ -13,7 +13,7 @@ import RiskWatch from '../../components/RiskWatch.astro';
 import { oilBriefNow } from '../../lib/briefs';
 import '../../styles/risk.css';
 
-const title = 'Oil above $100 keeps prices and rates high';
+const title = 'Oil and the $100 line';
 const subhead = 'This brief tracks WTI crude against the $100 line it settled above on the day of the Fed\'s first rate hike, and the 10-year Treasury yield against 5%. The numbers below come from the /risk/ watch-list feed.';
 
 const brief = oilBriefNow();
