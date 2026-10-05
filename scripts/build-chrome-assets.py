@@ -3,6 +3,11 @@
 
 Run from the repo root. Writes WebP glyphs, src/data/articles.json,
 and public/og/ PNG cards. No extra packages: Pillow only.
+
+  python3 scripts/build-chrome-assets.py              full run
+  python3 scripts/build-chrome-assets.py --og SLUG..  only redraw the og cards
+                                                      for those catalog slugs
+                                                      from src/data/articles.json
 """
 
 from __future__ import annotations
@@ -11,6 +16,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -38,6 +44,26 @@ BG = (8, 10, 16, 255)
 INK = (248, 250, 252, 235)
 MUTED = (248, 250, 252, 140)
 AMBER = (217, 119, 6, 255)
+
+
+# Watch-list briefs (the locked brief format in AGENTS.md). Each keeps the URL
+# of the essay it replaced. Title and description come from the page's
+# const title and const subhead; the date is the brief's publish day, locked so
+# a later rebuild does not use a commit day; minutes is the rendered reading
+# time, because most of a brief's words are computed at build time.
+BRIEFS = {
+    "src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro": ("2026-10-05", 3),
+    "src/pages/risk/six-percent-that-stays.astro": ("2026-10-05", 2),
+    "src/pages/risk/when-the-spender-runs-the-printer.astro": ("2026-10-05", 3),
+    "src/pages/economics/warsh-first-hike-oil-and-five-percent-ten-year.astro": ("2026-10-05", 2),
+}
+
+
+def page_const(path: Path, name: str) -> str:
+    match = re.search(rf"const {name} = '((?:[^'\\]|\\.)*)'", path.read_text())
+    if not match:
+        raise SystemExit(f"no const {name} in {path}")
+    return match.group(1).replace("\\'", "'")
 
 
 def git_date(path: Path) -> str:
@@ -98,26 +124,16 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     target = href_to_file(row["href"])
     if target is None or target.name == "index.astro":
         raise SystemExit(f"not an article: {row['href']}")
-    if target.name == "when-force-majeure-hits-the-ai-build-out.astro":
-        # Digest date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-26"
+    rel = str(target.relative_to(ROOT))
+    minutes = None
+    if rel in BRIEFS:
+        date, minutes = BRIEFS[rel]
+        row = {**row, "title": page_const(target, "title"), "description": page_const(target, "subhead")}
     elif target.name == "what-an-agent-swarm-is.astro":
         # Explainer date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-27"
-    elif target.name == "frontier-price-meets-open-weight-ipo.astro":
-        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-27"
-    elif target.name == "long-yields-hike-ai-credit-stress.astro":
-        # Economics card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-27"
-    elif target.name == "grok-bot-set-a-new-bar.astro":
-        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-25"
     elif target.name == "glossary.astro":
         # Glossary card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-28"
-    elif target.name == "meta-named-an-enterprise-stack.astro":
-        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-28"
     elif target.name == "terafab.astro":
         # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
@@ -144,17 +160,11 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "dots.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-29"
-    elif target.name == "the-license-starts-at-their-scale.astro":
-        # Opinion card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-30"
     else:
         date = git_date(target)
-    if target.name == "next-token-engine.astro":
-        # The A.I. index already publishes this date. The file landed earlier.
-        date = "2026-08-25"
     href = row["href"] if row["href"].endswith("/") else row["href"] + "/"
     slug = href.strip("/").replace("/", "-")
-    return {
+    item = {
         "href": href,
         "title": row["title"],
         "description": row["description"],
@@ -162,9 +172,12 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
         "section": section,
         "series": series,
         "crumbs": crumbs,
-        "file": str(target.relative_to(ROOT)),
+        "file": rel,
         "slug": slug,
     }
+    if minutes is not None:
+        item["minutes"] = minutes
+    return item
 
 
 def build_catalog_real() -> list[dict]:
@@ -173,51 +186,27 @@ def build_catalog_real() -> list[dict]:
     for row in rows_from(ROOT / "src/pages/economics.astro"):
         items.append(article_from(row, "economics", "economics", econ_crumbs))
 
+    # /risk/ cards come from src/data/risk-cards.json; title and dek come from each page.
     risk_crumbs = [{"href": "/risk/", "label": "Risk"}]
-    for row in rows_from(ROOT / "src/pages/risk.astro"):
+    for record in json.loads((ROOT / "src" / "data" / "risk-cards.json").read_text()):
+        href = record["slug"] if record["slug"].endswith("/") else record["slug"] + "/"
+        target = href_to_file(href)
+        if target is None:
+            raise SystemExit(f"missing page for {href}")
+        row = {"href": href, "title": page_const(target, "title"), "description": page_const(target, "subhead")}
         items.append(article_from(row, "risk", "risk", risk_crumbs))
 
     ai_crumbs = [{"href": "/ai/", "label": "A.I."}]
     dives = [
-        {
-            "href": "/ai/meta-named-an-enterprise-stack/",
-            "title": "Meta named an enterprise stack. It did not ship a new buyer.",
-            "description": "The company is trying to sell the consumer agent line as a second business.",
-        },
         {
             "href": "/ai/glossary/",
             "title": "AI glossary",
             "description": "Twenty plain terms for models, serving, and agents on this site",
         },
         {
-            "href": "/ai/frontier-price-meets-open-weight-ipo/",
-            "title": "Frontier price meets open-weight, and the IPO clock",
-            "description": "Open-weight cost curves are colliding with frontier listing calendars",
-        },
-        {
             "href": "/ai/swarms/what-an-agent-swarm-is/",
             "title": "What an agent swarm is, and what 10,000 of them can do",
             "description": "Two swarms, two breakthroughs, every metric on the table.",
-        },
-        {
-            "href": "/ai/grok-bot-set-a-new-bar/",
-            "title": "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.",
-            "description": "What these agent harnesses can actually do today, one capability at a time",
-        },
-        {
-            "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
-            "title": "Chat models write strings. System One returns typed decisions.",
-            "description": "Why Jev changes the scoreboard for software automation",
-        },
-        {
-            "href": "/ai/ten-thousand-agents-is-not-a-genius/",
-            "title": "The claimed math breakthrough was agent scale and token spend",
-            "description": "Ten thousand agents is not a genius",
-        },
-        {
-            "href": "/ai/next-token-engine/",
-            "title": "A next-token engine with an RLVR post-train and a tool loop.",
-            "description": "How staged training and tools shape a next-token engine.",
         },
         {
             "href": "/ai/models/typesafe/jev/",
@@ -344,6 +333,9 @@ def resize_glyphs() -> dict[str, dict[str, int]]:
     sizes: dict[str, dict[str, int]] = {}
     for name, height in GLYPHS.items():
         src = LANDING / name
+        if not src.exists():
+            # Already converted on an earlier run; the source PNG is gone.
+            continue
         image = Image.open(src).convert("RGBA")
         width = max(1, round(image.width * (height / image.height)))
         resized = image.resize((width, height), Image.Resampling.LANCZOS)
@@ -435,7 +427,30 @@ def card_article(section: str, title: str, dest: Path) -> None:
     save_card(image, dest)
 
 
+SECTION_LABELS = {
+    "economics": "Economics",
+    "risk": "Risk",
+    "ai": "A.I.",
+    "opinions": "Opinions",
+}
+
+
+def og_only(slugs: list[str]) -> None:
+    """Redraw article og cards for the given catalog slugs, nothing else."""
+    articles = {a["slug"]: a for a in json.loads(DATA.read_text())}
+    for slug in slugs:
+        article = articles.get(slug)
+        if article is None:
+            raise SystemExit(f"no catalog slug {slug}")
+        dest = OG / "articles" / f"{slug}.png"
+        card_article(SECTION_LABELS[article["section"]], article["title"], dest)
+        print("og", dest.relative_to(ROOT), dest.stat().st_size)
+
+
 def main() -> None:
+    if len(sys.argv) > 1 and sys.argv[1] == "--og":
+        og_only(sys.argv[2:])
+        return
     sizes = resize_glyphs()
     print("glyphs", json.dumps(sizes, indent=2))
     articles = build_catalog_real()
@@ -457,12 +472,7 @@ def main() -> None:
     for key, (name, dek) in sections.items():
         card_section(name, dek, OG / "sections" / f"{key}.png")
     for article in articles:
-        label = {
-            "economics": "Economics",
-            "risk": "Risk",
-            "ai": "A.I.",
-            "opinions": "Opinions",
-        }[article["section"]]
+        label = SECTION_LABELS[article["section"]]
         card_article(label, article["title"], OG / "articles" / f"{article['slug']}.png")
     print("og bytes", sum(p.stat().st_size for p in OG.rglob("*.png")))
 

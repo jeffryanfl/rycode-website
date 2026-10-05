@@ -86,6 +86,11 @@ function pointsFor(ref: FeedRef): Point[] {
     .sort((a, b) => a.date.localeCompare(b.date));
 }
 
+/** Read-only access to a feed series for briefs that cite a number the rows do not show. */
+export function feedPoints(ref: FeedRef): Point[] {
+  return pointsFor(ref);
+}
+
 function format(value: number, kind: Format): string {
   if (kind === 'percent') return `${value.toFixed(2)}%`;
   if (kind === 'percent3') return `${value.toFixed(3)}%`;
@@ -155,31 +160,64 @@ function distanceText(value: number, line: RiskLine, kind: Format): string {
   return `${format(abs, kind)} ${side} ${line.label}`;
 }
 
+/** Reading-feed points, the trend shown on the row, and the 52 weeks behind the latest reading. The row and the brief both use this. */
+function rowWindow(row: RowSpec) {
+  const { reading, history, trend: trendSpec } = row;
+  const key = reading.key;
+  const points = pointsFor(reading);
+  const last = points[points.length - 1];
+  if (!last) throw new Error(`RISK WATCH: no "${key}" points in ${reading.feed}`);
+
+  const n = Math.max(trendSpec?.points ?? 2, 2);
+  const shown = points.slice(-n);
+
+  /* 52 weeks back from the reading date. Longer feed first, then any newer reading-feed points. */
+  const start = new Date(new Date(`${last.date}T00:00:00Z`).getTime() - 364 * DAY).toISOString().slice(0, 10);
+  let year: Point[];
+  if (history) {
+    const longer = pointsFor(history).map((p) => ({ date: p.date, [key]: p[history.key] }) as Point);
+    const longerEnd = longer.length ? longer[longer.length - 1].date : '';
+    year = [...longer, ...points.filter((p) => p.date > longerEnd)];
+  } else {
+    year = points;
+  }
+  year = year.filter((p) => p.date >= start && p.date <= last.date);
+  return { key, points, last, shown, year };
+}
+
+export interface RowWindow {
+  id: string;
+  key: string;
+  /** Latest reading and the one before it, from the reading feed. */
+  last: Point;
+  previous: Point | null;
+  /** The 52 weeks ending at the latest reading, oldest first. */
+  year: Point[];
+  riskLine: number | null;
+}
+
+/** Raw readings behind one single row, so a brief's numbers match the row. */
+export function rowWindows(rowId: string): RowWindow {
+  const row = (watchFile as unknown as { rows: (RowSpec & { kind?: string })[] }).rows.find((r) => !r.kind && r.id === rowId);
+  if (!row) throw new Error(`RISK WATCH: no row "${rowId}"`);
+  const { key, points, last, year } = rowWindow(row);
+  return {
+    id: row.id,
+    key,
+    last,
+    previous: points[points.length - 2] ?? null,
+    year,
+    riskLine: row.riskLine && typeof row.riskLine.value === 'number' ? row.riskLine.value : null,
+  };
+}
+
 export function riskWatchRows(): WatchRow[] {
   const rows = (watchFile as unknown as { rows: (RowSpec & { kind?: string })[] }).rows.filter((r) => !r.kind);
   return rows.map((row) => {
     const { reading, history, trend: trendSpec, riskLine, ...rest } = row;
-    const key = reading.key;
-    const points = pointsFor(reading);
-    const last = points[points.length - 1];
-    if (!last) throw new Error(`RISK WATCH: no "${key}" points in ${reading.feed}`);
+    const { key, last, shown, year } = rowWindow(row);
     const latest = last[key] as number;
-
-    const n = Math.max(trendSpec?.points ?? 2, 2);
-    const shown = points.slice(-n);
     const period = extremes(shown, key, reading.format);
-
-    /* 52 weeks back from the reading date. Longer feed first, then any newer reading-feed points. */
-    const start = new Date(new Date(`${last.date}T00:00:00Z`).getTime() - 364 * DAY).toISOString().slice(0, 10);
-    let year: Point[];
-    if (history) {
-      const longer = pointsFor(history).map((p) => ({ date: p.date, [key]: p[history.key] }) as Point);
-      const longerEnd = longer.length ? longer[longer.length - 1].date : '';
-      year = [...longer, ...points.filter((p) => p.date > longerEnd)];
-    } else {
-      year = points;
-    }
-    year = year.filter((p) => p.date >= start && p.date <= last.date);
     const yr = extremes(year, key, reading.format);
 
     let line: WatchRow['riskLine'] = null;
@@ -354,6 +392,30 @@ function stepWindow(step: StepSpec) {
   return { last, upTo, windowPoints, windowLabel };
 }
 
+/** The recent average a step is compared with, rounded the way the row shows it. */
+function stepCompare(step: StepSpec, upTo: Point[], latest: number) {
+  if (!step.compare) return null;
+  const c = step.compare;
+  const base = c.type === 'prior' ? upTo.slice(-(c.n + 1), -1) : upTo.slice(-c.n);
+  if (base.length !== c.n) return null;
+  const digits = DIGITS[step.reading.format];
+  const raw = base.reduce((sum, p) => sum + (p[step.reading.key] as number), 0) / base.length;
+  const average = roundTo(raw, digits);
+  const diff = roundTo(latest - average, digits);
+  return { raw, average, diff, flagged: Boolean(c.flagBelow && latest < raw), spec: c };
+}
+
+/** The extra reading a step shows: the latest, the one before it, or the latest that matches a filter. */
+function stepExtra(step: StepSpec): Point | null {
+  if (!step.extra) return null;
+  let ep = pointsFor(step.extra.reading);
+  if (step.extra.where) {
+    const w = step.extra.where;
+    ep = ep.filter((p) => p[w.key] === w.equals);
+  }
+  return (step.extra.pick === 'previous' ? ep[ep.length - 2] : ep[ep.length - 1]) ?? null;
+}
+
 export interface StepWindow {
   id: string;
   key: string;
@@ -362,6 +424,8 @@ export interface StepWindow {
   riskLines: PeakLine[];
   extra: Point | null;
   extraKey: string | null;
+  /** Average the row compares with, already rounded to the row's digits. diff is latest minus average. */
+  compare: { average: number; diff: number; flagged: boolean; n: number; label: string } | null;
 }
 
 /** Raw readings and windows for each step of one chain, keyed by step id. Pages that write about a chain use this so their numbers match the row. */
@@ -372,12 +436,9 @@ export function chainStepWindows(chainId: string): Record<string, StepWindow> {
   if (!row) throw new Error(`RISK WATCH: no chain "${chainId}"`);
   const out: Record<string, StepWindow> = {};
   for (const step of row.steps) {
-    const { last, windowPoints } = stepWindow(step);
-    let extra: Point | null = null;
-    if (step.extra) {
-      const ep = pointsFor(step.extra.reading);
-      extra = ep[ep.length - 1] ?? null;
-    }
+    const { last, upTo, windowPoints } = stepWindow(step);
+    const extra = stepExtra(step);
+    const cmp = stepCompare(step, upTo, last[step.reading.key] as number);
     out[step.id] = {
       id: step.id,
       key: step.reading.key,
@@ -386,6 +447,7 @@ export function chainStepWindows(chainId: string): Record<string, StepWindow> {
       riskLines: step.riskLines ?? [],
       extra,
       extraKey: step.extra?.reading.key ?? null,
+      compare: cmp ? { average: cmp.average, diff: cmp.diff, flagged: cmp.flagged, n: cmp.spec.n, label: cmp.spec.label } : null,
     };
   }
   return out;
@@ -436,14 +498,11 @@ export function riskWatchChains(): ChainRow[] {
       }
 
       let compare: ChainStep['compare'] = null;
-      if (step.compare) {
-        const c = step.compare;
-        const base = c.type === 'prior' ? upTo.slice(-(c.n + 1), -1) : upTo.slice(-c.n);
-        if (base.length === c.n) {
-          const digits = DIGITS[reading.format];
-          const raw = base.reduce((sum, p) => sum + (p[key] as number), 0) / base.length;
-          const average = roundTo(raw, digits);
-          const diff = roundTo(latest - average, digits);
+      const cmp = stepCompare(step, upTo, latest);
+      if (cmp) {
+        const c = cmp.spec;
+        {
+          const { average, diff } = cmp;
           const side = diff > 0 ? 'above' : 'below';
           let gap: string;
           if (reading.format === 'percent') {
@@ -457,7 +516,7 @@ export function riskWatchChains(): ChainRow[] {
             text: diff === 0 ? `Level with its ${c.label} of ${avgText}` : `${gap} ${side} its ${c.label} of ${avgText}`,
             average: avgText,
             label: c.label,
-            flag: c.flagBelow && latest < raw ? c.flagBelow : null,
+            flag: cmp.flagged ? (c.flagBelow ?? null) : null,
           };
           lines = [...lines, { value: average, label: c.label, short: `${c.short} ${avgText}` }];
         }
@@ -466,12 +525,7 @@ export function riskWatchChains(): ChainRow[] {
       let extra: ChainStep['extra'] = null;
       if (step.extra) {
         const er = step.extra.reading;
-        let ep = pointsFor(er);
-        if (step.extra.where) {
-          const w = step.extra.where;
-          ep = ep.filter((p) => p[w.key] === w.equals);
-        }
-        const el = step.extra.pick === 'previous' ? ep[ep.length - 2] : ep[ep.length - 1];
+        const el = stepExtra(step);
         if (el) {
           const elabel = er.frequency === 'monthly' ? monthLabel : er.frequency === 'quarterly' ? quarterLabel : dateLabel;
           extra = {

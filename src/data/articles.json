@@ -1,9 +1,9 @@
 [
   {
     "href": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-    "title": "The first hike arrived with oil above $100 and the ten-year near 5 percent.",
-    "description": "The 16 September 2026 vote was a quarter point. Energy and long rates were already tight.",
-    "date": "2026-09-17",
+    "title": "Oil keeps prices and rates high",
+    "description": "Oil was above $100 at the Fed's first rate hike. Higher oil pushes prices up and keeps rates high. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "economics",
     "series": "economics",
     "crumbs": [
@@ -13,7 +13,8 @@
       }
     ],
     "file": "src/pages/economics/warsh-first-hike-oil-and-five-percent-ten-year.astro",
-    "slug": "economics-warsh-first-hike-oil-and-five-percent-ten-year"
+    "slug": "economics-warsh-first-hike-oil-and-five-percent-ten-year",
+    "minutes": 2
   },
   {
     "href": "/economics/still-1998-not-1999/",
@@ -66,9 +67,9 @@
   },
   {
     "href": "/risk/when-the-spender-runs-the-printer/",
-    "title": "Debt held by the public was about $32.39 trillion on 17 September 2026, and CBO has that stock rising from about 101% of GDP in 2026 to about 120% in 2036.",
-    "description": "Risks: if cheap money is used to ease that bill, inflation and financial repression transfer cost to households, and the next refinance of that stock gets more expensive.",
-    "date": "2026-09-21",
+    "title": "Debt refinancing",
+    "description": "Treasury has to sell more debt at auction. When buyers bid less, yields rise and the cost reaches mortgages. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "risk",
     "series": "risk",
     "crumbs": [
@@ -78,13 +79,14 @@
       }
     ],
     "file": "src/pages/risk/when-the-spender-runs-the-printer.astro",
-    "slug": "risk-when-the-spender-runs-the-printer"
+    "slug": "risk-when-the-spender-runs-the-printer",
+    "minutes": 3
   },
   {
     "href": "/risk/six-percent-that-stays/",
-    "title": "The 30-year Treasury yield in late August 2026 was about 5.21 to 5.26 percent.",
-    "description": "Risks: a hold near 6 percent through a long-term borrow date, not a single morning print. That would raise new long-term public debt and mortgages after the spread.",
-    "date": "2026-09-02",
+    "title": "The 30-year yield holds near 6%",
+    "description": "If the 30-year Treasury yield reaches 6% and stays there, new long-term government debt and mortgages cost more. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "risk",
     "series": "risk",
     "crumbs": [
@@ -94,7 +96,8 @@
       }
     ],
     "file": "src/pages/risk/six-percent-that-stays.astro",
-    "slug": "risk-six-percent-that-stays"
+    "slug": "risk-six-percent-that-stays",
+    "minutes": 2
   },
   {
     "href": "/ai/glossary/",

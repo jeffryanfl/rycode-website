@@ -19,30 +19,29 @@
       "links": [
         "frontier-pricing",
         "agent-swarms",
-        "ipo-liquidity",
-        "model-releases",
-        "regulatory-capture"
+        "model-releases"
       ]
     },
     {
       "id": "frontier-pricing",
       "label": "Frontier pricing",
       "blurb": "What a closed lab charges for tokens, and how an open-weight price pulls that number down.",
-      "articles": [],
+      "articles": [
+        "/ai/models/anthropic/claude-opus-5-5/",
+        "/ai/models/anthropic/claude-sonnet-5-5/",
+        "/ai/models/anthropic/claude-opus-5/",
+        "/ai/models/anthropic/claude-sonnet-5/",
+        "/ai/models/anthropic/claude-haiku-4-5/",
+        "/ai/models/anthropic/claude-fable-5-1/",
+        "/ai/models/openai/gpt-6-sol/",
+        "/ai/models/openai/gpt-6.1-sol/",
+        "/ai/models/openai/gpt-6-luna/",
+        "/ai/models/openai/gpt-6-astra/",
+        "/ai/models/google/gemini-4-argon/",
+        "/ai/models/xai/grok-4-7/"
+      ],
       "links": [
         "open-weights",
-        "ipo-liquidity",
-        "equity-prices"
-      ]
-    },
-    {
-      "id": "ipo-liquidity",
-      "label": "IPO liquidity",
-      "blurb": "When a frontier lab lists shares, and what moves the date or the voting control.",
-      "articles": [],
-      "links": [
-        "open-weights",
-        "frontier-pricing",
         "equity-prices"
       ]
     },
@@ -66,33 +65,20 @@
     {
       "id": "evals-safety",
       "label": "Evals and safety",
-      "blurb": "Tests that measure raw capability, and what happens when those tests leave the lab.",
-      "articles": [],
+      "blurb": "Tests that measure raw capability, and the scores labs publish when a model ships.",
+      "articles": [
+        "/ai/models/google/gemini-pro/",
+        "/ai/models/google/gemini-4-argon/",
+        "/ai/models/openai/gpt-6-astra/",
+        "/ai/models/anthropic/claude-opus-5-5/",
+        "/ai/models/anthropic/claude-sonnet-5-5/",
+        "/ai/models/meta/muse/spark/",
+        "/ai/models/typesafe/jev/",
+        "/ai/glossary/"
+      ],
       "links": [
         "agent-swarms",
-        "regulatory-capture",
-        "assurance-fog"
-      ]
-    },
-    {
-      "id": "regulatory-capture",
-      "label": "Regulatory capture",
-      "blurb": "A review desk that closed vendors can staff and open-weight projects often cannot.",
-      "articles": [],
-      "links": [
-        "open-weights",
-        "evals-safety",
-        "assurance-fog"
-      ]
-    },
-    {
-      "id": "assurance-fog",
-      "label": "Assurance fog",
-      "blurb": "After a scare, closed APIs can block the forensic read that open weights on your own machines can finish.",
-      "articles": [],
-      "links": [
-        "evals-safety",
-        "regulatory-capture"
+        "model-releases"
       ]
     },
     {
@@ -133,7 +119,9 @@
       "id": "data-center-financing",
       "label": "Data-center financing",
       "blurb": "How AI campuses raise money through leases and private placements before the revenue arrives.",
-      "articles": [],
+      "articles": [
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
+      ],
       "links": [
         "force-majeure",
         "private-credit",
@@ -159,7 +147,9 @@
       "id": "ai-capex",
       "label": "AI capex",
       "blurb": "Capital spending on AI campuses that has to be financed before the revenue shows up.",
-      "articles": [],
+      "articles": [
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
+      ],
       "links": [
         "force-majeure",
         "power-energy",
@@ -174,7 +164,8 @@
       "blurb": "What the Treasury curve charges to borrow for 2, 10, and 30 years.",
       "articles": [
         "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-        "/risk/six-percent-that-stays/"
+        "/risk/six-percent-that-stays/",
+        "/risk/when-the-spender-runs-the-printer/"
       ],
       "links": [
         "fed-policy",
@@ -204,7 +195,8 @@
       "label": "Debt stock",
       "blurb": "The stock of federal debt, the pile that comes due, and what inflation does to old fixed claims.",
       "articles": [
-        "/risk/when-the-spender-runs-the-printer/"
+        "/risk/when-the-spender-runs-the-printer/",
+        "/risk/six-percent-that-stays/"
       ],
       "links": [
         "treasury-yields",
@@ -215,7 +207,10 @@
       "id": "mortgages-housing",
       "label": "Mortgages",
       "blurb": "The 30-year mortgage rate buyers face when the long Treasury yield is high.",
-      "articles": [],
+      "articles": [
+        "/risk/when-the-spender-runs-the-printer/",
+        "/risk/six-percent-that-stays/"
+      ],
       "links": [
         "treasury-yields",
         "fed-policy"
@@ -250,11 +245,11 @@
       "label": "Equity prices",
       "blurb": "What investors will pay for a dollar of revenue, and whether this boom already has earnings.",
       "articles": [
-        "/economics/still-1998-not-1999/"
+        "/economics/still-1998-not-1999/",
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
       ],
       "links": [
-        "frontier-pricing",
-        "ipo-liquidity"
+        "frontier-pricing"
       ]
     },
     {
