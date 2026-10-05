@@ -1,7 +1,7 @@
 /**
  * Chart rows for the /ai bench charts.
- * Reads the same feed as the living bench table (public/ai-benchmarks.json),
- * so a feed update moves the charts too. Only clean single numbers are charted:
+ * Reads public/ai-benchmarks.json, so a feed update moves the charts too.
+ * Only clean single numbers are charted:
  * cells like "81.8% partial" stay in the living table only. No invented scores.
  */
 import feed from '../../public/ai-benchmarks.json';
@@ -45,6 +45,11 @@ export function benchPoints(columnId: string, opts: { version?: string } = {}): 
     });
   }
   return out.sort((a, b) => b.value - a.value);
+}
+
+/** Exam page for a feed column, when the column names one. */
+export function benchHref(columnId: string): string | undefined {
+  return data.columns.find((col) => col.id === columnId)?.href;
 }
 
 /** Feed date as "1 Oct 2026". */
@@ -123,7 +128,6 @@ export interface BenchAxisLabel {
 export function benchLines(): { categories: BenchAxisLabel[]; series: BenchLineSeries[]; sub: string } {
   const columns = data.columns.filter((col) => !TABLE_SKIP.has(col.id));
   const kept: { label: string; name: string; href?: string; version: string; values: (number | null)[] }[] = [];
-  const dropped: string[] = [];
 
   for (const col of columns) {
     const label = AXIS_NAME[col.id] ?? col.label;
@@ -142,7 +146,6 @@ export function benchLines(): { categories: BenchAxisLabel[]; series: BenchLineS
     } else if (ranked[0][1] >= 2 && ranked[0][1] > ranked[1][1]) {
       allow = ranked[0][0];
     } else {
-      dropped.push(label);
       continue;
     }
     const values = cells.map((cell) => {
@@ -173,8 +176,7 @@ export function benchLines(): { categories: BenchAxisLabel[]; series: BenchLineS
   const notes = kept
     .filter((col) => col.version && !col.label.toLowerCase().includes(col.version.toLowerCase()))
     .map((col) => `${col.label} is ${col.version}`);
-  const held = dropped.length ? `${dropped.join(', ')} stays in the table` : '';
-  const sub = ['One line per model', ...notes, held].filter(Boolean).join(' · ');
+  const sub = ['One line per model', ...notes].filter(Boolean).join(' · ');
   return {
     categories: kept.map((col) => ({ label: col.label, name: col.name, href: col.href })),
     series,

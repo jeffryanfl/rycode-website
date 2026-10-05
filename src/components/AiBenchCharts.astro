@@ -5,10 +5,12 @@
  * this file, to move a number. Uses the .ai-bench-* plate styles from ai.css.
  */
 import BenchChart from './BenchChart.astro';
-import { benchAsOf, benchLines, benchPoints } from '../lib/ai-bench-charts';
+import { benchAsOf, benchHref, benchLines, benchPoints } from '../lib/ai-bench-charts';
 
 const aa = benchPoints('aaIndex');
 const tb = benchPoints('terminalBench', { version: '4.0' });
+const aaHref = benchHref('aaIndex');
+const tbHref = benchHref('terminalBench');
 const asOf = benchAsOf();
 const lines = benchLines();
 
@@ -25,17 +27,19 @@ const toItems = (points: typeof aa) =>
     <div class="abc-grid">
       <BenchChart
         title="AA Intelligence Index"
+        href={aaHref}
         sub="Artificial Analysis v4.3.2 · effort under each score"
         items={toItems(aa)}
       />
       <BenchChart
         title="Terminal-Bench 4.0"
+        href={tbHref}
         sub="lab-reported score"
         items={toItems(tb)}
       />
     </div>
 
-    <p class="ai-bench-feed">Charts read <code>public/ai-benchmarks.json</code>, the same feed as the full bench table.</p>
+    <p class="ai-bench-feed">Charts read <code>public/ai-benchmarks.json</code>.</p>
   </div>
 </section>
 

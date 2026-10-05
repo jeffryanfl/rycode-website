@@ -19,6 +19,7 @@
     {
       "id": "terminalBench",
       "label": "Terminal-Bench",
+      "href": "https://www.tbench.ai/",
       "notes": "4.0 when cited"
     },
     {
@@ -48,6 +49,7 @@
     {
       "id": "aaIndex",
       "label": "AA Intelligence Index",
+      "href": "https://artificialanalysis.ai/leaderboards/models",
       "notes": "Artificial Analysis composite (Index v4.3.2 eval set on AA site). Independent of lab announces. Always store effort label (max/xhigh/high/…). Do not mix with CursorBench, OSWorld, or ARC-AGI cells. sourceKind must be aa.",
       "sourceKind": "aa",
       "primaryUrl": "https://artificialanalysis.ai/leaderboards/models"

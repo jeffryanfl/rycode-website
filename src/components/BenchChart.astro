@@ -59,6 +59,7 @@ interface Props {
   step?: number;
   caption?: boolean;
   frame?: boolean;
+  href?: string;
 }
 
 const {
@@ -79,6 +80,7 @@ const {
   refLabelSide = 'end',
   caption = true,
   frame = true,
+  href,
 } = Astro.props;
 
 const values =
@@ -281,7 +283,11 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
 <figure class:list={['bc', { 'bc-open': !frame }]}>
   {caption && (
     <figcaption class="bc-cap">
-      <span class="bc-title">{title}</span>
+      {href ? (
+        <a class="bc-title bc-title-link" href={href} target="_blank" rel="noopener noreferrer">{title}</a>
+      ) : (
+        <span class="bc-title">{title}</span>
+      )}
       {sub && <span class="bc-sub">{sub}</span>}
     </figcaption>
   )}
@@ -461,6 +467,17 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
     color: var(--ai-ink, #f8fafc);
   }
 
+  .bc-title-link {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-color: rgba(248, 250, 252, 0.45);
+  }
+
+  .bc-title-link:hover,
+  .bc-title-link:focus-visible {
+    text-decoration-color: var(--ai-ink, #f8fafc);
+  }
+
   .bc-sub {
     display: block;
     margin-top: 0.15rem;
@@ -583,8 +600,11 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
 
   .bc-svg {
     display: block;
-    width: 100%;
-    min-width: 56rem;
+    /* The site rule `svg { max-width: 100% }` would shrink this plot to the
+       phone width and make the spelled-out names unreadably small. Hold a
+       wide plot so the names and marks stay legible, and let the row scroll. */
+    width: max(100%, 62rem);
+    max-width: none;
     height: auto;
   }
 
