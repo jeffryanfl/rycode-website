@@ -56,13 +56,13 @@ BRIEFS = {
     "src/pages/risk/six-percent-that-stays.astro": ("2026-10-05", 2),
     "src/pages/risk/when-the-spender-runs-the-printer.astro": ("2026-10-05", 3),
     "src/pages/risk/oil-and-the-100-line.astro": ("2026-10-05", 2),
+    "src/pages/economics/jobs-print-was-strong-mix-is-the-story.astro": ("2026-10-05", 3),
+    "src/pages/economics/still-1998-not-1999.astro": ("2026-10-05", 3),
 }
 
 # Rendered reading time for pages whose words partly live in frontmatter data
 # (digest cards), which readingMinutes() in src/lib/site.ts cannot see.
 MINUTES = {
-    "src/pages/economics/still-1998-not-1999.astro": 3,
-    "src/pages/economics/jobs-print-was-strong-mix-is-the-story.astro": 3,
 }
 
 

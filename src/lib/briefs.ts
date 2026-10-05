@@ -9,6 +9,8 @@ import { chainStepWindows, feedPoints, rowWindows, type StepWindow } from './ris
 import { thirtyYearBrief, type ThirtyYearText } from './thirty-year-brief-text';
 import { oilBrief, type OilText } from './oil-brief-text';
 import { debtRefiBrief, type DebtRefiText } from './debt-refi-brief-text';
+import { hiringBrief, type HiringText } from './hiring-brief-text';
+import { payingUpBrief, type PayingUpText } from './paying-up-brief-text';
 
 type Point = { date: string; [key: string]: unknown };
 
@@ -85,5 +87,42 @@ export function debtRefiBriefNow(): DebtRefiText {
       compare: stepCompare(w.costs),
       previous: w.costs.extra && w.costs.extraKey ? asDated(w.costs.extra, w.costs.extraKey) : null,
     },
+  });
+}
+
+/** August 2026 unemployment rate, the marker named on the Hiring slows row. */
+export const UNEMPLOYMENT_MARKER = 4.1;
+export const UNEMPLOYMENT_MARKER_LABEL = 'Aug 4.1%';
+
+export function hiringBriefNow(): HiringText {
+  const w = chainStepWindows('hiring', 'economics');
+  if (!w.payrolls.compare) throw new Error('BRIEF: hiring payrolls step needs a compare average');
+  const earn = w.payrolls.extra;
+  return hiringBrief({
+    payrolls: w.payrolls.windowPoints.map((p) => asDated(p, w.payrolls.key)),
+    payrollsCompare: w.payrolls.compare,
+    earningsYoy: earn && w.payrolls.extraKey ? asDated(earn, w.payrolls.extraKey) : null,
+    unemployment: w.unemployment.windowPoints.map((p) => asDated(p, w.unemployment.key)),
+    unemploymentMarker: UNEMPLOYMENT_MARKER,
+    unemploymentMarkerLabel: UNEMPLOYMENT_MARKER_LABEL,
+    claims: w.claims.windowPoints.map((p) => asDated(p, w.claims.key)),
+    claimsCompare: w.claims.compare,
+  });
+}
+
+export function payingUpBriefNow(): PayingUpText {
+  const w = chainStepWindows('paying-up', 'economics');
+  const lines = w.spx.riskLines;
+  const correction = lines.find((l) => l.label === 'correction')?.fromPeak;
+  const bear = lines.find((l) => l.label === 'bear market')?.fromPeak;
+  if (correction === undefined || bear === undefined) {
+    throw new Error('BRIEF: paying-up spx step needs correction and bear market lines');
+  }
+  const top = w.spx.extra;
+  return payingUpBrief({
+    market: w.spx.windowPoints.map((p) => asDated(p, w.spx.key)),
+    top10: top && w.spx.extraKey ? { date: top.date, share: top[w.spx.extraKey] as number } : null,
+    correction,
+    bear,
   });
 }
