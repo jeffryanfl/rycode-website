@@ -13,12 +13,13 @@
       }
     ],
     "file": "src/pages/economics/still-1998-not-1999.astro",
-    "slug": "economics-still-1998-not-1999"
+    "slug": "economics-still-1998-not-1999",
+    "minutes": 3
   },
   {
     "href": "/economics/jobs-print-was-strong-mix-is-the-story/",
-    "title": "August payrolls were strong. The mix of jobs is the story.",
-    "description": "Hiring people who do the work with AI, not only people who manage that work.",
+    "title": "Payrolls and the jobs mix",
+    "description": "From the August 2026 jobs report, released 4 Sep 2026. Hiring people who do the work with AI, not only people who manage that work.",
     "date": "2026-09-09",
     "section": "economics",
     "series": "economics",
@@ -29,7 +30,8 @@
       }
     ],
     "file": "src/pages/economics/jobs-print-was-strong-mix-is-the-story.astro",
-    "slug": "economics-jobs-print-was-strong-mix-is-the-story"
+    "slug": "economics-jobs-print-was-strong-mix-is-the-story",
+    "minutes": 3
   },
   {
     "href": "/risk/when-force-majeure-hits-the-ai-build-out/",

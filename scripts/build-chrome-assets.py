@@ -58,6 +58,14 @@ BRIEFS = {
     "src/pages/risk/oil-and-the-100-line.astro": ("2026-10-05", 2),
 }
 
+# Rendered reading time for pages whose words partly live in frontmatter data
+# (digest cards), which readingMinutes() in src/lib/site.ts cannot see.
+MINUTES = {
+    "src/pages/economics/still-1998-not-1999.astro": 3,
+    "src/pages/economics/jobs-print-was-strong-mix-is-the-story.astro": 3,
+}
+
+
 
 def page_const(path: Path, name: str) -> str:
     match = re.search(rf"const {name} = '((?:[^'\\]|\\.)*)'", path.read_text())
@@ -165,6 +173,8 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
         date = "2026-09-29"
     else:
         date = git_date(target)
+    if minutes is None and rel in MINUTES:
+        minutes = MINUTES[rel]
     href = row["href"] if row["href"].endswith("/") else row["href"] + "/"
     slug = href.strip("/").replace("/", "-")
     item = {
