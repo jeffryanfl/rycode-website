@@ -53,6 +53,32 @@ Fonts, marks, and exhibit files. No calculator apps.
 
 `public/` is copied to the site root.
 
+## Feeds
+
+Pages read these `public/*.json` feeds at build time. Never type a feed number into a page.
+
+| Feed | Written by | When |
+|---|---|---|
+| `tape.json`, `ai-tape.json` | Tape routine | Morning push writes these two only. After-close push writes `tape.json`. |
+| `macro-history.json` | After-close routine | After-close push |
+| `economics-rail.json` | `node scripts/update-economics-rail.mjs` (yields, oil, debt, TGA) | After-close push |
+| `jobs.json` | `node scripts/update-jobs.mjs` (BLS payrolls, unemployment, hourly earnings, participation, employment-population, three industries; FRED jobless claims) | After-close push |
+| `inflation.json` | `node scripts/update-inflation.mjs` (BLS CPI and core CPI; BEA PCE and core PCE via FRED) | After-close push |
+| `ai-contagion.json`, `debt-refi.json` | `scripts/update-ai-contagion.mjs`, `scripts/update-debt-refi.mjs` | By hand or a cloud agent |
+
+- A code task never edits `tape.json`, `ai-tape.json`, `macro-history.json`, `ai-contagion.json`, or `debt-refi.json`. Seeding a new feed with its own script is fine.
+- `jobs.json` and `inflation.json` points carry `status`: `preliminary` (the source still flags it, or it is the newest month of a series revised next release), `revised` (revised by schedule, or a later run saw a new value; `revisedFrom` keeps the old one), or `final`. A revision overwrites the value. Helpers are in `scripts/lib/econ-feeds.mjs`.
+- The three Economics scripts write their file only when something besides `updated` changed, keep a failed series as it was, and exit 1 on a failure. BLS API v1 allows 25 requests a day; the two BLS scripts use one each.
+- The watch lists read the reading feed first; a history feed (for example `economics-rail.json` behind `macro-history.json`) only fills dates the reading feed does not have.
+
+After-close routine, in this order after the tape and `macro-history.json` steps:
+
+```bash
+node scripts/update-economics-rail.mjs   # public/economics-rail.json
+node scripts/update-jobs.mjs             # public/jobs.json
+node scripts/update-inflation.mjs        # public/inflation.json
+```
+
 ## Brief format (locked 5 Oct 2026)
 
 Every page behind a `/risk/` watch-list row is a short brief. Model: `src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro`.

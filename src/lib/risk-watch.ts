@@ -86,6 +86,17 @@ function pointsFor(ref: FeedRef): Point[] {
     .sort((a, b) => a.date.localeCompare(b.date));
 }
 
+/**
+ * Reading-feed points plus history points for dates the reading feed lacks,
+ * oldest first. The reading feed wins any date both have, so a row and its brief
+ * always show the reading feed's number even when the history feed carries a
+ * corrected close for the same day.
+ */
+function withHistory(points: Point[], longer: Point[]): Point[] {
+  const have = new Set(points.map((p) => p.date));
+  return [...longer.filter((p) => !have.has(p.date)), ...points].sort((a, b) => a.date.localeCompare(b.date));
+}
+
 /** Read-only access to a feed series for briefs that cite a number the rows do not show. */
 export function feedPoints(ref: FeedRef): Point[] {
   return pointsFor(ref);
@@ -171,13 +182,12 @@ function rowWindow(row: RowSpec) {
   const n = Math.max(trendSpec?.points ?? 2, 2);
   const shown = points.slice(-n);
 
-  /* 52 weeks back from the reading date. Longer feed first, then any newer reading-feed points. */
+  /* 52 weeks back from the reading date. The longer feed fills dates the reading feed does not have. */
   const start = new Date(new Date(`${last.date}T00:00:00Z`).getTime() - 364 * DAY).toISOString().slice(0, 10);
   let year: Point[];
   if (history) {
     const longer = pointsFor(history).map((p) => ({ date: p.date, [key]: p[history.key] }) as Point);
-    const longerEnd = longer.length ? longer[longer.length - 1].date : '';
-    year = [...longer, ...points.filter((p) => p.date > longerEnd)];
+    year = withHistory(points, longer);
   } else {
     year = points;
   }
@@ -323,13 +333,12 @@ export interface ChainRow {
   steps: ChainStep[];
 }
 
-/** Reading-feed points, with a longer history feed in front when one is named. */
+/** Reading-feed points, with a longer history feed filling the dates the reading feed does not have. */
 function mergedPoints(reading: FeedRef, history?: FeedRef | null): Point[] {
   const points = pointsFor(reading);
   if (!history) return points;
   const longer = pointsFor(history).map((p) => ({ date: p.date, [reading.key]: p[history.key] }) as Point);
-  const longerEnd = longer.length ? longer[longer.length - 1].date : '';
-  return [...longer, ...points.filter((p) => p.date > longerEnd)];
+  return withHistory(points, longer);
 }
 
 function peakDistance(below: number, lines: PeakLine[]): string {
