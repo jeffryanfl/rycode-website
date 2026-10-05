@@ -163,7 +163,7 @@
       "label": "Treasury yields",
       "blurb": "What the Treasury curve charges to borrow for 2, 10, and 30 years.",
       "articles": [
-        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
+        "/risk/oil-and-the-100-line/",
         "/risk/six-percent-that-stays/",
         "/risk/when-the-spender-runs-the-printer/"
       ],
@@ -181,7 +181,7 @@
       "blurb": "The short-term rate the Fed sets, and the inflation and geopolitics it names when it moves.",
       "articles": [
         "/risk/when-the-spender-runs-the-printer/",
-        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/"
+        "/risk/oil-and-the-100-line/"
       ],
       "links": [
         "treasury-yields",
@@ -221,7 +221,7 @@
       "label": "Oil prices",
       "blurb": "Where crude sits when the Fed moves, because that price is already in the room.",
       "articles": [
-        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/"
+        "/risk/oil-and-the-100-line/"
       ],
       "links": [
         "fed-policy",

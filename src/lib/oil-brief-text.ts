@@ -1,6 +1,6 @@
 /**
  * Sentences for "Where we stand" and "What we're watching" in the oil brief
- * (/economics/warsh-first-hike-oil-and-five-percent-ten-year/). Pure
+ * (/risk/oil-and-the-100-line/). Pure
  * functions: numbers in, sentences out. No imports, so a test can feed altered
  * numbers with plain Node. briefs.ts gathers the numbers from the same feeds
  * and 52-week window the /risk/ watch-list row uses. No oil number is written

@@ -31,8 +31,8 @@
     },
     {
       "id": "wti",
-      "risk": "Oil keeps prices and rates high",
-      "brief": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
+      "risk": "Oil above $100 keeps prices and rates high",
+      "brief": "/risk/oil-and-the-100-line/",
       "tracker": "WTI crude oil",
       "trackerHref": "/economics/#econ-rail-oil-title",
       "reading": {
@@ -51,8 +51,8 @@
       "riskLine": {
         "value": 100,
         "label": "$100",
-        "source": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-        "quote": "Brent and West Texas Intermediate (WTI), the main world and US crude benchmarks, both settled above $100 a barrel on the day of the hike even after falling, according to Reuters."
+        "source": "/risk/oil-and-the-100-line/",
+        "quote": "Brent, the main world crude benchmark, and WTI both settled above $100 a barrel on the day of the hike even after falling, according to Reuters."
       },
       "why": "Oil was above $100 at the first rate hike. Higher oil pushes prices up and keeps rates high."
     },

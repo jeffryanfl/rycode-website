@@ -88,6 +88,8 @@ export default defineConfig({
     '/ai/hardware/chips/meta-broadcom': '/ai/hardware/chips/meta/',
     '/ai/hardware/chips/meta-nvidia': '/ai/hardware/chips/meta/',
     '/ai/hardware/chips/meta-amd': '/ai/hardware/chips/meta/',
+    // Oil brief moved to /risk/ on 5 Oct 2026.
+    '/economics/warsh-first-hike-oil-and-five-percent-ten-year': '/risk/oil-and-the-100-line/',
     // Long essays pulled from the live site on 5 Oct 2026; sources in docs/archive/pages/.
     '/economics/long-yields-hike-ai-credit-stress': '/economics/',
     '/economics/post-inflation-dollars-pay-pre-inflation-debts': '/economics/',

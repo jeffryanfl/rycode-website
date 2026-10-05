@@ -1,0 +1,96 @@
+---
+/**
+ * Brief behind the "Oil above $100 keeps prices and rates high" row on /risk/.
+ * Backstory is dated text. Where we stand and the levels in What we're
+ * watching are built from the row's feeds at build time (src/lib/briefs.ts),
+ * so they move with every feed push. No oil number is written by hand on this
+ * page. It lived at /economics/warsh-first-hike-oil-and-five-percent-ten-year/
+ * until 5 Oct 2026; that URL 301s here. The long essay is in
+ * docs/archive/pages/economics/.
+ */
+import Layout from '../../layouts/Layout.astro';
+import RiskWatch from '../../components/RiskWatch.astro';
+import { oilBriefNow } from '../../lib/briefs';
+import '../../styles/risk.css';
+
+const title = 'Oil above $100 keeps prices and rates high';
+const subhead = 'This brief tracks WTI crude against the $100 line it settled above on the day of the Fed\'s first rate hike, and the 10-year Treasury yield against 5%. The numbers below come from the /risk/ watch-list feed.';
+
+const brief = oilBriefNow();
+
+const watchItems = [
+  ...brief.watch,
+  '27 to 28 Oct 2026: the next FOMC meeting.',
+  "PCE inflation reports, set against the Fed's 3.7% median forecast for 2026.",
+];
+
+const sources = [
+  { text: 'Federal Reserve, FOMC statement, 16 Sep 2026', href: 'https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm' },
+  { text: 'Federal Reserve, Summary of Economic Projections, 16 Sep 2026', href: 'https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm' },
+  { text: 'Reuters, oil prices on 16 Sep 2026', href: 'https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/' },
+  { text: 'Yahoo Finance, WTI crude futures (CL=F) price history', href: 'https://finance.yahoo.com/quote/CL=F/history/' },
+  { text: 'U.S. Treasury, Daily Treasury Par Yield Curve Rates', href: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026' },
+  { text: 'Federal Reserve, FOMC meeting calendar', href: 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm' },
+];
+---
+
+<Layout
+  title={`${title} - Rycode`}
+  description={subhead}
+  variant="risk"
+>
+  <article class="risk-digest risk-brief">
+    <header class="risk-digest-head">
+      <h1 class="risk-digest-title">{title}</h1>
+      <p class="risk-digest-subhead">{subhead}</p>
+    </header>
+
+    <div class="risk-digest-main">
+      <section class="risk-digest-section" id="backstory">
+        <h2>Backstory</h2>
+        <p>The first line is $100 a barrel for West Texas Intermediate (WTI), the main US crude benchmark. The second is 5% for the 10-year Treasury yield, the rate the government pays to borrow for ten years. Oil that high keeps energy feeding inflation, which works against the Fed's goal of getting inflation back to 2%. A high 10-year yield makes future company profits worth less today, which weighs on stock prices.</p>
+        <p>The $100 line dates to 16 Sep 2026. That day the Federal Open Market Committee (FOMC), the Fed body that sets short-term interest rates, raised its target for the federal funds rate, the overnight rate banks charge each other, by a quarter point to 3.75% to 4.00%. The vote was 12 to 0. It was Kevin Warsh's first rate increase as Fed Chair. Brent, the main world crude benchmark, and WTI both settled above $100 a barrel on the day of the hike even after falling, according to Reuters.</p>
+        <p>The statement said inflation remains elevated and gave no schedule for future moves. The Fed's projections put the median year-end funds rate at 4.1%, above the new range's midpoint of 3.875%. The median forecast for 2026 PCE inflation, the Fed's preferred price gauge, rose to 3.7% from 3.6% in June.</p>
+      </section>
+
+      <section class="risk-digest-section" id="where-we-stand">
+        <h2>Where we stand</h2>
+        <p class="risk-brief-asof">{brief.asOf}</p>
+        <p>{brief.level}</p>
+        <p>{brief.range}</p>
+        <p>{brief.rates}</p>
+        <p>{brief.strain}</p>
+      </section>
+
+      <section class="risk-digest-section" id="watching">
+        <h2>What we're watching</h2>
+        <RiskWatch items={watchItems} />
+      </section>
+
+      <section class="risk-digest-section risk-digest-sources" id="sources">
+        <h2>Sources</h2>
+        <ol>
+          {sources.map((source) => (
+            <li>
+              <a href={source.href}>{source.text}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .risk-brief .risk-digest-main {
+    max-width: 44rem;
+  }
+
+  .risk-brief .risk-brief-asof {
+    margin-top: -0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--digest-faint, rgba(248, 250, 252, 0.4));
+  }
+</style>

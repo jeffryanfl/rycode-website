@@ -55,7 +55,7 @@ BRIEFS = {
     "src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro": ("2026-10-05", 3),
     "src/pages/risk/six-percent-that-stays.astro": ("2026-10-05", 2),
     "src/pages/risk/when-the-spender-runs-the-printer.astro": ("2026-10-05", 3),
-    "src/pages/economics/warsh-first-hike-oil-and-five-percent-ten-year.astro": ("2026-10-05", 2),
+    "src/pages/risk/oil-and-the-100-line.astro": ("2026-10-05", 2),
 }
 
 

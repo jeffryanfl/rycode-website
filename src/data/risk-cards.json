@@ -5,6 +5,11 @@
     "watch": "SMH closing below its 10% correction line, and Census data-center construction spending stalling or falling."
   },
   {
+    "slug": "/risk/oil-and-the-100-line/",
+    "summary": "Oil was above $100 at the Fed's first rate hike. This brief tracks WTI crude against that $100 line and the 10-year Treasury yield against 5%, because higher oil pushes prices up and keeps rates high.",
+    "watch": "WTI closing above $100, and the 10-year yield moving above 5%."
+  },
+  {
     "slug": "/risk/when-the-spender-runs-the-printer/",
     "summary": "Treasury has to sell more debt at auction. This brief tracks whether that strain travels from Treasury borrowing to 10-year auction demand to mortgage rates.",
     "watch": "A 10-year auction bid-to-cover below its 6-auction average, and the 30-year mortgage rate above its 13-week average."

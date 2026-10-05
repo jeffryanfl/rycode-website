@@ -1,22 +1,5 @@
 [
   {
-    "href": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-    "title": "Oil keeps prices and rates high",
-    "description": "Oil was above $100 at the Fed's first rate hike. Higher oil pushes prices up and keeps rates high. The numbers below come from the /risk/ watch-list feed.",
-    "date": "2026-10-05",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/warsh-first-hike-oil-and-five-percent-ten-year.astro",
-    "slug": "economics-warsh-first-hike-oil-and-five-percent-ten-year",
-    "minutes": 2
-  },
-  {
     "href": "/economics/still-1998-not-1999/",
     "title": "This boom already has revenue and profit.",
     "description": "The open question is the price paid for those earnings, and when private companies raise cash.",
@@ -64,6 +47,23 @@
     "file": "src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro",
     "slug": "risk-when-force-majeure-hits-the-ai-build-out",
     "minutes": 3
+  },
+  {
+    "href": "/risk/oil-and-the-100-line/",
+    "title": "Oil above $100 keeps prices and rates high",
+    "description": "This brief tracks WTI crude against the $100 line it settled above on the day of the Fed's first rate hike, and the 10-year Treasury yield against 5%. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
+    "section": "risk",
+    "series": "risk",
+    "crumbs": [
+      {
+        "href": "/risk/",
+        "label": "Risk"
+      }
+    ],
+    "file": "src/pages/risk/oil-and-the-100-line.astro",
+    "slug": "risk-oil-and-the-100-line",
+    "minutes": 2
   },
   {
     "href": "/risk/when-the-spender-runs-the-printer/",
