@@ -33,7 +33,7 @@ const cards = cardRecords
       title: titleFromArticleFile(article.file),
       date: article.date,
       dateLabel: formatDate(article.date),
-      minutes: readingMinutes(article.file),
+      minutes: article.minutes ?? readingMinutes(article.file),
       summary: record.summary,
       watch: record.watch,
     };

@@ -325,6 +325,72 @@ function peakShort(below: number, lines: PeakLine[]): string {
   return `in ${sorted[sorted.length - 1].label}`;
 }
 
+/** The latest reading and the trend window for one chain step. The row and the brief both use this. */
+function stepWindow(step: StepSpec) {
+  const { reading } = step;
+  const monthly = reading.frequency === 'monthly';
+  const all = mergedPoints(reading, step.history);
+  const readingPoints = pointsFor(reading);
+  const last = readingPoints[readingPoints.length - 1];
+  if (!last) throw new Error(`RISK WATCH: no "${reading.key}" points in ${reading.feed}`);
+  const upTo = all.filter((p) => p.date <= last.date);
+
+  let windowPoints: Point[];
+  let windowLabel: string;
+  if (step.trend.weeks) {
+    const start = new Date(new Date(`${last.date}T00:00:00Z`).getTime() - step.trend.weeks * 7 * DAY + DAY)
+      .toISOString()
+      .slice(0, 10);
+    windowPoints = upTo.filter((p) => p.date >= start);
+    windowLabel = `${step.trend.weeks} weeks`;
+  } else {
+    windowPoints = step.trend.all ? upTo : upTo.slice(-(step.trend.points ?? 24));
+    windowLabel = step.trend.unit
+      ? `${windowPoints.length} ${step.trend.unit}`
+      : monthly
+        ? `${windowPoints.length} months`
+        : `${windowPoints.length} readings`;
+  }
+  return { last, upTo, windowPoints, windowLabel };
+}
+
+export interface StepWindow {
+  id: string;
+  key: string;
+  last: Point;
+  windowPoints: Point[];
+  riskLines: PeakLine[];
+  extra: Point | null;
+  extraKey: string | null;
+}
+
+/** Raw readings and windows for each step of one chain, keyed by step id. Pages that write about a chain use this so their numbers match the row. */
+export function chainStepWindows(chainId: string): Record<string, StepWindow> {
+  const row = (watchFile as unknown as { rows: (ChainSpec | RowSpec)[] }).rows.find(
+    (r): r is ChainSpec => (r as ChainSpec).kind === 'chain' && r.id === chainId,
+  );
+  if (!row) throw new Error(`RISK WATCH: no chain "${chainId}"`);
+  const out: Record<string, StepWindow> = {};
+  for (const step of row.steps) {
+    const { last, windowPoints } = stepWindow(step);
+    let extra: Point | null = null;
+    if (step.extra) {
+      const ep = pointsFor(step.extra.reading);
+      extra = ep[ep.length - 1] ?? null;
+    }
+    out[step.id] = {
+      id: step.id,
+      key: step.reading.key,
+      last,
+      windowPoints,
+      riskLines: step.riskLines ?? [],
+      extra,
+      extraKey: step.extra?.reading.key ?? null,
+    };
+  }
+  return out;
+}
+
 export function riskWatchChains(): ChainRow[] {
   const rows = (watchFile as unknown as { rows: (ChainSpec | RowSpec)[] }).rows.filter(
     (r): r is ChainSpec => (r as ChainSpec).kind === 'chain',
@@ -340,28 +406,7 @@ export function riskWatchChains(): ChainRow[] {
       const key = reading.key;
       const monthly = reading.frequency === 'monthly';
       const label = monthly ? monthLabel : reading.frequency === 'quarterly' ? quarterLabel : dateLabel;
-      const all = mergedPoints(reading, step.history);
-      const readingPoints = pointsFor(reading);
-      const last = readingPoints[readingPoints.length - 1];
-      if (!last) throw new Error(`RISK WATCH: no "${key}" points in ${reading.feed}`);
-      const upTo = all.filter((p) => p.date <= last.date);
-
-      let windowPoints: Point[];
-      let windowLabel: string;
-      if (step.trend.weeks) {
-        const start = new Date(new Date(`${last.date}T00:00:00Z`).getTime() - step.trend.weeks * 7 * DAY + DAY)
-          .toISOString()
-          .slice(0, 10);
-        windowPoints = upTo.filter((p) => p.date >= start);
-        windowLabel = `${step.trend.weeks} weeks`;
-      } else {
-        windowPoints = step.trend.all ? upTo : upTo.slice(-(step.trend.points ?? 24));
-        windowLabel = step.trend.unit
-          ? `${windowPoints.length} ${step.trend.unit}`
-          : monthly
-            ? `${windowPoints.length} months`
-            : `${windowPoints.length} readings`;
-      }
+      const { last, upTo, windowPoints, windowLabel } = stepWindow(step);
       const ext = extremes(windowPoints, key, reading.format);
       const relabel = (e: Extreme): Extreme => ({ ...e, dateLabel: label(e.date) });
       const latest = last[key] as number;

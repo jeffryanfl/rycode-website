@@ -49,9 +49,9 @@
   },
   {
     "href": "/risk/when-force-majeure-hits-the-ai-build-out/",
-    "title": "AI campus leases can defer rent when power and air permits miss the date in the contract.",
-    "description": "Risks: cash to the developer and lenders slips, leased megawatts are not firm, and private-credit packages for similar campuses reprice.",
-    "date": "2026-09-26",
+    "title": "AI build-out contagion",
+    "description": "A slip in AI campus building can travel to chip stocks and then to the whole market. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "risk",
     "series": "risk",
     "crumbs": [
@@ -61,7 +61,8 @@
       }
     ],
     "file": "src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro",
-    "slug": "risk-when-force-majeure-hits-the-ai-build-out"
+    "slug": "risk-when-force-majeure-hits-the-ai-build-out",
+    "minutes": 3
   },
   {
     "href": "/risk/when-the-spender-runs-the-printer/",

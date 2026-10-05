@@ -1,163 +1,98 @@
 ---
+/**
+ * Brief behind the "AI build-out contagion" row on /risk/. Backstory is dated
+ * text. Where we stand and the price levels in What we're watching are built
+ * from the row's feeds at build time (src/lib/ai-contagion-brief.ts), so they
+ * move with every feed push. The long essay that lived here is in
+ * docs/archive/pages/risk/.
+ */
 import Layout from '../../layouts/Layout.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
-import facts from '../../../docs/risk/when-force-majeure-hits-the-ai-build-out.facts.json';
+import { aiContagionBriefNow } from '../../lib/ai-contagion-brief';
 import '../../styles/risk.css';
 
-const title = 'AI campus leases can defer rent when power and air permits miss the date in the contract.';
-const subhead = 'Risks: cash to the developer and lenders slips, leased megawatts are not firm, and private-credit packages for similar campuses reprice.';
+const title = 'AI build-out contagion';
+const subhead = 'A slip in AI campus building can travel to chip stocks and then to the whole market. The numbers below come from the /risk/ watch-list feed.';
+
+const brief = aiContagionBriefNow();
 
 const watchItems = [
-  'Force majeure or similar outs filed on AI campuses, especially notices framed as deferral of rent or payments rather than tenant exit.',
-  'Language that ties those outs to power commitments, generation online dates, or fuel delivery.',
-  'Pipeline in-service slips and State Land Office or FERC steps on gas laterals that feed on-site generation.',
-  'Air-quality permit hearings, holds, restart dates, and state decision deadlines for fuel-cell or other on-site plants.',
-  'Public "on schedule" statements issued alongside contractual notices that preserve deferral rights.',
-  'Financing-side questions on risk allocation when power delays hit force majeure wording.',
-  'Rule 144A and institutional (pension, insurance) appetite for AI campus paper.',
-  'Syndication stress on Blue Owl-style packages, including Lancaster-class signals.',
-  'Rating actions and cash-flow commentary on hyperscaler AI capex.',
-  'Ripple delays on peer campus financings and related IPOs (SB Energy-class).',
-  'EIA STEO and AEO updates on electricity demand and data-center server share of commercial load.',
-  'Underwriting and credit notes that reweight energy permitting, contract outs, and who holds the paper over model benchmarks alone.',
+  ...brief.watch,
+  '23 Nov: New Mexico\'s decision on the Project Jupiter fuel-cell air permit.',
+  '1 Feb 2027: the Green Chile pipeline in-service date.',
+  'New force majeure or rent-deferral notices on other AI campuses, especially ones tied to power, gas, or permits.',
+  'AI campus loans that fail to syndicate, meaning the lead lender cannot sell pieces to other investors, as happened with Blue Owl\'s roughly $4 billion Lancaster, Pennsylvania package earlier in 2026.',
+  'Credit rating actions tied to AI spending by hyperscalers, the largest cloud companies.',
 ];
 
 const sources = [
   { text: 'TechCrunch, Oracle sends force majeure notice on its New Mexico Stargate data center', href: 'https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/' },
   { text: 'El Paso Matters, Oracle could defer Project Jupiter rent payments over power supply delays', href: 'https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/' },
-  { text: 'Wall Street Journal, The AI Build-Out Is Becoming the Biggest Economic Bet in U.S. History', href: 'https://www.wsj.com/economy/the-ai-build-out-is-becoming-the-biggest-economic-bet-in-u-s-history-c60716dd' },
-  { text: 'Reuters, US power use to beat record highs in 2026 and 2027 as AI use surges, EIA says', href: 'https://www.reuters.com/legal/litigation/us-power-use-beat-record-highs-2026-2027-ai-use-surges-eia-says-2026-08-11/' },
-  { text: 'U.S. EIA, Today in Energy, Data center server energy use grows across the commercial building stock (AEO2026)', href: 'https://www.eia.gov/todayinenergy/detail.php?id=67704' },
   { text: 'Reuters, Oracle, Blue Owl project delay sends ripples through AI financing, sources say', href: 'https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/' },
-  { text: 'Bisnow, Wall Street Is Funding The AI Build-Out With Bonds The SEC Never Sees', href: 'https://www.bisnow.com/news/national/data-center-development/a-quiet-corner-of-private-credit-has-fueled-60b-in-data-center-development-134982' },
+  { text: 'U.S. Census Bureau, Construction Spending historical data', href: 'https://www.census.gov/construction/c30/historical_data.html' },
+  { text: 'Yahoo Finance, SMH price history', href: 'https://finance.yahoo.com/quote/SMH/history/' },
+  { text: 'State Street Global Advisors, SPDR S&P 500 ETF Trust (SPY) holdings', href: 'https://www.ssga.com/us/en/intermediary/etfs/spdr-sp-500-etf-trust-spy' },
 ];
 ---
 
 <Layout
-  title={`${title} — Rycode`}
+  title={`${title} - Rycode`}
   description={subhead}
   variant="risk"
 >
-  <article class="risk-digest risk-digest--stack3 risk-digest--metrics">
+  <article class="risk-digest risk-brief">
     <header class="risk-digest-head">
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
     </header>
 
-    <div class="risk-digest-columns">
-      <div class="risk-digest-main">
-        <p class="risk-digest-lede">In late September 2026, Oracle sent a force majeure notice to the developer of Project Jupiter, a New Mexico Stargate-class data-center campus. A force majeure clause is a contract out that can excuse or defer obligations when events outside a party's control intervene. Bloomberg first reported the notice. Primary writeups from <a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">TechCrunch</a> and <a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">El Paso Matters</a> frame it as a path to <strong>defer rent or payments</strong> if the campus misses its planned online date, not as Oracle walking away as main tenant. Oracle publicly says the project remains on its planned schedule.</p>
+    <div class="risk-digest-main">
+      <section class="risk-digest-section" id="backstory">
+        <h2>Backstory</h2>
+        <p>In late September 2026, Oracle sent a force majeure notice to the developer of Project Jupiter, a Stargate-class AI data-center campus near Santa Teresa, New Mexico. A force majeure clause is a contract term that lets a party excuse or defer obligations when events outside its control get in the way. Reporting says the notice preserves Oracle's right to defer rent for up to three years if the campus misses its online date because of power commitments. Oracle says the project remains on its planned schedule. Blue Owl, whose STACK Infrastructure unit is the developer and holds about $3 billion of equity, says its financial commitments are unchanged.</p>
+        <p>The campus is designed around about 2.45 GW (gigawatts, or billions of watts) of on-site Bloom Energy fuel cells, which turn natural gas into electricity. The Green Chile pipeline that would supply the gas has slipped to about 1 Feb 2027 after New Mexico State Land Office route denials. The air-quality permit for the fuel-cell plant has a state decision deadline of 23 Nov.</p>
+        <p>Reuters reports the notice chilled AI infrastructure financing talks, including SB Energy's Ohio campus deal, and SB Energy delayed its IPO the same week. S&amp;P Global Ratings had already cut Oracle to its lowest investment-grade rating.</p>
+      </section>
 
-        <p class="risk-digest-lede">That episode is not a brand wipeout story. It is a path. Once contract outs fire, and once energy cost and availability sit inside those outs, "committed" AI capacity and spend can reprice or exit faster than equity narratives assume. The <a href="https://www.wsj.com/economy/the-ai-build-out-is-becoming-the-biggest-economic-bet-in-u-s-history-c60716dd">Wall Street Journal</a> has cast the AI data-center build-out as the biggest economic bet in U.S. history. The bet runs through leases, power commitments, pipelines, and permits. Those are the stages to watch.</p>
+      <section class="risk-digest-section" id="where-we-stand">
+        <h2>Where we stand</h2>
+        <p class="risk-brief-asof">{brief.asOf}</p>
+        <p>The row tracks one chain. Build-outs get delayed, then the market reacts to the AI build getting harder, then the broad market drops because it leans so heavily on AI.</p>
+        <p><strong>Step 1, Build.</strong> {brief.build}</p>
+        <p><strong>Step 2, Chips.</strong> {brief.chips}</p>
+        <p><strong>Step 3, Market.</strong> {brief.market}</p>
+        <p>{brief.strain}</p>
+      </section>
 
-        <section class="risk-digest-section" id="happened" data-digest-section="local">
-          <h2>What happened</h2>
-          <p>Project Jupiter sits near Santa Teresa, New Mexico, as a flagship Stargate-class campus. Reporting describes Oracle's notice as preserving contractual rights if the facility misses its target to come online, with sources citing up to a three-year rent delay if the parties agree a force majeure event is tied to meeting <strong>power commitments</strong> (<a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">[2]</a>; <a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">[1]</a>). Oracle told press the project remains on its planned schedule and that force majeure notices are common on developments of this scale. Blue Owl Capital, whose STACK Infrastructure unit received the notice, said the notice does not change financial commitments to the multi-year project (<a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">[1]</a>; <a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">[2]</a>).</p>
-        </section>
+      <section class="risk-digest-section" id="watching">
+        <h2>What we're watching</h2>
+        <RiskWatch items={watchItems} />
+      </section>
 
-        <section class="risk-digest-section" id="deferral" data-digest-section="doorway">
-          <p>The lead is deferral structure, not abandonment. The interesting part is what "power commitments" means on this site.</p>
-        </section>
-
-        <section class="risk-digest-section" id="energy" data-digest-section="gate">
-          <h2>Energy callout</h2>
-          <p>Project Jupiter is designed around about <strong>2.45 GW</strong> of on-site generation via <strong>Bloom Energy</strong> gas-powered fuel cells. A gigawatt (GW) is a billion watts of power capacity. A fuel cell converts fuel (here, natural gas) into electricity without a traditional combustion turbine. That design makes natural-gas supply and air permitting central to whether power commitments hold (<a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">[1]</a>; <a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">[2]</a>).</p>
-          <p>Two blockers sit on that path. The Energy Transfer / Transwestern "Green Chile" natural-gas pipeline meant to fuel the campus has been delayed, with reporting putting the in-service push to about <strong>February 1, 2027</strong> after New Mexico State Land Office route denials. Separately, the <strong>air-quality permit</strong> for the fuel-cell plant is still pending, with a November 23 state decision deadline (<a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">[1]</a>).</p>
-          <p>When generation, gas delivery, and air permits all have to clear for a campus to meet power commitments, the force majeure doorway is not abstract. It is wired to energy availability.</p>
-        </section>
-
-        <aside class="risk-path-emphasis">
-          <p class="risk-path-emphasis-claim">Committed capacity is only as firm as the power path and the contract out that watches it.</p>
-        </aside>
-
-        <section class="risk-digest-section" id="demand">
-          <h2>Structural demand, not vendor gossip</h2>
-          <p>This is not only an Oracle episode. U.S. electricity demand is forecast to set new highs in 2026 and 2027, driven in large part by AI-related data centers and electrification, according to the U.S. Energy Information Administration's Short-Term Energy Outlook as reported by <a href="https://www.reuters.com/legal/litigation/us-power-use-beat-record-highs-2026-2027-ai-use-surges-eia-says-2026-08-11/">Reuters</a>. Exact billion-kilowatthour totals belong to the live STEO table; the direction that matters for this path is clear. Load is climbing while large campuses race permitting and fuel.</p>
-          <p>EIA's Annual Energy Outlook 2026 work, summarized in <a href="https://www.eia.gov/todayinenergy/detail.php?id=67704">Today in Energy</a>, projects data-center <strong>server</strong> electricity use rising across the commercial stock. Servers alone were estimated at about <strong>7%</strong> of commercial-sector electricity in 2025, with long-run cases taking that share much higher by 2050. Energy cost and availability are not side notes to the AI build-out bet. They are inside the bet.</p>
-        </section>
-
-        <section class="risk-digest-section" id="path">
-          <h2>Path</h2>
-          <p>No claim here is that Project Jupiter is cancelled, that Oracle is exiting as tenant, or that any one vendor's brand is wiped. The claim is a path.</p>
-          <p>Committed campus capacity looks firm on a build-out slide (<a href="https://www.wsj.com/economy/the-ai-build-out-is-becoming-the-biggest-economic-bet-in-u-s-history-c60716dd">[3]</a>). Force-majeure outs open when a notice preserves deferral rights tied to power (<a href="https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/">[1]</a>; <a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">[2]</a>). The power gate is whether gas, generation, and permits clear on the schedule the lease assumes. If they do not, deferred rent and payment timing move. Assurance fog is the gap. Public schedule language can sit next to an event-driven out that underwriters and equity narratives underweight until it fires.</p>
-        </section>
-
-        <section class="risk-digest-section" id="rent-section" data-digest-section="rent">
-          <h2>Rent: deferred cash and who holds the paper</h2>
-          <p>When the doorway opens, rent is not only a calendar slip on one lease. Project Jupiter is developed by Blue Owl's STACK Infrastructure unit. A source familiar with the deal told <a href="https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/">Reuters</a> that Blue Owl has roughly <strong>$3 billion</strong> of equity in the project, while Oracle's force majeure notice over power delays sent a chill through AI infrastructure financing discussions, even as Blue Owl says the notice does not change multi-year commitments (<a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">[2]</a>; <a href="https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/">[6]</a>). Bankers and investors are treating the notice as a live case study of who pays when power and permit delays hit, and how force majeure wording reallocates risk. Reuters quotes the financing side as asking harder questions than the demand side (<a href="https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/">[6]</a>).</p>
-          <p>That paper already travels beyond one campus. AI data-center build-out is increasingly funded via <strong>Rule 144A</strong> private placements sold only to qualifying institutional buyers, including <strong>pension funds and insurance companies</strong>, with long-dated bonds framed as infrastructure-like cash flows (<a href="https://www.bisnow.com/news/national/data-center-development/a-quiet-corner-of-private-credit-has-fueled-60b-in-data-center-development-134982">Bisnow</a>). Earlier in 2026, Blue Owl struggled to syndicate financing for a roughly <strong>$4 billion</strong> Lancaster, Pennsylvania data-center package anchored by CoreWeave, a prior stress signal in private-credit AI infra financing (<a href="https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/">[6]</a>). S&amp;P Global Ratings had already cut Oracle to the <strong>lowest investment-grade</strong> credit rating, tying the action to the scale of AI infrastructure spend and a much wider forecast cash-flow deficit (<a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">[2]</a>). The same financing chill spilled into other AI campus deals under discussion, including SB Energy's Ohio OpenAI-related campus financing, with SB Energy's IPO delayed the same week (<a href="https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/">[6]</a>). One power-tied contract event can reprice appetite across the AI infra credit stack, not only one lease.</p>
-          <p>Force majeure and power outs do not only slip delivery dates. They can defer rent into private-credit and developer equity returns, and mark construction debt as stressed before revenue arrives.</p>
-        </section>
-
-        <section class="risk-digest-section" id="fog-section" data-digest-section="fog">
-          <h2>Fog: assurance gap after the notice</h2>
-          <p>Fog is what equity narratives miss until the out fires. Public "on schedule" language can sit next to event-driven outs, deferred developer equity returns, and construction debt that marks stressed before revenue arrives. Who holds the paper (banks, Blue Owl-style equity, Rule 144A pension and insurance buyers) becomes part of the underwriting question, not an afterthought (<a href="https://www.reuters.com/business/energy/oracle-blue-owl-project-delay-sends-ripples-through-ai-financing-sources-say-2026-09-24/">[6]</a>; <a href="https://www.bisnow.com/news/national/data-center-development/a-quiet-corner-of-private-credit-has-fueled-60b-in-data-center-development-134982">[7]</a>; <a href="https://elpasomatters.org/2026/09/24/project-jupiter-rent-force-majeure-new-mexico-oracle-ai-el-paso-data-center/">[2]</a>).</p>
-        </section>
-
-        <section class="risk-digest-section" id="downstream">
-          <h2>Downstream</h2>
-          <p>After that gate, "committed" megawatts become event-driven. Assurance and underwriting for AI infrastructure shift toward counterparty strength, contract wording, energy permitting, and who holds the paper, not only model benchmarks. Concentration risk rises when gas, power, and permit outs can fire together on the same campus. Buyers may hedge toward open-weight or on-prem stacks, or lock into closed vendors with clearer service-level agreements. When build-out assurance fog rises, policymakers may prefer "assured" hosted stacks, and ban-shaped politics become another valve on the same spine. That fourth-order capture tail is a companion open-weights story; it is not the spine of this digest.</p>
-        </section>
-
-        <section class="risk-digest-section" id="orders">
-          <h2>Orders of effect</h2>
-          <p><strong>Second order:</strong> Force majeure and power-tied outs do not only slip delivery dates. They can defer rent into private-credit and developer equity returns, and mark construction debt as stressed before revenue arrives.</p>
-          <p><strong>Third order:</strong> Assurance and underwriting for AI infra shift toward counterparty, contract outs, energy permits, and who holds the paper (banks, Blue Owl-style equity, Rule 144A pension and insurance buyers), not model benchmarks. Concentration risk rises when gas, power, and permit outs fire together.</p>
-          <p><strong>Fourth order:</strong> When build-out assurance fog rises, buyers and policymakers reach for assured closed or hosted stacks, or open-weight and on-prem hedges. Ban-shaped politics become another exit and capture valve on the same spine.</p>
-        </section>
-
-        <section class="risk-digest-section" id="watch">
-          <h2>What to watch</h2>
-          <RiskWatch items={watchItems} />
-          <p>The build-out is a real economic bet. The tail on this page is not that the bet vanishes overnight. The tail is that committed capacity can reprice through contract outs when energy gates slip, and that equity narratives which treat leased megawatts as irreversible will be late to that path.</p>
-        </section>
-
-        <section class="risk-digest-section risk-digest-sources" id="sources">
-          <h2>Sources</h2>
-          <ol>
-            {sources.map((source) => (
-              <li>
-                <a href={source.href}>{source.text}</a>
-              </li>
-            ))}
-          </ol>
-        </section>
-      </div>
-
-      <aside class="risk-digest-rail" data-digest-rail aria-label="Campus metrics">
-        <p class="risk-digest-kicker">Digest · Metrics</p>
-        {facts.asOfLabel && <p class="risk-digest-asof">{facts.asOfLabel}</p>}
-        <div class="risk-digest-viewport">
-          <div class="risk-digest-stack">
-            {facts.metrics.map((m) => (
-              <article class="risk-card" id={`card-${m.id}`} data-card={m.id}>
-                <p class="risk-card-kicker">{m.label}</p>
-                <p class="risk-card-figure">{m.value}</p>
-                <p class="risk-card-note">{m.note}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </aside>
+      <section class="risk-digest-section risk-digest-sources" id="sources">
+        <h2>Sources</h2>
+        <ol>
+          {sources.map((source) => (
+            <li>
+              <a href={source.href}>{source.text}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
     </div>
   </article>
 </Layout>
 
-<script is:inline src="/digest-rail.js" defer></script>
-
 <style>
-  /* Six metric cards. The shared stack window is three cards tall and looks for the old stage ids. */
-  .risk-digest--metrics .risk-digest-viewport {
-    height: auto;
-    overflow: visible !important;
+  .risk-brief .risk-digest-main {
+    max-width: 44rem;
   }
 
-  .risk-digest--metrics .risk-digest-asof {
-    margin: -0.25rem 0 0.75rem;
-    font-family: var(--font-sans);
+  .risk-brief .risk-brief-asof {
+    margin-top: -0.35rem;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
-    line-height: 1.35;
-    letter-spacing: 0.04em;
-    color: var(--digest-faint);
+    letter-spacing: 0.02em;
+    color: var(--digest-faint, rgba(248, 250, 252, 0.4));
   }
 </style>
