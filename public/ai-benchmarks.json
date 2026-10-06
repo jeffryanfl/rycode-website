@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-10-01",
-  "updated": "2026-10-01T08:40:00-04:00",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Seven rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0 only; aaIndex blank until an AA primary exists), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench from that same chart; aaIndex blank) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
+  "asOf": "2026-10-02",
+  "updated": "2026-10-02T15:01:38-04:00",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Seven rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
   "columns": [
     {
       "id": "cursorBench",
@@ -135,9 +135,21 @@
         "automationBench": null,
         "hle": null,
         "arcAgi": null,
-        "aaIndex": null
+        "aaIndex": {
+          "value": 56,
+          "effort": "max",
+          "aaModelLabel": "Claude Sonnet 5.5 (max with fallback)",
+          "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+          "sourceKind": "aa",
+          "fetched": "2026-10-02",
+          "notes": "AA Intelligence Index from the model page fetched 2 Oct 2026. Page intelligenceIndex 56.0001286580794, stored as 56. Effort label on the page is max. Not a lab announce score."
+        }
       },
-      "sources": ["https://www.anthropic.com/claude-sonnet-5-5", "https://platform.claude.com/docs/en/models/sonnet-5-5/overview.md"]
+      "sources": [
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://platform.claude.com/docs/en/models/sonnet-5-5/overview.md",
+        "https://artificialanalysis.ai/models/claude-sonnet-5-5"
+      ]
     },
     {
       "lab": "Anthropic",
@@ -260,27 +272,26 @@
           "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
         },
         "terminalBench": null,
-        "osworld": {
-          "value": "71.4%",
-          "version": "2.0 max offline",
-          "notes": "Company announce chart, max effort, offline set (0.7142).",
-          "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
-        },
-        "automationBench": {
-          "value": "31.7%",
-          "version": "1.0.6 medium",
-          "notes": "Company announce chart, medium effort (0.317).",
-          "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
-        },
+        "osworld": null,
+        "automationBench": null,
         "hle": null,
         "arcAgi": null,
-        "aaIndex": null
+        "aaIndex": {
+          "value": 52,
+          "effort": "max",
+          "aaModelLabel": "GPT-6.1 Sol (max)",
+          "source": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "sourceKind": "aa",
+          "fetched": "2026-10-02",
+          "notes": "AA Intelligence Index from the model page fetched 2 Oct 2026. Page intelligenceIndex 51.8332597011541, stored as the integer 52. Effort label on the page is max. Not a lab announce score."
+        }
       },
       "sources": [
         "https://openai.com/index/introducing-gpt-6-1-sol/",
         "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
         "https://cdn.openai.com/pdf/38e3efcf-545e-44cd-99ec-2b7eb395f4cc/oai_GPT_6_1_Sol.pdf",
-        "https://openai.com/index/devday-2026-recap/"
+        "https://openai.com/index/devday-2026-recap/",
+        "https://artificialanalysis.ai/models/gpt-6-1-sol"
       ]
     },
     {
