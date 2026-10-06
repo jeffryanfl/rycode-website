@@ -7,41 +7,49 @@
     {
       "id": "cursorBench",
       "label": "CursorBench",
+      "href": "https://cursor.com/cursorbench",
       "notes": "Version differs by lab (e.g. 4.0); do not mix versions in prose without naming the version."
     },
     {
       "id": "deepSwe",
       "label": "DeepSWE",
+      "href": "https://deepswe.datacurve.ai/",
       "notes": "v1.1 when cited"
     },
     {
       "id": "terminalBench",
       "label": "Terminal-Bench",
+      "href": "https://www.tbench.ai/",
       "notes": "4.0 when cited"
     },
     {
       "id": "osworld",
       "label": "OSWorld",
+      "href": "https://osworld-v2.xlang.ai/",
       "notes": "2.0 latency sim when cited"
     },
     {
       "id": "automationBench",
       "label": "AutomationBench",
+      "href": "https://zapier.com/benchmarks",
       "notes": ""
     },
     {
       "id": "hle",
       "label": "Humanity's Last Exam",
+      "href": "https://lastexam.ai/",
       "notes": "with tools when cited"
     },
     {
       "id": "arcAgi",
       "label": "ARC-AGI",
+      "href": "https://arcprize.org/arc-agi/3",
       "notes": "version when cited"
     },
     {
       "id": "aaIndex",
       "label": "AA Intelligence Index",
+      "href": "https://artificialanalysis.ai/leaderboards/models",
       "notes": "Artificial Analysis composite (Index v4.3.2 eval set on AA site). Independent of lab announces. Always store effort label (max/xhigh/high/…). Do not mix with CursorBench, OSWorld, or ARC-AGI cells. sourceKind must be aa.",
       "sourceKind": "aa",
       "primaryUrl": "https://artificialanalysis.ai/leaderboards/models"

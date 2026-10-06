@@ -5,7 +5,6 @@
       "label": "Open weights",
       "blurb": "Published model weights you can download and run yourself, versus renting a frontier API.",
       "articles": [
-        "/ai/frontier-price-meets-open-weight-ipo/",
         "/ai/models/open-weight/glm-5-3/",
         "/ai/models/google/gemma/",
         "/ai/models/open-weight/kimi-k3/",
@@ -15,16 +14,12 @@
         "/ai/models/meta/llama/llama-4/",
         "/ai/models/meta/muse/glimmer/",
         "/ai/models/deepseek/r1/",
-        "/risk/the-ban-lands-on-open-source/",
-        "/ai/glossary/",
-        "/opinions/the-license-starts-at-their-scale/"
+        "/ai/glossary/"
       ],
       "links": [
         "frontier-pricing",
         "agent-swarms",
-        "ipo-liquidity",
-        "model-releases",
-        "regulatory-capture"
+        "model-releases"
       ]
     },
     {
@@ -32,24 +27,21 @@
       "label": "Frontier pricing",
       "blurb": "What a closed lab charges for tokens, and how an open-weight price pulls that number down.",
       "articles": [
-        "/ai/frontier-price-meets-open-weight-ipo/"
+        "/ai/models/anthropic/claude-opus-5-5/",
+        "/ai/models/anthropic/claude-sonnet-5-5/",
+        "/ai/models/anthropic/claude-opus-5/",
+        "/ai/models/anthropic/claude-sonnet-5/",
+        "/ai/models/anthropic/claude-haiku-4-5/",
+        "/ai/models/anthropic/claude-fable-5-1/",
+        "/ai/models/openai/gpt-6-sol/",
+        "/ai/models/openai/gpt-6.1-sol/",
+        "/ai/models/openai/gpt-6-luna/",
+        "/ai/models/openai/gpt-6-astra/",
+        "/ai/models/google/gemini-4-argon/",
+        "/ai/models/xai/grok-4-7/"
       ],
       "links": [
         "open-weights",
-        "ipo-liquidity",
-        "equity-prices"
-      ]
-    },
-    {
-      "id": "ipo-liquidity",
-      "label": "IPO liquidity",
-      "blurb": "When a frontier lab lists shares, and what moves the date or the voting control.",
-      "articles": [
-        "/ai/frontier-price-meets-open-weight-ipo/"
-      ],
-      "links": [
-        "open-weights",
-        "frontier-pricing",
         "equity-prices"
       ]
     },
@@ -59,13 +51,9 @@
       "blurb": "Many agents on one job, spending tokens and messages to reach a result one model does not.",
       "articles": [
         "/ai/swarms/what-an-agent-swarm-is/",
-        "/ai/grok-bot-set-a-new-bar/",
         "/ai/models/meta/muse/code/",
         "/ai/models/xai/grok-bot/",
-        "/ai/ten-thousand-agents-is-not-a-genius/",
-        "/ai/glossary/",
-        "/ai/meta-named-an-enterprise-stack/",
-        "/opinions/the-license-starts-at-their-scale/"
+        "/ai/glossary/"
       ],
       "links": [
         "open-weights",
@@ -77,41 +65,20 @@
     {
       "id": "evals-safety",
       "label": "Evals and safety",
-      "blurb": "Tests that measure raw capability, and what happens when those tests leave the lab.",
+      "blurb": "Tests that measure raw capability, and the scores labs publish when a model ships.",
       "articles": [
-        "/risk/the-ban-lands-on-open-source/",
-        "/opinions/the-license-starts-at-their-scale/"
+        "/ai/models/google/gemini-pro/",
+        "/ai/models/google/gemini-4-argon/",
+        "/ai/models/openai/gpt-6-astra/",
+        "/ai/models/anthropic/claude-opus-5-5/",
+        "/ai/models/anthropic/claude-sonnet-5-5/",
+        "/ai/models/meta/muse/spark/",
+        "/ai/models/typesafe/jev/",
+        "/ai/glossary/"
       ],
       "links": [
         "agent-swarms",
-        "regulatory-capture",
-        "assurance-fog"
-      ]
-    },
-    {
-      "id": "regulatory-capture",
-      "label": "Regulatory capture",
-      "blurb": "A review desk that closed vendors can staff and open-weight projects often cannot.",
-      "articles": [
-        "/risk/the-ban-lands-on-open-source/",
-        "/opinions/the-license-starts-at-their-scale/"
-      ],
-      "links": [
-        "open-weights",
-        "evals-safety",
-        "assurance-fog"
-      ]
-    },
-    {
-      "id": "assurance-fog",
-      "label": "Assurance fog",
-      "blurb": "After a scare, closed APIs can block the forensic read that open weights on your own machines can finish.",
-      "articles": [
-        "/risk/the-ban-lands-on-open-source/"
-      ],
-      "links": [
-        "evals-safety",
-        "regulatory-capture"
+        "model-releases"
       ]
     },
     {
@@ -134,7 +101,12 @@
       "blurb": "The electricity, gas, and permits a training campus has to hold before the models run.",
       "articles": [
         "/risk/when-force-majeure-hits-the-ai-build-out/",
-        "/ai/hardware/data-centers/memphis-colossus/"
+        "/ai/hardware/data-centers/memphis-colossus/",
+        "/ai/what-xai-has-running/",
+        "/ai/hardware/chips/meta/",
+        "/ai/hardware/data-centers/prometheus/",
+        "/ai/hardware/data-centers/hyperion/",
+        "/ai/hardware/power/meta-nuclear/"
       ],
       "links": [
         "force-majeure",
@@ -148,7 +120,7 @@
       "label": "Data-center financing",
       "blurb": "How AI campuses raise money through leases and private placements before the revenue arrives.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/"
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
       ],
       "links": [
         "force-majeure",
@@ -163,7 +135,6 @@
       "label": "Private credit",
       "blurb": "Loans and private placements that fund data-center builds outside the public bond market.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
         "/risk/when-force-majeure-hits-the-ai-build-out/"
       ],
       "links": [
@@ -177,7 +148,6 @@
       "label": "AI capex",
       "blurb": "Capital spending on AI campuses that has to be financed before the revenue shows up.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
         "/risk/when-force-majeure-hits-the-ai-build-out/"
       ],
       "links": [
@@ -193,10 +163,9 @@
       "label": "Treasury yields",
       "blurb": "What the Treasury curve charges to borrow for 2, 10, and 30 years.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
-        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-        "/economics/ten-trillion-to-roll/",
-        "/risk/six-percent-that-stays/"
+        "/risk/oil-and-the-100-line/",
+        "/risk/six-percent-that-stays/",
+        "/risk/when-the-spender-runs-the-printer/"
       ],
       "links": [
         "fed-policy",
@@ -212,7 +181,7 @@
       "blurb": "The short-term rate the Fed sets, and the inflation and geopolitics it names when it moves.",
       "articles": [
         "/risk/when-the-spender-runs-the-printer/",
-        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/"
+        "/risk/oil-and-the-100-line/"
       ],
       "links": [
         "treasury-yields",
@@ -227,8 +196,7 @@
       "blurb": "The stock of federal debt, the pile that comes due, and what inflation does to old fixed claims.",
       "articles": [
         "/risk/when-the-spender-runs-the-printer/",
-        "/economics/post-inflation-dollars-pay-pre-inflation-debts/",
-        "/economics/ten-trillion-to-roll/"
+        "/risk/six-percent-that-stays/"
       ],
       "links": [
         "treasury-yields",
@@ -240,7 +208,7 @@
       "label": "Mortgages",
       "blurb": "The 30-year mortgage rate buyers face when the long Treasury yield is high.",
       "articles": [
-        "/economics/long-yields-hike-ai-credit-stress/",
+        "/risk/when-the-spender-runs-the-printer/",
         "/risk/six-percent-that-stays/"
       ],
       "links": [
@@ -253,7 +221,7 @@
       "label": "Oil prices",
       "blurb": "Where crude sits when the Fed moves, because that price is already in the room.",
       "articles": [
-        "/economics/warsh-first-hike-oil-and-five-percent-ten-year/"
+        "/risk/oil-and-the-100-line/"
       ],
       "links": [
         "fed-policy",
@@ -263,7 +231,7 @@
     {
       "id": "jobs-labor",
       "label": "Jobs",
-      "blurb": "Who got hired, and whether the jobs are for doing the work with AI or only managing it.",
+      "blurb": "Who got hired, whether the pace is slowing, and whether the jobs are for doing the work with AI or only managing it.",
       "articles": [
         "/economics/jobs-print-was-strong-mix-is-the-story/"
       ],
@@ -275,14 +243,13 @@
     {
       "id": "equity-prices",
       "label": "Equity prices",
-      "blurb": "What investors will pay for a dollar of revenue, and whether this boom already has earnings.",
+      "blurb": "What investors will pay for a dollar of revenue, how far the S&P sits from its peak, and whether this boom already has earnings.",
       "articles": [
         "/economics/still-1998-not-1999/",
-        "/economics/saas-barbell-2026/"
+        "/risk/when-force-majeure-hits-the-ai-build-out/"
       ],
       "links": [
-        "frontier-pricing",
-        "ipo-liquidity"
+        "frontier-pricing"
       ]
     },
     {
@@ -317,7 +284,6 @@
         "/ai/models/deepseek/thinking/",
         "/ai/models/deepseek/v3/",
         "/ai/models/deepseek/v4-pro/",
-        "/ai/chat-models-write-strings-system-one-returns-decisions/",
         "/ai/models/typesafe/jev/",
         "/ai/models/xai/models/grok-4-20/",
         "/ai/models/xai/models/grok-4-3/",
@@ -350,7 +316,17 @@
       "blurb": "Where the chips are fabricated, and where the training campus consumes them.",
       "articles": [
         "/ai/hardware/data-centers/memphis-colossus/",
-        "/ai/hardware/chips/terafab/"
+        "/ai/hardware/chips/terafab/",
+        "/ai/what-xai-has-running/",
+        "/ai/hardware/chips/mtia/",
+        "/ai/hardware/chips/blackwell/",
+        "/ai/hardware/chips/rubin/",
+        "/ai/hardware/chips/instinct/",
+        "/ai/hardware/chips/meta/",
+        "/ai/hardware/data-centers/prometheus/",
+        "/ai/hardware/data-centers/hyperion/",
+        "/ai/hardware/data-centers/eagle-mountain/",
+        "/ai/hardware/power/meta-nuclear/"
       ],
       "links": [
         "model-releases",
@@ -363,9 +339,7 @@
       "label": "Training loop",
       "blurb": "A language model as a next-token predictor, shaped by staged training and a tool loop.",
       "articles": [
-        "/ai/next-token-engine/",
-        "/ai/glossary/",
-        "/ai/meta-named-an-enterprise-stack/"
+        "/ai/glossary/"
       ],
       "links": [
         "model-releases",

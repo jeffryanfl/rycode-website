@@ -3,6 +3,11 @@
 
 Run from the repo root. Writes WebP glyphs, src/data/articles.json,
 and public/og/ PNG cards. No extra packages: Pillow only.
+
+  python3 scripts/build-chrome-assets.py              full run
+  python3 scripts/build-chrome-assets.py --og SLUG..  only redraw the og cards
+                                                      for those catalog slugs
+                                                      from src/data/articles.json
 """
 
 from __future__ import annotations
@@ -11,6 +16,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -38,6 +44,34 @@ BG = (8, 10, 16, 255)
 INK = (248, 250, 252, 235)
 MUTED = (248, 250, 252, 140)
 AMBER = (217, 119, 6, 255)
+
+
+# Watch-list briefs (the locked brief format in AGENTS.md). Each keeps the URL
+# of the essay it replaced. Title and description come from the page's
+# const title and const subhead; the date is the brief's publish day, locked so
+# a later rebuild does not use a commit day; minutes is the rendered reading
+# time, because most of a brief's words are computed at build time.
+BRIEFS = {
+    "src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro": ("2026-10-05", 3),
+    "src/pages/risk/six-percent-that-stays.astro": ("2026-10-05", 2),
+    "src/pages/risk/when-the-spender-runs-the-printer.astro": ("2026-10-05", 3),
+    "src/pages/risk/oil-and-the-100-line.astro": ("2026-10-05", 2),
+    "src/pages/economics/jobs-print-was-strong-mix-is-the-story.astro": ("2026-10-05", 3),
+    "src/pages/economics/still-1998-not-1999.astro": ("2026-10-05", 3),
+}
+
+# Rendered reading time for pages whose words partly live in frontmatter data
+# (digest cards), which readingMinutes() in src/lib/site.ts cannot see.
+MINUTES = {
+}
+
+
+
+def page_const(path: Path, name: str) -> str:
+    match = re.search(rf"const {name} = '((?:[^'\\]|\\.)*)'", path.read_text())
+    if not match:
+        raise SystemExit(f"no const {name} in {path}")
+    return match.group(1).replace("\\'", "'")
 
 
 def git_date(path: Path) -> str:
@@ -98,26 +132,19 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     target = href_to_file(row["href"])
     if target is None or target.name == "index.astro":
         raise SystemExit(f"not an article: {row['href']}")
-    if target.name == "when-force-majeure-hits-the-ai-build-out.astro":
-        # Digest date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-26"
+    rel = str(target.relative_to(ROOT))
+    minutes = None
+    if rel in BRIEFS:
+        date, minutes = BRIEFS[rel]
+        row = {**row, "title": page_const(target, "title"), "description": page_const(target, "subhead")}
     elif target.name == "what-an-agent-swarm-is.astro":
         # Explainer date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-27"
-    elif target.name == "frontier-price-meets-open-weight-ipo.astro":
-        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-27"
-    elif target.name == "long-yields-hike-ai-credit-stress.astro":
-        # Economics card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-27"
-    elif target.name == "grok-bot-set-a-new-bar.astro":
-        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-25"
+    elif target.name == "what-xai-has-running.astro":
+        # Brief date is locked to the page kicker. A later catalog rebuild must not use the commit day.
+        date = "2026-10-04"
     elif target.name == "glossary.astro":
         # Glossary card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-28"
-    elif target.name == "meta-named-an-enterprise-stack.astro":
-        # Deep dive card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-28"
     elif target.name == "terafab.astro":
         # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
@@ -125,23 +152,32 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "memphis-colossus.astro":
         # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-13"
+    elif target.name in {
+        "mtia.astro",
+        "blackwell.astro",
+        "rubin.astro",
+        "instinct.astro",
+        "meta.astro",
+        "prometheus.astro",
+        "hyperion.astro",
+        "eagle-mountain.astro",
+        "meta-nuclear.astro",
+    }:
+        # Hardware pack date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-10-04"
     elif target.name == "gpt-6.1-sol.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-29"
     elif target.name == "dots.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-29"
-    elif target.name == "the-license-starts-at-their-scale.astro":
-        # Opinion card date is locked. A later catalog rebuild must not use the commit day.
-        date = "2026-09-30"
     else:
         date = git_date(target)
-    if target.name == "next-token-engine.astro":
-        # The A.I. index already publishes this date. The file landed earlier.
-        date = "2026-08-25"
+    if minutes is None and rel in MINUTES:
+        minutes = MINUTES[rel]
     href = row["href"] if row["href"].endswith("/") else row["href"] + "/"
     slug = href.strip("/").replace("/", "-")
-    return {
+    item = {
         "href": href,
         "title": row["title"],
         "description": row["description"],
@@ -149,9 +185,12 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
         "section": section,
         "series": series,
         "crumbs": crumbs,
-        "file": str(target.relative_to(ROOT)),
+        "file": rel,
         "slug": slug,
     }
+    if minutes is not None:
+        item["minutes"] = minutes
+    return item
 
 
 def build_catalog_real() -> list[dict]:
@@ -160,26 +199,22 @@ def build_catalog_real() -> list[dict]:
     for row in rows_from(ROOT / "src/pages/economics.astro"):
         items.append(article_from(row, "economics", "economics", econ_crumbs))
 
+    # /risk/ cards come from src/data/risk-cards.json; title and dek come from each page.
     risk_crumbs = [{"href": "/risk/", "label": "Risk"}]
-    for row in rows_from(ROOT / "src/pages/risk.astro"):
+    for record in json.loads((ROOT / "src" / "data" / "risk-cards.json").read_text()):
+        href = record["slug"] if record["slug"].endswith("/") else record["slug"] + "/"
+        target = href_to_file(href)
+        if target is None:
+            raise SystemExit(f"missing page for {href}")
+        row = {"href": href, "title": page_const(target, "title"), "description": page_const(target, "subhead")}
         items.append(article_from(row, "risk", "risk", risk_crumbs))
 
     ai_crumbs = [{"href": "/ai/", "label": "A.I."}]
     dives = [
         {
-            "href": "/ai/meta-named-an-enterprise-stack/",
-            "title": "Meta named an enterprise stack. It did not ship a new buyer.",
-            "description": "The company is trying to sell the consumer agent line as a second business.",
-        },
-        {
             "href": "/ai/glossary/",
             "title": "AI glossary",
             "description": "Twenty plain terms for models, serving, and agents on this site",
-        },
-        {
-            "href": "/ai/frontier-price-meets-open-weight-ipo/",
-            "title": "Frontier price meets open-weight, and the IPO clock",
-            "description": "Open-weight cost curves are colliding with frontier listing calendars",
         },
         {
             "href": "/ai/swarms/what-an-agent-swarm-is/",
@@ -187,24 +222,9 @@ def build_catalog_real() -> list[dict]:
             "description": "Two swarms, two breakthroughs, every metric on the table.",
         },
         {
-            "href": "/ai/grok-bot-set-a-new-bar/",
-            "title": "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.",
-            "description": "What these agent harnesses can actually do today, one capability at a time",
-        },
-        {
-            "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
-            "title": "Chat models write strings. System One returns typed decisions.",
-            "description": "Why Jev changes the scoreboard for software automation",
-        },
-        {
-            "href": "/ai/ten-thousand-agents-is-not-a-genius/",
-            "title": "The claimed math breakthrough was agent scale and token spend",
-            "description": "Ten thousand agents is not a genius",
-        },
-        {
-            "href": "/ai/next-token-engine/",
-            "title": "A next-token engine with an RLVR post-train and a tool loop.",
-            "description": "How staged training and tools shape a next-token engine.",
+            "href": "/ai/what-xai-has-running/",
+            "title": "What xAI has running",
+            "description": "A first-cluster claim, not a finished campus.",
         },
         {
             "href": "/ai/models/typesafe/jev/",
@@ -238,27 +258,73 @@ def build_catalog_real() -> list[dict]:
             items.append(article_from(row, "ai", f"ai-{series}", crumbs))
 
     hw_crumbs = ai_crumbs + [{"href": "/ai/hardware/", "label": "Hardware"}]
-    # The hub lists five themes. These two leaves are the plant essays.
+    # Chip cards are families. Meta's buy is one stack page. Terafab is the factory.
     # The fabric card links to the campus page, so it is not a second essay.
     hardware_rows = [
         {
             "href": "/ai/hardware/chips/terafab/",
             "title": "Terafab",
-            "description": "Chip fab. SpaceX + Tesla. Not a training hall.",
+            "description": "Chip fab. SpaceX and Tesla. Phase 1 is $16.8B.",
         },
         {
             "href": "/ai/hardware/data-centers/memphis-colossus/",
             "title": "Memphis / Colossus",
-            "description": "Training campus. Models learn here. Not a chip foundry.",
+            "description": "Training campus in Memphis. 170 PB/s memory bandwidth and 2.8 Tb/s per server.",
+        },
+        {
+            "href": "/ai/hardware/chips/mtia/",
+            "title": "MTIA",
+            "description": "MTIA 300, 400, 450, and 500. The 300 is in production with 216 GB HBM3E. The 400 is a 72-accelerator rack. Compute FLOPS from the 300 to the 500 is 25x.",
+        },
+        {
+            "href": "/ai/hardware/chips/blackwell/",
+            "title": "Blackwell",
+            "description": "GB300 NVL72 is 72 Blackwell Ultra GPUs and 36 Grace CPUs, with 20 TB of GPU memory, 130 TB/s NVLink, and 1,440 PFLOPS of FP4 Tensor Core with sparsity.",
+        },
+        {
+            "href": "/ai/hardware/chips/rubin/",
+            "title": "Rubin",
+            "description": "The Rubin GPU is 50 PFLOPS of NVFP4 inference and 288 GB of HBM4. Vera Rubin NVL72 is 72 Rubin GPUs and 36 Vera CPUs.",
+        },
+        {
+            "href": "/ai/hardware/chips/instinct/",
+            "title": "Instinct",
+            "description": "The custom Instinct GPU is based on the MI450 architecture, with Venice EPYC CPUs, ROCm, and Helios. MI300 and MI350 are the series Meta already runs.",
+        },
+        {
+            "href": "/ai/hardware/chips/meta/",
+            "title": "Meta stack",
+            "description": "Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct.",
+        },
+        {
+            "href": "/ai/hardware/data-centers/prometheus/",
+            "title": "Prometheus",
+            "description": "New Albany, Ohio. Over 1 gigawatt and tens of thousands of graphics chips once complete.",
+        },
+        {
+            "href": "/ai/hardware/data-centers/hyperion/",
+            "title": "Hyperion",
+            "description": "Richland Parish, Louisiana. 5 gigawatts and more than $50 billion.",
+        },
+        {
+            "href": "/ai/hardware/data-centers/eagle-mountain/",
+            "title": "Eagle Mountain",
+            "description": "Utah. Raised to more than $3 billion on 14 September 2026.",
+        },
+        {
+            "href": "/ai/hardware/power/meta-nuclear/",
+            "title": "Meta nuclear package",
+            "description": "Up to 6.6 gigawatts by 2035.",
         },
     ]
+    theme_crumbs = {
+        "chips": {"href": "/ai/hardware/chips/", "label": "Chips"},
+        "data-centers": {"href": "/ai/hardware/data-centers/", "label": "Data centers"},
+        "power": {"href": "/ai/hardware/power/", "label": "Power"},
+    }
     for row in hardware_rows:
-        theme_crumb = (
-            [{"href": "/ai/hardware/chips/", "label": "Chips"}]
-            if "/chips/" in row["href"]
-            else [{"href": "/ai/hardware/data-centers/", "label": "Data centers"}]
-        )
-        items.append(article_from(row, "ai", "ai-hardware", hw_crumbs + theme_crumb))
+        theme = next(name for name in theme_crumbs if f"/{name}/" in row["href"])
+        items.append(article_from(row, "ai", "ai-hardware", hw_crumbs + [theme_crumbs[theme]]))
 
     opinion_crumbs = [{"href": "/opinions/", "label": "Opinions"}]
     opinion_rows = json.loads((ROOT / "src" / "data" / "opinions.json").read_text())
@@ -285,6 +351,9 @@ def resize_glyphs() -> dict[str, dict[str, int]]:
     sizes: dict[str, dict[str, int]] = {}
     for name, height in GLYPHS.items():
         src = LANDING / name
+        if not src.exists():
+            # Already converted on an earlier run; the source PNG is gone.
+            continue
         image = Image.open(src).convert("RGBA")
         width = max(1, round(image.width * (height / image.height)))
         resized = image.resize((width, height), Image.Resampling.LANCZOS)
@@ -376,7 +445,30 @@ def card_article(section: str, title: str, dest: Path) -> None:
     save_card(image, dest)
 
 
+SECTION_LABELS = {
+    "economics": "Economics",
+    "risk": "Risk",
+    "ai": "A.I.",
+    "opinions": "Opinions",
+}
+
+
+def og_only(slugs: list[str]) -> None:
+    """Redraw article og cards for the given catalog slugs, nothing else."""
+    articles = {a["slug"]: a for a in json.loads(DATA.read_text())}
+    for slug in slugs:
+        article = articles.get(slug)
+        if article is None:
+            raise SystemExit(f"no catalog slug {slug}")
+        dest = OG / "articles" / f"{slug}.png"
+        card_article(SECTION_LABELS[article["section"]], article["title"], dest)
+        print("og", dest.relative_to(ROOT), dest.stat().st_size)
+
+
 def main() -> None:
+    if len(sys.argv) > 1 and sys.argv[1] == "--og":
+        og_only(sys.argv[2:])
+        return
     sizes = resize_glyphs()
     print("glyphs", json.dumps(sizes, indent=2))
     articles = build_catalog_real()
@@ -389,21 +481,13 @@ def main() -> None:
         "economics": ("Economics", "Prices, cycles, and trade-offs."),
         "risk": ("Risk", "Tails and what actually breaks."),
         "ai": ("A.I.", "Models, hardware, and deep dives."),
-        "tools": ("Tools", "Calculators."),
-        "dashboards": ("Dashboards", "Build vs. Buy and Control Effectiveness."),
-
         "about": ("About", "Notes by Jeffrey."),
         "contact": ("Contact", "Write to Rycode."),
     }
     for key, (name, dek) in sections.items():
         card_section(name, dek, OG / "sections" / f"{key}.png")
     for article in articles:
-        label = {
-            "economics": "Economics",
-            "risk": "Risk",
-            "ai": "A.I.",
-            "opinions": "Opinions",
-        }[article["section"]]
+        label = SECTION_LABELS[article["section"]]
         card_article(label, article["title"], OG / "articles" / f"{article['slug']}.png")
     print("og bytes", sum(p.stat().st_size for p in OG.rglob("*.png")))
 

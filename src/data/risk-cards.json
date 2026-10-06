@@ -1,22 +1,22 @@
 [
   {
     "slug": "/risk/when-force-majeure-hits-the-ai-build-out/",
-    "summary": "In late September 2026, Oracle sent a force majeure notice to the developer of Project Jupiter, a Stargate-class data-center campus in New Mexico. The clause can defer rent or payments if the campus misses its planned online date, which means committed AI capacity can reprice through contract outs and energy gates.",
-    "watch": "The next force majeure notice on an AI campus, and whether private-credit packages for similar campuses reprice once contract outs start firing."
+    "summary": "Oracle's force majeure notice on Project Jupiter shows how an AI campus can slip. This brief tracks whether that strain travels from data-center construction to chip stocks to the S&P 500.",
+    "watch": "SMH closing below its 10% correction line, and Census data-center construction spending stalling or falling."
+  },
+  {
+    "slug": "/risk/oil-and-the-100-line/",
+    "summary": "Oil was above $100 at the Fed's first rate hike. This brief tracks WTI crude against that $100 line and the 10-year Treasury yield against 5%, because higher oil pushes prices up and keeps rates high.",
+    "watch": "WTI closing above $100, and the 10-year yield moving above 5%."
   },
   {
     "slug": "/risk/when-the-spender-runs-the-printer/",
-    "summary": "If cheap money is used to ease that bill, inflation and financial repression transfer the cost to households. The next refinance of that stock gets more expensive.",
-    "watch": "Treasury must refinance about $9.7T of maturing securities in FY2026. Watch the yields it has to offer to get that done."
-  },
-  {
-    "slug": "/risk/the-ban-lands-on-open-source/",
-    "summary": "The agents escaped intended isolation during an ExploitGym-style cyber evaluation. The public scare risks landing on open weights, while closed APIs blocked parts of the forensics.",
-    "watch": "Whether safety rulebooks get written around this incident in ways that gate open-source models, and whether the ban path that has not been passed gains momentum."
+    "summary": "Treasury has to sell more debt at auction. This brief tracks whether that strain travels from Treasury borrowing to 10-year auction demand to mortgage rates.",
+    "watch": "A 10-year auction bid-to-cover below its 6-auction average, and the 30-year mortgage rate above its 13-week average."
   },
   {
     "slug": "/risk/six-percent-that-stays/",
-    "summary": "The risk is a hold near 6 percent through a long-term borrow date, not a single morning print. That would raise the cost of new long-term public debt and mortgages after the spread.",
-    "watch": "The 30-year yield holding near 6% into a long-term borrow date. Six percent has not printed yet."
+    "summary": "The 30-year Treasury yield is the rate the government pays to borrow for 30 years. This brief tracks whether it reaches 6% and stays there through a long-term borrowing date, which would raise the cost of new government debt and mortgages.",
+    "watch": "The 30-year closing above 5.75%, then 6%, and holding there through a long-term borrowing date."
   }
 ]

@@ -1,9 +1,9 @@
 {
-  "asOfLabel": "13 Sep 2026 · hardware pack",
+  "asOfLabel": "4 Oct 2026 · hardware pack",
   "themes": [
-    { "id": "power", "href": "/ai/hardware/power/", "title": "Power", "dek": "Watts, fuel, interconnect, and the permits that can stop them.", "value": "", "label": "No plant page yet" },
-    { "id": "cooling", "href": "/ai/hardware/cooling/", "title": "Cooling", "dek": "How heat leaves the hall.", "value": "", "label": "No plant page yet" },
-    { "id": "chips", "href": "/ai/hardware/chips/", "title": "Chips", "dek": "Silicon before it is a rack.", "value": "$16.8B", "label": "Terafab phase 1 · company figure" },
+    { "id": "power", "href": "/ai/hardware/power/", "title": "Power", "dek": "Watts, fuel, interconnect, and the permits that can stop them.", "value": "6.6 GW", "label": "Meta nuclear package · up to · by 2035" },
+    { "id": "cooling", "href": "/ai/hardware/cooling/", "title": "Cooling", "dek": "How heat leaves the hall.", "value": "", "label": "" },
+    { "id": "chips", "href": "/ai/hardware/chips/", "title": "Chips", "dek": "Chip families, with the stated compute on each page.", "value": "Nvidia · Meta · AMD", "label": "Chip families" },
     { "id": "data-centers", "href": "/ai/hardware/data-centers/", "title": "Data centers", "dek": "The hall and the campus where models train.", "value": "170 PB/s", "label": "Colossus aggregate memory bandwidth · company" },
     { "id": "networks", "href": "/ai/hardware/networks/", "title": "Networks", "dek": "The fabric that makes a cluster a cluster.", "value": "2.8 Tb/s", "label": "Colossus per-server network · company" }
   ]

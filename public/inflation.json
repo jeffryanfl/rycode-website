@@ -1,0 +1,3471 @@
+{
+  "schema": "inflation-v1",
+  "updated": "2026-10-05T11:31:42.331Z",
+  "note": "Inflation feed for the Economics watch list. Refresh with node scripts/update-inflation.mjs (after-close push). mom and yoy are percent changes, one decimal, as published. The Fed's inflation target is 2% on PCE. Each point carries status preliminary, revised, or final; a revision overwrites the value and keeps revisedFrom. Never hand-edit.",
+  "series": [
+    {
+      "id": "cpi",
+      "title": "CPI, all items",
+      "unit": "percent",
+      "frequency": "monthly",
+      "source": "https://data.bls.gov/timeseries/CUSR0000SA0",
+      "sourceLabel": "BLS CPI-U CUSR0000SA0 (seasonally adjusted, for mom) and CUUR0000SA0 (not seasonally adjusted, for yoy)",
+      "points": [
+        {
+          "date": "2018-01-01",
+          "index": 248.859,
+          "indexNsa": 247.867,
+          "mom": 0.4,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2018-02-01",
+          "index": 249.529,
+          "indexNsa": 248.991,
+          "mom": 0.3,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2018-03-01",
+          "index": 249.577,
+          "indexNsa": 249.554,
+          "mom": 0,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2018-04-01",
+          "index": 250.227,
+          "indexNsa": 250.546,
+          "mom": 0.3,
+          "yoy": 2.5,
+          "status": "final"
+        },
+        {
+          "date": "2018-05-01",
+          "index": 250.792,
+          "indexNsa": 251.588,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "final"
+        },
+        {
+          "date": "2018-06-01",
+          "index": 251.018,
+          "indexNsa": 251.989,
+          "mom": 0.1,
+          "yoy": 2.9,
+          "status": "final"
+        },
+        {
+          "date": "2018-07-01",
+          "index": 251.214,
+          "indexNsa": 252.006,
+          "mom": 0.1,
+          "yoy": 2.9,
+          "status": "final"
+        },
+        {
+          "date": "2018-08-01",
+          "index": 251.663,
+          "indexNsa": 252.146,
+          "mom": 0.2,
+          "yoy": 2.7,
+          "status": "final"
+        },
+        {
+          "date": "2018-09-01",
+          "index": 252.182,
+          "indexNsa": 252.439,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2018-10-01",
+          "index": 252.772,
+          "indexNsa": 252.885,
+          "mom": 0.2,
+          "yoy": 2.5,
+          "status": "final"
+        },
+        {
+          "date": "2018-11-01",
+          "index": 252.594,
+          "indexNsa": 252.038,
+          "mom": -0.1,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2018-12-01",
+          "index": 252.767,
+          "indexNsa": 251.233,
+          "mom": 0.1,
+          "yoy": 1.9,
+          "status": "final"
+        },
+        {
+          "date": "2019-01-01",
+          "index": 252.561,
+          "indexNsa": 251.712,
+          "mom": -0.1,
+          "yoy": 1.6,
+          "status": "final"
+        },
+        {
+          "date": "2019-02-01",
+          "index": 253.319,
+          "indexNsa": 252.776,
+          "mom": 0.3,
+          "yoy": 1.5,
+          "status": "final"
+        },
+        {
+          "date": "2019-03-01",
+          "index": 254.277,
+          "indexNsa": 254.202,
+          "mom": 0.4,
+          "yoy": 1.9,
+          "status": "final"
+        },
+        {
+          "date": "2019-04-01",
+          "index": 255.233,
+          "indexNsa": 255.548,
+          "mom": 0.4,
+          "yoy": 2,
+          "status": "final"
+        },
+        {
+          "date": "2019-05-01",
+          "index": 255.296,
+          "indexNsa": 256.092,
+          "mom": 0,
+          "yoy": 1.8,
+          "status": "final"
+        },
+        {
+          "date": "2019-06-01",
+          "index": 255.213,
+          "indexNsa": 256.143,
+          "mom": 0,
+          "yoy": 1.6,
+          "status": "final"
+        },
+        {
+          "date": "2019-07-01",
+          "index": 255.802,
+          "indexNsa": 256.571,
+          "mom": 0.2,
+          "yoy": 1.8,
+          "status": "final"
+        },
+        {
+          "date": "2019-08-01",
+          "index": 256.036,
+          "indexNsa": 256.558,
+          "mom": 0.1,
+          "yoy": 1.7,
+          "status": "final"
+        },
+        {
+          "date": "2019-09-01",
+          "index": 256.43,
+          "indexNsa": 256.759,
+          "mom": 0.2,
+          "yoy": 1.7,
+          "status": "final"
+        },
+        {
+          "date": "2019-10-01",
+          "index": 257.155,
+          "indexNsa": 257.346,
+          "mom": 0.3,
+          "yoy": 1.8,
+          "status": "final"
+        },
+        {
+          "date": "2019-11-01",
+          "index": 257.879,
+          "indexNsa": 257.208,
+          "mom": 0.3,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2019-12-01",
+          "index": 258.63,
+          "indexNsa": 256.974,
+          "mom": 0.3,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2020-01-01",
+          "index": 259.127,
+          "indexNsa": 257.971,
+          "mom": 0.2,
+          "yoy": 2.5,
+          "status": "final"
+        },
+        {
+          "date": "2020-02-01",
+          "index": 259.25,
+          "indexNsa": 258.678,
+          "mom": 0,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2020-03-01",
+          "index": 258.076,
+          "indexNsa": 258.115,
+          "mom": -0.5,
+          "yoy": 1.5,
+          "status": "final"
+        },
+        {
+          "date": "2020-04-01",
+          "index": 256.032,
+          "indexNsa": 256.389,
+          "mom": -0.8,
+          "yoy": 0.3,
+          "status": "final"
+        },
+        {
+          "date": "2020-05-01",
+          "index": 255.802,
+          "indexNsa": 256.394,
+          "mom": -0.1,
+          "yoy": 0.1,
+          "status": "final"
+        },
+        {
+          "date": "2020-06-01",
+          "index": 257.042,
+          "indexNsa": 257.797,
+          "mom": 0.5,
+          "yoy": 0.6,
+          "status": "final"
+        },
+        {
+          "date": "2020-07-01",
+          "index": 258.352,
+          "indexNsa": 259.101,
+          "mom": 0.5,
+          "yoy": 1,
+          "status": "final"
+        },
+        {
+          "date": "2020-08-01",
+          "index": 259.316,
+          "indexNsa": 259.918,
+          "mom": 0.4,
+          "yoy": 1.3,
+          "status": "final"
+        },
+        {
+          "date": "2020-09-01",
+          "index": 259.997,
+          "indexNsa": 260.28,
+          "mom": 0.3,
+          "yoy": 1.4,
+          "status": "final"
+        },
+        {
+          "date": "2020-10-01",
+          "index": 260.319,
+          "indexNsa": 260.388,
+          "mom": 0.1,
+          "yoy": 1.2,
+          "status": "final"
+        },
+        {
+          "date": "2020-11-01",
+          "index": 260.911,
+          "indexNsa": 260.229,
+          "mom": 0.2,
+          "yoy": 1.2,
+          "status": "final"
+        },
+        {
+          "date": "2020-12-01",
+          "index": 262.045,
+          "indexNsa": 260.474,
+          "mom": 0.4,
+          "yoy": 1.4,
+          "status": "final"
+        },
+        {
+          "date": "2021-01-01",
+          "index": 262.687,
+          "indexNsa": 261.582,
+          "mom": 0.2,
+          "yoy": 1.4,
+          "status": "final"
+        },
+        {
+          "date": "2021-02-01",
+          "index": 263.579,
+          "indexNsa": 263.014,
+          "mom": 0.3,
+          "yoy": 1.7,
+          "status": "final"
+        },
+        {
+          "date": "2021-03-01",
+          "index": 264.961,
+          "indexNsa": 264.877,
+          "mom": 0.5,
+          "yoy": 2.6,
+          "status": "final"
+        },
+        {
+          "date": "2021-04-01",
+          "index": 266.614,
+          "indexNsa": 267.054,
+          "mom": 0.6,
+          "yoy": 4.2,
+          "status": "final"
+        },
+        {
+          "date": "2021-05-01",
+          "index": 268.383,
+          "indexNsa": 269.195,
+          "mom": 0.7,
+          "yoy": 5,
+          "status": "final"
+        },
+        {
+          "date": "2021-06-01",
+          "index": 270.654,
+          "indexNsa": 271.696,
+          "mom": 0.8,
+          "yoy": 5.4,
+          "status": "final"
+        },
+        {
+          "date": "2021-07-01",
+          "index": 271.903,
+          "indexNsa": 273.003,
+          "mom": 0.5,
+          "yoy": 5.4,
+          "status": "final"
+        },
+        {
+          "date": "2021-08-01",
+          "index": 272.676,
+          "indexNsa": 273.567,
+          "mom": 0.3,
+          "yoy": 5.3,
+          "status": "final"
+        },
+        {
+          "date": "2021-09-01",
+          "index": 273.91,
+          "indexNsa": 274.31,
+          "mom": 0.5,
+          "yoy": 5.4,
+          "status": "final"
+        },
+        {
+          "date": "2021-10-01",
+          "index": 276.55,
+          "indexNsa": 276.589,
+          "mom": 1,
+          "yoy": 6.2,
+          "status": "final"
+        },
+        {
+          "date": "2021-11-01",
+          "index": 278.919,
+          "indexNsa": 277.948,
+          "mom": 0.9,
+          "yoy": 6.8,
+          "status": "final"
+        },
+        {
+          "date": "2021-12-01",
+          "index": 280.845,
+          "indexNsa": 278.802,
+          "mom": 0.7,
+          "yoy": 7,
+          "status": "final"
+        },
+        {
+          "date": "2022-01-01",
+          "index": 282.543,
+          "indexNsa": 281.148,
+          "mom": 0.6,
+          "yoy": 7.5,
+          "status": "final"
+        },
+        {
+          "date": "2022-02-01",
+          "index": 284.5,
+          "indexNsa": 283.716,
+          "mom": 0.7,
+          "yoy": 7.9,
+          "status": "final"
+        },
+        {
+          "date": "2022-03-01",
+          "index": 287.674,
+          "indexNsa": 287.504,
+          "mom": 1.1,
+          "yoy": 8.5,
+          "status": "final"
+        },
+        {
+          "date": "2022-04-01",
+          "index": 288.561,
+          "indexNsa": 289.109,
+          "mom": 0.3,
+          "yoy": 8.3,
+          "status": "final"
+        },
+        {
+          "date": "2022-05-01",
+          "index": 291.298,
+          "indexNsa": 292.296,
+          "mom": 0.9,
+          "yoy": 8.6,
+          "status": "final"
+        },
+        {
+          "date": "2022-06-01",
+          "index": 294.957,
+          "indexNsa": 296.311,
+          "mom": 1.3,
+          "yoy": 9.1,
+          "status": "final"
+        },
+        {
+          "date": "2022-07-01",
+          "index": 294.913,
+          "indexNsa": 296.276,
+          "mom": 0,
+          "yoy": 8.5,
+          "status": "final"
+        },
+        {
+          "date": "2022-08-01",
+          "index": 295.097,
+          "indexNsa": 296.171,
+          "mom": 0.1,
+          "yoy": 8.3,
+          "status": "final"
+        },
+        {
+          "date": "2022-09-01",
+          "index": 296.349,
+          "indexNsa": 296.808,
+          "mom": 0.4,
+          "yoy": 8.2,
+          "status": "final"
+        },
+        {
+          "date": "2022-10-01",
+          "index": 298.007,
+          "indexNsa": 298.012,
+          "mom": 0.6,
+          "yoy": 7.7,
+          "status": "final"
+        },
+        {
+          "date": "2022-11-01",
+          "index": 298.786,
+          "indexNsa": 297.711,
+          "mom": 0.3,
+          "yoy": 7.1,
+          "status": "final"
+        },
+        {
+          "date": "2022-12-01",
+          "index": 298.832,
+          "indexNsa": 296.797,
+          "mom": 0,
+          "yoy": 6.5,
+          "status": "final"
+        },
+        {
+          "date": "2023-01-01",
+          "index": 300.42,
+          "indexNsa": 299.17,
+          "mom": 0.5,
+          "yoy": 6.4,
+          "status": "final"
+        },
+        {
+          "date": "2023-02-01",
+          "index": 301.45,
+          "indexNsa": 300.84,
+          "mom": 0.3,
+          "yoy": 6,
+          "status": "final"
+        },
+        {
+          "date": "2023-03-01",
+          "index": 301.821,
+          "indexNsa": 301.836,
+          "mom": 0.1,
+          "yoy": 5,
+          "status": "final"
+        },
+        {
+          "date": "2023-04-01",
+          "index": 302.845,
+          "indexNsa": 303.363,
+          "mom": 0.3,
+          "yoy": 4.9,
+          "status": "final"
+        },
+        {
+          "date": "2023-05-01",
+          "index": 303.334,
+          "indexNsa": 304.127,
+          "mom": 0.2,
+          "yoy": 4,
+          "status": "final"
+        },
+        {
+          "date": "2023-06-01",
+          "index": 304.014,
+          "indexNsa": 305.109,
+          "mom": 0.2,
+          "yoy": 3,
+          "status": "final"
+        },
+        {
+          "date": "2023-07-01",
+          "index": 304.609,
+          "indexNsa": 305.691,
+          "mom": 0.2,
+          "yoy": 3.2,
+          "status": "final"
+        },
+        {
+          "date": "2023-08-01",
+          "index": 306.082,
+          "indexNsa": 307.026,
+          "mom": 0.5,
+          "yoy": 3.7,
+          "status": "final"
+        },
+        {
+          "date": "2023-09-01",
+          "index": 307.276,
+          "indexNsa": 307.789,
+          "mom": 0.4,
+          "yoy": 3.7,
+          "status": "final"
+        },
+        {
+          "date": "2023-10-01",
+          "index": 307.696,
+          "indexNsa": 307.671,
+          "mom": 0.1,
+          "yoy": 3.2,
+          "status": "final"
+        },
+        {
+          "date": "2023-11-01",
+          "index": 308.148,
+          "indexNsa": 307.051,
+          "mom": 0.1,
+          "yoy": 3.1,
+          "status": "final"
+        },
+        {
+          "date": "2023-12-01",
+          "index": 308.741,
+          "indexNsa": 306.746,
+          "mom": 0.2,
+          "yoy": 3.4,
+          "status": "final"
+        },
+        {
+          "date": "2024-01-01",
+          "index": 309.698,
+          "indexNsa": 308.417,
+          "mom": 0.3,
+          "yoy": 3.1,
+          "status": "final"
+        },
+        {
+          "date": "2024-02-01",
+          "index": 310.967,
+          "indexNsa": 310.326,
+          "mom": 0.4,
+          "yoy": 3.2,
+          "status": "final"
+        },
+        {
+          "date": "2024-03-01",
+          "index": 312.345,
+          "indexNsa": 312.332,
+          "mom": 0.4,
+          "yoy": 3.5,
+          "status": "final"
+        },
+        {
+          "date": "2024-04-01",
+          "index": 313.023,
+          "indexNsa": 313.548,
+          "mom": 0.2,
+          "yoy": 3.4,
+          "status": "final"
+        },
+        {
+          "date": "2024-05-01",
+          "index": 313.175,
+          "indexNsa": 314.069,
+          "mom": 0,
+          "yoy": 3.3,
+          "status": "final"
+        },
+        {
+          "date": "2024-06-01",
+          "index": 313.044,
+          "indexNsa": 314.175,
+          "mom": 0,
+          "yoy": 3,
+          "status": "final"
+        },
+        {
+          "date": "2024-07-01",
+          "index": 313.569,
+          "indexNsa": 314.54,
+          "mom": 0.2,
+          "yoy": 2.9,
+          "status": "final"
+        },
+        {
+          "date": "2024-08-01",
+          "index": 314.062,
+          "indexNsa": 314.796,
+          "mom": 0.2,
+          "yoy": 2.5,
+          "status": "final"
+        },
+        {
+          "date": "2024-09-01",
+          "index": 314.732,
+          "indexNsa": 315.301,
+          "mom": 0.2,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2024-10-01",
+          "index": 315.631,
+          "indexNsa": 315.664,
+          "mom": 0.3,
+          "yoy": 2.6,
+          "status": "final"
+        },
+        {
+          "date": "2024-11-01",
+          "index": 316.528,
+          "indexNsa": 315.493,
+          "mom": 0.3,
+          "yoy": 2.7,
+          "status": "final"
+        },
+        {
+          "date": "2024-12-01",
+          "index": 317.604,
+          "indexNsa": 315.605,
+          "mom": 0.3,
+          "yoy": 2.9,
+          "status": "final"
+        },
+        {
+          "date": "2025-01-01",
+          "index": 318.961,
+          "indexNsa": 317.671,
+          "mom": 0.4,
+          "yoy": 3,
+          "status": "final"
+        },
+        {
+          "date": "2025-02-01",
+          "index": 319.679,
+          "indexNsa": 319.082,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "final"
+        },
+        {
+          "date": "2025-03-01",
+          "index": 319.785,
+          "indexNsa": 319.799,
+          "mom": 0,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2025-04-01",
+          "index": 320.302,
+          "indexNsa": 320.795,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2025-05-01",
+          "index": 320.62,
+          "indexNsa": 321.465,
+          "mom": 0.1,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2025-06-01",
+          "index": 321.435,
+          "indexNsa": 322.561,
+          "mom": 0.3,
+          "yoy": 2.7,
+          "status": "final"
+        },
+        {
+          "date": "2025-07-01",
+          "index": 322.169,
+          "indexNsa": 323.048,
+          "mom": 0.2,
+          "yoy": 2.7,
+          "status": "final"
+        },
+        {
+          "date": "2025-08-01",
+          "index": 323.291,
+          "indexNsa": 323.976,
+          "mom": 0.3,
+          "yoy": 2.9,
+          "status": "final"
+        },
+        {
+          "date": "2025-09-01",
+          "index": 324.245,
+          "indexNsa": 324.8,
+          "mom": 0.3,
+          "yoy": 3,
+          "status": "final"
+        },
+        {
+          "date": "2025-12-01",
+          "index": 326.031,
+          "indexNsa": 324.054,
+          "mom": 0.3,
+          "yoy": 2.7,
+          "status": "final"
+        },
+        {
+          "date": "2026-01-01",
+          "index": 326.588,
+          "indexNsa": 325.252,
+          "mom": 0.2,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2026-02-01",
+          "index": 327.46,
+          "indexNsa": 326.785,
+          "mom": 0.3,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2026-03-01",
+          "index": 330.293,
+          "indexNsa": 330.213,
+          "mom": 0.9,
+          "yoy": 3.3,
+          "status": "final"
+        },
+        {
+          "date": "2026-04-01",
+          "index": 332.407,
+          "indexNsa": 333.02,
+          "mom": 0.6,
+          "yoy": 3.8,
+          "status": "final"
+        },
+        {
+          "date": "2026-05-01",
+          "index": 333.979,
+          "indexNsa": 335.123,
+          "mom": 0.5,
+          "yoy": 4.2,
+          "status": "final"
+        },
+        {
+          "date": "2026-06-01",
+          "index": 332.568,
+          "indexNsa": 333.952,
+          "mom": -0.4,
+          "yoy": 3.5,
+          "status": "final"
+        },
+        {
+          "date": "2026-07-01",
+          "index": 332.813,
+          "indexNsa": 333.918,
+          "mom": 0.1,
+          "yoy": 3.4,
+          "status": "final"
+        },
+        {
+          "date": "2026-08-01",
+          "index": 334.131,
+          "indexNsa": 334.98,
+          "mom": 0.4,
+          "yoy": 3.4,
+          "status": "final"
+        }
+      ]
+    },
+    {
+      "id": "coreCpi",
+      "title": "Core CPI, all items less food and energy",
+      "unit": "percent",
+      "frequency": "monthly",
+      "source": "https://data.bls.gov/timeseries/CUSR0000SA0L1E",
+      "sourceLabel": "BLS CPI-U CUSR0000SA0L1E (seasonally adjusted, for mom) and CUUR0000SA0L1E (not seasonally adjusted, for yoy)",
+      "points": [
+        {
+          "date": "2018-01-01",
+          "index": 255.204,
+          "indexNsa": 254.638,
+          "mom": 0.3,
+          "yoy": 1.8,
+          "status": "final"
+        },
+        {
+          "date": "2018-02-01",
+          "index": 255.711,
+          "indexNsa": 255.783,
+          "mom": 0.2,
+          "yoy": 1.8,
+          "status": "final"
+        },
+        {
+          "date": "2018-03-01",
+          "index": 256.271,
+          "indexNsa": 256.61,
+          "mom": 0.2,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2018-04-01",
+          "index": 256.63,
+          "indexNsa": 257.025,
+          "mom": 0.1,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2018-05-01",
+          "index": 257.145,
+          "indexNsa": 257.469,
+          "mom": 0.2,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2018-06-01",
+          "index": 257.399,
+          "indexNsa": 257.697,
+          "mom": 0.1,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2018-07-01",
+          "index": 257.699,
+          "indexNsa": 257.867,
+          "mom": 0.1,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2018-08-01",
+          "index": 257.891,
+          "indexNsa": 258.012,
+          "mom": 0.1,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2018-09-01",
+          "index": 258.368,
+          "indexNsa": 258.429,
+          "mom": 0.2,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2018-10-01",
+          "index": 258.917,
+          "indexNsa": 259.063,
+          "mom": 0.2,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2018-11-01",
+          "index": 259.439,
+          "indexNsa": 259.105,
+          "mom": 0.2,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2018-12-01",
+          "index": 260.063,
+          "indexNsa": 259.083,
+          "mom": 0.2,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2019-01-01",
+          "index": 260.766,
+          "indexNsa": 260.122,
+          "mom": 0.3,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2019-02-01",
+          "index": 261.186,
+          "indexNsa": 261.114,
+          "mom": 0.2,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2019-03-01",
+          "index": 261.567,
+          "indexNsa": 261.836,
+          "mom": 0.1,
+          "yoy": 2,
+          "status": "final"
+        },
+        {
+          "date": "2019-04-01",
+          "index": 261.997,
+          "indexNsa": 262.332,
+          "mom": 0.2,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2019-05-01",
+          "index": 262.217,
+          "indexNsa": 262.59,
+          "mom": 0.1,
+          "yoy": 2,
+          "status": "final"
+        },
+        {
+          "date": "2019-06-01",
+          "index": 262.739,
+          "indexNsa": 263.177,
+          "mom": 0.2,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2019-07-01",
+          "index": 263.28,
+          "indexNsa": 263.566,
+          "mom": 0.2,
+          "yoy": 2.2,
+          "status": "final"
+        },
+        {
+          "date": "2019-08-01",
+          "index": 263.877,
+          "indexNsa": 264.169,
+          "mom": 0.2,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2019-09-01",
+          "index": 264.388,
+          "indexNsa": 264.522,
+          "mom": 0.2,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2019-10-01",
+          "index": 264.97,
+          "indexNsa": 265.059,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2019-11-01",
+          "index": 265.548,
+          "indexNsa": 265.108,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2019-12-01",
+          "index": 266.02,
+          "indexNsa": 264.935,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2020-01-01",
+          "index": 266.716,
+          "indexNsa": 266.004,
+          "mom": 0.3,
+          "yoy": 2.3,
+          "status": "final"
+        },
+        {
+          "date": "2020-02-01",
+          "index": 267.37,
+          "indexNsa": 267.268,
+          "mom": 0.2,
+          "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2020-03-01",
+          "index": 267.054,
+          "indexNsa": 267.312,
+          "mom": -0.1,
+          "yoy": 2.1,
+          "status": "final"
+        },
+        {
+          "date": "2020-04-01",
+          "index": 265.746,
+          "indexNsa": 266.089,
+          "mom": -0.5,
+          "yoy": 1.4,
+          "status": "final"
+        },
+        {
+          "date": "2020-05-01",
+          "index": 265.412,
+          "indexNsa": 265.799,
+          "mom": -0.1,
+          "yoy": 1.2,
+          "status": "final"
+        },
+        {
+          "date": "2020-06-01",
+          "index": 265.849,
+          "indexNsa": 266.302,
+          "mom": 0.2,
+          "yoy": 1.2,
+          "status": "final"
+        },
+        {
+          "date": "2020-07-01",
+          "index": 267.389,
+          "indexNsa": 267.703,
+          "mom": 0.6,
+          "yoy": 1.6,
+          "status": "final"
+        },
+        {
+          "date": "2020-08-01",
+          "index": 268.422,
+          "indexNsa": 268.756,
+          "mom": 0.4,
+          "yoy": 1.7,
+          "status": "final"
+        },
+        {
+          "date": "2020-09-01",
+          "index": 268.933,
+          "indexNsa": 269.054,
+          "mom": 0.2,
+          "yoy": 1.7,
+          "status": "final"
+        },
+        {
+          "date": "2020-10-01",
+          "index": 269.306,
+          "indexNsa": 269.328,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "final"
+        },
+        {
+          "date": "2020-11-01",
+          "index": 269.981,
+          "indexNsa": 269.473,
+          "mom": 0.3,
+          "yoy": 1.6,
+          "status": "final"
+        },
+        {
+          "date": "2020-12-01",
+          "index": 270.341,
+          "indexNsa": 269.226,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "final"
+        },
+        {
+          "date": "2021-01-01",
+          "index": 270.387,
+          "indexNsa": 269.755,
+          "mom": 0,
+          "yoy": 1.4,
+          "status": "final"
+        },
+        {
+          "date": "2021-02-01",
+          "index": 270.793,
+          "indexNsa": 270.696,
+          "mom": 0.2,
+          "yoy": 1.3,
+          "status": "final"
+        },
+        {
+          "date": "2021-03-01",
+          "index": 271.459,
+          "indexNsa": 271.713,
+          "mom": 0.2,
+          "yoy": 1.6,
+          "status": "final"
+        },
+        {
+          "date": "2021-04-01",
+          "index": 273.66,
+          "indexNsa": 273.968,
+          "mom": 0.8,
+          "yoy": 3,
+          "status": "final"
+        },
+        {
+          "date": "2021-05-01",
+          "index": 275.465,
+          "indexNsa": 275.893,
+          "mom": 0.7,
+          "yoy": 3.8,
+          "status": "final"
+        },
+        {
+          "date": "2021-06-01",
+          "index": 277.651,
+          "indexNsa": 278.218,
+          "mom": 0.8,
+          "yoy": 4.5,
+          "status": "final"
+        },
+        {
+          "date": "2021-07-01",
+          "index": 278.648,
+          "indexNsa": 279.146,
+          "mom": 0.4,
+          "yoy": 4.3,
+          "status": "final"
+        },
+        {
+          "date": "2021-08-01",
+          "index": 278.997,
+          "indexNsa": 279.507,
+          "mom": 0.1,
+          "yoy": 4,
+          "status": "final"
+        },
+        {
+          "date": "2021-09-01",
+          "index": 279.698,
+          "indexNsa": 279.884,
+          "mom": 0.3,
+          "yoy": 4,
+          "status": "final"
+        },
+        {
+          "date": "2021-10-01",
+          "index": 281.668,
+          "indexNsa": 281.617,
+          "mom": 0.7,
+          "yoy": 4.6,
+          "status": "final"
+        },
+        {
+          "date": "2021-11-01",
+          "index": 283.406,
+          "indexNsa": 282.754,
+          "mom": 0.6,
+          "yoy": 4.9,
+          "status": "final"
+        },
+        {
+          "date": "2021-12-01",
+          "index": 285.18,
+          "indexNsa": 283.908,
+          "mom": 0.6,
+          "yoy": 5.5,
+          "status": "final"
+        },
+        {
+          "date": "2022-01-01",
+          "index": 286.757,
+          "indexNsa": 285.996,
+          "mom": 0.6,
+          "yoy": 6,
+          "status": "final"
+        },
+        {
+          "date": "2022-02-01",
+          "index": 288.273,
+          "indexNsa": 288.059,
+          "mom": 0.5,
+          "yoy": 6.4,
+          "status": "final"
+        },
+        {
+          "date": "2022-03-01",
+          "index": 289.056,
+          "indexNsa": 289.305,
+          "mom": 0.3,
+          "yoy": 6.5,
+          "status": "final"
+        },
+        {
+          "date": "2022-04-01",
+          "index": 290.514,
+          "indexNsa": 290.846,
+          "mom": 0.5,
+          "yoy": 6.2,
+          "status": "final"
+        },
+        {
+          "date": "2022-05-01",
+          "index": 292.063,
+          "indexNsa": 292.506,
+          "mom": 0.5,
+          "yoy": 6,
+          "status": "final"
+        },
+        {
+          "date": "2022-06-01",
+          "index": 294.05,
+          "indexNsa": 294.68,
+          "mom": 0.7,
+          "yoy": 5.9,
+          "status": "final"
+        },
+        {
+          "date": "2022-07-01",
+          "index": 295.088,
+          "indexNsa": 295.646,
+          "mom": 0.4,
+          "yoy": 5.9,
+          "status": "final"
+        },
+        {
+          "date": "2022-08-01",
+          "index": 296.535,
+          "indexNsa": 297.178,
+          "mom": 0.5,
+          "yoy": 6.3,
+          "status": "final"
+        },
+        {
+          "date": "2022-09-01",
+          "index": 298.226,
+          "indexNsa": 298.442,
+          "mom": 0.6,
+          "yoy": 6.6,
+          "status": "final"
+        },
+        {
+          "date": "2022-10-01",
+          "index": 299.399,
+          "indexNsa": 299.315,
+          "mom": 0.4,
+          "yoy": 6.3,
+          "status": "final"
+        },
+        {
+          "date": "2022-11-01",
+          "index": 300.325,
+          "indexNsa": 299.6,
+          "mom": 0.3,
+          "yoy": 6,
+          "status": "final"
+        },
+        {
+          "date": "2022-12-01",
+          "index": 301.394,
+          "indexNsa": 300.113,
+          "mom": 0.4,
+          "yoy": 5.7,
+          "status": "final"
+        },
+        {
+          "date": "2023-01-01",
+          "index": 302.642,
+          "indexNsa": 301.962,
+          "mom": 0.4,
+          "yoy": 5.6,
+          "status": "final"
+        },
+        {
+          "date": "2023-02-01",
+          "index": 304.123,
+          "indexNsa": 304.011,
+          "mom": 0.5,
+          "yoy": 5.5,
+          "status": "final"
+        },
+        {
+          "date": "2023-03-01",
+          "index": 305.147,
+          "indexNsa": 305.476,
+          "mom": 0.3,
+          "yoy": 5.6,
+          "status": "final"
+        },
+        {
+          "date": "2023-04-01",
+          "index": 306.534,
+          "indexNsa": 306.899,
+          "mom": 0.5,
+          "yoy": 5.5,
+          "status": "final"
+        },
+        {
+          "date": "2023-05-01",
+          "index": 307.652,
+          "indexNsa": 308.096,
+          "mom": 0.4,
+          "yoy": 5.3,
+          "status": "final"
+        },
+        {
+          "date": "2023-06-01",
+          "index": 308.322,
+          "indexNsa": 308.91,
+          "mom": 0.2,
+          "yoy": 4.8,
+          "status": "final"
+        },
+        {
+          "date": "2023-07-01",
+          "index": 308.96,
+          "indexNsa": 309.402,
+          "mom": 0.2,
+          "yoy": 4.7,
+          "status": "final"
+        },
+        {
+          "date": "2023-08-01",
+          "index": 309.58,
+          "indexNsa": 310.103,
+          "mom": 0.2,
+          "yoy": 4.3,
+          "status": "final"
+        },
+        {
+          "date": "2023-09-01",
+          "index": 310.539,
+          "indexNsa": 310.817,
+          "mom": 0.3,
+          "yoy": 4.1,
+          "status": "final"
+        },
+        {
+          "date": "2023-10-01",
+          "index": 311.457,
+          "indexNsa": 311.38,
+          "mom": 0.3,
+          "yoy": 4,
+          "status": "final"
+        },
+        {
+          "date": "2023-11-01",
+          "index": 312.392,
+          "indexNsa": 311.606,
+          "mom": 0.3,
+          "yoy": 4,
+          "status": "final"
+        },
+        {
+          "date": "2023-12-01",
+          "index": 313.195,
+          "indexNsa": 311.907,
+          "mom": 0.3,
+          "yoy": 3.9,
+          "status": "final"
+        },
+        {
+          "date": "2024-01-01",
+          "index": 314.319,
+          "indexNsa": 313.623,
+          "mom": 0.4,
+          "yoy": 3.9,
+          "status": "final"
+        },
+        {
+          "date": "2024-02-01",
+          "index": 315.564,
+          "indexNsa": 315.419,
+          "mom": 0.4,
+          "yoy": 3.8,
+          "status": "final"
+        },
+        {
+          "date": "2024-03-01",
+          "index": 316.792,
+          "indexNsa": 317.088,
+          "mom": 0.4,
+          "yoy": 3.8,
+          "status": "final"
+        },
+        {
+          "date": "2024-04-01",
+          "index": 317.649,
+          "indexNsa": 317.978,
+          "mom": 0.3,
+          "yoy": 3.6,
+          "status": "final"
+        },
+        {
+          "date": "2024-05-01",
+          "index": 318.095,
+          "indexNsa": 318.629,
+          "mom": 0.1,
+          "yoy": 3.4,
+          "status": "final"
+        },
+        {
+          "date": "2024-06-01",
+          "index": 318.39,
+          "indexNsa": 319.003,
+          "mom": 0.1,
+          "yoy": 3.3,
+          "status": "final"
+        },
+        {
+          "date": "2024-07-01",
+          "index": 318.94,
+          "indexNsa": 319.214,
+          "mom": 0.2,
+          "yoy": 3.2,
+          "status": "final"
+        },
+        {
+          "date": "2024-08-01",
+          "index": 319.75,
+          "indexNsa": 320.017,
+          "mom": 0.3,
+          "yoy": 3.2,
+          "status": "final"
+        },
+        {
+          "date": "2024-09-01",
+          "index": 320.732,
+          "indexNsa": 321.109,
+          "mom": 0.3,
+          "yoy": 3.3,
+          "status": "final"
+        },
+        {
+          "date": "2024-10-01",
+          "index": 321.731,
+          "indexNsa": 321.758,
+          "mom": 0.3,
+          "yoy": 3.3,
+          "status": "final"
+        },
+        {
+          "date": "2024-11-01",
+          "index": 322.657,
+          "indexNsa": 321.947,
+          "mom": 0.3,
+          "yoy": 3.3,
+          "status": "final"
+        },
+        {
+          "date": "2024-12-01",
+          "index": 323.259,
+          "indexNsa": 322.007,
+          "mom": 0.2,
+          "yoy": 3.2,
+          "status": "final"
+        },
+        {
+          "date": "2025-01-01",
+          "index": 324.638,
+          "indexNsa": 323.842,
+          "mom": 0.4,
+          "yoy": 3.3,
+          "status": "final"
+        },
+        {
+          "date": "2025-02-01",
+          "index": 325.465,
+          "indexNsa": 325.252,
+          "mom": 0.3,
+          "yoy": 3.1,
+          "status": "final"
+        },
+        {
+          "date": "2025-03-01",
+          "index": 325.69,
+          "indexNsa": 325.933,
+          "mom": 0.1,
+          "yoy": 2.8,
+          "status": "final"
+        },
+        {
+          "date": "2025-04-01",
+          "index": 326.467,
+          "indexNsa": 326.815,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "final"
+        },
+        {
+          "date": "2025-05-01",
+          "index": 326.893,
+          "indexNsa": 327.509,
+          "mom": 0.1,
+          "yoy": 2.8,
+          "status": "final"
+        },
+        {
+          "date": "2025-06-01",
+          "index": 327.658,
+          "indexNsa": 328.364,
+          "mom": 0.2,
+          "yoy": 2.9,
+          "status": "final"
+        },
+        {
+          "date": "2025-07-01",
+          "index": 328.682,
+          "indexNsa": 328.98,
+          "mom": 0.3,
+          "yoy": 3.1,
+          "status": "final"
+        },
+        {
+          "date": "2025-08-01",
+          "index": 329.7,
+          "indexNsa": 329.97,
+          "mom": 0.3,
+          "yoy": 3.1,
+          "status": "final"
+        },
+        {
+          "date": "2025-09-01",
+          "index": 330.418,
+          "indexNsa": 330.804,
+          "mom": 0.2,
+          "yoy": 3,
+          "status": "final"
+        },
+        {
+          "date": "2025-12-01",
+          "index": 331.814,
+          "indexNsa": 330.506,
+          "mom": 0.2,
+          "yoy": 2.6,
+          "status": "final"
+        },
+        {
+          "date": "2026-01-01",
+          "index": 332.793,
+          "indexNsa": 331.95,
+          "mom": 0.3,
+          "yoy": 2.5,
+          "status": "final"
+        },
+        {
+          "date": "2026-02-01",
+          "index": 333.512,
+          "indexNsa": 333.242,
+          "mom": 0.2,
+          "yoy": 2.5,
+          "status": "final"
+        },
+        {
+          "date": "2026-03-01",
+          "index": 334.165,
+          "indexNsa": 334.391,
+          "mom": 0.2,
+          "yoy": 2.6,
+          "status": "final"
+        },
+        {
+          "date": "2026-04-01",
+          "index": 335.423,
+          "indexNsa": 335.803,
+          "mom": 0.4,
+          "yoy": 2.8,
+          "status": "final"
+        },
+        {
+          "date": "2026-05-01",
+          "index": 336.121,
+          "indexNsa": 336.846,
+          "mom": 0.2,
+          "yoy": 2.9,
+          "status": "final"
+        },
+        {
+          "date": "2026-06-01",
+          "index": 336.065,
+          "indexNsa": 336.882,
+          "mom": 0,
+          "yoy": 2.6,
+          "status": "final"
+        },
+        {
+          "date": "2026-07-01",
+          "index": 336.789,
+          "indexNsa": 337.133,
+          "mom": 0.2,
+          "yoy": 2.5,
+          "status": "final"
+        },
+        {
+          "date": "2026-08-01",
+          "index": 337.765,
+          "indexNsa": 338.041,
+          "mom": 0.3,
+          "yoy": 2.4,
+          "status": "final"
+        }
+      ]
+    },
+    {
+      "id": "pce",
+      "title": "PCE price index",
+      "unit": "percent",
+      "frequency": "monthly",
+      "source": "https://fred.stlouisfed.org/series/PCEPI",
+      "sourceLabel": "BEA via FRED PCEPI, seasonally adjusted",
+      "points": [
+        {
+          "date": "2016-01-01",
+          "index": 97.496,
+          "mom": 0,
+          "yoy": 0.9,
+          "status": "revised"
+        },
+        {
+          "date": "2016-02-01",
+          "index": 97.445,
+          "mom": -0.1,
+          "yoy": 0.6,
+          "status": "revised"
+        },
+        {
+          "date": "2016-03-01",
+          "index": 97.673,
+          "mom": 0.2,
+          "yoy": 0.7,
+          "status": "revised"
+        },
+        {
+          "date": "2016-04-01",
+          "index": 97.993,
+          "mom": 0.3,
+          "yoy": 0.9,
+          "status": "revised"
+        },
+        {
+          "date": "2016-05-01",
+          "index": 98.153,
+          "mom": 0.2,
+          "yoy": 0.8,
+          "status": "revised"
+        },
+        {
+          "date": "2016-06-01",
+          "index": 98.325,
+          "mom": 0.2,
+          "yoy": 0.8,
+          "status": "revised"
+        },
+        {
+          "date": "2016-07-01",
+          "index": 98.342,
+          "mom": 0,
+          "yoy": 0.8,
+          "status": "revised"
+        },
+        {
+          "date": "2016-08-01",
+          "index": 98.479,
+          "mom": 0.1,
+          "yoy": 0.9,
+          "status": "revised"
+        },
+        {
+          "date": "2016-09-01",
+          "index": 98.666,
+          "mom": 0.2,
+          "yoy": 1.2,
+          "status": "revised"
+        },
+        {
+          "date": "2016-10-01",
+          "index": 98.868,
+          "mom": 0.2,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2016-11-01",
+          "index": 98.901,
+          "mom": 0,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2016-12-01",
+          "index": 99.071,
+          "mom": 0.2,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2017-01-01",
+          "index": 99.451,
+          "mom": 0.4,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2017-02-01",
+          "index": 99.586,
+          "mom": 0.1,
+          "yoy": 2.2,
+          "status": "revised"
+        },
+        {
+          "date": "2017-03-01",
+          "index": 99.535,
+          "mom": -0.1,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2017-04-01",
+          "index": 99.725,
+          "mom": 0.2,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2017-05-01",
+          "index": 99.682,
+          "mom": 0,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2017-06-01",
+          "index": 99.766,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2017-07-01",
+          "index": 99.803,
+          "mom": 0,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2017-08-01",
+          "index": 100.027,
+          "mom": 0.2,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2017-09-01",
+          "index": 100.4,
+          "mom": 0.4,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2017-10-01",
+          "index": 100.531,
+          "mom": 0.1,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2017-11-01",
+          "index": 100.675,
+          "mom": 0.1,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2017-12-01",
+          "index": 100.821,
+          "mom": 0.1,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2018-01-01",
+          "index": 101.199,
+          "mom": 0.4,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2018-02-01",
+          "index": 101.416,
+          "mom": 0.2,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2018-03-01",
+          "index": 101.524,
+          "mom": 0.1,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-04-01",
+          "index": 101.766,
+          "mom": 0.2,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-05-01",
+          "index": 101.941,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "revised"
+        },
+        {
+          "date": "2018-06-01",
+          "index": 102.029,
+          "mom": 0.1,
+          "yoy": 2.3,
+          "status": "revised"
+        },
+        {
+          "date": "2018-07-01",
+          "index": 102.137,
+          "mom": 0.1,
+          "yoy": 2.3,
+          "status": "revised"
+        },
+        {
+          "date": "2018-08-01",
+          "index": 102.208,
+          "mom": 0.1,
+          "yoy": 2.2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-09-01",
+          "index": 102.418,
+          "mom": 0.2,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-10-01",
+          "index": 102.595,
+          "mom": 0.2,
+          "yoy": 2.1,
+          "status": "revised"
+        },
+        {
+          "date": "2018-11-01",
+          "index": 102.63,
+          "mom": 0,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2018-12-01",
+          "index": 102.701,
+          "mom": 0.1,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2019-01-01",
+          "index": 102.648,
+          "mom": -0.1,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2019-02-01",
+          "index": 102.836,
+          "mom": 0.2,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2019-03-01",
+          "index": 103.069,
+          "mom": 0.2,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2019-04-01",
+          "index": 103.36,
+          "mom": 0.3,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2019-05-01",
+          "index": 103.435,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2019-06-01",
+          "index": 103.484,
+          "mom": 0,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2019-07-01",
+          "index": 103.622,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2019-08-01",
+          "index": 103.67,
+          "mom": 0,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2019-09-01",
+          "index": 103.733,
+          "mom": 0.1,
+          "yoy": 1.3,
+          "status": "revised"
+        },
+        {
+          "date": "2019-10-01",
+          "index": 103.917,
+          "mom": 0.2,
+          "yoy": 1.3,
+          "status": "revised"
+        },
+        {
+          "date": "2019-11-01",
+          "index": 104.024,
+          "mom": 0.1,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2019-12-01",
+          "index": 104.307,
+          "mom": 0.3,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2020-01-01",
+          "index": 104.49,
+          "mom": 0.2,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2020-02-01",
+          "index": 104.573,
+          "mom": 0.1,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2020-03-01",
+          "index": 104.271,
+          "mom": -0.3,
+          "yoy": 1.2,
+          "status": "revised"
+        },
+        {
+          "date": "2020-04-01",
+          "index": 103.838,
+          "mom": -0.4,
+          "yoy": 0.5,
+          "status": "revised"
+        },
+        {
+          "date": "2020-05-01",
+          "index": 103.942,
+          "mom": 0.1,
+          "yoy": 0.5,
+          "status": "revised"
+        },
+        {
+          "date": "2020-06-01",
+          "index": 104.27,
+          "mom": 0.3,
+          "yoy": 0.8,
+          "status": "revised"
+        },
+        {
+          "date": "2020-07-01",
+          "index": 104.578,
+          "mom": 0.3,
+          "yoy": 0.9,
+          "status": "revised"
+        },
+        {
+          "date": "2020-08-01",
+          "index": 104.87,
+          "mom": 0.3,
+          "yoy": 1.2,
+          "status": "revised"
+        },
+        {
+          "date": "2020-09-01",
+          "index": 105.057,
+          "mom": 0.2,
+          "yoy": 1.3,
+          "status": "revised"
+        },
+        {
+          "date": "2020-10-01",
+          "index": 105.151,
+          "mom": 0.1,
+          "yoy": 1.2,
+          "status": "revised"
+        },
+        {
+          "date": "2020-11-01",
+          "index": 105.258,
+          "mom": 0.1,
+          "yoy": 1.2,
+          "status": "revised"
+        },
+        {
+          "date": "2020-12-01",
+          "index": 105.699,
+          "mom": 0.4,
+          "yoy": 1.3,
+          "status": "revised"
+        },
+        {
+          "date": "2021-01-01",
+          "index": 106.065,
+          "mom": 0.3,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2021-02-01",
+          "index": 106.441,
+          "mom": 0.4,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2021-03-01",
+          "index": 107.019,
+          "mom": 0.5,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2021-04-01",
+          "index": 107.553,
+          "mom": 0.5,
+          "yoy": 3.6,
+          "status": "revised"
+        },
+        {
+          "date": "2021-05-01",
+          "index": 108.069,
+          "mom": 0.5,
+          "yoy": 4,
+          "status": "revised"
+        },
+        {
+          "date": "2021-06-01",
+          "index": 108.668,
+          "mom": 0.6,
+          "yoy": 4.2,
+          "status": "revised"
+        },
+        {
+          "date": "2021-07-01",
+          "index": 109.162,
+          "mom": 0.5,
+          "yoy": 4.4,
+          "status": "revised"
+        },
+        {
+          "date": "2021-08-01",
+          "index": 109.599,
+          "mom": 0.4,
+          "yoy": 4.5,
+          "status": "revised"
+        },
+        {
+          "date": "2021-09-01",
+          "index": 109.948,
+          "mom": 0.3,
+          "yoy": 4.7,
+          "status": "revised"
+        },
+        {
+          "date": "2021-10-01",
+          "index": 110.7,
+          "mom": 0.7,
+          "yoy": 5.3,
+          "status": "revised"
+        },
+        {
+          "date": "2021-11-01",
+          "index": 111.435,
+          "mom": 0.7,
+          "yoy": 5.9,
+          "status": "revised"
+        },
+        {
+          "date": "2021-12-01",
+          "index": 112.088,
+          "mom": 0.6,
+          "yoy": 6,
+          "status": "revised"
+        },
+        {
+          "date": "2022-01-01",
+          "index": 112.678,
+          "mom": 0.5,
+          "yoy": 6.2,
+          "status": "revised"
+        },
+        {
+          "date": "2022-02-01",
+          "index": 113.37,
+          "mom": 0.6,
+          "yoy": 6.5,
+          "status": "revised"
+        },
+        {
+          "date": "2022-03-01",
+          "index": 114.425,
+          "mom": 0.9,
+          "yoy": 6.9,
+          "status": "revised"
+        },
+        {
+          "date": "2022-04-01",
+          "index": 114.688,
+          "mom": 0.2,
+          "yoy": 6.6,
+          "status": "revised"
+        },
+        {
+          "date": "2022-05-01",
+          "index": 115.401,
+          "mom": 0.6,
+          "yoy": 6.8,
+          "status": "revised"
+        },
+        {
+          "date": "2022-06-01",
+          "index": 116.512,
+          "mom": 1,
+          "yoy": 7.2,
+          "status": "revised"
+        },
+        {
+          "date": "2022-07-01",
+          "index": 116.65,
+          "mom": 0.1,
+          "yoy": 6.9,
+          "status": "revised"
+        },
+        {
+          "date": "2022-08-01",
+          "index": 116.924,
+          "mom": 0.2,
+          "yoy": 6.7,
+          "status": "revised"
+        },
+        {
+          "date": "2022-09-01",
+          "index": 117.307,
+          "mom": 0.3,
+          "yoy": 6.7,
+          "status": "revised"
+        },
+        {
+          "date": "2022-10-01",
+          "index": 117.902,
+          "mom": 0.5,
+          "yoy": 6.5,
+          "status": "revised"
+        },
+        {
+          "date": "2022-11-01",
+          "index": 118.221,
+          "mom": 0.3,
+          "yoy": 6.1,
+          "status": "revised"
+        },
+        {
+          "date": "2022-12-01",
+          "index": 118.372,
+          "mom": 0.1,
+          "yoy": 5.6,
+          "status": "revised"
+        },
+        {
+          "date": "2023-01-01",
+          "index": 118.938,
+          "mom": 0.5,
+          "yoy": 5.6,
+          "status": "revised"
+        },
+        {
+          "date": "2023-02-01",
+          "index": 119.265,
+          "mom": 0.3,
+          "yoy": 5.2,
+          "status": "revised"
+        },
+        {
+          "date": "2023-03-01",
+          "index": 119.564,
+          "mom": 0.3,
+          "yoy": 4.5,
+          "status": "revised"
+        },
+        {
+          "date": "2023-04-01",
+          "index": 119.886,
+          "mom": 0.3,
+          "yoy": 4.5,
+          "status": "revised"
+        },
+        {
+          "date": "2023-05-01",
+          "index": 120.129,
+          "mom": 0.2,
+          "yoy": 4.1,
+          "status": "revised"
+        },
+        {
+          "date": "2023-06-01",
+          "index": 120.41,
+          "mom": 0.2,
+          "yoy": 3.3,
+          "status": "revised"
+        },
+        {
+          "date": "2023-07-01",
+          "index": 120.571,
+          "mom": 0.1,
+          "yoy": 3.4,
+          "status": "revised"
+        },
+        {
+          "date": "2023-08-01",
+          "index": 120.944,
+          "mom": 0.3,
+          "yoy": 3.4,
+          "status": "revised"
+        },
+        {
+          "date": "2023-09-01",
+          "index": 121.403,
+          "mom": 0.4,
+          "yoy": 3.5,
+          "status": "revised"
+        },
+        {
+          "date": "2023-10-01",
+          "index": 121.557,
+          "mom": 0.1,
+          "yoy": 3.1,
+          "status": "revised"
+        },
+        {
+          "date": "2023-11-01",
+          "index": 121.636,
+          "mom": 0.1,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2023-12-01",
+          "index": 121.76,
+          "mom": 0.1,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2024-01-01",
+          "index": 122.206,
+          "mom": 0.4,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2024-02-01",
+          "index": 122.613,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2024-03-01",
+          "index": 123.093,
+          "mom": 0.4,
+          "yoy": 3,
+          "status": "revised"
+        },
+        {
+          "date": "2024-04-01",
+          "index": 123.289,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2024-05-01",
+          "index": 123.369,
+          "mom": 0.1,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2024-06-01",
+          "index": 123.504,
+          "mom": 0.1,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2024-07-01",
+          "index": 123.701,
+          "mom": 0.2,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2024-08-01",
+          "index": 123.891,
+          "mom": 0.2,
+          "yoy": 2.4,
+          "status": "revised"
+        },
+        {
+          "date": "2024-09-01",
+          "index": 124.146,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "revised"
+        },
+        {
+          "date": "2024-10-01",
+          "index": 124.482,
+          "mom": 0.3,
+          "yoy": 2.4,
+          "status": "revised"
+        },
+        {
+          "date": "2024-11-01",
+          "index": 124.666,
+          "mom": 0.1,
+          "yoy": 2.5,
+          "status": "revised"
+        },
+        {
+          "date": "2024-12-01",
+          "index": 124.984,
+          "mom": 0.3,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2025-01-01",
+          "index": 125.423,
+          "mom": 0.4,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2025-02-01",
+          "index": 125.77,
+          "mom": 0.3,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2025-03-01",
+          "index": 125.869,
+          "mom": 0.1,
+          "yoy": 2.3,
+          "status": "revised"
+        },
+        {
+          "date": "2025-04-01",
+          "index": 126.163,
+          "mom": 0.2,
+          "yoy": 2.3,
+          "status": "revised"
+        },
+        {
+          "date": "2025-05-01",
+          "index": 126.408,
+          "mom": 0.2,
+          "yoy": 2.5,
+          "status": "revised"
+        },
+        {
+          "date": "2025-06-01",
+          "index": 126.73,
+          "mom": 0.3,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2025-07-01",
+          "index": 126.906,
+          "mom": 0.1,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2025-08-01",
+          "index": 127.229,
+          "mom": 0.3,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2025-09-01",
+          "index": 127.601,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2025-10-01",
+          "index": 127.79,
+          "mom": 0.1,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2025-11-01",
+          "index": 128.045,
+          "mom": 0.2,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2025-12-01",
+          "index": 128.455,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2026-01-01",
+          "index": 128.845,
+          "mom": 0.3,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2026-02-01",
+          "index": 129.293,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2026-03-01",
+          "index": 130.105,
+          "mom": 0.6,
+          "yoy": 3.4,
+          "status": "revised"
+        },
+        {
+          "date": "2026-04-01",
+          "index": 130.672,
+          "mom": 0.4,
+          "yoy": 3.6,
+          "status": "revised"
+        },
+        {
+          "date": "2026-05-01",
+          "index": 131.241,
+          "mom": 0.4,
+          "yoy": 3.8,
+          "status": "revised"
+        },
+        {
+          "date": "2026-06-01",
+          "index": 131.106,
+          "mom": -0.1,
+          "yoy": 3.5,
+          "status": "revised"
+        },
+        {
+          "date": "2026-07-01",
+          "index": 131.172,
+          "mom": 0.1,
+          "yoy": 3.4,
+          "status": "revised"
+        },
+        {
+          "date": "2026-08-01",
+          "index": 131.579,
+          "mom": 0.3,
+          "yoy": 3.4,
+          "status": "preliminary"
+        }
+      ]
+    },
+    {
+      "id": "corePce",
+      "title": "Core PCE price index, excluding food and energy",
+      "unit": "percent",
+      "frequency": "monthly",
+      "source": "https://fred.stlouisfed.org/series/PCEPILFE",
+      "sourceLabel": "BEA via FRED PCEPILFE, seasonally adjusted",
+      "points": [
+        {
+          "date": "2016-01-01",
+          "index": 97.567,
+          "mom": 0.2,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2016-02-01",
+          "index": 97.736,
+          "mom": 0.2,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2016-03-01",
+          "index": 97.876,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2016-04-01",
+          "index": 98.117,
+          "mom": 0.2,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2016-05-01",
+          "index": 98.284,
+          "mom": 0.2,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2016-06-01",
+          "index": 98.386,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2016-07-01",
+          "index": 98.529,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2016-08-01",
+          "index": 98.703,
+          "mom": 0.2,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2016-09-01",
+          "index": 98.834,
+          "mom": 0.1,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2016-10-01",
+          "index": 98.961,
+          "mom": 0.1,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2016-11-01",
+          "index": 99.005,
+          "mom": 0,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2016-12-01",
+          "index": 99.12,
+          "mom": 0.1,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2017-01-01",
+          "index": 99.385,
+          "mom": 0.3,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2017-02-01",
+          "index": 99.561,
+          "mom": 0.2,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2017-03-01",
+          "index": 99.519,
+          "mom": 0,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2017-04-01",
+          "index": 99.723,
+          "mom": 0.2,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2017-05-01",
+          "index": 99.803,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2017-06-01",
+          "index": 99.937,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2017-07-01",
+          "index": 100.01,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2017-08-01",
+          "index": 100.118,
+          "mom": 0.1,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2017-09-01",
+          "index": 100.24,
+          "mom": 0.1,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2017-10-01",
+          "index": 100.486,
+          "mom": 0.2,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2017-11-01",
+          "index": 100.535,
+          "mom": 0,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2017-12-01",
+          "index": 100.683,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2018-01-01",
+          "index": 101.007,
+          "mom": 0.3,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2018-02-01",
+          "index": 101.198,
+          "mom": 0.2,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2018-03-01",
+          "index": 101.419,
+          "mom": 0.2,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2018-04-01",
+          "index": 101.602,
+          "mom": 0.2,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2018-05-01",
+          "index": 101.78,
+          "mom": 0.2,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-06-01",
+          "index": 101.872,
+          "mom": 0.1,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2018-07-01",
+          "index": 102.006,
+          "mom": 0.1,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-08-01",
+          "index": 102.016,
+          "mom": 0,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2018-09-01",
+          "index": 102.205,
+          "mom": 0.2,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-10-01",
+          "index": 102.366,
+          "mom": 0.2,
+          "yoy": 1.9,
+          "status": "revised"
+        },
+        {
+          "date": "2018-11-01",
+          "index": 102.556,
+          "mom": 0.2,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2018-12-01",
+          "index": 102.735,
+          "mom": 0.2,
+          "yoy": 2,
+          "status": "revised"
+        },
+        {
+          "date": "2019-01-01",
+          "index": 102.87,
+          "mom": 0.1,
+          "yoy": 1.8,
+          "status": "revised"
+        },
+        {
+          "date": "2019-02-01",
+          "index": 102.963,
+          "mom": 0.1,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2019-03-01",
+          "index": 103.058,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2019-04-01",
+          "index": 103.265,
+          "mom": 0.2,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2019-05-01",
+          "index": 103.371,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2019-06-01",
+          "index": 103.56,
+          "mom": 0.2,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2019-07-01",
+          "index": 103.678,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2019-08-01",
+          "index": 103.797,
+          "mom": 0.1,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2019-09-01",
+          "index": 103.873,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2019-10-01",
+          "index": 104.028,
+          "mom": 0.1,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2019-11-01",
+          "index": 104.092,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2019-12-01",
+          "index": 104.322,
+          "mom": 0.2,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2020-01-01",
+          "index": 104.507,
+          "mom": 0.2,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2020-02-01",
+          "index": 104.711,
+          "mom": 0.2,
+          "yoy": 1.7,
+          "status": "revised"
+        },
+        {
+          "date": "2020-03-01",
+          "index": 104.632,
+          "mom": -0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2020-04-01",
+          "index": 104.293,
+          "mom": -0.3,
+          "yoy": 1,
+          "status": "revised"
+        },
+        {
+          "date": "2020-05-01",
+          "index": 104.402,
+          "mom": 0.1,
+          "yoy": 1,
+          "status": "revised"
+        },
+        {
+          "date": "2020-06-01",
+          "index": 104.565,
+          "mom": 0.2,
+          "yoy": 1,
+          "status": "revised"
+        },
+        {
+          "date": "2020-07-01",
+          "index": 104.937,
+          "mom": 0.4,
+          "yoy": 1.2,
+          "status": "revised"
+        },
+        {
+          "date": "2020-08-01",
+          "index": 105.243,
+          "mom": 0.3,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2020-09-01",
+          "index": 105.41,
+          "mom": 0.2,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2020-10-01",
+          "index": 105.507,
+          "mom": 0.1,
+          "yoy": 1.4,
+          "status": "revised"
+        },
+        {
+          "date": "2020-11-01",
+          "index": 105.605,
+          "mom": 0.1,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2020-12-01",
+          "index": 105.896,
+          "mom": 0.3,
+          "yoy": 1.5,
+          "status": "revised"
+        },
+        {
+          "date": "2021-01-01",
+          "index": 106.168,
+          "mom": 0.3,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2021-02-01",
+          "index": 106.435,
+          "mom": 0.3,
+          "yoy": 1.6,
+          "status": "revised"
+        },
+        {
+          "date": "2021-03-01",
+          "index": 106.865,
+          "mom": 0.4,
+          "yoy": 2.1,
+          "status": "revised"
+        },
+        {
+          "date": "2021-04-01",
+          "index": 107.493,
+          "mom": 0.6,
+          "yoy": 3.1,
+          "status": "revised"
+        },
+        {
+          "date": "2021-05-01",
+          "index": 107.989,
+          "mom": 0.5,
+          "yoy": 3.4,
+          "status": "revised"
+        },
+        {
+          "date": "2021-06-01",
+          "index": 108.522,
+          "mom": 0.5,
+          "yoy": 3.8,
+          "status": "revised"
+        },
+        {
+          "date": "2021-07-01",
+          "index": 108.971,
+          "mom": 0.4,
+          "yoy": 3.8,
+          "status": "revised"
+        },
+        {
+          "date": "2021-08-01",
+          "index": 109.34,
+          "mom": 0.3,
+          "yoy": 3.9,
+          "status": "revised"
+        },
+        {
+          "date": "2021-09-01",
+          "index": 109.548,
+          "mom": 0.2,
+          "yoy": 3.9,
+          "status": "revised"
+        },
+        {
+          "date": "2021-10-01",
+          "index": 110.119,
+          "mom": 0.5,
+          "yoy": 4.4,
+          "status": "revised"
+        },
+        {
+          "date": "2021-11-01",
+          "index": 110.671,
+          "mom": 0.5,
+          "yoy": 4.8,
+          "status": "revised"
+        },
+        {
+          "date": "2021-12-01",
+          "index": 111.28,
+          "mom": 0.6,
+          "yoy": 5.1,
+          "status": "revised"
+        },
+        {
+          "date": "2022-01-01",
+          "index": 111.822,
+          "mom": 0.5,
+          "yoy": 5.3,
+          "status": "revised"
+        },
+        {
+          "date": "2022-02-01",
+          "index": 112.362,
+          "mom": 0.5,
+          "yoy": 5.6,
+          "status": "revised"
+        },
+        {
+          "date": "2022-03-01",
+          "index": 112.807,
+          "mom": 0.4,
+          "yoy": 5.6,
+          "status": "revised"
+        },
+        {
+          "date": "2022-04-01",
+          "index": 113.178,
+          "mom": 0.3,
+          "yoy": 5.3,
+          "status": "revised"
+        },
+        {
+          "date": "2022-05-01",
+          "index": 113.571,
+          "mom": 0.3,
+          "yoy": 5.2,
+          "status": "revised"
+        },
+        {
+          "date": "2022-06-01",
+          "index": 114.273,
+          "mom": 0.6,
+          "yoy": 5.3,
+          "status": "revised"
+        },
+        {
+          "date": "2022-07-01",
+          "index": 114.658,
+          "mom": 0.3,
+          "yoy": 5.2,
+          "status": "revised"
+        },
+        {
+          "date": "2022-08-01",
+          "index": 115.248,
+          "mom": 0.5,
+          "yoy": 5.4,
+          "status": "revised"
+        },
+        {
+          "date": "2022-09-01",
+          "index": 115.727,
+          "mom": 0.4,
+          "yoy": 5.6,
+          "status": "revised"
+        },
+        {
+          "date": "2022-10-01",
+          "index": 116.186,
+          "mom": 0.4,
+          "yoy": 5.5,
+          "status": "revised"
+        },
+        {
+          "date": "2022-11-01",
+          "index": 116.52,
+          "mom": 0.3,
+          "yoy": 5.3,
+          "status": "revised"
+        },
+        {
+          "date": "2022-12-01",
+          "index": 116.923,
+          "mom": 0.3,
+          "yoy": 5.1,
+          "status": "revised"
+        },
+        {
+          "date": "2023-01-01",
+          "index": 117.415,
+          "mom": 0.4,
+          "yoy": 5,
+          "status": "revised"
+        },
+        {
+          "date": "2023-02-01",
+          "index": 117.825,
+          "mom": 0.3,
+          "yoy": 4.9,
+          "status": "revised"
+        },
+        {
+          "date": "2023-03-01",
+          "index": 118.295,
+          "mom": 0.4,
+          "yoy": 4.9,
+          "status": "revised"
+        },
+        {
+          "date": "2023-04-01",
+          "index": 118.671,
+          "mom": 0.3,
+          "yoy": 4.9,
+          "status": "revised"
+        },
+        {
+          "date": "2023-05-01",
+          "index": 119.061,
+          "mom": 0.3,
+          "yoy": 4.8,
+          "status": "revised"
+        },
+        {
+          "date": "2023-06-01",
+          "index": 119.35,
+          "mom": 0.2,
+          "yoy": 4.4,
+          "status": "revised"
+        },
+        {
+          "date": "2023-07-01",
+          "index": 119.515,
+          "mom": 0.1,
+          "yoy": 4.2,
+          "status": "revised"
+        },
+        {
+          "date": "2023-08-01",
+          "index": 119.662,
+          "mom": 0.1,
+          "yoy": 3.8,
+          "status": "revised"
+        },
+        {
+          "date": "2023-09-01",
+          "index": 120.053,
+          "mom": 0.3,
+          "yoy": 3.7,
+          "status": "revised"
+        },
+        {
+          "date": "2023-10-01",
+          "index": 120.321,
+          "mom": 0.2,
+          "yoy": 3.6,
+          "status": "revised"
+        },
+        {
+          "date": "2023-11-01",
+          "index": 120.525,
+          "mom": 0.2,
+          "yoy": 3.4,
+          "status": "revised"
+        },
+        {
+          "date": "2023-12-01",
+          "index": 120.694,
+          "mom": 0.1,
+          "yoy": 3.2,
+          "status": "revised"
+        },
+        {
+          "date": "2024-01-01",
+          "index": 121.201,
+          "mom": 0.4,
+          "yoy": 3.2,
+          "status": "revised"
+        },
+        {
+          "date": "2024-02-01",
+          "index": 121.57,
+          "mom": 0.3,
+          "yoy": 3.2,
+          "status": "revised"
+        },
+        {
+          "date": "2024-03-01",
+          "index": 122.016,
+          "mom": 0.4,
+          "yoy": 3.1,
+          "status": "revised"
+        },
+        {
+          "date": "2024-04-01",
+          "index": 122.252,
+          "mom": 0.2,
+          "yoy": 3,
+          "status": "revised"
+        },
+        {
+          "date": "2024-05-01",
+          "index": 122.406,
+          "mom": 0.1,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2024-06-01",
+          "index": 122.667,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2024-07-01",
+          "index": 122.872,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2024-08-01",
+          "index": 123.135,
+          "mom": 0.2,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2024-09-01",
+          "index": 123.462,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2024-10-01",
+          "index": 123.816,
+          "mom": 0.3,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2024-11-01",
+          "index": 123.989,
+          "mom": 0.1,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2024-12-01",
+          "index": 124.198,
+          "mom": 0.2,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2025-01-01",
+          "index": 124.609,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2025-02-01",
+          "index": 125.002,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2025-03-01",
+          "index": 125.144,
+          "mom": 0.1,
+          "yoy": 2.6,
+          "status": "revised"
+        },
+        {
+          "date": "2025-04-01",
+          "index": 125.524,
+          "mom": 0.3,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2025-05-01",
+          "index": 125.818,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2025-06-01",
+          "index": 126.133,
+          "mom": 0.3,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2025-07-01",
+          "index": 126.363,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2025-08-01",
+          "index": 126.646,
+          "mom": 0.2,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2025-09-01",
+          "index": 126.94,
+          "mom": 0.2,
+          "yoy": 2.8,
+          "status": "revised"
+        },
+        {
+          "date": "2025-10-01",
+          "index": 127.165,
+          "mom": 0.2,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2025-11-01",
+          "index": 127.363,
+          "mom": 0.2,
+          "yoy": 2.7,
+          "status": "revised"
+        },
+        {
+          "date": "2025-12-01",
+          "index": 127.765,
+          "mom": 0.3,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2026-01-01",
+          "index": 128.27,
+          "mom": 0.4,
+          "yoy": 2.9,
+          "status": "revised"
+        },
+        {
+          "date": "2026-02-01",
+          "index": 128.701,
+          "mom": 0.3,
+          "yoy": 3,
+          "status": "revised"
+        },
+        {
+          "date": "2026-03-01",
+          "index": 129.03,
+          "mom": 0.3,
+          "yoy": 3.1,
+          "status": "revised"
+        },
+        {
+          "date": "2026-04-01",
+          "index": 129.395,
+          "mom": 0.3,
+          "yoy": 3.1,
+          "status": "revised"
+        },
+        {
+          "date": "2026-05-01",
+          "index": 129.796,
+          "mom": 0.3,
+          "yoy": 3.2,
+          "status": "revised"
+        },
+        {
+          "date": "2026-06-01",
+          "index": 129.969,
+          "mom": 0.1,
+          "yoy": 3,
+          "status": "revised"
+        },
+        {
+          "date": "2026-07-01",
+          "index": 130.133,
+          "mom": 0.1,
+          "yoy": 3,
+          "status": "revised"
+        },
+        {
+          "date": "2026-08-01",
+          "index": 130.455,
+          "mom": 0.2,
+          "yoy": 3,
+          "status": "preliminary"
+        }
+      ]
+    }
+  ]
+}

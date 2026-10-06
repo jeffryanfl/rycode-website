@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
+import RiskWatchList from '../components/RiskWatchList.astro';
 import cardRecords from '../data/risk-cards.json';
 import { articles, formatDate, readingMinutes } from '../lib/site';
 import { assertRiskCards } from '../lib/risk-card-drift.mjs';
@@ -32,7 +33,7 @@ const cards = cardRecords
       title: titleFromArticleFile(article.file),
       date: article.date,
       dateLabel: formatDate(article.date),
-      minutes: readingMinutes(article.file),
+      minutes: article.minutes ?? readingMinutes(article.file),
       summary: record.summary,
       watch: record.watch,
     };
@@ -41,7 +42,7 @@ const cards = cardRecords
 ---
 
 <Layout
-  title="Risk — Rycode"
+  title="Risk - Rycode"
   description="Tails and what actually breaks."
   variant="risk"
 >
@@ -51,6 +52,8 @@ const cards = cardRecords
       Risk
     </h1>
   </div>
+
+  <RiskWatchList />
 
   <h2 class="risk-section">Emerging risks</h2>
   <ul class="risk-cards">

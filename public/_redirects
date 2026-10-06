@@ -2,24 +2,62 @@
 # ---------------------------------------------------------------
 # Old research URLs move to the subject pages.
 
-/research/ten-trillion-to-roll         /economics/ten-trillion-to-roll/    301!
-/research/ten-trillion-to-roll/        /economics/ten-trillion-to-roll/    301!
-/research/saas-barbell-2026            /economics/saas-barbell-2026/       301!
-/research/saas-barbell-2026/           /economics/saas-barbell-2026/       301!
-/research/ten-thousand-agents-is-not-a-genius    /ai/ten-thousand-agents-is-not-a-genius/    301!
-/research/ten-thousand-agents-is-not-a-genius/   /ai/ten-thousand-agents-is-not-a-genius/    301!
-/research/saaspocalypse                /economics/saas-barbell-2026/       301!
-/research/saaspocalypse/               /economics/saas-barbell-2026/       301!
+/research/ten-trillion-to-roll         /economics/    301!
+/research/ten-trillion-to-roll/        /economics/    301!
+/research/saas-barbell-2026            /economics/    301!
+/research/saas-barbell-2026/           /economics/    301!
+/research/ten-thousand-agents-is-not-a-genius    /ai/    301!
+/research/ten-thousand-agents-is-not-a-genius/   /ai/    301!
+/research/saaspocalypse                /economics/    301!
+/research/saaspocalypse/               /economics/    301!
 /research                              /economics/    301!
 /research/                             /economics/    301!
 
 /ai/models/openai/gpt-5-6-sol      /ai/models/openai/gpt-6-sol/  301!
 /ai/models/openai/gpt-5-6-sol/     /ai/models/openai/gpt-6-sol/  301!
 
-/risk/panic-before-the-breach      /risk/the-ban-lands-on-open-source/  301!
-/risk/panic-before-the-breach/     /risk/the-ban-lands-on-open-source/  301!
+/risk/panic-before-the-breach      /risk/  301!
+/risk/panic-before-the-breach/     /risk/  301!
 
 /ai/hardware/terafab                  /ai/hardware/chips/terafab/  301!
 /ai/hardware/terafab/                 /ai/hardware/chips/terafab/  301!
 /ai/hardware/memphis-colossus         /ai/hardware/data-centers/memphis-colossus/  301!
 /ai/hardware/memphis-colossus/        /ai/hardware/data-centers/memphis-colossus/  301!
+
+/ai/hardware/chips/meta-nvidia        /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-nvidia/       /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-amd           /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-amd/          /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-broadcom      /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-broadcom/     /ai/hardware/chips/meta/  301!
+
+# Oil brief moved to /risk/ on 5 Oct 2026.
+/economics/warsh-first-hike-oil-and-five-percent-ten-year        /risk/oil-and-the-100-line/  301!
+/economics/warsh-first-hike-oil-and-five-percent-ten-year/       /risk/oil-and-the-100-line/  301!
+
+# Long essays pulled from the live site on 5 Oct 2026. Sources are in docs/archive/pages/.
+# Each old URL goes to its door page.
+/economics/long-yields-hike-ai-credit-stress                     /economics/  301!
+/economics/long-yields-hike-ai-credit-stress/                    /economics/  301!
+/economics/post-inflation-dollars-pay-pre-inflation-debts        /economics/  301!
+/economics/post-inflation-dollars-pay-pre-inflation-debts/       /economics/  301!
+/economics/saas-barbell-2026                                     /economics/  301!
+/economics/saas-barbell-2026/                                    /economics/  301!
+/economics/ten-trillion-to-roll                                  /economics/  301!
+/economics/ten-trillion-to-roll/                                 /economics/  301!
+/risk/the-ban-lands-on-open-source                               /risk/  301!
+/risk/the-ban-lands-on-open-source/                              /risk/  301!
+/opinions/the-license-starts-at-their-scale                      /opinions/  301!
+/opinions/the-license-starts-at-their-scale/                     /opinions/  301!
+/ai/meta-named-an-enterprise-stack                               /ai/  301!
+/ai/meta-named-an-enterprise-stack/                              /ai/  301!
+/ai/frontier-price-meets-open-weight-ipo                         /ai/  301!
+/ai/frontier-price-meets-open-weight-ipo/                        /ai/  301!
+/ai/grok-bot-set-a-new-bar                                       /ai/  301!
+/ai/grok-bot-set-a-new-bar/                                      /ai/  301!
+/ai/chat-models-write-strings-system-one-returns-decisions       /ai/  301!
+/ai/chat-models-write-strings-system-one-returns-decisions/      /ai/  301!
+/ai/ten-thousand-agents-is-not-a-genius                          /ai/  301!
+/ai/ten-thousand-agents-is-not-a-genius/                         /ai/  301!
+/ai/next-token-engine                                            /ai/  301!
+/ai/next-token-engine/                                           /ai/  301!

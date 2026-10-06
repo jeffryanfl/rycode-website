@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-02T08:03:00-04:00",
-  "asOfLabel": "Fri 2 Oct \u00b7 pre-open",
+  "updated": "2026-10-06T08:08:00-04:00",
+  "asOfLabel": "Tue 6 Oct · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Fri ~8:03am: ES 7,756 (+0.4%); NQ 30,929 (+0.5%); YM 51,474 (+0.5%)."
+      "text": "Tue pre-open: ES ~7,865 (+0.5%). NQ +0.6%. YM +0.7%."
     },
     {
       "tag": "Oil",
-      "text": "WTI Nov ~$89.57, down 3.6% vs Thu bar ~$92.87. Brent ~$99.77."
+      "text": "WTI Nov ~$87.18 (Mon close $89.43). Brent ~$97.75, under $100."
     },
     {
       "tag": "Rates",
-      "text": "Thu CMT still baseline: 2y 4.78% / 10y 5.24% / 30y 5.61%."
+      "text": "Last CMT Mon: 10y 5.31%. 2y 4.84%. 30y 5.66%."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-10-02"
+  "date": "2026-10-06"
 }

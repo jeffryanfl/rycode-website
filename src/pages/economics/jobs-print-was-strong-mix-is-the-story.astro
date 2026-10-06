@@ -1,95 +1,103 @@
 ---
+/**
+ * Brief behind the "Hiring slows" row on /economics/.
+ * Title stays "Payrolls and the jobs mix" (Stage 1 / Stage 4). Backstory is
+ * dated text. Where we stand and the levels in What we're watching are built
+ * from the row's feeds at build time (src/lib/briefs.ts), so they move with
+ * every feed push. The old digest is in docs/archive/pages/economics/.
+ */
 import Layout from '../../layouts/Layout.astro';
+import RiskWatch from '../../components/RiskWatch.astro';
+import { hiringBriefNow } from '../../lib/briefs';
 import '../../styles/economics.css';
 
-const title = 'August payrolls were strong. The mix of jobs is the story.';
-const subhead = 'Hiring people who do the work with AI, not only people who manage that work.';
+const title = 'Payrolls and the jobs mix';
+const subhead = 'Hiring people who do the work with AI, not only people who manage that work. The numbers below come from the /economics/ watch-list feed.';
+
+const brief = hiringBriefNow();
+
+const watchItems = [
+  ...brief.watch,
+  'The next Employment Situation release from the Bureau of Labor Statistics.',
+  'Whether food services, local government education, and information keep driving the industry mix the August release named.',
+];
+
+const sources = [
+  {
+    text: 'U.S. Bureau of Labor Statistics, The Employment Situation, August 2026 (released 4 Sep 2026)',
+    href: 'https://www.bls.gov/news.release/archives/empsit_09042026.htm',
+  },
+  {
+    text: 'CNBC, August 2026 jobs report and the Dow Jones estimate, 4 Sep 2026',
+    href: 'https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html',
+  },
+  {
+    text: 'Anthropic, Computer use tool documentation',
+    href: 'https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool',
+  },
+  {
+    text: 'U.S. Bureau of Labor Statistics, The Employment Situation, September 2026 (released 2 Oct 2026)',
+    href: 'https://www.bls.gov/news.release/archives/empsit_10022026.htm',
+  },
+  {
+    text: 'U.S. Bureau of Labor Statistics, Current Employment Statistics',
+    href: 'https://www.bls.gov/ces/',
+  },
+  {
+    text: 'U.S. Bureau of Labor Statistics, Current Population Survey',
+    href: 'https://www.bls.gov/cps/',
+  },
+  {
+    text: 'FRED, Initial Claims (ICSA)',
+    href: 'https://fred.stlouisfed.org/series/ICSA',
+  },
+];
 ---
 
 <Layout
-  title={`${title} — Rycode`}
+  title={`${title} - Rycode`}
   description={subhead}
   variant="economics"
 >
-  <article class="econ-digest">
+  <article class="econ-digest econ-brief">
     <header class="econ-digest-head">
       <h1 class="econ-digest-title">{title}</h1>
       <p class="econ-digest-subhead">{subhead}</p>
     </header>
 
-    <aside class="econ-digest-rail" data-digest-rail data-digest-fallback="mix" data-digest-stretch="mix" aria-label="Digest, economics read">
-      <p class="econ-digest-kicker">Digest · Economics read</p>
-      <div class="econ-digest-viewport">
-        <div class="econ-digest-stack">
-          <article class="econ-card" id="card-print" data-card="print">
-            <p class="econ-card-kicker">Headline print</p>
-            <p class="econ-card-figure">+162k</p>
-            <p class="econ-card-label">Nonfarm payrolls · Aug 2026</p>
-            <p class="econ-card-note">Unemployment held 4.1%. AHE +0.3% m/m, +3.1% y/y to $37.75. LFPR 61.6% (+0.2 pt). Emp-pop 59.1% (little change; +0.2 from 58.9). Beat soft consensus ~53k (Dow Jones via CNBC). Prior months revised higher.</p>
-          </article>
-          <article class="econ-card" id="card-mix" data-card="mix">
-            <p class="econ-card-kicker">Mix not the cartoon</p>
-            <p class="econ-card-figure">Mix</p>
-            <p class="econ-card-label">Sector color ≠ AI boom cartoon</p>
-            <p class="econ-card-note">Food services &amp; drinking places and local government education added jobs. Information industry lost jobs. Turning all 162k into an AI-infrastructure boom is interpretation on the release, not the release. Firm labor into mid-Sep Fed meeting ≠ soft-landing certificate or cut path by itself.</p>
-          </article>
-          <article class="econ-card" id="card-doers" data-card="doers">
-            <p class="econ-card-kicker">Doers</p>
-            <p class="econ-card-figure">Doers</p>
-            <p class="econ-card-label">Skill mix · computer use shipping</p>
-            <p class="econ-card-note">Frontier models list computer use as real capability (desktop, apps, multi-step). Hiring sentence: not hiring you to hire people — hire to do the thing with tools and own the result. Premium to think/decide/operate AI. Hot print can coexist with quiet org-chart rewrite; slogans skip the selection mechanism.</p>
-          </article>
-        </div>
-      </div>
-      <div class="econ-digest-legend">
-        <p>How to read this: +162k = firm tape. Mix = sector color vs AI cartoon. Doers = skill-mix claim under the print.</p>
-        <p>Quiet OK: Price the boom carefully. Hire for doers. Strong payroll ≠ proof old coordination stack still deserves headcount.</p>
-      </div>
-    </aside>
+    <div class="econ-digest-main">
+      <section class="econ-digest-section" id="backstory">
+        <h2>Backstory</h2>
+        <p>On 4 Sep 2026 the Bureau of Labor Statistics reported that nonfarm payroll employment, the count of jobs at businesses and government, rose by 162,000 in August. Unemployment held at 4.1 percent. Average hourly earnings rose 0.3 percent on the month and 3.1 percent over the year. Economists surveyed by Dow Jones had expected 53,000, according to CNBC. June and July were revised up by a combined 55,000. Food services and drinking places added 59,000 jobs and local government education added 42,000. The information industry lost jobs.</p>
+        <p>The open question after that print was the mix: who gets hired next. Frontier models now offer computer use, meaning the model can operate a desktop, open apps, click, type, and run multi-step tasks. When an agent can run the computer, the scarce skills become judging what to build, catching errors, and owning the outcome. The hiring sentence is blunt: hire people who do the work with AI, not a stack of managers watching managers.</p>
+        <p>On 2 Oct 2026 the September report showed payrolls up 29,000 and unemployment at 4.2 percent, so the August pace did not repeat. The product capability behind that hiring sentence is already shipping.</p>
+      </section>
 
-    <p class="econ-digest-lede">The August jobs print was strong. That is not the interesting part. The interesting part is who the next hire is: someone who does the work with AI, not someone who only manages people who do.</p>
+      <section class="econ-digest-section" id="where-we-stand">
+        <h2>Where we stand</h2>
+        <p class="econ-brief-asof">{brief.asOf}</p>
+        <p>{brief.payrolls}</p>
+        {brief.augustRevision && <p>{brief.augustRevision}</p>}
+        <p>{brief.unemployment}</p>
+        {brief.claims && <p>{brief.claims}</p>}
+        <p>{brief.strain}</p>
+      </section>
 
-    <section class="econ-digest-section" id="numbers" data-digest-section="print">
-      <h2>What the numbers actually said</h2>
-      <p>In August 2026 the Bureau of Labor Statistics reported that nonfarm payroll employment rose by 162,000. Unemployment held at 4.1 percent. Average hourly earnings rose 0.3 percent on the month and 3.1 percent over the year, to $37.75. Labor force participation rose 0.2 points to 61.6 percent. Employment-to-population changed little at 59.1 percent. The print beat a soft consensus near 53,000 (Dow Jones via CNBC). Prior months were revised higher.</p>
-      <article class="econ-card econ-card--inline">
-        <p class="econ-card-kicker">Headline print</p>
-        <p class="econ-card-figure">+162k</p>
-        <p class="econ-card-label">Nonfarm payrolls · Aug 2026</p>
-        <p class="econ-card-note">Unemployment held 4.1%. AHE +0.3% m/m, +3.1% y/y to $37.75. LFPR 61.6% (+0.2 pt). Emp-pop 59.1% (little change; +0.2 from 58.9). Beat soft consensus ~53k (Dow Jones via CNBC). Prior months revised higher.</p>
-      </article>
-      <article class="econ-card econ-card--inline">
-        <p class="econ-card-kicker">Mix not the cartoon</p>
-        <p class="econ-card-figure">Mix</p>
-        <p class="econ-card-label">Sector color ≠ AI boom cartoon</p>
-        <p class="econ-card-note">Food services &amp; drinking places and local government education added jobs. Information industry lost jobs. Turning all 162k into an AI-infrastructure boom is interpretation on the release, not the release. Firm labor into mid-Sep Fed meeting ≠ soft-landing certificate or cut path by itself.</p>
-      </article>
-    </section>
+      <section class="econ-digest-section" id="watching">
+        <h2>What we're watching</h2>
+        <RiskWatch items={watchItems} class="econ-watch" />
+      </section>
 
-    <section class="econ-digest-section" id="product" data-digest-section="mix">
-      <h2>The product fact underneath the labor argument</h2>
-      <p>Frontier models now list computer use as a real capability: the model can operate a desktop, open apps, and drive multi-step workflows. That is product surface, not a podcast invention. When an agent can run the computer, the scarce input shifts toward judging what to build, catching errors, and owning the outcome — a skill-mix claim, not a measured payroll line.</p>
-    </section>
-
-    <section class="econ-digest-section" id="doers" data-digest-section="doers">
-      <h2>Doers pull ahead. Coordinators get thinner.</h2>
-      <p>AI tools that can draft, search, code, and operate software compress the need for a stack of managers watching managers. The hiring sentence is blunt: not hiring you to hire people — hire to do the thing with tools and own the result. A hot jobs print can coexist with a quiet rewrite of the org chart. Slogans skip the selection mechanism.</p>
-      <article class="econ-card econ-card--inline">
-        <p class="econ-card-kicker">Doers</p>
-        <p class="econ-card-figure">Doers</p>
-        <p class="econ-card-label">Skill mix · computer use shipping</p>
-        <p class="econ-card-note">Frontier models list computer use as real capability (desktop, apps, multi-step). Hiring sentence: not hiring you to hire people — hire to do the thing with tools and own the result. Premium to think/decide/operate AI. Hot print can coexist with quiet org-chart rewrite; slogans skip the selection mechanism.</p>
-      </article>
-    </section>
-
-    <div class="econ-digest-legend econ-digest-legend--inline">
-      <p>How to read this: +162k = firm tape. Mix = sector color vs AI cartoon. Doers = skill-mix claim under the print.</p>
-      <p>Quiet OK: Price the boom carefully. Hire for doers. Strong payroll ≠ proof old coordination stack still deserves headcount.</p>
+      <section class="econ-digest-section econ-digest-sources" id="sources">
+        <h2>Sources</h2>
+        <ol>
+          {sources.map((source) => (
+            <li>
+              <a href={source.href}>{source.text}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
     </div>
-
-    <p class="econ-digest-closer">That reading is not a pep talk. Skill mix is the turning point, the August print keeps the tape firm without proving a soft landing, and the product capability that makes the hiring sentence real is already shipping. Price the boom carefully. Hire for doers. Do not confuse a strong payroll headline with proof that the old coordination stack still deserves its headcount.</p>
-
   </article>
 </Layout>
-
-<script is:inline src="/digest-rail.js" defer></script>

@@ -1,0 +1,198 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="MTIA - Hardware - Rycode"
+  description="MTIA 300, 400, 450, and 500. The 300 is in production with 216 GB HBM3E. The 400 is a 72-accelerator rack. Compute FLOPS from the 300 to the 500 is 25x."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">MTIA</h1>
+    <p class="ai-model-dek">Meta's training and inference chips. Four parts: 300, 400, 450, and 500. The buy, including Broadcom's gigawatts, is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">MTIA 300</h2>
+    <p>In production on 11 March 2026 for ranking and recommendations training. It is the first MTIA optimized for training recommendation and ranking models. One compute chiplet and two network chiplets. Each processing element has two RISC-V vector cores. From MTIA 300 to MTIA 500, HBM bandwidth increases by 4.5x and compute FLOPS increases by 25x, from the 300's MX8 to the 500's MX4.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HBM3E</td>
+            <td>216 GB</td>
+          </tr>
+          <tr>
+            <td>I/O</td>
+            <td>1.2 TB/s</td>
+          </tr>
+          <tr>
+            <td>RDMA NICs</td>
+            <td>Six custom 800 Gbps on each network chiplet</td>
+          </tr>
+          <tr>
+            <td>Scale-up</td>
+            <td>Rack of 16 nodes, up to 1 TB/s</td>
+          </tr>
+          <tr>
+            <td>Scale-out</td>
+            <td>200 GB/s across racks</td>
+          </tr>
+          <tr>
+            <td>Processing elements</td>
+            <td>12 by 6</td>
+          </tr>
+          <tr>
+            <td>Message engines</td>
+            <td>16</td>
+          </tr>
+          <tr>
+            <td>Near-memory reduction</td>
+            <td>More than 2.8 TBs of reduction throughput</td>
+          </tr>
+          <tr>
+            <td>GEMMs with collectives</td>
+            <td>Less than 0.5% compute degradation</td>
+          </tr>
+          <tr>
+            <td>HCCL, one rack</td>
+            <td>Up to 940 GB/s</td>
+          </tr>
+          <tr>
+            <td>Recommendation model</td>
+            <td>150 billion parameters across 40 accelerators</td>
+          </tr>
+          <tr>
+            <td>Communication vs a GPU cluster</td>
+            <td>3.9 times faster</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>I/O, HBM3E, and the rack figures are from Engineering at Meta, 24 August 2026. Production status is from Meta, 11 March 2026. That news post also says hundreds of thousands of MTIA chips are already deployed for inference across organic content and ads.</p>
+
+    <h2 class="ai-model-section">MTIA 400</h2>
+    <p>The 300 evolved into the 400 to support GenAI models and keep ranking and recommendation workloads. Lab testing is finished. On 11 March 2026 Meta said the 400, 450, and 500 will handle all workloads, used primarily for GenAI inference production in the near future and into 2027.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Compute chiplets</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Scale-up domain</td>
+            <td>72 accelerators</td>
+          </tr>
+          <tr>
+            <td>Rack</td>
+            <td>72 MTIA 400 devices on a switched backplane</td>
+          </tr>
+          <tr>
+            <td>FP8 FLOPS vs MTIA 300</td>
+            <td>400% higher</td>
+          </tr>
+          <tr>
+            <td>HBM bandwidth vs MTIA 300</td>
+            <td>51% higher</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">MTIA 450</h2>
+    <p>The 400 transitioned into the 450 with optimizations for GenAI inference. Meta's 11 March 2026 news post says the 450 and 500 are optimized first for GenAI inference. Mass deployment is scheduled for early 2027.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HBM bandwidth vs MTIA 400</td>
+            <td>Doubled</td>
+          </tr>
+          <tr>
+            <td>MX4 FLOPS vs the prior version</td>
+            <td>75% higher</td>
+          </tr>
+          <tr>
+            <td>MX4 FLOPS vs FP16/BF16</td>
+            <td>6x</td>
+          </tr>
+          <tr>
+            <td>Mass deployment</td>
+            <td>Early 2027</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">MTIA 500</h2>
+    <p>The 450 advanced into the 500 for GenAI inference. Mass deployment is scheduled for 2027. A 2 by 2 configuration of smaller compute chiplets, plus two network chiplets.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HBM bandwidth vs MTIA 450</td>
+            <td>50% higher</td>
+          </tr>
+          <tr>
+            <td>HBM capacity vs MTIA 450</td>
+            <td>Up to 80% higher</td>
+          </tr>
+          <tr>
+            <td>MX4 FLOPS vs MTIA 450</td>
+            <td>43% higher</td>
+          </tr>
+          <tr>
+            <td>HBM bandwidth, 300 to 500</td>
+            <td>4.5x</td>
+          </tr>
+          <tr>
+            <td>Compute FLOPS, 300 MX8 to 500 MX4</td>
+            <td>25x</td>
+          </tr>
+          <tr>
+            <td>Mass deployment</td>
+            <td>2027</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">2nm accelerator</h2>
+    <p>Broadcom's 14 April 2026 release calls the part the industry's first 2nm AI compute accelerator and says the technology supports MTIA. The gigawatt commitment and the 2029 term are on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://about.fb.com/news/2026/03/expanding-metas-custom-silicon-to-power-our-ai-workloads/">Meta, 11 March 2026</a></li>
+      <li><a href="https://ai.meta.com/blog/meta-mtia-scale-ai-chips-for-billions/">Meta AI, MTIA roadmap</a></li>
+      <li><a href="https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics/">Engineering at Meta, 24 August 2026</a></li>
+      <li><a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-announces-extended-partnership-meta-deploy-technology">Broadcom, 14 April 2026</a></li>
+      <li><a href="https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/">Meta, 14 April 2026</a></li>
+    </ul>
+  </article>
+</Layout>

@@ -1,0 +1,84 @@
+---
+/**
+ * /ai bench charts: two bar charts, built at build time from
+ * public/ai-benchmarks.json (the living bench feed). Edit the feed, not
+ * this file, to move a number. Uses the .ai-bench-* plate styles from ai.css.
+ */
+import BenchChart from './BenchChart.astro';
+import { benchAsOf, benchHref, benchLines, benchPoints } from '../lib/ai-bench-charts';
+
+const aa = benchPoints('aaIndex');
+const tb = benchPoints('terminalBench', { version: '4.0' });
+const aaHref = benchHref('aaIndex');
+const tbHref = benchHref('terminalBench');
+const asOf = benchAsOf();
+const lines = benchLines();
+
+const toItems = (points: typeof aa) =>
+  points.map((p) => ({ label: p.model, value: p.value, display: p.display, note: p.note }));
+---
+
+<section class="ai-bench ai-bench-charts" aria-labelledby="ai-bench-charts-heading">
+  <div class="ai-bench-plate">
+    <p class="ai-bench-kicker">Rycode · /ai · bench charts</p>
+    <h2 class="ai-bench-title" id="ai-bench-charts-heading">Flagships at a glance</h2>
+    <p class="ai-bench-sub">As of {asOf} · one bar per model · higher is better</p>
+
+    <div class="abc-grid">
+      <BenchChart
+        title="AA Intelligence Index"
+        href={aaHref}
+        sub="Artificial Analysis v4.3.2 · effort under each score"
+        items={toItems(aa)}
+      />
+      <BenchChart
+        title="Terminal-Bench 4.0"
+        href={tbHref}
+        sub="lab-reported score"
+        items={toItems(tb)}
+      />
+    </div>
+
+    <p class="ai-bench-feed">Charts read <code>public/ai-benchmarks.json</code>.</p>
+  </div>
+</section>
+
+<section class="ai-bench ai-bench-lines" aria-labelledby="ai-bench-lines-heading">
+  <div class="ai-bench-plate">
+    <p class="ai-bench-kicker">Rycode · /ai · bench lines</p>
+    <h2 class="ai-bench-title" id="ai-bench-lines-heading">Across these benches</h2>
+    <p class="ai-bench-sub">{lines.sub} · higher is better</p>
+    <div class="abc-lines">
+    <BenchChart
+      kind="line"
+      title="Across these benches"
+      caption={false}
+      frame={false}
+      categories={lines.categories}
+      series={lines.series}
+      min={0}
+      max={100}
+      step={20}
+    />
+    </div>
+  </div>
+</section>
+
+<style>
+  .abc-grid,
+  .abc-lines {
+    margin-top: 0.85rem;
+  }
+
+  .abc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  @media (max-width: 760px) {
+    .abc-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

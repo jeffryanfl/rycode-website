@@ -23,9 +23,10 @@ const { cards, listLabel, emptyTitle } = Astro.props;
       <li>
         <a class="hw-card" href={card.href}>
           <h2 class="hw-card-title">{card.title}</h2>
+          {card.kicker ? <p class="hw-card-label">{card.kicker}</p> : null}
           {card.value ? (
             <p class="hw-card-metric">
-              <span class="hw-card-value">{card.value}</span>
+              <span class:list={["hw-card-value", { "hw-card-value--text": !/\d/.test(card.value) }]}>{card.value}</span>
               <span class="hw-card-label">{card.label}</span>
             </p>
           ) : null}

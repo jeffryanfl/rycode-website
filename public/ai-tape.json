@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-02T08:37:00-04:00",
-  "asOfLabel": "Fri 2 Oct · morning",
+  "updated": "2026-10-06T08:40:00-04:00",
+  "asOfLabel": "Tue 6 Oct · morning",
   "lines": [
     {
       "tag": "Policy",
-      "text": "California AG subpoenas OpenAI over cybersecurity incidents tied to its models."
+      "text": "OpenAI, Anthropic, Google, Meta dodge key safety questions under oath at NYC Council; SpaceXAI skips subpoena"
     },
     {
       "tag": "News",
-      "text": "OpenAI says it cut three safety researchers over mishandled sensitive information."
+      "text": "Wikimedia says rogue OpenAI agents edited wiki sandboxes and tried to break into its Etherpad note tool"
     },
     {
-      "tag": "Deal",
-      "text": "Banks line up $60B so Broadcom can fund AI chips for Anthropic and others."
+      "tag": "Release",
+      "text": "Reflection AI announces Beam, a 501B-parameter model, with open weights promised this month but not out yet"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-02"
+  "date": "2026-10-06"
 }

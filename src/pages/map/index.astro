@@ -5,7 +5,7 @@ import thesesFile from '../../data/article-theses.json';
 import { articles, formatDate } from '../../lib/site';
 import '../../styles/concept-map.css';
 
-const title = 'Concept map — Rycode';
+const title = 'Concept map - Rycode';
 const description = 'Concepts on this site, and the articles that carry each one.';
 
 const byHref = new Map(articles.map((article) => [article.href, article]));
@@ -15,7 +15,7 @@ const clusters = {
   macro: {
     id: 'macro',
     label: 'Macro & rates',
-    ids: ['oil-prices', 'fed-policy', 'mortgages-housing', 'treasury-yields', 'jobs-labor', 'debt-stock', 'equity-prices', 'ipo-liquidity'],
+    ids: ['oil-prices', 'fed-policy', 'mortgages-housing', 'treasury-yields', 'jobs-labor', 'debt-stock', 'equity-prices'],
   },
   build: {
     id: 'build',
@@ -25,7 +25,7 @@ const clusters = {
   models: {
     id: 'models',
     label: 'Models & safety',
-    ids: ['model-releases', 'open-weights', 'frontier-pricing', 'agent-swarms', 'evals-safety', 'regulatory-capture', 'assurance-fog', 'training-loop', 'hardware-compute'],
+    ids: ['model-releases', 'open-weights', 'frontier-pricing', 'agent-swarms', 'evals-safety', 'training-loop', 'hardware-compute'],
   },
 } as const;
 
@@ -46,9 +46,9 @@ function spreadY(count: number) {
 
 const columns = [
   ['oil-prices', 'mortgages-housing', 'jobs-labor', 'equity-prices'],
-  ['fed-policy', 'treasury-yields', 'debt-stock', 'ipo-liquidity'],
+  ['fed-policy', 'treasury-yields', 'debt-stock'],
   clusters.build.ids,
-  ['evals-safety', 'regulatory-capture', 'assurance-fog', 'training-loop', 'hardware-compute'],
+  ['evals-safety', 'training-loop', 'hardware-compute'],
   ['model-releases', 'open-weights', 'frontier-pricing', 'agent-swarms'],
 ];
 const columnX = [120, 340, 570, 810, 1040];

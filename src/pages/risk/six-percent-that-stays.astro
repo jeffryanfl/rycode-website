@@ -1,112 +1,90 @@
 ---
+/**
+ * Brief behind "The 30-year yield holds near 6%" row on /risk/. Backstory is
+ * dated text. Where we stand and the levels in What we're watching are built
+ * from the row's feeds at build time (src/lib/briefs.ts), so they move with
+ * every feed push. The long essay that lived here is in docs/archive/pages/risk/.
+ */
 import Layout from '../../layouts/Layout.astro';
-import LivingStrip from '../../components/LivingStrip.astro';
 import RiskWatch from '../../components/RiskWatch.astro';
-import facts from '../../../docs/risk/six-percent-that-stays.facts.json';
+import { thirtyYearBriefNow } from '../../lib/briefs';
 import '../../styles/risk.css';
 
-const title = 'The 30-year Treasury yield in late August 2026 was about 5.21 to 5.26 percent.';
-const subhead = 'Risks: a hold near 6 percent through a long-term borrow date, not a single morning print. That would raise new long-term public debt and mortgages after the spread.';
+const title = 'The 30-year yield holds near 6%';
+const subhead = 'If the 30-year Treasury yield reaches 6% and stays there, new long-term government debt and mortgages cost more. The numbers below come from the /risk/ watch-list feed.';
+
+const brief = thirtyYearBriefNow();
 
 const watchItems = [
-  'Whether the thirty-year holds above 5.75 percent, then 6 percent, through a long-term borrowing date, not for a single morning.',
-  'How well ten-year and thirty-year auctions clear.',
-  'The mortgage spread.',
-  'TGA as cash for the week.',
-  'Bills vs longer.',
-  'Purchases at least $4 billion through early November.',
+  ...brief.watch,
+  'How well 10-year and 30-year Treasury auctions go.',
+  'The gap between mortgage rates and Treasury yields.',
+  "4 Nov 2026: the last day of Treasury's enlarged long-end buybacks.",
+];
+
+const sources = [
+  { text: 'U.S. Government Accountability Office, Treasury refinancing of maturing securities in fiscal year 2026', href: 'https://www.gao.gov/products/gao-26-107529' },
+  { text: 'U.S. Treasury, Daily Treasury Par Yield Curve Rates', href: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026' },
+  { text: 'U.S. Treasury, press release on long-end liquidity support buybacks', href: 'https://home.treasury.gov/news/press-releases/sb0607' },
 ];
 ---
 
 <Layout
-  title={`${title} — Rycode`}
+  title={`${title} - Rycode`}
   description={subhead}
   variant="risk"
 >
-  <article class="risk-digest">
+  <article class="risk-digest risk-brief">
     <header class="risk-digest-head">
       <h1 class="risk-digest-title">{title}</h1>
       <p class="risk-digest-subhead">{subhead}</p>
-      <LivingStrip facts={facts} part="ticker" />
     </header>
 
-    <div class="risk-digest-columns">
-      <div class="risk-digest-main">
-        <p class="risk-digest-lede">The essay on this site, <a href="/economics/ten-trillion-to-roll/">About $10 trillion of U.S. debt comes due and has to be refinanced</a>, is the story of the number. This page is the risk read of the same facts. It is not a second telling of bills, the checking account, or the four-billion-dollar purchases.</p>
+    <div class="risk-digest-main">
+      <section class="risk-digest-section" id="backstory">
+        <h2>Backstory</h2>
+        <p>The US government has to refinance about $9.7 trillion of maturing securities in fiscal year 2026, according to the Government Accountability Office. That means replacing old debt with new debt, not paying it down. Most of it is short-term bills that Treasury already rolls over every week.</p>
+        <p>The 30-year Treasury yield is the interest rate the government pays to borrow for 30 years. In late August 2026 it was about 5.21% to 5.26%. That made for an expensive year, not a crash. The bad outcome this page tracks is the 30-year yield going to about 6% and staying there through at least one round of long-term borrowing. A single day at 6% that fades does not count. A 6% rate that lasts raises the cost of new long-term government debt and of mortgages.</p>
+        <p>Related trouble can show up first. Demand at Treasury auctions can weaken while the 30-year is still between 5.3% and 5.6%, and the gap between mortgage rates and Treasury yields can widen so households feel 6% mortgage pain before the Treasury yield gets there. Treasury has also enlarged its buybacks, purchases of its own older bonds that help keep them easy to trade, to at least $4 billion per operation in the 10-to-20-year and 20-to-30-year ranges, from 9 Sep through 4 Nov 2026.</p>
+      </section>
 
-        <section class="risk-digest-section" id="usual" data-digest-section="usual">
-          <h2>Usual case</h2>
-          <p>The government will replace about ten trillion dollars of debt in the coming year. Most of that is short-term bills it already rolls every week. The thirty-year yield in late August was about 5.21 to 5.26 percent. That is an expensive year. It is not a crash.</p>
-          <article class="risk-card risk-card--inline">
-            <p class="risk-card-kicker">Usual case</p>
-            <p class="risk-card-figure">5.21–5.26%</p>
-            <p class="risk-card-label">Thirty-year, late August</p>
-            <p class="risk-card-note">Expensive year. Not a crash.</p>
-          </article>
-        </section>
+      <section class="risk-digest-section" id="where-we-stand">
+        <h2>Where we stand</h2>
+        <p class="risk-brief-asof">{brief.asOf}</p>
+        <p>{brief.level}</p>
+        <p>{brief.range}</p>
+        <p>{brief.strain}</p>
+      </section>
 
-        <section class="risk-digest-section" id="named-tail" data-digest-section="tail">
-          <h2>The named tail</h2>
-          <p>The bad outcome that is not the usual case is the thirty-year Treasury yield going to about 6 percent and remaining there through at least one round of long-term borrowing. From late August that is a move of about three-quarters of a percentage point. A single print at 6 percent that fades is not the tail. A 6 percent rate that lasts is.</p>
-          <article class="risk-card risk-card--inline">
-            <p class="risk-card-kicker">Named tail</p>
-            <p class="risk-card-figure">~6%</p>
-            <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
-            <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
-          </article>
-        </section>
+      <section class="risk-digest-section" id="watching">
+        <h2>What we're watching</h2>
+        <RiskWatch items={watchItems} />
+      </section>
 
-        <section class="risk-digest-section" id="related-tails">
-          <h2>Related tails, not the same event</h2>
-          <p>Do not fold every bad rates story into 6 percent. Auction demand can weaken while the thirty-year is still 5.3 to 5.6. Home-loan spreads can widen so households feel 6 percent mortgage pain before the Treasury is at 6 percent. A failure of bill auctions is a different and more extreme event. It is not the lead.</p>
-        </section>
-
-        <section class="risk-digest-section" id="watch" data-digest-section="watch">
-          <h2>What to watch</h2>
-          <RiskWatch items={watchItems} />
-          <article class="risk-card risk-card--inline">
-            <p class="risk-card-kicker">Watch</p>
-            <p class="risk-card-figure">5.75% → 6%</p>
-            <p class="risk-card-label">Hold through a long-term borrow date</p>
-            <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
-          </article>
-        </section>
-
-        <LivingStrip facts={facts} part="log" />
-
-        <div class="risk-digest-closer">
-          <p class="risk-closer-kicker">From this essay</p>
-          <p class="risk-closer-link"><a href="/economics/ten-trillion-to-roll/">About $10 trillion of U.S. debt comes due and has to be refinanced</a></p>
-        </div>
-      </div>
-
-      <aside class="risk-digest-rail" data-digest-rail data-digest-fallback="tail" aria-label="Digest, risk read">
-        <p class="risk-digest-kicker">Digest · Risk read</p>
-        <div class="risk-digest-viewport">
-          <div class="risk-digest-stack">
-            <article class="risk-card" id="card-usual" data-card="usual">
-              <p class="risk-card-kicker">Usual case</p>
-              <p class="risk-card-figure">5.21–5.26%</p>
-              <p class="risk-card-label">Thirty-year, late August</p>
-              <p class="risk-card-note">Expensive year. Not a crash.</p>
-            </article>
-            <article class="risk-card" id="card-tail" data-card="tail">
-              <p class="risk-card-kicker">Named tail</p>
-              <p class="risk-card-figure">~6%</p>
-              <p class="risk-card-label">That stays through ≥1 long-term borrow</p>
-              <p class="risk-card-note">~0.75 pt from late August. A single morning print that fades is not the tail.</p>
-            </article>
-            <article class="risk-card" id="card-watch" data-card="watch">
-              <p class="risk-card-kicker">Watch</p>
-              <p class="risk-card-figure">5.75% → 6%</p>
-              <p class="risk-card-label">Hold through a long-term borrow date</p>
-              <p class="risk-card-note">Not a single morning. Also: auction clear, mortgage spread, TGA as week cash, bills vs longer, $4B purchases.</p>
-            </article>
-          </div>
-        </div>
-      </aside>
+      <section class="risk-digest-section risk-digest-sources" id="sources">
+        <h2>Sources</h2>
+        <ol>
+          {sources.map((source) => (
+            <li>
+              <a href={source.href}>{source.text}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
     </div>
   </article>
 </Layout>
 
-<script is:inline src="/digest-rail.js" defer></script>
+<style>
+  .risk-brief .risk-digest-main {
+    max-width: 44rem;
+  }
+
+  .risk-brief .risk-brief-asof {
+    margin-top: -0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--digest-faint, rgba(248, 250, 252, 0.4));
+  }
+</style>

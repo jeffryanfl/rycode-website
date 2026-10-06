@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import EconomicsRail from '../components/EconomicsRail.astro';
+import RiskWatchList from '../components/RiskWatchList.astro';
 import { findArticle, formatDate } from '../lib/site';
 import '../styles/economics.css';
 
@@ -12,39 +13,14 @@ const rail = JSON.parse(
 
 const pieces = [
   {
-    href: '/economics/long-yields-hike-ai-credit-stress/',
-    title: 'Long yields, the hike, and AI credit stress hit in the same week.',
-    dek: 'The bond tape, the Fed vote, and data-center financing belong in one read.',
-  },
-  {
-    href: '/economics/post-inflation-dollars-pay-pre-inflation-debts/',
-    title: 'Inflation changes the real cost of fixed government debt.',
-    dek: 'Repayment dollars buy less than the dollars borrowed. That does not pay the debt off.',
-  },
-  {
-    href: '/economics/warsh-first-hike-oil-and-five-percent-ten-year/',
-    title: 'The first hike arrived with oil above $100 and the ten-year near 5 percent.',
-    dek: 'The 16 September 2026 vote was a quarter point. Energy and long rates were already tight.',
-  },
-  {
     href: '/economics/still-1998-not-1999/',
-    title: 'This boom already has revenue and profit.',
-    dek: 'The open question is the price paid for those earnings, and when private companies raise cash.',
-  },
-  {
-    href: '/economics/saas-barbell-2026/',
-    title: 'Software subscription stock prices fell in 2026 because the multiple fell.',
-    dek: 'Investors paid less for a dollar of sales. Revenue did not disappear.',
+    title: 'Paying up for the boom',
+    dek: 'This boom already has revenue and profit. The open question is the price paid for those earnings.',
   },
   {
     href: '/economics/jobs-print-was-strong-mix-is-the-story/',
-    title: 'August payrolls were strong. The mix of jobs is the story.',
+    title: 'Payrolls and the jobs mix',
     dek: 'Hiring people who do the work with AI, not only people who manage that work.',
-  },
-  {
-    href: '/economics/ten-trillion-to-roll/',
-    title: 'About $10 trillion of U.S. debt comes due and has to be refinanced.',
-    dek: 'Most of that is short-term bills the Treasury already replaces. The cash balance is a checking account, not a purchase program.',
   },
 ];
 
@@ -60,7 +36,7 @@ const cards = pieces.map((piece) => {
 ---
 
 <Layout
-  title="Economics — Rycode"
+  title="Economics - Rycode"
   description="Prices, cycles, and trade-offs."
   variant="economics"
 >
@@ -69,6 +45,10 @@ const cards = pieces.map((piece) => {
       <img class="economics-glyph" src="/landing/hub-economics.webp" alt="" width="81" height="72" />
       Economics
     </h1>
+  </div>
+
+  <div class="economics-watch">
+    <RiskWatchList list="economics" headingClass="economics-section" />
   </div>
 
   <div class="economics-landing">

@@ -1,11 +1,12 @@
 ---
 interface Props {
   items: string[];
+  class?: string;
 }
 
-const { items } = Astro.props;
+const { items, class: className = 'risk-watch' } = Astro.props;
 ---
 
-<ul class="risk-watch">
+<ul class={className}>
   {items.map((item) => <li>{item}</li>)}
 </ul>

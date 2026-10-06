@@ -1,57 +1,9 @@
 [
   {
-    "href": "/economics/long-yields-hike-ai-credit-stress/",
-    "title": "Long yields, the hike, and AI credit stress hit in the same week.",
-    "description": "The bond tape, the Fed vote, and data-center financing belong in one read.",
-    "date": "2026-09-27",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/long-yields-hike-ai-credit-stress.astro",
-    "slug": "economics-long-yields-hike-ai-credit-stress"
-  },
-  {
-    "href": "/economics/post-inflation-dollars-pay-pre-inflation-debts/",
-    "title": "Inflation changes the real cost of fixed government debt.",
-    "description": "Repayment dollars buy less than the dollars borrowed. That does not pay the debt off.",
-    "date": "2026-09-21",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/post-inflation-dollars-pay-pre-inflation-debts.astro",
-    "slug": "economics-post-inflation-dollars-pay-pre-inflation-debts"
-  },
-  {
-    "href": "/economics/warsh-first-hike-oil-and-five-percent-ten-year/",
-    "title": "The first hike arrived with oil above $100 and the ten-year near 5 percent.",
-    "description": "The 16 September 2026 vote was a quarter point. Energy and long rates were already tight.",
-    "date": "2026-09-17",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/warsh-first-hike-oil-and-five-percent-ten-year.astro",
-    "slug": "economics-warsh-first-hike-oil-and-five-percent-ten-year"
-  },
-  {
     "href": "/economics/still-1998-not-1999/",
-    "title": "This boom already has revenue and profit.",
-    "description": "The open question is the price paid for those earnings, and when private companies raise cash.",
-    "date": "2026-09-09",
+    "title": "Paying up for the boom",
+    "description": "This boom already has revenue and profit. The open question is the price paid for those earnings. The numbers below come from the /economics/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "economics",
     "series": "economics",
     "crumbs": [
@@ -61,13 +13,14 @@
       }
     ],
     "file": "src/pages/economics/still-1998-not-1999.astro",
-    "slug": "economics-still-1998-not-1999"
+    "slug": "economics-still-1998-not-1999",
+    "minutes": 3
   },
   {
     "href": "/economics/jobs-print-was-strong-mix-is-the-story/",
-    "title": "August payrolls were strong. The mix of jobs is the story.",
-    "description": "Hiring people who do the work with AI, not only people who manage that work.",
-    "date": "2026-09-09",
+    "title": "Payrolls and the jobs mix",
+    "description": "Hiring people who do the work with AI, not only people who manage that work. The numbers below come from the /economics/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "economics",
     "series": "economics",
     "crumbs": [
@@ -77,45 +30,14 @@
       }
     ],
     "file": "src/pages/economics/jobs-print-was-strong-mix-is-the-story.astro",
-    "slug": "economics-jobs-print-was-strong-mix-is-the-story"
-  },
-  {
-    "href": "/economics/ten-trillion-to-roll/",
-    "title": "About $10 trillion of U.S. debt comes due and has to be refinanced.",
-    "description": "Most of that is short-term bills the Treasury already replaces. The cash balance is a checking account, not a purchase program.",
-    "date": "2026-09-02",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/ten-trillion-to-roll.astro",
-    "slug": "economics-ten-trillion-to-roll"
-  },
-  {
-    "href": "/economics/saas-barbell-2026/",
-    "title": "Software subscription stock prices fell in 2026 because the multiple fell.",
-    "description": "Investors paid less for a dollar of sales. Revenue did not disappear.",
-    "date": "2026-08-27",
-    "section": "economics",
-    "series": "economics",
-    "crumbs": [
-      {
-        "href": "/economics/",
-        "label": "Economics"
-      }
-    ],
-    "file": "src/pages/economics/saas-barbell-2026.astro",
-    "slug": "economics-saas-barbell-2026"
+    "slug": "economics-jobs-print-was-strong-mix-is-the-story",
+    "minutes": 3
   },
   {
     "href": "/risk/when-force-majeure-hits-the-ai-build-out/",
-    "title": "AI campus leases can defer rent when power and air permits miss the date in the contract.",
-    "description": "Risks: cash to the developer and lenders slips, leased megawatts are not firm, and private-credit packages for similar campuses reprice.",
-    "date": "2026-09-26",
+    "title": "AI build-out contagion",
+    "description": "A slip in AI campus building can travel to chip stocks and then to the whole market. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "risk",
     "series": "risk",
     "crumbs": [
@@ -125,13 +47,31 @@
       }
     ],
     "file": "src/pages/risk/when-force-majeure-hits-the-ai-build-out.astro",
-    "slug": "risk-when-force-majeure-hits-the-ai-build-out"
+    "slug": "risk-when-force-majeure-hits-the-ai-build-out",
+    "minutes": 3
+  },
+  {
+    "href": "/risk/oil-and-the-100-line/",
+    "title": "Oil and the $100 line",
+    "description": "This brief tracks WTI crude against the $100 line it settled above on the day of the Fed's first rate hike, and the 10-year Treasury yield against 5%. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
+    "section": "risk",
+    "series": "risk",
+    "crumbs": [
+      {
+        "href": "/risk/",
+        "label": "Risk"
+      }
+    ],
+    "file": "src/pages/risk/oil-and-the-100-line.astro",
+    "slug": "risk-oil-and-the-100-line",
+    "minutes": 2
   },
   {
     "href": "/risk/when-the-spender-runs-the-printer/",
-    "title": "Debt held by the public was about $32.39 trillion on 17 September 2026, and CBO has that stock rising from about 101% of GDP in 2026 to about 120% in 2036.",
-    "description": "Risks: if cheap money is used to ease that bill, inflation and financial repression transfer cost to households, and the next refinance of that stock gets more expensive.",
-    "date": "2026-09-21",
+    "title": "Debt refinancing",
+    "description": "Treasury has to sell more debt at auction. When buyers bid less, yields rise and the cost reaches mortgages. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "risk",
     "series": "risk",
     "crumbs": [
@@ -141,29 +81,14 @@
       }
     ],
     "file": "src/pages/risk/when-the-spender-runs-the-printer.astro",
-    "slug": "risk-when-the-spender-runs-the-printer"
-  },
-  {
-    "href": "/risk/the-ban-lands-on-open-source/",
-    "title": "In July 2026, OpenAI eval agents left a mis-set sandbox and reached Hugging Face.",
-    "description": "Risks: a public scare that lands on open weights, closed APIs that blocked parts of the forensics, and a ban path that has not been passed.",
-    "date": "2026-09-13",
-    "section": "risk",
-    "series": "risk",
-    "crumbs": [
-      {
-        "href": "/risk/",
-        "label": "Risk"
-      }
-    ],
-    "file": "src/pages/risk/the-ban-lands-on-open-source.astro",
-    "slug": "risk-the-ban-lands-on-open-source"
+    "slug": "risk-when-the-spender-runs-the-printer",
+    "minutes": 3
   },
   {
     "href": "/risk/six-percent-that-stays/",
-    "title": "The 30-year Treasury yield in late August 2026 was about 5.21 to 5.26 percent.",
-    "description": "Risks: a hold near 6 percent through a long-term borrow date, not a single morning print. That would raise new long-term public debt and mortgages after the spread.",
-    "date": "2026-09-02",
+    "title": "The 30-year yield holds near 6%",
+    "description": "If the 30-year Treasury yield reaches 6% and stays there, new long-term government debt and mortgages cost more. The numbers below come from the /risk/ watch-list feed.",
+    "date": "2026-10-05",
     "section": "risk",
     "series": "risk",
     "crumbs": [
@@ -173,39 +98,8 @@
       }
     ],
     "file": "src/pages/risk/six-percent-that-stays.astro",
-    "slug": "risk-six-percent-that-stays"
-  },
-  {
-    "href": "/opinions/the-license-starts-at-their-scale/",
-    "title": "The Safety Facade: How AI Giants are Engineering Regulatory Capture",
-    "description": "They asked Washington for an oversite bar only a handful of firms can reach. That is capture with a safety facade, and the scare they used is one their own eval agents created.",
-    "date": "2026-09-30",
-    "section": "opinions",
-    "series": "opinions",
-    "crumbs": [
-      {
-        "href": "/opinions/",
-        "label": "Opinions"
-      }
-    ],
-    "file": "src/pages/opinions/the-license-starts-at-their-scale.astro",
-    "slug": "opinions-the-license-starts-at-their-scale"
-  },
-  {
-    "href": "/ai/meta-named-an-enterprise-stack/",
-    "title": "Meta named an enterprise stack. It did not ship a new buyer.",
-    "description": "The company is trying to sell the consumer agent line as a second business.",
-    "date": "2026-09-28",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/meta-named-an-enterprise-stack.astro",
-    "slug": "ai-meta-named-an-enterprise-stack"
+    "slug": "risk-six-percent-that-stays",
+    "minutes": 2
   },
   {
     "href": "/ai/glossary/",
@@ -222,22 +116,6 @@
     ],
     "file": "src/pages/ai/glossary.astro",
     "slug": "ai-glossary"
-  },
-  {
-    "href": "/ai/frontier-price-meets-open-weight-ipo/",
-    "title": "Frontier price meets open-weight, and the IPO clock",
-    "description": "Open-weight cost curves are colliding with frontier listing calendars",
-    "date": "2026-09-27",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/frontier-price-meets-open-weight-ipo.astro",
-    "slug": "ai-frontier-price-meets-open-weight-ipo"
   },
   {
     "href": "/ai/swarms/what-an-agent-swarm-is/",
@@ -260,10 +138,10 @@
     "slug": "ai-swarms-what-an-agent-swarm-is"
   },
   {
-    "href": "/ai/grok-bot-set-a-new-bar/",
-    "title": "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.",
-    "description": "What these agent harnesses can actually do today, one capability at a time",
-    "date": "2026-09-25",
+    "href": "/ai/what-xai-has-running/",
+    "title": "What xAI has running",
+    "description": "A first-cluster claim, not a finished campus.",
+    "date": "2026-10-04",
     "section": "ai",
     "series": "ai-dive",
     "crumbs": [
@@ -272,56 +150,8 @@
         "label": "A.I."
       }
     ],
-    "file": "src/pages/ai/grok-bot-set-a-new-bar.astro",
-    "slug": "ai-grok-bot-set-a-new-bar"
-  },
-  {
-    "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
-    "title": "Chat models write strings. System One returns typed decisions.",
-    "description": "Why Jev changes the scoreboard for software automation",
-    "date": "2026-09-20",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/chat-models-write-strings-system-one-returns-decisions.astro",
-    "slug": "ai-chat-models-write-strings-system-one-returns-decisions"
-  },
-  {
-    "href": "/ai/ten-thousand-agents-is-not-a-genius/",
-    "title": "The claimed math breakthrough was agent scale and token spend",
-    "description": "Ten thousand agents is not a genius",
-    "date": "2026-09-13",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/ten-thousand-agents-is-not-a-genius.astro",
-    "slug": "ai-ten-thousand-agents-is-not-a-genius"
-  },
-  {
-    "href": "/ai/next-token-engine/",
-    "title": "A next-token engine with an RLVR post-train and a tool loop.",
-    "description": "How staged training and tools shape a next-token engine.",
-    "date": "2026-08-25",
-    "section": "ai",
-    "series": "ai-dive",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      }
-    ],
-    "file": "src/pages/ai/next-token-engine.astro",
-    "slug": "ai-next-token-engine"
+    "file": "src/pages/ai/what-xai-has-running.astro",
+    "slug": "ai-what-xai-has-running"
   },
   {
     "href": "/ai/models/typesafe/jev/",
@@ -766,7 +596,7 @@
   {
     "href": "/ai/models/google/gemini-4-argon/",
     "title": "Gemini 4 Argon",
-    "description": "Announced 30 September 2026 for trusted cyber defenders, not the public.",
+    "description": "Announced 30 Sep 2026. Trusted cyber defenders first, not the public.",
     "date": "2026-10-01",
     "section": "ai",
     "series": "ai-google",
@@ -1206,7 +1036,7 @@
   {
     "href": "/ai/hardware/chips/terafab/",
     "title": "Terafab",
-    "description": "Chip fab. SpaceX + Tesla. Not a training hall.",
+    "description": "Chip fab. SpaceX and Tesla. Phase 1 is $16.8B.",
     "date": "2026-09-13",
     "section": "ai",
     "series": "ai-hardware",
@@ -1230,7 +1060,7 @@
   {
     "href": "/ai/hardware/data-centers/memphis-colossus/",
     "title": "Memphis / Colossus",
-    "description": "Training campus. Models learn here. Not a chip foundry.",
+    "description": "Training campus in Memphis. 170 PB/s memory bandwidth and 2.8 Tb/s per server.",
     "date": "2026-09-13",
     "section": "ai",
     "series": "ai-hardware",
@@ -1250,5 +1080,221 @@
     ],
     "file": "src/pages/ai/hardware/data-centers/memphis-colossus.astro",
     "slug": "ai-hardware-data-centers-memphis-colossus"
+  },
+  {
+    "href": "/ai/hardware/chips/mtia/",
+    "title": "MTIA",
+    "description": "MTIA 300, 400, 450, and 500. The 300 is in production with 216 GB HBM3E. The 400 is a 72-accelerator rack. Compute FLOPS from the 300 to the 500 is 25x.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/mtia.astro",
+    "slug": "ai-hardware-chips-mtia"
+  },
+  {
+    "href": "/ai/hardware/chips/blackwell/",
+    "title": "Blackwell",
+    "description": "GB300 NVL72 is 72 Blackwell Ultra GPUs and 36 Grace CPUs, with 20 TB of GPU memory, 130 TB/s NVLink, and 1,440 PFLOPS of FP4 Tensor Core with sparsity.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/blackwell.astro",
+    "slug": "ai-hardware-chips-blackwell"
+  },
+  {
+    "href": "/ai/hardware/chips/rubin/",
+    "title": "Rubin",
+    "description": "The Rubin GPU is 50 PFLOPS of NVFP4 inference and 288 GB of HBM4. Vera Rubin NVL72 is 72 Rubin GPUs and 36 Vera CPUs.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/rubin.astro",
+    "slug": "ai-hardware-chips-rubin"
+  },
+  {
+    "href": "/ai/hardware/chips/instinct/",
+    "title": "Instinct",
+    "description": "The custom Instinct GPU is based on the MI450 architecture, with Venice EPYC CPUs, ROCm, and Helios. MI300 and MI350 are the series Meta already runs.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/instinct.astro",
+    "slug": "ai-hardware-chips-instinct"
+  },
+  {
+    "href": "/ai/hardware/chips/meta/",
+    "title": "Meta stack",
+    "description": "Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta.astro",
+    "slug": "ai-hardware-chips-meta"
+  },
+  {
+    "href": "/ai/hardware/data-centers/prometheus/",
+    "title": "Prometheus",
+    "description": "New Albany, Ohio. Over 1 gigawatt and tens of thousands of graphics chips once complete.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/data-centers/",
+        "label": "Data centers"
+      }
+    ],
+    "file": "src/pages/ai/hardware/data-centers/prometheus.astro",
+    "slug": "ai-hardware-data-centers-prometheus"
+  },
+  {
+    "href": "/ai/hardware/data-centers/hyperion/",
+    "title": "Hyperion",
+    "description": "Richland Parish, Louisiana. 5 gigawatts and more than $50 billion.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/data-centers/",
+        "label": "Data centers"
+      }
+    ],
+    "file": "src/pages/ai/hardware/data-centers/hyperion.astro",
+    "slug": "ai-hardware-data-centers-hyperion"
+  },
+  {
+    "href": "/ai/hardware/data-centers/eagle-mountain/",
+    "title": "Eagle Mountain",
+    "description": "Utah. Raised to more than $3 billion on 14 September 2026.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/data-centers/",
+        "label": "Data centers"
+      }
+    ],
+    "file": "src/pages/ai/hardware/data-centers/eagle-mountain.astro",
+    "slug": "ai-hardware-data-centers-eagle-mountain"
+  },
+  {
+    "href": "/ai/hardware/power/meta-nuclear/",
+    "title": "Meta nuclear package",
+    "description": "Up to 6.6 gigawatts by 2035.",
+    "date": "2026-10-04",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/power/",
+        "label": "Power"
+      }
+    ],
+    "file": "src/pages/ai/hardware/power/meta-nuclear.astro",
+    "slug": "ai-hardware-power-meta-nuclear"
   }
 ]

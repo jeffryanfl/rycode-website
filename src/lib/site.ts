@@ -16,6 +16,8 @@ export type Article = {
   crumbs: Crumb[];
   file: string;
   slug: string;
+  /** Read time for pages whose text is built from feeds, where the source file undercounts. */
+  minutes?: number;
 };
 
 export const articles = articlesJson as Article[];
@@ -108,7 +110,7 @@ export function articleNav(pathname: string): ArticleNav | null {
     sectionPrev,
     sectionNext,
     related,
-    minutes: readingMinutes(article.file),
+    minutes: article.minutes ?? readingMinutes(article.file),
   };
 }
 

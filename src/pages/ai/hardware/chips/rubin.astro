@@ -1,0 +1,160 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Rubin - Hardware - Rycode"
+  description="The Rubin GPU is 50 PFLOPS of NVFP4 inference and 288 GB of HBM4. Vera Rubin NVL72 is 72 Rubin GPUs and 36 Vera CPUs."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Rubin</h1>
+    <p class="ai-model-dek">NVIDIA Rubin GPU and the Vera Rubin NVL72. 50 PFLOPS of NVFP4 inference and 288 GB of HBM4 on the GPU. The rack is 72 Rubin GPUs and 36 Vera CPUs. <a href="/ai/hardware/chips/blackwell/">Blackwell</a> is the prior family. Meta's buy is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Rubin GPU</h2>
+    <p>Announced 5 January 2026. The Rubin GPU delivers 50 petaflops of NVFP4 compute for AI inference. NVIDIA says up to a 10x reduction in inference token cost and a 4x reduction in the number of GPUs to train mixture-of-experts models, compared with the Blackwell platform. Rubin is in full production. Rubin-based products will be available from partners in the second half of 2026.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Rubin GPU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NVFP4 inference</td>
+            <td>50 PFLOPS, sparse</td>
+          </tr>
+          <tr>
+            <td>NVFP4 training</td>
+            <td>35 PFLOPS, dense</td>
+          </tr>
+          <tr>
+            <td>FP8/FP6 training</td>
+            <td>17.5 PFLOPS, dense</td>
+          </tr>
+          <tr>
+            <td>FP16/BF16</td>
+            <td>4 PFLOPS, dense</td>
+          </tr>
+          <tr>
+            <td>TF32</td>
+            <td>2 PFLOPS, dense</td>
+          </tr>
+          <tr>
+            <td>FP32</td>
+            <td>130 TFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP64</td>
+            <td>33 TFLOPS</td>
+          </tr>
+          <tr>
+            <td>Memory</td>
+            <td>288 GB HBM4 at 19.2 TB/s</td>
+          </tr>
+          <tr>
+            <td>NVLink</td>
+            <td>3 TB/s</td>
+          </tr>
+          <tr>
+            <td>Networking</td>
+            <td>0.45 TB/s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="ai-model-section">Vera Rubin NVL72</h2>
+    <p>The 5 January 2026 release says the Vera Rubin NVL72 combines 72 Rubin GPUs, 36 Vera CPUs, and NVLink 6.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Vera Rubin NVL72</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPUs</td>
+            <td>72 Rubin</td>
+          </tr>
+          <tr>
+            <td>CPUs</td>
+            <td>36 Vera</td>
+          </tr>
+          <tr>
+            <td>CPU</td>
+            <td>3,168 Olympus cores and 6,336 threads</td>
+          </tr>
+          <tr>
+            <td>NVFP4 inference</td>
+            <td>3,600 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>NVFP4 training</td>
+            <td>2,520 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP8/FP6 training</td>
+            <td>1,260 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP16/BF16</td>
+            <td>288 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>TF32</td>
+            <td>144 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP32</td>
+            <td>9,360 TFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP64</td>
+            <td>2,400 TFLOPS</td>
+          </tr>
+          <tr>
+            <td>GPU memory</td>
+            <td>20.7 TB HBM4 at 1,400 TB/s</td>
+          </tr>
+          <tr>
+            <td>NVLink</td>
+            <td>216 TB/s</td>
+          </tr>
+          <tr>
+            <td>NVLink-C2C</td>
+            <td>65 TB/s</td>
+          </tr>
+          <tr>
+            <td>CPU memory</td>
+            <td>Up to 54 TB LPDDR5X</td>
+          </tr>
+          <tr>
+            <td>Networking</td>
+            <td>32.4 TB/s</td>
+          </tr>
+          <tr>
+            <td>Inlet temperature</td>
+            <td>45°C</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>On the product-page table, inference figures are sparse. Training, FP16, BF16, and TF32 figures are dense. Networking bandwidth is bi-directional.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer">NVIDIA, 5 January 2026</a></li>
+      <li><a href="https://www.nvidia.com/en-us/data-center/vera-rubin-nvl72/">NVIDIA Vera Rubin NVL72</a></li>
+      <li><a href="/ai/hardware/chips/blackwell/">Blackwell</a></li>
+      <li><a href="/ai/hardware/chips/meta/">Meta stack</a></li>
+    </ul>
+  </article>
+</Layout>
