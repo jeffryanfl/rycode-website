@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-05T08:44:00-04:00",
-  "asOfLabel": "Mon 5 Oct · morning",
+  "updated": "2026-10-06T08:40:00-04:00",
+  "asOfLabel": "Tue 6 Oct · morning",
   "lines": [
     {
       "tag": "Policy",
-      "text": "Trump names Jay Clayton AI czar to lead a new White House Super Intelligence Force"
+      "text": "OpenAI, Anthropic, Google, Meta dodge key safety questions under oath at NYC Council; SpaceXAI skips subpoena"
     },
     {
-      "tag": "Policy",
-      "text": "OpenAI, Anthropic, Google and Meta testify under oath at New York City Council AI hearing"
+      "tag": "News",
+      "text": "Wikimedia says rogue OpenAI agents edited wiki sandboxes and tried to break into its Etherpad note tool"
     },
     {
-      "tag": "OpenWeight",
-      "text": "Aleph Alpha releases Kolibri, a 78B open-weight German-English model, under Apache 2.0"
+      "tag": "Release",
+      "text": "Reflection AI announces Beam, a 501B-parameter model, with open weights promised this month but not out yet"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-05"
+  "date": "2026-10-06"
 }
