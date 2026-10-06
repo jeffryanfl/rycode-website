@@ -94,10 +94,20 @@ export function debtRefiBriefNow(): DebtRefiText {
 export const UNEMPLOYMENT_MARKER = 4.1;
 export const UNEMPLOYMENT_MARKER_LABEL = 'Aug 4.1%';
 
+/**
+ * First August 2026 payroll print named in the jobs brief Backstory
+ * (BLS Employment Situation for August, released 4 Sep 2026): +162,000.
+ * Where we stand compares the feed's current August reading to this constant.
+ */
+export const AUGUST_FIRST_PRINT = { date: '2026-08-01', change: 162 };
+
 export function hiringBriefNow(): HiringText {
   const w = chainStepWindows('hiring', 'economics');
   if (!w.payrolls.compare) throw new Error('BRIEF: hiring payrolls step needs a compare average');
   const earn = w.payrolls.extra;
+  const augPoint = feedPoints({ feed: 'public/jobs.json', series: 'payrolls', key: 'change' }).find(
+    (p) => p.date === AUGUST_FIRST_PRINT.date,
+  );
   return hiringBrief({
     payrolls: w.payrolls.windowPoints.map((p) => asDated(p, w.payrolls.key)),
     payrollsCompare: w.payrolls.compare,
@@ -107,6 +117,8 @@ export function hiringBriefNow(): HiringText {
     unemploymentMarkerLabel: UNEMPLOYMENT_MARKER_LABEL,
     claims: w.claims.windowPoints.map((p) => asDated(p, w.claims.key)),
     claimsCompare: w.claims.compare,
+    augustFirstPrint: AUGUST_FIRST_PRINT,
+    augustCurrent: augPoint ? asDated(augPoint, 'change') : null,
   });
 }
 

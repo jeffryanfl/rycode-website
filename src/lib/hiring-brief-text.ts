@@ -32,11 +32,20 @@ export interface HiringInput {
   /** Weekly initial claims. */
   claims: Dated[];
   claimsCompare: { average: number; diff: number; flagged: boolean; n: number; label: string } | null;
+  /**
+   * First-print August payroll change (thousands) named in Backstory, and the
+   * feed's current reading for that month. When they differ, Where we stand
+   * states the revision. Units match payrolls: thousands of jobs.
+   */
+  augustFirstPrint: { date: string; change: number };
+  augustCurrent: Dated | null;
 }
 
 export interface HiringText {
   asOf: string;
   payrolls: string;
+  /** Set when the feed's August reading differs from the Backstory first print. */
+  augustRevision: string | null;
   unemployment: string;
   claims: string;
   strain: string;
@@ -122,6 +131,13 @@ export function hiringBrief(input: HiringInput): HiringText {
     payrolls += ` Average hourly earnings were up ${pct1(e.value)} over the year in ${monthYear(e.date)}${statusTag(e)}.`;
   }
 
+  let augustRevision: string | null = null;
+  const first = input.augustFirstPrint;
+  const aug = input.augustCurrent;
+  if (aug && Math.round(aug.value) !== Math.round(first.change)) {
+    augustRevision = `August has since been revised to ${jobs(aug.value)} from the first ${jobs(first.change)}.`;
+  }
+
   const un = input.unemployment;
   const latestUn = un[un.length - 1];
   const priorUn = un[un.length - 2];
@@ -191,6 +207,7 @@ export function hiringBrief(input: HiringInput): HiringText {
   return {
     asOf: `Numbers as of ${monthYear(latestPay.date)}${latestPay.status === 'preliminary' ? ' (preliminary)' : ''}.`,
     payrolls,
+    augustRevision,
     unemployment,
     claims,
     strain,

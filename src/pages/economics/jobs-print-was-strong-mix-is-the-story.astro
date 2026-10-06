@@ -69,7 +69,7 @@ const sources = [
       <section class="econ-digest-section" id="backstory">
         <h2>Backstory</h2>
         <p>On 4 Sep 2026 the Bureau of Labor Statistics reported that nonfarm payroll employment, the count of jobs at businesses and government, rose by 162,000 in August. Unemployment held at 4.1 percent. Average hourly earnings rose 0.3 percent on the month and 3.1 percent over the year. Economists surveyed by Dow Jones had expected 53,000, according to CNBC. June and July were revised up by a combined 55,000. Food services and drinking places added 59,000 jobs and local government education added 42,000. The information industry lost jobs.</p>
-        <p>That print was strong. The open question was the mix: who gets hired next. Frontier models now offer computer use, meaning the model can operate a desktop, open apps, click, type, and run multi-step tasks. When an agent can run the computer, the scarce skills become judging what to build, catching errors, and owning the outcome. The hiring sentence is blunt: hire people who do the work with AI, not a stack of managers watching managers.</p>
+        <p>The open question after that print was the mix: who gets hired next. Frontier models now offer computer use, meaning the model can operate a desktop, open apps, click, type, and run multi-step tasks. When an agent can run the computer, the scarce skills become judging what to build, catching errors, and owning the outcome. The hiring sentence is blunt: hire people who do the work with AI, not a stack of managers watching managers.</p>
         <p>On 2 Oct 2026 the September report showed payrolls up 29,000 and unemployment at 4.2 percent, so the August pace did not repeat. The product capability behind that hiring sentence is already shipping.</p>
       </section>
 
@@ -77,6 +77,7 @@ const sources = [
         <h2>Where we stand</h2>
         <p class="econ-brief-asof">{brief.asOf}</p>
         <p>{brief.payrolls}</p>
+        {brief.augustRevision && <p>{brief.augustRevision}</p>}
         <p>{brief.unemployment}</p>
         {brief.claims && <p>{brief.claims}</p>}
         <p>{brief.strain}</p>
