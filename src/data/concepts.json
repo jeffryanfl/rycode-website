@@ -29,6 +29,7 @@
       "articles": [
         "/ai/models/anthropic/claude-opus-5-5/",
         "/ai/models/anthropic/claude-sonnet-5-5/",
+        "/ai/models/anthropic/claude-haiku-5-5/",
         "/ai/models/anthropic/claude-opus-5/",
         "/ai/models/anthropic/claude-sonnet-5/",
         "/ai/models/anthropic/claude-haiku-4-5/",
@@ -72,6 +73,7 @@
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/anthropic/claude-opus-5-5/",
         "/ai/models/anthropic/claude-sonnet-5-5/",
+        "/ai/models/anthropic/claude-haiku-5-5/",
         "/ai/models/meta/muse/spark/",
         "/ai/models/typesafe/jev/",
         "/ai/glossary/"
@@ -259,6 +261,7 @@
       "articles": [
         "/ai/models/anthropic/claude-opus-5-5/",
         "/ai/models/anthropic/claude-sonnet-5-5/",
+        "/ai/models/anthropic/claude-haiku-5-5/",
         "/ai/models/openai/gpt-6-luna/",
         "/ai/models/openai/gpt-6-sol/",
         "/ai/models/open-weight/glm-5-3/",

@@ -214,6 +214,26 @@
     "slug": "ai-models-anthropic-claude-sonnet-5-5"
   },
   {
+    "href": "/ai/models/anthropic/claude-haiku-5-5/",
+    "title": "Claude Haiku 5.5",
+    "description": "Third Claude 5.5 model.",
+    "date": "2026-10-07",
+    "section": "ai",
+    "series": "ai-anthropic",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/anthropic/",
+        "label": "Anthropic"
+      }
+    ],
+    "file": "src/pages/ai/models/anthropic/claude-haiku-5-5.astro",
+    "slug": "ai-models-anthropic-claude-haiku-5-5"
+  },
+  {
     "href": "/ai/models/anthropic/claude-fable-5-1/",
     "title": "Claude Fable 5.1",
     "description": "Most capable widely released.",
@@ -276,7 +296,7 @@
   {
     "href": "/ai/models/anthropic/claude-haiku-4-5/",
     "title": "Claude Haiku 4.5",
-    "description": "Fastest.",
+    "description": "Prior Haiku.",
     "date": "2026-09-04",
     "section": "ai",
     "series": "ai-anthropic",

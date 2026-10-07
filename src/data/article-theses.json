@@ -10,6 +10,7 @@
   "/ai/models/typesafe/jev/": "Jev returns a typed decision a program can branch on.",
   "/ai/models/anthropic/claude-opus-5-5/": "Claude Opus 5.5 is the first Claude 5.5 model, released 22 September 2026, and Anthropic prices it below Opus 5 for similar work.",
   "/ai/models/anthropic/claude-sonnet-5-5/": "Claude Sonnet 5.5 is the second Claude 5.5 model, released 28 September 2026, at $2 per million input tokens and $10 per million output tokens.",
+  "/ai/models/anthropic/claude-haiku-5-5/": "Claude Haiku 5.5 is the third Claude 5.5 model, released 7 October 2026, and Anthropic's fastest, priced from $0.10 per million input tokens and $0.50 per million output tokens.",
   "/ai/models/anthropic/claude-fable-5-1/": "Claude Fable 5.1 is Anthropic's most capable widely released model, built for long-running agents and document work.",
   "/ai/models/anthropic/claude-opus-5/": "Claude Opus 5 is Anthropic's default model for most agentic coding and enterprise work, at $5 per million input tokens and $25 per million output tokens.",
   "/ai/models/anthropic/claude-sonnet-5/": "Claude Sonnet 5 is Anthropic's faster everyday model for coding and agents, at $2 per million input tokens and $10 per million output tokens.",
