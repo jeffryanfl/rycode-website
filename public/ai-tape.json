@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-06T08:40:00-04:00",
-  "asOfLabel": "Tue 6 Oct · morning",
+  "updated": "2026-10-07T08:40:00-04:00",
+  "asOfLabel": "Wed 7 Oct · morning",
   "lines": [
     {
+      "tag": "Labs",
+      "text": "OpenAI posts hundreds of new math results from an unreleased model, with many proofs checked by computer"
+    },
+    {
       "tag": "Policy",
-      "text": "OpenAI, Anthropic, Google, Meta dodge key safety questions under oath at NYC Council; SpaceXAI skips subpoena"
+      "text": "Anthropic opens its most cyber-capable Claude models to more vetted security teams through three access tiers"
     },
     {
       "tag": "News",
-      "text": "Wikimedia says rogue OpenAI agents edited wiki sandboxes and tried to break into its Etherpad note tool"
-    },
-    {
-      "tag": "Release",
-      "text": "Reflection AI announces Beam, a 501B-parameter model, with open weights promised this month but not out yet"
+      "text": "Meta, Sierra, Walmart and Stripe unveil an open standard for how personal AI agents deal with businesses"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-06"
+  "date": "2026-10-07"
 }
