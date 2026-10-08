@@ -1,3 +1,28 @@
 ---
-return Astro.redirect('/ai/hardware/chips/meta/', 301);
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
 ---
+
+<Layout
+  title="Meta and AMD - Hardware - Rycode"
+  description="AMD will supply up to 6 gigawatts of Instinct GPUs. The first gigawatt is a custom MI450, with Helios racks. Meta already runs MI300 and MI350."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Meta and AMD</h1>
+    <p class="ai-model-dek">The buy, not the chip spec. The GPU page is <a href="/ai/hardware/chips/instinct/">Instinct</a>. The rest of the suppliers are on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Up to 6 gigawatts</h2>
+    <p>On 24 February 2026 AMD said Meta would deploy up to 6 gigawatts of Instinct GPUs. The first deployment is a custom Instinct GPU based on the MI450 architecture. Shipments for the first gigawatt begin in the second half of 2026. That first gigawatt also includes 6th Gen EPYC CPUs, codenamed Venice, the ROCm software stack, and Helios racks.</p>
+
+    <h2 class="ai-model-section">What Meta already runs</h2>
+    <p>The same announcement says Meta already runs millions of EPYC CPUs and significant deployments of MI300 and MI350 series GPUs. Those are the installed machines. The MI450 order is the next one, and it is sized in gigawatts rather than a single rack.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus">AMD, 24 February 2026</a></li>
+    </ul>
+  </article>
+</Layout>

@@ -5,6 +5,7 @@
       "label": "Open weights",
       "blurb": "Published model weights you can download and run yourself, versus renting a frontier API.",
       "articles": [
+        "/ai/frontier-price-meets-open-weight-ipo/",
         "/ai/models/open-weight/glm-5-3/",
         "/ai/models/google/gemma/",
         "/ai/models/open-weight/kimi-k3/",
@@ -27,6 +28,7 @@
       "label": "Frontier pricing",
       "blurb": "What a closed lab charges for tokens, and how an open-weight price pulls that number down.",
       "articles": [
+        "/ai/frontier-price-meets-open-weight-ipo/",
         "/ai/models/anthropic/claude-opus-5-5/",
         "/ai/models/anthropic/claude-sonnet-5-5/",
         "/ai/models/anthropic/claude-haiku-5-5/",
@@ -52,6 +54,9 @@
       "blurb": "Many agents on one job, spending tokens and messages to reach a result one model does not.",
       "articles": [
         "/ai/swarms/what-an-agent-swarm-is/",
+        "/ai/grok-bot-set-a-new-bar/",
+        "/ai/ten-thousand-agents-is-not-a-genius/",
+        "/ai/meta-named-an-enterprise-stack/",
         "/ai/models/meta/muse/code/",
         "/ai/models/xai/grok-bot/",
         "/ai/glossary/"
@@ -287,6 +292,7 @@
         "/ai/models/deepseek/thinking/",
         "/ai/models/deepseek/v3/",
         "/ai/models/deepseek/v4-pro/",
+        "/ai/chat-models-write-strings-system-one-returns-decisions/",
         "/ai/models/typesafe/jev/",
         "/ai/models/xai/models/grok-4-20/",
         "/ai/models/xai/models/grok-4-3/",
@@ -325,6 +331,9 @@
         "/ai/hardware/chips/blackwell/",
         "/ai/hardware/chips/rubin/",
         "/ai/hardware/chips/instinct/",
+        "/ai/hardware/chips/meta-nvidia/",
+        "/ai/hardware/chips/meta-amd/",
+        "/ai/hardware/chips/meta-broadcom/",
         "/ai/hardware/chips/meta/",
         "/ai/hardware/data-centers/prometheus/",
         "/ai/hardware/data-centers/hyperion/",
@@ -342,6 +351,8 @@
       "label": "Training loop",
       "blurb": "A language model as a next-token predictor, shaped by staged training and a tool loop.",
       "articles": [
+        "/ai/next-token-engine/",
+        "/ai/meta-named-an-enterprise-stack/",
         "/ai/glossary/"
       ],
       "links": [

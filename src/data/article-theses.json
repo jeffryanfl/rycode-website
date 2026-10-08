@@ -63,5 +63,14 @@
   "/ai/hardware/chips/blackwell/": "GB300 NVL72 is 72 Blackwell Ultra GPUs and 36 Grace CPUs, with 20 TB of GPU memory, 130 TB/s NVLink, and 1,440 PFLOPS of FP4 Tensor Core with sparsity.",
   "/ai/hardware/chips/rubin/": "The Rubin GPU is 50 PFLOPS of NVFP4 inference and 288 GB of HBM4, and Vera Rubin NVL72 is 72 Rubin GPUs and 36 Vera CPUs.",
   "/ai/hardware/chips/instinct/": "The custom Instinct GPU is based on the MI450 architecture, and MI300 and MI350 are the series Meta already runs.",
-  "/ai/hardware/chips/meta/": "Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct."
+  "/ai/hardware/chips/meta/": "Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct.",
+  "/ai/meta-named-an-enterprise-stack/": "Meta grouped Muse, Business Agent, Muse API, and Muse Code under a new enterprise name and still has no priced buyer on the announcement page.",
+  "/ai/frontier-price-meets-open-weight-ipo/": "Open-weight cost curves are colliding with frontier listing calendars, so IPO timing and API pricing get squeezed together.",
+  "/ai/grok-bot-set-a-new-bar/": "Grok Bot and Meta's Muse keep working after the chat tab closes, and the page lists what each product can do today.",
+  "/ai/chat-models-write-strings-system-one-returns-decisions/": "Chat models are trained to write text people read, and Jev returns a typed decision software can branch on.",
+  "/ai/ten-thousand-agents-is-not-a-genius/": "The claimed math result came from agent scale and token spend.",
+  "/ai/next-token-engine/": "A current language model is a next-token predictor shaped by staged training, verifiable-reward practice, and a tool loop.",
+  "/ai/hardware/chips/meta-nvidia/": "Nvidia says the Meta partnership deploys millions of Blackwell and Rubin GPUs, including GB300 systems, plus Grace CPUs.",
+  "/ai/hardware/chips/meta-amd/": "AMD will supply up to 6 gigawatts of Instinct GPUs. The first gigawatt is a custom MI450, with Helios racks. Meta already runs MI300 and MI350.",
+  "/ai/hardware/chips/meta-broadcom/": "Broadcom will deliver custom accelerator technology for Meta's MTIA program through 2029. The first phase is more than 1 gigawatt."
 }

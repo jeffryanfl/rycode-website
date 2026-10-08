@@ -1,3 +1,29 @@
 ---
-return Astro.redirect('/ai/hardware/chips/meta/', 301);
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
 ---
+
+<Layout
+  title="Meta and Broadcom - Hardware - Rycode"
+  description="Broadcom will deliver custom accelerator technology for Meta's MTIA program through 2029. The first phase is more than 1 gigawatt."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Meta and Broadcom</h1>
+    <p class="ai-model-dek">Custom accelerators for Meta's own silicon program. The MTIA generations are on the <a href="/ai/hardware/chips/mtia/">MTIA</a> page. The other suppliers are on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Through 2029</h2>
+    <p>On 14 April 2026 Meta and Broadcom announced a partnership through 2029. Broadcom will deliver technology supporting MTIA chips. The release calls that part the industry's first 2nm AI compute accelerator. That wording is the companies' claim, not an independent measurement.</p>
+
+    <h2 class="ai-model-section">More than 1 gigawatt to start</h2>
+    <p>The initial commitment exceeds 1 gigawatt and is the first phase of a multi-gigawatt rollout. Zuckerberg, in the same release, said more than 1 gigawatt of custom silicon to start and then multiple gigawatts over time. The Ethernet fabric in the release is described for tens of thousands of nodes.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-announces-extended-partnership-meta-deploy-technology">Broadcom, 14 April 2026</a></li>
+      <li><a href="https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/">Meta and Broadcom, 14 April 2026</a></li>
+    </ul>
+  </article>
+</Layout>

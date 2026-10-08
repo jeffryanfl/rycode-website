@@ -154,6 +154,102 @@
     "slug": "ai-what-xai-has-running"
   },
   {
+    "href": "/ai/meta-named-an-enterprise-stack/",
+    "title": "Meta named an enterprise stack. It did not ship a new buyer.",
+    "description": "The company is trying to sell the consumer agent line as a second business.",
+    "date": "2026-09-28",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/meta-named-an-enterprise-stack.astro",
+    "slug": "ai-meta-named-an-enterprise-stack"
+  },
+  {
+    "href": "/ai/frontier-price-meets-open-weight-ipo/",
+    "title": "Frontier price meets open-weight, and the IPO clock",
+    "description": "Open-weight cost curves are colliding with frontier listing calendars",
+    "date": "2026-09-27",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/frontier-price-meets-open-weight-ipo.astro",
+    "slug": "ai-frontier-price-meets-open-weight-ipo"
+  },
+  {
+    "href": "/ai/grok-bot-set-a-new-bar/",
+    "title": "Grok Bot set a new bar in the AI agent race. Meta's Muse raised the stakes.",
+    "description": "What these agent harnesses can actually do today, one capability at a time",
+    "date": "2026-09-25",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/grok-bot-set-a-new-bar.astro",
+    "slug": "ai-grok-bot-set-a-new-bar"
+  },
+  {
+    "href": "/ai/chat-models-write-strings-system-one-returns-decisions/",
+    "title": "Chat models write strings. System One returns typed decisions.",
+    "description": "Why Jev changes the scoreboard for software automation",
+    "date": "2026-09-20",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/chat-models-write-strings-system-one-returns-decisions.astro",
+    "slug": "ai-chat-models-write-strings-system-one-returns-decisions"
+  },
+  {
+    "href": "/ai/ten-thousand-agents-is-not-a-genius/",
+    "title": "The claimed math breakthrough was agent scale and token spend",
+    "description": "Ten thousand agents is not a genius",
+    "date": "2026-09-13",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/ten-thousand-agents-is-not-a-genius.astro",
+    "slug": "ai-ten-thousand-agents-is-not-a-genius"
+  },
+  {
+    "href": "/ai/next-token-engine/",
+    "title": "A next-token engine with an RLVR post-train and a tool loop.",
+    "description": "How staged training and tools shape a next-token engine.",
+    "date": "2026-08-25",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/next-token-engine.astro",
+    "slug": "ai-next-token-engine"
+  },
+  {
     "href": "/ai/models/typesafe/jev/",
     "title": "Jev",
     "description": "Typed decisions for software, not a chat flagship.",
@@ -1196,6 +1292,78 @@
     ],
     "file": "src/pages/ai/hardware/chips/instinct.astro",
     "slug": "ai-hardware-chips-instinct"
+  },
+  {
+    "href": "/ai/hardware/chips/meta-nvidia/",
+    "title": "Meta and Nvidia",
+    "description": "Nvidia says the Meta partnership deploys millions of Blackwell and Rubin GPUs, including GB300 systems, plus Grace CPUs.",
+    "date": "2026-02-17",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta-nvidia.astro",
+    "slug": "ai-hardware-chips-meta-nvidia"
+  },
+  {
+    "href": "/ai/hardware/chips/meta-amd/",
+    "title": "Meta and AMD",
+    "description": "AMD will supply up to 6 gigawatts of Instinct GPUs. The first gigawatt is a custom MI450, with Helios racks. Meta already runs MI300 and MI350.",
+    "date": "2026-02-24",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta-amd.astro",
+    "slug": "ai-hardware-chips-meta-amd"
+  },
+  {
+    "href": "/ai/hardware/chips/meta-broadcom/",
+    "title": "Meta and Broadcom",
+    "description": "Broadcom will deliver custom accelerator technology for Meta's MTIA program through 2029. The first phase is more than 1 gigawatt.",
+    "date": "2026-04-14",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/meta-broadcom.astro",
+    "slug": "ai-hardware-chips-meta-broadcom"
   },
   {
     "href": "/ai/hardware/chips/meta/",

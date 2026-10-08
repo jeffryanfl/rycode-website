@@ -1,3 +1,28 @@
 ---
-return Astro.redirect('/ai/hardware/chips/meta/', 301);
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
 ---
+
+<Layout
+  title="Meta and Nvidia - Hardware - Rycode"
+  description="Nvidia says the Meta partnership deploys millions of Blackwell and Rubin GPUs, including GB300 systems, plus Grace CPUs."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Meta and Nvidia</h1>
+    <p class="ai-model-dek">What Meta is buying from Nvidia. Rack figures are on <a href="/ai/hardware/chips/blackwell/">Blackwell</a> and <a href="/ai/hardware/chips/rubin/">Rubin</a>. The other suppliers are on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Millions of GPUs</h2>
+    <p>On 17 February 2026 Nvidia said the Meta partnership deploys CPUs and millions of Blackwell and Rubin GPUs, including GB300-based systems. Blackwell is the generation in those racks now. Rubin is the next Nvidia family in the same agreement.</p>
+
+    <h2 class="ai-model-section">Grace, then Vera</h2>
+    <p>Nvidia calls the Grace CPU piece the first large-scale Grace-only deployment. Vera CPUs have the potential for large-scale deployment in 2027. That 2027 line is a potential deployment, not a shipped count.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia">NVIDIA, 17 February 2026</a></li>
+    </ul>
+  </article>
+</Layout>
