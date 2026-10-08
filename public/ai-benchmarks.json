@@ -170,18 +170,18 @@
         "automationBench": null,
         "hle": {
           "value": "57.4%",
-          "notes": "with tools",
+          "notes": "with tools. Anthropic announce 7 Oct 2026. Company eval.",
           "source": "https://www.anthropic.com/claude-haiku-5-5"
         },
         "arcAgi": null,
         "aaIndex": {
           "value": 43,
           "effort": "max",
-          "aaModelLabel": "Claude Haiku 5.5 (max with fallback)",
+          "aaModelLabel": "Claude Haiku 5.5 (max)",
           "source": "https://artificialanalysis.ai/models/claude-haiku-5-5",
           "sourceKind": "aa",
-          "fetched": "2026-10-07",
-          "notes": "AA Intelligence Index from the model page fetched 7 Oct 2026. Page title label is Claude Haiku 5.5 (Max, Default Fallback). Not a lab announce score."
+          "fetched": "2026-10-08",
+          "notes": "AA Intelligence Index v4.3.2 from the model page, re-fetched 8 Oct 2026 (unchanged from 7 Oct). AA label is Claude Haiku 5.5 (max). #2 of 182 in its price class. Not a lab announce score."
         }
       },
       "sources": [

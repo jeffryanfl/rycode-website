@@ -470,6 +470,26 @@
     "slug": "ai-models-openai-dots"
   },
   {
+    "href": "/ai/models/openai/gpt-6-intelligent-ui/",
+    "title": "GPT-6 and Intelligent UI in ChatGPT",
+    "description": "GPT-6 answers with visuals and controls in the Chat tab.",
+    "date": "2026-10-08",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6-intelligent-ui.astro",
+    "slug": "ai-models-openai-gpt-6-intelligent-ui"
+  },
+  {
     "href": "/ai/models/openai/gpt-6-sol/",
     "title": "GPT-6 Sol",
     "description": "Mid-tier for complex coding and agentic work.",
@@ -1292,6 +1312,30 @@
     ],
     "file": "src/pages/ai/hardware/chips/instinct.astro",
     "slug": "ai-hardware-chips-instinct"
+  },
+  {
+    "href": "/ai/hardware/chips/ironwood/",
+    "title": "Ironwood",
+    "description": "Ironwood is Google's seventh-generation TPU, listed at $12 per chip-hour on demand and $5.40 on a three-year commitment in us-central1.",
+    "date": "2026-10-08",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/ironwood.astro",
+    "slug": "ai-hardware-chips-ironwood"
   },
   {
     "href": "/ai/hardware/chips/meta-nvidia/",

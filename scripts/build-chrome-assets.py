@@ -174,6 +174,12 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "claude-haiku-5-5.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-10-07"
+    elif target.name == "gpt-6-intelligent-ui.astro":
+        # Model card date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-10-08"
+    elif target.name == "ironwood.astro":
+        # Chip page date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-10-08"
     else:
         date = git_date(target)
     if minutes is None and rel in MINUTES:

@@ -23,8 +23,7 @@ import '../../../../styles/ai.css';
     <p>Named tools on the Responses API for this model include web search, file search, image generation, code interpreter, hosted shell, apply patch, skills, computer use, MCP, and tool search. Streaming and structured outputs are supported. Fine-tuning is not supported on the model page.</p>
     <h2 class="ai-model-section">Benchmarking</h2>
     <p>OpenAI’s 22 Sep community announce and model pages emphasize cost and availability over a full new harness table for Sol. Prefer Astra announce columns for older GPT-5.6 Sol comparisons, and prefer Artificial Analysis for independent Index.</p>
-    <p>Independent Artificial Analysis (22 Sep 2026 article): GPT-6 Sol (max) scores <strong>48</strong> on the Intelligence Index, about level with GPT-5.6 Sol, at roughly half the cost per Index task. Coding Agent Index in Codex harness: Sol (max) <strong>57</strong> (+2 vs GPT-5.6 Sol). AA notes lower hallucination on AA-Omniscience and mixed regressions on GDPval-AA. Do not paste Index into CursorBench, OSWorld, or ARC cells.</p>
-    <p>Lab-primary CursorBench, OSWorld, ARC, and DeepSWE numbers for GPT-6 Sol were not on the Sol docs page at draft time. Mark those cells UNKNOWN until OpenAI publishes a Sol table or appends them to the Astra system-card appendix.</p>
+    <p>Independent Artificial Analysis (22 Sep 2026 article): GPT-6 Sol (max) scores <strong>48</strong> on the Intelligence Index, about level with GPT-5.6 Sol, at roughly half the cost per Index task. Coding Agent Index in Codex harness: Sol (max) <strong>57</strong> (+2 vs GPT-5.6 Sol). AA notes lower hallucination on AA-Omniscience and mixed regressions on GDPval-AA. Artificial Analysis now marks GPT-6 Sol as deprecated on its site. OpenAI has since released <a href="/ai/models/openai/gpt-6.1-sol/">GPT-6.1 Sol</a> for the API.</p>
     <h2 class="ai-model-section">Hardware</h2>
     <p>OpenAI has not published training or serving silicon details for GPT-6 Sol on the model docs. Buyers purchase API tokens.</p>
     <h2 class="ai-model-section">Access and pricing</h2>
@@ -45,10 +44,12 @@ import '../../../../styles/ai.css';
       </table>
     </div>
     <p>Available in the API, ChatGPT Work, and Codex for Plus, Pro, Business, Enterprise, and Edu per OpenAI’s announce. Prompts over 272K input tokens are priced at 2× input/cache and 1.5× output for the full request. Fast mode is 2× applicable rates.</p>
-    <p>Sibling <a href="/ai/models/openai/gpt-6-luna/">GPT-6 Luna</a> (<code>gpt-6-luna</code>): $0.10 / $0.50 per million input/output; same 1.05M / 128K shape; Free and Go users can try Luna in the desktop app.</p>
+    <p>In ChatGPT, OpenAI’s 7 Oct post says paid plans now use a GPT-6 Sol tuned for everyday conversation, with <a href="/ai/models/openai/gpt-6-intelligent-ui/">Intelligent UI</a> in the Chat tab. Artificial Analysis scores the API model, not the ChatGPT version.</p>
+    <p>Sibling <a href="/ai/models/openai/gpt-6-luna/">GPT-6 Luna</a> (<code>gpt-6-luna</code>): $0.10 / $0.50 per million input/output; same 1.05M / 128K shape.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://developers.openai.com/api/docs/models/gpt-6-sol">GPT-6 Sol model page</a></li>
+      <li><a href="https://openai.com/index/gpt-6-for-everyone/">GPT-6 and Intelligent UI for everyone</a></li>
       <li><a href="https://developers.openai.com/api/docs/models/gpt-6-luna">GPT-6 Luna model page</a></li>
       <li><a href="https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925">OpenAI community announce (Sol &amp; Luna)</a></li>
       <li><a href="https://deploymentsafety.openai.com/gpt-6-astra/sec:appendix-sol-luna">GPT-6 Astra System Card appendix (Sol/Luna)</a></li>

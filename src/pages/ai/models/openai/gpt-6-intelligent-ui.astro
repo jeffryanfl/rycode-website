@@ -1,0 +1,82 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="GPT-6 and Intelligent UI in ChatGPT - A.I. - Rycode"
+  description="Intelligent UI lets GPT-6 answers in ChatGPT include visuals and controls you can tap, rolling out in the Chat tab from 7 October 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">GPT-6 and Intelligent UI in ChatGPT</h1>
+    <p class="ai-model-dek">On 7 October 2026, OpenAI started moving the main chat in ChatGPT to GPT-6 and added Intelligent UI (<a href="https://openai.com/index/gpt-6-for-everyone/">OpenAI, GPT-6 and Intelligent UI for everyone</a>). Intelligent UI lets an answer include pictures, maps, checklists, and controls you can tap or change, instead of text alone. No special prompt is needed, and plain text answers still happen when they fit (<a href="https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt">OpenAI Help, GPT-6 and other models in ChatGPT</a>). OpenAI says more than 1.2 billion people use ChatGPT each week.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">What it looks like</h2>
+    <p>OpenAI's launch post shows the range. Ask about the design of a 7-speed bike and you get a side-view diagram of its five connected systems. Ask for help with a Sunday roast and the plan comes with a guest count you can change, which recalculates the shopping quantities, plus a cooking checklist. Other examples include road-trip stops on a map, help building a wardrobe, and visual explainers for the central limit theorem, the Monty Hall problem, GDP, and drone photography.</p>
+    <p>You can also ask it to build a small tool inside the chat. OpenAI's examples are a bill splitter for dinner with friends, a retirement savings calculator, and a retro game you can play in the conversation.</p>
+    <h2 class="ai-model-section">How it works</h2>
+    <p>In OpenAI's words: "We built a library of native, streamable components, along with a compiler that processes the interface as the model generates it". A component is a ready-made building block for the screen, such as a chart, a map, or a button. Streamable means each piece can appear while the answer is still being written. The compiler is the software that turns what the model writes into the interface you see. OpenAI says this lets the interface appear "progressively as the model generates it, without waiting for the entire response to be complete".</p>
+    <p>OpenAI trained GPT-6 to choose the content, layout, visuals, and interaction for each answer. It graded the interfaces the model built for "clarity, usefulness, and completeness". OpenAI also says there is "still work ahead to improve the model's design judgment".</p>
+    <p>GPT-6 can also start answering while it keeps thinking, then add detail as it goes. OpenAI says GPT-6 Instant starts answering questions that need a web search 44% sooner on average than GPT-5.6 Instant. That is OpenAI's own measure, not an outside one.</p>
+    <h2 class="ai-model-section">Where it works and where it does not</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Works</th>
+            <th scope="col">Does not work</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>ChatGPT area</td><td>Chat tab</td><td>Work and Codex (their models are not changing)</td></tr>
+          <tr><td>Effort setting</td><td>Instant, Medium, High, Extra High</td><td>Pro</td></tr>
+          <tr><td>Apps</td><td>Web, updated mobile apps</td><td>Older Mac and Windows desktop apps</td></tr>
+          <tr><td>Developers</td><td>-</td><td>No API. OpenAI announced nothing for developers</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The effort setting is the slider that sets how long ChatGPT thinks before it answers. Pro effort runs GPT-6 Pro, which is powered by <a href="/ai/models/openai/gpt-6-astra/">GPT-6 Astra</a>, and Intelligent UI is not available there. OpenAI says the update "applies to the Chat experience in ChatGPT".</p>
+    <p>Intelligent UI has no separate usage limit. Your plan's normal limits apply. On the web, Settings has a "Layout and visuals" switch. Turning it off cuts back the visual elements, but some may still appear, and it does not switch ChatGPT to a text-only mode.</p>
+    <h2 class="ai-model-section">Who gets it, and when</h2>
+    <p>Plus, Pro, Business, and Enterprise started getting it on 7 October. Free and Go started on 8 October. For Enterprise, it depends on admin settings.</p>
+    <p>On Plus, the Medium and High effort levels are included. Extra High and Pro are not.</p>
+    <h2 class="ai-model-section">Which model is behind it</h2>
+    <p>OpenAI's launch post says paid plans get GPT-6 Sol and Free and Go get GPT-6 Luna. In OpenAI's words: "Both are tuned for everyday conversation".</p>
+    <p>OpenAI's own help page disagrees on one point. As of 8 October it still says Free and Go users get GPT-5.6 Luna, both for normal answers and for Think. The launch post, OpenAI's developer forum post, The Verge, and MacRumors all say GPT-6 Luna (<a href="https://community.openai.com/t/gpt-6-and-intelligent-ui-in-chatgpt/1404139">OpenAI Developer Community</a>, <a href="https://www.theverge.com/ai-artificial-intelligence/1007276/openai-chatgpt-intelligent-ui-gpt-6">The Verge</a>, <a href="https://www.macrumors.com/2026/10/07/chatgpt-intelligent-ui/">MacRumors</a>). The two OpenAI pages still disagreed when this page was written.</p>
+    <h2 class="ai-model-section">How the models score</h2>
+    <p>Artificial Analysis tests the API versions of these models, not the ChatGPT versions. OpenAI says the ChatGPT models are tuned for everyday conversation, so in-app results may differ from the scores below.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Artificial Analysis, max effort, fetched 8 Oct 2026</th>
+            <th scope="col">GPT-6 Sol</th>
+            <th scope="col">GPT-5.6 Sol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Intelligence Index</td><td>48</td><td>47</td></tr>
+          <tr><td>Cost per Index task</td><td>$1.04</td><td>$1.99</td></tr>
+          <tr><td>List price, input / output per million tokens</td><td>$2 / $10</td><td>$4 / $20</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The Intelligence Index is one score Artificial Analysis builds by running the same set of tests on every model. GPT-6 Sol scores about the same as GPT-5.6 Sol at about half the cost per task (<a href="https://artificialanalysis.ai/models/gpt-6-sol">Artificial Analysis, GPT-6 Sol</a>, <a href="https://artificialanalysis.ai/models/gpt-5-6-sol">Artificial Analysis, GPT-5.6 Sol</a>). Artificial Analysis now marks GPT-6 Sol as deprecated on its site. OpenAI has since released <a href="/ai/models/openai/gpt-6.1-sol/">GPT-6.1 Sol</a> for the API.</p>
+    <p><a href="/ai/models/openai/gpt-6-luna/">GPT-6 Luna</a> scores 38 on the same index, fetched 8 Oct 2026 (<a href="https://artificialanalysis.ai/models/gpt-6-luna">Artificial Analysis, GPT-6 Luna</a>).</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://openai.com/index/gpt-6-for-everyone/">OpenAI, GPT-6 and Intelligent UI for everyone</a></li>
+      <li><a href="https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt">OpenAI Help, GPT-6 and other models in ChatGPT</a></li>
+      <li><a href="https://community.openai.com/t/gpt-6-and-intelligent-ui-in-chatgpt/1404139">OpenAI Developer Community, GPT-6 and Intelligent UI in ChatGPT (Announcements)</a></li>
+      <li><a href="https://www.theverge.com/ai-artificial-intelligence/1007276/openai-chatgpt-intelligent-ui-gpt-6">The Verge, ChatGPT's 'Intelligent UI' update fills its responses with pictures, charts, and buttons</a> (secondary)</li>
+      <li><a href="https://www.macrumors.com/2026/10/07/chatgpt-intelligent-ui/">MacRumors, ChatGPT Gets GPT-6 and New Intelligent UI With Visual Answers</a> (secondary)</li>
+      <li><a href="https://artificialanalysis.ai/models/gpt-6-sol">Artificial Analysis, GPT-6 Sol</a> (secondary)</li>
+      <li><a href="https://artificialanalysis.ai/models/gpt-5-6-sol">Artificial Analysis, GPT-5.6 Sol</a> (secondary)</li>
+      <li><a href="https://artificialanalysis.ai/models/gpt-6-luna">Artificial Analysis, GPT-6 Luna</a> (secondary)</li>
+    </ul>
+  </article>
+</Layout>

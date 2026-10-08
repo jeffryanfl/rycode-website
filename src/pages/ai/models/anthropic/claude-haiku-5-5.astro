@@ -22,7 +22,8 @@ import '../../../../styles/ai.css';
     <h2 class="ai-model-section">Methods</h2>
     <p>Anthropic aims Haiku 5.5 at quick, repeated work: summaries, context compaction, database queries, classification, live customer support, and browser use. It pairs with Opus 5.5 and Sonnet 5.5 as a subagent on coding work. Anthropic says Sonnet 5.5 and Opus 5.5 remain the better choice for complex agentic coding. Cyber safeguards are narrower than on Sonnet 5.5: they allow a wider range of defensive security work but still block penetration testing and other attacker techniques. Biology safeguards are the same as Sonnet 5, Sonnet 5.5, and Opus 5. Requests these safeguards block do not fall back to another model. Thinking blocks work only in the account that produced them, or in an account linked to it.</p>
     <h2 class="ai-model-section">Benchmarking</h2>
-    <p>Numbers below are Anthropic’s Haiku 5.5 announce table. Do not mix these with an Artificial Analysis Intelligence Index.</p>
+    <p>Artificial Analysis gives Haiku 5.5 a score of <strong>43</strong> on its Intelligence Index at max effort (fetched 8 Oct 2026). The Intelligence Index is one number Artificial Analysis builds by running the same ten tests on every model. That ranks Haiku 5.5 second of 182 models in its price class. For scale, <a href="/ai/models/anthropic/claude-sonnet-5-5/">Claude Sonnet 5.5</a> scores 56 (<a href="https://artificialanalysis.ai/models/claude-sonnet-5-5">Artificial Analysis, Claude Sonnet 5.5</a>). <a href="/ai/models/openai/gpt-6-luna/">GPT-6 Luna</a>, which has the same $0.10 and $0.50 list price, scores 38 (<a href="https://artificialanalysis.ai/models/gpt-6-luna">Artificial Analysis, GPT-6 Luna</a>).</p>
+    <p>Numbers below are Anthropic’s Haiku 5.5 announce table. Anthropic ran these tests itself, and no outside group has confirmed them yet.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -47,7 +48,9 @@ import '../../../../styles/ai.css';
       </table>
     </div>
     <p>OSWorld here is version 2.1 on the offline subset, not the OSWorld 2.0 prints on the Opus 5.5 and Fable 5.1 pages. Anthropic’s announce charts also show Haiku 5.5 scores and cost at each effort level on OSWorld, GDPval-AA, and Humanity’s Last Exam.</p>
-    <p>Independent Artificial Analysis Intelligence Index (not a lab announce score): Haiku 5.5 at max effort scores <strong>43</strong> on the AA model page fetched 7 Oct 2026, with output at about 243 tokens per second. Source: <a href="https://artificialanalysis.ai/models/claude-haiku-5-5">AA Haiku 5.5 model page</a>. Do not paste Index into CursorBench, OSWorld, or ARC cells.</p>
+    <p>Artificial Analysis measured about 243 output tokens per second at max effort (<a href="https://artificialanalysis.ai/models/claude-haiku-5-5">AA Haiku 5.5 model page</a>, fetched 8 Oct 2026).</p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Anthropic has not said which chips train or serve Haiku 5.5. Across the company, it trains and runs Claude on AWS Trainium, Google TPUs, and NVIDIA GPUs (<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic, Google and Broadcom compute deal</a>). Its Google TPU deals are on the <a href="/ai/hardware/chips/ironwood/">Ironwood</a> page.</p>
     <h2 class="ai-model-section">Access and pricing</h2>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table">
@@ -63,18 +66,27 @@ import '../../../../styles/ai.css';
           <tr><td>Input / MTok</td><td>$0.10</td><td>$0.50</td><td>$1</td></tr>
           <tr><td>Output / MTok</td><td>$0.50</td><td>$2.50</td><td>$5</td></tr>
           <tr><td>Cache reads / MTok</td><td>$0.01</td><td>$0.05</td><td>$0.10</td></tr>
-          <tr><td>Cache writes / MTok</td><td>$0.125</td><td>$0.625</td><td>$1.25</td></tr>
+          <tr><td>Cache writes, 5 minutes / MTok</td><td>$0.125</td><td>$0.625</td><td>$1.25</td></tr>
+          <tr><td>Cache writes, 1 hour / MTok</td><td>$0.20</td><td>$1</td><td>-</td></tr>
         </tbody>
       </table>
     </div>
-    <p>The price depends on prompt length. Anthropic says prompts up to 100,000 tokens made up around 90% of requests to Haiku 4.5. On those prompts Haiku 5.5 is priced 90% below Haiku 4.5, and on longer prompts 50% below. The models overview also lists a 1-hour cache write at $0.20 per million tokens up to 100K and $1 over, and batch requests at half the input and output price. Available on the Claude API, Amazon Bedrock (<code>anthropic.claude-haiku-5-5</code>), Google Cloud, Microsoft Foundry, and Claude Platform on AWS. In the same launch Anthropic halved cache reads on <a href="/ai/models/anthropic/claude-sonnet-5-5/">Claude Sonnet 5.5</a> to $0.10 per million tokens.</p>
+    <p>The price depends on prompt length. Prompts up to 100,000 tokens get the low rate. Longer prompts cost five times as much per token. Cache reads are the cheap rate for reusing a prompt the model has already seen. The Batch API is 50% off these prices.</p>
+    <p>The list price is 90% below Haiku 4.5 on prompts up to 100,000 tokens. Anthropic says those short prompts made up about 90% of Haiku 4.5 requests. Above 100,000 tokens, the cut is only 50%. Add the new tokenizer, which counts the same text as about 30% more tokens, and Anthropic’s own average comes out at "around 75% less to run" than Haiku 4.5, not 90%.</p>
+    <p>Artificial Analysis shows the other half of the story, in figures fetched 8 Oct 2026. Running its full test set cost $0.21 per task on Haiku 5.5 at max effort, against $0.07 for GPT-6 Luna at the same list price. The reason is length. Haiku 5.5 wrote 440 million output tokens across the tests, against a median of 100 million for models in its class. The same sticker price does not mean the same bill. What you pay is price per token times the tokens a model actually writes.</p>
+    <p>Available on the Claude API, Amazon Bedrock (<code>anthropic.claude-haiku-5-5</code>), Google Cloud, Microsoft Foundry, and Claude Platform on AWS. In Claude Code, the <code>haiku</code> shortcut points to Haiku 5.5 only on the Anthropic API, and you need Claude Code v2.1.293 or later. On Claude Platform on AWS, Bedrock, Google Cloud, and Foundry, the shortcut still points to Haiku 4.5, so you pick <code>claude-haiku-5-5</code> by name. Anthropic will not retire the model before 7 October 2027.</p>
+    <p>In the same launch Anthropic halved cache reads on <a href="/ai/models/anthropic/claude-sonnet-5-5/">Claude Sonnet 5.5</a>, from $0.20 to $0.10 per million tokens. It says that makes Sonnet 5.5 about 20% cheaper on most agent work. Anthropic also added a monthly API credit: $100 for Max 5x, $200 for Max 20x, and up to $500 pooled for Team plans.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://www.anthropic.com/claude-haiku-5-5">Introducing Claude Haiku 5.5</a></li>
       <li><a href="https://platform.claude.com/docs/en/models/haiku-5-5/overview.md">Claude Haiku 5.5 overview</a></li>
       <li><a href="https://www.anthropic.com/claude/haiku">Claude Haiku</a></li>
       <li><a href="https://www.anthropic.com/claude-haiku-5-5-system-card">Claude Haiku 5.5 System Card</a></li>
-      <li><a href="https://artificialanalysis.ai/models/claude-haiku-5-5">AA: Claude Haiku 5.5 model page</a> (secondary, Index only)</li>
+      <li><a href="https://artificialanalysis.ai/models/claude-haiku-5-5">AA: Claude Haiku 5.5 model page</a> (secondary)</li>
+      <li><a href="https://artificialanalysis.ai/models/claude-sonnet-5-5">AA: Claude Sonnet 5.5 model page</a> (secondary)</li>
+      <li><a href="https://artificialanalysis.ai/models/gpt-6-luna">AA: GPT-6 Luna model page</a> (secondary)</li>
+      <li><a href="https://code.claude.com/docs/en/model-config">Claude Code, model configuration</a></li>
+      <li><a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic, Google and Broadcom compute deal (6 Apr 2026)</a></li>
     </ul>
   </article>
 </Layout>

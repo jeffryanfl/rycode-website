@@ -309,7 +309,8 @@
         "/ai/models/anthropic/claude-sonnet-5/",
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/openai/gpt-6.1-sol/",
-        "/ai/models/openai/dots/"
+        "/ai/models/openai/dots/",
+        "/ai/models/openai/gpt-6-intelligent-ui/"
       ],
       "links": [
         "open-weights",
@@ -331,6 +332,7 @@
         "/ai/hardware/chips/blackwell/",
         "/ai/hardware/chips/rubin/",
         "/ai/hardware/chips/instinct/",
+        "/ai/hardware/chips/ironwood/",
         "/ai/hardware/chips/meta-nvidia/",
         "/ai/hardware/chips/meta-amd/",
         "/ai/hardware/chips/meta-broadcom/",
