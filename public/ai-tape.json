@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-07T08:40:00-04:00",
-  "asOfLabel": "Wed 7 Oct · morning",
+  "updated": "2026-10-08T08:40:00-04:00",
+  "asOfLabel": "Thu 8 Oct · morning",
   "lines": [
     {
-      "tag": "Labs",
-      "text": "OpenAI posts hundreds of new math results from an unreleased model, with many proofs checked by computer"
+      "tag": "Release",
+      "text": "Anthropic ships Claude Haiku 5.5, its cheapest small model, scoring 43 on Artificial Analysis vs Luna's 38"
     },
     {
-      "tag": "Policy",
-      "text": "Anthropic opens its most cyber-capable Claude models to more vetted security teams through three access tiers"
+      "tag": "Release",
+      "text": "OpenAI puts GPT-6 in ChatGPT with Intelligent UI, answers that build live charts; Free and Go get it today"
     },
     {
-      "tag": "News",
-      "text": "Meta, Sierra, Walmart and Stripe unveil an open standard for how personal AI agents deal with businesses"
+      "tag": "Deal",
+      "text": "AI agent startup Manus raises more than $500M, its first round since China forced Meta to unwind its purchase"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-07"
+  "date": "2026-10-08"
 }
