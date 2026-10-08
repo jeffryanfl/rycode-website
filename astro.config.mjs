@@ -2,12 +2,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { emDashCheck } from './src/lib/copy-check.mjs';
 import { defineConfig } from 'astro/config';
 import {
   articleRoutesFromPages,
   conceptDrift,
+  conceptShapeDrift,
+  conceptShapeWarning,
   driftWarning,
   pathsFromSitemapXml,
+  reachabilityDrift,
+  reachabilityWarning,
 } from './src/lib/concept-drift.mjs';
 import { assertRiskCards } from './src/lib/risk-card-drift.mjs';
 
@@ -30,10 +35,9 @@ function conceptMapDrift() {
         const outDir = typeof dir === 'string' ? dir : fileURLToPath(dir);
         const sitemapPath = path.join(outDir, 'sitemap.xml');
         if (!fs.existsSync(sitemapPath)) {
-          console.warn(
+          throw new Error(
             'CONCEPT MAP DRIFT: build finished without dist/sitemap.xml, so the map was not checked.',
           );
-          return;
         }
         const sitemapPaths = pathsFromSitemapXml(fs.readFileSync(sitemapPath, 'utf8'));
         const articleRoutes = articleRoutesFromPages(path.join(process.cwd(), 'src', 'pages'));
@@ -41,10 +45,22 @@ function conceptMapDrift() {
           fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'concepts.json'), 'utf8'),
         );
         const { uncovered, missing } = conceptDrift(articleRoutes, sitemapPaths, data.concepts);
-        const warning = driftWarning(uncovered, missing);
+        const { empty, badLinks } = conceptShapeDrift(data.concepts);
+        const { unreachable } = reachabilityDrift(outDir, sitemapPaths);
+        const warning = [
+          driftWarning(uncovered, missing),
+          conceptShapeWarning(empty, badLinks),
+          reachabilityWarning(unreachable),
+        ]
+          .filter(Boolean)
+          .join('\n\n');
         if (warning) {
+          console.error(`\n${warning}\n`);
           throw new Error(`\n${warning}\n`);
         }
+        console.log(
+          `concept-map-drift: ${articleRoutes.length} articles mapped, ${data.concepts.length} concepts, ${sitemapPaths.length} sitemap URLs checked, all reachable from HOME.`,
+        );
       },
     },
   };
@@ -74,7 +90,7 @@ function servePublicIndex() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rycode.dev',
-  integrations: [riskCardDrift(), conceptMapDrift()],
+  integrations: [riskCardDrift(), conceptMapDrift(), emDashCheck()],
   redirects: {
     '/research': '/economics/',
     '/research/ten-trillion-to-roll': '/economics/',
@@ -103,6 +119,12 @@ export default defineConfig({
     '/ai/chat-models-write-strings-system-one-returns-decisions': '/ai/',
     '/ai/ten-thousand-agents-is-not-a-genius': '/ai/',
     '/ai/next-token-engine': '/ai/',
+  },
+  build: {
+    // public/_redirects answers every old URL above with a 301 on Netlify. Without this,
+    // Astro also writes a meta-refresh page for each one, and /old-url/index.html serves a 200.
+    // Add any new redirect to public/_redirects (both slash forms) as well as here.
+    redirects: false,
   },
   server: {
     host: true,

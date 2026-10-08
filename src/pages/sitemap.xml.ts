@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { APIRoute } from 'astro';
 import { articles } from '../lib/site';
 import { opinionPaths } from '../lib/opinions';
@@ -5,6 +7,16 @@ import { opinionPaths } from '../lib/opinions';
 export const prerender = true;
 
 const site = 'https://rycode.dev';
+
+/** A page whose only job is Astro.redirect() is an old URL, not a page. Netlify answers it with a 301. */
+function isRedirectOnly(globKey: string): boolean {
+  const file = path.join(process.cwd(), 'src', 'pages', globKey.replace(/^\.\//, ''));
+  if (!fs.existsSync(file)) return false;
+  const text = fs.readFileSync(file, 'utf8');
+  if (!/return\s+Astro\.redirect\(/.test(text)) return false;
+  const parts = text.split('---');
+  return (parts.length >= 3 ? parts.slice(2).join('---') : '').trim().length === 0;
+}
 
 function pageRoutes(): string[] {
   const modules = import.meta.glob('./**/*.astro');
@@ -18,11 +30,14 @@ function pageRoutes(): string[] {
       continue;
     }
     if (route.includes('[')) continue;
+    if (isRedirectOnly(key)) continue;
     if (route.endsWith('/index')) route = route.slice(0, -'/index'.length);
     paths.add(`/${route}/`);
   }
 
   for (const href of opinionPaths()) paths.add(href);
+  // The Opinions door stays on HOME, but an empty hub is not a page to send crawlers to.
+  if (opinionPaths().length === 0) paths.delete('/opinions/');
 
   return [...paths].sort((a, b) => a.localeCompare(b));
 }

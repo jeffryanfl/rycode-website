@@ -455,7 +455,7 @@ h1.ai-identity {
   color: var(--ai-ink);
 }
 
-/* Exam titles on the two bar charts. Same underline as the line-chart axis. */
+/* Exam title on the bar chart. Same underline as the line-chart axis. */
 .ai-bench-charts a.bc-title-link {
   text-decoration: underline;
   text-underline-offset: 0.15em;

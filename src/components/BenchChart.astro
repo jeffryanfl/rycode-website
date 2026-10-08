@@ -23,6 +23,10 @@ interface BarItem {
   value: number;
   display?: string;
   note?: string;
+  color?: string;
+  mark?: LabMarkId;
+  glyph?: string;
+  ring?: string;
 }
 interface LineSeries {
   name: string;
@@ -126,7 +130,15 @@ const yAt = (v: number) => PAD.t + plotH - ((v - lo) / (hi - lo)) * plotH;
 const SHAPES = ['circle', 'square', 'diamond', 'triangle'] as const;
 const INKS = ['#f8fafc', 'rgba(248, 250, 252, 0.74)', 'rgba(248, 250, 252, 0.56)', 'rgba(248, 250, 252, 0.4)'];
 const DASHES = ['', '6 4', '2 3', '9 3 2 3'];
+const PAPER = '#080a10';
 const ink = (series: LineSeries, index: number) => series.color || INKS[index % INKS.length];
+/* A dark glyph is drawn for a light disc. On the paper disc it would vanish, so it flips to ink. */
+function glyphInk(glyph: string | undefined): string {
+  if (!glyph) return '#ffffff';
+  if (glyph.startsWith('url(')) return glyph;
+  if (glyph.toLowerCase() === '#141413') return '#f8fafc';
+  return glyph;
+}
 const dash = (series: LineSeries, index: number) => (series.color ? undefined : DASHES[index % DASHES.length] || undefined);
 /* Gemini's line and sparkle use Google's four colors. One gradient per SVG document. */
 const strokeOf = (series: LineSeries, index: number) =>
@@ -294,21 +306,59 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
 
   {kind === 'bar' && (
     <div class="bc-bars" role="list">
-      {items.map((item) => (
+      {items.map((item) => {
+        const logo = item.mark ? badge(item.mark, 11, 11, 10) : null;
+        return (
         <div class="bc-row" role="listitem">
-          <span class="bc-label">{item.label}</span>
+          <span class="bc-label">
+            {logo && (
+              <svg class="bc-mark" viewBox="0 0 22 22" width="22" height="22" aria-hidden="true">
+                {item.mark === 'gemini' && (
+                  <defs>
+                    <linearGradient id="bc-gemini-mark" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#4285F4" />
+                      <stop offset="34%" stop-color="#EA4335" />
+                      <stop offset="67%" stop-color="#FBBC05" />
+                      <stop offset="100%" stop-color="#34A853" />
+                    </linearGradient>
+                  </defs>
+                )}
+                <circle cx="11" cy="11" r="10" fill={PAPER} stroke={item.ring || item.color || '#f8fafc'} stroke-width="1.25" />
+                <path d={logo.d} fill={item.mark === 'gemini' ? 'url(#bc-gemini-mark)' : glyphInk(item.glyph)} transform={logo.transform} />
+              </svg>
+            )}
+            {item.label}
+          </span>
           <svg class="bc-track" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
+            {item.mark === 'gemini' && (
+              <defs>
+                <linearGradient id="bc-gemini-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#4285F4" />
+                  <stop offset="34%" stop-color="#EA4335" />
+                  <stop offset="67%" stop-color="#FBBC05" />
+                  <stop offset="100%" stop-color="#34A853" />
+                </linearGradient>
+              </defs>
+            )}
             {ticks.map((t) => (
               <line class="bc-grid" x1={pct(t)} x2={pct(t)} y1="0" y2="12" vector-effect="non-scaling-stroke" />
             ))}
-            <rect class="bc-bar" x="0" y="2.5" width={pct(item.value)} height="7" />
+            <rect
+              class="bc-bar"
+              x="0"
+              y="2.5"
+              width={pct(item.value)}
+              height="7"
+              style={item.mark === 'gemini' ? 'fill: url(#bc-gemini-bar)' : item.color ? `fill: ${item.color}` : undefined}
+            />
           </svg>
           <span class="bc-value">
             {item.display ?? fmt(item.value)}
             {item.note && <span class="bc-note">{item.note}</span>}
           </span>
         </div>
-      ))}
+        );
+      })}
       <div class="bc-row bc-axis" aria-hidden="true">
         <span></span>
         <span class="bc-ticks">
@@ -342,8 +392,8 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
                 <line x1="1" x2="20" y1="11" y2="11" stroke={swatch} stroke-width="2.4" stroke-linecap="round" stroke-dasharray={dash(s, i)} />
                 {logo ? (
                   <g>
-                    <circle cx="34" cy="11" r="8" fill={s.disc || swatch} stroke={s.ring || '#080a10'} stroke-width="1.2" />
-                    <path d={logo.d} fill={s.glyph || '#ffffff'} transform={logo.transform} />
+                    <circle cx="34" cy="11" r="8" fill={PAPER} stroke={s.ring || ink(s, i)} stroke-width="1.2" />
+                    <path d={logo.d} fill={glyphInk(s.glyph)} transform={logo.transform} />
                   </g>
                 ) : (
                   <path d={markerPath(SHAPES[i % 4], 34, 11, 4)} fill={swatch} />
@@ -408,6 +458,14 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
                       <polyline points={pts} fill="none" stroke={swatch} stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray={dash(s, i)} />
                     </g>
                   ))}
+                </g>
+              );
+            })}
+            {/* Discs paint after every line, in the card color, so a line cannot cross an icon. */}
+            {series.map((s, i) => {
+              const swatch = strokeOf(s, i);
+              return (
+                <g>
                   {s.values.map((v, j) => {
                     if (typeof v !== 'number') return null;
                     const x = xAt(j) + (offsets[i]?.[j] || 0);
@@ -417,13 +475,17 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
                     return logo ? (
                       <g>
                         <title>{tip}</title>
-                        <circle cx={x} cy={y} r={MARK_R} fill={s.disc || swatch} stroke={s.ring || '#080a10'} stroke-width="1.5" />
-                        <path d={logo.d} fill={s.glyph || '#ffffff'} transform={logo.transform} />
+                        <circle cx={x} cy={y} r={MARK_R + 2} fill={PAPER} />
+                        <circle cx={x} cy={y} r={MARK_R} fill={PAPER} stroke={s.ring || ink(s, i)} stroke-width="1.25" />
+                        <path d={logo.d} fill={glyphInk(s.glyph)} transform={logo.transform} />
                       </g>
                     ) : (
-                      <path d={markerPath(SHAPES[i % 4], x, y)} fill={swatch} stroke="#080a10" stroke-width="1">
-                        <title>{tip}</title>
-                      </path>
+                      <g>
+                        <circle cx={x} cy={y} r={MARK_R + 2} fill={PAPER} />
+                        <path d={markerPath(SHAPES[i % 4], x, y)} fill={swatch} stroke={PAPER} stroke-width="1">
+                          <title>{tip}</title>
+                        </path>
+                      </g>
                     );
                   })}
                 </g>
@@ -489,17 +551,27 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
 
   .bc-row {
     display: grid;
-    grid-template-columns: minmax(6rem, 8.5rem) minmax(0, 1fr) 3.6rem;
+    grid-template-columns: minmax(8.5rem, 11.25rem) minmax(0, 1fr) 3.6rem;
     gap: 0.6rem;
     align-items: center;
     padding: 0.26rem 0;
   }
 
   .bc-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     font-family: var(--font-sans);
     font-size: 0.8rem;
     color: var(--ai-ink, #f8fafc);
     line-height: 1.2;
+  }
+
+  .bc-mark {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    overflow: visible;
   }
 
   .bc-track {
@@ -681,7 +753,7 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
 
   @media (max-width: 480px) {
     .bc-row {
-      grid-template-columns: minmax(5rem, 6.5rem) minmax(0, 1fr) 3.2rem;
+      grid-template-columns: minmax(8.5rem, 10rem) minmax(0, 1fr) 3.2rem;
       gap: 0.45rem;
     }
   }

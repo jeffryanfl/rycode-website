@@ -116,3 +116,94 @@ export function driftWarning(uncovered, missing) {
   if (!blocks.length) return '';
   return `${blocks.join('\n')}\nThe concept map is behind the site. Fix these before you ship.`;
 }
+
+/**
+ * empty: concepts with no articles (a map node that leads nowhere).
+ * badLinks: concept links that point at a concept id that does not exist.
+ */
+export function conceptShapeDrift(concepts) {
+  const ids = new Set(concepts.map((concept) => concept.id));
+  const empty = concepts.filter((concept) => !(concept.articles || []).length).map((concept) => concept.id);
+  const badLinks = [];
+  for (const concept of concepts) {
+    for (const link of concept.links || []) {
+      if (!ids.has(link)) badLinks.push({ from: concept.id, to: link });
+    }
+  }
+  return { empty, badLinks };
+}
+
+export function conceptShapeWarning(empty, badLinks) {
+  const blocks = [];
+  if (empty.length) {
+    blocks.push('CONCEPT MAP DRIFT: concepts with no articles:', ...empty.map((id) => `  ${id}`));
+  }
+  if (badLinks.length) {
+    blocks.push(
+      'CONCEPT MAP DRIFT: concept links to a concept that does not exist:',
+      ...badLinks.map((item) => `  ${item.from} -> ${item.to}`),
+    );
+  }
+  if (!blocks.length) return '';
+  return `${blocks.join('\n')}\nGive each concept an article or remove it, and fix its links.`;
+}
+
+function builtFile(outDir, route) {
+  const file = path.join(outDir, route.replace(/^\//, ''), route.endsWith('/') ? 'index.html' : '');
+  return fs.existsSync(file) && fs.statSync(file).isFile() ? file : null;
+}
+
+function isMetaRefresh(html) {
+  return /<meta[^>]+http-equiv=["']?refresh/i.test(html);
+}
+
+/**
+ * Follow same-site links in the built HTML, starting at HOME.
+ * unreachable: sitemap URLs that no chain of links from HOME (nav, door pages, cards, the map) reaches.
+ */
+export function reachabilityDrift(outDir, sitemapPaths, site = 'https://rycode.dev') {
+  const origin = new URL(site).origin;
+  const seen = new Set();
+  const queue = ['/'];
+  while (queue.length) {
+    const route = queue.pop();
+    if (seen.has(route)) continue;
+    seen.add(route);
+    const file = builtFile(outDir, route);
+    if (!file || !file.endsWith('.html')) continue;
+    const html = fs.readFileSync(file, 'utf8');
+    const pattern = /href="([^"]+)"/g;
+    let match = pattern.exec(html);
+    while (match) {
+      let url;
+      try {
+        url = new URL(match[1], `${origin}${route}`);
+      } catch {
+        url = null;
+      }
+      match = pattern.exec(html);
+      if (!url || url.origin !== origin) continue;
+      let next = url.pathname;
+      const last = next.split('/').pop() || '';
+      if (!next.endsWith('/') && !last.includes('.')) next = `${next}/`;
+      if (!seen.has(next)) queue.push(next);
+    }
+  }
+  const unreachable = sitemapPaths.filter((route) => {
+    if (seen.has(route)) return false;
+    const file = builtFile(outDir, route);
+    // An old URL that only redirects is not a page a reader needs to reach.
+    if (file && isMetaRefresh(fs.readFileSync(file, 'utf8'))) return false;
+    return true;
+  });
+  return { unreachable };
+}
+
+export function reachabilityWarning(unreachable) {
+  if (!unreachable.length) return '';
+  return [
+    'ORPHAN PAGE DRIFT: sitemap URLs no link reaches from HOME (nav, door pages, cards, or the map):',
+    ...unreachable.map((route) => `  ${route}`),
+    'Link each one from its door page or a concept, or take it out of the build.',
+  ].join('\n');
+}

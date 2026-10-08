@@ -23,6 +23,10 @@ export interface BenchPoint {
   value: number;
   display: string;
   note?: string;
+  color?: string;
+  mark?: LabMarkId;
+  glyph?: string;
+  ring?: string;
 }
 
 /** One point per model for a feed column, highest first. Optional exact version match. */
@@ -35,6 +39,7 @@ export function benchPoints(columnId: string, opts: { version?: string } = {}): 
     const display = String(cell.value).trim();
     const match = display.match(CLEAN);
     if (!match) continue;
+    const style = MODEL_STYLE[lab.model];
     out.push({
       model: lab.model,
       lab: lab.lab,
@@ -42,6 +47,10 @@ export function benchPoints(columnId: string, opts: { version?: string } = {}): 
       value: Number(match[1]),
       display,
       note: cell.effort,
+      color: style?.color,
+      mark: style?.mark,
+      glyph: style?.glyph,
+      ring: style?.ring,
     });
   }
   return out.sort((a, b) => b.value - a.value);
@@ -59,19 +68,16 @@ export function benchAsOf(): string {
 }
 
 /**
- * One colored line per model across the living-table benches.
- * AA Index and Terminal-Bench stay on the bar charts.
- * A cell is skipped when it is blank, not a single number, or a different
- * version from the one shared by that bench. No invented scores.
+ * The lines chart is these four version-pinned benches, in this order.
+ * A cell is drawn only when its version string matches. A blank, a partial,
+ * or a different version leaves a gap. No invented scores.
  */
-const TABLE_SKIP = new Set(['aaIndex', 'terminalBench']);
-/**
- * Visible axis name when the feed label is shorter than the exam this chart links to.
- * ARC-AGI on the feed is the ARC-AGI-3 page.
- */
-const AXIS_NAME: Record<string, string> = {
-  arcAgi: 'ARC-AGI-3',
-};
+const LINE_BENCHES: { id: string; version: string; label: string; name?: string }[] = [
+  { id: 'cursorBench', version: '4.0', label: 'CursorBench 4.0' },
+  { id: 'deepSwe', version: 'v1.1', label: 'DeepSWE v1.1' },
+  { id: 'osworld', version: '2.0 latency sim', label: 'OSWorld 2.0', name: 'OSWorld 2.0 latency sim' },
+  { id: 'terminalBench', version: '4.0', label: 'Terminal-Bench 4.0' },
+];
 /**
  * One look per model. Claude colors are Anthropic's published accents
  * (orange on the mark, then blue, green, and mid gray) so the Claude lines stay apart.
@@ -128,60 +134,43 @@ export interface BenchAxisLabel {
 }
 
 export function benchLines(): { categories: BenchAxisLabel[]; series: BenchLineSeries[]; sub: string } {
-  const columns = data.columns.filter((col) => !TABLE_SKIP.has(col.id));
-  const kept: { label: string; name: string; href?: string; version: string; values: (number | null)[] }[] = [];
+  /* Same models as the AA bar chart, highest score first. Ties keep feed order. */
+  const models = benchPoints('aaIndex').map((point) => point.model);
+  const byModel = new Map(data.labs.map((lab) => [lab.model, lab]));
+  const labs = models.map((model) => byModel.get(model)).filter((lab): lab is Lab => Boolean(lab));
 
-  for (const col of columns) {
-    const label = AXIS_NAME[col.id] ?? col.label;
-    const cells = data.labs.map((lab) => cleanNumber(lab.benches?.[col.id]));
-    const counts = new Map<string, number>();
-    for (const cell of cells) {
-      if (cell?.version) counts.set(cell.version, (counts.get(cell.version) ?? 0) + 1);
-    }
-    const ranked = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-    const blanks = cells.filter((cell) => cell && !cell.version).length;
-    let allow = '';
-    if (ranked.length === 0) {
-      allow = '';
-    } else if (ranked.length === 1) {
-      allow = ranked[0][1] >= blanks ? ranked[0][0] : '';
-    } else if (ranked[0][1] >= 2 && ranked[0][1] > ranked[1][1]) {
-      allow = ranked[0][0];
-    } else {
-      continue;
-    }
-    const values = cells.map((cell) => {
-      if (!cell) return null;
-      if (allow === '') return cell.version ? null : cell.value;
-      return cell.version === allow ? cell.value : null;
+  const kept = LINE_BENCHES.map((spec) => {
+    const col = data.columns.find((item) => item.id === spec.id);
+    const values = labs.map((lab) => {
+      const cell = cleanNumber(lab.benches?.[spec.id]);
+      if (!cell || cell.version !== spec.version) return null;
+      return cell.value;
     });
-    if (!values.some((value) => typeof value === 'number')) continue;
-    kept.push({ label, name: label, href: col.href, version: allow, values });
-  }
+    return {
+      label: spec.label,
+      name: spec.name ?? spec.label,
+      href: col?.href,
+      values,
+    };
+  });
 
-  const series = data.labs
-    .map((lab, index) => {
-      const style = MODEL_STYLE[lab.model];
-      return {
-        name: shortModel(lab.model),
-        color: style?.color,
-        mark: style?.mark,
-        disc: style?.disc,
-        glyph: style?.glyph,
-        ring: style?.ring,
-        values: kept.map((col) => col.values[index]),
-      };
-    })
-    .filter((series) => series.values.some((value) => typeof value === 'number'));
+  const series = labs.map((lab) => {
+    const style = MODEL_STYLE[lab.model];
+    const index = labs.indexOf(lab);
+    return {
+      name: shortModel(lab.model),
+      color: style?.color,
+      mark: style?.mark,
+      disc: style?.disc,
+      glyph: style?.glyph,
+      ring: style?.ring,
+      values: kept.map((col) => col.values[index]),
+    };
+  });
 
-  /* Skip a version note when the axis already spells that version, so ARC-AGI-3 is not repeated. */
-  const notes = kept
-    .filter((col) => col.version && !col.label.toLowerCase().includes(col.version.toLowerCase()))
-    .map((col) => `${col.label} is ${col.version}`);
-  const sub = ['One line per model', ...notes].filter(Boolean).join(' · ');
   return {
     categories: kept.map((col) => ({ label: col.label, name: col.name, href: col.href })),
     series,
-    sub,
+    sub: `As of ${benchAsOf()} · one line per model`,
   };
 }
