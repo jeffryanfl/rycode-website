@@ -16,6 +16,42 @@ import '../../../../styles/ai.css';
     <ChipFigure src="/ai/hardware/chips/blackwell.jpg" alt="NVIDIA Blackwell GPU package render: the compute silicon in the center with four memory stacks above and four below, inside a gold frame." caption="NVIDIA Blackwell GPU." credit="Image: NVIDIA" />
     <hr class="ai-model-rule" />
 
+    <h2 class="ai-model-section">One Blackwell Ultra GPU</h2>
+    <p>NVIDIA's Blackwell Ultra datasheet, dated October 2025, gives figures for one Blackwell Ultra GPU, the chip inside the GB300 NVL72 rack below (<a href="https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet">NVIDIA, Blackwell Ultra datasheet</a>). These are NVIDIA's own figures. NVIDIA prints the FP8 figure as sparse only.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">One Blackwell Ultra GPU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FP4 Tensor Core, dense</td>
+            <td>15 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP4 Tensor Core, sparse</td>
+            <td>20 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP8/FP6 Tensor Core, sparse</td>
+            <td>10 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>GPU memory</td>
+            <td>279 GB HBM3E</td>
+          </tr>
+          <tr>
+            <td>Memory bandwidth</td>
+            <td>8 TB/s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Tensor Cores are the parts of the GPU that do the matrix math behind AI. FP4, FP6, and FP8 store each number in 4, 6, and 8 bits. A PFLOPS is a thousand trillion math operations per second. Dense counts every number, and sparse counts a shortcut that skips zeros in the math, so it reads higher. HBM3E is a type of high-bandwidth memory, the fast memory stacked next to the chip.</p>
+
     <h2 class="ai-model-section">GB300 NVL72</h2>
     <ChipFigure src="/ai/hardware/chips/blackwell-rack.jpg" alt="NVIDIA rendering of one GB300 NVL72 rack, seen from the front on a black background, showing the upper part of a tall black cabinet filled with gold-faced compute trays." caption="NVIDIA rendering of the GB300 NVL72 rack." credit="Image: NVIDIA" variant="rack" />
     <p>NVIDIA announced the GB300 NVL72 on 18 March 2025. It is a rack-scale system, meaning the whole server rack is built as one machine. The rack connects 72 Blackwell Ultra GPUs and 36 Grace CPUs, which are based on Arm Neoverse designs. NVIDIA says the rack acts as a single GPU built for test-time scaling, which lets a model spend more computing power while it works out an answer. NVIDIA puts its AI performance at 1.5 times the GB200 NVL72 and said partner products would start in the second half of 2025. The product page also claims 1.5 times more dense FP4 Tensor Core FLOPS and 2 times higher attention performance than Blackwell GPUs. Attention is the step where a model weighs which earlier words matter. These are NVIDIA's own claims.</p>
@@ -95,43 +131,7 @@ import '../../../../styles/ai.css';
         </tbody>
       </table>
     </div>
-    <p>On the product page, Tensor Core figures count sparsity unless a figure is marked without it. Sparsity is a shortcut that skips zeros in the math, so it reads higher. The second FP4 figure is the one without it. Tensor Cores are the parts of the GPU that do the matrix math behind AI. FP4 stores each number in 4 bits and FP8 in 8 bits. FP6, FP16, BF16, TF32, FP32, and FP64 are other number formats, and the larger ones are more precise but slower. INT8 stores whole numbers in 8 bits. A PFLOPS is a thousand trillion math operations per second and a TFLOPS is a trillion. POPS counts whole-number operations the same way. NVLink is NVIDIA's wiring that lets the GPUs share work. LPDDR5X is a low-power type of memory used by the CPUs, and ConnectX-8 is NVIDIA's network card.</p>
-
-    <h2 class="ai-model-section">One Blackwell Ultra GPU</h2>
-    <p>NVIDIA's Blackwell Ultra datasheet, dated October 2025, also gives figures for one Blackwell Ultra GPU in the GB300 NVL72 (<a href="https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet">NVIDIA, Blackwell Ultra datasheet</a>). These are NVIDIA's own figures. Dense counts every number, and sparse counts the shortcut that skips zeros. NVIDIA prints the FP8 figure as sparse only.</p>
-    <div class="ai-model-table-wrap">
-      <table class="ai-model-table ai-model-table--prose">
-        <thead>
-          <tr>
-            <th scope="col">Figure</th>
-            <th scope="col">One Blackwell Ultra GPU</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>FP4 Tensor Core, dense</td>
-            <td>15 PFLOPS</td>
-          </tr>
-          <tr>
-            <td>FP4 Tensor Core, sparse</td>
-            <td>20 PFLOPS</td>
-          </tr>
-          <tr>
-            <td>FP8/FP6 Tensor Core, sparse</td>
-            <td>10 PFLOPS</td>
-          </tr>
-          <tr>
-            <td>GPU memory</td>
-            <td>279 GB HBM3E</td>
-          </tr>
-          <tr>
-            <td>Memory bandwidth</td>
-            <td>8 TB/s</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p>HBM3E is a type of high-bandwidth memory, the fast memory stacked next to the chip.</p>
+    <p>On the product page, Tensor Core figures count sparsity unless a figure is marked without it, the same shortcut as in the GPU table above. The second FP4 figure is the one without it. FP16, BF16, TF32, FP32, and FP64 are other number formats, and the larger ones are more precise but slower. INT8 stores whole numbers in 8 bits. A TFLOPS is a trillion math operations per second, and POPS counts whole-number operations the way PFLOPS does. NVLink is NVIDIA's wiring that lets the GPUs share work. LPDDR5X is a low-power type of memory used by the CPUs, and ConnectX-8 is NVIDIA's network card.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
