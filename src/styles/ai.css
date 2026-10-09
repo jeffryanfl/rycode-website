@@ -491,6 +491,12 @@ h1.ai-identity {
   gap: 0.85rem;
 }
 
+/* Chip photos are 760px. Cap the card near 18rem so a retina screen scales the photo down instead of showing it soft. Text-only hardware cards stay full width. */
+.hw-chip-cards .hw-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 18rem));
+  justify-content: start;
+}
+
 .hw-lab + .hw-lab .ai-lab-lane {
   margin-top: 2.15rem;
 }
@@ -647,11 +653,19 @@ a.hw-card:focus-visible .hw-card-title {
   .hw-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .hw-chip-cards .hw-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 18rem));
+  }
 }
 
 @media (max-width: 720px) {
   .hw-card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hw-chip-cards .hw-card-grid {
+    grid-template-columns: minmax(0, 18rem);
   }
 
   .hw-card-more {
@@ -844,14 +858,15 @@ a.hw-card:focus-visible .hw-card-title {
   color: var(--ai-dim);
 }
 
-/* Chip photo on a hardware page. Square crop, small credit line under it. */
+/* Chip photo on a hardware page. Square crop, small credit line under it.
+   18rem is 288px. The file is 760px, so a retina screen still has pixels to spare and the photo stays sharp. */
 .ai-model-figure {
-  max-width: 24rem;
+  max-width: 18rem;
   margin: 0 0 1.35rem;
 }
 
 .ai-model-figure--section {
-  max-width: 18rem;
+  max-width: 14rem;
 }
 
 .ai-model-figure img {

@@ -14,7 +14,9 @@ const theme = hardwareTheme('chips');
     <h1 class="ai-lab-title">{theme.title}</h1>
     <p class="ai-lab-dek">{theme.dek}</p>
   </div>
-  <HardwarePlantGroups themeId="chips" listLabel={theme.title} emptyTitle="" />
+  <div class="hw-chip-cards">
+    <HardwarePlantGroups themeId="chips" listLabel={theme.title} emptyTitle="" />
+  </div>
   <p class="ai-lab-note">
     Stacks name who buys or builds the chip.
     <a href="/ai/hardware/chips/meta/">Meta</a> deploys
