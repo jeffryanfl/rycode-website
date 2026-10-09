@@ -11,6 +11,10 @@ export type HardwareCard = {
   kicker?: string;
   /** Package photo. When set, the card shows it and opens the figure on hover. */
   image?: string;
+  /** Alt text for the package photo. */
+  imageAlt?: string;
+  /** Short caption over the photo, when the photo is not the chip the card's figure names. */
+  imageCaption?: string;
 };
 
 type HardwarePlant = HardwareCard & {

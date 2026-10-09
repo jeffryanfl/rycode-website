@@ -594,6 +594,18 @@ a.hw-card:focus-visible .hw-card-title {
   object-fit: cover;
 }
 
+.hw-card-art-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.9rem 0.75rem 0.45rem;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.86);
+  background: linear-gradient(to top, rgba(8, 10, 16, 0.82), rgba(8, 10, 16, 0));
+}
+
 .hw-card-body {
   display: flex;
   flex-direction: column;
@@ -829,6 +841,34 @@ a.hw-card:focus-visible .hw-card-title {
   font-family: var(--font-sans);
   font-size: 1.02rem;
   line-height: 1.45;
+  color: var(--ai-dim);
+}
+
+/* Chip photo on a hardware page. Square crop, small credit line under it. */
+.ai-model-figure {
+  max-width: 24rem;
+  margin: 0 0 1.35rem;
+}
+
+.ai-model-figure--section {
+  max-width: 18rem;
+}
+
+.ai-model-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid var(--ai-hair);
+  background: var(--ai-paper, #080a10);
+}
+
+.ai-model-credit {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.4;
   color: var(--ai-dim);
 }
 

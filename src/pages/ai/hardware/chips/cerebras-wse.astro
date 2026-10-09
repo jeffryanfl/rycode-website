@@ -1,0 +1,56 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Cerebras WSE-3 - Hardware - Rycode"
+  description="The Cerebras WSE-3 is one chip the size of a silicon wafer: 4 trillion transistors, 900,000 AI cores, 44 GB of on-chip SRAM, and 125 PFLOPS of peak AI compute."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Cerebras WSE-3</h1>
+    <p class="ai-model-dek">Cerebras builds one chip out of a whole silicon wafer, the round plate that most chipmakers cut into hundreds of separate chips. WSE stands for Wafer-Scale Engine. The WSE-3 is the third generation. Cerebras's chip page features the WSE-3 Turbo.</p>
+    <ChipFigure src="/ai/hardware/chips/cerebras-wse.jpg" alt="Cerebras WSE-3 Turbo wafer, a single dinner-plate-size chip" caption="Cerebras WSE-3 Turbo (WSE-3T)." credit="Image: Cerebras" />
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">WSE-3</h2>
+    <p>Cerebras announced the WSE-3 on 13 March 2024 and said it doubles the performance of the WSE-2 at the same power draw and price (<a href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine">Cerebras, 13 March 2024</a>). It runs inside the CS-3, Cerebras's own computer system.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">WSE-3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Process</td><td>TSMC 5nm</td></tr>
+          <tr><td>Transistors</td><td>4 trillion</td></tr>
+          <tr><td>AI cores</td><td>900,000</td></tr>
+          <tr><td>Peak AI compute</td><td>125 PFLOPS</td></tr>
+          <tr><td>On-chip SRAM</td><td>44 GB</td></tr>
+          <tr><td>External memory per CS-3</td><td>1.5 TB, 12 TB, or 1.2 PB</td></tr>
+          <tr><td>Largest cluster</td><td>2,048 CS-3 systems</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A PFLOPS is a thousand trillion math operations per second. SRAM is fast memory built into the chip itself, rather than stacked beside it. External memory is extra storage Cerebras attaches for very large models. Cerebras says a cluster can train models of up to 24 trillion parameters, the adjustable numbers inside a model. These are Cerebras's own figures.</p>
+
+    <h2 class="ai-model-section">WSE-3 Turbo</h2>
+    <p>Cerebras's chip page features the WSE-3 Turbo, or WSE-3T (<a href="https://www.cerebras.ai/chip">Cerebras, chip page</a>). It measures 46,225 square millimeters and has 4 trillion transistors and 900,000 AI cores, the same as the WSE-3. Cerebras puts its AI compute at 250 petaflops, double the WSE-3's 125. The CS-4, Cerebras's rack-scale system, runs three WSE-3T processors. The page carries no publish date.</p>
+
+    <h2 class="ai-model-section">OpenAI</h2>
+    <p>On 14 January 2026 OpenAI said it would add 750 megawatts of Cerebras computing to its platform for fast inference, which is running a model to answer requests, coming online in stages through 2028 (<a href="https://openai.com/index/cerebras-partnership/">OpenAI, OpenAI partners with Cerebras</a>). A megawatt is a million watts of power draw. Reuters reported the deal is worth more than $10 billion, citing a person familiar with it (<a href="https://www.reuters.com/technology/openai-buy-compute-capacity-startup-cerebras-around-10-billion-wsj-reports-2026-01-14/">Reuters, 14 January 2026</a>).</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine">Cerebras, Cerebras Systems Unveils World's Fastest AI Chip with Whopping 4 Trillion Transistors (13 Mar 2024)</a></li>
+      <li><a href="https://www.cerebras.ai/chip">Cerebras, WSE-3 Turbo chip page</a></li>
+      <li><a href="https://openai.com/index/cerebras-partnership/">OpenAI, OpenAI partners with Cerebras (14 Jan 2026)</a></li>
+      <li><a href="https://www.reuters.com/technology/openai-buy-compute-capacity-startup-cerebras-around-10-billion-wsj-reports-2026-01-14/">Reuters, OpenAI signs $10 billion computing deal with Nvidia challenger Cerebras (14 Jan 2026)</a></li>
+    </ul>
+  </article>
+</Layout>

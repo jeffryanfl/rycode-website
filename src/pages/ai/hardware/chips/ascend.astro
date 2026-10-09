@@ -1,0 +1,55 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Ascend 910C - Hardware - Rycode"
+  description="The Ascend 910C is Huawei's current AI chip. Up to 384 of them form the Atlas 900 A3 SuperPoD, rated by Huawei at up to 307.2 PFLOPS of FP16, with 128 GB of memory per chip."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Ascend 910C</h1>
+    <p class="ai-model-dek">Ascend is Huawei's line of AI chips. Huawei launched the Ascend 910 in 2019, and in 2025 the Ascend 910C became its best-known chip as Huawei scaled up its Atlas 900 A3 SuperPoD, according to Huawei's rotating chairman Eric Xu (<a href="https://www.huawei.com/en/news/2025/9/hc-xu-keynote-speech">Huawei, Eric Xu keynote at Huawei Connect 2025</a>). Reuters calls the Ascend line Huawei's "main competitive offering to Nvidia's AI chips" and the 910C its current chip on the market (<a href="https://www.reuters.com/world/china/key-products-huaweis-ai-chips-computing-power-roadmap-2025-09-18/">Reuters, 18 September 2025</a>).</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The chip</h2>
+    <p>Huawei researchers describe the chip in the Atlas 900 A3 SuperPoD as two identical compute dies in one package, sharing eight memory stacks and linked by a fast connection between the dies (<a href="https://arxiv.org/abs/2506.12708">Huawei, Serving Large Language Models on Huawei CloudMatrix384</a>). A die is one piece of silicon. Each die has 24 AI cube cores for matrix math and 48 AI vector cores for simpler math on lists of numbers. The chip runs FP16, BF16, and INT8, number formats that store each value in 16 or 8 bits. It has no dedicated FP8 support.</p>
+
+    <h2 class="ai-model-section">Atlas 900 A3 SuperPoD</h2>
+    <p>Huawei launched the Atlas 900 A3 SuperPoD in March 2025. A SuperPoD is a group of chips wired together to work like one computer. Huawei's product page lists these figures (<a href="https://e.huawei.com/cn/products/computing/ascend/atlas-900-a3-superpod">Huawei, Atlas 900 A3 SuperPoD</a>):</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Atlas 900 A3 SuperPoD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AI chips</td><td>Up to 384</td></tr>
+          <tr><td>CPUs</td><td>Up to 192 Kunpeng 920</td></tr>
+          <tr><td>Memory per AI chip</td><td>128 GB, up to 3.2 TB/s</td></tr>
+          <tr><td>AI compute, FP16</td><td>Up to 307.2 PFLOPS</td></tr>
+          <tr><td>Chip-to-chip bandwidth</td><td>784 GB/s, both directions</td></tr>
+          <tr><td>Cabinets</td><td>12 compute and 4 bus cabinets</td></tr>
+          <tr><td>Cooling</td><td>Liquid for compute, air for bus cabinets</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A PFLOPS is a thousand trillion math operations per second. Our own division, not a Huawei figure: split evenly over 384 chips, 307.2 PFLOPS is 800 TFLOPS of FP16 per chip. Huawei's page names the chip as Ascend 910; Xu's keynote says the SuperPoD packs up to 384 Ascend 910C chips and puts it at up to 300 PFLOPS.</p>
+    <p>CloudMatrix384 is the cloud service Huawei Cloud built on these SuperPoDs. By September 2025 Huawei said it had deployed more than 300 Atlas 900 A3 SuperPoDs for more than 20 customers in fields like internet services, telecoms, and manufacturing.</p>
+
+    <h2 class="ai-model-section">What comes next</h2>
+    <p>At Huawei Connect on 18 September 2025, Xu named three new series: Ascend 950, 960, and 970. He said the Ascend 950 chips will have 2 TB/s of interconnect bandwidth, 2.5 times the 910C, and support for more number formats, including FP8 and a 4-bit format, MXFP4. The Atlas 950 SuperPoD is planned with up to 8,192 Ascend 950DT chips. Reuters reported the 950 was due in the first quarter of 2026.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.huawei.com/en/news/2025/9/hc-xu-keynote-speech">Huawei, Groundbreaking SuperPoD Interconnect, Eric Xu keynote (18 Sep 2025)</a></li>
+      <li><a href="https://e.huawei.com/cn/products/computing/ascend/atlas-900-a3-superpod">Huawei, Atlas 900 A3 SuperPoD product page</a></li>
+      <li><a href="https://arxiv.org/abs/2506.12708">Huawei, Serving Large Language Models on Huawei CloudMatrix384 (arXiv)</a></li>
+      <li><a href="https://www.reuters.com/world/china/key-products-huaweis-ai-chips-computing-power-roadmap-2025-09-18/">Reuters, Key products in Huawei's AI chips and computing power roadmap (18 Sep 2025)</a></li>
+    </ul>
+  </article>
+</Layout>

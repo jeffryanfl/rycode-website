@@ -24,7 +24,8 @@ const { cards, listLabel, emptyTitle } = Astro.props;
         {card.image ? (
           <a class="hw-card hw-card--art" href={card.href}>
             <span class="hw-card-art">
-              <img src={card.image} alt="" width="760" height="760" />
+              <img src={card.image} alt={card.imageAlt ?? ''} width="760" height="760" />
+              {card.imageCaption ? <span class="hw-card-art-caption">{card.imageCaption}</span> : null}
             </span>
             <span class="hw-card-body">
               <h2 class="hw-card-title">{card.title}</h2>

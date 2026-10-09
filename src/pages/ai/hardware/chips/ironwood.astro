@@ -1,17 +1,19 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
 import '../../../../styles/ai.css';
 ---
 
 <Layout
   title="Ironwood - Hardware - Rycode"
-  description="Ironwood is Google's seventh-generation TPU, listed at $12 per chip-hour on demand and $5.40 on a three-year commitment in us-central1."
+  description="Ironwood is Google's seventh-generation TPU, listed at $12 per chip-hour on demand and $5.40 on a three-year commitment in us-central1. Trillium (TPU v6e) is the generation before it."
   variant="ai"
 >
   <article class="ai-model">
     <p class="ai-model-kicker">Hardware · Chips</p>
     <h1 class="ai-model-title">Ironwood</h1>
-    <p class="ai-model-dek">Ironwood is Google's seventh-generation TPU. A TPU, or Tensor Processing Unit, is the chip Google designs for its own AI work and also rents to other companies through Google Cloud. Google Cloud calls it TPU7x and says it handles both training and inference (<a href="https://docs.cloud.google.com/tpu/docs/release-notes">Google Cloud, Cloud TPU release notes</a>). Training is teaching a model. Inference is running it to answer requests. Ironwood went into Preview on 24 November 2025 and became generally available on 31 March 2026.</p>
+    <p class="ai-model-dek">Ironwood is Google's seventh-generation TPU. A TPU, or Tensor Processing Unit, is the chip Google designs for its own AI work and also rents to other companies through Google Cloud. Google Cloud calls it TPU7x and says it handles both training and inference (<a href="https://docs.cloud.google.com/tpu/docs/release-notes">Google Cloud, Cloud TPU release notes</a>). Training is teaching a model. Inference is running it to answer requests. Ironwood went into Preview on 24 November 2025 and became generally available on 31 March 2026. <a href="#trillium">Trillium</a>, the sixth-generation TPU that came before it, is further down this page.</p>
+    <ChipFigure src="/ai/hardware/chips/ironwood.jpg" alt="Google Ironwood TPU: a metal-framed chip with amber silicon and the word Ironwood printed on the frame, reflected on a dark surface." caption="Google Ironwood (TPU7x)." credit="Image: Google" />
     <hr class="ai-model-rule" />
 
     <h2 class="ai-model-section">What Google charges</h2>
@@ -34,14 +36,10 @@ import '../../../../styles/ai.css';
       </table>
     </div>
     <p>On demand means you pay by the hour with no promise to keep using it. A commitment means you agree to pay for one or three years in return for a lower rate. Flex-start and Calendar mode are two ways to get chips through Google's Dynamic Workload Scheduler, a booking system for TPU capacity. Calendar mode reserves chips for set future dates. In London (europe-west2), on demand is $13.20 per chip-hour.</p>
-    <p>The $12 figure is the on-demand price, not the committed-use price. With a commitment, the same chip-hour is $8.40 for one year or $5.40 for three.</p>
+    <p>So the $12 figure is the on-demand price. With a commitment, the same chip-hour costs $8.40 for one year or $5.40 for three.</p>
     <h2 class="ai-model-section">What an outside test found</h2>
     <p>SemiAnalysis, a chip research firm, runs InferenceX, a public test of what it costs to serve AI models on different chips. On 7 September 2026 it published the first outside inference results for Ironwood (<a href="https://inferencex.semianalysis.com/blog/tpu-inferencex-full-steam">SemiAnalysis, TPU Inference Externalization Full Steam Ahead</a>).</p>
-    <p>The test setup was narrow:</p>
-    <p>One open-weight model, Qwen3.5 397B. Open-weight means anyone can download and run it.</p>
-    <p>FP8 on both sides. FP8 is a number format that stores each value in 8 bits, which is faster and cheaper than larger formats.</p>
-    <p>Prompts of about 8,000 tokens in and 1,000 out. A token is a small chunk of text.</p>
-    <p>Aggregated serving, meaning the same chips read the prompt and write the reply.</p>
+    <p>The test setup was narrow. It ran one open-weight model, Qwen3.5 397B, which means anyone can download and run it. Both sides used FP8, a number format that stores each value in 8 bits, which is faster and cheaper than larger formats. Prompts were about 8,000 tokens in and 1,000 out, where a token is a small chunk of text. Serving was aggregated, meaning the same chips read the prompt and write the reply.</p>
     <p>The main results compare Ironwood with Nvidia's B200 and B300 GPUs:</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table">
@@ -61,25 +59,56 @@ import '../../../../styles/ai.css';
     <p>Tokens per second per user is how fast each person sees the reply appear. At that speed, SemiAnalysis says Ironwood is "approximately 19% lower cost than B200." At a slower 20 tokens per second per user, Ironwood delivered 50.4% more tokens per dollar than B200. Measured by total response time, Ironwood was about 8% cheaper than B200 at a 20-second median reply. Around a 30-second median reply, B200 can come out ahead.</p>
     <h2 class="ai-model-section">What the result does not show</h2>
     <p>These are not rental prices. The costs use SemiAnalysis's modeled total cost of ownership for a large buyer that purchases TPUs. Total cost of ownership, or TCO, is what it costs to buy, house, power, and run a chip over its life, spread out per hour. It is not Google's $12 list price.</p>
-    <p>Google's own cost is a different number. SemiAnalysis estimates Google's internal TCO at $1.03 per chip-hour. SemiAnalysis uses it for two separate comparisons, a high-load point against B200 and B300 and the GB300 NVL72 comparison below. It is not the cost behind the 19% result.</p>
-    <p>No FP4. Ironwood has no native FP4, a smaller 4-bit format that Nvidia GPUs run. SemiAnalysis says that on FP4, Nvidia GPUs still lead.</p>
-    <p>Nvidia's rack setup wins part of the curve. Against Nvidia's <a href="/ai/hardware/chips/blackwell/">GB300 NVL72</a> rack running disaggregated serving, where separate chips read the prompt and write the reply, SemiAnalysis found about a 30% performance-per-dollar edge for GB300 in the middle of the range. This comparison uses SemiAnalysis's estimate of Google's internal TCO, not the large-buyer TCO behind the 19% result. It expects that gap to close once Google's own disaggregated setup is tuned.</p>
-    <p>No agent tests yet. Results for agentic workloads, where an AI works through long multi-step tasks, are promised "later in the year".</p>
-    <p>One model. Every number above comes from Qwen3.5 397B.</p>
-    <p>Built with Google's help. SemiAnalysis thanks Google's TPU team for the work behind these results.</p>
+    <p>Google's own cost is a different number. SemiAnalysis estimates Google's internal TCO at $1.03 per chip-hour and uses it for two separate comparisons: a high-load point against B200 and B300, and the GB300 NVL72 comparison below. It is not the cost behind the 19% result.</p>
+    <p>Ironwood has no native FP4, a smaller 4-bit format that Nvidia GPUs run, and SemiAnalysis says Nvidia GPUs still lead on FP4.</p>
+    <p>Nvidia's rack setup wins part of the range. Against Nvidia's <a href="/ai/hardware/chips/blackwell/">GB300 NVL72</a> rack running disaggregated serving, where separate chips read the prompt and write the reply, SemiAnalysis found about a 30% performance-per-dollar edge for GB300 in the middle of the range. That comparison uses SemiAnalysis's estimate of Google's internal TCO, not the large-buyer TCO behind the 19% result. SemiAnalysis expects the gap to close once Google's own disaggregated setup is tuned.</p>
+    <p>There are no agent tests yet. SemiAnalysis promises results for agentic workloads, where an AI works through long multi-step tasks, "later in the year".</p>
+    <p>Every number above comes from one model, Qwen3.5 397B.</p>
+    <p>SemiAnalysis thanks Google's TPU team for the work behind these results.</p>
+    <h2 class="ai-model-section" id="trillium">Trillium, the generation before</h2>
+    <ChipFigure src="/ai/hardware/chips/trillium.jpg" alt="Google Trillium TPU on its circuit board: a large silver lid around the silicon, with the word Trillium printed along the bottom edge." caption="Google Trillium (TPU v6e)." credit="Image: Google" variant="section" />
+    <p>Trillium is Google's sixth-generation TPU. Google Cloud calls it TPU v6e. Google announced it on 14 May 2024 (<a href="https://cloud.google.com/blog/products/compute/introducing-trillium-6th-gen-tpus">Google Cloud, Announcing Trillium</a>) and made it generally available on 11 December 2024 (<a href="https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga">Google Cloud, Trillium is GA</a>).</p>
+    <p>Google says Trillium has 4.7 times the peak compute per chip of TPU v5e, the chip before it. It also says Trillium doubled the HBM capacity and bandwidth and doubled the chip-to-chip link speed. HBM, or high-bandwidth memory, is the fast memory stacked right next to the chip. Google says Trillium is over 67% more energy efficient than TPU v5e. These are Google's own claims.</p>
+    <p>Google Cloud's TPU documentation lists the two chips side by side (<a href="https://docs.cloud.google.com/tpu/docs/tpu7x">Google Cloud, TPU7x (Ironwood)</a>; <a href="https://docs.cloud.google.com/tpu/docs/v6e">Google Cloud, TPU v6e</a>):</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Per chip, unless noted</th>
+            <th scope="col">Ironwood (TPU7x)</th>
+            <th scope="col">Trillium (TPU v6e)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Peak compute, BF16</td><td>2,307 TFLOPS</td><td>918 TFLOPS</td></tr>
+          <tr><td>Peak compute, FP8</td><td>4,614 TFLOPS</td><td>918 TFLOPS</td></tr>
+          <tr><td>HBM capacity</td><td>192 GiB</td><td>32 GiB</td></tr>
+          <tr><td>HBM bandwidth</td><td>7,380 GB/s</td><td>1,638 GB/s</td></tr>
+          <tr><td>TensorCores</td><td>2</td><td>1</td></tr>
+          <tr><td>Chip-to-chip links, both directions</td><td>1,200 GB/s</td><td>800 GB/s</td></tr>
+          <tr><td>Chips per pod</td><td>9,216</td><td>256</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>BF16 and FP8 are number formats. BF16 stores each value in 16 bits and FP8 in 8 bits. A TFLOPS is a trillion math operations per second. A TensorCore is the block inside the chip that does the matrix math. A pod is the largest group of chips Google wires together as one system. Google lists the same 918 TFLOPS for Trillium in both formats, while Ironwood doubles from BF16 to FP8.</p>
+    <p>Trillium rents for less. On the same pricing page, Trillium is $2.70 per chip-hour on demand in us-east1 (South Carolina) and $1.22 on a three-year commitment (<a href="https://cloud.google.com/tpu/pricing">Google Cloud, Cloud TPU pricing</a>). Google lists Trillium in us-east1, us-east5, europe-west4, and asia-northeast1, not in us-central1, the region used for the Ironwood prices above.</p>
     <h2 class="ai-model-section">What comes next: TPU 8t and TPU 8i</h2>
     <p>Google announced its eighth-generation TPUs on 22 April 2026 at Cloud Next '26 (<a href="https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26">Google Cloud, AI infrastructure at Next '26</a>). There are two chips. TPU 8t is for training and TPU 8i is for inference (<a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/tpus-8t-8i-cloud-next/">Google, new TPUs at Cloud Next '26</a>). They are a new generation, not a split version of Ironwood. Ironwood is one chip that does both jobs.</p>
-    <p>Google says TPU 8i delivers 80% better performance per dollar for inference than the prior generation, and that both chips "will be available to Cloud customers soon". That is Google's own claim. SemiAnalysis notes that TPU 8i adds native FP4.</p>
+    <p>Google says TPU 8i delivers 80% better performance per dollar for inference than the prior generation, and that both chips "will be available to Cloud customers soon". That is Google's own claim. SemiAnalysis notes that TPU 8i adds native FP4, meaning the chip runs the 4-bit format directly.</p>
     <h2 class="ai-model-section">Anthropic and TPUs</h2>
-    <p>Anthropic, the company behind Claude, is a major TPU customer. In its own words:</p>
-    <p>23 October 2025. Anthropic said it would use "up to one million TPUs," an expansion "worth tens of billions of dollars" that is "expected to bring well over a gigawatt of capacity online in 2026" (<a href="https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services">Anthropic, Expanding our use of Google Cloud TPUs and Services</a>). A gigawatt is a billion watts, a common way to size data centers by the power they draw.</p>
-    <p>6 April 2026. Anthropic signed a new deal with Google and Broadcom for "multiple gigawatts of next-generation TPU capacity that we expect to come online starting in 2027" (<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic, Google and Broadcom compute deal</a>). Broadcom develops and supplies custom TPUs for Google under a long-term agreement, per the same filing cited below.</p>
+    <p>Anthropic, the company behind Claude, is a major TPU customer. Here is what it has said.</p>
+    <p>On 23 October 2025, Anthropic said it would use "up to one million TPUs," an expansion "worth tens of billions of dollars" that is "expected to bring well over a gigawatt of capacity online in 2026" (<a href="https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services">Anthropic, Expanding our use of Google Cloud TPUs and Services</a>). A gigawatt is a billion watts, a common way to size data centers by the power they draw.</p>
+    <p>On 6 April 2026, Anthropic signed a new deal with Google and Broadcom for "multiple gigawatts of next-generation TPU capacity that we expect to come online starting in 2027" (<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic, Google and Broadcom compute deal</a>). Broadcom's 8-K filing says Broadcom develops and supplies custom TPUs for Google under a long-term agreement.</p>
     <p>Broadcom's 8-K filing gives a number for Anthropic's share. An 8-K is a report a public company files with US regulators about a major event. It says Anthropic, "beginning in 2027, will access through Broadcom approximately 3.5 gigawatts" of TPU-based compute, and that Anthropic's use of it "is dependent on Anthropic's continued commercial success" (<a href="https://investors.broadcom.com/static-files/c906d370-921b-4bc2-bb7b-57877dfcf1ae">Broadcom, Form 8-K</a>).</p>
     <p>SemiAnalysis estimates that Anthropic committed to "over one million" TPUs, about 400,000 or more bought outright and 600,000 or more rented through Google Cloud. That is SemiAnalysis's estimate, not an Anthropic figure.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://docs.cloud.google.com/tpu/docs/release-notes">Google Cloud, Cloud TPU release notes</a></li>
       <li><a href="https://cloud.google.com/tpu/pricing">Google Cloud, Cloud TPU pricing</a></li>
+      <li><a href="https://docs.cloud.google.com/tpu/docs/tpu7x">Google Cloud, TPU7x (Ironwood)</a></li>
+      <li><a href="https://docs.cloud.google.com/tpu/docs/v6e">Google Cloud, TPU v6e</a></li>
+      <li><a href="https://cloud.google.com/blog/products/compute/introducing-trillium-6th-gen-tpus">Google Cloud, Announcing Trillium, the sixth generation of Google Cloud TPU (14 May 2024)</a></li>
+      <li><a href="https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga">Google Cloud, Announcing the general availability of Trillium (11 Dec 2024)</a></li>
       <li><a href="https://inferencex.semianalysis.com/blog/tpu-inferencex-full-steam">SemiAnalysis, TPU Inference Externalization Full Steam Ahead (7 Sep 2026)</a></li>
       <li><a href="https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26">Google Cloud, AI infrastructure at Next '26</a></li>
       <li><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/tpus-8t-8i-cloud-next/">Google, We're launching two specialized TPUs for the agentic era (22 Apr 2026)</a></li>

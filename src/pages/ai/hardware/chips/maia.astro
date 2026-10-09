@@ -1,0 +1,60 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Maia 200 - Hardware - Rycode"
+  description="Maia 200 is Microsoft's own inference chip: TSMC 3nm, over 10 PFLOPS of FP4, 216 GB of HBM3e at 7 TB/s, in a 750 W envelope."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Maia 200</h1>
+    <p class="ai-model-dek">Maia 200 is the AI chip Microsoft designs for its own Azure data centers. It is built for inference, which is running a trained model to answer requests, rather than for training. Microsoft announced it on 26 January 2026 (<a href="https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/">Microsoft, Maia 200: The AI accelerator built for inference</a>).</p>
+    <ChipFigure src="/ai/hardware/chips/maia.jpg" alt="Microsoft Maia 200 chip: a silver-framed package with Microsoft Azure Maia 200 printed on the silicon lid." caption="Microsoft Maia 200." credit="Image: Microsoft" />
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The chip</h2>
+    <p>Microsoft's figures for one Maia 200 chip:</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">One Maia 200 chip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Process</td><td>TSMC 3nm</td></tr>
+          <tr><td>Transistors</td><td>Over 140 billion</td></tr>
+          <tr><td>FP4</td><td>Over 10 PFLOPS</td></tr>
+          <tr><td>FP8</td><td>Over 5 PFLOPS</td></tr>
+          <tr><td>Memory</td><td>216 GB HBM3e at 7 TB/s</td></tr>
+          <tr><td>On-chip SRAM</td><td>272 MB</td></tr>
+          <tr><td>Power (SoC TDP)</td><td>750 W</td></tr>
+          <tr><td>Scale-up bandwidth</td><td>2.8 TB/s, both directions</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>FP4 and FP8 store each number in 4 or 8 bits. Fewer bits means faster math with less precision, which suits inference. A PFLOPS is a thousand trillion math operations per second. HBM3e is high-bandwidth memory stacked next to the chip. SRAM is a smaller, faster memory on the chip itself. TDP is the most power the chip is built to draw. Scale-up bandwidth is how fast one chip talks to the others in its group.</p>
+
+    <h2 class="ai-model-section">What Microsoft claims</h2>
+    <p>Microsoft says Maia 200 has three times the FP4 performance of Amazon's third-generation Trainium and FP8 performance above Google's seventh-generation TPU, <a href="/ai/hardware/chips/ironwood/">Ironwood</a>. It also says Maia 200 gives 30% better performance per dollar than the latest hardware in its fleet. These are Microsoft's own claims, not outside test results.</p>
+
+    <h2 class="ai-model-section">Systems</h2>
+    <p>Each tray holds four Maia chips wired straight to each other with no switch in between. Racks and clusters connect over standard Ethernet using Microsoft's own Maia AI transport protocol, up to 6,144 chips in one cluster. The racks use Microsoft's second-generation closed-loop liquid cooling.</p>
+
+    <h2 class="ai-model-section">Where it runs</h2>
+    <p>Microsoft says Maia 200 is deployed in its US Central region near Des Moines, Iowa, with US West 3 near Phoenix, Arizona, next. It will serve models including OpenAI's GPT-5.2 in Microsoft Foundry and Microsoft 365 Copilot. Microsoft's Superintelligence team will use it to generate synthetic data, which is training material made by a model, and for reinforcement learning, which trains a model by rewarding good answers.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/">Microsoft, Maia 200: The AI accelerator built for inference (26 Jan 2026)</a></li>
+      <li><a href="https://news.microsoft.com/maia-200/">Microsoft, Maia 200</a></li>
+      <li><a href="/ai/hardware/chips/ironwood/">Ironwood</a></li>
+      <li><a href="/ai/hardware/chips/trainium/">Trainium2</a></li>
+    </ul>
+  </article>
+</Layout>

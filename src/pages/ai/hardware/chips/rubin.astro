@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
 import '../../../../styles/ai.css';
 ---
 
@@ -11,11 +12,12 @@ import '../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">Hardware · Chips</p>
     <h1 class="ai-model-title">Rubin</h1>
-    <p class="ai-model-dek">NVIDIA Rubin GPU and the Vera Rubin NVL72. 50 PFLOPS of NVFP4 inference and 288 GB of HBM4 on the GPU. The rack is 72 Rubin GPUs and 36 Vera CPUs. <a href="/ai/hardware/chips/blackwell/">Blackwell</a> is the prior family. Meta's buy is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <p class="ai-model-dek">Rubin is the NVIDIA GPU family that follows <a href="/ai/hardware/chips/blackwell/">Blackwell</a>. One Rubin GPU delivers 50 PFLOPS of NVFP4 inference and carries 288 GB of HBM4. The Vera Rubin NVL72 is the rack built around it, with 72 Rubin GPUs and 36 Vera CPUs. Meta's purchase is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <ChipFigure src="/ai/hardware/chips/rubin.jpg" alt="NVIDIA Rubin GPU package render: the compute silicon in the center with four memory stacks above and four below, inside a silver frame on a black background." caption="NVIDIA Rubin GPU." credit="Image: NVIDIA" />
     <hr class="ai-model-rule" />
 
     <h2 class="ai-model-section">Rubin GPU</h2>
-    <p>Announced 5 January 2026. The Rubin GPU delivers 50 petaflops of NVFP4 compute for AI inference. NVIDIA says up to a 10x reduction in inference token cost and a 4x reduction in the number of GPUs to train mixture-of-experts models, compared with the Blackwell platform. Rubin is in full production. Rubin-based products will be available from partners in the second half of 2026.</p>
+    <p>NVIDIA announced Rubin on 5 January 2026. The Rubin GPU delivers 50 petaflops of NVFP4 compute for AI inference, which is running a trained model to answer requests. NVFP4 is NVIDIA's 4-bit number format, and a petaflop is a thousand trillion math operations per second. Compared with the Blackwell platform, NVIDIA says Rubin cuts the cost of each inference token by up to 10 times, where a token is a small chunk of text. It also says Rubin needs 4 times fewer GPUs to train mixture-of-experts models, which split the work among many smaller expert networks inside one model. These are NVIDIA's own claims. NVIDIA says Rubin is in full production and that partners will offer Rubin-based products in the second half of 2026.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -58,7 +60,7 @@ import '../../../../styles/ai.css';
             <td>288 GB HBM4 at 19.2 TB/s</td>
           </tr>
           <tr>
-            <td>NVLink</td>
+            <td>NVLink (GPU-to-GPU link)</td>
             <td>3 TB/s</td>
           </tr>
           <tr>
@@ -68,9 +70,10 @@ import '../../../../styles/ai.css';
         </tbody>
       </table>
     </div>
+    <p>Training is teaching a model. Sparse figures count a shortcut that skips zeros in the math, so they read higher, and dense figures count every number. FP8 stores each number in 8 bits and FP6 in 6 bits. FP16, BF16, TF32, FP32, and FP64 are larger number formats that are more precise but slower. HBM4 is the fourth generation of high-bandwidth memory, the fast memory stacked next to the chip. NVLink is NVIDIA's wiring that lets GPUs share work.</p>
 
     <h2 class="ai-model-section">Vera Rubin NVL72</h2>
-    <p>The 5 January 2026 release says the Vera Rubin NVL72 combines 72 Rubin GPUs, 36 Vera CPUs, and NVLink 6.</p>
+    <p>The 5 January 2026 release says the Vera Rubin NVL72 combines 72 Rubin GPUs, 36 Vera CPUs, and NVLink 6, the sixth generation of NVIDIA's chip-to-chip wiring. It is a rack-scale system, meaning the whole server rack is built as one machine.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -147,7 +150,7 @@ import '../../../../styles/ai.css';
         </tbody>
       </table>
     </div>
-    <p>On the product-page table, inference figures are sparse. Training, FP16, BF16, and TF32 figures are dense. Networking bandwidth is bi-directional.</p>
+    <p>On NVIDIA's product page, the inference figures are sparse, and the training, FP16, BF16, and TF32 figures are dense. The networking bandwidth counts traffic in both directions. Olympus is NVIDIA's own CPU core design. NVLink-C2C is the link between each Vera CPU and its GPUs. LPDDR5X is a low-power type of memory used by the CPUs. Inlet temperature is how warm the cooling liquid can be when it enters the rack.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">

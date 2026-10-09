@@ -1,0 +1,19 @@
+---
+/** A chip photo on a hardware page: the self-hosted square crop, its alt text, and a one-line credit. */
+interface Props {
+  src: string;
+  alt: string;
+  credit: string;
+  /** Optional words before the credit, such as the chip's name on the photo. */
+  caption?: string;
+  /** Hero sits under the dek. Section figures sit inside a generation's section. */
+  variant?: 'hero' | 'section';
+}
+
+const { src, alt, credit, caption, variant = 'hero' } = Astro.props;
+---
+
+<figure class:list={['ai-model-figure', { 'ai-model-figure--section': variant === 'section' }]}>
+  <img src={src} alt={alt} width="760" height="760" loading={variant === 'hero' ? 'eager' : 'lazy'} decoding="async" />
+  <figcaption class="ai-model-credit">{caption ? `${caption} ` : ''}{credit}</figcaption>
+</figure>

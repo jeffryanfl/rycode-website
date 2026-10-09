@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
 import '../../../../styles/ai.css';
 ---
 
@@ -11,11 +12,12 @@ import '../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">Hardware · Chips</p>
     <h1 class="ai-model-title">Blackwell</h1>
-    <p class="ai-model-dek">NVIDIA GB300 NVL72. 72 Blackwell Ultra GPUs and 36 Grace CPUs in one rack. <a href="/ai/hardware/chips/rubin/">Rubin</a> is the next Nvidia family. Meta's buy is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <p class="ai-model-dek">Blackwell is a family of NVIDIA AI chips. The NVIDIA GB300 NVL72 puts 72 Blackwell Ultra GPUs and 36 Grace CPUs in one rack. A GPU, or graphics processing unit, is the chip that does the AI math, and a CPU is the general-purpose processor that runs everything around it. <a href="/ai/hardware/chips/rubin/">Rubin</a> is the next NVIDIA family. Meta's purchase is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <ChipFigure src="/ai/hardware/chips/blackwell.jpg" alt="NVIDIA Blackwell GPU package render: the compute silicon in the center with four memory stacks above and four below, inside a gold frame." caption="NVIDIA Blackwell GPU." credit="Image: NVIDIA" />
     <hr class="ai-model-rule" />
 
     <h2 class="ai-model-section">GB300 NVL72</h2>
-    <p>Announced 18 March 2025. The rack connects 72 Blackwell Ultra GPUs and 36 Arm Neoverse-based Grace CPUs and acts as a single GPU built for test-time scaling. AI performance is 1.5x the GB200 NVL72. Partner products start in the second half of 2025. The product page also says 1.5x more dense FP4 Tensor Core FLOPS and 2x higher attention performance compared with Blackwell GPUs.</p>
+    <p>NVIDIA announced the GB300 NVL72 on 18 March 2025. It is a rack-scale system, meaning the whole server rack is built as one machine. The rack connects 72 Blackwell Ultra GPUs and 36 Grace CPUs, which are based on Arm Neoverse designs. NVIDIA says the rack acts as a single GPU built for test-time scaling, which lets a model spend more computing power while it works out an answer. NVIDIA puts its AI performance at 1.5 times the GB200 NVL72 and said partner products would start in the second half of 2025. The product page also claims 1.5 times more dense FP4 Tensor Core FLOPS and 2 times higher attention performance than Blackwell GPUs. Attention is the step where a model weighs which earlier words matter. These are NVIDIA's own claims.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -50,7 +52,7 @@ import '../../../../styles/ai.css';
             <td>17 TB LPDDR5X at 14 TB/s</td>
           </tr>
           <tr>
-            <td>NVLink</td>
+            <td>NVLink (GPU-to-GPU link)</td>
             <td>130 TB/s</td>
           </tr>
           <tr>
@@ -92,7 +94,7 @@ import '../../../../styles/ai.css';
         </tbody>
       </table>
     </div>
-    <p>Tensor Core figures on the product page are with sparsity unless a figure is marked without it. The second FP4 figure is without sparsity.</p>
+    <p>On the product page, Tensor Core figures count sparsity unless a figure is marked without it. Sparsity is a shortcut that skips zeros in the math, so it reads higher. The second FP4 figure is the one without it. Tensor Cores are the parts of the GPU that do the matrix math behind AI. FP4 stores each number in 4 bits and FP8 in 8 bits. FP6, FP16, BF16, TF32, FP32, and FP64 are other number formats, and the larger ones are more precise but slower. INT8 stores whole numbers in 8 bits. A PFLOPS is a thousand trillion math operations per second and a TFLOPS is a trillion. POPS counts whole-number operations the same way. NVLink is NVIDIA's wiring that lets the GPUs share work. LPDDR5X is a low-power type of memory used by the CPUs, and ConnectX-8 is NVIDIA's network card.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">

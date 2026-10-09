@@ -180,6 +180,9 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "ironwood.astro":
         # Chip page date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-10-08"
+    elif target.name in {"trainium.astro", "maia.astro", "cerebras-wse.astro", "ascend.astro"}:
+        # Chip page date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-10-09"
     else:
         date = git_date(target)
     if minutes is None and rel in MINUTES:

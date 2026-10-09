@@ -1,0 +1,78 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Trainium2 - Hardware - Rycode"
+  description="Trainium2 is the AI chip Amazon's Annapurna Labs designs for AWS: 1.3 PFLOPS of dense FP8 and 96 GiB of HBM per chip, 64 chips to a Trn2 UltraServer."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Trainium2</h1>
+    <p class="ai-model-dek">Trainium2 is the second-generation AI chip from Annapurna Labs, Amazon's in-house chip design team. AWS, Amazon's cloud business, rents it out as cloud servers. Despite the name, it handles both training, which is teaching a model, and inference, which is running it to answer requests. Anthropic trains and runs Claude on it in Project Rainier.</p>
+    <ChipFigure src="/ai/hardware/chips/trainium.jpg" alt="AWS Trainium2 chip package: two silicon compute dies, each flanked by memory stacks, inside a silver frame stamped with the Annapurna Labs logo, on a purple, pink, and teal background." caption="AWS Trainium2 package." credit="Image: AWS" />
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The chip</h2>
+    <p>AWS announced Trainium2 on 28 November 2023 at re:Invent, its yearly cloud conference, and said it would train models up to 4 times faster than the first Trainium (<a href="https://press.aboutamazon.com/2023/11/aws-unveils-next-generation-aws-designed-chips">AWS, 28 November 2023</a>). Trn2 instances, the rentable servers built on it, became generally available on 3 December 2024 (<a href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available/">AWS News Blog, 3 December 2024</a>).</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">One Trainium2 chip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>NeuronCores</td><td>8</td></tr>
+          <tr><td>Dense FP8</td><td>Up to 1.3 PFLOPS</td></tr>
+          <tr><td>Sparse FP8</td><td>Up to 5.2 PFLOPS</td></tr>
+          <tr><td>Memory</td><td>96 GiB HBM</td></tr>
+          <tr><td>Memory bandwidth</td><td>2.9 TB/s</td></tr>
+          <tr><td>Chip-to-chip link (NeuronLink)</td><td>1 TB/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A NeuronCore is one of the chip's compute engines. FP8 stores each number in 8 bits. A PFLOPS is a thousand trillion math operations per second. Dense counts every number. Sparse counts a shortcut that skips zeros, which is why it reads four times higher. HBM, or high-bandwidth memory, is the fast memory stacked next to the chip. NeuronLink is AWS's own wiring between chips. All figures are from the 3 December 2024 AWS post.</p>
+
+    <h2 class="ai-model-section">Servers</h2>
+    <p>Trainium2 is rented in two sizes (<a href="https://aws.amazon.com/ec2/instance-types/trn2/">AWS, Amazon EC2 Trn2 instances</a>).</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Trn2 instance</th>
+            <th scope="col">Trn2 UltraServer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Trainium2 chips</td><td>16</td><td>64</td></tr>
+          <tr><td>Dense FP8</td><td>20.8 PFLOPS</td><td>83.2 PFLOPS</td></tr>
+          <tr><td>HBM</td><td>1.5 TB</td><td>6 TB</td></tr>
+          <tr><td>HBM bandwidth</td><td>46 TB/s</td><td>185 TB/s</td></tr>
+          <tr><td>Network (EFAv3)</td><td>3.2 Tb/s</td><td>12.8 Tb/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>An UltraServer is four Trn2 instances joined by NeuronLink so 64 chips work as one machine. EFA is the AWS network that links servers to each other. AWS says Trn2 instances give 30% to 40% better price performance than its GPU-based P5e and P5en servers, and are 3 times more energy efficient than first-generation Trn1. Those are AWS's own claims.</p>
+
+    <h2 class="ai-model-section">Project Rainier</h2>
+    <p>On 29 October 2025 AWS said Project Rainier, a cluster it built with Anthropic across several US data centers, was fully running with nearly 500,000 Trainium2 chips (<a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster">Amazon, AWS activates Project Rainier</a>). AWS said it gives Anthropic more than five times the compute it used to train its earlier models, and that Claude was expected to run on more than 1 million Trainium2 chips, for training and inference, by the end of 2025.</p>
+
+    <h2 class="ai-model-section">What comes next</h2>
+    <p>Trainium3 is the next generation. AWS's Trainium page says it has 144 GB of HBM3e per chip at 4.9 TB/s, 1.7 times the memory bandwidth of Trainium2, and up to 2 times the MXFP8 compute. Its UltraServers hold up to 144 chips (<a href="https://aws.amazon.com/ai/machine-learning/trainium/">AWS Trainium</a>).</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://press.aboutamazon.com/2023/11/aws-unveils-next-generation-aws-designed-chips">AWS, AWS Unveils Next Generation AWS-Designed Chips (28 Nov 2023)</a></li>
+      <li><a href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available/">AWS News Blog, Trn2 instances and Trn2 UltraServers now available (3 Dec 2024)</a></li>
+      <li><a href="https://aws.amazon.com/ec2/instance-types/trn2/">AWS, Amazon EC2 Trn2 instances</a></li>
+      <li><a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster">Amazon, AWS activates Project Rainier (29 Oct 2025)</a></li>
+      <li><a href="https://aws.amazon.com/ai/machine-learning/trainium/">AWS Trainium</a></li>
+    </ul>
+  </article>
+</Layout>

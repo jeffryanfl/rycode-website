@@ -3,7 +3,7 @@
   "themes": [
     { "id": "power", "href": "/ai/hardware/power/", "title": "Power", "dek": "Watts, fuel, interconnect, and the permits that can stop them.", "value": "6.6 GW", "label": "Meta nuclear package · up to · by 2035" },
     { "id": "cooling", "href": "/ai/hardware/cooling/", "title": "Cooling", "dek": "How heat leaves the hall.", "value": "", "label": "" },
-    { "id": "chips", "href": "/ai/hardware/chips/", "title": "Chips", "dek": "Chip families, with the stated compute on each page.", "value": "Nvidia · Meta · AMD · Google", "label": "Chip families" },
+    { "id": "chips", "href": "/ai/hardware/chips/", "title": "Chips", "dek": "Chip families, with the stated compute on each page.", "value": "9 labs", "label": "Chip families" },
     { "id": "data-centers", "href": "/ai/hardware/data-centers/", "title": "Data centers", "dek": "The hall and the campus where models train.", "value": "170 PB/s", "label": "Colossus aggregate memory bandwidth · company" },
     { "id": "networks", "href": "/ai/hardware/networks/", "title": "Networks", "dek": "The fabric that makes a cluster a cluster.", "value": "2.8 Tb/s", "label": "Colossus per-server network · company" }
   ]

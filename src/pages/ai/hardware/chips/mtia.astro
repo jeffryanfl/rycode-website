@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
 import '../../../../styles/ai.css';
 ---
 
@@ -11,11 +12,12 @@ import '../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">Hardware · Chips</p>
     <h1 class="ai-model-title">MTIA</h1>
-    <p class="ai-model-dek">Meta's training and inference chips. Four parts: 300, 400, 450, and 500. The buy, including Broadcom's gigawatts, is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <p class="ai-model-dek">MTIA, short for Meta Training and Inference Accelerator, is Meta's own line of AI chips. Training is teaching a model, and inference is running it to answer requests. There are four parts: the 300, 400, 450, and 500. The purchase, including Broadcom's gigawatts, is on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <ChipFigure src="/ai/hardware/chips/mtia.jpg" alt="Meta MTIA chip package: blue-tinted silicon and memory stacks inside a brushed metal frame, on a pale blue background." caption="A Meta MTIA chip package." credit="Image: Meta, via TrendForce" />
     <hr class="ai-model-rule" />
 
     <h2 class="ai-model-section">MTIA 300</h2>
-    <p>In production on 11 March 2026 for ranking and recommendations training. It is the first MTIA optimized for training recommendation and ranking models. One compute chiplet and two network chiplets. Each processing element has two RISC-V vector cores. From MTIA 300 to MTIA 500, HBM bandwidth increases by 4.5x and compute FLOPS increases by 25x, from the 300's MX8 to the 500's MX4.</p>
+    <p>On 11 March 2026 the MTIA 300 was in production for ranking and recommendations training. Ranking and recommendation models decide which posts and ads to show people. The 300 is the first MTIA optimized for training those models. It is built from one compute chiplet and two network chiplets, where a chiplet is a small piece of silicon joined with others in one package. Each processing element, one of the chip's small compute blocks, has two RISC-V vector cores. RISC-V is an open standard for a chip's instruction set. A vector core works on many numbers at once. From the MTIA 300 to the MTIA 500, HBM bandwidth increases by 4.5 times and compute FLOPS increases by 25 times, measured from the 300's MX8 format to the 500's MX4. HBM, or high-bandwidth memory, is the fast memory stacked next to the chip. FLOPS counts math operations per second. MX8 and MX4 are number formats that store each value in 8 and 4 bits.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -34,7 +36,7 @@ import '../../../../styles/ai.css';
             <td>1.2 TB/s</td>
           </tr>
           <tr>
-            <td>RDMA NICs</td>
+            <td>RDMA NICs (network cards)</td>
             <td>Six custom 800 Gbps on each network chiplet</td>
           </tr>
           <tr>
@@ -76,10 +78,10 @@ import '../../../../styles/ai.css';
         </tbody>
       </table>
     </div>
-    <p>I/O, HBM3E, and the rack figures are from Engineering at Meta, 24 August 2026. Production status is from Meta, 11 March 2026. That news post also says hundreds of thousands of MTIA chips are already deployed for inference across organic content and ads.</p>
+    <p>The I/O, HBM3E, and rack figures come from Engineering at Meta, 24 August 2026. The production status comes from Meta's news post of 11 March 2026, which also says hundreds of thousands of MTIA chips are already deployed for inference across organic content and ads. Organic content means regular posts rather than ads. I/O is how fast data moves in and out of the chip. RDMA NICs are network cards that let chips read each other's memory directly. Scale-up links chips inside a rack, and scale-out links racks to each other. GEMMs are the large matrix multiplications at the heart of AI math, and collectives are the group data transfers between chips.</p>
 
     <h2 class="ai-model-section">MTIA 400</h2>
-    <p>The 300 evolved into the 400 to support GenAI models and keep ranking and recommendation workloads. Lab testing is finished. On 11 March 2026 Meta said the 400, 450, and 500 will handle all workloads, used primarily for GenAI inference production in the near future and into 2027.</p>
+    <p>The 300 evolved into the 400 to support GenAI models while keeping the ranking and recommendation workloads. GenAI, or generative AI, means models that write text or make images. Lab testing of the 400 is finished. On 11 March 2026 Meta said the 400, 450, and 500 will handle all workloads, and will be used mainly for GenAI inference in production in the near future and into 2027.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -94,7 +96,7 @@ import '../../../../styles/ai.css';
             <td>2</td>
           </tr>
           <tr>
-            <td>Scale-up domain</td>
+            <td>Scale-up domain (chips linked as one group)</td>
             <td>72 accelerators</td>
           </tr>
           <tr>
@@ -114,7 +116,7 @@ import '../../../../styles/ai.css';
     </div>
 
     <h2 class="ai-model-section">MTIA 450</h2>
-    <p>The 400 transitioned into the 450 with optimizations for GenAI inference. Meta's 11 March 2026 news post says the 450 and 500 are optimized first for GenAI inference. Mass deployment is scheduled for early 2027.</p>
+    <p>The 400 turned into the 450, tuned for GenAI inference. Meta's 11 March 2026 news post says the 450 and 500 are optimized first for GenAI inference. Mass deployment of the 450 is scheduled for early 2027.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -145,7 +147,7 @@ import '../../../../styles/ai.css';
     </div>
 
     <h2 class="ai-model-section">MTIA 500</h2>
-    <p>The 450 advanced into the 500 for GenAI inference. Mass deployment is scheduled for 2027. A 2 by 2 configuration of smaller compute chiplets, plus two network chiplets.</p>
+    <p>The 450 advanced into the 500 for GenAI inference. Mass deployment is scheduled for 2027. The 500 arranges smaller compute chiplets in a 2 by 2 configuration, plus two network chiplets.</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead>
@@ -184,7 +186,7 @@ import '../../../../styles/ai.css';
     </div>
 
     <h2 class="ai-model-section">2nm accelerator</h2>
-    <p>Broadcom's 14 April 2026 release calls the part the industry's first 2nm AI compute accelerator and says the technology supports MTIA. The gigawatt commitment and the 2029 term are on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
+    <p>Broadcom's 14 April 2026 release calls the part the industry's first 2nm AI compute accelerator and says the technology supports MTIA. 2nm names the chip manufacturing process, and a smaller number means a newer, denser process. The gigawatt commitment and the 2029 term are on the <a href="/ai/hardware/chips/meta/">Meta stack</a>.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
