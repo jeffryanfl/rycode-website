@@ -1051,6 +1051,15 @@ a.hw-card:focus-visible .hw-card-title {
   background: var(--ai-paper, #080a10);
 }
 
+/* Rack and system images: 4:3, wider than the chip photos. */
+.ai-model-figure--rack {
+  max-width: 32rem;
+}
+
+.ai-model-figure--rack img {
+  aspect-ratio: 4 / 3;
+}
+
 .ai-model-credit {
   margin: 0.45rem 0 0;
   font-family: var(--font-sans);
