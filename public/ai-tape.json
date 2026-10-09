@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-08T08:40:00-04:00",
-  "asOfLabel": "Thu 8 Oct · morning",
+  "updated": "2026-10-09T08:45:00-04:00",
+  "asOfLabel": "Fri 9 Oct · morning",
   "lines": [
     {
       "tag": "Release",
-      "text": "Anthropic ships Claude Haiku 5.5, its cheapest small model, scoring 43 on Artificial Analysis vs Luna's 38"
-    },
-    {
-      "tag": "Release",
-      "text": "OpenAI puts GPT-6 in ChatGPT with Intelligent UI, answers that build live charts; Free and Go get it today"
+      "text": "Google Cloud launches Gemini agent, a work agent in Gmail and Docs that runs on Gemini and Claude models"
     },
     {
       "tag": "Deal",
-      "text": "AI agent startup Manus raises more than $500M, its first round since China forced Meta to unwind its purchase"
+      "text": "Broadcom lines up $50B+ in financing for OpenAI's custom AI chips, the Wall Street Journal reports"
+    },
+    {
+      "tag": "Policy",
+      "text": "Anthropic rewrites Claude's usage rules, banning cruel abuse of Claude and tightening weapons and election use"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-08"
+  "date": "2026-10-09"
 }
