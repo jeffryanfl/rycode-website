@@ -9,6 +9,8 @@ export type HardwareCard = {
   href: string;
   /** Other labs on this door, when the headline is still one plant's figure. */
   kicker?: string;
+  /** Package photo. When set, the card shows it and opens the figure on hover. */
+  image?: string;
 };
 
 type HardwarePlant = HardwareCard & {

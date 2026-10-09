@@ -569,6 +569,68 @@ a.hw-card:focus-visible .hw-card-title {
   color: #ffffff;
 }
 
+/* A plant with a photo. The figure stays closed until hover or keyboard focus. */
+.hw-card--art {
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  transition: transform 180ms var(--ease, ease), border-color 180ms var(--ease, ease);
+}
+
+.hw-card-art {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  background: var(--ai-paper, #080a10);
+}
+
+.hw-card-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hw-card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1.1rem;
+}
+
+.hw-card-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 200ms var(--ease, ease), opacity 180ms var(--ease, ease);
+}
+
+.hw-card-more-inner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.hw-card-more-inner .hw-card-metric {
+  padding-top: 0.55rem;
+}
+
+.hw-card--art:hover,
+.hw-card--art:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(248, 250, 252, 0.85);
+  z-index: 1;
+}
+
+.hw-card--art:hover .hw-card-more,
+.hw-card--art:focus-visible .hw-card-more {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
 @media (max-width: 1080px) {
   .hw-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -578,6 +640,36 @@ a.hw-card:focus-visible .hw-card-title {
 @media (max-width: 720px) {
   .hw-card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hw-card-more {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transition: none;
+  }
+
+  .hw-card--art,
+  .hw-card--art:hover,
+  .hw-card--art:focus-visible {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-card--art,
+  .hw-card-more {
+    transition: none;
+  }
+
+  .hw-card--art,
+  .hw-card--art:hover,
+  .hw-card--art:focus-visible {
+    transform: none;
+  }
+
+  .hw-card-more {
+    grid-template-rows: 1fr;
+    opacity: 1;
   }
 }
 
