@@ -1,6 +1,27 @@
 import plantsFile from '../../docs/ai/hardware.plants.json';
 import themesFile from '../../docs/ai/hardware.themes.json';
 
+/** The same short figure list on every chip card, in this order. A missing figure shows as not stated. Price shows only when sourced. */
+export type ChipSpec = {
+  maker: string;
+  chip: string;
+  launched: string;
+  compute?: string;
+  memory?: string;
+  bandwidth?: string;
+  price?: string;
+  /** One line under the figures, when they need it. */
+  note?: string;
+};
+
+export const chipSpecRows: { key: 'chip' | 'launched' | 'compute' | 'memory' | 'bandwidth'; label: string }[] = [
+  { key: 'chip', label: 'Chip' },
+  { key: 'launched', label: 'Status' },
+  { key: 'compute', label: 'Compute' },
+  { key: 'memory', label: 'Memory' },
+  { key: 'bandwidth', label: 'Bandwidth' },
+];
+
 export type HardwareCard = {
   title: string;
   dek: string;
@@ -15,6 +36,8 @@ export type HardwareCard = {
   imageAlt?: string;
   /** Short caption over the photo, when the photo is not the chip the card's figure names. */
   imageCaption?: string;
+  /** Chip figures. When set, the card is a chip card with the shared figure list. */
+  spec?: ChipSpec;
 };
 
 type HardwarePlant = HardwareCard & {

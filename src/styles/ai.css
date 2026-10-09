@@ -1,5 +1,5 @@
 /* ==================================================================
-   A.I. branch — charcoal essay family
+   A.I. branch - charcoal essay family
    Paper #080a10, ink #f8fafc, dim #8b919a. Square Ry. No cyan.
    ================================================================== */
 
@@ -491,11 +491,6 @@ h1.ai-identity {
   gap: 0.85rem;
 }
 
-/* Chip photos are 760px. Cap the card near 18rem so a retina screen scales the photo down instead of showing it soft. Text-only hardware cards stay full width. */
-.hw-chip-cards .hw-card-grid {
-  grid-template-columns: repeat(3, minmax(0, 18rem));
-  justify-content: start;
-}
 
 .hw-lab + .hw-lab .ai-lab-lane {
   margin-top: 2.15rem;
@@ -575,87 +570,9 @@ a.hw-card:focus-visible .hw-card-title {
   color: #ffffff;
 }
 
-/* A plant with a photo. The figure stays closed until hover or keyboard focus. */
-.hw-card--art {
-  gap: 0;
-  padding: 0;
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
-  transition: transform 180ms var(--ease, ease), border-color 180ms var(--ease, ease);
-}
-
-.hw-card-art {
-  position: relative;
-  display: block;
-  aspect-ratio: 1;
-  background: var(--ai-paper, #080a10);
-}
-
-.hw-card-art img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hw-card-art-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0.9rem 0.75rem 0.45rem;
-  font-size: 0.72rem;
-  line-height: 1.3;
-  color: rgba(255, 255, 255, 0.86);
-  background: linear-gradient(to top, rgba(8, 10, 16, 0.82), rgba(8, 10, 16, 0));
-}
-
-.hw-card-body {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 1rem 1.1rem;
-}
-
-.hw-card-more {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition: grid-template-rows 200ms var(--ease, ease), opacity 180ms var(--ease, ease);
-}
-
-.hw-card-more-inner {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-.hw-card-more-inner .hw-card-metric {
-  padding-top: 0.55rem;
-}
-
-.hw-card--art:hover,
-.hw-card--art:focus-visible {
-  transform: translateY(-3px);
-  border-color: rgba(248, 250, 252, 0.85);
-  z-index: 1;
-}
-
-.hw-card--art:hover .hw-card-more,
-.hw-card--art:focus-visible .hw-card-more {
-  grid-template-rows: 1fr;
-  opacity: 1;
-}
-
 @media (max-width: 1080px) {
   .hw-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hw-chip-cards .hw-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 18rem));
   }
 }
 
@@ -663,39 +580,294 @@ a.hw-card:focus-visible .hw-card-title {
   .hw-card-grid {
     grid-template-columns: 1fr;
   }
+}
 
-  .hw-chip-cards .hw-card-grid {
-    grid-template-columns: minmax(0, 18rem);
+/* Chip cards. Collapsed, a card is the photo, the name, and the maker. The figures sit
+   over the photo on hover or keyboard focus, so the card never changes size and its row
+   neighbors stay put. Phones show the figures under a small photo. */
+.hw-chip-grid {
+  grid-template-columns: repeat(3, minmax(0, 17rem));
+  justify-content: start;
+  align-items: start;
+}
+
+/* Wide screens put the unit key beside the grid, so the nine chips fit in about one screen. */
+.hw-chip-layout {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 16rem);
+  grid-template-areas: "grid side";
+  justify-content: start;
+  gap: 0 2.25rem;
+  align-items: start;
+}
+
+.hw-chip-layout > .hw-chip-grid {
+  grid-area: grid;
+}
+
+.hw-chip-side {
+  grid-area: side;
+}
+
+.hw-chip {
+  position: relative;
+  gap: 0;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  transition: border-color 160ms var(--ease, ease);
+}
+
+.hw-chip-art {
+  position: relative;
+  aspect-ratio: 1;
+  background: #000;
+}
+
+.hw-chip-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hw-chip-art-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: rgba(248, 250, 252, 0.32);
+}
+
+.hw-chip-art-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.9rem 0.7rem 0.4rem;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.86);
+  background: linear-gradient(to top, rgba(8, 10, 16, 0.82), rgba(8, 10, 16, 0));
+}
+
+.hw-chip-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem 0.8rem;
+}
+
+.hw-chip-maker {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ai-dim);
+  white-space: nowrap;
+}
+
+.hw-chip-figures {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 0.85rem;
+  background: rgba(8, 10, 16, 0.94);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 160ms var(--ease, ease), visibility 0s linear 160ms;
+}
+
+.hw-chip:hover,
+.hw-chip:focus-visible {
+  border-color: rgba(248, 250, 252, 0.85);
+}
+
+.hw-chip:hover .hw-chip-figures,
+.hw-chip:focus-visible .hw-chip-figures {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 160ms var(--ease, ease), visibility 0s;
+}
+
+.hw-chip-list {
+  margin: 0;
+  display: grid;
+  gap: 0.42rem;
+}
+
+.hw-chip-row {
+  display: grid;
+  grid-template-columns: 4.6rem minmax(0, 1fr);
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.hw-chip-row dt {
+  color: var(--ai-dim);
+}
+
+.hw-chip-row dd {
+  margin: 0;
+  color: var(--ai-ink);
+}
+
+.hw-chip-row dd.hw-chip-none {
+  color: var(--ai-dim);
+}
+
+.hw-chip-note {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--ai-dim);
+}
+
+/* The key above the chip grid: one line per unit. */
+.hw-chip-key {
+  margin: 0 0 0.9rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.hw-chip-key dt {
+  font-weight: 650;
+  color: var(--ai-ink);
+}
+
+.hw-chip-key dd {
+  margin: 0.1rem 0 0;
+  color: var(--ai-dim);
+}
+
+.hw-chip-hint {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ai-dim);
+}
+
+.hw-chip-more {
+  margin-top: 1.4rem;
+}
+
+.hw-chip-more-label {
+  margin-right: 0.5rem;
+  font-weight: 650;
+  color: var(--ai-ink);
+}
+
+@media (max-width: 1180px) {
+  .hw-chip-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "side" "grid";
   }
 
-  .hw-card-more {
-    grid-template-rows: 1fr;
+  .hw-chip-key {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem 1.1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .hw-chip-key {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .hw-chip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Phones and touch screens have no hover, so the figures sit under a small photo. */
+@media (max-width: 560px), (hover: none) {
+  .hw-chip-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hw-chip-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .hw-chip-key {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .hw-chip {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    grid-template-areas: "art head" "art figures";
+    column-gap: 0.75rem;
+    padding: 0.6rem;
+  }
+
+  .hw-chip-art {
+    grid-area: art;
+    align-self: start;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hw-chip-art-caption,
+  .hw-chip-art-empty {
+    display: none;
+  }
+
+  .hw-chip-head {
+    grid-area: head;
+    padding: 0 0 0.4rem;
+  }
+
+  .hw-chip-figures {
+    grid-area: figures;
+    position: static;
+    aspect-ratio: auto;
+    padding: 0;
+    background: none;
     opacity: 1;
+    visibility: visible;
     transition: none;
   }
+}
 
-  .hw-card--art,
-  .hw-card--art:hover,
-  .hw-card--art:focus-visible {
-    transform: none;
+@media (min-width: 561px) and (hover: none) {
+  .hw-chip-figures {
+    position: static;
+    aspect-ratio: auto;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+    padding-top: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hw-card--art,
-  .hw-card-more {
+  .hw-chip,
+  .hw-chip-figures {
     transition: none;
-  }
-
-  .hw-card--art,
-  .hw-card--art:hover,
-  .hw-card--art:focus-visible {
-    transform: none;
-  }
-
-  .hw-card-more {
-    grid-template-rows: 1fr;
-    opacity: 1;
   }
 }
 

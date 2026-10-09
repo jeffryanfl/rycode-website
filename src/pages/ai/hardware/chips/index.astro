@@ -1,11 +1,12 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
-import HardwarePlantGroups from '../../../../components/HardwarePlantGroups.astro';
+import HardwareCardGrid from '../../../../components/HardwareCardGrid.astro';
 import HardwareCrumb from '../../../../components/HardwareCrumb.astro';
-import { hardwareTheme } from '../../../../lib/hardware';
+import { hardwarePlants, hardwareTheme } from '../../../../lib/hardware';
 import '../../../../styles/ai.css';
 
 const theme = hardwareTheme('chips');
+const chips = hardwarePlants('chips');
 ---
 
 <Layout title={`${theme.title} - Hardware - Rycode`} description={theme.dek} variant="ai">
@@ -14,16 +15,24 @@ const theme = hardwareTheme('chips');
     <h1 class="ai-lab-title">{theme.title}</h1>
     <p class="ai-lab-dek">{theme.dek}</p>
   </div>
-  <div class="hw-chip-cards">
-    <HardwarePlantGroups themeId="chips" listLabel={theme.title} emptyTitle="" />
+  <div class="hw-chip-layout">
+  <aside class="hw-chip-side">
+  <dl class="hw-chip-key" aria-label="How to read the figures">
+    <div><dt>PFLOPS</dt><dd>A thousand trillion math operations per second, for one chip.</dd></div>
+    <div><dt>FP8, FP4, FP16</dt><dd>How many bits each number uses. Fewer bits run faster but are less precise, so compare chips at the same format. Dense counts every number. A figure not marked dense is the maker's headline number. Sparse counts a shortcut that skips zeros, so it reads higher than a dense figure and shouldn't be compared with one.</dd></div>
+    <div><dt>HBM</dt><dd>High-bandwidth memory, the fast memory stacked next to the chip. A GiB is about 7% more than a GB.</dd></div>
+    <div><dt>TB/s</dt><dd>Terabytes per second, how fast the chip reads its memory.</dd></div>
+  </dl>
+  <p class="hw-chip-hint">Point at a card, or tab to it, for its figures. Open it for the full page.</p>
+  </aside>
+  <HardwareCardGrid cards={chips} listLabel={theme.title} />
   </div>
-  <p class="ai-lab-note">
-    Stacks name who buys or builds the chip.
-    <a href="/ai/hardware/chips/meta/">Meta</a> deploys
-    <a href="/ai/hardware/chips/mtia/">MTIA</a>,
-    <a href="/ai/hardware/chips/meta-broadcom/">Broadcom</a>,
-    <a href="/ai/hardware/chips/meta-nvidia/">Nvidia</a>, and
-    <a href="/ai/hardware/chips/meta-amd/">AMD</a>.
-    <a href="/ai/hardware/chips/terafab/">Terafab</a> is the SpaceX and Tesla factory, not a chip family.
+  <p class="ai-lab-note hw-chip-more">
+    <span class="hw-chip-more-label">Partnerships and stacks</span>
+    <a href="/ai/hardware/chips/meta/">Meta stack</a> ·
+    <a href="/ai/hardware/chips/meta-nvidia/">Meta and Nvidia</a> ·
+    <a href="/ai/hardware/chips/meta-broadcom/">Meta and Broadcom</a> ·
+    <a href="/ai/hardware/chips/meta-amd/">Meta and AMD</a> ·
+    <a href="/ai/hardware/chips/terafab/">Terafab, the SpaceX and Tesla chip factory</a>
   </p>
 </Layout>

@@ -96,10 +96,47 @@ import '../../../../styles/ai.css';
     </div>
     <p>On the product page, Tensor Core figures count sparsity unless a figure is marked without it. Sparsity is a shortcut that skips zeros in the math, so it reads higher. The second FP4 figure is the one without it. Tensor Cores are the parts of the GPU that do the matrix math behind AI. FP4 stores each number in 4 bits and FP8 in 8 bits. FP6, FP16, BF16, TF32, FP32, and FP64 are other number formats, and the larger ones are more precise but slower. INT8 stores whole numbers in 8 bits. A PFLOPS is a thousand trillion math operations per second and a TFLOPS is a trillion. POPS counts whole-number operations the same way. NVLink is NVIDIA's wiring that lets the GPUs share work. LPDDR5X is a low-power type of memory used by the CPUs, and ConnectX-8 is NVIDIA's network card.</p>
 
+    <h2 class="ai-model-section">One Blackwell Ultra GPU</h2>
+    <p>NVIDIA's Blackwell Ultra datasheet, dated October 2025, also gives figures for one Blackwell Ultra GPU in the GB300 NVL72 (<a href="https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet">NVIDIA, Blackwell Ultra datasheet</a>). These are NVIDIA's own figures. Dense counts every number, and sparse counts the shortcut that skips zeros. NVIDIA prints the FP8 figure as sparse only.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">One Blackwell Ultra GPU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FP4 Tensor Core, dense</td>
+            <td>15 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP4 Tensor Core, sparse</td>
+            <td>20 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>FP8/FP6 Tensor Core, sparse</td>
+            <td>10 PFLOPS</td>
+          </tr>
+          <tr>
+            <td>GPU memory</td>
+            <td>279 GB HBM3E</td>
+          </tr>
+          <tr>
+            <td>Memory bandwidth</td>
+            <td>8 TB/s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>HBM3E is a type of high-bandwidth memory, the fast memory stacked next to the chip.</p>
+
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Blackwell-Ultra-AI-Factory-Platform-Paves-Way-for-Age-of-AI-Reasoning/default.aspx">NVIDIA, 18 March 2025</a></li>
       <li><a href="https://www.nvidia.com/en-us/data-center/gb300-nvl72/">NVIDIA GB300 NVL72</a></li>
+      <li><a href="https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet">NVIDIA, Blackwell Ultra datasheet (October 2025)</a></li>
       <li><a href="/ai/hardware/chips/rubin/">Rubin</a></li>
       <li><a href="/ai/hardware/chips/meta/">Meta stack</a></li>
     </ul>

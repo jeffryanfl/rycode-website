@@ -1,5 +1,5 @@
 ---
-import type { HardwareCard } from '../lib/hardware';
+import { chipSpecRows, type HardwareCard } from '../lib/hardware';
 
 interface Props {
   cards: HardwareCard[];
@@ -9,9 +9,10 @@ interface Props {
 }
 
 const { cards, listLabel, emptyTitle } = Astro.props;
+const chipGrid = cards.some((card) => card.spec);
 ---
 
-<ul class="hw-card-grid" aria-label={listLabel}>
+<ul class:list={["hw-card-grid", { "hw-chip-grid": chipGrid }]} aria-label={listLabel}>
   {cards.length === 0 && emptyTitle ? (
     <li>
       <div class="hw-card hw-card--quiet">
@@ -21,27 +22,37 @@ const { cards, listLabel, emptyTitle } = Astro.props;
   ) : (
     cards.map((card) => (
       <li>
-        {card.image ? (
-          <a class="hw-card hw-card--art" href={card.href}>
-            <span class="hw-card-art">
-              <img src={card.image} alt={card.imageAlt ?? ''} width="760" height="760" />
-              {card.imageCaption ? <span class="hw-card-art-caption">{card.imageCaption}</span> : null}
-            </span>
-            <span class="hw-card-body">
+        {card.spec ? (
+          <a class="hw-card hw-chip" href={card.href}>
+            <div class="hw-chip-art">
+              {card.image ? (
+                <img src={card.image} alt={card.imageAlt ?? ''} width="760" height="760" loading="lazy" decoding="async" />
+              ) : (
+                <span class="hw-chip-art-empty" aria-hidden="true">{card.spec.maker}</span>
+              )}
+              {card.imageCaption ? <span class="hw-chip-art-caption">{card.imageCaption}</span> : null}
+            </div>
+            <div class="hw-chip-head">
               <h2 class="hw-card-title">{card.title}</h2>
-              <span class="hw-card-more">
-                <span class="hw-card-more-inner">
-                  {card.kicker ? <p class="hw-card-label">{card.kicker}</p> : null}
-                  {card.value ? (
-                    <p class="hw-card-metric">
-                      <span class:list={["hw-card-value", { "hw-card-value--text": !/\d/.test(card.value) }]}>{card.value}</span>
-                      <span class="hw-card-label">{card.label}</span>
-                    </p>
-                  ) : null}
-                  <p class="hw-card-dek">{card.dek}</p>
-                </span>
-              </span>
-            </span>
+              <span class="hw-chip-maker">{card.spec.maker}</span>
+            </div>
+            <div class="hw-chip-figures">
+              <dl class="hw-chip-list">
+                {chipSpecRows.map((row) => (
+                  <div class="hw-chip-row">
+                    <dt>{row.label}</dt>
+                    <dd class:list={{ "hw-chip-none": !card.spec?.[row.key] }}>{card.spec?.[row.key] ?? 'not stated'}</dd>
+                  </div>
+                ))}
+                {card.spec.price ? (
+                  <div class="hw-chip-row">
+                    <dt>Price</dt>
+                    <dd>{card.spec.price}</dd>
+                  </div>
+                ) : null}
+              </dl>
+              {card.spec.note ? <p class="hw-chip-note">{card.spec.note}</p> : null}
+            </div>
           </a>
         ) : (
           <a class="hw-card" href={card.href}>
