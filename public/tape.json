@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-09T08:20:00-04:00",
-  "asOfLabel": "Fri 9 Oct · pre-open",
+  "updated": "2026-10-09T16:12:00-04:00",
+  "asOfLabel": "Fri 9 Oct · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Fri pre-open: ES ~7,845 (+0.4%). NQ +0.8%. YM +0.1%."
-    },
-    {
-      "tag": "Oil",
-      "text": "WTI Nov ~$90.63 (Thu close $91.49). Brent ~$102.79, still above $100."
+      "text": "Fri close: S&P 7,811.54 (+0.6%). Dow 51,654.95 (+0.8%). Nasdaq 27,366.17 (+0.6%)."
     },
     {
       "tag": "Rates",
-      "text": "Last CMT Thu: 10y 5.22%. 2y 4.75%. 30y 5.60%."
+      "text": "CMT Fri: 10y 5.24%. 2y 4.80% (+5bp). 30y 5.60%."
+    },
+    {
+      "tag": "Oil",
+      "text": "WTI Nov close $91.59 (Thu $91.49). Brent ~$104.33, still above $100."
     }
   ],
   "doorHref": "/economics",

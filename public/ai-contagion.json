@@ -1,6 +1,6 @@
 {
   "schema": "ai-contagion-v1",
-  "updated": "2026-10-08T21:08:52.094Z",
+  "updated": "2026-10-09T21:14:01.290Z",
   "note": "Feed for the AI build-out contagion row on /risk/. Refresh with node scripts/update-ai-contagion.mjs. Not part of the tape ship. Daily prices are final closes only.",
   "series": [
     {
@@ -633,10 +633,6 @@
       "source": "https://query1.finance.yahoo.com/v8/finance/chart/SMH?range=2y&interval=1d",
       "sourceLabel": "Yahoo Finance daily close",
       "points": [
-        {
-          "date": "2024-10-09",
-          "close": 255.15
-        },
         {
           "date": "2024-10-10",
           "close": 254.65
@@ -2636,6 +2632,10 @@
         {
           "date": "2026-10-08",
           "close": 607.27
+        },
+        {
+          "date": "2026-10-09",
+          "close": 603.33
         }
       ]
     },
@@ -2647,10 +2647,6 @@
       "source": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=2y&interval=1d",
       "sourceLabel": "Yahoo Finance daily close",
       "points": [
-        {
-          "date": "2024-10-09",
-          "close": 5792.04
-        },
         {
           "date": "2024-10-10",
           "close": 5780.05
@@ -4650,6 +4646,10 @@
         {
           "date": "2026-10-08",
           "close": 7765.36
+        },
+        {
+          "date": "2026-10-09",
+          "close": 7811.54
         }
       ]
     },
@@ -5043,6 +5043,83 @@
                 "AMD"
               ],
               "weight": 1.5686
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "share": 40.57,
+          "companies": [
+            {
+              "name": "NVIDIA CORP",
+              "tickers": [
+                "NVDA"
+              ],
+              "weight": 8.3362
+            },
+            {
+              "name": "APPLE INC",
+              "tickers": [
+                "AAPL"
+              ],
+              "weight": 7.4254
+            },
+            {
+              "name": "MICROSOFT CORP",
+              "tickers": [
+                "MSFT"
+              ],
+              "weight": 5.8001
+            },
+            {
+              "name": "ALPHABET INC",
+              "tickers": [
+                "GOOGL",
+                "GOOG"
+              ],
+              "weight": 5.5048
+            },
+            {
+              "name": "AMAZON.COM INC",
+              "tickers": [
+                "AMZN"
+              ],
+              "weight": 3.7272
+            },
+            {
+              "name": "BROADCOM INC",
+              "tickers": [
+                "AVGO"
+              ],
+              "weight": 2.561
+            },
+            {
+              "name": "META PLATFORMS INC",
+              "tickers": [
+                "META"
+              ],
+              "weight": 2.376
+            },
+            {
+              "name": "MICRON TECHNOLOGY INC",
+              "tickers": [
+                "MU"
+              ],
+              "weight": 1.7486
+            },
+            {
+              "name": "TESLA INC",
+              "tickers": [
+                "TSLA"
+              ],
+              "weight": 1.5797
+            },
+            {
+              "name": "ADVANCED MICRO DEVICES",
+              "tickers": [
+                "AMD"
+              ],
+              "weight": 1.5145
             }
           ]
         }
