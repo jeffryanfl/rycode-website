@@ -8,7 +8,7 @@
 1. Anthropic flagship learning row is Claude Fable 5.1 (`claude-fable-5-1`). — Anthropic Fable announce / models overview  
 2. OpenAI flagship learning row is GPT-6 Astra (`gpt-6-astra`). — https://openai.com/index/gpt-6-astra/  
 3. xAI flagship learning row is Grok 4.7 (`grok-4.7`). — https://x.ai/news/grok-4-7  
-4. Meta Muse/API flagship row is Muse Spark (API `muse-spark-1.3`); Llama 4 remains the open-weight lead on a separate door. — https://developer.meta.com/ai/models/muse-spark/  
+4. Meta Muse/API flagship row is Muse Wonder (API `muse-wonder-1.0`, max effort), added 12 Oct 2026. Wonder Full is not a row: Muse Code subscription only, no API. Muse Spark is no longer the flagship. Llama 4 remains the open-weight lead on a separate door. — https://developer.meta.com/ai/models/muse-wonder/  
 5. DeepSeek current API flagship row is DeepSeek-V4.1-Flash (`deepseek-flash`) with thinking mode. — https://api-docs.deepseek.com/news/news260910  
 6. TypeSafe row is Jev (System One), not a chat-model peer. Shared bench columns stay blank. — https://typesafe.ai/blog/introducing-system-one-models-and-jev  
 
@@ -34,7 +34,7 @@
 
 ## Intentionally blank
 
-Meta Muse Spark AutomationBench etc. pending live developer-page re-fetch. DeepSeek and TypeSafe shared columns blank by design until matching primaries exist.
+Muse Wonder (12 Oct 2026): DeepSWE v1.1 **78.8%** filled from Meta's table (Meta's Astra cell 74.1 matches our Astra cell, so same version). Terminal-Bench, OSWorld and AutomationBench blank: Meta prints Terminal-Bench 4.0-AA, OSWorld V2.1 and AutomationBench-AA, and its Astra cells (59.1, 75.8 partial, 41.6) differ from our Astra cells (57.9, 72.6, 41.4), so the methods differ. AA Index **52** (max) from https://artificialanalysis.ai/models/muse-wonder fetched 12 Oct 2026. DeepSeek and TypeSafe shared columns blank by design until matching primaries exist.
 
 ## Living update rule
 

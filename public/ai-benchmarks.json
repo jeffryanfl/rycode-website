@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-10-07",
-  "updated": "2026-10-07T18:00:00-04:00",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Eight rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
+  "asOf": "2026-10-12",
+  "updated": "2026-10-12T16:30:00-04:00",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Nine rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
   "columns": [
     {
       "id": "cursorBench",
@@ -417,6 +417,42 @@
       "sources": [
         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
         "https://artificialanalysis.ai/models/gemini-4-argon"
+      ]
+    },
+    {
+      "lab": "Meta",
+      "model": "Muse Wonder",
+      "apiId": "muse-wonder-1.0",
+      "doorHref": "/ai/models/meta/muse/wonder/",
+      "role": "Meta’s most capable model to date (Meta wording); released 12 Oct 2026. Wonder Full is Muse Code only, not a row.",
+      "benches": {
+        "cursorBench": null,
+        "deepSwe": {
+          "value": "78.8%",
+          "version": "v1.1",
+          "sourceKind": "lab",
+          "notes": "Lab claim, max effort, from Meta's developer page table. Meta's Astra cell on that table is 74.1, matching our Astra cell.",
+          "source": "https://developer.meta.com/ai/models/muse-wonder/"
+        },
+        "terminalBench": null,
+        "osworld": null,
+        "automationBench": null,
+        "hle": null,
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 52,
+          "effort": "max",
+          "aaModelLabel": "Muse Wonder (Max)",
+          "source": "https://artificialanalysis.ai/models/muse-wonder",
+          "sourceKind": "aa",
+          "fetched": "2026-10-12",
+          "notes": "AA Intelligence Index from the model page fetched 12 Oct 2026. Not a lab score."
+        }
+      },
+      "sources": [
+        "https://research.meta.ai/blog/muse-wonder",
+        "https://developer.meta.com/ai/models/muse-wonder/",
+        "https://artificialanalysis.ai/models/muse-wonder"
       ]
     }
   ]

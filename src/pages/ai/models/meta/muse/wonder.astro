@@ -1,0 +1,48 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Muse Wonder - Meta - A.I. - Rycode"
+  description="Meta’s most capable Muse model to date, for coding and long-running agents, released 12 Oct 2026. Wonder on Meta Model API; Wonder Full in Muse Code only."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Meta · Muse</p>
+    <h1 class="ai-model-title">Muse Wonder</h1>
+    <p class="ai-model-dek">Muse Wonder is the Meta Superintelligence Labs series that Meta calls its most capable models to date, released 12 Oct 2026. It comes in two sizes: Muse Wonder, which developers can call through the Meta Model API and use in Muse Code, and the larger Muse Wonder Full, which is only available to Muse Code subscribers. Meta built them for agentic tasks (work where the model plans and takes many steps on its own, like coding or filling in a form). Meta offers them through its API and plans. Meta says Wonder will soon power its Muse app, subscribers first.</p>
+    <hr class="ai-model-rule" />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Meta says both models build on Muse Spark, with more work on pretraining (the first, broad training run) and reinforcement learning (training by reward on tasks). Meta says they were trained at its gigawatt-scale <a href="/ai/hardware/data-centers/prometheus/">Prometheus</a> data center. Parameter count, architecture, and training data are not published.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Meta pitches two features. Active Memory carries important context about you across conversations. Active Focus keeps the model working toward a goal when a task gets hard: trying other approaches, asking for clarification, and checking in before important actions. Meta’s developer page also lists computer use (operating browsers, desktop, and mobile apps) and handing parts of a task to sub-agents.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Meta lists a 1M token context window (tokens are the word pieces models read and are billed by; the context window is how much text the model can read at once) for both Muse Wonder (<code>muse-wonder-1.0</code>) and Muse Wonder Full.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Meta says Wonder Full does better on unfamiliar tasks than its Muse Spark 1.3 trend would predict, and credits a larger, stronger base model. That is Meta’s own experiment and explanation.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>All scores below are Meta’s claims from its developer page, at max reasoning effort (Meta’s highest setting for how long the model thinks before answering). Meta ran or gathered the comparison scores, so they may not match the numbers each lab published. Higher is better.</p>
+    <ul>
+      <li>DeepSWE 1.1 (long coding tasks): Wonder 78.8, Wonder Full 79.0. Meta lists GPT-6 Astra at 74.1, Claude Opus 5.5 at 74.2, and Claude Fable 5.1 at 67.4.</li>
+      <li>SWE-Marathon (very long engineering projects): Wonder 53.1, Wonder Full 57.5 (Meta lists this score at its xhigh reasoning effort setting, not max). Meta lists Opus 5.5 at 46.3, Fable 5.1 at 45.6, and Astra at 42.5.</li>
+      <li>Terminal-Bench 4.0-AA (coding in a terminal): Wonder 52.0, Wonder Full 57.1. Meta lists Opus 5.5 at 59.6, Astra at 59.1, and Fable 5.1 at 52.0.</li>
+      <li>MemoryBench (remembering context): Wonder 85.6, Wonder Full 85.5. Meta lists Opus 5.5 at 81.5, Astra at 81.4, and Fable 5.1 at 79.0.</li>
+      <li>ProgramBench (building programs from scratch): Wonder 50.0, Wonder Full 59.0. Meta lists Opus 5.5 at 70.5, Fable 5.1 at 55.5, and Astra at 52.5.</li>
+    </ul>
+    <p>On the Artificial Analysis Intelligence Index, an independent composite score, Muse Wonder at max effort scores 52 (Artificial Analysis, fetched 12 Oct 2026).</p>
+    <h2 class="ai-model-section">Safety</h2>
+    <p>Meta calls Wonder its most aligned model to date and says it has its strongest safeguards yet against chemical, biological, radiological, nuclear, and cyber misuse. Meta’s full safety report is pending; Meta says it will be available soon.</p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Meta names Prometheus as the training site. It has not published which chips trained or serve Wonder.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p><code>muse-wonder-1.0</code> on the Meta Model API: $4.00 per million input tokens, $0.20 per million cached input tokens (text the model has seen recently and reuses), and $20.00 per million output tokens (Meta’s prices, 12 Oct 2026). Muse Wonder Full has no per-token price: it comes with the <a href="/ai/models/meta/muse/code/">Muse Code</a> Power Usage plan ($50 a month) and Maximum Usage plan ($200 a month).</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://research.meta.ai/blog/muse-wonder">Muse Wonder (Meta AI Research blog)</a></li>
+      <li><a href="https://about.fb.com/news/2026/10/introducing-muse-wonder-models/">Introducing Muse Wonder and Muse Wonder Full (Meta newsroom)</a></li>
+      <li><a href="https://developer.meta.com/ai/models/muse-wonder/">Muse Wonder developer page</a></li>
+      <li><a href="https://artificialanalysis.ai/models/muse-wonder">Muse Wonder on Artificial Analysis</a></li>
+    </ul>
+  </article>
+</Layout>

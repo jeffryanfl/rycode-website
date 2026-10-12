@@ -80,6 +80,7 @@
         "/ai/models/anthropic/claude-sonnet-5-5/",
         "/ai/models/anthropic/claude-haiku-5-5/",
         "/ai/models/meta/muse/spark/",
+        "/ai/models/meta/muse/wonder/",
         "/ai/models/typesafe/jev/",
         "/ai/glossary/"
       ],
@@ -288,6 +289,7 @@
         "/ai/models/meta/muse/image/",
         "/ai/models/meta/muse/spark/",
         "/ai/models/meta/muse/video/",
+        "/ai/models/meta/muse/wonder/",
         "/ai/models/deepseek/r1/",
         "/ai/models/deepseek/thinking/",
         "/ai/models/deepseek/v3/",

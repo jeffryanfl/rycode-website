@@ -1,6 +1,6 @@
 # Muse Spark
 
-Muse Spark is Meta Superintelligence Labs’ flagship Muse model: a natively multimodal reasoning model for agentic work, coding, and Meta AI. Current developer model page highlights **Muse Spark 1.3**. Available through Meta AI products and the Meta Model API (public preview language on Meta pages).
+Muse Spark is Meta Superintelligence Labs’ lighter Muse model: a natively multimodal reasoning model for agentic work, coding, and Meta AI. Current developer model page highlights **Muse Spark 1.3**. Available through Meta AI products and the Meta Model API (public preview language on Meta pages). Since 12 Oct 2026 Meta’s most capable model to date is [Muse Wonder](/ai/models/meta/muse/wonder/), which builds on Spark (https://research.meta.ai/blog/muse-wonder).
 
 ## Training
 

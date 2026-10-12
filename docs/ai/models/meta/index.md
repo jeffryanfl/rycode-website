@@ -8,7 +8,8 @@ Meta ships two stacks under this door. **Muse** is the Meta Superintelligence La
 | --- | --- | --- |
 | `/ai/models/meta/` | This lab index | Full |
 | `/ai/models/meta/muse/` | Muse family hub | Full |
-| `/ai/models/meta/muse/spark/` | Muse Spark (API / Meta AI flagship) | Full first card |
+| `/ai/models/meta/muse/wonder/` | Muse Wonder + Wonder Full (Meta's most capable to date, 12 Oct 2026) | Full first card |
+| `/ai/models/meta/muse/spark/` | Muse Spark (lighter API / Meta AI model) | Full first card |
 | `/ai/models/meta/muse/glimmer/` | Muse Glimmer (open-weight 30B) | Full first card |
 | `/ai/models/meta/muse/image/` | Muse Image | Stub |
 | `/ai/models/meta/muse/video/` | Muse Video | Stub |
@@ -23,10 +24,12 @@ Llama 3.x individual cards: hold. Link from the Llama hub as prior releases only
 1. Muse is a model family from Meta Superintelligence Labs, introduced with Muse Spark. — https://ai.meta.com/blog/introducing-muse-spark-msl/
 2. Developer entry for Muse Spark, Llama 4, and Meta Model API products. — https://developer.meta.com/ai/
 3. Muse Glimmer is Meta’s 30B open-source multimodal model distilled from Muse Spark (docs). — https://ai.developer.meta.com/docs/muse-glimmer
-4. Llama 4 is Meta’s current open-weight generation (Scout / Maverick). — https://developer.meta.com/ai/models/llama-4/
+4. Muse Wonder (12 Oct 2026) is what Meta calls its most capable model to date; Wonder Full is Muse Code only. — https://research.meta.ai/blog/muse-wonder
+5. Llama 4 is Meta’s current open-weight generation (Scout / Maverick). — https://developer.meta.com/ai/models/llama-4/
 
 ## Sources
 
+- https://research.meta.ai/blog/muse-wonder
 - https://developer.meta.com/ai/
 - https://ai.meta.com/blog/introducing-muse-spark-msl/
 - https://ai.developer.meta.com/docs/muse-glimmer
