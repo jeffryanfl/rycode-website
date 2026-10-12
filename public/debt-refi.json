@@ -1,6 +1,6 @@
 {
   "schema": "debt-refi-v1",
-  "updated": "2026-10-09T21:14:02.790Z",
+  "updated": "2026-10-12T20:24:34.357Z",
   "note": "Feed for the Debt refinancing row on /risk/. Refresh with node scripts/update-debt-refi.mjs. Not part of the tape ship. Final values only: borrowing points carry estimate or actual.",
   "series": [
     {
@@ -134,14 +134,6 @@
       "source": "https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/auctions",
       "sourceLabel": "FiscalData Treasury securities auctions data; nominal 10-year notes, TIPS excluded; final results only",
       "points": [
-        {
-          "date": "2024-10-09",
-          "bidToCover": 2.48,
-          "highYield": 4.066,
-          "status": "reopening",
-          "cusip": "91282CLF6",
-          "term": "9-Year 10-Month"
-        },
         {
           "date": "2024-11-05",
           "bidToCover": 2.58,
@@ -344,10 +336,6 @@
       "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US",
       "sourceLabel": "FRED MORTGAGE30US, Freddie Mac Primary Mortgage Market Survey",
       "points": [
-        {
-          "date": "2024-10-10",
-          "rate": 6.32
-        },
         {
           "date": "2024-10-17",
           "rate": 6.44
