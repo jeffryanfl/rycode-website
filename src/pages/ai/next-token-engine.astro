@@ -171,7 +171,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
 
       <div class="paper-main">
         <p class="abstract-box">
-          Modern language models are next-token predictors shaped by staged training (especially reinforcement learning from verifiable rewards) and tool use. This page explains what each stage actually buys, what still discriminates capability, and the hardware you actually purchase.
+          Modern language models are next-<a href="/ai/glossary/#token">token</a> predictors shaped by staged training (especially reinforcement learning from verifiable rewards) and tool use. This page explains what each stage actually buys, what still discriminates capability, and the hardware you actually purchase.
         </p>
 
         <section class="exec-box" aria-labelledby="dont-get-this-wrong">
@@ -286,9 +286,9 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
               <span class="fold-hint">Prefill vs decode · KV cache · MoE routing · FlashAttention</span>
             </summary>
             <div class="paper-body fold-body">
-              <p>Mixture-of-experts (<button type="button" class="term-ref" data-term="moe" aria-controls="term-moe">MoE</button>) is a roster with a dispatcher; only a subset fires. DeepSeek-V3 is 671B total / about 37B active (lab-published). Qwen3.8-Max launched as an Alibaba API SKU on 3 August 2026 (2.4T / 95B active); open weights followed around 12 August. Total is not compute per token. Routing is a new outage class.</p>
+              <p><a href="/ai/glossary/#mixture-of-experts">Mixture-of-experts</a> (<button type="button" class="term-ref" data-term="moe" aria-controls="term-moe">MoE</button>) is a roster with a dispatcher; only a subset fires. DeepSeek-V3 is 671B total / about 37B active (lab-published). <a href="/ai/models/open-weight/qwen/">Qwen3.8</a>-Max launched as an Alibaba API SKU on 3 August 2026 (2.4T / 95B active); open weights followed around 12 August. Total is not compute per token. Routing is a new outage class.</p>
               <p><button type="button" class="term-ref" data-term="prefill" aria-controls="term-prefill">Prefill</button> reads the prompt and fills the key-value cache. Decode emits one token at a time and is memory-bandwidth bound: every new token reloads the <button type="button" class="term-ref" data-term="kv" aria-controls="term-kv">KV cache</button> of everything before it. Advertised context is an architectural number. Usable recall is empirical. A million-token window is a whiteboard size, not a guarantee the model read the board.</p>
-              <p>FlashAttention is an IO-aware attention kernel (same math, less <button type="button" class="term-ref" data-term="hbm" aria-controls="term-hbm">HBM</button> traffic). PagedAttention is vLLM paging the KV cache in blocks so many sequences can share GPU RAM. Different jobs. Speculative decoding is a fast draft plus a target check; NVIDIA and vLLM do not treat it as lossless in all settings.</p>
+              <p>FlashAttention is an IO-aware attention kernel (same math, less <button type="button" class="term-ref" data-term="hbm" aria-controls="term-hbm">HBM</button> traffic). PagedAttention is vLLM paging the <a href="/ai/glossary/#kv-cache">KV cache</a> in blocks so many sequences can share GPU RAM. Different jobs. Speculative decoding is a fast draft plus a target check; NVIDIA and vLLM do not treat it as lossless in all settings.</p>
             </div>
           </details>
         </section>
@@ -323,9 +323,9 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
           </div>
 
           <div class="paper-body">
-            <p>Claude Opus 5 is $5 / $25 per million tokens, 1M context. Sonnet 5 is $2 / $10. Fable 5 is $10 / $50. Dual-use classifiers and 30-day retention are Mythos-class terms, including Mythos 5; Fable is the generally available SKU in that class, and Mythos 5 is trusted access with the classifiers lifted. Grok 4.6 (xAI, 12 August 2026) is 500k context; $2 / $6 per million tokens when the prompt is below 200k, and $4 / $12 for the whole request at or above 200k prompt tokens (xAI pricing). GPT-5.6 Sol, Terra, and Luna, and Gemini 3.x, are closed SKUs; prices and parameter counts for those lines are not published here.</p>
+            <p><a href="/ai/models/anthropic/claude-opus-5/">Claude Opus 5</a> is $5 / $25 per million tokens, 1M context. <a href="/ai/models/anthropic/claude-sonnet-5/">Sonnet 5</a> is $2 / $10. Fable 5 is $10 / $50. Dual-use classifiers and 30-day retention are Mythos-class terms, including Mythos 5; Fable is the generally available SKU in that class, and Mythos 5 is trusted access with the classifiers lifted. <a href="/ai/models/xai/models/grok-4-6/">Grok 4.6</a> (xAI, 12 August 2026) is 500k context; $2 / $6 per million tokens when the prompt is below 200k, and $4 / $12 for the whole request at or above 200k prompt tokens (xAI pricing). GPT-5.6 Sol, Terra, and Luna, and Gemini 3.x, are closed SKUs; prices and parameter counts for those lines are not published here.</p>
             <p>SWE-Verified and GPQA Diamond are saturated. OpenAI stopped reporting SWE-Verified for frontier launches. Epoch found scaffold choice alone moved Verified by about 11–15 points. What still discriminates: Terminal-Bench 3.0, OSWorld 2.0 binary success, ARC-AGI-3, and METR’s time horizon.</p>
-            <p>The failure mode is state, not mouse-clicking. The working layer is a coding agent with a human on the irreversible step. Unattended multi-hour computer use, and “the model that thinks for days,” are still demo.</p>
+            <p>The failure mode is state, not mouse-clicking. The working layer is a coding agent with a human on the irreversible step. Unattended multi-hour <a href="/ai/glossary/#computer-use">computer use</a>, and “the model that thinks for days,” are still demo.</p>
           </div>
         </section>
 
@@ -438,11 +438,11 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
                 <line x1="200" y1="448" x2="424" y2="502" />
               </g>
             </svg>
-            <p class="paper-caption">Google’s line is TPU, Ironwood / TPU7x-class, Google-specific. For open-weight serving on NVIDIA, vLLM is the default.</p>
+            <p class="paper-caption">Google’s line is TPU, <a href="/ai/hardware/chips/ironwood/">Ironwood</a> / TPU7x-class, Google-specific. For <a href="/ai/glossary/#open-weight-model">open-weight</a> serving on NVIDIA, vLLM is the default.</p>
           </figure>
 
           <div class="paper-body">
-            <p>The unit you buy is a liquid-cooled 72-GPU rack (NVIDIA GB200 or GB300 NVL72), not a GPU. Blackwell is the 2026 fleet. Rubin is announced as next; treat a GA date as unconfirmed until it is fleet.</p>
+            <p>The unit you buy is a liquid-cooled 72-GPU rack (NVIDIA GB200 or GB300 NVL72), not a GPU. <a href="/ai/hardware/chips/blackwell/">Blackwell</a> is the 2026 fleet. <a href="/ai/hardware/chips/rubin/">Rubin</a> is announced as next; treat a GA date as unconfirmed until it is fleet.</p>
             <p>This essay’s rank of the bind (the glossary lists the same four unranked): grid interconnect, then Chip-on-Wafer-on-Substrate (<button type="button" class="term-ref" data-term="cowos" aria-controls="term-cowos">CoWoS</button>) and other advanced packaging, then high-bandwidth memory (<button type="button" class="term-ref" data-term="hbm" aria-controls="term-hbm">HBM</button>), then liquid-cooled rack integration.</p>
           </div>
 

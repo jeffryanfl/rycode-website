@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">GLM-5.3 (Z.AI)</h1>
     <p class="ai-model-dek">GLM-5.3 is Z.AI’s flagship coding and agent model. The lab describes it as the same base as GLM-5.2 with gains from post-training. Weights are public on Hugging Face as <code>zai-org/GLM-5.3</code>. Hosted access runs through Z.AI’s API and Coding Plan products.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET), <strong>GLM-5.3 (max)</strong> scores <strong>45</strong>. The lighter sibling <strong>GLM-5.3-Flash</strong> scores <strong>42</strong>. AA lists MiMo-V2.6-Pro ahead of GLM-5.3 among open weights on that fetch.</p>
     <h2 class="ai-model-section">Training</h2>
     <p>Z.AI states that GLM-5.3 keeps the GLM-5.2 base and improves via post-training aimed at complex software engineering and long-horizon agent work. The research paper cited on the Hugging Face card is *GLM-5: from Vibe Coding to Agentic Engineering* (arXiv:2602.15763). Full dataset mix and FLOPs are not restated here beyond what the lab publishes.</p>

@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">GPT-6 Luna</h1>
     <p class="ai-model-dek">GPT-6 Luna is the cheaper, faster GPT-6 tier released with <a href="/ai/models/openai/gpt-6-sol/">GPT-6 Sol</a> on 22 September 2026. The model id is <code>gpt-6-luna</code>. Pricing is $0.10 input and $0.50 output per million tokens.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Parameter count, training FLOPs, and a knowledge cutoff for GPT-6 Luna are not in the sources listed on this page.</p>
     <h2 class="ai-model-section">Inference</h2>
@@ -27,7 +29,7 @@ import '../../../../styles/ai.css';
     <p>OpenAI has not published training or serving silicon details for GPT-6 Luna on the sources listed here. Buyers purchase API tokens.</p>
     <h2 class="ai-model-section">Access and pricing</h2>
     <p>Pricing is $0.10 input and $0.50 output per million tokens. Availability: API, ChatGPT Work, and Codex for paid tiers.</p>
-    <p>OpenAI’s 7 Oct post says Free and Go get GPT-6 Luna in the ChatGPT Chat tab from 8 Oct, while OpenAI’s help center still says GPT-5.6 Luna. The <a href="/ai/models/openai/gpt-6-intelligent-ui/">Intelligent UI page</a> covers the mismatch.</p>
+    <p>Free and Go ChatGPT users get GPT-5.6 Luna, not GPT-6 Luna, per OpenAI’s <a href="https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt">help page</a> (checked 12 Oct 2026). OpenAI’s 7 Oct launch post says GPT-6 Luna, so the two OpenAI pages disagree. The <a href="/ai/models/openai/gpt-6-intelligent-ui/">Intelligent UI page</a> covers the mismatch.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://developers.openai.com/api/docs/models/gpt-6-luna">GPT-6 Luna model page</a></li>

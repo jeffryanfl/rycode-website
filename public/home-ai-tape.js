@@ -2,8 +2,9 @@
    Fetch /ai-tape.json and fill the charcoal top strip. HOME only.
 
    TABLE OF CONTENTS
-   1. Shape helpers (door href, first three lines)
-   2. Render asOf + Tag · text (as-of only if lines empty)
+   1. Shape helpers (door href, optional per-line url, first three lines)
+   2. Render asOf + Tag · text (as-of only if lines empty). Each line is its
+      own link: row.url when valid (site path or https), else doorHref.
    3. Marquee after layout (always loop when lines exist)
    4. Fetch on DOMContentLoaded
 */
@@ -16,6 +17,16 @@
     const href = raw.trim();
     if (href.startsWith('/') && !href.startsWith('//')) return href;
     return '/ai';
+  }
+
+  // Optional per-line link. Site paths ("/ai/...") or https URLs only.
+  // Lines without a valid url fall back to the tape's doorHref.
+  function lineHref(raw, fallback) {
+    if (typeof raw !== 'string') return fallback;
+    const href = raw.trim();
+    if (href.startsWith('/') && !href.startsWith('//')) return href;
+    if (/^https:\/\/[^\s]+$/i.test(href)) return href;
+    return fallback;
   }
 
   function linesFrom(data) {
@@ -42,6 +53,7 @@
       const clone = node.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       clone.setAttribute('data-hub-ai-tape-clone', '');
+      clone.setAttribute('tabindex', '-1');
       track.append(clone);
     });
     track.classList.add('hub-tape-track--scroll');
@@ -61,7 +73,8 @@
     track.replaceChildren();
     track.classList.remove('hub-tape-track--scroll');
 
-    root.setAttribute('href', doorHref(data.doorHref));
+    const door = doorHref(data.doorHref);
+    asof.setAttribute('href', door);
     root.setAttribute(
       'aria-label',
       asOfLabel ? 'A.I. tape, ' + asOfLabel : 'A.I. tape'
@@ -77,8 +90,11 @@
     if (viewport) viewport.hidden = false;
 
     rows.forEach((row) => {
-      const item = document.createElement('span');
+      const item = document.createElement('a');
       item.className = 'hub-tape-item';
+      const href = lineHref(row.url, door);
+      item.setAttribute('href', href);
+      if (/^https:/i.test(href)) item.setAttribute('rel', 'noopener');
       const tag = document.createElement('span');
       tag.className = 'hub-tape-tag';
       tag.textContent = row.tag.trim();

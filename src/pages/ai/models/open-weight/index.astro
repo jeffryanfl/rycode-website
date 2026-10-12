@@ -1,4 +1,5 @@
 ---
+import LabTable from '../../../../components/LabTable.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 
@@ -46,19 +47,7 @@ const rows = [
     <p class="ai-lab-dek">Open weight means you can download the parameters and run them yourself. It does not always mean a permissive license. This hub is the Artificial Analysis open-weight head as of 22 Sep 2026. Llama stays under Meta. DeepSeek stays under its own lab.</p>
   </div>
 
-  <ol class="ai-lab-rows">
-    {rows.map((row) => (
-      <li>
-        <a href={row.href}>
-          <span class="ai-lab-row-title">{row.title}</span>
-          <span class="ai-lab-row-dek">{row.dek}</span>
-          {row.meta.map((line) => (
-            <span class="ai-lab-row-meta">{line}</span>
-          ))}
-        </a>
-      </li>
-    ))}
-  </ol>
+  <LabTable rows={rows} />
 
   <p class="ai-lab-note">AA Index is an independent composite (v4.3.2), not a lab announce score. Effort labels matter when you compare rows.</p>
 </Layout>

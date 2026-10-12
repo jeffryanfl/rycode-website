@@ -1,0 +1,34 @@
+---
+// Fixed fact box under the dek on every /ai/models page.
+// Data: src/data/model-facts.json + public/ai-benchmarks.json (see src/lib/model-facts.ts).
+// A field with no verified value is left out, never filled.
+import { factsFor, statusText, aaText, STATUS_LABEL } from '../lib/model-facts';
+
+const f = factsFor(Astro.url.pathname);
+const aa = f ? aaText(f) : undefined;
+// The banner already names the replacement, so the box just says Replaced.
+const status = f ? (f.status === 'replaced' && f.replacedBy ? [STATUS_LABEL.replaced, f.statusNote].filter(Boolean).join(', ') : statusText(f)) : '';
+---
+{f && (
+  <>
+    {f.status === 'replaced' && f.replacedBy && (
+      <p class="ai-model-banner" role="note">
+        Replaced by <a href={f.replacedBy.href}>{f.replacedBy.name}</a>. This page stays up as a record.
+      </p>
+    )}
+    <dl class="ai-model-facts" aria-label="Key facts">
+      <div><dt>Status</dt><dd>{status}</dd></div>
+      {aa && (
+        <div>
+          <dt>AA score</dt>
+          <dd>{aa}<span class="ai-model-facts-sub"><a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis</a> Intelligence Index, one independent score across many tests{f.aa?.fetched && `, fetched ${f.aa.fetched}`}</span></dd>
+        </div>
+      )}
+      {f.price && (
+        <div><dt>Price</dt><dd>{f.price}<span class="ai-model-facts-sub">US dollars per million <a href="/ai/glossary/#token">tokens</a> (word pieces) in and out, unless noted</span></dd></div>
+      )}
+      {f.released && <div><dt>Released</dt><dd>{f.released}</dd></div>}
+      {f.checked && <div><dt>Last checked</dt><dd>{f.checked}<span class="ai-model-facts-sub">newest source date on this page</span></dd></div>}
+    </dl>
+  </>
+)}

@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">GPT-6 Astra</h1>
     <p class="ai-model-dek">GPT-6 Astra is OpenAI’s flagship for hard end-to-end work: reasoning, coding, computer use, research, and documents. The model id is <code>gpt-6-astra</code>. It ships on the OpenAI API, ChatGPT plans as they roll out, Microsoft Azure, and AWS Bedrock.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Knowledge cutoff is April 30, 2026 on the API model page. Parameter count, training FLOPs, and the full post-training recipe for Astra are not published on the API page or announce. The GPT-6 Astra System Card (published 3 Sep 2026) covers safety and health evals, not a training recipe.</p>
     <h2 class="ai-model-section">Inference</h2>

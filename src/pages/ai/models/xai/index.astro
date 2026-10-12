@@ -1,4 +1,5 @@
 ---
+import LabTable from '../../../../components/LabTable.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 
@@ -46,17 +47,5 @@ const rows = [
     <p class="ai-lab-dek">Grok 4.7 is xAI’s current coding and knowledge-work frontier model (API grok-4.7). Same $2/$6 token band as 4.6, with a published fast variant at 2× price. Live in Cursor, Grok Build, and the API; consumer surfaces later.</p>
   </div>
 
-  <ol class="ai-lab-rows">
-    {rows.map((row) => (
-      <li>
-        <a href={row.href}>
-          <span class="ai-lab-row-title">{row.title}</span>
-          <span class="ai-lab-row-dek">{row.dek}</span>
-          {row.meta.map((line) => (
-            <span class="ai-lab-row-meta">{line}</span>
-          ))}
-        </a>
-      </li>
-    ))}
-  </ol>
+  <LabTable rows={rows} />
 </Layout>

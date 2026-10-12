@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Gemini 4 Argon</h1>
     <p class="ai-model-dek">Gemini 4 Argon is a Google DeepMind model announced 30 September 2026. First access is trusted cyber defenders through the <a href="https://deepmind.google/fairwind-program/">Fairwind Program</a>, not the public. Google says it is in the U.S. government’s voluntary process for pre-release model access, and that broader access will start later with paid API customers and Google AI Ultra subscribers. No date is given. There is no public API id. Introductory price is $2 input and $10 output per million tokens. Cached input is 95% off the input price. After the introductory period the post lists $4 and $20. The post does not say when the intro ends.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Google says it trained Argon for cybersecurity defense, and that prompt-injection robustness included adversarial training. Google says it monitored training runs, sent alerts to an incident-response team, and did not feed those findings back into training so the model would not learn to hide from the monitor. Parameter count, training compute, dataset, and knowledge cutoff are not in the 30 September post. No DeepMind model card was up on 1 October 2026.</p>
     <h2 class="ai-model-section">Inference</h2>

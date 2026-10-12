@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../../components/ModelFacts.astro';
 import Layout from '../../../../../layouts/Layout.astro';
 import '../../../../../styles/ai.css';
 ---
@@ -11,8 +12,9 @@ import '../../../../../styles/ai.css';
   <article class="ai-model">
     <p class="ai-model-kicker">Frontier models</p>
     <h1 class="ai-model-title">Grok 4.20</h1>
-    <p class="ai-model-dek">Three IDs listed on models/pricing as of 13 Sep 2026: grok-4.20-0309-reasoning, grok-4.20-0309-non-reasoning, grok-4.20-multi-agent-0309. Same token band as grok-4.3. Deeper multi-agent behavior: UNKNOWN beyond the name and the pricing row.</p>
+    <p class="ai-model-dek">Three IDs listed on models/pricing as of 13 Sep 2026: grok-4.20-0309-reasoning, grok-4.20-0309-non-reasoning, grok-4.20-multi-agent-0309. Same token band as grok-4.3. xAI publishes nothing on the multi-agent behavior beyond the name and the pricing row.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
 
     <h2 class="ai-model-section">Published IDs</h2>
     <div class="ai-model-table-wrap">
@@ -34,7 +36,7 @@ import '../../../../../styles/ai.css';
           </tr>
           <tr>
             <td>grok-4.20-multi-agent-0309</td>
-            <td>Same band as grok-4.3. What “multi-agent” does at inference: UNKNOWN beyond the name + pricing row.</td>
+            <td>Same band as grok-4.3. xAI does not say what “multi-agent” does when it runs.</td>
           </tr>
         </tbody>
       </table>
@@ -58,12 +60,6 @@ import '../../../../../styles/ai.css';
         </tbody>
       </table>
     </div>
-
-    <h2 class="ai-model-section">Benchmarking</h2>
-    <p>UNKNOWN. Do not invent scores.</p>
-
-    <h2 class="ai-model-section">Hardware</h2>
-    <p>Per-SKU silicon: UNKNOWN. See <a href="/ai/hardware/data-centers/memphis-colossus/">Memphis / Colossus</a>.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">

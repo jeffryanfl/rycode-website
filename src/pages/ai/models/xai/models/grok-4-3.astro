@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../../components/ModelFacts.astro';
 import Layout from '../../../../../layouts/Layout.astro';
 import '../../../../../styles/ai.css';
 ---
@@ -13,15 +14,13 @@ import '../../../../../styles/ai.css';
     <h1 class="ai-model-title">Grok 4.3</h1>
     <p class="ai-model-dek">Available on the API. Alias: grok-4.3-latest. 1M context. Batch supported (20% off listed). Reasoning includes none.</p>
     <hr class="ai-model-rule" />
-
-    <h2 class="ai-model-section">Training</h2>
-    <p>Parameter count, cutoff, FLOPs: UNKNOWN on the pages used here. Do not invent.</p>
+    <ModelFacts />
 
     <h2 class="ai-model-section">Inference</h2>
     <p>Reasoning includes <code>none</code>. Batch supported at 20% off the listed token rates.</p>
 
     <h2 class="ai-model-section">Context</h2>
-    <p>1M context. Max output tokens: UNKNOWN.</p>
+    <p>1M context.</p>
 
     <h2 class="ai-model-section">Pricing</h2>
     <p>Per 1M tokens, as published on docs.x.ai/developers/models, 13 Sep 2026.</p>
@@ -41,12 +40,6 @@ import '../../../../../styles/ai.css';
         </tbody>
       </table>
     </div>
-
-    <h2 class="ai-model-section">Benchmarking</h2>
-    <p>UNKNOWN. Do not invent scores.</p>
-
-    <h2 class="ai-model-section">Hardware</h2>
-    <p>Per-SKU silicon: UNKNOWN. See <a href="/ai/hardware/data-centers/memphis-colossus/">Memphis / Colossus</a>.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">

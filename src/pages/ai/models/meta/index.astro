@@ -1,4 +1,5 @@
 ---
+import LabTable from '../../../../components/LabTable.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 
@@ -62,32 +63,8 @@ const llama = [
   </div>
 
   <h2 class="ai-lab-lane">Muse</h2>
-  <ol class="ai-lab-rows">
-    {muse.map((row) => (
-      <li>
-        <a href={row.href}>
-          <span class="ai-lab-row-title">{row.title}</span>
-          <span class="ai-lab-row-dek">{row.dek}</span>
-          {row.meta.map((line) => (
-            <span class="ai-lab-row-meta">{line}</span>
-          ))}
-        </a>
-      </li>
-    ))}
-  </ol>
+  <LabTable rows={muse} />
 
   <h2 class="ai-lab-lane">Llama</h2>
-  <ol class="ai-lab-rows">
-    {llama.map((row) => (
-      <li>
-        <a href={row.href}>
-          <span class="ai-lab-row-title">{row.title}</span>
-          <span class="ai-lab-row-dek">{row.dek}</span>
-          {row.meta.map((line) => (
-            <span class="ai-lab-row-meta">{line}</span>
-          ))}
-        </a>
-      </li>
-    ))}
-  </ol>
+  <LabTable rows={llama} />
 </Layout>

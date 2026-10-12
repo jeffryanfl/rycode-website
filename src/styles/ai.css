@@ -1570,3 +1570,122 @@ a.hw-card:focus-visible .hw-card-title {
     font-size: 0.72rem;
   }
 }
+
+/* Model fact box (src/components/ModelFacts.astro). Compact grid, same hairlines. */
+.ai-model-banner {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--ai-hair);
+  border-left: 2px solid rgba(248, 250, 252, 0.55);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ai-ink);
+}
+
+.ai-model-banner a,
+.ai-model-facts a,
+.ai-lab-table a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(248, 250, 252, 0.3);
+  text-underline-offset: 0.18em;
+}
+
+.ai-model-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0;
+  margin: 0 0 1.6rem;
+  border-top: 1px solid var(--ai-hair);
+  border-left: 1px solid var(--ai-hair);
+  font-family: var(--font-sans);
+}
+
+.ai-model-facts > div {
+  padding: 0.5rem 0.65rem 0.55rem;
+  border-right: 1px solid var(--ai-hair);
+  border-bottom: 1px solid var(--ai-hair);
+}
+
+.ai-model-facts dt {
+  margin: 0 0 0.15rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ai-dim);
+}
+
+.ai-model-facts dd {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  color: var(--ai-ink);
+}
+
+.ai-model-facts-sub {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--ai-dim);
+}
+
+/* Hide a section heading with nothing under it. */
+.ai-model-section:has(+ .ai-model-section),
+.ai-model-section:last-child {
+  display: none;
+}
+
+/* Lab comparison table (src/components/LabTable.astro). */
+.ai-lab-table-wrap {
+  margin: 0 0 1.8rem;
+  overflow-x: auto;
+}
+
+.ai-lab-table {
+  width: 100%;
+  min-width: 36rem;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.ai-lab-table th,
+.ai-lab-table td {
+  padding: 0.45rem 0.6rem 0.45rem 0;
+  border-bottom: 1px solid var(--ai-hair);
+  text-align: left;
+  vertical-align: top;
+}
+
+.ai-lab-table thead th:first-child {
+  width: 34%;
+}
+
+.ai-lab-table thead th {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ai-dim);
+}
+
+.ai-lab-table tbody th {
+  font-weight: 600;
+  color: var(--ai-ink);
+}
+
+.ai-lab-table td {
+  color: var(--ai-dim);
+}
+
+.ai-lab-table-note {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--ai-dim);
+}

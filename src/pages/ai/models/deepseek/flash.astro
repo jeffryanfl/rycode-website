@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">DeepSeek Flash (V4.1-Flash)</h1>
     <p class="ai-model-dek">DeepSeek Flash is DeepSeek’s current recommended API model. The API id is <code>deepseek-flash</code>. The pricing page lists the model version as DeepSeek-V4.1-Flash. Legacy names <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> still route here and bill at Flash prices.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>DeepSeek’s 10 Sep 2026 announce describes a 552B-parameter MoE with a Causal Encoder–Decoder architecture (8B active parameters for input, 16B for output) and larger-scale RL post-training. Full dataset mix and FLOPs belong in the tech report on Hugging Face when cited. Knowledge cutoff is not published on the pricing page.</p>
     <h2 class="ai-model-section">Inference</h2>

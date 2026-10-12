@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">MiMo-V2.6-Pro (Xiaomi)</h1>
     <p class="ai-model-dek">MiMo-V2.6-Pro is Xiaomi’s flagship open-weight MiMo model. The 22 Sep 2026 announce describes a native multimodal series (Pro and Flash) trained with large-scale reinforcement learning aimed at self-improvement. Weights and a technical report are published on Hugging Face under the XiaomiMiMo collection.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET), <strong>MiMo-V2.6-Pro</strong> scores <strong>46</strong>. AA’s FAQ on that fetch names it the <strong>highest-ranked open weights model</strong>. Xiaomi’s announce cites the same Index figure and notes remaining gap to closed leaders Claude Fable 5.1 and GPT-6 Astra.</p>
     <h2 class="ai-model-section">Training</h2>
     <p>Xiaomi frames MiMo-V2.6 as scaling RL compute, task environments, and grader compute together. The announce describes mixed RL across coding, general, visual, and cyber domains, with live RL training reported over several days and large trajectory counts. Supporting RL environments, harness pieces, and a Distill-Qwen-9B research line are listed in the open-source section of the announce. Exact full pretrain recipes belong in the technical report.</p>

@@ -1,0 +1,62 @@
+---
+// Lab comparison table. Replaces the plain link list on lab index pages.
+// Facts come from src/lib/model-facts.ts (model-facts.json + ai-benchmarks.json).
+// Replaced and older models move to a History table below. Empty cells say so.
+import { factsFor, statusText, aaText } from '../lib/model-facts';
+
+interface Row { href: string; title: string; dek?: string; meta?: string[] }
+interface Props { rows: Row[]; caption?: string }
+const { rows, caption } = Astro.props;
+
+const withFacts = rows.map((row) => ({ row, f: factsFor(row.href) }));
+const isHistory = (s?: string) => s === 'replaced' || s === 'older';
+const main = withFacts.filter((r) => !isHistory(r.f?.status));
+const history = withFacts.filter((r) => isHistory(r.f?.status));
+const anyAa = withFacts.some((r) => r.f?.aa);
+const groups = [
+  { label: caption ?? 'Lineup', items: main },
+  { label: 'History', items: history },
+].filter((g) => g.items.length > 0);
+---
+{groups.map((g, i) => (
+  <>
+    {i > 0 && <h2 class="ai-lab-lane">{g.label}</h2>}
+    <div class="ai-lab-table-wrap">
+      <table class="ai-lab-table">
+        <caption class="visually-hidden">{g.label}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            <th scope="col">Status</th>
+            {anyAa && <th scope="col">AA score</th>}
+            <th scope="col">Price</th>
+            <th scope="col">Released</th>
+          </tr>
+        </thead>
+        <tbody>
+          {g.items.map(({ row, f }) => (
+            <tr>
+              <th scope="row">
+                <a href={row.href}>{row.title}</a>
+                {row.dek && <span class="ai-model-facts-sub">{row.dek}</span>}
+                {row.meta?.filter((m) => !m.endsWith('→')).map((m) => <span class="ai-model-facts-sub">{m}</span>)}
+              </th>
+              <td>
+                {f ? (f.status === 'replaced' && f.replacedBy ? <>Replaced by <a href={f.replacedBy.href}>{f.replacedBy.name}</a>{f.statusNote && `, ${f.statusNote}`}</> : statusText(f)) : 'See page'}
+              </td>
+              {anyAa && <td>{f && aaText(f) ? aaText(f) : 'Not on file'}</td>}
+              <td>{f?.price ?? 'See page'}</td>
+              <td>{f?.released ?? 'Not on file'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </>
+))}
+{anyAa && (
+  <p class="ai-lab-table-note">AA score is the <a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis</a> Intelligence Index, one independent score built from the same tests on every model. Prices are US dollars per million <a href="/ai/glossary/#token">tokens</a> (word pieces) in and out unless noted. "Not on file" means this site has no checked value yet.</p>
+)}
+{!anyAa && (
+  <p class="ai-lab-table-note">Prices are US dollars per million <a href="/ai/glossary/#token">tokens</a> (word pieces) in and out unless noted. "Not on file" means this site has no checked value yet.</p>
+)}

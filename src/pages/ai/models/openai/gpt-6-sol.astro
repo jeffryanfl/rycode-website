@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">GPT-6 Sol</h1>
     <p class="ai-model-dek">GPT-6 Sol is OpenAI’s GPT-6 mid-tier model for complex coding and agentic workflows, released 22 September 2026 alongside <a href="/ai/models/openai/gpt-6-luna/">GPT-6 Luna</a>. It builds on GPT-6 Astra’s alignment work at lower API prices than GPT-5.6 Sol. The model id is <code>gpt-6-sol</code>. Pricing is $2 input and $10 output per million tokens (cached input $0.20; cache writes $2.50).</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Knowledge cutoff on the Sol model page is April 20, 2026. Parameter count, training FLOPs, and the full train-time recipe are not published on the Sol docs page.</p>
     <h2 class="ai-model-section">Inference</h2>

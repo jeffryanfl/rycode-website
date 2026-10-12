@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Kimi K3 (Moonshot)</h1>
     <p class="ai-model-dek">Kimi K3 is Moonshot AI’s open-weight flagship. The lab describes a native multimodal agentic model for long-horizon coding, knowledge work, and reasoning. Full weights ship on Hugging Face as <code>moonshotai/Kimi-K3</code> under the Kimi K3 License.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET), <strong>Kimi K3 (max)</strong> scores <strong>44</strong>. AA’s open-weights FAQ on that fetch lists it third among open weights after MiMo-V2.6-Pro and GLM-5.3.</p>
     <h2 class="ai-model-section">Training</h2>
     <p>The paper *Kimi K3: Open Frontier Intelligence* (arXiv:2607.24653) and the Hugging Face card describe a Mixture-of-Experts model with Kimi Delta Attention (KDA), Attention Residuals, and Stable LatentMoE. Post-training emphasizes reinforcement learning across general, agentic, and coding domains with multiple reasoning-effort levels. Exact train FLOPs and full data recipes belong in the paper and card, not restated here beyond published summaries.</p>

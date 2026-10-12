@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">GPT-6 and Intelligent UI in ChatGPT</h1>
     <p class="ai-model-dek">On 7 October 2026, OpenAI started moving the main chat in ChatGPT to GPT-6 and added Intelligent UI (<a href="https://openai.com/index/gpt-6-for-everyone/">OpenAI, GPT-6 and Intelligent UI for everyone</a>). Intelligent UI lets an answer include pictures, maps, checklists, and controls you can tap or change, instead of text alone. No special prompt is needed, and plain text answers still happen when they fit (<a href="https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt">OpenAI Help, GPT-6 and other models in ChatGPT</a>). OpenAI says more than 1.2 billion people use ChatGPT each week.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
 
     <h2 class="ai-model-section">What it looks like</h2>
     <p>OpenAI's launch post shows the range. Ask about the design of a 7-speed bike and you get a side-view diagram of its five connected systems. Ask for help with a Sunday roast and the plan comes with a guest count you can change, which recalculates the shopping quantities, plus a cooking checklist. Other examples include road-trip stops on a map, help building a wardrobe, and visual explainers for the central limit theorem, the Monty Hall problem, GDP, and drone photography.</p>
@@ -42,11 +44,11 @@ import '../../../../styles/ai.css';
     <p>The effort setting is the slider that sets how long ChatGPT thinks before it answers. Pro effort runs GPT-6 Pro, which is powered by <a href="/ai/models/openai/gpt-6-astra/">GPT-6 Astra</a>, and Intelligent UI is not available there. OpenAI says the update "applies to the Chat experience in ChatGPT".</p>
     <p>Intelligent UI has no separate usage limit. Your plan's normal limits apply. On the web, Settings has a "Layout and visuals" switch. Turning it off cuts back the visual elements, but some may still appear, and it does not switch ChatGPT to a text-only mode.</p>
     <h2 class="ai-model-section">Who gets it, and when</h2>
-    <p>Plus, Pro, Business, and Enterprise started getting it on 7 October. Free and Go started on 8 October. For Enterprise, it depends on admin settings.</p>
+    <p>Plus, Pro, Business, and Enterprise started getting it on 7 October. For Enterprise, it depends on admin settings. OpenAI's launch post says Free and Go would follow on 8 October, but OpenAI's <a href="https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt">help page</a> (checked 12 October) still says Free and Go get GPT-5.6 Luna, not GPT-6.</p>
     <p>On Plus, the Medium and High effort levels are included. Extra High and Pro are not.</p>
     <h2 class="ai-model-section">Which model is behind it</h2>
     <p>OpenAI's launch post says paid plans get GPT-6 Sol and Free and Go get GPT-6 Luna. In OpenAI's words: "Both are tuned for everyday conversation".</p>
-    <p>OpenAI's own help page disagrees on one point. As of 8 October it still says Free and Go users get GPT-5.6 Luna, both for normal answers and for Think. The launch post, OpenAI's developer forum post, The Verge, and MacRumors all say GPT-6 Luna (<a href="https://community.openai.com/t/gpt-6-and-intelligent-ui-in-chatgpt/1404139">OpenAI Developer Community</a>, <a href="https://www.theverge.com/ai-artificial-intelligence/1007276/openai-chatgpt-intelligent-ui-gpt-6">The Verge</a>, <a href="https://www.macrumors.com/2026/10/07/chatgpt-intelligent-ui/">MacRumors</a>). The two OpenAI pages still disagreed when this page was written.</p>
+    <p>OpenAI's own <a href="https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt">help page</a> disagrees on one point. As of 12 October it still says Free and Go users get GPT-5.6 Luna, both for normal answers and for Think. The launch post, OpenAI's developer forum post, The Verge, and MacRumors all say GPT-6 Luna (<a href="https://community.openai.com/t/gpt-6-and-intelligent-ui-in-chatgpt/1404139">OpenAI Developer Community</a>, <a href="https://www.theverge.com/ai-artificial-intelligence/1007276/openai-chatgpt-intelligent-ui-gpt-6">The Verge</a>, <a href="https://www.macrumors.com/2026/10/07/chatgpt-intelligent-ui/">MacRumors</a>). The two OpenAI pages still disagreed when this page was written.</p>
     <h2 class="ai-model-section">How the models score</h2>
     <p>Artificial Analysis tests the API versions of these models, not the ChatGPT versions. OpenAI says the ChatGPT models are tuned for everyday conversation, so in-app results may differ from the scores below.</p>
     <div class="ai-model-table-wrap">

@@ -5,12 +5,13 @@
  * not this file, to move a number. Uses the .ai-bench-* plate styles from ai.css.
  */
 import BenchChart from './BenchChart.astro';
-import { benchAsOf, benchHref, benchLines, benchPoints } from '../lib/ai-bench-charts';
+import { benchAsOf, benchHref, benchLines, benchPoints, benchTable } from '../lib/ai-bench-charts';
 
 const aa = benchPoints('aaIndex');
 const aaHref = benchHref('aaIndex');
 const asOf = benchAsOf();
 const lines = benchLines();
+const table = benchTable();
 
 const toItems = (points: typeof aa) =>
   points.map((p) => ({
@@ -35,7 +36,7 @@ const toItems = (points: typeof aa) =>
       <BenchChart
         title="AA Intelligence Index"
         href={aaHref}
-        sub="Artificial Analysis v4.3.2 · effort under each score"
+        sub="Measured by Artificial Analysis (AA), an independent testing site · v4.3.2 · effort setting under each score"
         items={toItems(aa)}
       />
     </div>
@@ -48,7 +49,7 @@ const toItems = (points: typeof aa) =>
   <div class="ai-bench-plate">
     <p class="ai-bench-kicker">Rycode · /ai · bench charts</p>
     <h2 class="ai-bench-title" id="ai-bench-lines-heading">Across these benches</h2>
-    <p class="ai-bench-sub">{lines.sub} · higher is better</p>
+    <p class="ai-bench-sub">{lines.sub} · higher is better · each point is the lab's own claim, not an outside test · a gap means the lab did not report that test at that version</p>
     <div class="abc-lines">
     <BenchChart
       kind="line"
@@ -65,7 +66,108 @@ const toItems = (points: typeof aa) =>
   </div>
 </section>
 
+<section class="ai-bench ai-bench-table" id="aiBench" aria-labelledby="ai-bench-table-heading">
+  <div class="ai-bench-plate">
+    <p class="ai-bench-kicker">Rycode · /ai · bench charts</p>
+    <h2 class="ai-bench-title" id="ai-bench-table-heading">Every score, labeled</h2>
+    <p class="ai-bench-sub">
+      Each number shows its test version (tests change between editions, so scores from different versions are not comparable)
+      and who produced it: <strong>Lab claim</strong> (the company's own result), <strong>AA measured</strong> (Artificial Analysis ran it),
+      or <strong>ARC Prize verified</strong> (the test's organizers ran it). A harness is the setup a model runs inside during a test.
+      ARC-AGI-3 is the ARC Prize test of solving new puzzle games; its Standard harness lets the model carry forward only the notes it chooses to keep.
+      "Not reported at this version" means we have no score from the model's own lab at this column's test version.
+    </p>
+    <div class="abt-wrap">
+      <table class="abt">
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            {table.columns.map((c) => (
+              <th scope="col">{c.href ? <a href={c.href} target="_blank" rel="noopener noreferrer">{c.label}</a> : c.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row) => (
+            <tr>
+              <th scope="row">{row.href ? <a href={row.href}>{row.model}</a> : row.model}</th>
+              {row.cells.map((cell) => (
+                <td>
+                  {cell ? (
+                    <>
+                      <span class="abt-v">{cell.source ? <a href={cell.source} target="_blank" rel="noopener noreferrer">{cell.value}</a> : cell.value}</span>
+                      {cell.version && <span class="abt-m">{cell.version}</span>}
+                      {cell.odd && <span class="abt-odd">{cell.odd}</span>}
+                      {cell.setup && <span class="abt-m">{cell.setup}</span>}
+                      {cell.effort && <span class="abt-m">{cell.effort} effort</span>}
+                      <span class="abt-by">{cell.by}</span>
+                      {cell.alt && (
+                        <span class="abt-alt">
+                          Special setup: {cell.alt.value} with the {cell.alt.setup}{cell.alt.effort ? ` (${cell.alt.effort} effort)` : ''}, which keeps the model's hidden reasoning between steps{cell.alt.labClaim && (
+                            <>. {cell.alt.labClaim.source ? <a href={cell.alt.labClaim.source} target="_blank" rel="noopener noreferrer">{cell.alt.labClaim.text}</a> : cell.alt.labClaim.text}</>
+                          )}
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    <span class="abt-nr">Not reported at this version</span>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <style>
+  .abt-wrap {
+    margin-top: 0.85rem;
+    overflow-x: auto;
+  }
+  .abt {
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    line-height: 1.25;
+    min-width: 46rem;
+    width: 100%;
+  }
+  .abt th,
+  .abt td {
+    border-top: 1px solid rgba(127, 127, 127, 0.25);
+    padding: 0.35rem 0.4rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .abt thead th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .abt-v {
+    display: block;
+    font-weight: 600;
+  }
+  .abt-m,
+  .abt-by,
+  .abt-alt {
+    display: block;
+    opacity: 0.75;
+  }
+  .abt-by {
+    font-style: italic;
+  }
+  .abt-alt {
+    margin-top: 0.2rem;
+  }
+  .abt-odd {
+    display: block;
+    font-weight: 600;
+  }
+  .abt-nr {
+    opacity: 0.5;
+  }
   .abc-chart,
   .abc-lines {
     margin-top: 0.85rem;

@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Claude Haiku 5.5</h1>
     <p class="ai-model-dek">Claude Haiku 5.5 is the third model in Anthropic’s Claude 5.5 family, released 7 October 2026. It is built for fast, high-volume work such as classification, routing, extraction, summaries, and subagent tasks. Anthropic says it is its fastest model to date and costs around 75% less to run than Claude Haiku 4.5 on average. The API id is <code>claude-haiku-5-5</code>. Token prices start at $0.10 input and $0.50 output per million, with cache reads at $0.01 per million.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>The system card says training used a proprietary mix of public web data, public and private datasets, user data that users allowed for training, and synthetic data from other models, with cleaning steps that include deduplication and classification. The models overview lists a reliable knowledge cutoff and a training-data cutoff of June 2026.</p>
     <h2 class="ai-model-section">Inference</h2>

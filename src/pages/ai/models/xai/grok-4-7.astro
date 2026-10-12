@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Grok 4.7</h1>
     <p class="ai-model-dek">Grok 4.7 is xAI’s frontier model for coding, agentic tasks, and knowledge work. The API id is <code>grok-4.7</code>. It shipped on 21 Sep 2026 for Cursor, Grok Build, the Grok API, and partner gateways. Consumer web, mobile, and Grok on X come later, per the model card.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>xAI describes a larger base than Grok 4.6, with a longer reinforcement-learning run on harder multi-hour tasks, stronger self-checking, and better long-context management. The model was also trained to work natively with the Grok Bot harness. The model card notes supplemental training on anonymized Cursor workflow data. Pretraining data cuts off in June 2026. Supplemental training uses data generated as late as August 2026. Parameter count and training FLOPs are not published on the announce or docs pages.</p>
     <h2 class="ai-model-section">Inference</h2>

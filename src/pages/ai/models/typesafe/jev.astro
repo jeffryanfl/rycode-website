@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Jev</h1>
     <p class="ai-model-dek">Part of the <a href="/ai/models/typesafe/">TypeSafe</a> lab. Concept: System One.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <p>Jev is TypeSafe’s first public System One model: a decision model for software, not a chat model for people. You send program state plus typed questions; you get typed answers with probabilities (and confidence on Choice and Score). Early access as of the 15 Sep 2026 announce. Docs default alias is <code>jev-latest</code> (also <code>jev-1.13</code> in jaggedness notes).</p>
     <h2 class="ai-model-section">Training</h2>
     <p>TypeSafe names the training method Reinforcement Learning for Calibrated Decisions (RLCD). The company contrasts RLCD with RLHF (human preference for chat) and RLVR (verifiable rewards). Parameter count, training FLOPs, dataset mix, and knowledge cutoff are not published on the announce or docs pages cited here.</p>

@@ -142,6 +142,29 @@ html:has(.landing-stage--charcoal) body {
   animation: hub-tape-scroll 48s linear infinite;
 }
 
+.hub-tape-asof,
+.hub-tape-item {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hub-tape-asof {
+  color: rgba(248, 250, 252, 0.3);
+}
+
+.hub-tape-item:hover,
+.hub-tape-item:focus-visible,
+.hub-tape-asof:hover,
+.hub-tape-asof:focus-visible {
+  color: rgba(248, 250, 252, 0.86);
+}
+
+.hub-tape-item:focus-visible,
+.hub-tape-asof:focus-visible {
+  outline: 1px solid rgba(248, 250, 252, 0.52);
+  outline-offset: 2px;
+}
+
 .hub-tape-tag {
   color: rgba(248, 250, 252, 0.52);
 }
@@ -159,7 +182,7 @@ html:has(.landing-stage--charcoal) body {
 }
 
 .hub-tape:hover .hub-tape-track--scroll,
-.hub-tape:focus-visible .hub-tape-track--scroll {
+.hub-tape:focus-within .hub-tape-track--scroll {
   animation-play-state: paused;
 }
 

@@ -2,7 +2,7 @@
   "schema": "ai-benchmarks-v1",
   "asOf": "2026-10-12",
   "updated": "2026-10-12T16:30:00-04:00",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Nine rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0) — name the version; do not mix without naming.",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Nine rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One stays on the landing strip only. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0): name the version; do not mix without naming. Labels pass 12 Oct 2026: every non-AA cell carries sourceKind lab (company's own claim) or verifier (third party that ran the test, e.g. ARC Prize); null renders as 'not reported'. Astra ARC-AGI-3 now shows ARC Prize Standard harness 62.7% first; the Provider Adapter 99.9% is kept as altSetup.",
   "columns": [
     {
       "id": "cursorBench",
@@ -42,9 +42,9 @@
     },
     {
       "id": "arcAgi",
-      "label": "ARC-AGI",
+      "label": "ARC-AGI-3",
       "href": "https://arcprize.org/arc-agi/3",
-      "notes": "version when cited"
+      "notes": "ARC-AGI-3. Show the Standard harness score first; any other harness goes in altSetup with its name."
     },
     {
       "id": "aaIndex",
@@ -67,30 +67,35 @@
           "value": "57.8%",
           "version": "4.0",
           "notes": "Announce table at max effort. CursorBench 4.0 is not comparable to Fable's older 3.2.0 prints without naming versions.",
-          "source": "https://www.anthropic.com/claude-opus-5-5"
+          "source": "https://www.anthropic.com/claude-opus-5-5",
+          "sourceKind": "lab"
         },
         "deepSwe": null,
         "terminalBench": {
           "value": "66.4%",
           "version": "4.0",
           "notes": "Opus 5.5 at xhigh per Anthropic footnote; production safeguards on.",
-          "source": "https://www.anthropic.com/claude-opus-5-5"
+          "source": "https://www.anthropic.com/claude-opus-5-5",
+          "sourceKind": "lab"
         },
         "osworld": {
           "value": "81.8% partial",
           "version": "2.0",
           "notes": "Strict score not printed on the Opus 5.5 announce table used for this pack.",
-          "source": "https://www.anthropic.com/claude-opus-5-5"
+          "source": "https://www.anthropic.com/claude-opus-5-5",
+          "sourceKind": "lab"
         },
         "automationBench": {
           "value": "40.0%",
           "notes": "Zapier early-access; no fallback (safeguard interventions count as failures).",
-          "source": "https://www.anthropic.com/claude-opus-5-5"
+          "source": "https://www.anthropic.com/claude-opus-5-5",
+          "sourceKind": "lab"
         },
         "hle": {
           "value": "67.7%",
           "notes": "with tools",
-          "source": "https://www.anthropic.com/claude-opus-5-5"
+          "source": "https://www.anthropic.com/claude-opus-5-5",
+          "sourceKind": "lab"
         },
         "arcAgi": null,
         "aaIndex": {
@@ -122,14 +127,16 @@
           "value": "55.5%",
           "version": "4.0",
           "notes": "Anthropic announce 28 Sep 2026. Company eval.",
-          "source": "https://www.anthropic.com/claude-sonnet-5-5"
+          "source": "https://www.anthropic.com/claude-sonnet-5-5",
+          "sourceKind": "lab"
         },
         "deepSwe": null,
         "terminalBench": {
           "value": "70.6%",
           "version": "4.0",
           "notes": "System card: max effort. Opus 5.5 comparison cell is 66.4% at xhigh.",
-          "source": "https://www.anthropic.com/claude-sonnet-5-5"
+          "source": "https://www.anthropic.com/claude-sonnet-5-5",
+          "sourceKind": "lab"
         },
         "osworld": null,
         "automationBench": null,
@@ -164,14 +171,16 @@
           "value": "39.2%",
           "version": "4.0",
           "notes": "Anthropic announce 7 Oct 2026. Company eval.",
-          "source": "https://www.anthropic.com/claude-haiku-5-5"
+          "source": "https://www.anthropic.com/claude-haiku-5-5",
+          "sourceKind": "lab"
         },
         "osworld": null,
         "automationBench": null,
         "hle": {
           "value": "57.4%",
           "notes": "with tools. Anthropic announce 7 Oct 2026. Company eval.",
-          "source": "https://www.anthropic.com/claude-haiku-5-5"
+          "source": "https://www.anthropic.com/claude-haiku-5-5",
+          "sourceKind": "lab"
         },
         "arcAgi": null,
         "aaIndex": {
@@ -200,29 +209,34 @@
         "cursorBench": {
           "value": "73.4%",
           "version": "3.2.0",
-          "notes": "CursorBench 3.2.0 on Fable announce — not comparable to Opus 5.5 / Grok CursorBench 4.0 without naming versions.",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "notes": "CursorBench 3.2.0 on Fable announce: not comparable to Opus 5.5 / Grok CursorBench 4.0 without naming versions.",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "sourceKind": "lab"
         },
         "deepSwe": null,
         "terminalBench": {
           "value": "55.8%",
           "version": "4.0",
           "notes": "Mythos 5.1 60.9% on same announce table",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "sourceKind": "lab"
         },
         "osworld": {
           "value": "77.9% partial / 41.7% strict",
           "version": "2.0 Aug 2026 task release",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "sourceKind": "lab"
         },
         "automationBench": {
           "value": "31.4%",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "sourceKind": "lab"
         },
         "hle": {
           "value": "65.0%",
           "notes": "with tools; 60.9% no tools",
-          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "sourceKind": "lab"
         },
         "arcAgi": null,
         "aaIndex": {
@@ -252,32 +266,55 @@
         "cursorBench": null,
         "deepSwe": {
           "value": "74.1%",
-          "source": "https://openai.com/index/gpt-6-astra/"
+          "source": "https://openai.com/index/gpt-6-astra/",
+          "sourceKind": "lab",
+          "version": "v1.1"
         },
         "terminalBench": {
           "value": "57.9%",
           "version": "4.0",
-          "source": "https://openai.com/index/gpt-6-astra/"
+          "source": "https://openai.com/index/gpt-6-astra/",
+          "sourceKind": "lab"
         },
         "osworld": {
           "value": "72.6%",
           "version": "2.0 latency sim",
-          "source": "https://openai.com/index/gpt-6-astra/"
+          "source": "https://openai.com/index/gpt-6-astra/",
+          "sourceKind": "lab"
         },
         "automationBench": {
           "value": "41.4%",
-          "source": "https://openai.com/index/gpt-6-astra/"
+          "source": "https://openai.com/index/gpt-6-astra/",
+          "sourceKind": "lab"
         },
         "hle": {
           "value": "57.2%",
           "notes": "with tools",
-          "source": "https://openai.com/index/gpt-6-astra/"
+          "source": "https://openai.com/index/gpt-6-astra/",
+          "sourceKind": "lab"
         },
         "arcAgi": {
-          "value": "99.9%",
+          "value": "62.7%",
           "version": "ARC-AGI-3",
-          "notes": "saturates",
-          "source": "https://openai.com/index/gpt-6-astra/"
+          "setup": "Standard harness",
+          "effort": "max",
+          "sourceKind": "verifier",
+          "notes": "ARC Prize verified, Semi-Private set: 62.71% at max reasoning with the Standard harness (model keeps only notes it chooses). Shown first.",
+          "source": "https://arcprize.org/results/openai-gpt-6-astra",
+          "altSetup": {
+            "value": "99.9%",
+            "setup": "Provider Adapter harness",
+            "effort": "high",
+            "sourceKind": "verifier",
+            "notes": "ARC Prize verified 99.95% at high reasoning with the Provider Adapter harness, which keeps the model's hidden reasoning between steps. A special setup; not comparable to the Standard score.",
+            "source": "https://arcprize.org/results/openai-gpt-6-astra",
+            "verifier": "ARC Prize",
+            "labClaim": {
+              "text": "OpenAI's own post also reports 99.9%, run with its Responses API harness",
+              "source": "https://openai.com/index/gpt-6-astra/"
+            }
+          },
+          "verifier": "ARC Prize"
         },
         "aaIndex": {
           "value": 53,
@@ -293,7 +330,8 @@
         "https://openai.com/index/gpt-6-astra/",
         "https://developers.openai.com/api/docs/models/gpt-6-astra",
         "https://artificialanalysis.ai/leaderboards/models",
-        "https://artificialanalysis.ai/"
+        "https://artificialanalysis.ai/",
+        "https://arcprize.org/results/openai-gpt-6-astra"
       ]
     },
     {
@@ -308,7 +346,8 @@
           "value": "75.2%",
           "version": "v1.1",
           "notes": "Company announce chart High effort 0.7522. Not Astra's 74.1% cell.",
-          "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
+          "source": "https://openai.com/index/introducing-gpt-6-1-sol/",
+          "sourceKind": "lab"
         },
         "terminalBench": null,
         "osworld": null,
@@ -344,18 +383,21 @@
           "value": "46.3%",
           "version": "4.0",
           "notes": "xhigh on announce table",
-          "source": "https://x.ai/news/grok-4-7"
+          "source": "https://x.ai/news/grok-4-7",
+          "sourceKind": "lab"
         },
         "deepSwe": {
           "value": "71.0%",
           "version": "v1.1",
           "notes": "high effort",
-          "source": "https://x.ai/news/grok-4-7"
+          "source": "https://x.ai/news/grok-4-7",
+          "sourceKind": "lab"
         },
         "terminalBench": {
           "value": "38.0%",
           "version": "4.0",
-          "source": "https://x.ai/news/grok-4-7"
+          "source": "https://x.ai/news/grok-4-7",
+          "sourceKind": "lab"
         },
         "osworld": null,
         "automationBench": null,

@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../../components/ModelFacts.astro';
 import Layout from '../../../../../layouts/Layout.astro';
 import '../../../../../styles/ai.css';
 ---
@@ -13,15 +14,13 @@ import '../../../../../styles/ai.css';
     <h1 class="ai-model-title">grok-build-0.1</h1>
     <p class="ai-model-dek">Dedicated coding model on the API. Release notes: early access / public beta (May 2026). Aliases include grok-code-fast-1, grok-code-fast, grok-code-fast-1-0825. Distinct from the <a href="/ai/models/xai/grok-build/">Grok Build</a> product, which docs currently describe as powered by grok-4.6.</p>
     <hr class="ai-model-rule" />
-
-    <h2 class="ai-model-section">Training</h2>
-    <p>Parameter count, cutoff, FLOPs: UNKNOWN. Do not invent.</p>
+    <ModelFacts />
 
     <h2 class="ai-model-section">Inference</h2>
     <p>Text, image → text. Batch: not supported.</p>
 
     <h2 class="ai-model-section">Context</h2>
-    <p>256k context. Max output tokens: UNKNOWN.</p>
+    <p>256k context.</p>
 
     <h2 class="ai-model-section">Pricing</h2>
     <p>Per 1M tokens, as published on docs.x.ai/developers/models, 13 Sep 2026.</p>
@@ -44,12 +43,6 @@ import '../../../../../styles/ai.css';
 
     <h2 class="ai-model-section">Migration</h2>
     <p>Effective 15 May 2026 12:00 PM PT, <code>grok-code-fast-1</code> redirects to <code>grok-build-0.1</code> (<a href="https://docs.x.ai/developers/migration/may-15-retirement">May 15 retirement guide</a>).</p>
-
-    <h2 class="ai-model-section">Benchmarking</h2>
-    <p>UNKNOWN. Do not invent scores.</p>
-
-    <h2 class="ai-model-section">Hardware</h2>
-    <p>Per-SKU silicon: UNKNOWN. See <a href="/ai/hardware/data-centers/memphis-colossus/">Memphis / Colossus</a>.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">

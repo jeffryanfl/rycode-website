@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Claude Sonnet 5.5</h1>
     <p class="ai-model-dek">Claude Sonnet 5.5 is the second model in Anthropic’s Claude 5.5 family, released 28 September 2026. Anthropic says it is a clear upgrade over Claude Sonnet 5, runs 30%+ faster, and costs up to 30% less for most work. The API id is <code>claude-sonnet-5-5</code>. Token prices are $2 input and $10 output per million, with cache reads at $0.10 per million.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Anthropic has not published a parameter count or training FLOPs for Sonnet 5.5 on the announce page, the models overview, or the system card sections used here. The system card says training used a proprietary mix of public web data, public and private datasets, and synthetic data, with cleaning steps that include deduplication and classification. The models overview lists a reliable knowledge cutoff and a training-data cutoff of June 2026.</p>
     <h2 class="ai-model-section">Inference</h2>

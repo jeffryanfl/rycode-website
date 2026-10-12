@@ -1,4 +1,5 @@
 ---
+import LabTable from '../../../../components/LabTable.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 
@@ -46,17 +47,5 @@ const rows = [
     <p class="ai-lab-dek">Google DeepMind’s Gemini family: hosted multimodal models, plus a short door for open-weight Gemma 4. Gemini 4 Argon is the new card. Current learning cards also include Gemini 3.8 Flash and Gemini 3.1 Pro Preview.</p>
   </div>
 
-  <ol class="ai-lab-rows">
-    {rows.map((row) => (
-      <li>
-        <a href={row.href}>
-          <span class="ai-lab-row-title">{row.title}</span>
-          <span class="ai-lab-row-dek">{row.dek}</span>
-          {row.meta.map((line) => (
-            <span class="ai-lab-row-meta">{line}</span>
-          ))}
-        </a>
-      </li>
-    ))}
-  </ol>
+  <LabTable rows={rows} />
 </Layout>

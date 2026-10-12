@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">DeepSeek V4 Pro</h1>
     <p class="ai-model-dek">DeepSeek V4 Pro is listed on DeepSeek’s Models &amp; Pricing page with API id <code>deepseek-v4-pro</code>. The model version on that page is DeepSeek-V4-Pro-0813. DeepSeek’s V4.1-Flash announce said they were phasing out V4-Pro and, for a window, routing Pro requests to Flash. A later docs note says API service for V4 Pro continues after 14 Sep 2026 with unchanged billing until further notice. Prefer live pricing and changelog wording.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Parameter count and training recipe for Pro-0813 are not published on the pricing page. The V4 family was open-sourced at Preview (Hugging Face collection). Treat Flash’s 552B MoE numbers as Flash-only unless a Pro card states otherwise.</p>
     <h2 class="ai-model-section">Inference</h2>

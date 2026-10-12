@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../../components/ModelFacts.astro';
 import Layout from '../../../../../layouts/Layout.astro';
 import '../../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../../styles/ai.css';
     <h1 class="ai-model-title">Muse Glimmer</h1>
     <p class="ai-model-dek">Muse Glimmer is Meta’s 30-billion-parameter open-weight multimodal model, distilled from Muse Spark and aimed at local agent workflows. Weights are under Apache License 2.0.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Dense, decoder-only multimodal transformer with a built-in vision encoder. Trained from Muse Spark’s outputs rather than from scratch (Meta docs). Full dataset mix and FLOPs are not published on the docs cited here.</p>
     <h2 class="ai-model-section">Inference</h2>

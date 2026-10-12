@@ -1,4 +1,5 @@
 ---
+import LabTable from '../../../../components/LabTable.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 
@@ -55,33 +56,5 @@ const archive = [
     <p class="ai-lab-dek">DeepSeek’s current API line is V4: call <code>deepseek-flash</code> (DeepSeek-V4.1-Flash) or <code>deepseek-v4-pro</code>. Older names <code>deepseek-chat</code> and <code>deepseek-reasoner</code> were retired after 24 Jul 2026 UTC. R1 and V3 stay as archive doors.</p>
   </div>
 
-  <h2 class="ai-lab-lane">Current</h2>
-  <ol class="ai-lab-rows">
-    {current.map((row) => (
-      <li>
-        <a href={row.href}>
-          <span class="ai-lab-row-title">{row.title}</span>
-          <span class="ai-lab-row-dek">{row.dek}</span>
-          {row.meta.map((line) => (
-            <span class="ai-lab-row-meta">{line}</span>
-          ))}
-        </a>
-      </li>
-    ))}
-  </ol>
-
-  <h2 class="ai-lab-lane">Archive</h2>
-  <ol class="ai-lab-rows">
-    {archive.map((row) => (
-      <li>
-        <a href={row.href}>
-          <span class="ai-lab-row-title">{row.title}</span>
-          <span class="ai-lab-row-dek">{row.dek}</span>
-          {row.meta.map((line) => (
-            <span class="ai-lab-row-meta">{line}</span>
-          ))}
-        </a>
-      </li>
-    ))}
-  </ol>
+  <LabTable rows={[...current, ...archive]} />
 </Layout>

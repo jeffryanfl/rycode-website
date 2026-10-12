@@ -174,3 +174,86 @@ export function benchLines(): { categories: BenchAxisLabel[]; series: BenchLineS
     sub: `As of ${benchAsOf()} · one line per model`,
   };
 }
+
+/**
+ * Every feed cell as a labeled grid row, for the "Every score, labeled" table.
+ * Each filled cell names its test version (when the feed has one) and who
+ * produced the number: the lab itself, Artificial Analysis, or an outside verifier.
+ * A null cell reads "not reported". Nothing is computed or filled in.
+ */
+type FullCell = {
+  value?: string | number | null;
+  version?: string;
+  setup?: string;
+  effort?: string;
+  sourceKind?: string;
+  verifier?: string;
+  source?: string;
+  altSetup?: BenchAlt;
+} | null;
+
+type BenchAlt = { value: string; setup: string; effort?: string; source?: string; labClaim?: { text: string; source?: string } };
+
+export interface BenchTableCell {
+  value: string;
+  version?: string;
+  setup?: string;
+  by: string;
+  source?: string;
+  effort?: string;
+  alt?: BenchAlt;
+  /** Warning text when this cell's test version cannot be compared with others in its column. */
+  odd?: string;
+}
+
+const BY: Record<string, string> = { lab: 'Lab claim', aa: 'AA measured' };
+const ODD_MINORITY = 'Different version from the others, do not compare directly';
+const ODD_MIXED = 'Versions differ in this column, do not compare directly';
+
+export function benchTable(): {
+  columns: { id: string; label: string; href?: string }[];
+  rows: { model: string; href?: string; cells: (BenchTableCell | null)[] }[];
+} {
+  const columns = data.columns.map((c) => ({ id: c.id, label: c.label, href: c.href }));
+  /* Most common version per column, so a cell on another version gets flagged.
+     A column with 2+ versions and no majority flags every versioned cell (mixed). */
+  const usual = new Map<string, string>();
+  const mixed = new Set<string>();
+  for (const col of columns) {
+    if (col.id === 'aaIndex') continue;
+    const counts = new Map<string, number>();
+    for (const lab of data.labs) {
+      const v = (lab.benches?.[col.id] as FullCell)?.version;
+      if (v) counts.set(v, (counts.get(v) ?? 0) + 1);
+    }
+    const top = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+    if (top.length > 1 && top[0][1] > top[1][1]) usual.set(col.id, top[0][0]);
+    else if (top.length > 1) mixed.add(col.id);
+  }
+  const rows = data.labs.map((lab) => ({
+    model: lab.model,
+    href: lab.doorHref,
+    cells: columns.map((col) => {
+      const cell = lab.benches?.[col.id] as FullCell;
+      if (!cell || cell.value === undefined || cell.value === null) return null;
+      const kind = col.id === 'aaIndex' ? 'aa' : cell.sourceKind ?? 'lab';
+      return {
+        value: String(cell.value),
+        version: col.id === 'aaIndex' ? (cell.effort ? `${cell.effort} effort` : undefined) : cell.version,
+        setup: cell.setup,
+        by: kind === 'verifier' ? `${cell.verifier ?? 'Independently'} verified` : BY[kind] ?? 'Lab claim',
+        source: cell.source,
+        alt: cell.altSetup,
+        effort: col.id === 'aaIndex' ? undefined : cell.effort,
+        odd: !cell.version
+          ? undefined
+          : mixed.has(col.id)
+            ? ODD_MIXED
+            : usual.get(col.id) && cell.version !== usual.get(col.id)
+              ? ODD_MINORITY
+              : undefined,
+      };
+    }),
+  }));
+  return { columns, rows };
+}

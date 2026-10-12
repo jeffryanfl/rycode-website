@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../../components/ModelFacts.astro';
 import Layout from '../../../../../layouts/Layout.astro';
 import '../../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../../styles/ai.css';
     <h1 class="ai-model-title">Llama 4</h1>
     <p class="ai-model-dek">Llama 4 is Meta’s current open-weight generation. Public cards center on Llama 4 Scout and Llama 4 Maverick (Mixture-of-Experts style naming on Meta and GitHub herd tables). Meta’s Llama 4 developer page frames them as optimized for deployment and efficiency.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Parameter and expert layouts on Meta and GitHub herd notes include Scout-17B-16E and Maverick-17B-128E. Full FLOPs and data mix are not published unless a Meta model card states them. License is the Llama community license (not Apache). Read exact license text from Meta’s page.</p>
     <h2 class="ai-model-section">Inference</h2>

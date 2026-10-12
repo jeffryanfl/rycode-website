@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Grok Build</h1>
     <p class="ai-model-dek">A public coding agent you can run as an interactive TUI, as headless scripts (<code>grok -p</code>), or through Agent Client Protocol (ACP). Distinct from the API slug <code>grok-build-0.1</code>.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
 
     <h2 class="ai-model-section">What it is</h2>
     <p>xAI publishes Grok Build as an extensible coding agent for professional software work. Install is documented as <code>curl -fsSL https://x.ai/cli/install.sh | bash</code> (PowerShell installer also documented). Early beta launched 25 May 2026 for SuperGrok and X Premium Plus. Later news (19 Aug 2026) says it is available on every plan on web and mobile. The harness was announced open source 15–16 Jul 2026.</p>
@@ -23,8 +25,8 @@ import '../../../../styles/ai.css';
     <h2 class="ai-model-section">Published capabilities</h2>
     <p>Docs and marketing name plan mode, subagents/worktrees, skills/plugins/MCP/AGENTS.md, hooks, headless <code>/goal</code>, workflows, marketplace, and enterprise config scopes (<code>~/.grok/config.toml</code>, managed configs). Do not treat that list as an unpublished internal architecture.</p>
 
-    <h2 class="ai-model-section">UNKNOWN</h2>
-    <p>Whether “Composer 2.5” (news 1 Jun 2026) is an xAI model slug or a Build UI name: UNKNOWN without a models-page row. Secondary coverage of a July 2026 codebase-upload incident: treat incident narratives as secondary unless quoting an xAI news post. The open-source announcement itself is primary via x.ai/news.</p>
+    <h2 class="ai-model-section">Open questions</h2>
+    <p>xAI has not said whether “Composer 2.5” (news 1 Jun 2026) is a model name or a Grok Build interface name; it has no row on the models page. Reports of a July 2026 codebase upload incident come from other outlets, not an xAI news post.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">

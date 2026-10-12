@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -13,6 +14,7 @@ import '../../../../styles/ai.css';
     <h1 class="ai-model-title">Claude Sonnet 5</h1>
     <p class="ai-model-dek">Claude Sonnet 5 is Anthropic’s speed-and-intelligence balance model for everyday coding and agents. The API id is <code>claude-sonnet-5</code>. Pricing is $2 input and $10 output per million tokens.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Anthropic lists a reliable knowledge and training data cutoff of January 2026. Parameter count, training FLOPs, and the full post-training recipe for this SKU are not published on the models overview or choosing guide.</p>
     <h2 class="ai-model-section">Inference</h2>

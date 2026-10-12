@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../../components/ModelFacts.astro';
 import Layout from '../../../../../layouts/Layout.astro';
 import '../../../../../styles/ai.css';
 ---
@@ -13,15 +14,16 @@ import '../../../../../styles/ai.css';
     <h1 class="ai-model-title">Grok 4.6</h1>
     <p class="ai-model-dek">Prior flagship on the API. Still documented. Model id: grok-4.6. Current lead is <a href="/ai/models/xai/grok-4-7/">Grok 4.7</a>.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
 
     <h2 class="ai-model-section">Training</h2>
-    <p>Knowledge cutoff: 1 Feb 2026 (docs note on the models page). Parameter count, FLOPs, dataset mix, and any RL recipe tied to this SKU: UNKNOWN. Do not invent scores or params.</p>
+    <p>Knowledge cutoff: 1 Feb 2026 (docs note on the models page).</p>
 
     <h2 class="ai-model-section">Inference</h2>
     <p>Reasoning: low / medium / high (default) / xhigh. Batch: not supported. Modalities: text, image → text.</p>
 
     <h2 class="ai-model-section">Context</h2>
-    <p>500k context. Max output tokens: UNKNOWN except the published “no text output limit” note on the Grok 4.6 overview.</p>
+    <p>500k context. The Grok 4.6 overview notes no text output limit.</p>
 
     <h2 class="ai-model-section">Pricing</h2>
     <p>Per 1M tokens, as published on docs.x.ai/developers/models, 13 Sep 2026. Long-context tier applies when the prompt is ≥ 200k tokens (higher rate for all tokens in that request).</p>
@@ -44,10 +46,10 @@ import '../../../../../styles/ai.css';
     <p>Re-check the live models page before you quote a dollar.</p>
 
     <h2 class="ai-model-section">Benchmarking</h2>
-    <p>UNKNOWN on the models pages fetched for this card. Marketing says industry-leading coding / non-hallucination / tool calling and points at an announcement for “benchmark figures.” Do not invent scores. Pull only from that announcement page if you open it.</p>
+    <p>xAI’s models pages print no scores for Grok 4.6. Marketing calls it industry-leading on coding, avoiding made-up answers, and tool calling.</p>
 
     <h2 class="ai-model-section">Hardware</h2>
-    <p>Per-SKU training or serving silicon: UNKNOWN. Grok training narratives name Colossus. That is a campus, not a chip fab. See <a href="/ai/hardware/data-centers/memphis-colossus/">Memphis / Colossus</a>.</p>
+    <p>xAI has not published which chips train or serve Grok 4.6. Grok training narratives name Colossus. That is a campus, not a chip fab. See <a href="/ai/hardware/data-centers/memphis-colossus/">Memphis / Colossus</a>.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">

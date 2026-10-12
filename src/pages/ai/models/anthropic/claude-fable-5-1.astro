@@ -1,4 +1,5 @@
 ---
+import ModelFacts from '../../../../components/ModelFacts.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 ---
@@ -14,6 +15,7 @@ import '../../../../styles/ai.css';
     <p class="ai-model-dek">Claude Fable 5.1 is Anthropic’s most capable widely released model, aimed at long-horizon agents, research, and document, spreadsheet, and slide work. The API id is <code>claude-fable-5-1</code>. It ships on the Claude API, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry.</p>
     <p class="ai-model-note">Mythos 5.1 (claude-mythos-5-1) matches Fable 5.1 capabilities and pricing shape but is available to Project Glasswing participants only.</p>
     <hr class="ai-model-rule" />
+    <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
     <p>Anthropic lists a reliable knowledge and training data cutoff of June 2026. Parameter count, training FLOPs, and the full post-training recipe for this SKU are not published on the models overview or Fable pages.</p>
     <h2 class="ai-model-section">Inference</h2>
