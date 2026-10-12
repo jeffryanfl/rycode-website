@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-09T08:45:00-04:00",
-  "asOfLabel": "Fri 9 Oct · morning",
+  "updated": "2026-10-12T08:48:33-04:00",
+  "asOfLabel": "Mon 12 Oct · morning",
   "lines": [
     {
-      "tag": "Release",
-      "text": "Google Cloud launches Gemini agent, a work agent in Gmail and Docs that runs on Gemini and Claude models"
-    },
-    {
-      "tag": "Deal",
-      "text": "Broadcom lines up $50B+ in financing for OpenAI's custom AI chips, the Wall Street Journal reports"
+      "tag": "Labs",
+      "text": "Google staff test Carbon, an internal Gemini 4 build one engineer says codes like Opus 5.5 (unconfirmed)"
     },
     {
       "tag": "Policy",
-      "text": "Anthropic rewrites Claude's usage rules, banning cruel abuse of Claude and tightening weapons and election use"
+      "text": "Anthropic launches Cyber Mission: free OSS Scanner bug scans and a defense program for power and water grids"
+    },
+    {
+      "tag": "OpenWeight",
+      "text": "Posts on X say Qwen4-27B and Qwen4-Max open weights will drop together soon; no official date yet"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-09"
+  "date": "2026-10-12"
 }
