@@ -1,6 +1,6 @@
 {
   "schema": "ai-contagion-v1",
-  "updated": "2026-10-12T20:24:32.130Z",
+  "updated": "2026-10-13T20:13:55.782Z",
   "note": "Feed for the AI build-out contagion row on /risk/. Refresh with node scripts/update-ai-contagion.mjs. Not part of the tape ship. Daily prices are final closes only.",
   "series": [
     {
@@ -2632,6 +2632,10 @@
         {
           "date": "2026-10-12",
           "close": 590.99
+        },
+        {
+          "date": "2026-10-13",
+          "close": 588.12
         }
       ]
     },
@@ -4642,6 +4646,10 @@
         {
           "date": "2026-10-12",
           "close": 7807.24
+        },
+        {
+          "date": "2026-10-13",
+          "close": 7805.45
         }
       ]
     },
@@ -5189,6 +5197,83 @@
                 "AMD"
               ],
               "weight": 1.4749
+            }
+          ]
+        },
+        {
+          "date": "2026-10-12",
+          "share": 40.47,
+          "companies": [
+            {
+              "name": "NVIDIA CORP",
+              "tickers": [
+                "NVDA"
+              ],
+              "weight": 8.141
+            },
+            {
+              "name": "APPLE INC",
+              "tickers": [
+                "AAPL"
+              ],
+              "weight": 7.3967
+            },
+            {
+              "name": "MICROSOFT CORP",
+              "tickers": [
+                "MSFT"
+              ],
+              "weight": 5.973
+            },
+            {
+              "name": "ALPHABET INC",
+              "tickers": [
+                "GOOGL",
+                "GOOG"
+              ],
+              "weight": 5.5424
+            },
+            {
+              "name": "AMAZON.COM INC",
+              "tickers": [
+                "AMZN"
+              ],
+              "weight": 3.7866
+            },
+            {
+              "name": "BROADCOM INC",
+              "tickers": [
+                "AVGO"
+              ],
+              "weight": 2.5087
+            },
+            {
+              "name": "META PLATFORMS INC",
+              "tickers": [
+                "META"
+              ],
+              "weight": 2.4354
+            },
+            {
+              "name": "MICRON TECHNOLOGY INC",
+              "tickers": [
+                "MU"
+              ],
+              "weight": 1.6605
+            },
+            {
+              "name": "TESLA INC",
+              "tickers": [
+                "TSLA"
+              ],
+              "weight": 1.5838
+            },
+            {
+              "name": "ADVANCED MICRO DEVICES",
+              "tickers": [
+                "AMD"
+              ],
+              "weight": 1.4421
             }
           ]
         }

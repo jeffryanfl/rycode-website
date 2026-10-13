@@ -1,20 +1,48 @@
 {
-  "updated": "2026-10-13T08:18:00-04:00",
-  "asOfLabel": "Tue 13 Oct · pre-open",
-  "lines": [
+  "schema": "macro-tape-v1",
+  "asOf": "2026-10-13T16:12:00-04:00",
+  "cadence": "after-close",
+  "hook": "WTI rose to a $94.70 close, yet Treasury yields eased as bonds reopened, and stocks ended about flat.",
+  "door": "Economics",
+  "essayWorthy": true,
+  "ticker": [
     {
-      "tag": "Tape",
-      "text": "Tue pre-open: ES ~7,851 (-0.1%). NQ -0.7%. YM +0.8%."
-    },
-    {
+      "date": "2026-10-13",
       "tag": "Oil",
-      "text": "WTI Nov ~$92.25 (Mon close $93.74). Brent ~$104.69, still above $100."
+      "line": "WTI Nov close $94.70 (Mon $93.74). Brent ~$106.18, still above $100."
     },
     {
+      "date": "2026-10-13",
       "tag": "Rates",
-      "text": "Bonds reopen. Last CMT Fri: 10y 5.24%. 2y 4.80%. 30y 5.60%."
+      "line": "CMT Tue: 10y 5.21% (-3bp vs Fri). 2y 4.79%. 30y 5.56%."
+    },
+    {
+      "date": "2026-10-13",
+      "tag": "Tape",
+      "line": "Tue close: S&P 7,805.45 (flat). Dow 51,670.10 (-0.3%). Nasdaq 27,204.38 (-0.2%)."
     }
   ],
-  "doorHref": "/economics",
-  "date": "2026-10-13"
+  "levels": {
+    "spx": 7805.45,
+    "dow": 51670.1,
+    "nasdaq": 27204.38,
+    "yield2y": 4.79,
+    "yield10y": 5.21,
+    "yield30y": 5.56,
+    "dxy": 102.21,
+    "wti": 94.7,
+    "brent": 106.18,
+    "fedwatchHikePct": null,
+    "fedFundsImplied": "3.75-4.00"
+  },
+  "calendar": [
+    "No major US data print is confirmed for this card on Wednesday.",
+    "Next FOMC Oct 27\u201328."
+  ],
+  "watch": [
+    "Whether WTI keeps climbing toward the $100 line.",
+    "Whether yields keep easing even as oil rises.",
+    "Whether chip stocks steady after slipping into a correction."
+  ],
+  "chatPosted": true
 }
