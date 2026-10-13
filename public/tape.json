@@ -2,14 +2,14 @@
   "schema": "macro-tape-v1",
   "asOf": "2026-10-13T16:12:00-04:00",
   "cadence": "after-close",
-  "hook": "WTI rose to a $94.70 close, yet Treasury yields eased as bonds reopened, and stocks ended about flat.",
+  "hook": "WTI rose to a $94.79 close, yet Treasury yields eased as bonds reopened, and stocks ended about flat.",
   "door": "Economics",
   "essayWorthy": true,
   "ticker": [
     {
       "date": "2026-10-13",
       "tag": "Oil",
-      "line": "WTI Nov close $94.70 (Mon $93.74). Brent ~$106.18, still above $100."
+      "line": "WTI Nov close $94.79 (Mon $93.74). Brent ~$106.18, still above $100."
     },
     {
       "date": "2026-10-13",
@@ -30,7 +30,7 @@
     "yield10y": 5.21,
     "yield30y": 5.56,
     "dxy": 102.21,
-    "wti": 94.7,
+    "wti": 94.79,
     "brent": 106.18,
     "fedwatchHikePct": null,
     "fedFundsImplied": "3.75-4.00"
