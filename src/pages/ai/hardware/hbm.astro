@@ -1,0 +1,42 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/ai.css';
+---
+
+<Layout
+  title="HBM memory - Hardware - Rycode"
+  description="HBM, high-bandwidth memory: stacked DRAM beside the AI chip. HBM4 doubles the data lanes to 2,048. How much each current chip carries."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Reference</p>
+    <h1 class="ai-model-title">HBM memory</h1>
+    <p class="ai-model-dek">HBM, or high-bandwidth memory, is a stack of memory chips placed right beside an AI chip in the same package. It holds the model's weights (the numbers the model learned) and its working data. Because the chip has to read those numbers for every word it writes, memory speed often limits AI speed more than raw math does. The memory is DRAM, the same kind of working memory a laptop uses, stacked vertically and wired through the stack.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Generations</h2>
+    <p>SK hynix, one of the main HBM makers, lists six generations: HBM, HBM2, HBM2E, HBM3, HBM3E, and HBM4 (<a href="https://news.skhynix.com/en/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/">SK hynix, 12 Sep 2025</a>). SK hynix says HBM4 doubles the data lanes to 2,048, from 1,024, runs above 10 Gb/s per lane against the 8 Gb/s JEDEC standard, and is over 40% more power efficient than HBM3E. JEDEC is the industry body that writes memory standards. These are SK hynix's own figures.</p>
+    <h2 class="ai-model-section">What current chips carry</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Chip</th><th scope="col">Memory</th><th scope="col">Bandwidth</th><th scope="col">Source page</th></tr></thead>
+        <tbody>
+          <tr><td>Nvidia Rubin GPU</td><td>288 GB HBM4</td><td>19.2 TB/s</td><td><a href="/ai/hardware/chips/rubin/">Rubin</a></td></tr>
+          <tr><td>AMD MI455X</td><td>432 GB HBM4, 12 stacks</td><td>23.3 TB/s</td><td><a href="/ai/hardware/chips/mi455x/">MI455X</a></td></tr>
+          <tr><td>Microsoft Maia 300</td><td>288 GB HBM4, 8 stacks</td><td>18 TB/s</td><td><a href="/ai/hardware/chips/maia/">Maia</a></td></tr>
+          <tr><td>OpenAI Jalapeño</td><td>216 GiB HBM4</td><td>15.4 TB/s</td><td><a href="/ai/hardware/chips/jalapeno/">Jalapeño</a></td></tr>
+          <tr><td>Google TPU 8i</td><td>288 GB HBM</td><td>not stated</td><td><a href="/ai/hardware/chips/tpu-8/">TPU 8</a></td></tr>
+          <tr><td>AWS Trainium3</td><td>144 GiB HBM3e</td><td>4.9 TB/s</td><td><a href="/ai/hardware/chips/trainium3/">Trainium3</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Each figure is the chip maker's own and comes from the page linked in its row. GB is gigabytes; a GiB is about 7% more. TB/s is terabytes per second.</p>
+    <h2 class="ai-model-section">The other path: SRAM</h2>
+    <p>Some inference chips lean on SRAM, a smaller, much faster memory built into the chip itself. <a href="/ai/hardware/chips/groq-3-lpx/">Groq 3 LPX</a> uses 500 MB of SRAM per chip and no HBM, and <a href="/ai/hardware/chips/cerebras-wse/">Cerebras</a> puts 44 GB of SRAM on one wafer-sized chip.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://news.skhynix.com/en/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/">SK hynix, HBM4 development and mass production readiness (12 Sep 2025)</a></li>
+    </ul>
+  </article>
+</Layout>

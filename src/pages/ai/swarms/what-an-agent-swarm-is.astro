@@ -52,10 +52,10 @@ const sources = [
           <div class="paper-body">
             <h3>Speed</h3>
             <p>Parallelism compresses wall-clock time. Many agents work at once, so the clock measures the job, not the sum of every agent's hours.</p>
-            <p>OpenAI's Navier-Stokes run, announced Sept 8, 2026, used ~10,000 concurrent agents and finished in 88 hours of wall-clock time, Sept 1–5. Before that scale-up, ~100 agents spent ~50 hours on an Euler warm-up. Anthropic's enzyme preprint, Sept 23, 2026, used ~950 Claude agents (~949 sessions) and finished in ~21 hours of wall-clock time.</p>
+            <p>OpenAI's Navier-Stokes run, announced Sept 8, 2026, used ~10,000 concurrent agents and finished in 88 hours of wall-clock time, Sept 1 to 5. Before that scale-up, ~100 agents spent ~50 hours on an Euler warm-up. Anthropic's enzyme preprint, Sept 23, 2026, used ~950 Claude agents (~949 sessions) and finished in ~21 hours of wall-clock time.</p>
             <h3>Insight</h3>
             <p>Diverse attack angles, plus cross-checking. Separate agents can try different approaches, then test what the others return.</p>
-            <p>On the math run, agents exchanged 2.7–4.9M messages. Reports differ, so the figure stays a range. The enzyme swarm searched ~1.9B protein clusters, identified 200,000+ reverse transcriptases, and scored ~3,500 candidate partner-gene systems.</p>
+            <p>On the math run, agents exchanged 2.7 to 4.9M messages. Reports differ, so the figure stays a range. The enzyme swarm searched ~1.9B protein clusters, identified 200,000+ reverse transcriptases, and scored ~3,500 candidate partner-gene systems.</p>
             <h3>Coordination</h3>
             <p>Coordination is message passing, task decomposition, and a handoff from machine search to a human-readable write-up.</p>
             <p>The math swarm's handoff includes +17 hours in which <a href="/ai/models/openai/gpt-6-astra/">GPT-6 Astra</a> formalized the argument in Lean. The enzyme swarm handed ~19 finalist reports to human scientists. Those scientists ran every wet-lab experiment. Claude does not control lab equipment.</p>
@@ -65,18 +65,18 @@ const sources = [
         <section class="paper-section" aria-labelledby="navier-stokes">
           <h2 class="paper-h2" id="navier-stokes">Case 1 · Navier-Stokes, OpenAI</h2>
           <div class="paper-body">
-            <p>OpenAI announced the result on Sept 8, 2026. The run itself was Sept 1–5: ~10,000 concurrent agents, 88 hours of wall-clock time. The Euler warm-up came first, ~100 agents for ~50 hours, and then the run scaled up.</p>
-            <p>Output <a href="/ai/glossary/#token">tokens</a> on the Navier-Stokes run were 130B. Across the full effort they were 300B. Inter-agent messages are reported as 2.7–4.9M. The reports disagree, so this page prints the range and does not pick an endpoint.</p>
-            <p>OpenAI has not disclosed the compute cost. Press estimates put the bill at $2M–$22.5M. The Navier-Stokes run is commonly estimated at $6–10M. After the 88 hours, GPT-6 Astra spent +17 hours formalizing the argument in Lean. The Clay Millennium Prize is $1M. OpenAI has not claimed it.</p>
+            <p>OpenAI announced the result on Sept 8, 2026. The run itself was Sept 1 to 5: ~10,000 concurrent agents, 88 hours of wall-clock time. The Euler warm-up came first, ~100 agents for ~50 hours, and then the run scaled up.</p>
+            <p>Output <a href="/ai/glossary/#token">tokens</a> on the Navier-Stokes run were 130B. Across the full effort they were 300B. Inter-agent messages are reported as 2.7 to 4.9M. The reports disagree, so this page prints the range and does not pick an endpoint.</p>
+            <p>OpenAI has not disclosed the compute cost. Press estimates put the bill at $2M to $22.5M. The Navier-Stokes run is commonly estimated at $6 to 10M. After the 88 hours, GPT-6 Astra spent +17 hours formalizing the argument in Lean. The Clay Millennium Prize is $1M. OpenAI has not claimed it.</p>
             <p>On Sept 21, a follow-up said 100+ additional open problems had been resolved in 24 days. No public list, proofs, or methodology have been released for that claim.</p>
           </div>
           <SwarmStat
             name="Navier-Stokes · OpenAI · announced Sept 8, 2026"
             agents="~10,000 concurrent"
-            hours="88 hours (Sept 1–5). Euler warm-up: ~100 agents, ~50 hours, before the scale-up."
+            hours="88 hours (Sept 1 to 5). Euler warm-up: ~100 agents, ~50 hours, before the scale-up."
             tokens="130B output tokens on the Navier-Stokes run (300B across the full effort)"
-            messages="2.7–4.9M. Reports differ."
-            cost="Not disclosed by OpenAI. Press estimates $2M–$22.5M. The Navier-Stokes run is commonly estimated at $6–10M."
+            messages="2.7 to 4.9M. Reports differ."
+            cost="Not disclosed by OpenAI. Press estimates $2M to $22.5M. The Navier-Stokes run is commonly estimated at $6 to 10M."
             human="not disclosed"
           />
           <div class="paper-body">
@@ -125,7 +125,7 @@ const sources = [
                 </tr>
                 <tr>
                   <td>Wall-clock hours</td>
-                  <td>88 hours (Sept 1–5)</td>
+                  <td>88 hours (Sept 1 to 5)</td>
                   <td>~21 hours</td>
                 </tr>
                 <tr>
@@ -135,12 +135,12 @@ const sources = [
                 </tr>
                 <tr>
                   <td>Messages between agents</td>
-                  <td>2.7–4.9M. Reports differ.</td>
+                  <td>2.7 to 4.9M. Reports differ.</td>
                   <td>not disclosed</td>
                 </tr>
                 <tr>
                   <td>Est. compute cost</td>
-                  <td>Not disclosed by OpenAI. Press estimates $2M–$22.5M. The Navier-Stokes run is commonly estimated at $6–10M.</td>
+                  <td>Not disclosed by OpenAI. Press estimates $2M to $22.5M. The Navier-Stokes run is commonly estimated at $6 to 10M.</td>
                   <td>not disclosed</td>
                 </tr>
                 <tr>
@@ -173,7 +173,7 @@ const sources = [
           <div class="paper-body">
             <p>On the math result, the Buckmaster/Alpöge credit dispute is live. Mathematicians called the paper "terribly written." Clay requires publication plus a two-year review before a Millennium Prize is settled. 25 Fields Medalists issued a warning letter on AI-company incentives versus mathematics. The Sept 21 claim of 100+ further problems has no public list, proofs, or methodology.</p>
             <p>On the enzyme result, the work is a preprint, not a peer-reviewed paper. ART's biological function is unknown. The CRISPR-like look is a resemblance, not a demonstrated editor. The swarm did not touch the bench: people ran the wet lab.</p>
-            <p>Where a company or a reporter did not publish a number, the cell says "not disclosed." The message count that reports split is left as 2.7–4.9M. The cost range is left as $2M–$22.5M, with the Navier-Stokes run commonly estimated at $6–10M.</p>
+            <p>Where a company or a reporter did not publish a number, the cell says "not disclosed." The message count that reports split is left as 2.7 to 4.9M. The cost range is left as $2M to $22.5M, with the Navier-Stokes run commonly estimated at $6 to 10M.</p>
           </div>
         </section>
 

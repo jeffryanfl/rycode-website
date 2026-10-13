@@ -2,7 +2,7 @@
   "schema": "model-facts-v1",
   "note": "Fact box at the top of each /ai/models page (src/components/ModelFacts.astro) and the lab comparison tables (src/components/LabTable.astro). Every value is copied from the model page itself or from public/ai-benchmarks.json. The AA score comes from public/ai-benchmarks.json when that feed has a row whose doorHref matches the page; the aa field here is used only for pages without a feed row. checked is the newest date the page says its sources were fetched or checked. Leave a field out rather than guess. Never invent.",
   "models": {
-    "/ai/models/anthropic/claude-opus-5-5/": { "name": "Claude Opus 5.5", "status": "current", "price": "$4 in, $20 out", "released": "22 Sep 2026" },
+    "/ai/models/anthropic/claude-opus-5-5/": { "name": "Claude Opus 5.5", "status": "current", "price": "$4 in, $20 out", "released": "22 Sep 2026", "checked": "12 Oct 2026" },
     "/ai/models/anthropic/claude-sonnet-5-5/": { "name": "Claude Sonnet 5.5", "status": "current", "price": "$2 in, $10 out", "released": "28 Sep 2026", "checked": "5 Oct 2026" },
     "/ai/models/anthropic/claude-haiku-5-5/": { "name": "Claude Haiku 5.5", "status": "current", "price": "$0.10 in, $0.50 out", "released": "7 Oct 2026", "checked": "8 Oct 2026" },
     "/ai/models/anthropic/claude-fable-5-1/": { "name": "Claude Fable 5.1", "status": "current", "price": "$10 in, $50 out" },
@@ -38,8 +38,8 @@
     "/ai/models/meta/muse/spark/": { "name": "Muse Spark", "status": "current", "statusNote": "Meta's lighter Muse model" },
     "/ai/models/meta/muse/glimmer/": { "name": "Muse Glimmer", "status": "current", "statusNote": "open weights" },
     "/ai/models/meta/muse/code/": { "name": "Muse Code", "status": "product", "statusNote": "a coding app, not a model", "price": "$50 or $200 a month" },
-    "/ai/models/meta/muse/image/": { "name": "Muse Image", "status": "current" },
-    "/ai/models/meta/muse/video/": { "name": "Muse Video", "status": "preview" },
+    "/ai/models/meta/muse/image/": { "name": "Muse Image", "status": "current", "released": "7 Jul 2026", "checked": "12 Oct 2026" },
+    "/ai/models/meta/muse/video/": { "name": "Muse Video", "status": "preview", "statusNote": "coming soon", "checked": "12 Oct 2026" },
     "/ai/models/meta/llama/llama-4/": { "name": "Llama 4", "status": "current", "statusNote": "open weights" },
 
     "/ai/models/deepseek/flash/": { "name": "DeepSeek Flash", "status": "current", "price": "$0.15 in, $0.60 out (off-peak, cache miss)", "released": "10 Sep 2026 (announced)" },
@@ -55,6 +55,11 @@
     "/ai/models/open-weight/qwen/": { "name": "Qwen3.8 Max", "status": "current", "aa": { "value": 45, "label": "Qwen3.8 Max (0902)", "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
     "/ai/models/open-weight/step-5/": { "name": "Step 5 Preview", "status": "preview", "statusNote": "open weights scheduled for 15 Oct 2026", "aa": { "value": 44, "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
 
-    "/ai/models/typesafe/jev/": { "name": "Jev", "status": "preview", "statusNote": "early access", "released": "15 Sep 2026 (announced)", "checked": "15 Sep 2026" }
+    "/ai/models/typesafe/jev/": { "name": "Jev", "status": "preview", "statusNote": "early access", "released": "15 Sep 2026 (announced)", "checked": "15 Sep 2026" },
+    "/ai/models/more-labs/mistral-large-4/": { "name": "Mistral Large 4", "status": "preview", "price": "$1.36 in, $4.18 out (list)", "released": "6 Oct 2026", "checked": "12 Oct 2026" },
+    "/ai/models/more-labs/cohere-command-a-plus/": { "name": "Command A+", "status": "current", "released": "20 May 2026", "checked": "12 Oct 2026" },
+    "/ai/models/more-labs/inkling/": { "name": "Inkling", "status": "current", "released": "15 Jul 2026", "checked": "12 Oct 2026" },
+    "/ai/models/more-labs/apple-foundation-models/": { "name": "Apple Foundation Models 3", "status": "current", "released": "8 Jun 2026", "checked": "12 Oct 2026" },
+    "/ai/models/more-labs/amazon-nova-2/": { "name": "Amazon Nova 2", "status": "current", "checked": "12 Oct 2026" }
   }
 }

@@ -1,0 +1,40 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Apple Foundation Models 3 - A.I. - Rycode"
+  description="Apple's third-generation Foundation Models: five models, two on the device and three on Private Cloud Compute, built with Google, announced 8 Jun 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">More labs</p>
+    <h1 class="ai-model-title">Apple Foundation Models 3</h1>
+    <p class="ai-model-dek">Apple Foundation Models (AFM) are the models behind Apple Intelligence, the AI features in iPhone, iPad, and Mac software. The third generation, announced 8 June 2026, is five models built in collaboration with Google (<a href="https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models">Apple Machine Learning Research</a>). Apple does not sell them as a paid API.</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">The five models</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Model</th><th scope="col">Where it runs</th><th scope="col">What Apple says</th></tr></thead>
+        <tbody>
+          <tr><td>AFM 3 Core</td><td>On the device</td><td>3 billion parameters, dense</td></tr>
+          <tr><td>AFM 3 Core Advanced</td><td>On the device</td><td>20 billion parameters, 1 to 4 billion active per request, multimodal</td></tr>
+          <tr><td>AFM 3 Cloud</td><td>Private Cloud Compute</td><td>Server workhorse</td></tr>
+          <tr><td>ADM 3 Cloud (Image)</td><td>Private Cloud Compute</td><td>Image creation and editing</td></tr>
+          <tr><td>AFM 3 Cloud Pro</td><td>Private Cloud Compute, on Nvidia GPUs in Google Cloud</td><td>Most capable; agentic tool use and complex reasoning</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Private Cloud Compute is Apple's server system that, Apple says, never stores or shares user data, including with Apple. Dense means every parameter runs for every request.</p>
+    <h2 class="ai-model-section">Training</h2>
+    <p>Apple says pre-training ran on the latest Google Cloud TPU accelerators, and that it does not train on users' private personal data or interactions. Apple compares against its own 2025 models with human graders and has not published standard benchmark scores in this post.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models">Apple Machine Learning Research, third generation of Apple Foundation Models (8 Jun 2026)</a></li>
+    </ul>
+  </article>
+</Layout>

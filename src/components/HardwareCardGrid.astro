@@ -36,6 +36,7 @@ const chipGrid = cards.some((card) => card.spec);
               <h2 class="hw-card-title">{card.title}</h2>
               <span class="hw-chip-maker">{card.spec.maker}</span>
             </div>
+            {card.summary ? <p class="hw-chip-summary">{card.summary}</p> : null}
             <div class="hw-chip-figures">
               <dl class="hw-chip-list">
                 {chipSpecRows.map((row) => (

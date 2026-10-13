@@ -5,13 +5,13 @@ import '../../../../styles/ai.css';
 ---
 
 <Layout
-  title="Maia 200 - Hardware - Rycode"
+  title="Maia 200 and Maia 300 - Hardware - Rycode"
   description="Maia 200 is Microsoft's own inference chip: TSMC 3nm, over 10 PFLOPS of FP4, 216 GB of HBM3e at 7 TB/s, in a 750 W envelope."
   variant="ai"
 >
   <article class="ai-model">
     <p class="ai-model-kicker">Hardware · Chips</p>
-    <h1 class="ai-model-title">Maia 200</h1>
+    <h1 class="ai-model-title">Maia 200 and Maia 300</h1>
     <p class="ai-model-dek">Maia 200 is the AI chip Microsoft designs for its own Azure data centers. It is built for inference, which is running a trained model to answer requests, rather than for training. Microsoft announced it on 26 January 2026 (<a href="https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/">Microsoft, Maia 200: The AI accelerator built for inference</a>).</p>
     <ChipFigure src="/ai/hardware/chips/maia.jpg" alt="Microsoft Maia 200 chip: a silver-framed package with Microsoft Azure Maia 200 printed on the silicon lid." caption="Microsoft Maia 200." credit="Image: Microsoft" />
     <hr class="ai-model-rule" />
@@ -48,16 +48,57 @@ import '../../../../styles/ai.css';
 
     <h2 class="ai-model-section">Where it runs</h2>
     <p>Microsoft says Maia 200 is deployed in its US Central region near Des Moines, Iowa, with US West 3 near Phoenix, Arizona, next. It will serve models including OpenAI's GPT-5.2 in Microsoft Foundry and Microsoft 365 Copilot. Microsoft's Superintelligence team will use it to generate synthetic data, which is training material made by a model, and for reinforcement learning, which trains a model by rewarding good answers.</p>
-    <p>On 12 October 2026, Microsoft CEO Satya Nadella said Maia 200 is now being deployed across the US, Europe, and Australia (<a href="https://x.com/satyanadella/status/2109631106404487523">Satya Nadella on X, 12 Oct 2026</a>). He said it delivers "up to 1.7x more tokens per watt" in Teams and Copilot. A token is a small chunk of text, often part of a word, that a model reads or writes, so tokens per watt measures how much AI output a chip produces for each unit of power it uses. The 1.7x figure is Microsoft's own claim, and the post does not say what it is compared against.</p>
+    <p>On 12 October 2026, Microsoft CEO Satya Nadella said Maia 200 is now being deployed across the US, Europe, and Australia (<a href="https://x.com/satyanadella/status/2109631106404487523">Satya Nadella on X, 12 Oct 2026</a>). He said it delivers "up to 1.7x more tokens per watt" in Teams and Copilot. A token is a small chunk of text, often part of a word, that a model reads or writes, so tokens per watt measures how much AI output a chip produces for each unit of power it uses. Microsoft's blog says the comparison is with leading GPU infrastructure; it is Microsoft's own figure (<a href="https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/">Official Microsoft Blog, 12 Oct 2026</a>).</p>
     <p>In the same post, Nadella said that starting next calendar year Microsoft will scale the Maia family to multi-gigawatt deployments, meaning data center capacity drawing billions of watts, and make it the primary inference system for Microsoft's own products and services.</p>
 
     <h2 class="ai-model-section">Maia 300</h2>
-    <p>Microsoft introduced Maia 300, the next chip in the family, on 12 October 2026. Nadella said it delivers "40% more tokens per watt compared to leading GPU-based systems" (<a href="https://x.com/satyanadella/status/2109631106404487523">Satya Nadella on X, 12 Oct 2026</a>). That is Microsoft's own claim, not an outside test result, and the post does not name which GPU systems it means.</p>
+    <p>Microsoft announced Maia 300, the third generation of Maia, on 12 October 2026 (<a href="https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/">Official Microsoft Blog</a>, <a href="https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture/">Azure Blog deep dive</a>). Like Maia 200 it is built for inference. Microsoft says production deployments begin in 2027. Every figure below is Microsoft's own, not an outside test.</p>
+    <h3>One Maia 300 chip</h3>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr><th scope="col">Figure</th><th scope="col">Maia 300</th><th scope="col">Maia 200</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Process</td><td>Several chiplets; compute die on TSMC N2P</td><td>One die, TSMC 3nm</td></tr>
+          <tr><td>Memory</td><td>288 GB HBM4, 8 stacks</td><td>216 GB HBM3e</td></tr>
+          <tr><td>Memory bandwidth</td><td>18 TB/s</td><td>7 TB/s</td></tr>
+          <tr><td>Power (TDP)</td><td>950 W</td><td>750 W</td></tr>
+          <tr><td>FP4 and FP8 compute</td><td>not stated in the blog text</td><td>Over 10 PFLOPS FP4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A chiplet is one of several smaller dies joined in one package, so each job can use the factory process that suits it. N2P is a TSMC 2-nanometer-class process. HBM4 is the generation of stacked high-bandwidth memory after HBM3e. Microsoft says the chiplet design gives 36% more compute than Maia 200, and 2.5 times the memory bandwidth, 33% more memory, and about twice the memory bandwidth per watt.</p>
+    <h3>The rack</h3>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One Maia 300 rack</th></tr></thead>
+        <tbody>
+          <tr><td>Chips</td><td>96, in 24 trays of 4</td></tr>
+          <tr><td>Rack power</td><td>167 kW</td></tr>
+          <tr><td>Memory</td><td>27.6 TB HBM</td></tr>
+          <tr><td>Memory bandwidth</td><td>1.7 PB/s combined</td></tr>
+          <tr><td>Cooling</td><td>Liquid removes more than 80% of the heat</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A kW (kilowatt) is a thousand watts. A PB/s (petabyte per second) is a thousand TB/s. Each tray holds four chips with their own host processor, so there are no separate host trays, which Microsoft says doubles the chips per rack versus Maia 200.</p>
+    <h3>The superpod</h3>
+    <p>Racks connect over an Ethernet-based network with Microsoft's own AI transport. Second-tier switches link up to 128 racks into a superpod of up to 12,288 chips, and any chip can send up to 750 GB/s to any other chip in it.</p>
+    <h3>What Microsoft claims</h3>
+    <ul>
+      <li>40% more tokens per megawatt than leading GPU-based systems. The blog does not name the GPU systems. Nadella's post says "per watt."</li>
+      <li>Up to 7 times the rack-scale token throughput of Maia 200, with all 96 chips.</li>
+      <li>More than 2.5 times the performance per watt of Maia 200.</li>
+    </ul>
+    <p>Microsoft says it will scale Maia to multi-gigawatt deployments starting in 2027 and make it the primary inference system for its own products (<a href="https://x.com/satyanadella/status/2109631106404487523">Satya Nadella on X, 12 Oct 2026</a>).</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
       <li><a href="https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/">Microsoft, Maia 200: The AI accelerator built for inference (26 Jan 2026)</a></li>
       <li><a href="https://news.microsoft.com/maia-200/">Microsoft, Maia 200</a></li>
+      <li><a href="https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/">Official Microsoft Blog, Microsoft to expand Azure Maia system to multi-gigawatt deployments (12 Oct 2026)</a></li>
+      <li><a href="https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture/">Azure Blog, Deep dive into Azure Maia 300 architecture (12 Oct 2026)</a></li>
       <li><a href="https://x.com/satyanadella/status/2109631106404487523">Satya Nadella on X, Maia 200 deployment and Maia 300 (12 Oct 2026)</a></li>
       <li><a href="/ai/hardware/chips/ironwood/">Ironwood</a></li>
       <li><a href="/ai/hardware/chips/trainium/">Trainium2</a></li>

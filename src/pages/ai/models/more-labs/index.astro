@@ -1,0 +1,26 @@
+---
+import LabTable from '../../../../components/LabTable.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+
+const rows = [
+  { href: '/ai/models/more-labs/mistral-large-4/', title: 'Mistral Large 4', dek: 'Mistral AI, France. Open weights promised.', meta: ['1.05T total · 52B active · 1M'] },
+  { href: '/ai/models/more-labs/cohere-command-a-plus/', title: 'Command A+', dek: 'Cohere, Canada. Apache 2.0.', meta: ['218B total · 25B active'] },
+  { href: '/ai/models/more-labs/inkling/', title: 'Inkling', dek: 'Thinking Machines Lab. Open weights.', meta: ['975B total · 41B active · 1M'] },
+  { href: '/ai/models/more-labs/apple-foundation-models/', title: 'Apple Foundation Models 3', dek: 'Apple. On device and Private Cloud Compute.', meta: ['Five models · not sold as an API'] },
+  { href: '/ai/models/more-labs/amazon-nova-2/', title: 'Amazon Nova 2', dek: 'Amazon. On Bedrock.', meta: ['Lite · Sonic · Embeddings · 1M'] },
+];
+---
+
+<Layout
+  title="More labs - A.I. - Rycode"
+  description="Current flagship models from Mistral, Cohere, Thinking Machines, Apple, and Amazon."
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">More labs</h1>
+    <p class="ai-lab-dek">Current flagship models from labs without their own section here yet. Each row links a page built from the lab's own docs. Perplexity is not listed: it now routes its API to other labs' models and has not published specs for its own Sonar model in the docs checked.</p>
+  </div>
+
+  <LabTable rows={rows} />
+</Layout>

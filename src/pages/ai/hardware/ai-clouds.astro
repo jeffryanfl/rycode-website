@@ -1,0 +1,46 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/ai.css';
+---
+
+<Layout
+  title="AI cloud providers - Hardware - Rycode"
+  description="AI clouds rent GPUs by the hour to labs and companies. CoreWeave and Nebius, with figures from their Q2 2026 results."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Reference</p>
+    <h1 class="ai-model-title">AI cloud providers</h1>
+    <p class="ai-model-dek">An AI cloud, sometimes called a neocloud, is a company that buys AI chips, puts them in data centers, and rents them out, so a lab can train or run models without building its own. The big general clouds (AWS, Microsoft Azure, Google Cloud, Oracle) do this too. CoreWeave and Nebius are two that do only AI.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Second quarter 2026</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">CoreWeave</th><th scope="col">Nebius</th></tr></thead>
+        <tbody>
+          <tr><td>Revenue, Q2 2026</td><td>$2,575 million</td><td>$582.3 million</td></tr>
+          <tr><td>Change from Q2 2025</td><td>Up from $1,212 million</td><td>Up 454%</td></tr>
+          <tr><td>Net loss, Q2 2026</td><td>$626 million</td><td>not stated here</td></tr>
+          <tr><td>Revenue backlog</td><td>About $104 billion at 30 Jun 2026</td><td>not stated in release</td></tr>
+          <tr><td>Active power</td><td>1.5 GW</td><td>not stated in release</td></tr>
+          <tr><td>Contracted power</td><td>About 3.7 GW</td><td>not stated in release</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Sources: CoreWeave's 11 August 2026 results (<a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000362/coreweave2q26earningspress.htm">CoreWeave, SEC filing</a>) and Nebius's 12 August 2026 results (<a href="https://assets.nebius.com/assets/72a8c258-bbb7-4df7-ab9d-8698f6cb88fc/PR.pdf">Nebius release</a>). Q2 is April to June. Revenue backlog is money customers have committed to pay in future periods; CoreWeave says its figure leaves out more than $25 billion of new commitments added in early Q3. Active power is capacity running now; contracted power is capacity signed for. A GW is a billion watts. Net loss means costs exceeded revenue.</p>
+    <h2 class="ai-model-section">Who they work with</h2>
+    <ul>
+      <li>CoreWeave is one of OpenAI's Stargate partners; see <a href="/ai/hardware/data-centers/stargate-abilene/">Stargate Abilene</a>. CoreWeave says it was first to bring up and validate an Nvidia Vera Rubin NVL72 rack.</li>
+      <li>Nebius is the first cloud to adopt Nvidia's <a href="/ai/hardware/chips/groq-3-lpx/">Groq 3 LPX</a>, per Nvidia (<a href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai">Nvidia, 24 Aug 2026</a>).</li>
+    </ul>
+    <p>CoreWeave lost money in Q2 and raised more than $10 billion in new debt that quarter (CoreWeave). These figures are company reports, not audited annual results.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000362/coreweave2q26earningspress.htm">CoreWeave, Q2 2026 results (11 Aug 2026, SEC)</a></li>
+      <li><a href="https://assets.nebius.com/assets/72a8c258-bbb7-4df7-ab9d-8698f6cb88fc/PR.pdf">Nebius, Q2 2026 results (12 Aug 2026)</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai">Nvidia, Groq 3 LPX in full production (24 Aug 2026)</a></li>
+    </ul>
+  </article>
+</Layout>

@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/ai.css';
+---
+
+<Layout
+  title="TSMC and chip manufacturing - Hardware - Rycode"
+  description="Most AI chips are designed by one company and made by TSMC. What a process node is, where N2 and N2P stand, and which AI chips name their TSMC process."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Reference</p>
+    <h1 class="ai-model-title">TSMC and chip manufacturing</h1>
+    <p class="ai-model-dek">Most companies that design AI chips do not make them. They send the design to a foundry, a factory that makes chips for other companies. TSMC, the Taiwan Semiconductor Manufacturing Company, is the largest. The chip designer picks a process node, the factory recipe; a smaller number such as 3nm or 2nm marks a newer recipe that fits more transistors in the same space and usually uses less power. A transistor is the tiny switch chips are made of.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Where TSMC's newest nodes stand</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Node</th><th scope="col">Status, per TSMC</th></tr></thead>
+        <tbody>
+          <tr><td>N3 (3nm)</td><td>First foundry in high-volume production, 2022</td></tr>
+          <tr><td>N2 (2nm)</td><td>Volume production started 4Q 2025, at Fab 20 and Fab 22</td></tr>
+          <tr><td>N2P</td><td>Volume production scheduled for second half of 2026</td></tr>
+          <tr><td>A16, A14, A12</td><td>Next nodes; A16 and A12 add a backside power rail</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Source: TSMC's technology page (<a href="https://www.tsmc.com/english/dedicatedFoundry/technology/logic/l_2nm">TSMC, 2nm technology</a>). N2 is TSMC's first node with nanosheet transistors, a newer transistor shape. A backside power rail feeds power from under the chip, leaving more room for wiring on top. 4Q means the fourth quarter.</p>
+    <h2 class="ai-model-section">AI chips that name their TSMC node</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Chip</th><th scope="col">Process</th><th scope="col">Source page</th></tr></thead>
+        <tbody>
+          <tr><td>Microsoft Maia 300</td><td>Compute die on TSMC N2P</td><td><a href="/ai/hardware/chips/maia/">Maia</a></td></tr>
+          <tr><td>Microsoft Maia 200</td><td>TSMC 3nm</td><td><a href="/ai/hardware/chips/maia/">Maia</a></td></tr>
+          <tr><td>AWS Trainium3</td><td>3nm (AWS does not name the foundry on the pages cited)</td><td><a href="/ai/hardware/chips/trainium3/">Trainium3</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Packaging matters as much as the node. An AI chip package joins compute dies and HBM stacks on one base so they can talk fast; see <a href="/ai/hardware/hbm/">HBM memory</a>. A chip plant planned by SpaceX and Tesla is on the <a href="/ai/hardware/chips/terafab/">Terafab</a> page.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.tsmc.com/english/dedicatedFoundry/technology/logic/l_2nm">TSMC, 2nm technology</a></li>
+    </ul>
+  </article>
+</Layout>

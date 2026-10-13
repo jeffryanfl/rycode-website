@@ -1,0 +1,43 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Inkling - A.I. - Rycode"
+  description="Thinking Machines Lab's Inkling: 975 billion parameters, 41 billion active, 1M context, open weights, released 15 Jul 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">More labs</p>
+    <h1 class="ai-model-title">Inkling</h1>
+    <p class="ai-model-dek">Inkling is the first model from Thinking Machines Lab. It was released on 15 July 2026 with full open weights on Hugging Face (<a href="https://thinkingmachines.ai/news/introducing-inkling/">Thinking Machines, 15 Jul 2026</a>). The lab pitches it as a base to customize with Tinker, its fine-tuning service. Fine-tuning is extra training on your own data.</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Key facts</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Field</th><th scope="col">Inkling</th></tr></thead>
+        <tbody>
+          <tr><td>Size</td><td>975 billion parameters, 41 billion active</td></tr>
+          <tr><td>Context</td><td>Up to 1M tokens; 64K and 256K options on Tinker</td></tr>
+          <tr><td>Inputs</td><td>Text, images, and audio</td></tr>
+          <tr><td>Training data</td><td>45 trillion tokens of text, images, audio, and video</td></tr>
+          <tr><td>Training hardware</td><td>Nvidia GB300 NVL72</td></tr>
+          <tr><td>Smaller sibling</td><td>Inkling-Small: 276 billion parameters, 12 billion active</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Thinking Machines says plainly that Inkling is "not the strongest overall model available today, open or closed." It is also served by Together AI, Fireworks, Modal, Databricks, and Baseten.</p>
+    <h2 class="ai-model-section">What the lab reports</h2>
+    <ul>
+      <li>77.6% on SWE-bench Verified, a coding test, with a bash-only harness, is the lab's own score; 87.2% on GPQA Diamond, a science test, is Artificial Analysis's score, as quoted by the lab. Both at effort 0.99.</li>
+    </ul>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://thinkingmachines.ai/news/introducing-inkling/">Thinking Machines Lab, Inkling (15 Jul 2026)</a></li>
+    </ul>
+  </article>
+</Layout>

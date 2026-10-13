@@ -736,6 +736,19 @@ a.hw-card:focus-visible .hw-card-title {
   color: var(--ai-dim);
 }
 
+.hw-chip-summary {
+  margin: -0.45rem 0 0;
+  padding: 0 0.85rem 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: var(--ai-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* The key above the chip grid: one line per unit. */
 .hw-chip-key {
   margin: 0 0 0.9rem;

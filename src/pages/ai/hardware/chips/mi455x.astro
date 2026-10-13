@@ -1,0 +1,61 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Instinct MI455X and Helios - Hardware - Rycode"
+  description="AMD Instinct MI455X: 40 PFLOPS of FP4 and 432 GB of HBM4 per GPU. Helios puts 72 of them in one rack: 2.9 EFLOPS FP4 and 31 TB of HBM4."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Instinct MI455X and Helios</h1>
+    <p class="ai-model-dek">The MI455X is AMD's current top Instinct GPU, or graphics processing unit, built on AMD's fifth-generation CDNA design. Helios is AMD's rack-scale system, meaning the whole server rack is designed as one machine, with 72 MI455X GPUs. AMD says Helios volume deployments are expected in the second half of 2026 (<a href="https://www.amd.com/en/products/rackscale-solutions/helios.html">AMD, Helios</a>). The wider Instinct line is on the <a href="/ai/hardware/chips/instinct/">Instinct page</a>.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The chip</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One MI455X GPU</th></tr></thead>
+        <tbody>
+          <tr><td>Compute, FP4</td><td>40 PFLOPS</td></tr>
+          <tr><td>Compute, FP8</td><td>20.1 PFLOPS</td></tr>
+          <tr><td>Compute, FP16 or BF16, dense</td><td>5 PFLOPS</td></tr>
+          <tr><td>Memory</td><td>432 GB HBM4, 12 stacks</td></tr>
+          <tr><td>Memory bandwidth</td><td>23.3 TB/s</td></tr>
+          <tr><td>Transistors</td><td>320 billion</td></tr>
+          <tr><td>Scale-up link</td><td>3.6 TB/s, both directions</td></tr>
+          <tr><td>Cooling</td><td>Direct liquid cooling</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Figures are from AMD's MI455X product page (<a href="https://www.amd.com/en/products/accelerators/instinct/mi400/mi455x.html">AMD, MI455X</a>). The Helios page also says "up to 19.6 TB/s" per GPU in one spot, so AMD's own pages disagree on bandwidth. The 23.3 TB/s figure appears on both pages and is used here. Dense means every number is counted; AMD also prints 10.1 PFLOPS FP16 with structured sparsity, a shortcut that skips zeros.</p>
+    <h2 class="ai-model-section">The Helios rack</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One Helios rack</th></tr></thead>
+        <tbody>
+          <tr><td>GPUs</td><td>72 MI455X</td></tr>
+          <tr><td>CPUs</td><td>AMD EPYC Venice</td></tr>
+          <tr><td>Compute</td><td>2.9 EFLOPS FP4; 1.4 EFLOPS FP8</td></tr>
+          <tr><td>Memory</td><td>31 TB HBM4</td></tr>
+          <tr><td>Scale-up bandwidth</td><td>260 TB/s</td></tr>
+          <tr><td>Scale-out bandwidth</td><td>43 TB/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Scale-up is the fast network that ties the GPUs inside the rack together; Helios uses UALink over Ethernet (UALoE), an open standard. Scale-out is the network between racks, here AMD Pensando Vulcano network cards at 800 Gb/s. The rack follows Meta's Open Rack Wide design, a double-wide rack standard submitted to the Open Compute Project.</p>
+    <h2 class="ai-model-section">What AMD claims</h2>
+    <ul>
+      <li>AMD compares MI455X with Nvidia Vera Rubin on its product page: 432 GB against 288 GB of memory and 23.3 TB/s against 22.0 TB/s. Those are AMD's own figures for both chips. Nvidia's own Rubin figures are on the <a href="/ai/hardware/chips/rubin/">Rubin page</a>.</li>
+    </ul>
+    <p>Units on this page: a PFLOPS is a thousand trillion math operations per second; an EFLOPS is a thousand PFLOPS. FP4 and FP8 store each number in 4 or 8 bits, and MX in front (MXFP4, MXFP8) means a shared-scale version of that format. GB is gigabytes, GiB is about 7% more than a GB, and TB is a thousand GB. TB/s and PB/s are terabytes and petabytes per second, how fast data moves. W is watts and kW is a thousand watts. TDP is the most power a chip is built to draw.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.amd.com/en/products/accelerators/instinct/mi400/mi455x.html">AMD, Instinct MI455X GPUs</a></li>
+      <li><a href="https://www.amd.com/en/products/rackscale-solutions/helios.html">AMD, Helios rack-scale solution</a></li>
+    </ul>
+  </article>
+</Layout>

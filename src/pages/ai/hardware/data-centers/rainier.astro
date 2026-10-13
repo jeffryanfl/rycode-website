@@ -1,0 +1,40 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Project Rainier - Hardware - Rycode"
+  description="AWS Project Rainier: nearly 500,000 Trainium2 chips across several US data centers, built for Anthropic."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Data center</p>
+    <h1 class="ai-model-title">Project Rainier</h1>
+    <p class="ai-model-dek">Project Rainier is one of AWS's largest AI computer clusters, built with Anthropic, which uses it to train and run Claude. AWS says it is spread across several US data centers, including St. Joseph County, Indiana, and was fully running less than a year after it was announced (<a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster">Amazon</a>).</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Key figures</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">Project Rainier</th></tr></thead>
+        <tbody>
+          <tr><td>Chips</td><td>Nearly 500,000 Trainium2</td></tr>
+          <tr><td>Chips per UltraServer</td><td>64 (4 servers of 16)</td></tr>
+          <tr><td>Compute vs. Anthropic's earlier training</td><td>More than 5 times, per AWS</td></tr>
+          <tr><td>Claude on Trainium2 overall</td><td>More than 1 million chips by the end of the year, per AWS</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Trainium2 is AWS's own AI chip; see <a href="/ai/hardware/chips/trainium/">Trainium2</a>. An UltraServer is four servers wired as one machine over NeuronLink, AWS's fast chip-to-chip link. UltraServers connect to each other over EFA, AWS's network.</p>
+    <h2 class="ai-model-section">Cooling</h2>
+    <p>AWS says its Indiana Rainier buildings mostly cool with outside air: no cooling water from October to March, and only a few hours a day from April to September.</p>
+    <h2 class="ai-model-section">What is not public</h2>
+    <p>AWS's post does not give a total power capacity or a date. It says "by the end of the year" without naming the year.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster">Amazon, AWS activates Project Rainier</a></li>
+    </ul>
+  </article>
+</Layout>

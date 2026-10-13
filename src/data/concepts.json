@@ -15,7 +15,10 @@
         "/ai/models/meta/llama/llama-4/",
         "/ai/models/meta/muse/glimmer/",
         "/ai/models/deepseek/r1/",
-        "/ai/glossary/"
+        "/ai/glossary/",
+        "/ai/models/more-labs/mistral-large-4/",
+        "/ai/models/more-labs/cohere-command-a-plus/",
+        "/ai/models/more-labs/inkling/"
       ],
       "links": [
         "frontier-pricing",
@@ -82,7 +85,8 @@
         "/ai/models/meta/muse/spark/",
         "/ai/models/meta/muse/wonder/",
         "/ai/models/typesafe/jev/",
-        "/ai/glossary/"
+        "/ai/glossary/",
+        "/ai/ai-regulation/"
       ],
       "links": [
         "agent-swarms",
@@ -114,7 +118,10 @@
         "/ai/hardware/chips/meta/",
         "/ai/hardware/data-centers/prometheus/",
         "/ai/hardware/data-centers/hyperion/",
-        "/ai/hardware/power/meta-nuclear/"
+        "/ai/hardware/power/meta-nuclear/",
+        "/ai/hardware/data-centers/stargate-abilene/",
+        "/ai/hardware/data-centers/fairwater/",
+        "/ai/hardware/data-centers/rainier/"
       ],
       "links": [
         "force-majeure",
@@ -128,7 +135,8 @@
       "label": "Data-center financing",
       "blurb": "How AI campuses raise money through leases and private placements before the revenue arrives.",
       "articles": [
-        "/risk/when-force-majeure-hits-the-ai-build-out/"
+        "/risk/when-force-majeure-hits-the-ai-build-out/",
+        "/ai/hardware/ai-clouds/"
       ],
       "links": [
         "force-majeure",
@@ -312,7 +320,12 @@
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/openai/gpt-6.1-sol/",
         "/ai/models/openai/dots/",
-        "/ai/models/openai/gpt-6-intelligent-ui/"
+        "/ai/models/openai/gpt-6-intelligent-ui/",
+        "/ai/models/more-labs/mistral-large-4/",
+        "/ai/models/more-labs/cohere-command-a-plus/",
+        "/ai/models/more-labs/inkling/",
+        "/ai/models/more-labs/apple-foundation-models/",
+        "/ai/models/more-labs/amazon-nova-2/"
       ],
       "links": [
         "open-weights",
@@ -346,7 +359,18 @@
         "/ai/hardware/data-centers/prometheus/",
         "/ai/hardware/data-centers/hyperion/",
         "/ai/hardware/data-centers/eagle-mountain/",
-        "/ai/hardware/power/meta-nuclear/"
+        "/ai/hardware/power/meta-nuclear/",
+        "/ai/hardware/chips/jalapeno/",
+        "/ai/hardware/chips/trainium3/",
+        "/ai/hardware/chips/tpu-8/",
+        "/ai/hardware/chips/mi455x/",
+        "/ai/hardware/chips/groq-3-lpx/",
+        "/ai/hardware/data-centers/stargate-abilene/",
+        "/ai/hardware/data-centers/fairwater/",
+        "/ai/hardware/data-centers/rainier/",
+        "/ai/hardware/hbm/",
+        "/ai/hardware/tsmc/",
+        "/ai/hardware/ai-clouds/"
       ],
       "links": [
         "model-releases",

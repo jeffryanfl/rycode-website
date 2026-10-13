@@ -1,0 +1,49 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Mistral Large 4 - A.I. - Rycode"
+  description="Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights promised by end of October."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">More labs</p>
+    <h1 class="ai-model-title">Mistral Large 4</h1>
+    <p class="ai-model-dek">Mistral Large 4 is the flagship model of Mistral AI, a French lab. It went into public preview on 6 October 2026, and Mistral says the weights, the downloadable model files, will be released by the end of that month (<a href="https://mistral.ai/news/mistral-large-4/">Mistral, 6 Oct 2026</a>).</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Key facts</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Field</th><th scope="col">Mistral Large 4</th></tr></thead>
+        <tbody>
+          <tr><td>Size</td><td>1.05 trillion parameters, 52 billion active, plus a 1.6 billion parameter vision encoder</td></tr>
+          <tr><td>Design</td><td>Mixture of Experts</td></tr>
+          <tr><td>Context</td><td>1M tokens</td></tr>
+          <tr><td>Inputs</td><td>Text and images</td></tr>
+          <tr><td>Price, list</td><td>$1.36 in, $4.18 out, $0.14 cached input</td></tr>
+          <tr><td>Price, preview sale</td><td>$0.68 in, $2.09 out, $0.07 cached input</td></tr>
+          <tr><td>Weights</td><td>Promised by end of October 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Size and price are from Mistral's model docs (<a href="https://docs.mistral.ai/models/mistral-large">Mistral docs</a>); the announcement rounds the size to 1 trillion. A parameter is one learned number in the model. Mixture of Experts means only part of the model, the 52 billion active parameters, runs for each token. A token is a chunk of text, often part of a word. Prices are US dollars per million tokens. Cached input is repeated text the service has already read, billed cheaper.</p>
+    <h2 class="ai-model-section">Training</h2>
+    <p>Mistral says it trained the model from scratch on 3,800 Nvidia Grace Blackwell GPUs in its own European data centers, with training data in more than 160 languages.</p>
+    <h2 class="ai-model-section">What Mistral claims</h2>
+    <ul>
+      <li>61.7% on DeepSWE v1.1, 59.4% on SWE-Atlas-QnA, and 28.3% on Terminal-Bench 4, all coding tests.</li>
+      <li>Top five on the Artificial Analysis Cyber Index, which tests finding and fixing security flaws.</li>
+      <li>These are Mistral's own reported scores. Mistral's announcement says several closed models score near zero on one cyber test because they refuse the task.</li>
+    </ul>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://mistral.ai/news/mistral-large-4/">Mistral, Introducing Mistral Large 4 (6 Oct 2026)</a></li>
+      <li><a href="https://docs.mistral.ai/models/mistral-large">Mistral docs, Mistral Large 4</a></li>
+    </ul>
+  </article>
+</Layout>

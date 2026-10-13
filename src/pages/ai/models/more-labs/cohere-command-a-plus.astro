@@ -1,0 +1,41 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Command A+ - A.I. - Rycode"
+  description="Cohere Command A+: Cohere's first Mixture of Experts model, 218 billion parameters with 25 billion active, open under Apache 2.0, released 20 May 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">More labs</p>
+    <h1 class="ai-model-title">Command A+</h1>
+    <p class="ai-model-dek">Command A+ is the newest model from Cohere, a Canadian lab that sells mostly to businesses. Cohere released it on 20 May 2026 (<a href="https://docs.cohere.com/docs/command-a-plus.md">Cohere docs</a>). It is Cohere's first Mixture of Experts model, which means only part of the model runs for each token, a token being a chunk of text.</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Key facts</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Field</th><th scope="col">Command A+</th></tr></thead>
+        <tbody>
+          <tr><td>Size</td><td>218 billion parameters, 25 billion active</td></tr>
+          <tr><td>Inputs</td><td>Text and images</td></tr>
+          <tr><td>Output</td><td>Text</td></tr>
+          <tr><td>Languages</td><td>48, including all official EU languages</td></tr>
+          <tr><td>License</td><td>Apache 2.0, on Hugging Face</td></tr>
+          <tr><td>Hardware to run it</td><td>1 Nvidia B200, or 2 H100s, at W4A4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Apache 2.0 is a permissive open-source license, so the weights can be downloaded and used commercially. W4A4 means the model's weights and activations are stored in 4 bits each, which shrinks it to fit fewer chips.</p>
+    <h2 class="ai-model-section">What is not on this page</h2>
+    <p>Cohere's model card does not list a price. Third-party sites quote one; this page waits for Cohere's own pricing page. The card links Cohere's EU AI Act training-data summary; see <a href="/ai/ai-regulation/">AI regulation</a>.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.cohere.com/docs/command-a-plus.md">Cohere docs, Command A+</a></li>
+    </ul>
+  </article>
+</Layout>

@@ -1,0 +1,38 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Amazon Nova 2 - A.I. - Rycode"
+  description="Amazon Nova 2: Nova 2 Lite for text, images, and video, Nova 2 Sonic for speech, both with up to 1M tokens of context, on Amazon Bedrock."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">More labs</p>
+    <h1 class="ai-model-title">Amazon Nova 2</h1>
+    <p class="ai-model-dek">Nova is Amazon's own family of AI models, sold through Amazon Bedrock, AWS's service for calling models. Nova 2 is the current generation (<a href="https://docs.aws.amazon.com/nova/latest/nova2-userguide/what-is-nova-2.html">AWS docs, What is Amazon Nova 2</a>).</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">The lineup</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Model</th><th scope="col">Inputs</th><th scope="col">Outputs</th><th scope="col">Use</th></tr></thead>
+        <tbody>
+          <tr><td>Nova 2 Lite</td><td>Text, images, video, documents</td><td>Text</td><td>High-volume work where speed and cost matter</td></tr>
+          <tr><td>Nova 2 Sonic</td><td>Speech, text</td><td>Speech, text</td><td>Voice apps</td></tr>
+          <tr><td>Nova Multimodal Embeddings</td><td>Text, images, documents, video, audio</td><td>Embeddings</td><td>Search and matching</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>AWS says all Nova 2 models support up to 1 million tokens of context and up to 65,536 tokens in one answer. An embedding is a list of numbers that captures what an input means, used to find similar items.</p>
+    <p>AWS lists prices on its <a href="https://aws.amazon.com/nova/pricing/">Nova pricing page</a>; this page does not copy them until they are checked there. The earlier top model, Nova Premier, is not in the Nova 2 lineup.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://docs.aws.amazon.com/nova/latest/nova2-userguide/what-is-nova-2.html">AWS docs, What is Amazon Nova 2</a></li>
+      <li><a href="https://aws.amazon.com/nova/pricing/">AWS, Amazon Nova pricing</a></li>
+    </ul>
+  </article>
+</Layout>

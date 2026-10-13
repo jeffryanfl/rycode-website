@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/ai.css';
+---
+
+<Layout
+  title="AI regulation - A.I. - Rycode"
+  description="Where AI rules stand: the EU AI Act, enforced from 2 August 2026, and what it asks of model makers and apps."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">A.I. · Reference</p>
+    <h1 class="ai-model-title">AI regulation</h1>
+    <p class="ai-model-dek">The EU AI Act is the European Union's law on artificial intelligence and the most complete AI law in force. It sorts AI by risk: some uses are banned, high-risk uses face strict checks, and general-purpose models, the big models labs ship, have their own duties. This page tracks the dates that matter.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Key dates</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Date</th><th scope="col">What applies</th></tr></thead>
+        <tbody>
+          <tr><td>2 August 2025</td><td>Duties for general-purpose AI model makers: technical documents, a copyright policy, and a public summary of training data. Bigger models with "systemic risk" must also test for and report serious risks.</td></tr>
+          <tr><td>2 August 2026</td><td>The EU AI Office and national authorities start enforcing the Act. New transparency rules apply: chatbots must say they are AI, deepfakes must be labelled, and AI-made content must carry machine-readable marks.</td></tr>
+          <tr><td>27 July 2026</td><td>Latest consolidated text of the Act on EUR-Lex, after amendments.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Sources: the European Commission's 31 July 2026 release (<a href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august">Commission</a>), its questions and answers on general-purpose models (<a href="https://digital-strategy.ec.europa.eu/en/faqs/general-purpose-ai-models-ai-act-questions-answers">Commission Q&amp;A</a>), and the consolidated law (<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727">EUR-Lex</a>). A deepfake is an image, video, or audio clip made or changed by AI to look real. Machine-readable marks are hidden signals, like watermarks, that software can detect.</p>
+    <h2 class="ai-model-section">Why it matters for this site</h2>
+    <ul>
+      <li>Model makers publish training-data summaries because of this law. Cohere's <a href="/ai/models/more-labs/cohere-command-a-plus/">Command A+</a> card links its EU AI Act Article 53 summary.</li>
+      <li>Meta's Content Seal watermark on <a href="/ai/models/meta/muse/image/">Muse Image</a> is the kind of machine-readable mark the transparency rules ask for.</li>
+    </ul>
+    <h2 class="ai-model-section">Not covered yet</h2>
+    <p>This page does not yet track US federal or state AI laws, or the later EU deadlines for high-risk systems, which were changed by amendments in 2026. Those need primary sources before they go up.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august">European Commission, AI Act enforcement and transparency rules (31 Jul 2026)</a></li>
+      <li><a href="https://digital-strategy.ec.europa.eu/en/faqs/general-purpose-ai-models-ai-act-questions-answers">European Commission, General-purpose AI models Q&A</a></li>
+      <li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727">EUR-Lex, AI Act consolidated text (27 Jul 2026)</a></li>
+    </ul>
+  </article>
+</Layout>

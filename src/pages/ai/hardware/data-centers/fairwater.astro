@@ -1,0 +1,47 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Fairwater - Hardware - Rycode"
+  description="Microsoft's Fairwater AI data centers in Wisconsin and Atlanta: hundreds of thousands of Nvidia GB200 and GB300 GPUs on one flat network."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Data center</p>
+    <h1 class="ai-model-title">Fairwater</h1>
+    <p class="ai-model-dek">Fairwater is Microsoft's design for AI data centers that work as one giant computer. The first site is in Mount Pleasant, Wisconsin (<a href="https://blogs.microsoft.com/blog/2025/09/18/inside-the-worlds-most-powerful-ai-datacenter/">Microsoft, 18 Sep 2025</a>). The second, in Atlanta, Georgia, was unveiled on 12 November 2025 and is linked to Wisconsin by a dedicated network Microsoft calls the AI WAN, making what it calls an AI superfactory (<a href="https://blogs.microsoft.com/blog/2025/11/12/infinite-scale-the-architecture-behind-the-azure-ai-superfactory/">Microsoft, 12 Nov 2025</a>).</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">Key figures</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">Fairwater</th></tr></thead>
+        <tbody>
+          <tr><td>Wisconsin site</td><td>315 acres, 3 buildings, 1.2 million sq ft</td></tr>
+          <tr><td>Chips</td><td>Hundreds of thousands of Nvidia GB200 and GB300 GPUs</td></tr>
+          <tr><td>Per rack</td><td>Up to 72 Blackwell GPUs, 1.8 TB/s GPU-to-GPU, over 14 TB pooled memory</td></tr>
+          <tr><td>Rack power</td><td>About 140 kW per rack, 1,360 kW per row</td></tr>
+          <tr><td>Network between racks</td><td>800 Gb/s GPU to GPU, two-tier Ethernet</td></tr>
+          <tr><td>Fiber laid</td><td>Over 120,000 new miles across the US</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A GPU, or graphics processing unit, is the chip that does most AI math. kW is a thousand watts. Gb/s is gigabits per second.</p>
+    <h2 class="ai-model-section">Cooling and building</h2>
+    <p>Fairwater uses closed-loop liquid cooling: the water is filled once and reused, which Microsoft says equals what 20 homes use in a year and is designed to last 6+ years. Heat goes to one of the largest chiller plants in the world. Buildings are two stories so racks can sit above and below each other, which shortens cables.</p>
+    <h2 class="ai-model-section">Power</h2>
+    <p>Microsoft says the Atlanta site was picked for very reliable grid power, so it skips on-site generators and UPS (battery backup) for the GPUs.</p>
+    <h2 class="ai-model-section">What Microsoft claims</h2>
+    <ul>
+      <li>Microsoft called Wisconsin the world's most powerful AI datacenter and said it would deliver 10 times the performance of today's fastest supercomputer. These are Microsoft's own claims.</li>
+    </ul>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://blogs.microsoft.com/blog/2025/09/18/inside-the-worlds-most-powerful-ai-datacenter/">Microsoft, Inside the world's most powerful AI datacenter (18 Sep 2025)</a></li>
+      <li><a href="https://blogs.microsoft.com/blog/2025/11/12/infinite-scale-the-architecture-behind-the-azure-ai-superfactory/">Microsoft, The architecture behind the Azure AI superfactory (12 Nov 2025)</a></li>
+    </ul>
+  </article>
+</Layout>

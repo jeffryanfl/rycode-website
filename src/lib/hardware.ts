@@ -28,6 +28,8 @@ export type HardwareCard = {
   value: string;
   label: string;
   href: string;
+  /** One short line under a chip card's name. The long dek stays the page description. */
+  summary?: string;
   /** Other labs on this door, when the headline is still one plant's figure. */
   kicker?: string;
   /** Package photo. When set, the card shows it and opens the figure on hover. */

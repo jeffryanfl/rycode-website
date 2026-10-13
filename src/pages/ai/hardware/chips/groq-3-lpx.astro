@@ -1,0 +1,72 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Groq 3 LPX - Hardware - Rycode"
+  description="Nvidia Groq 3 LPX: 256 Groq 3 LPUs in one rack, 500 MB of SRAM per chip, 128 GB of SRAM and 315 PFLOPS of FP8 per rack, built to sit beside Vera Rubin NVL72."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Groq 3 LPX</h1>
+    <p class="ai-model-dek">The Groq 3 LPU, or language processing unit, is an inference chip Nvidia sells. Instead of large stacked memory, it keeps the model's working data in SRAM, small and very fast memory on the chip itself. LPX is the rack of 256 of these chips. Nvidia sells it to sit beside a <a href="/ai/hardware/chips/rubin/">Vera Rubin NVL72</a> rack: the Rubin GPUs read the prompt and handle attention, and the LPUs speed up the rest of each new word (<a href="https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/">Nvidia Technical Blog, 16 Mar 2026</a>).</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The chip</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One Groq 3 LPU</th></tr></thead>
+        <tbody>
+          <tr><td>On-chip SRAM</td><td>500 MB</td></tr>
+          <tr><td>SRAM bandwidth</td><td>150 TB/s</td></tr>
+          <tr><td>Chip-to-chip links</td><td>96 at 112 Gb/s</td></tr>
+          <tr><td>Chip I/O</td><td>2.5 TB/s, both directions</td></tr>
+          <tr><td>Compute, FP8</td><td>1.2 PFLOPS, our division of the tray figure</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Nvidia does not print per-chip compute. The 1.2 PFLOPS figure divides the tray's 19.2 PFLOPS of FP8 by its 16 chips.</p>
+    <h2 class="ai-model-section">The tray</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One LPX tray</th></tr></thead>
+        <tbody>
+          <tr><td>Chips</td><td>16</td></tr>
+          <tr><td>On-chip SRAM</td><td>8 GB</td></tr>
+          <tr><td>SRAM bandwidth</td><td>2.4 PB/s</td></tr>
+          <tr><td>Extra DRAM</td><td>Up to 512 GB via fabric logic, up to 256 GB via the host CPU</td></tr>
+          <tr><td>Compute, FP8</td><td>19.2 PFLOPS</td></tr>
+          <tr><td>Scale-up bandwidth</td><td>40 TB/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>DRAM is ordinary memory, slower than SRAM but much larger. Each tray is 2U tall and liquid cooled.</p>
+    <h2 class="ai-model-section">The rack</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One Groq 3 LPX rack</th></tr></thead>
+        <tbody>
+          <tr><td>Chips</td><td>256, in 16 trays</td></tr>
+          <tr><td>On-chip SRAM</td><td>128 GB</td></tr>
+          <tr><td>SRAM bandwidth</td><td>40 PB/s</td></tr>
+          <tr><td>Compute</td><td>315 PFLOPS FP8</td></tr>
+          <tr><td>Scale-up bandwidth</td><td>640 TB/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2 class="ai-model-section">What Nvidia claims</h2>
+    <ul>
+      <li>Vera Rubin NVL72 paired with LPX gives up to 35 times the inference throughput per megawatt of a GB200 NVL72 at 400 tokens per second per user, on a 2-trillion-parameter model. A token is a small chunk of text a model reads or writes. This is Nvidia's own figure.</li>
+      <li>Nvidia said on 24 August 2026 that LPX is in full production, with Nebius the first cloud to adopt it (<a href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai">Nvidia Newsroom</a>).</li>
+    </ul>
+    <p>Units on this page: a PFLOPS is a thousand trillion math operations per second; an EFLOPS is a thousand PFLOPS. FP4 and FP8 store each number in 4 or 8 bits, and MX in front (MXFP4, MXFP8) means a shared-scale version of that format. GB is gigabytes, GiB is about 7% more than a GB, and TB is a thousand GB. TB/s and PB/s are terabytes and petabytes per second, how fast data moves. W is watts and kW is a thousand watts. TDP is the most power a chip is built to draw.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/">Nvidia Technical Blog, Inside NVIDIA Groq 3 LPX (16 Mar 2026)</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai">Nvidia Newsroom, Groq 3 LPX in full production (24 Aug 2026)</a></li>
+    </ul>
+  </article>
+</Layout>

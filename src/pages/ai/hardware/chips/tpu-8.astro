@@ -1,0 +1,56 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="TPU 8t and TPU 8i - Hardware - Rycode"
+  description="Google's eighth-generation TPUs: TPU 8t for training, in 9,600-chip superpods, and TPU 8i for inference, with 288 GB of HBM and 384 MB of SRAM."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">TPU 8t and TPU 8i</h1>
+    <p class="ai-model-dek">A TPU, or tensor processing unit, is the AI chip Google designs for its own data centers and rents through Google Cloud. The eighth generation, announced 22 April 2026, is the first to split into two chips: TPU 8t for training, which is teaching a model, and TPU 8i for inference, which is running it (<a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/">Google</a>). The generation before is <a href="/ai/hardware/chips/ironwood/">Ironwood</a>. Google says both chips are generally available later in 2026.</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">TPU 8i, one chip</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One TPU 8i chip</th></tr></thead>
+        <tbody>
+          <tr><td>Memory</td><td>288 GB HBM</td></tr>
+          <tr><td>On-chip SRAM</td><td>384 MB, three times the prior generation</td></tr>
+          <tr><td>Chip-to-chip network (ICI)</td><td>19.2 Tb/s, double the prior generation</td></tr>
+          <tr><td>Compute</td><td>not stated per chip</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>SRAM is small, very fast memory on the chip itself. ICI, inter-chip interconnect, is Google's own link between TPUs. Tb/s is terabits per second; one byte is 8 bits, so 19.2 Tb/s is 2.4 TB/s.</p>
+    <h2 class="ai-model-section">TPU 8t, the superpod</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One TPU 8t superpod</th></tr></thead>
+        <tbody>
+          <tr><td>Chips</td><td>9,600</td></tr>
+          <tr><td>Compute</td><td>121 EFLOPS</td></tr>
+          <tr><td>Shared memory</td><td>2 PB</td></tr>
+          <tr><td>Cluster size</td><td>1 million+ chips in one training cluster</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A superpod is Google's largest group of TPUs wired as one machine. Google calls 121 exaflops its compute figure and, in its Next '26 keynote video, says native FP4. Google has not printed per-chip compute for TPU 8t in the posts cited here.</p>
+    <h2 class="ai-model-section">What Google claims</h2>
+    <ul>
+      <li>TPU 8t: nearly 3 times the compute of previous generations.</li>
+      <li>TPU 8i: 80% better inference performance per dollar than the prior generation, and up to 5 times lower on-chip latency for collectives, the steps where many chips swap results. These are Google's own figures.</li>
+    </ul>
+    <p>Units on this page: a PFLOPS is a thousand trillion math operations per second; an EFLOPS is a thousand PFLOPS. FP4 and FP8 store each number in 4 or 8 bits, and MX in front (MXFP4, MXFP8) means a shared-scale version of that format. GB is gigabytes, GiB is about 7% more than a GB, and TB is a thousand GB. TB/s and PB/s are terabytes and petabytes per second, how fast data moves. W is watts and kW is a thousand watts. TDP is the most power a chip is built to draw.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26">Google Cloud Blog, AI infrastructure at Next '26</a></li>
+      <li><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/">Google, Two chips for the agentic era</a></li>
+    </ul>
+  </article>
+</Layout>

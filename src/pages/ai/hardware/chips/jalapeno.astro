@@ -1,0 +1,59 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Jalapeño - Hardware - Rycode"
+  description="Jalapeño is OpenAI's first custom inference chip, built with Broadcom: 13.4 PFLOPS of MXFP4, 216 GiB of HBM4 at 15.4 TB/s, 700 W."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Jalapeño</h1>
+    <p class="ai-model-dek">Jalapeño is the first chip OpenAI designed itself. It is built for inference, which is running a trained model to answer requests. Broadcom turns the design into silicon and supplies the network chips, and Celestica builds the boards and racks (<a href="https://openai.com/index/openai-broadcom-jalapeno-inference-chip/">OpenAI and Broadcom</a>). OpenAI says it plans to start deploying Jalapeño in its own data centers by the end of 2026 (<a href="https://openai.com/index/jalapeno-first-results/">OpenAI, first results</a>).</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The chip</h2>
+    <p>OpenAI presented these figures at Hot Chips 2026, a yearly chip design conference (<a href="https://www.servethehome.com/openai-jalapeno-asic-at-hot-chips-2026/">ServeTheHome, Hot Chips 2026</a>, reporting OpenAI's slides).</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One Jalapeño chip</th></tr></thead>
+        <tbody>
+          <tr><td>Compute</td><td>13.4 PFLOPS MXFP4; 3.4 PFLOPS MXFP8</td></tr>
+          <tr><td>Memory</td><td>216 GiB HBM4</td></tr>
+          <tr><td>Memory bandwidth</td><td>15.4 TB/s</td></tr>
+          <tr><td>Power (TDP)</td><td>700 W</td></tr>
+          <tr><td>Network to nearby chips</td><td>600 GB/s, up to 128 chips</td></tr>
+          <tr><td>Network to the full system</td><td>200 GB/s, up to 2,048 chips</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>HBM4 is the newest generation of high-bandwidth memory, stacked next to the chip (see <a href="/ai/hardware/hbm/">HBM memory</a>). OpenAI says the chip measured at or below 550 W on the work it tested, under its 700 W rating (<a href="https://openai.com/index/jalapeno-first-results/">OpenAI, first results</a>).</p>
+    <h2 class="ai-model-section">The system</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">2,048-chip Jalapeño system</th></tr></thead>
+        <tbody>
+          <tr><td>Compute</td><td>27 EFLOPS MXFP4</td></tr>
+          <tr><td>Memory</td><td>432 TiB HBM4</td></tr>
+          <tr><td>Memory bandwidth</td><td>32 PB/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Up to 128 chips share one fast local network, and a two-level network of Broadcom Tomahawk 6 Ethernet switches joins up to 2,048 chips into one system. Ethernet is the common networking standard most data centers already use.</p>
+    <h2 class="ai-model-section">What OpenAI claims</h2>
+    <ul>
+      <li>1.5 to 1.9 times more AI work per watt at peak throughput than the comparison systems, and 1.7 to 3.6 times lower end-to-end latency, across GPT-OSS 120B, DeepSeek R1, and Kimi K2.5 (<a href="https://openai.com/index/jalapeno-first-results/">OpenAI, first results</a>). Latency is the wait before an answer arrives.</li>
+      <li>The comparison systems were Nvidia GB200 and GB300, normalized to each chip's published power rating. These are OpenAI's own tests, not outside results.</li>
+    </ul>
+    <p>Units on this page: a PFLOPS is a thousand trillion math operations per second; an EFLOPS is a thousand PFLOPS. FP4 and FP8 store each number in 4 or 8 bits, and MX in front (MXFP4, MXFP8) means a shared-scale version of that format. GB is gigabytes, GiB is about 7% more than a GB, and TB is a thousand GB. TB/s and PB/s are terabytes and petabytes per second, how fast data moves. W is watts and kW is a thousand watts. TDP is the most power a chip is built to draw.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://openai.com/index/openai-broadcom-jalapeno-inference-chip/">OpenAI and Broadcom unveil Jalapeño</a></li>
+      <li><a href="https://openai.com/index/jalapeno-first-results/">OpenAI, Jalapeño first results</a></li>
+      <li><a href="https://www.servethehome.com/openai-jalapeno-asic-at-hot-chips-2026/">ServeTheHome, OpenAI Jalapeño at Hot Chips 2026</a></li>
+    </ul>
+  </article>
+</Layout>

@@ -1,0 +1,57 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Trainium3 - Hardware - Rycode"
+  description="Trainium3 is AWS's fourth-generation AI chip and its first on 3nm: 2.52 PFLOPS of MXFP8, 144 GiB of HBM3e at 4.9 TB/s, up to 144 chips in a Trn3 UltraServer."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Trainium3</h1>
+    <p class="ai-model-dek">Trainium3 is the AI chip that follows <a href="/ai/hardware/chips/trainium/">Trainium2</a>, designed by Annapurna Labs, Amazon's in-house chip team, for AWS, Amazon's cloud business. AWS calls it its fourth-generation AI chip and its first built on a 3-nanometer process. AWS announced Trn3 UltraServers, the rentable systems built on it, in December 2025 (<a href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/">AWS, What's New</a>).</p>
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The chip</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One Trainium3 chip</th><th scope="col">Trainium2</th></tr></thead>
+        <tbody>
+          <tr><td>Compute, MXFP8 or MXFP4</td><td>2.52 PFLOPS</td><td>1.3 PFLOPS FP8</td></tr>
+          <tr><td>Compute, BF16</td><td>0.67 PFLOPS</td><td>0.67 PFLOPS</td></tr>
+          <tr><td>Memory</td><td>144 GiB HBM3e</td><td>96 GiB</td></tr>
+          <tr><td>Memory bandwidth</td><td>4.9 TB/s</td><td>2.9 TB/s</td></tr>
+          <tr><td>Chip-to-chip link</td><td>2.56 TB/s (NeuronLink-v4)</td><td>1.28 TB/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Figures are from AWS's Neuron documentation (<a href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/about-neuron/arch/neuron-hardware/trainium3.html">Trainium3 architecture</a>). BF16 is a 16-bit number format used heavily in training. NeuronLink is AWS's own link between chips. AWS's product pages print the memory as 144 GB, while the Neuron docs say 144 GiB.</p>
+    <h2 class="ai-model-section">The UltraServer</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Figure</th><th scope="col">One Trn3 UltraServer</th></tr></thead>
+        <tbody>
+          <tr><td>Chips</td><td>Up to 144</td></tr>
+          <tr><td>Compute</td><td>Up to 362 PFLOPS MXFP8</td></tr>
+          <tr><td>Memory</td><td>Up to 20.7 TB HBM3e</td></tr>
+          <tr><td>Memory bandwidth</td><td>706 TB/s combined</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>An UltraServer is a group of servers wired as one machine. UltraServers then join into EC2 UltraClusters 3.0, which AWS says scale to hundreds of thousands of chips (<a href="https://aws.amazon.com/ec2/instance-types/trn3/">AWS, Trn3</a>).</p>
+    <h2 class="ai-model-section">What AWS claims</h2>
+    <ul>
+      <li>Up to 4.4 times the performance, 3.9 times the memory bandwidth, and 4 times the performance per watt of Trn2 UltraServers. These are AWS's own figures.</li>
+    </ul>
+    <p>Units on this page: a PFLOPS is a thousand trillion math operations per second; an EFLOPS is a thousand PFLOPS. FP4 and FP8 store each number in 4 or 8 bits, and MX in front (MXFP4, MXFP8) means a shared-scale version of that format. GB is gigabytes, GiB is about 7% more than a GB, and TB is a thousand GB. TB/s and PB/s are terabytes and petabytes per second, how fast data moves. W is watts and kW is a thousand watts. TDP is the most power a chip is built to draw.</p>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/about-neuron/arch/neuron-hardware/trainium3.html">AWS Neuron, Trainium3 architecture</a></li>
+      <li><a href="https://aws.amazon.com/ec2/instance-types/trn3/">AWS, Amazon EC2 Trn3 UltraServers</a></li>
+      <li><a href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/">AWS What's New, Trn3 UltraServers (Dec 2025)</a></li>
+    </ul>
+  </article>
+</Layout>

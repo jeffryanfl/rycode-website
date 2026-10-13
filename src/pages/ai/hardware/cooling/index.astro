@@ -14,5 +14,7 @@ const theme = hardwareTheme('cooling');
     <h1 class="ai-lab-title">{theme.title}</h1>
     <p class="ai-lab-dek">{theme.dek}</p>
   </div>
+  <p class="ai-lab-note">Every watt a chip draws turns into heat that has to leave the building. Air cooling blows air over the servers. Liquid cooling pumps a coolant through cold plates that sit right on the chips, which carries away far more heat, so racks can be packed denser. A closed loop reuses the same liquid instead of evaporating water.</p>
+  <p class="ai-lab-note">A rack is one cabinet of servers. Racks now draw well over 100 kW (a kW is a thousand watts): about 140 kW in <a href="/ai/hardware/data-centers/fairwater/">Fairwater</a> and 167 kW in a <a href="/ai/hardware/chips/maia/">Maia 300</a> rack, per Microsoft. The cards below each come from a sourced page.</p>
   <HardwarePlantGroups themeId="cooling" listLabel={theme.title} emptyTitle="" />
 </Layout>

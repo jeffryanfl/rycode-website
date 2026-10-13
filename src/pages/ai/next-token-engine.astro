@@ -275,7 +275,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
           <div class="paper-body">
             <p>There is no score in the head, and no inner room where a world is being simulated. Text is chopped into tokens. Each token becomes a vector. A stack of transformer blocks updates those vectors in a shared residual stream. Attention moves information between positions. The last state is projected into a vocabulary distribution, a token is sampled, and the loop repeats. What looks like reasoning is that same loop, sometimes stretched into a long chain of thought by post-training. The chain is generated text, not a window into thoughts.</p>
             <p>Chat vision-language models sit on that loop. They are not world models. World models (Genie-class, Cosmos-class) predict future states. They last minutes, not hours, and they are not a digital twin of anything you run.</p>
-            <p>The 2025–2026 jump is <button type="button" class="term-ref" data-term="rlvr" aria-controls="term-rlvr">RLVR</button> plus test-time compute: drill on domains a checker can grade, then spend extra tokens at inference. Math and code move. Writing, long-horizon engineering, and calibrated judgment on unverifiable work do not come along for the ride.</p>
+            <p>The 2025 to 2026 jump is <button type="button" class="term-ref" data-term="rlvr" aria-controls="term-rlvr">RLVR</button> plus test-time compute: drill on domains a checker can grade, then spend extra tokens at inference. Math and code move. Writing, long-horizon engineering, and calibrated judgment on unverifiable work do not come along for the ride.</p>
             <p>An agent is the model calling a tool, reading the observation, and calling again, with an autonomy slider in the app (Claude Code, Cursor, Codex-class). Recursive self-improvement, in the architecture-rewrites-itself sense, is not demonstrated in production.</p>
             <p>Failure modes are incentives. Hallucination is, in part, a test-taking problem: OpenAI argued in September 2025 that evals scoring zero for “I don’t know” teach bluffing. Sycophancy is what preference data buys. Scaffold and contamination move leaderboards. Dual-use classifiers are a routing layer in the API, not a footnote.</p>
           </div>
@@ -317,14 +317,14 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
               <h3>As of mid-2026</h3>
               <p>OSWorld 2.0 (paper, 28 June 2026): 108 workflows, human median 1.6 hours. Opus 4.8, max thinking plus batched, 500-step budget: 20.6% binary and 54.8% partial. Above about 163 minutes, binary completion was zero for every model in that paper’s plot.</p>
               <p>ARC Prize reported GPT-5.6 Sol Max at 7.78% on ARC-AGI-3 semi-private (9 July 2026).</p>
-              <p>METR measured an early Mythos Preview at a 50% time horizon of ≥16 hours (CI 8.5–55h) and warned measurements above 16 hours are unreliable on the current suite.</p>
+              <p>METR measured an early Mythos Preview at a 50% time horizon of ≥16 hours (CI 8.5 to 55h) and warned measurements above 16 hours are unreliable on the current suite.</p>
               <p class="dated-keep">An 8-hour horizon is not an 8-hour employee.</p>
             </aside>
           </div>
 
           <div class="paper-body">
             <p><a href="/ai/models/anthropic/claude-opus-5/">Claude Opus 5</a> is $5 / $25 per million tokens, 1M context. <a href="/ai/models/anthropic/claude-sonnet-5/">Sonnet 5</a> is $2 / $10. Fable 5 is $10 / $50. Dual-use classifiers and 30-day retention are Mythos-class terms, including Mythos 5; Fable is the generally available SKU in that class, and Mythos 5 is trusted access with the classifiers lifted. <a href="/ai/models/xai/models/grok-4-6/">Grok 4.6</a> (xAI, 12 August 2026) is 500k context; $2 / $6 per million tokens when the prompt is below 200k, and $4 / $12 for the whole request at or above 200k prompt tokens (xAI pricing). GPT-5.6 Sol, Terra, and Luna, and Gemini 3.x, are closed SKUs; prices and parameter counts for those lines are not published here.</p>
-            <p>SWE-Verified and GPQA Diamond are saturated. OpenAI stopped reporting SWE-Verified for frontier launches. Epoch found scaffold choice alone moved Verified by about 11–15 points. What still discriminates: Terminal-Bench 3.0, OSWorld 2.0 binary success, ARC-AGI-3, and METR’s time horizon.</p>
+            <p>SWE-Verified and GPQA Diamond are saturated. OpenAI stopped reporting SWE-Verified for frontier launches. Epoch found scaffold choice alone moved Verified by about 11 to 15 points. What still discriminates: Terminal-Bench 3.0, OSWorld 2.0 binary success, ARC-AGI-3, and METR’s time horizon.</p>
             <p>The failure mode is state, not mouse-clicking. The working layer is a coding agent with a human on the irreversible step. Unattended multi-hour <a href="/ai/glossary/#computer-use">computer use</a>, and “the model that thinks for days,” are still demo.</p>
           </div>
         </section>

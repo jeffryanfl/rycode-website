@@ -14,5 +14,7 @@ const theme = hardwareTheme('networks');
     <h1 class="ai-lab-title">{theme.title}</h1>
     <p class="ai-lab-dek">{theme.dek}</p>
   </div>
+  <p class="ai-lab-note">A cluster only acts as one computer if its chips can swap results fast. Scale-up is the very fast network inside one rack or pod, such as Nvidia NVLink or AMD UALink. Scale-out connects racks to each other, usually over InfiniBand or Ethernet, the common networking standard. A third tier now links whole data centers, like Microsoft's AI WAN.</p>
+  <p class="ai-lab-note">Gb/s is gigabits per second and GB/s gigabytes per second; one byte is 8 bits. The cards below each come from a sourced page.</p>
   <HardwarePlantGroups themeId="networks" listLabel={theme.title} emptyTitle="" />
 </Layout>
