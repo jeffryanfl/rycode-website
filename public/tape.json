@@ -1,49 +1,20 @@
 {
-  "schema": "macro-tape-v1",
-  "asOf": "2026-10-12T16:20:00-04:00",
-  "cadence": "after-close",
-  "hook": "Oil climbed again to a $93.20 WTI close and Brent near $106, while stocks finished mixed on a bond-market holiday.",
-  "door": "Economics",
-  "essayWorthy": true,
-  "ticker": [
+  "updated": "2026-10-13T08:18:00-04:00",
+  "asOfLabel": "Tue 13 Oct · pre-open",
+  "lines": [
     {
-      "date": "2026-10-12",
-      "tag": "Oil",
-      "line": "WTI Nov close $93.20 (Fri $91.85). Brent ~$106.04, highest close this month."
-    },
-    {
-      "date": "2026-10-12",
       "tag": "Tape",
-      "line": "Mon close: S&P 7,807.24 (-0.1%). Dow 51,850.55 (+0.4%). Nasdaq 27,245.90 (-0.4%)."
+      "text": "Tue pre-open: ES ~7,851 (-0.1%). NQ -0.7%. YM +0.8%."
     },
     {
-      "date": "2026-10-12",
+      "tag": "Oil",
+      "text": "WTI Nov ~$92.25 (Mon close $93.74). Brent ~$104.69, still above $100."
+    },
+    {
       "tag": "Rates",
-      "line": "Bond market shut for Columbus Day. Last CMT Fri: 10y 5.24%. 2y 4.80%. 30y 5.60%."
+      "text": "Bonds reopen. Last CMT Fri: 10y 5.24%. 2y 4.80%. 30y 5.60%."
     }
   ],
-  "levels": {
-    "spx": 7807.24,
-    "dow": 51850.55,
-    "nasdaq": 27245.9,
-    "yield2y": 4.8,
-    "yield10y": 5.24,
-    "yield30y": 5.6,
-    "dxy": 102.6,
-    "wti": 93.2,
-    "brent": 106.04,
-    "fedwatchHikePct": null,
-    "fedFundsImplied": "3.75-4.00",
-    "yieldsAsOf": "2026-10-09"
-  },
-  "calendar": [
-    "Bond market reopens Tuesday.",
-    "Next FOMC Oct 27\u201328."
-  ],
-  "watch": [
-    "Whether WTI keeps climbing toward the $100 line.",
-    "Whether yields jump when bonds reopen after oil's rise.",
-    "Whether the S&P gets back above 7,818.93."
-  ],
-  "chatPosted": true
+  "doorHref": "/economics",
+  "date": "2026-10-13"
 }

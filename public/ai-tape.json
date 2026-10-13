@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-12T08:48:33-04:00",
-  "asOfLabel": "Mon 12 Oct · morning",
+  "updated": "2026-10-13T08:37:39-04:00",
+  "asOfLabel": "Tue 13 Oct · morning",
   "lines": [
     {
+      "tag": "Infra",
+      "text": "Microsoft unveils Maia 300 chip; says up to 7x Maia 200 throughput per 96-chip rack, shipping in 2027"
+    },
+    {
       "tag": "Labs",
-      "text": "Google staff test Carbon, an internal Gemini 4 build one engineer says codes like Opus 5.5 (unconfirmed)"
+      "text": "Anthropic says new defenses cut data copied from Claude by distillers by about 90 to 99 percent"
     },
     {
-      "tag": "Policy",
-      "text": "Anthropic launches Cyber Mission: free OSS Scanner bug scans and a defense program for power and water grids"
-    },
-    {
-      "tag": "OpenWeight",
-      "text": "Posts on X say Qwen4-27B and Qwen4-Max open weights will drop together soon; no official date yet"
+      "tag": "News",
+      "text": "Google's Logan Kilpatrick teases \"Gemini\"; Argon still limited to Fairwind testers, no wider date yet"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-12"
+  "date": "2026-10-13"
 }
