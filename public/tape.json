@@ -1,48 +1,48 @@
 {
   "schema": "macro-tape-v1",
-  "asOf": "2026-10-13T16:12:00-04:00",
+  "asOf": "2026-10-14T17:05:00-04:00",
   "cadence": "after-close",
-  "hook": "WTI rose to a $94.79 close, yet Treasury yields eased as bonds reopened, and stocks ended about flat.",
+  "hook": "Stocks sold off hard while WTI closed above $95, and the 10-year eased a touch to about 5.19%.",
   "door": "Economics",
   "essayWorthy": true,
   "ticker": [
     {
-      "date": "2026-10-13",
-      "tag": "Oil",
-      "line": "WTI Nov close $94.79 (Mon $93.74). Brent ~$106.18, still above $100."
-    },
-    {
-      "date": "2026-10-13",
-      "tag": "Rates",
-      "line": "CMT Tue: 10y 5.21% (-3bp vs Fri). 2y 4.79%. 30y 5.56%."
-    },
-    {
-      "date": "2026-10-13",
+      "date": "2026-10-14",
       "tag": "Tape",
-      "line": "Tue close: S&P 7,805.45 (flat). Dow 51,670.10 (-0.3%). Nasdaq 27,204.38 (-0.2%)."
+      "line": "Wed close: S&P 7,718.94 (-1.1%). Dow 51,621.48 (flat). Nasdaq 26,692.87 (-1.9%)."
+    },
+    {
+      "date": "2026-10-14",
+      "tag": "Oil",
+      "line": "WTI Nov close $95.17 (Tue Yahoo bar $94.14). Brent ~$106.06, still above $100."
+    },
+    {
+      "date": "2026-10-14",
+      "tag": "Rates",
+      "line": "CNBC Wed: 10y 5.19%. 2y 4.81%. 30y 5.53%."
     }
   ],
   "levels": {
-    "spx": 7805.45,
-    "dow": 51670.1,
-    "nasdaq": 27204.38,
-    "yield2y": 4.79,
-    "yield10y": 5.21,
-    "yield30y": 5.56,
-    "dxy": 102.21,
-    "wti": 94.79,
-    "brent": 106.18,
+    "spx": 7718.94,
+    "dow": 51621.48,
+    "nasdaq": 26692.87,
+    "yield2y": 4.81,
+    "yield10y": 5.19,
+    "yield30y": 5.53,
+    "dxy": 102.55,
+    "wti": 95.17,
+    "brent": 106.06,
     "fedwatchHikePct": null,
     "fedFundsImplied": "3.75-4.00"
   },
   "calendar": [
-    "No major US data print is confirmed for this card on Wednesday.",
+    "No major US data print confirmed for Thursday on this card.",
     "Next FOMC Oct 27\u201328."
   ],
   "watch": [
-    "Whether WTI keeps climbing toward the $100 line.",
-    "Whether yields keep easing even as oil rises.",
-    "Whether chip stocks steady after slipping into a correction."
+    "Whether the equity selloff deepens after today's drop.",
+    "Whether WTI holds above $95.",
+    "Whether yields keep easing even as oil stays high."
   ],
-  "chatPosted": true
+  "chatPosted": false
 }

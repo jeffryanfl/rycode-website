@@ -1,6 +1,6 @@
 {
   "schema": "inflation-v1",
-  "updated": "2026-10-05T11:31:42.331Z",
+  "updated": "2026-10-14T21:42:19.172Z",
   "note": "Inflation feed for the Economics watch list. Refresh with node scripts/update-inflation.mjs (after-close push). mom and yoy are percent changes, one decimal, as published. The Fed's inflation target is 2% on PCE. Each point carries status preliminary, revised, or final; a revision overwrites the value and keeps revisedFrom. Never hand-edit.",
   "series": [
     {
@@ -825,6 +825,14 @@
           "indexNsa": 334.98,
           "mom": 0.4,
           "yoy": 3.4,
+          "status": "final"
+        },
+        {
+          "date": "2026-09-01",
+          "index": 336.298,
+          "indexNsa": 336.94,
+          "mom": 0.6,
+          "yoy": 3.7,
           "status": "final"
         }
       ]
@@ -1651,6 +1659,14 @@
           "indexNsa": 338.041,
           "mom": 0.3,
           "yoy": 2.4,
+          "status": "final"
+        },
+        {
+          "date": "2026-09-01",
+          "index": 338.896,
+          "indexNsa": 339.287,
+          "mom": 0.3,
+          "yoy": 2.6,
           "status": "final"
         }
       ]
