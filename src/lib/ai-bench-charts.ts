@@ -257,3 +257,111 @@ export function benchTable(): {
   }));
   return { columns, rows };
 }
+
+/**
+ * One leaderboard for #aiBench: one row per model, one column per test.
+ * AA Intelligence Index first. Each column header carries the usual test
+ * version; a cell on another version gets a numbered footnote. Shading uses
+ * clean single numbers only, and only cells on the column's usual version.
+ * Every value and label comes from the feed. Nothing is computed into a score.
+ */
+export interface BoardCell {
+  value: string;
+  num: number | null;
+  shade: number | null;
+  tag: string;
+  source?: string;
+  effort?: string;
+  notes: number[];
+}
+export interface BoardColumn { id: string; label: string; base: string; href?: string; def: string; notes: number[] }
+export interface BoardRow { model: string; href?: string; cells: (BoardCell | null)[] }
+
+const DEFS: Record<string, string> = {
+  aaIndex: 'Artificial Analysis Intelligence Index: one overall score from a fixed set of tests that Artificial Analysis runs itself.',
+  cursorBench: 'CursorBench: coding tasks from real use of the Cursor editor.',
+  deepSwe: 'DeepSWE: long coding tasks in real software projects, written from scratch for the test.',
+  terminalBench: 'Terminal-Bench: completing tasks in a command-line terminal.',
+  osworld: 'OSWorld: using a desktop computer through its screen, mouse and keyboard.',
+  automationBench: 'AutomationBench: Zapier\'s test of multi-step business automation tasks.',
+  hle: 'Humanity\'s Last Exam: very hard expert-level questions across many subjects.',
+  arcAgi: 'ARC-AGI-3: the ARC Prize test of learning and beating new games without instructions.',
+};
+const HEAD_VERSION: Record<string, string> = {
+  aaIndex: 'v4.3.2',
+  cursorBench: '4.0',
+  deepSwe: 'v1.1',
+  terminalBench: '4.0',
+  osworld: '2.0',
+  hle: 'with tools',
+};
+
+export interface BoardNote { text: string; link?: { text: string; source?: string } }
+
+export function benchBoard(): { columns: BoardColumn[]; rows: BoardRow[]; notes: BoardNote[]; verifiers: string[] } {
+  const notes: BoardNote[] = [];
+  const add = (text: string, link?: BoardNote['link']) => {
+    const i = notes.findIndex((n) => n.text === text);
+    if (i >= 0) return i + 1;
+    notes.push({ text, link });
+    return notes.length;
+  };
+  const osVersions = data.labs
+    .filter((l) => (l.benches?.osworld as FullCell)?.value != null)
+    .map((l) => `${l.model} on ${(l.benches.osworld as FullCell)!.version}`);
+  const osNote = `These OSWorld scores use different 2.0 versions, do not compare directly: ${osVersions.join(', ')}.`;
+  const order = ['aaIndex', ...data.columns.map((c) => c.id).filter((id) => id !== 'aaIndex')];
+  const columns: BoardColumn[] = order.map((id) => {
+    const col = data.columns.find((c) => c.id === id)!;
+    const v = HEAD_VERSION[id];
+    const label = id === 'arcAgi' ? 'ARC-AGI-3 Standard' : v && !/^v?\d/.test(v) ? `${col.label} (${v})` : v ? `${col.label} ${v}` : col.label;
+    return { id, label, base: col.label, href: col.href, def: DEFS[id] ?? '', notes: [] };
+  });
+  const rows: BoardRow[] = data.labs.map((lab) => ({
+    model: lab.model,
+    href: lab.doorHref,
+    cells: columns.map((col) => {
+      const c = lab.benches?.[col.id] as FullCell;
+      if (!c || c.value === undefined || c.value === null) return null;
+      const kind = col.id === 'aaIndex' ? 'aa' : c.sourceKind ?? 'lab';
+      const value = String(c.value).trim();
+      const m = value.match(CLEAN);
+      const cellNotes: number[] = [];
+      const head = HEAD_VERSION[col.id];
+      let comparable = true;
+      if (col.id === 'osworld') {
+        if (c.version !== '2.0 latency sim') comparable = false;
+        cellNotes.push(add(osNote));
+      } else if (col.id === 'cursorBench' && c.version && c.version !== head) {
+        comparable = false;
+        cellNotes.push(add(`${lab.model} is scored on CursorBench ${c.version}, a different version from the others, do not compare directly.`));
+      }
+      if (col.id === 'arcAgi') {
+        cellNotes.push(add(`ARC-AGI-3 Standard harness: a harness is the setup a model runs inside during a test. The Standard harness lets the model carry forward only the notes it chooses to keep. ${lab.model} ran at ${c.effort} effort.`));
+        if (c.altSetup) {
+          const a = c.altSetup;
+          cellNotes.push(add(`Special setup for ${lab.model}: ${a.value} with the ${a.setup}${a.effort ? ` (${a.effort} effort)` : ''}, which keeps the model's hidden reasoning between steps.`, a.labClaim));
+        }
+      }
+      return {
+        value,
+        num: m ? Number(m[1]) : null,
+        shade: null,
+        tag: kind === 'aa' ? 'AA' : kind === 'verifier' ? (c.verifier ?? 'Independently verified') : 'Lab',
+        source: c.source,
+        effort: col.id === 'aaIndex' ? c.effort : undefined,
+        notes: cellNotes,
+        _cmp: comparable,
+      } as BoardCell & { _cmp: boolean };
+    }),
+  }));
+  columns.forEach((_, ci) => {
+    const cells = rows.map((r) => r.cells[ci] as (BoardCell & { _cmp: boolean }) | null).filter((c) => c && c.num !== null && c._cmp) as (BoardCell & { _cmp: boolean })[];
+    if (cells.length < 2) return;
+    const lo = Math.min(...cells.map((c) => c.num!));
+    const hi = Math.max(...cells.map((c) => c.num!));
+    for (const c of cells) c.shade = hi === lo ? 0.5 : (c.num! - lo) / (hi - lo);
+  });
+  const verifiers = [...new Set(data.labs.flatMap((l) => Object.values(l.benches ?? {}).map((c) => (c as FullCell)?.sourceKind === 'verifier' ? (c as FullCell)?.verifier : undefined)).filter((v): v is string => Boolean(v)))];
+  return { columns, rows, notes, verifiers };
+}

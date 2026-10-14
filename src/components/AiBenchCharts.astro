@@ -1,175 +1,129 @@
 ---
 /**
- * /ai bench charts, built at build time from public/ai-benchmarks.json.
- * One bar chart (AA Intelligence Index) and one lines chart. Edit the feed,
- * not this file, to move a number. Uses the .ai-bench-* plate styles from ai.css.
+ * /ai #aiBench leaderboard, built at build time from public/ai-benchmarks.json.
+ * One table: one row per model, one column per test, AA Intelligence Index first.
+ * Edit the feed, not this file, to move a number.
  */
-import BenchChart from './BenchChart.astro';
-import { benchAsOf, benchHref, benchLines, benchPoints, benchTable } from '../lib/ai-bench-charts';
+import { benchAsOf, benchBoard } from '../lib/ai-bench-charts';
 
-const aa = benchPoints('aaIndex');
-const aaHref = benchHref('aaIndex');
 const asOf = benchAsOf();
-const lines = benchLines();
-const table = benchTable();
-
-const toItems = (points: typeof aa) =>
-  points.map((p) => ({
-    label: p.model,
-    value: p.value,
-    display: p.display,
-    note: p.note,
-    color: p.color,
-    mark: p.mark,
-    glyph: p.glyph,
-    ring: p.ring,
-  }));
+const { columns, rows, notes, verifiers } = benchBoard();
+const aaMax = 100;
+const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.num ?? -1));
 ---
 
-<section class="ai-bench ai-bench-charts" aria-labelledby="ai-bench-charts-heading">
+<section class="ai-bench ai-bench-board" id="aiBench" aria-labelledby="ai-bench-board-heading">
   <div class="ai-bench-plate">
-    <p class="ai-bench-kicker">Rycode · /ai · bench charts</p>
-    <h2 class="ai-bench-title" id="ai-bench-charts-heading">Flagships at a glance</h2>
-    <p class="ai-bench-sub">As of {asOf} · one bar per model · higher is better</p>
-
-    <div class="abc-chart">
-      <BenchChart
-        title="AA Intelligence Index"
-        href={aaHref}
-        sub="Measured by Artificial Analysis (AA), an independent testing site · v4.3.2 · effort setting under each score"
-        items={toItems(aa)}
-      />
-    </div>
-
-    <p class="ai-bench-feed">Charts read <code>public/ai-benchmarks.json</code>.</p>
-  </div>
-</section>
-
-<section class="ai-bench ai-bench-lines" aria-labelledby="ai-bench-lines-heading">
-  <div class="ai-bench-plate">
-    <p class="ai-bench-kicker">Rycode · /ai · bench charts</p>
-    <h2 class="ai-bench-title" id="ai-bench-lines-heading">Across these benches</h2>
-    <p class="ai-bench-sub">{lines.sub} · higher is better · each point is the lab's own claim, not an outside test · a gap means the lab did not report that test at that version</p>
-    <div class="abc-lines">
-    <BenchChart
-      kind="line"
-      title="Across these benches"
-      caption={false}
-      frame={false}
-      categories={lines.categories}
-      series={lines.series}
-      min={0}
-      max={100}
-      step={20}
-    />
-    </div>
-  </div>
-</section>
-
-<section class="ai-bench ai-bench-table" id="aiBench" aria-labelledby="ai-bench-table-heading">
-  <div class="ai-bench-plate">
-    <p class="ai-bench-kicker">Rycode · /ai · bench charts</p>
-    <h2 class="ai-bench-title" id="ai-bench-table-heading">Every score, labeled</h2>
+    <p class="ai-bench-kicker">Rycode · /ai · leaderboard</p>
+    <h2 class="ai-bench-title" id="ai-bench-board-heading">Flagships, every score</h2>
     <p class="ai-bench-sub">
-      Each number shows its test version (tests change between editions, so scores from different versions are not comparable)
-      and who produced it: <strong>Lab claim</strong> (the company's own result), <strong>AA measured</strong> (Artificial Analysis ran it),
-      or <strong>ARC Prize verified</strong> (the test's organizers ran it). A harness is the setup a model runs inside during a test.
-      ARC-AGI-3 is the ARC Prize test of solving new puzzle games; its Standard harness lets the model carry forward only the notes it chooses to keep.
-      "Not reported at this version" means we have no score from the model's own lab at this column's test version.
+      As of {asOf} · higher is better · darker = higher in its column · click a header to sort ·
+      <strong>Lab</strong> company's own result · <strong>AA</strong> measured by Artificial Analysis {verifiers.map((v) => <> · <strong>{v}</strong> verified by the {v} organizers</>)} · <strong>Dash</strong> = not reported at this version: no score from the model's own lab at this column's test version
     </p>
-    <div class="abt-wrap">
-      <table class="abt">
+    <div class="abb-wrap">
+      <table class="abb" data-abb>
         <thead>
           <tr>
-            <th scope="col">Model</th>
-            {table.columns.map((c) => (
-              <th scope="col">{c.href ? <a href={c.href} target="_blank" rel="noopener noreferrer">{c.label}</a> : c.label}</th>
+            <th scope="col" class="abb-model"><button type="button" data-sort="model">Model</button></th>
+            {columns.map((c, i) => (
+              <th scope="col" title={c.def} aria-sort={i === 0 ? 'descending' : undefined}>
+                <button type="button" data-sort={i}>{c.label}</button>
+                {c.href && <a class="abb-ext" href={c.href} target="_blank" rel="noopener noreferrer" aria-label={`About ${c.label}`}>↗</a>}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {table.rows.map((row) => (
+          {sorted.map((row) => (
             <tr>
-              <th scope="row">{row.href ? <a href={row.href}>{row.model}</a> : row.model}</th>
-              {row.cells.map((cell) => (
-                <td>
-                  {cell ? (
-                    <>
-                      <span class="abt-v">{cell.source ? <a href={cell.source} target="_blank" rel="noopener noreferrer">{cell.value}</a> : cell.value}</span>
-                      {cell.version && <span class="abt-m">{cell.version}</span>}
-                      {cell.odd && <span class="abt-odd">{cell.odd}</span>}
-                      {cell.setup && <span class="abt-m">{cell.setup}</span>}
-                      {cell.effort && <span class="abt-m">{cell.effort} effort</span>}
-                      <span class="abt-by">{cell.by}</span>
-                      {cell.alt && (
-                        <span class="abt-alt">
-                          Special setup: {cell.alt.value} with the {cell.alt.setup}{cell.alt.effort ? ` (${cell.alt.effort} effort)` : ''}, which keeps the model's hidden reasoning between steps{cell.alt.labClaim && (
-                            <>. {cell.alt.labClaim.source ? <a href={cell.alt.labClaim.source} target="_blank" rel="noopener noreferrer">{cell.alt.labClaim.text}</a> : cell.alt.labClaim.text}</>
-                          )}
-                        </span>
-                      )}
-                    </>
-                  ) : (
-                    <span class="abt-nr">Not reported at this version</span>
-                  )}
-                </td>
+              <th scope="row" class="abb-model" data-v={row.model}>{row.href ? <a href={row.href}>{row.model}</a> : row.model}</th>
+              {row.cells.map((cell, ci) => (
+                cell ? (
+                  <td data-v={cell.num ?? ''} style={cell.shade !== null ? `--s:${(0.08 + cell.shade * 0.5).toFixed(3)}` : undefined} class={cell.shade !== null ? 'abb-h' : 'abb-u'}>
+                    {ci === 0 && cell.num !== null && <span class="abb-bar" style={`width:${(cell.num / aaMax) * 100}%`} aria-hidden="true"></span>}
+                    <span class="abb-v">{cell.source ? <a href={cell.source} target="_blank" rel="noopener noreferrer">{cell.value}</a> : cell.value}</span>
+                    {cell.notes.map((n) => <sup><a href={`#abb-n${n}`}>{n}</a></sup>)}
+                    <span class="abb-tag">{cell.tag}{cell.effort ? ` · ${cell.effort}` : ''}</span>
+                  </td>
+                ) : (
+                  <td data-v="" class="abb-e" aria-label="Not reported at this version">-</td>
+                )
               ))}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
+    <ol class="abb-notes">
+      {notes.map((n, i) => <li id={`abb-n${i + 1}`}>{n.text}{n.link && <>{" "}{n.link.source ? <a href={n.link.source} target="_blank" rel="noopener noreferrer">{n.link.text}</a> : n.link.text}.</>}</li>)}
+    </ol>
+    <dl class="abb-defs">
+      {columns.map((c) => <div><dt>{c.base}</dt><dd>{c.def.replace(/^[^:]+:\s*/, '')}</dd></div>)}
+    </dl>
+    <p class="ai-bench-feed">Table reads <code>public/ai-benchmarks.json</code>. AA column: score and effort setting.</p>
   </div>
 </section>
 
+<script>
+  document.querySelectorAll<HTMLTableElement>('[data-abb]').forEach((table) => {
+    const body = table.tBodies[0];
+    const heads = [...table.tHead!.rows[0].cells];
+    heads.forEach((th, idx) => {
+      th.querySelector('button')?.addEventListener('click', () => {
+        const desc = th.getAttribute('aria-sort') !== 'descending';
+        heads.forEach((h) => h.removeAttribute('aria-sort'));
+        th.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+        const rows = [...body.rows];
+        rows.sort((a, b) => {
+          const x = a.cells[idx].dataset.v ?? '';
+          const y = b.cells[idx].dataset.v ?? '';
+          if (idx === 0) return desc ? y.localeCompare(x) : x.localeCompare(y);
+          if (x === '' && y === '') return 0;
+          if (x === '') return 1;
+          if (y === '') return -1;
+          return desc ? Number(y) - Number(x) : Number(x) - Number(y);
+        });
+        rows.forEach((r) => body.appendChild(r));
+      });
+    });
+  });
+</script>
+
 <style>
-  .abt-wrap {
-    margin-top: 0.85rem;
-    overflow-x: auto;
+  .abb-wrap { margin-top: 0.85rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .abb { border-collapse: separate; border-spacing: 0; font-size: 0.8rem; line-height: 1.2; min-width: 58rem; width: 100%; font-variant-numeric: tabular-nums; }
+  .abb th, .abb td { border-top: 1px solid rgba(248, 250, 252, 0.12); padding: 0.45rem 0.5rem; text-align: right; vertical-align: middle; white-space: nowrap; }
+  .abb thead th { vertical-align: bottom; font-weight: 600; font-size: 0.7rem; white-space: normal; min-width: 5.5rem; border-top: 0; }
+  .abb thead button { all: unset; cursor: pointer; }
+  .abb thead button:focus-visible { outline: 2px solid #8ab4ff; }
+  .abb thead th[aria-sort='descending'] button::after { content: ' ▾'; }
+  .abb thead th[aria-sort='ascending'] button::after { content: ' ▴'; }
+  .abb-ext { margin-left: 0.2rem; opacity: 0.55; text-decoration: none; font-size: 0.65rem; }
+  .abb .abb-model { position: sticky; left: 0; z-index: 1; background: var(--bg, #080a10); text-align: left; font-weight: 600; min-width: 8.5rem; }
+  .abb tbody th.abb-model { box-shadow: 1px 0 0 rgba(248, 250, 252, 0.15); }
+  .abb-h { background: rgba(96, 165, 250, var(--s)); }
+  .abb td:first-of-type { position: relative; min-width: 9rem; }
+  .abb-bar { position: absolute; left: 0.5rem; bottom: 0.2rem; height: 3px; max-width: calc(100% - 1rem); background: #60a5fa; border-radius: 2px; }
+  .abb-v { font-weight: 600; color: var(--text, #f8fafc); }
+  .abb-v a { color: inherit; text-decoration: none; }
+  .abb-v a:hover { text-decoration: underline; }
+  .abb-tag { display: block; font-family: var(--font-mono); font-size: 0.6rem; opacity: 0.72; letter-spacing: 0.03em; }
+  .abb sup { font-size: 0.6rem; margin-left: 0.1rem; }
+  .abb sup a { color: #fbbf24; text-decoration: none; }
+  .abb-e { color: var(--text-faint, rgba(248, 250, 252, 0.4)); }
+  .abb-notes { margin: 0.8rem 0 0; padding-left: 1.2rem; font-size: 0.72rem; line-height: 1.45; opacity: 0.85; }
+  .abb-defs { margin: 0.6rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 0.25rem 1rem; font-size: 0.68rem; opacity: 0.7; }
+  .abb-defs div { display: flex; gap: 0.35rem; }
+  .abb-defs dt { font-weight: 600; white-space: nowrap; }
+  .abb-defs dd { margin: 0; }
+  @media (max-width: 600px) {
+    .abb { min-width: 0; font-size: 0.74rem; }
+    .abb th, .abb td { padding: 0.35rem 0.3rem; }
+    .abb thead th { min-width: 4.2rem; font-size: 0.62rem; }
+    .abb td:first-of-type { min-width: 4.4rem; }
+    .abb .abb-model { min-width: 0; max-width: 6.6rem; white-space: normal; }
+    .abb-bar { height: 2px; left: 0.3rem; max-width: calc(100% - 0.6rem); }
+    .abb-tag { font-size: 0.56rem; }
   }
-  .abt {
-    border-collapse: collapse;
-    font-size: 0.78rem;
-    line-height: 1.25;
-    min-width: 46rem;
-    width: 100%;
-  }
-  .abt th,
-  .abt td {
-    border-top: 1px solid rgba(127, 127, 127, 0.25);
-    padding: 0.35rem 0.4rem;
-    text-align: left;
-    vertical-align: top;
-  }
-  .abt thead th {
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .abt-v {
-    display: block;
-    font-weight: 600;
-  }
-  .abt-m,
-  .abt-by,
-  .abt-alt {
-    display: block;
-    opacity: 0.75;
-  }
-  .abt-by {
-    font-style: italic;
-  }
-  .abt-alt {
-    margin-top: 0.2rem;
-  }
-  .abt-odd {
-    display: block;
-    font-weight: 600;
-  }
-  .abt-nr {
-    opacity: 0.5;
-  }
-  .abc-chart,
-  .abc-lines {
-    margin-top: 0.85rem;
-  }
+  @media (prefers-color-scheme: light) { :global(html:not([data-theme='dark'])) .abb-h { background: rgba(37, 99, 235, var(--s)); } }
 </style>
