@@ -424,9 +424,9 @@
     {
       "lab": "Google DeepMind",
       "model": "Gemini 4 Argon",
-      "apiId": null,
+      "apiId": "gemini-4-argon",
       "doorHref": "/ai/models/google/gemini-4-argon/",
-      "role": "Announced 30 Sep 2026. Not public. Fairwind cyber defenders first.",
+      "role": "Generally available since 13 Oct 2026. Paid Gemini API, AI Studio, Gemini app for Pro and Ultra.",
       "benches": {
         "cursorBench": null,
         "deepSwe": {

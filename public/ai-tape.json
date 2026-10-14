@@ -12,7 +12,8 @@
     },
     {
       "tag": "News",
-      "text": "Google's Logan Kilpatrick teases \"Gemini\"; Argon still limited to Fairwind testers, no wider date yet"
+      "text": "Google opens Gemini 4 Argon to the public: paid API, AI Studio, Gemini app for Pro and Ultra",
+      "url": "/ai/models/google/gemini-4-argon/"
     }
   ],
   "doorHref": "/ai",

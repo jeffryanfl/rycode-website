@@ -54,7 +54,7 @@
   "/ai/models/open-weight/kimi-k3/": "Kimi K3 is Moonshot's open-weight flagship for long-horizon coding and knowledge work.",
   "/ai/hardware/chips/terafab/": "Terafab is a planned chip factory from SpaceX and Tesla in Grimes County, Texas, with a Phase 1 figure of $16.8B.",
   "/ai/hardware/data-centers/memphis-colossus/": "Memphis Colossus is a hyperscale training campus. The company page lists 170 PB/s of aggregate memory bandwidth and 2.8 Tb/s per server.",
-  "/ai/models/google/gemini-4-argon/": "Gemini 4 Argon was announced 30 September 2026 for trusted cyber defenders, not the public, at an intro price of $2 input and $10 output per million tokens.",
+  "/ai/models/google/gemini-4-argon/": "Gemini 4 Argon, announced 30 September 2026, became generally available 13 October 2026 as gemini-4-argon, at an intro price of $2 input and $10 output per million tokens through 30 November 2026.",
   "/ai/what-xai-has-running/": "SpaceX told investors on 12 June 2026 that Colossus and Colossus II together provide about 1 gigawatt of compute power, and the Colossus page lists 170 PB/s and 2.8 Tb/s.",
   "/ai/hardware/chips/mtia/": "MTIA 300 is in production with 216 GB HBM3E, MTIA 400 is a 72-accelerator rack, and compute FLOPS from the 300 to the 500 is 25x.",
   "/ai/hardware/data-centers/prometheus/": "Prometheus in New Albany, Ohio is over 1 gigawatt and tens of thousands of graphics chips once complete.",
