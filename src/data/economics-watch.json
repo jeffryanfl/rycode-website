@@ -63,7 +63,7 @@
       "kind": "chain",
       "risk": "Inflation",
       "why": "Prices compared with a year earlier, against the Fed's 2% target.",
-      "key": "Core leaves out food and energy, which jump around. The Fed's 2% target is set on PCE; CPI is shown against the same line.",
+      "key": "Core leaves out food and energy, which jump around. The Fed's 2% target is set on PCE; CPI is shown against the same line. PPI (producer prices) has no target line.",
       "group": true,
       "steps": [
         {
@@ -111,6 +111,21 @@
             "reading": { "feed": "public/inflation.json", "series": "cpi", "key": "yoy", "format": "percent1", "frequency": "monthly" }
           },
           "why": "The consumer price index, from the Bureau of Labor Statistics. It comes out about two weeks before PCE."
+        },
+        {
+          "id": "core-ppi",
+          "step": "3 Core PPI",
+          "title": "Producer prices",
+          "tracker": "Core PPI less food and energy, over the year",
+          "trackerHref": "https://www.bls.gov/ppi/",
+          "reading": { "feed": "public/inflation.json", "series": "corePpi", "key": "yoy", "format": "percent1", "frequency": "monthly" },
+          "trend": { "points": 24 },
+          "extra": {
+            "label": "All final demand PPI, over the year",
+            "href": "https://www.bls.gov/ppi/",
+            "reading": { "feed": "public/inflation.json", "series": "ppi", "key": "yoy", "format": "percent1", "frequency": "monthly" }
+          },
+          "why": "The producer price index, from the Bureau of Labor Statistics: the prices businesses get for their goods and services, which can hint at where consumer prices go next. BLS's release leads with a narrower core that also leaves out trade services. BLS revises the last four months."
         }
       ]
     },

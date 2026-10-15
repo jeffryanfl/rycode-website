@@ -9,6 +9,11 @@
  *                 mom from the seasonally adjusted index (CUSR0000SA0, CUSR0000SA0L1E);
  *                 yoy from the not seasonally adjusted index (CUUR0000SA0, CUUR0000SA0L1E),
  *                 the way BLS publishes the 12-month change.
+ *   ppi, corePpi  Same BLS request. PPI final demand (WPSFD4 SA for mom, WPUFD4 NSA for yoy) and
+ *                 final demand less foods and energy (WPSFD49104 SA, WPUFD49104 NSA), the usual
+ *                 "core PPI". BLS's release leads with less foods, energy, and trade services
+ *                 (WPSFD49116 / WPUFD49116), which is not stored here. BLS revises the last four months; those
+ *                 carry the P footnote and are stored as preliminary.
  *   pce, corePce  FRED PCEPI and PCEPILFE (BEA PCE price index, seasonally adjusted), 11 years;
  *                 mom and yoy from the index, the way BEA publishes them.
  * Percent changes are rounded to one decimal, as published.
@@ -34,17 +39,21 @@ const CPI = {
   cpi: { sa: 'CUSR0000SA0', nsa: 'CUUR0000SA0', title: 'CPI, all items' },
   coreCpi: { sa: 'CUSR0000SA0L1E', nsa: 'CUUR0000SA0L1E', title: 'Core CPI, all items less food and energy' },
 };
+const PPI = {
+  ppi: { sa: 'WPSFD4', nsa: 'WPUFD4', title: 'PPI, final demand', label: 'PPI' },
+  corePpi: { sa: 'WPSFD49104', nsa: 'WPUFD49104', title: 'Core PPI, final demand less foods and energy', label: 'PPI' },
+};
 const PCE = {
   pce: { id: 'PCEPI', title: 'PCE price index' },
   corePce: { id: 'PCEPILFE', title: 'Core PCE price index, excluding food and energy' },
 };
 
 let blsCache = null;
-const bls = () => (blsCache ??= blsMonthly(Object.values(CPI).flatMap((c) => [c.sa, c.nsa])));
+const bls = () => (blsCache ??= blsMonthly([...Object.values(CPI), ...Object.values(PPI)].flatMap((c) => [c.sa, c.nsa])));
 const tenYearsAgo = () => `${new Date().getUTCFullYear() - 11}-01-01`;
 
 async function cpi(id, prevPoints) {
-  const spec = CPI[id];
+  const spec = CPI[id] ?? PPI[id];
   const all = await bls();
   const sa = all[spec.sa];
   const nsa = new Map(all[spec.nsa].map((p) => [p.date, p.value]));
@@ -65,7 +74,7 @@ async function cpi(id, prevPoints) {
     unit: 'percent',
     frequency: 'monthly',
     source: blsSeriesPage(spec.sa),
-    sourceLabel: `BLS CPI-U ${spec.sa} (seasonally adjusted, for mom) and ${spec.nsa} (not seasonally adjusted, for yoy)`,
+    sourceLabel: `BLS ${spec.label ?? 'CPI-U'} ${spec.sa} (seasonally adjusted, for mom) and ${spec.nsa} (not seasonally adjusted, for yoy)`,
     points: withStatus(prevPoints, points, { keys: ['index', 'indexNsa'], preliminary: (p) => p.preliminary, seed: 'final' }),
   };
 }
@@ -100,6 +109,8 @@ const { series, failed } = await runAll(
   [
     ['cpi', (p) => cpi('cpi', p)],
     ['coreCpi', (p) => cpi('coreCpi', p)],
+    ['ppi', (p) => cpi('ppi', p)],
+    ['corePpi', (p) => cpi('corePpi', p)],
     ['pce', (p) => pce('pce', p)],
     ['corePce', (p) => pce('corePce', p)],
   ],
