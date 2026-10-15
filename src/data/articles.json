@@ -867,6 +867,26 @@
     "slug": "ai-models-meta-muse-spark"
   },
   {
+    "href": "/ai/models/meta/muse/spark-open/",
+    "title": "Muse Spark Open",
+    "description": "Open-weight Spark: 816B total, 42B active, 1M context. Released 15 Oct 2026.",
+    "date": "2026-10-15",
+    "section": "ai",
+    "series": "ai-meta",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/meta/",
+        "label": "Meta"
+      }
+    ],
+    "file": "src/pages/ai/models/meta/muse/spark-open.astro",
+    "slug": "ai-models-meta-muse-spark-open"
+  },
+  {
     "href": "/ai/models/meta/muse/glimmer/",
     "title": "Muse Glimmer",
     "description": "Open-weight 30B multimodal, distilled from Spark.",

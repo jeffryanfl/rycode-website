@@ -297,6 +297,7 @@
         "/ai/models/meta/muse/glimmer/",
         "/ai/models/meta/muse/image/",
         "/ai/models/meta/muse/spark/",
+        "/ai/models/meta/muse/spark-open/",
         "/ai/models/meta/muse/video/",
         "/ai/models/meta/muse/wonder/",
         "/ai/models/deepseek/r1/",

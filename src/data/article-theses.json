@@ -36,6 +36,7 @@
   "/ai/models/google/gemini-flash-lite/": "Gemini 3.5 Flash-Lite is Google's low-latency model for high-volume parsing, translation, and simple extraction.",
   "/ai/models/google/gemma/": "Gemma 4 is Google's open-weight family, separate from the hosted Gemini API.",
   "/ai/models/meta/muse/spark/": "Muse Spark is Meta's flagship multimodal model for agents, coding, and Meta AI, with 1.3 as the current developer version.",
+  "/ai/models/meta/muse/spark-open/": "Muse Spark Open is the open-weight version of Muse Spark, an 816-billion-parameter mixture-of-experts model with 42 billion active, released 15 Oct 2026 under Meta's Muse Model License.",
   "/ai/models/meta/muse/glimmer/": "Muse Glimmer is Meta's 30-billion-parameter open-weight model, distilled from Muse Spark, under the Apache 2.0 license.",
   "/ai/models/meta/muse/image/": "Muse Image is Meta's image generation model, wired to Muse Spark and available on Meta AI.",
   "/ai/models/meta/muse/video/": "Muse Video is Meta's video generation model in the Muse family, still described publicly as a preview.",

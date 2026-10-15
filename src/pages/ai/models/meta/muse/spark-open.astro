@@ -1,0 +1,90 @@
+---
+import ModelFacts from '../../../../../components/ModelFacts.astro';
+import Layout from '../../../../../layouts/Layout.astro';
+import '../../../../../styles/ai.css';
+---
+
+<Layout
+  title="Muse Spark Open - Meta - A.I. - Rycode"
+  description="Meta’s open-weight version of Muse Spark, released 15 Oct 2026: 816B total, 42B active parameters, 1M token context, Muse Model License."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Meta · Muse</p>
+    <h1 class="ai-model-title">Muse Spark Open</h1>
+    <p class="ai-model-dek">Muse Spark Open is the open-weight version of <a href="/ai/models/meta/muse/spark/">Muse Spark</a>, released by Meta Superintelligence Labs on 15 Oct 2026. Open weights means the trained model file is published, so you can download it and run it on your own machines instead of only calling Meta’s API. Meta built it for coding and agentic work (tasks where the model plans and takes many steps on its own) and calls it the most capable US open-weight model to date. That ranking is Meta’s claim.</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Spec card</h2>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr><th scope="col"></th><th scope="col">Muse Spark Open</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Released</td><td>15 Oct 2026</td></tr>
+          <tr><td>Total parameters</td><td>816B</td></tr>
+          <tr><td>Active parameters</td><td>42B per token<sup>1</sup></td></tr>
+          <tr><td>Architecture</td><td>MoE, 256 experts, 8 active<sup>2</sup></td></tr>
+          <tr><td>Context window</td><td>1M tokens<sup>3</sup></td></tr>
+          <tr><td>Input</td><td>Text, image, video, audio</td></tr>
+          <tr><td>Output</td><td>Text</td></tr>
+          <tr><td>Weights</td><td>BF16, NVFP4<sup>5</sup> (Hugging Face)</td></tr>
+          <tr><td>License</td><td>Muse Model License<sup>4</sup></td></tr>
+          <tr><td>Price</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2 class="ai-model-section">Training</h2>
+    <p>Meta’s model card says training data includes text, images, audio, and video from public sources, web crawls, third parties, Meta’s own products, and synthetic data. The open-weight release has extra safety post-training (training after the main run) so it holds up better without the guardrails Meta runs around its own API. Training compute and data mix are not published.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Reasoning effort can be set to <code>low</code>, <code>medium</code>, <code>high</code>, or <code>xhigh</code> (default <code>xhigh</code>). Meta recommends temperature 1.0 and top_p 1.0. Supported runtimes named by Meta: SGLang, vLLM, TensorRT-LLM, Hugging Face Transformers, Apple MLX, llama.cpp, and Unsloth.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>The context window is 1M tokens at inference (the context window is how much text the model can read at once; tokens are the word pieces models read and are billed by).</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>All scores below are Meta’s claims from its model card, with Spark Open at xhigh reasoning effort. Meta ran or gathered the comparison scores, so they may not match the numbers each lab published. Higher is better.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Spark Open (xhigh)</th>
+            <th scope="col">Kimi K3 (max)</th>
+            <th scope="col">GLM 5.3 (max)</th>
+            <th scope="col">Qwen3.8-2.4T-A95B (xhigh)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AA Intelligence Index</td><td>39</td><td>44</td><td>45</td><td>40</td></tr>
+          <tr><td>MCP-Atlas</td><td>89.2</td><td>82.3</td><td>84.2</td><td>84.5</td></tr>
+          <tr><td>OSWorld Verified</td><td>80.4</td><td>84.8</td><td>-</td><td>-</td></tr>
+          <tr><td>Terminal-Bench 2.1</td><td>76.4</td><td>85.0</td><td>83.9</td><td>82.0</td></tr>
+          <tr><td>DeepSWE 1.1</td><td>60</td><td>68</td><td>67</td><td>57</td></tr>
+          <tr><td>HLE, with tools</td><td>61.0</td><td>56.0</td><td>62.5</td><td>56.2</td></tr>
+          <tr><td>GPQA Diamond</td><td>89.0</td><td>93.5</td><td>91.7</td><td>93.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The AA Intelligence Index row is the figure Meta prints on its card, not a score fetched from Artificial Analysis. A dash means Meta reported no score.<sup>6</sup></p>
+    <h2 class="ai-model-section">Hardware</h2>
+    <p>Meta’s card says self-hosting needs at least 700GB of GPU memory for the NVFP4 weights and 2TB for BF16.<sup>5</sup> Meta says it also runs on two Mac Studios with Apple M5 Ultra using MLX. Training hardware is not published.</p>
+    <h2 class="ai-model-section">Access</h2>
+    <p>Weights: Hugging Face <code>meta-models/Muse-Spark-Open-816B-A42B</code> and <code>meta-models/Muse-Spark-Open-816B-A42B-NVFP4</code>, plus Amazon SageMaker AI, Google Cloud Model Garden, and Microsoft Foundry Models. Hosted APIs (third parties, not the Meta Model API): Baseten, Fireworks AI, Groq, Modal, Nebius, OpenRouter, and Together AI. Partner prices are not listed here.</p>
+    <h2 class="ai-model-section">Notes</h2>
+    <ol class="ai-model-sources">
+      <li><sup>1</sup> Active parameters are the part of the model that does the work for each token. Spark Open stores 816B parameters but uses about 42B of them per token, so it runs faster than its size suggests (our reading).</li>
+      <li><sup>2</sup> MoE (mixture of experts) splits the model into many smaller expert blocks and sends each token to only a few of them. Meta lists 256 experts with 8 picked per token.</li>
+      <li><sup>3</sup> Context window: how much text the model can read at once, counted in tokens (word pieces). Meta’s developer docs list the same 1,048,576-token (1M) window for <code>muse-spark-1.3</code>.</li>
+      <li><sup>4</sup> Free to use, modify, and sell, with conditions: products must show “Built with Muse Spark Open”, and if a company and its affiliates together take in more than $20M in gross revenue in any 12-month period and offer AI models to others through an API (Meta calls this Model as a Service), they must notify Meta and sign a separate written agreement before offering Spark Open or models built from it that way. Internal use, research, and using it to power features of your own product (when that product is not model access) are exempt. Meta’s usage policy also applies, and it says the model is not for users under 18.</li>
+      <li><sup>5</sup> BF16 and NVFP4 are number formats for the weights. BF16 is 16-bit, the full-size release. NVFP4 is NVIDIA’s 4-bit format, which shrinks the files and the memory needed and can cost a little quality (Meta’s card notes minor differences in edge cases).</li>
+      <li><sup>6</sup> A dash in the benchmark table means Meta reported no score for that model on that test.</li>
+    </ol>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://research.meta.ai/blog/muse-spark-open">Introducing Muse Spark Open (Meta AI Research blog)</a></li>
+      <li><a href="https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B">Muse Spark Open model card and license (Hugging Face)</a></li>
+      <li><a href="https://huggingface.co/collections/meta-models/muse-spark-open">Muse Spark Open collection (Hugging Face)</a></li>
+      <li><a href="https://dev.meta.ai/docs/models">Models (Meta Model API docs)</a></li>
+    </ul>
+  </article>
+</Layout>
