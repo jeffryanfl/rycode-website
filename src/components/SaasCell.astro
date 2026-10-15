@@ -1,0 +1,7 @@
+---
+/** One table cell: value plus a short tag, or a plain dash when there is no value. */
+const { v = null, tag = null } = Astro.props;
+---
+{v == null
+  ? <td class="saas-empty" aria-label="not available">-</td>
+  : <td>{v}{tag && <span>{tag}</span>}</td>}

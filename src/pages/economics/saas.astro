@@ -1,0 +1,239 @@
+---
+/**
+ * SaaS tracker, Phase 1 (15 Oct 2026). Reads public/saas-tracker.json and
+ * public/saas-history.json at build time. Both are written only by
+ * scripts/update-saas-prices.mjs (weekly, Friday close) and
+ * scripts/update-saas-fundamentals.mjs (after earnings). No number is typed here.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import Layout from '../../layouts/Layout.astro';
+import Cell from '../../components/SaasCell.astro';
+import '../../styles/economics.css';
+import '../../styles/saas-tracker.css';
+
+const read = (f) => JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', f), 'utf8'));
+const tracker = read('saas-tracker.json');
+const history = read('saas-history.json');
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const day = (iso) => { if (!iso) return null; const [y, m, d] = iso.split('-').map(Number); return `${d} ${MONTHS[m - 1]} ${y}`; };
+const qtag = (iso) => { if (!iso) return null; const [y, m] = iso.split('-').map(Number); return `${MONTHS[m - 1]} ${y}`; };
+const pct = (v, signed = false) => (v == null ? null : `${signed && v > 0 ? '+' : ''}${v.toFixed(1)}%`);
+const usd = (v) => {
+  if (v == null) return null;
+  const a = Math.abs(v);
+  const s = v < 0 ? '-' : '';
+  if (a >= 1e12) return `${s}$${(a / 1e12).toFixed(2)}T`;
+  if (a >= 1e9) return `${s}$${(a / 1e9).toFixed(1)}B`;
+  return `${s}$${(a / 1e6).toFixed(0)}M`;
+};
+const num = (v) => (v == null ? null : v.toFixed(1));
+
+const sectors = tracker.sectors;
+const companies = tracker.companies;
+const weeks = history.weeks;
+const asOf = day(tracker.asOfWeek);
+const base = day(tracker.index.baseWeek);
+const holidayWeeks = weeks.filter((w) => Object.values(w.prices).some((p) => p && p.date !== w.date)).map((w) => day(w.date));
+
+/* ---------- index chart (SVG, built here) ---------- */
+const W = 720, H = 300, L = 44, R = 12, T = 14, B = 30;
+const COLORS = ['#e0a458', '#c9837a', '#9fb57a', '#b49ad6', '#d6c36a', '#7f9fd6', '#c7a07a', '#d38fb8'];
+const lines = [
+  { id: 'overall', label: 'All 23 (basket)', color: 'rgba(248,250,252,0.95)', width: 2.6, values: weeks.map((w) => w.index) },
+  ...sectors.map((s, i) => ({ id: s.id, label: s.label, color: COLORS[i % COLORS.length], width: 1.4, values: weeks.map((w) => w.sectorIndex?.[s.id] ?? null) })),
+];
+const all = lines.flatMap((l) => l.values).filter((v) => v != null);
+const lo = Math.floor(Math.min(...all) / 20) * 20;
+const hi = Math.ceil(Math.max(...all) / 20) * 20;
+const x = (i) => L + (i * (W - L - R)) / Math.max(1, weeks.length - 1);
+const y = (v) => T + ((hi - v) * (H - T - B)) / (hi - lo);
+const pathOf = (vals) => vals.map((v, i) => (v == null ? null : `${x(i).toFixed(1)},${y(v).toFixed(1)}`)).filter(Boolean).map((p, i) => `${i ? 'L' : 'M'}${p}`).join(' ');
+const yTicks = []; for (let v = lo; v <= hi; v += 20) yTicks.push(v);
+const xTicks = weeks.map((w, i) => ({ i, w })).filter(({ w }, i) => i === 0 || w.date.slice(5, 7) !== weeks[i - 1].date.slice(5, 7)).filter((_, k) => k % 2 === 0);
+const legend = lines.map((l) => ({ ...l, last: l.values.at(-1) })).sort((a, b) => (b.last ?? 0) - (a.last ?? 0));
+
+/* ---------- tables ---------- */
+const bySector = sectors.map((s) => ({ ...s, rows: companies.filter((c) => c.sector === s.id) }));
+const quartersOf = (t) => history.fundamentals?.[t]?.quarters ?? [];
+const maxQ = 5;
+---
+
+<Layout
+  title="SaaS tracker - Rycode"
+  description="Twenty-three public subscription software companies by sector: weekly Friday closes, market value, and the numbers from their SEC filings."
+  variant="economics"
+>
+  <article class="econ-digest econ-digest--body saas">
+    <header class="econ-digest-head">
+      <h1 class="econ-digest-title">SaaS tracker</h1>
+      <p class="econ-digest-subhead">Twenty-three public SaaS companies (software as a service, sold as a subscription), grouped by sector and tracked every Friday since {base}.</p>
+      <p class="saas-asof">Prices: week of Fri {asOf}, Yahoo Finance closes. Filings: each company's latest 10-Q or 10-K, from SEC EDGAR. {tracker.weeksStored} weeks stored.</p>
+    </header>
+
+    <section class="econ-digest-section saas-wide" id="index">
+      <h2>How the basket moved</h2>
+      <p>The basket index is our own, not a vendor's: every company counts the same (equal weight), and each line starts at 100 on {base}. A line at 120 means its companies are up about 20% since then, on average.<sup><a href="#fn-index">1</a></sup></p>
+      <figure class="saas-chart">
+        <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Equal-weight price index by sector, base 100 on ${base}, weekly to ${asOf}`}>
+          {yTicks.map((v) => (
+            <g>
+              <line x1={L} x2={W - R} y1={y(v)} y2={y(v)} class={v === 100 ? 'saas-grid saas-grid-base' : 'saas-grid'} />
+              <text x={L - 6} y={y(v) + 4} text-anchor="end" class="saas-axis">{v}</text>
+            </g>
+          ))}
+          {xTicks.map(({ i, w }) => (
+            <text x={x(i)} y={H - 10} text-anchor="middle" class="saas-axis">{qtag(w.date)}</text>
+          ))}
+          {lines.slice(1).map((l) => <path d={pathOf(l.values)} fill="none" stroke={l.color} stroke-width={l.width} />)}
+          <path d={pathOf(lines[0].values)} fill="none" stroke={lines[0].color} stroke-width={lines[0].width} />
+        </svg>
+        <ul class="saas-legend">
+          {legend.map((l) => (
+            <li><span class="saas-swatch" style={`background:${l.color}`}></span>{l.label} <b>{num(l.last) ?? '-'}</b></li>
+          ))}
+        </ul>
+        <figcaption>Weekly, Friday close, {base} to {asOf}. Sources: Yahoo Finance daily closes; rycode math.</figcaption>
+      </figure>
+    </section>
+
+    <section class="econ-digest-section saas-wide" id="sectors">
+      <h2>Sectors</h2>
+      <p>Each sector figure is a median, the middle value of its companies, so one giant does not tilt it. Growth is revenue in the latest quarter against the same quarter a year earlier. Free cash flow (FCF) margin is cash from operations minus spending on equipment, as a share of revenue, over the last four quarters.<sup><a href="#fn-fcf">2</a></sup> The Rule of 40 adds those two percentages; 40 or more is the common bar for a healthy software company.<sup><a href="#fn-r40">3</a></sup> Stock pay (SBC, stock-based compensation) is pay in shares, as a share of revenue. Market cap is the stock market value of the whole company.</p>
+      <div class="saas-scroll">
+        <table class="saas-table">
+          <thead>
+            <tr>
+              <th scope="col">Sector</th>
+              <th scope="col">Names</th>
+              <th scope="col">Index<span>{asOf}, base 100</span></th>
+              <th scope="col">Median growth<span>latest qtr, y/y</span></th>
+              <th scope="col">Median FCF margin<span>last 4 qtrs</span></th>
+              <th scope="col">Median Rule of 40</th>
+              <th scope="col">Median SBC<span>% of revenue</span></th>
+              <th scope="col">Market cap<span>sum, {asOf}</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {sectors.map((s) => (
+              <tr>
+                <th scope="row">{s.label}<span>{s.note}</span></th>
+                <td>{s.count}<span>{s.tickers.join(' ')}</span></td>
+                <Cell v={num(s.index)} />
+                <Cell v={pct(s.medianGrowthPct)} />
+                <Cell v={pct(s.medianFcfMarginTtmPct)} />
+                <Cell v={num(s.medianRuleOf40)} />
+                <Cell v={pct(s.medianSbcPct)} />
+                <Cell v={usd(s.totalMarketCap)} tag={s.marketCapMissing.length ? `excl. ${s.marketCapMissing.join(' ')}` : null} />
+              </tr>
+            ))}
+            <tr class="saas-total">
+              <th scope="row">All 23</th>
+              <td>{tracker.overall.count}</td>
+              <Cell v={num(tracker.index.latest)} />
+              <Cell v={pct(tracker.overall.medianGrowthPct)} />
+              <Cell v={pct(tracker.overall.medianFcfMarginTtmPct)} />
+              <Cell v={num(tracker.overall.medianRuleOf40)} />
+              <Cell v={pct(tracker.overall.medianSbcPct)} />
+              <Cell v={usd(tracker.overall.totalMarketCap)} tag={tracker.overall.marketCapMissing.length ? `excl. ${tracker.overall.marketCapMissing.join(' ')}` : null} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="saas-note">Back office has one company today, so its median is ServiceNow's own number.</p>
+    </section>
+
+    <section class="econ-digest-section saas-wide" id="companies">
+      <h2>Companies</h2>
+      <p>Market cap is the Friday close times weighted average shares from the latest quarterly filing.<sup><a href="#fn-cap">4</a></sup> RPO (remaining performance obligations) is revenue already signed in contracts but not yet earned. Small text in a cell says which week or which quarter end the number is from.</p>
+      <div class="saas-scroll">
+        <table class="saas-table">
+          <thead>
+            <tr>
+              <th scope="col">Company</th>
+              <th scope="col">Close<span>Fri {asOf}</span></th>
+              <th scope="col">52-week change</th>
+              <th scope="col">Market cap</th>
+              <th scope="col">Revenue<span>latest qtr</span></th>
+              <th scope="col">Growth<span>y/y</span></th>
+              <th scope="col">FCF margin<span>last 4 qtrs</span></th>
+              <th scope="col">Rule of 40</th>
+              <th scope="col">SBC<span>% of rev, qtr</span></th>
+              <th scope="col">RPO</th>
+            </tr>
+          </thead>
+          {bySector.map((s) => (
+            <tbody>
+              <tr class="saas-group"><th scope="rowgroup" colspan="10">{s.label}</th></tr>
+              {s.rows.map((c) => {
+                const q = c.quarter;
+                const qt = q ? qtag(q.end) : null;
+                return (
+                  <tr>
+                    <th scope="row">{c.name}<span>{c.ticker}{c.foreignFiler && <sup><a href="#fn-mndy">5</a></sup>}</span></th>
+                    <Cell v={c.close != null ? `$${c.close.toFixed(2)}` : null} tag={c.closeDate && c.closeDate !== c.week ? day(c.closeDate) : null} />
+                    <Cell v={pct(c.chg52wPct, true)} />
+                    <Cell v={usd(c.marketCap)} />
+                    <Cell v={usd(q?.revenue)} tag={qt} />
+                    <Cell v={pct(q?.growthPct)} tag={qt} />
+                    <Cell v={pct(q?.fcfMarginTtmPct)} tag={qt} />
+                    <Cell v={num(q?.ruleOf40)} tag={qt} />
+                    <Cell v={pct(q?.sbcPct)} tag={qt} />
+                    <Cell v={usd(q?.rpo)} tag={qt} />
+                  </tr>
+                );
+              })}
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </section>
+
+    <section class="econ-digest-section saas-wide" id="growth">
+      <h2>Growth, last five quarters</h2>
+      <p>Revenue growth against the same quarter a year earlier, oldest on the left. Fiscal years differ, so each cell names the month its quarter ended.<sup><a href="#fn-fy">6</a></sup></p>
+      <div class="saas-scroll">
+        <table class="saas-table saas-compact">
+          <thead>
+            <tr>
+              <th scope="col">Company</th>
+              {Array.from({ length: maxQ }, (_, i) => <th scope="col">{i === maxQ - 1 ? 'Latest' : `Q-${maxQ - 1 - i}`}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {companies.map((c) => {
+              const qs = quartersOf(c.ticker).slice(-maxQ);
+              const pad = Array.from({ length: maxQ - qs.length }, () => null);
+              return (
+                <tr>
+                  <th scope="row">{c.name}</th>
+                  {[...pad, ...qs].map((q) => <Cell v={pct(q?.growthPct)} tag={q ? qtag(q.end) : null} />)}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="econ-digest-section econ-digest-sources saas-notes" id="notes">
+      <h2>Notes</h2>
+      <ol>
+        <li id="fn-index">Index: rycode's own basket of these 23 names, equal weight, base 100 on {base}. Each week is 100 times the average of (that week's close / the {base} close). Not a vendor index. Closes are split adjusted (ServiceNow split 5 for 1 in Dec 2025).</li>
+        <li id="fn-fcf">FCF here is our formula: net cash from operating activities minus purchases of property and equipment, both from the filings. A company's own "free cash flow" can differ (some also subtract capitalized software), so our FCF is often higher than the company's own figure. Veeva reports no equipment-purchase line under the standard tag, so its FCF subtracts its capital spending line, which its filing data tags as PaymentsForSoftware ($8.0M in the quarter ended Jul 2026, the same figure in its earnings release).</li>
+        <li id="fn-r40">Rule of 40 here: latest quarter's growth plus FCF margin over the last four quarters. Quarterly FCF swings with the season, so the four-quarter margin is used.</li>
+        <li id="fn-cap">Shares are the weighted average basic shares for the latest quarter in a 10-Q filed by that Friday; it covers every share class. It can differ slightly from the count on the cover of the filing. A 10-K gives only a full-year average, so the prior 10-Q count is used after a 10-K.</li>
+        <li id="fn-mndy">Monday.com is a foreign filer: it files a yearly 20-F and a half-year report instead of quarterly 10-Qs, so there are no quarterly filing numbers to match the others. Only its price is tracked; its market cap and filing numbers show a dash, and it is left out of market-cap sums.</li>
+        <li id="fn-fy">Quarters are the company's own fiscal quarters, labeled by the month they ended. When the same quarter is reported twice, the later filing wins. Fourth quarters come from the 10-K full year minus the first nine months. Dash means the filing has no fact under the standard tag (RPO for Workday, Paycom, Intuit, Veeva, Shopify).</li>
+        <li id="fn-hol">When Friday is a market holiday, the week uses the last trading day before it{holidayWeeks.length ? ` (${holidayWeeks.join(', ')} weeks)` : ''}.</li>
+      </ol>
+      <h2>Sources</h2>
+      <ol>
+        <li><a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces">SEC EDGAR XBRL companyfacts API</a>, checked {day(history.fundamentalsUpdated?.slice(0, 10))}</li>
+        <li><a href="https://finance.yahoo.com/">Yahoo Finance</a> daily closes, through Fri {asOf}</li>
+        <li>Data files: <a href="/saas-tracker.json">saas-tracker.json</a> (snapshot) and <a href="/saas-history.json">saas-history.json</a> (every week and quarter)</li>
+      </ol>
+    </section>
+  </article>
+</Layout>

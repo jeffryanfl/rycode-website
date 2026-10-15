@@ -78,5 +78,6 @@
   "/ai/next-token-engine/": "A current language model is a next-token predictor shaped by staged training, verifiable-reward practice, and a tool loop.",
   "/ai/hardware/chips/meta-nvidia/": "Nvidia says the Meta partnership deploys millions of Blackwell and Rubin GPUs, including GB300 systems, plus Grace CPUs.",
   "/ai/hardware/chips/meta-amd/": "AMD will supply up to 6 gigawatts of Instinct GPUs. The first gigawatt is a custom MI450, with Helios racks. Meta already runs MI300 and MI350.",
-  "/ai/hardware/chips/meta-broadcom/": "Broadcom will deliver custom accelerator technology for Meta's MTIA program through 2029. The first phase is more than 1 gigawatt."
+  "/ai/hardware/chips/meta-broadcom/": "Broadcom will deliver custom accelerator technology for Meta's MTIA program through 2029. The first phase is more than 1 gigawatt.",
+  "/economics/saas/": "A weekly tracker of 23 public SaaS companies by sector, with market value from Friday closes and growth, cash margin, Rule of 40 and stock pay from SEC filings."
 }

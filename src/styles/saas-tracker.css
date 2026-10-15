@@ -1,0 +1,32 @@
+/* SaaS tracker (/economics/saas/). Charcoal Economics paper, compact grids, no cyan. */
+.saas .saas-wide { max-width: 100%; min-width: 0; }
+.saas .saas-wide > p { max-width: 44rem; font-size: 1.02rem; line-height: 1.6; }
+.saas sup a { text-decoration: none; font-family: var(--font-sans); font-size: 0.72em; }
+.saas-asof { margin: 0; font-family: var(--font-sans); font-size: 0.82rem; color: var(--econ-muted); }
+.saas-note { font-family: var(--font-sans); font-size: 0.82rem !important; color: var(--econ-muted); }
+.saas-chart { margin: 0 0 1.5rem; max-width: 52rem; }
+.saas-chart svg { width: 100%; height: auto; display: block; }
+.saas-grid { stroke: rgba(248, 250, 252, 0.1); stroke-width: 1; }
+.saas-grid-base { stroke: rgba(248, 250, 252, 0.35); stroke-dasharray: 3 3; }
+.saas-axis { fill: rgba(248, 250, 252, 0.5); font: 11px var(--font-sans); }
+.saas-legend { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin: 0.6rem 0 0.4rem; padding: 0; list-style: none; font: 0.8rem/1.3 var(--font-sans); color: var(--econ-muted); }
+.saas-legend b { color: var(--econ-ink); font-weight: 600; margin-left: 0.2rem; }
+.saas-swatch { display: inline-block; width: 0.75rem; height: 0.2rem; margin-right: 0.35rem; vertical-align: middle; border-radius: 1px; }
+.saas-chart figcaption { font: 0.75rem var(--font-sans); color: var(--econ-faint); }
+.saas-scroll { overflow-x: auto; margin: 0 0 1.25rem; -webkit-overflow-scrolling: touch; }
+.saas-table { border-collapse: collapse; font-family: var(--font-sans); font-size: 0.82rem; font-variant-numeric: tabular-nums; min-width: 100%; }
+.saas-table th, .saas-table td { padding: 0.32rem 0.6rem; border-bottom: 1px solid var(--econ-hair); text-align: right; white-space: nowrap; vertical-align: top; }
+.saas-table thead th { font-weight: 600; color: var(--econ-ink); border-bottom-color: rgba(248, 250, 252, 0.35); }
+.saas-table th:first-child { text-align: left; position: sticky; left: 0; background: #080a10; }
+.saas-table tbody th { font-weight: 500; }
+.saas-table th span, .saas-table td span { display: block; font-size: 0.68rem; font-weight: 400; color: var(--econ-faint); }
+.saas-table .saas-empty { color: var(--econ-faint); }
+.saas-group th { text-align: left !important; padding-top: 0.75rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--econ-muted); }
+.saas-total th, .saas-total td { font-weight: 600; border-top: 1px solid rgba(248, 250, 252, 0.35); }
+.saas-compact th, .saas-compact td { padding: 0.25rem 0.5rem; }
+.saas-notes ol { font-family: var(--font-sans); font-size: 0.82rem; line-height: 1.5; color: var(--econ-muted); }
+.saas-notes { max-width: 48rem; }
+.saas { grid-template-columns: minmax(0, 1fr); }
+.saas > * { min-width: 0; }
+.saas-scroll { max-width: 100%; }
+@media (max-width: 720px) { .saas { display: block; } }

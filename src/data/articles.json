@@ -34,6 +34,23 @@
     "minutes": 3
   },
   {
+    "href": "/economics/saas/",
+    "title": "SaaS tracker",
+    "description": "Twenty-three public subscription software companies by sector: weekly Friday closes, market value, and the numbers from their SEC filings.",
+    "date": "2026-10-15",
+    "section": "economics",
+    "series": "economics",
+    "crumbs": [
+      {
+        "href": "/economics/",
+        "label": "Economics"
+      }
+    ],
+    "file": "src/pages/economics/saas.astro",
+    "slug": "economics-saas",
+    "minutes": 3
+  },
+  {
     "href": "/risk/when-force-majeure-hits-the-ai-build-out/",
     "title": "AI build-out contagion",
     "description": "A slip in AI campus building can travel to chip stocks and then to the whole market. The numbers below come from the /risk/ watch-list feed.",
