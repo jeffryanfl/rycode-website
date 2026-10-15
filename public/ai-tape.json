@@ -1,21 +1,23 @@
 {
-  "updated": "2026-10-13T08:37:39-04:00",
-  "asOfLabel": "Tue 13 Oct · morning",
+  "updated": "2026-10-15T03:55:00-04:00",
+  "asOfLabel": "Thu 15 Oct · early",
   "lines": [
     {
-      "tag": "Infra",
-      "text": "Microsoft unveils Maia 300 chip; says up to 7x Maia 200 throughput per 96-chip rack, shipping in 2027"
+      "tag": "Release",
+      "text": "xAI ships Grok Voice 3.0 in its API at $0.08 a minute; tops Artificial Analysis speech index at 86.9",
+      "url": "https://x.ai/news/grok-voice-3"
     },
     {
-      "tag": "Labs",
-      "text": "Anthropic says new defenses cut data copied from Claude by distillers by about 90 to 99 percent"
-    },
-    {
-      "tag": "News",
+      "tag": "Release",
       "text": "Google opens Gemini 4 Argon to the public: paid API, AI Studio, Gemini app for Pro and Ultra",
       "url": "/ai/models/google/gemini-4-argon/"
+    },
+    {
+      "tag": "Infra",
+      "text": "Microsoft unveils Maia 300 chip; says up to 7x Maia 200 throughput per 96-chip rack, shipping in 2027",
+      "url": "/ai/hardware/chips/maia/"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-13"
+  "date": "2026-10-15"
 }
