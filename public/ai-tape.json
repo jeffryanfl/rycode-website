@@ -1,21 +1,21 @@
 {
-  "updated": "2026-10-15T03:55:00-04:00",
-  "asOfLabel": "Thu 15 Oct · early",
+  "updated": "2026-10-15T08:29:13-04:00",
+  "asOfLabel": "Thu 15 Oct · morning",
   "lines": [
     {
       "tag": "Release",
-      "text": "xAI ships Grok Voice 3.0 in its API at $0.08 a minute; tops Artificial Analysis speech index at 86.9",
-      "url": "https://x.ai/news/grok-voice-3"
+      "text": "SpaceXAI releases Grok Voice 3.0 speech model in its API at the same $0.08 per minute price",
+      "url": "/ai/models/xai/voice/"
     },
     {
-      "tag": "Release",
-      "text": "Google opens Gemini 4 Argon to the public: paid API, AI Studio, Gemini app for Pro and Ultra",
-      "url": "/ai/models/google/gemini-4-argon/"
+      "tag": "Deal",
+      "text": "ByteDance nears deal to buy custom MediaTek AI chips for its data centers, Bloomberg reports",
+      "url": "https://news.bloomberglaw.com/capital-markets/bytedance-in-talks-to-secure-mediatek-ai-chips-for-data-centers"
     },
     {
-      "tag": "Infra",
-      "text": "Microsoft unveils Maia 300 chip; says up to 7x Maia 200 throughput per 96-chip rack, shipping in 2027",
-      "url": "/ai/hardware/chips/maia/"
+      "tag": "Policy",
+      "text": "Anthropic details Claude's election safeguards ahead of the US midterms",
+      "url": "https://www.anthropic.com/news/2026-us-midterms"
     }
   ],
   "doorHref": "/ai",

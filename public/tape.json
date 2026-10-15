@@ -1,48 +1,20 @@
 {
-  "schema": "macro-tape-v1",
-  "asOf": "2026-10-14T17:05:00-04:00",
-  "cadence": "after-close",
-  "hook": "Stocks sold off hard while WTI closed above $95, and the 10-year eased a touch to about 5.19%.",
-  "door": "Economics",
-  "essayWorthy": true,
-  "ticker": [
+  "updated": "2026-10-15T08:15:00-04:00",
+  "asOfLabel": "Thu 15 Oct · pre-open",
+  "lines": [
     {
-      "date": "2026-10-14",
       "tag": "Tape",
-      "line": "Wed close: S&P 7,718.94 (-1.1%). Dow 51,621.48 (flat). Nasdaq 26,692.87 (-1.9%)."
+      "text": "Thu pre-open: NQ ~29,811 (-1.2%). ES ~7,744 (-0.3%). YM +0.2%."
     },
     {
-      "date": "2026-10-14",
       "tag": "Oil",
-      "line": "WTI Nov close $95.17 (Tue Yahoo bar $94.14). Brent ~$106.06, still above $100."
+      "text": "WTI ~$94.04 (Wed close $95.09). Brent ~$104.65, still above $100."
     },
     {
-      "date": "2026-10-14",
       "tag": "Rates",
-      "line": "CNBC Wed: 10y 5.19%. 2y 4.81%. 30y 5.53%."
+      "text": "Wed CMT: 10y 5.19%. 2y 4.82%. 30y 5.52%."
     }
   ],
-  "levels": {
-    "spx": 7718.94,
-    "dow": 51621.48,
-    "nasdaq": 26692.87,
-    "yield2y": 4.81,
-    "yield10y": 5.19,
-    "yield30y": 5.53,
-    "dxy": 102.55,
-    "wti": 95.17,
-    "brent": 106.06,
-    "fedwatchHikePct": null,
-    "fedFundsImplied": "3.75-4.00"
-  },
-  "calendar": [
-    "No major US data print confirmed for Thursday on this card.",
-    "Next FOMC Oct 27\u201328."
-  ],
-  "watch": [
-    "Whether the equity selloff deepens after today's drop.",
-    "Whether WTI holds above $95.",
-    "Whether yields keep easing even as oil stays high."
-  ],
-  "chatPosted": false
+  "doorHref": "/economics",
+  "date": "2026-10-15"
 }
