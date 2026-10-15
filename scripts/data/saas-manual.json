@@ -1,0 +1,139 @@
+{
+  "_note": "Hand-entered from company earnings releases. Only numbers printed in the release; null if not reported. Used only for quarters the SEC XBRL feed does not have; SEC data wins when present. Amounts in USD, shares in shares.",
+  "MNDY": {
+    "why": "Foreign private issuer: files a yearly 20-F and a half-year report, no quarterly 10-Q, so no quarterly XBRL.",
+    "enteredBy": "Grok Bot for Jeffrey, 15 Oct 2026",
+    "quarters": [
+      {
+        "end": "2025-06-30",
+        "release": {
+          "date": "2025-08-11",
+          "title": "monday.com Announces Second Quarter 2025 Results (6-K exhibit 99.1)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm",
+          "filing": "0001178913-25-002734"
+        },
+        "revenue": 299014000,
+        "revenueYearAgo": 236106000,
+        "ocf": 66837000,
+        "capex": 5884000,
+        "sbc": 56645000,
+        "rpo": 699000000,
+        "sharesBasic": 51385862,
+        "lines": {
+          "revenue": "Revenue, three months (thousands of USD)",
+          "revenueYearAgo": "Revenue, same three months a year earlier",
+          "ocf": "Net cash provided by operating activities, three months",
+          "capex": "Purchase of property and equipment, three months",
+          "sbc": "Share-based compensation (cash flow statement), three months",
+          "rpo": "Total remaining performance obligations, stated in millions in the highlights",
+          "sharesBasic": "Weighted-average ordinary shares, basic, three months"
+        },
+        "rpoSource": {
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm",
+          "date": "2026-08-10",
+          "text": "up 34% from $699 million as of June 30, 2025"
+        }
+      },
+      {
+        "end": "2025-09-30",
+        "release": {
+          "date": "2025-11-10",
+          "title": "monday.com Announces Third Quarter 2025 Results (6-K exhibit 99.1)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm",
+          "filing": "0001178913-25-003708"
+        },
+        "revenue": 316855000,
+        "revenueYearAgo": 251000000,
+        "ocf": 95144000,
+        "capex": 3984000,
+        "sbc": 49862000,
+        "rpo": 747000000,
+        "sharesBasic": 51687504,
+        "lines": {
+          "revenue": "Revenue, three months (thousands of USD)",
+          "revenueYearAgo": "Revenue, same three months a year earlier",
+          "ocf": "Net cash provided by operating activities, three months",
+          "capex": "Purchase of property and equipment, three months",
+          "sbc": "Share-based compensation (cash flow statement), three months",
+          "rpo": "Total remaining performance obligations, stated in millions in the highlights",
+          "sharesBasic": "Weighted-average ordinary shares, basic, three months"
+        }
+      },
+      {
+        "end": "2025-12-31",
+        "release": {
+          "date": "2026-02-09",
+          "title": "monday.com Announces Fourth Quarter and Fiscal Year 2025 Results (6-K exhibit 99.1)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm",
+          "filing": "0001178913-26-000346"
+        },
+        "revenue": 333878000,
+        "revenueYearAgo": 267976000,
+        "ocf": 59693000,
+        "capex": 6807000,
+        "sbc": 39546000,
+        "rpo": 839000000,
+        "sharesBasic": 51686448,
+        "lines": {
+          "revenue": "Revenue, three months (thousands of USD)",
+          "revenueYearAgo": "Revenue, same three months a year earlier",
+          "ocf": "Net cash provided by operating activities, three months",
+          "capex": "Purchase of property and equipment, three months",
+          "sbc": "Share-based compensation (cash flow statement), three months",
+          "rpo": "Total remaining performance obligations, stated in millions in the highlights",
+          "sharesBasic": "Weighted-average ordinary shares, basic, three months"
+        }
+      },
+      {
+        "end": "2026-03-31",
+        "release": {
+          "date": "2026-05-11",
+          "title": "monday.com Announces First Quarter 2026 Results (6-K exhibit 99.1)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm",
+          "filing": "0001178913-26-002499"
+        },
+        "revenue": 351265000,
+        "revenueYearAgo": 282250000,
+        "ocf": 104687000,
+        "capex": 2447000,
+        "sbc": 29283000,
+        "rpo": 880000000,
+        "sharesBasic": 48018030,
+        "lines": {
+          "revenue": "Revenue, three months (thousands of USD)",
+          "revenueYearAgo": "Revenue, same three months a year earlier",
+          "ocf": "Net cash provided by operating activities, three months",
+          "capex": "Purchase of property and equipment, three months",
+          "sbc": "Share-based compensation (cash flow statement), three months",
+          "rpo": "Total remaining performance obligations, stated in millions in the highlights",
+          "sharesBasic": "Weighted-average ordinary shares, basic, three months"
+        }
+      },
+      {
+        "end": "2026-06-30",
+        "release": {
+          "date": "2026-08-10",
+          "title": "monday.com Announces Second Quarter 2026 Results (6-K exhibit 99.1)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm",
+          "filing": "0001178913-26-003971"
+        },
+        "revenue": 364621000,
+        "revenueYearAgo": 299014000,
+        "ocf": 55354000,
+        "capex": 3790000,
+        "sbc": 41218000,
+        "rpo": 937000000,
+        "sharesBasic": 43697057,
+        "lines": {
+          "revenue": "Revenue, three months (thousands of USD)",
+          "revenueYearAgo": "Revenue, same three months a year earlier",
+          "ocf": "Net cash provided by operating activities, three months",
+          "capex": "Purchase of property and equipment, three months",
+          "sbc": "Share-based compensation (cash flow statement), three months",
+          "rpo": "Total remaining performance obligations, stated in millions in the highlights",
+          "sharesBasic": "Weighted-average ordinary shares, basic, three months"
+        }
+      }
+    ]
+  }
+}

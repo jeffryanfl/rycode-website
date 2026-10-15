@@ -1,6 +1,6 @@
 {
   "schema": "saas-tracker-v1",
-  "updated": "2026-10-15T11:10:21.979Z",
+  "updated": "2026-10-15T11:24:39.490Z",
   "basket": "rycode SaaS basket (our own, equal weight)",
   "cadence": "weekly, Friday close (prior trading day when Friday is a market holiday); filings after each earnings report",
   "asOfWeek": "2026-10-09",
@@ -17,15 +17,13 @@
   },
   "overall": {
     "count": 23,
-    "medianGrowthPct": 20.6,
-    "medianFcfMarginTtmPct": 28.9,
-    "medianRuleOf40": 50.1,
-    "medianSbcPct": 15.6,
+    "medianGrowthPct": 21.3,
+    "medianFcfMarginTtmPct": 28,
+    "medianRuleOf40": 49.8,
+    "medianSbcPct": 14.7,
     "median52wPct": 13.1,
-    "totalMarketCap": 2045778824945,
-    "marketCapMissing": [
-      "MNDY"
-    ]
+    "totalMarketCap": 2049666115136,
+    "marketCapMissing": []
   },
   "sectors": [
     {
@@ -151,15 +149,13 @@
         "DOCU"
       ],
       "count": 3,
-      "medianGrowthPct": 7.2,
-      "medianFcfMarginTtmPct": 37.2,
-      "medianRuleOf40": 44.3,
-      "medianSbcPct": 15.6,
+      "medianGrowthPct": 9.4,
+      "medianFcfMarginTtmPct": 35.7,
+      "medianRuleOf40": 43.7,
+      "medianSbcPct": 14.1,
       "median52wPct": 3.9,
-      "totalMarketCap": 42220208882,
-      "marketCapMissing": [
-        "MNDY"
-      ],
+      "totalMarketCap": 46107499073,
+      "marketCapMissing": [],
       "index": 91.25
     },
     {
@@ -768,11 +764,30 @@
       "week": "2026-10-09",
       "close": 88.96,
       "closeDate": "2026-10-09",
-      "marketCap": null,
-      "sharesSource": null,
+      "marketCap": 3887290191,
+      "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30",
       "chg1wPct": 12.9,
       "chg52wPct": -51.9,
-      "quarter": null
+      "quarter": {
+        "end": "2026-06-30",
+        "form": "release",
+        "filed": "2026-08-10",
+        "accn": "0001178913-26-003971",
+        "revenue": 364621000,
+        "revenueYearAgo": 299014000,
+        "growthPct": 21.9,
+        "freeCashFlow": 51564000,
+        "fcfMarginPct": 14.1,
+        "revenueTtm": 1366619000,
+        "freeCashFlowTtm": 297850000,
+        "fcfMarginTtmPct": 21.8,
+        "ruleOf40": 43.7,
+        "sbc": 41218000,
+        "sbcPct": 11.3,
+        "rpo": 937000000,
+        "source": "release",
+        "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm"
+      }
     },
     {
       "ticker": "DOCU",

@@ -62,10 +62,36 @@ function sharesAt(store, friday, splits) {
   const s = filed.at(-1);
   if (!s) return null;
   const factor = splits.filter((x) => x.date > s.filed).reduce((a, x) => a * x.ratio, 1);
-  return { value: Math.round(s.value * factor), source: `${s.form} ${s.accn}, weighted average basic shares, quarter ended ${s.end}${factor !== 1 ? `, x${factor} for a later split` : ''}` };
+  const from = s.form === 'release' ? `earnings release ${s.filed} (${s.url})` : `${s.form} ${s.accn}`;
+  return { value: Math.round(s.value * factor), source: `${from}, weighted average basic shares, quarter ended ${s.end}${factor !== 1 ? `, x${factor} for a later split` : ''}` };
 }
 
 const history = readHistory();
+
+/*
+ * Gap fill: a stored week whose market cap is null only because no share count
+ * existed yet (for example a hand-entered company added later) gets one now.
+ * Only nulls are filled; a stored number is never changed. No split factor is
+ * applied here (splits are not fetched on this path), so a fill for a company
+ * that split after its share count was published would be off. Today only
+ * Monday.com is filled, and it has no split in the stored weeks.
+ */
+let filled = 0;
+for (const w of history.weeks) {
+  for (const c of COMPANIES) {
+    const cell = w.prices?.[c.ticker];
+    if (!cell || cell.close == null || cell.marketCap != null) continue;
+    const sh = sharesAt(history.fundamentals?.[c.ticker], w.date, []);
+    if (!sh) continue;
+    Object.assign(cell, { shares: sh.value, marketCap: Math.round(cell.close * sh.value), sharesSource: sh.source });
+    filled += 1;
+  }
+}
+if (filled) {
+  writeJson(HISTORY, history);
+  console.log(`saas prices: filled ${filled} empty market cap cell(s)`);
+}
+
 const fridays = fridaysThrough();
 const have = new Set(history.weeks.map((w) => w.date));
 const lastStored = history.weeks.at(-1)?.date ?? '';

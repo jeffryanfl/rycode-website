@@ -15,6 +15,10 @@ import '../../styles/saas-tracker.css';
 const read = (f) => JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', f), 'utf8'));
 const tracker = read('saas-tracker.json');
 const history = read('saas-history.json');
+// Hand-entered quarters (companies without quarterly SEC data) and their earnings releases, listed in Sources.
+const manual = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts', 'data', 'saas-manual.json'), 'utf8'));
+const releases = Object.entries(manual).filter(([k]) => !k.startsWith('_')).flatMap(([, v]) => v.quarters.map((q) => q.release));
+const fromRelease = (q, t) => (q?.source === 'release' && t ? `${t}, release` : t);
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const day = (iso) => { if (!iso) return null; const [y, m, d] = iso.split('-').map(Number); return `${d} ${MONTHS[m - 1]} ${y}`; };
@@ -168,13 +172,13 @@ const maxQ = 5;
               <tr class="saas-group"><th scope="rowgroup" colspan="10">{s.label}</th></tr>
               {s.rows.map((c) => {
                 const q = c.quarter;
-                const qt = q ? qtag(q.end) : null;
+                const qt = fromRelease(q, q ? qtag(q.end) : null);
                 return (
                   <tr>
                     <th scope="row">{c.name}<span>{c.ticker}{c.foreignFiler && <sup><a href="#fn-mndy">5</a></sup>}</span></th>
                     <Cell v={c.close != null ? `$${c.close.toFixed(2)}` : null} tag={c.closeDate && c.closeDate !== c.week ? day(c.closeDate) : null} />
                     <Cell v={pct(c.chg52wPct, true)} />
-                    <Cell v={usd(c.marketCap)} />
+                    <Cell v={usd(c.marketCap)} tag={c.sharesSource?.startsWith('earnings release') ? 'shares from release' : null} />
                     <Cell v={usd(q?.revenue)} tag={qt} />
                     <Cell v={pct(q?.growthPct)} tag={qt} />
                     <Cell v={pct(q?.fcfMarginTtmPct)} tag={qt} />
@@ -208,7 +212,7 @@ const maxQ = 5;
               return (
                 <tr>
                   <th scope="row">{c.name}</th>
-                  {[...pad, ...qs].map((q) => <Cell v={pct(q?.growthPct)} tag={q ? qtag(q.end) : null} />)}
+                  {[...pad, ...qs].map((q) => <Cell v={pct(q?.growthPct)} tag={fromRelease(q, q ? qtag(q.end) : null)} />)}
                 </tr>
               );
             })}
@@ -221,10 +225,10 @@ const maxQ = 5;
       <h2>Notes</h2>
       <ol>
         <li id="fn-index">Index: rycode's own basket of these 23 names, equal weight, base 100 on {base}. Each week is 100 times the average of (that week's close / the {base} close). Not a vendor index. Closes are split adjusted (ServiceNow split 5 for 1 in Dec 2025).</li>
-        <li id="fn-fcf">FCF here is our formula: net cash from operating activities minus purchases of property and equipment, both from the filings. A company's own "free cash flow" can differ (some also subtract capitalized software), so our FCF is often higher than the company's own figure. Veeva reports no equipment-purchase line under the standard tag, so its FCF subtracts its capital spending line, which its filing data tags as PaymentsForSoftware ($8.0M in the quarter ended Jul 2026, the same figure in its earnings release).</li>
+        <li id="fn-fcf">FCF here is our formula: net cash from operating activities minus purchases of property and equipment, both from the filings. A company's own "free cash flow" can differ (some also subtract capitalized software), so our FCF can be higher or lower than the company's own figure. Veeva reports no equipment-purchase line under the standard tag, so its FCF subtracts its capital spending line, which its filing data tags as PaymentsForSoftware ($8.0M in the quarter ended Jul 2026, the same figure in its earnings release).</li>
         <li id="fn-r40">Rule of 40 here: latest quarter's growth plus FCF margin over the last four quarters. Quarterly FCF swings with the season, so the four-quarter margin is used.</li>
         <li id="fn-cap">Shares are the weighted average basic shares for the latest quarter in a 10-Q filed by that Friday; it covers every share class. It can differ slightly from the count on the cover of the filing. A 10-K gives only a full-year average, so the prior 10-Q count is used after a 10-K.</li>
-        <li id="fn-mndy">Monday.com is a foreign filer: it files a yearly 20-F and a half-year report instead of quarterly 10-Qs, so there are no quarterly filing numbers to match the others. Only its price is tracked; its market cap and filing numbers show a dash, and it is left out of market-cap sums.</li>
+        <li id="fn-mndy">Monday.com is a foreign filer without quarterly SEC data, so its numbers are entered by hand from its quarterly earnings releases (linked in Sources). Cells marked "release" come from those releases. Its June 2025 RPO is the year-earlier figure printed in its release for the quarter ended June 2026 (10 Aug 2026).</li>
         <li id="fn-fy">Quarters are the company's own fiscal quarters, labeled by the month they ended. When the same quarter is reported twice, the later filing wins. Fourth quarters come from the 10-K full year minus the first nine months. Dash means the filing has no fact under the standard tag (RPO for Workday, Paycom, Intuit, Veeva, Shopify).</li>
         <li id="fn-hol">When Friday is a market holiday, the week uses the last trading day before it{holidayWeeks.length ? ` (${holidayWeeks.join(', ')} weeks)` : ''}.</li>
       </ol>
@@ -232,6 +236,9 @@ const maxQ = 5;
       <ol>
         <li><a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces">SEC EDGAR XBRL companyfacts API</a>, checked {day(history.fundamentalsUpdated?.slice(0, 10))}</li>
         <li><a href="https://finance.yahoo.com/">Yahoo Finance</a> daily closes, through Fri {asOf}</li>
+        {releases.map((r) => (
+          <li><a href={r.url}>{r.title.replace(' (6-K exhibit 99.1)', '')}</a>, {day(r.date)} (SEC 6-K exhibit 99.1)</li>
+        ))}
         <li>Data files: <a href="/saas-tracker.json">saas-tracker.json</a> (snapshot) and <a href="/saas-history.json">saas-history.json</a> (every week and quarter)</li>
       </ol>
     </section>

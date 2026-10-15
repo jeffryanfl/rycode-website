@@ -136,9 +136,9 @@
         "MNDY": {
           "date": "2025-10-10",
           "close": 185.03,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51385862,
+          "marketCap": 9507926046,
+          "sharesSource": "earnings release 2025-08-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-06-30"
         },
         "DOCU": {
           "date": "2025-10-10",
@@ -313,9 +313,9 @@
         "MNDY": {
           "date": "2025-10-17",
           "close": 181.58,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51385862,
+          "marketCap": 9330644822,
+          "sharesSource": "earnings release 2025-08-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-06-30"
         },
         "DOCU": {
           "date": "2025-10-17",
@@ -490,9 +490,9 @@
         "MNDY": {
           "date": "2025-10-24",
           "close": 197.41,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51385862,
+          "marketCap": 10144083017,
+          "sharesSource": "earnings release 2025-08-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-06-30"
         },
         "DOCU": {
           "date": "2025-10-24",
@@ -667,9 +667,9 @@
         "MNDY": {
           "date": "2025-10-31",
           "close": 205.24,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51385862,
+          "marketCap": 10546434317,
+          "sharesSource": "earnings release 2025-08-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-06-30"
         },
         "DOCU": {
           "date": "2025-10-31",
@@ -844,9 +844,9 @@
         "MNDY": {
           "date": "2025-11-07",
           "close": 189.59,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51385862,
+          "marketCap": 9742245577,
+          "sharesSource": "earnings release 2025-08-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-06-30"
         },
         "DOCU": {
           "date": "2025-11-07",
@@ -1021,9 +1021,9 @@
         "MNDY": {
           "date": "2025-11-14",
           "close": 160.54,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 8297911892,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2025-11-14",
@@ -1198,9 +1198,9 @@
         "MNDY": {
           "date": "2025-11-21",
           "close": 146.85,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 7590309962,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2025-11-21",
@@ -1375,9 +1375,9 @@
         "MNDY": {
           "date": "2025-11-28",
           "close": 143.86,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 7435764325,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2025-11-28",
@@ -1552,9 +1552,9 @@
         "MNDY": {
           "date": "2025-12-05",
           "close": 156.94,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 8111836878,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2025-12-05",
@@ -1729,9 +1729,9 @@
         "MNDY": {
           "date": "2025-12-12",
           "close": 156.94,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 8111836878,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2025-12-12",
@@ -1906,9 +1906,9 @@
         "MNDY": {
           "date": "2025-12-19",
           "close": 147.08,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 7602198088,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2025-12-19",
@@ -2083,9 +2083,9 @@
         "MNDY": {
           "date": "2025-12-26",
           "close": 145.78,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 7535004333,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2025-12-26",
@@ -2260,9 +2260,9 @@
         "MNDY": {
           "date": "2026-01-02",
           "close": 143.42,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 7413021824,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2026-01-02",
@@ -2437,9 +2437,9 @@
         "MNDY": {
           "date": "2026-01-09",
           "close": 148.03,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 7651301217,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2026-01-09",
@@ -2614,9 +2614,9 @@
         "MNDY": {
           "date": "2026-01-16",
           "close": 126.7,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 6548806757,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2026-01-16",
@@ -2791,9 +2791,9 @@
         "MNDY": {
           "date": "2026-01-23",
           "close": 129.32,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 6684228017,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2026-01-23",
@@ -2968,9 +2968,9 @@
         "MNDY": {
           "date": "2026-01-30",
           "close": 114.75,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 5931141084,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2026-01-30",
@@ -3145,9 +3145,9 @@
         "MNDY": {
           "date": "2026-02-06",
           "close": 98,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51687504,
+          "marketCap": 5065375392,
+          "sharesSource": "earnings release 2025-11-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-09-30"
         },
         "DOCU": {
           "date": "2026-02-06",
@@ -3322,9 +3322,9 @@
         "MNDY": {
           "date": "2026-02-13",
           "close": 72.38,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3741065106,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-02-13",
@@ -3499,9 +3499,9 @@
         "MNDY": {
           "date": "2026-02-20",
           "close": 75.58,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3906461740,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-02-20",
@@ -3676,9 +3676,9 @@
         "MNDY": {
           "date": "2026-02-27",
           "close": 72.64,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3754503583,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-02-27",
@@ -3853,9 +3853,9 @@
         "MNDY": {
           "date": "2026-03-06",
           "close": 78.7,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 4067723458,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-03-06",
@@ -4030,9 +4030,9 @@
         "MNDY": {
           "date": "2026-03-13",
           "close": 74.86,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3869247497,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-03-13",
@@ -4207,9 +4207,9 @@
         "MNDY": {
           "date": "2026-03-20",
           "close": 73.85,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3817044185,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-03-20",
@@ -4384,9 +4384,9 @@
         "MNDY": {
           "date": "2026-03-27",
           "close": 66.47,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3435598199,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-03-27",
@@ -4561,9 +4561,9 @@
         "MNDY": {
           "date": "2026-04-02",
           "close": 68.34,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3532251856,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-04-02",
@@ -4738,9 +4738,9 @@
         "MNDY": {
           "date": "2026-04-10",
           "close": 58.81,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3039680007,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-04-10",
@@ -4915,9 +4915,9 @@
         "MNDY": {
           "date": "2026-04-17",
           "close": 64.99,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3359102256,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-04-17",
@@ -5092,9 +5092,9 @@
         "MNDY": {
           "date": "2026-04-24",
           "close": 67.79,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3503824310,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-04-24",
@@ -5269,9 +5269,9 @@
         "MNDY": {
           "date": "2026-05-01",
           "close": 72.74,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3759672228,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-05-01",
@@ -5446,9 +5446,9 @@
         "MNDY": {
           "date": "2026-05-08",
           "close": 72.07,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 51686448,
+          "marketCap": 3725042307,
+          "sharesSource": "earnings release 2026-02-09 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm), weighted average basic shares, quarter ended 2025-12-31"
         },
         "DOCU": {
           "date": "2026-05-08",
@@ -5623,9 +5623,9 @@
         "MNDY": {
           "date": "2026-05-15",
           "close": 71.97,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3455857619,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-05-15",
@@ -5800,9 +5800,9 @@
         "MNDY": {
           "date": "2026-05-22",
           "close": 79.06,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3796305452,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-05-22",
@@ -5977,9 +5977,9 @@
         "MNDY": {
           "date": "2026-05-29",
           "close": 83.62,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 4015267669,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-05-29",
@@ -6154,9 +6154,9 @@
         "MNDY": {
           "date": "2026-06-05",
           "close": 85.74,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 4117065892,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-06-05",
@@ -6331,9 +6331,9 @@
         "MNDY": {
           "date": "2026-06-12",
           "close": 77.57,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3724758587,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-06-12",
@@ -6508,9 +6508,9 @@
         "MNDY": {
           "date": "2026-06-18",
           "close": 71.53,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3434729686,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-06-18",
@@ -6685,9 +6685,9 @@
         "MNDY": {
           "date": "2026-06-26",
           "close": 73.02,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3506276551,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-06-26",
@@ -6862,9 +6862,9 @@
         "MNDY": {
           "date": "2026-07-02",
           "close": 79.77,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3830398253,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-07-02",
@@ -7039,9 +7039,9 @@
         "MNDY": {
           "date": "2026-07-10",
           "close": 82.47,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3960046934,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-07-10",
@@ -7216,9 +7216,9 @@
         "MNDY": {
           "date": "2026-07-17",
           "close": 78.69,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3778538781,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-07-17",
@@ -7393,9 +7393,9 @@
         "MNDY": {
           "date": "2026-07-24",
           "close": 77.43,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 3718036063,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-07-24",
@@ -7570,9 +7570,9 @@
         "MNDY": {
           "date": "2026-07-31",
           "close": 87.15,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 4184771315,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-07-31",
@@ -7747,9 +7747,9 @@
         "MNDY": {
           "date": "2026-08-07",
           "close": 93.13,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 48018030,
+          "marketCap": 4471919134,
+          "sharesSource": "earnings release 2026-05-11 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-03-31"
         },
         "DOCU": {
           "date": "2026-08-07",
@@ -7924,9 +7924,9 @@
         "MNDY": {
           "date": "2026-08-14",
           "close": 87.52,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3824366429,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-08-14",
@@ -8101,9 +8101,9 @@
         "MNDY": {
           "date": "2026-08-21",
           "close": 90.73,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3964633982,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-08-21",
@@ -8278,9 +8278,9 @@
         "MNDY": {
           "date": "2026-08-28",
           "close": 100.71,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 4400730610,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-08-28",
@@ -8455,9 +8455,9 @@
         "MNDY": {
           "date": "2026-09-04",
           "close": 91.07,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3979490981,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-09-04",
@@ -8632,9 +8632,9 @@
         "MNDY": {
           "date": "2026-09-11",
           "close": 86.84,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3794652430,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-09-11",
@@ -8809,9 +8809,9 @@
         "MNDY": {
           "date": "2026-09-18",
           "close": 85.13,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3719930462,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-09-18",
@@ -8986,9 +8986,9 @@
         "MNDY": {
           "date": "2026-09-25",
           "close": 83.66,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3655695789,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-09-25",
@@ -9163,9 +9163,9 @@
         "MNDY": {
           "date": "2026-10-02",
           "close": 78.8,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3443328092,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-10-02",
@@ -9340,9 +9340,9 @@
         "MNDY": {
           "date": "2026-10-09",
           "close": 88.96,
-          "shares": null,
-          "marketCap": null,
-          "sharesSource": null
+          "shares": 43697057,
+          "marketCap": 3887290191,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
         },
         "DOCU": {
           "date": "2026-10-09",
@@ -9567,7 +9567,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:10.932Z"
+      "checked": "2026-10-15T11:24:22.618Z"
     },
     "HUBS": {
       "quarters": [
@@ -9749,7 +9749,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:11.548Z"
+      "checked": "2026-10-15T11:24:23.091Z"
     },
     "NOW": {
       "quarters": [
@@ -9931,7 +9931,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:12.357Z"
+      "checked": "2026-10-15T11:24:23.419Z"
     },
     "WDAY": {
       "quarters": [
@@ -10113,7 +10113,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:12.929Z"
+      "checked": "2026-10-15T11:24:24.060Z"
     },
     "PAYC": {
       "quarters": [
@@ -10295,7 +10295,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:13.355Z"
+      "checked": "2026-10-15T11:24:24.498Z"
     },
     "INTU": {
       "quarters": [
@@ -10463,7 +10463,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:13.730Z"
+      "checked": "2026-10-15T11:24:25.031Z"
     },
     "BILL": {
       "quarters": [
@@ -10631,7 +10631,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:14.411Z"
+      "checked": "2026-10-15T11:24:25.381Z"
     },
     "CRWD": {
       "quarters": [
@@ -10813,7 +10813,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:14.844Z"
+      "checked": "2026-10-15T11:24:25.692Z"
     },
     "PANW": {
       "quarters": [
@@ -10981,7 +10981,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:15.545Z"
+      "checked": "2026-10-15T11:24:26.238Z"
     },
     "ZS": {
       "quarters": [
@@ -11149,7 +11149,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:15.962Z"
+      "checked": "2026-10-15T11:24:26.569Z"
     },
     "OKTA": {
       "quarters": [
@@ -11331,7 +11331,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:16.550Z"
+      "checked": "2026-10-15T11:24:27.015Z"
     },
     "NET": {
       "quarters": [
@@ -11513,7 +11513,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:16.866Z"
+      "checked": "2026-10-15T11:24:27.357Z"
     },
     "SNOW": {
       "quarters": [
@@ -11674,7 +11674,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:17.179Z"
+      "checked": "2026-10-15T11:24:27.662Z"
     },
     "DDOG": {
       "quarters": [
@@ -11856,7 +11856,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:17.565Z"
+      "checked": "2026-10-15T11:24:28.169Z"
     },
     "MDB": {
       "quarters": [
@@ -12038,7 +12038,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:17.873Z"
+      "checked": "2026-10-15T11:24:28.589Z"
     },
     "TEAM": {
       "quarters": [
@@ -12206,7 +12206,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:18.311Z"
+      "checked": "2026-10-15T11:24:29.063Z"
     },
     "GTLB": {
       "quarters": [
@@ -12388,7 +12388,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:18.720Z"
+      "checked": "2026-10-15T11:24:29.552Z"
     },
     "ZM": {
       "quarters": [
@@ -12570,11 +12570,153 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:19.189Z"
+      "checked": "2026-10-15T11:24:30.173Z"
     },
     "MNDY": {
-      "quarters": [],
-      "shares": [],
+      "quarters": [
+        {
+          "end": "2025-06-30",
+          "form": "release",
+          "filed": "2025-08-11",
+          "accn": "0001178913-25-002734",
+          "revenue": 299014000,
+          "revenueYearAgo": 236106000,
+          "growthPct": 26.6,
+          "freeCashFlow": 60953000,
+          "fcfMarginPct": 20.4,
+          "revenueTtm": null,
+          "freeCashFlowTtm": null,
+          "fcfMarginTtmPct": null,
+          "ruleOf40": null,
+          "sbc": 56645000,
+          "sbcPct": 18.9,
+          "rpo": 699000000,
+          "source": "release",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm"
+        },
+        {
+          "end": "2025-09-30",
+          "form": "release",
+          "filed": "2025-11-10",
+          "accn": "0001178913-25-003708",
+          "revenue": 316855000,
+          "revenueYearAgo": 251000000,
+          "growthPct": 26.2,
+          "freeCashFlow": 91160000,
+          "fcfMarginPct": 28.8,
+          "revenueTtm": null,
+          "freeCashFlowTtm": null,
+          "fcfMarginTtmPct": null,
+          "ruleOf40": null,
+          "sbc": 49862000,
+          "sbcPct": 15.7,
+          "rpo": 747000000,
+          "source": "release",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm"
+        },
+        {
+          "end": "2025-12-31",
+          "form": "release",
+          "filed": "2026-02-09",
+          "accn": "0001178913-26-000346",
+          "revenue": 333878000,
+          "revenueYearAgo": 267976000,
+          "growthPct": 24.6,
+          "freeCashFlow": 52886000,
+          "fcfMarginPct": 15.8,
+          "revenueTtm": null,
+          "freeCashFlowTtm": null,
+          "fcfMarginTtmPct": null,
+          "ruleOf40": null,
+          "sbc": 39546000,
+          "sbcPct": 11.8,
+          "rpo": 839000000,
+          "source": "release",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm"
+        },
+        {
+          "end": "2026-03-31",
+          "form": "release",
+          "filed": "2026-05-11",
+          "accn": "0001178913-26-002499",
+          "revenue": 351265000,
+          "revenueYearAgo": 282250000,
+          "growthPct": 24.5,
+          "freeCashFlow": 102240000,
+          "fcfMarginPct": 29.1,
+          "revenueTtm": 1301012000,
+          "freeCashFlowTtm": 307239000,
+          "fcfMarginTtmPct": 23.6,
+          "ruleOf40": 48.1,
+          "sbc": 29283000,
+          "sbcPct": 8.3,
+          "rpo": 880000000,
+          "source": "release",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm"
+        },
+        {
+          "end": "2026-06-30",
+          "form": "release",
+          "filed": "2026-08-10",
+          "accn": "0001178913-26-003971",
+          "revenue": 364621000,
+          "revenueYearAgo": 299014000,
+          "growthPct": 21.9,
+          "freeCashFlow": 51564000,
+          "fcfMarginPct": 14.1,
+          "revenueTtm": 1366619000,
+          "freeCashFlowTtm": 297850000,
+          "fcfMarginTtmPct": 21.8,
+          "ruleOf40": 43.7,
+          "sbc": 41218000,
+          "sbcPct": 11.3,
+          "rpo": 937000000,
+          "source": "release",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm"
+        }
+      ],
+      "shares": [
+        {
+          "end": "2025-06-30",
+          "filed": "2025-08-11",
+          "value": 51385862,
+          "form": "release",
+          "accn": "0001178913-25-002734",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891325002734/exhibit_99-1.htm"
+        },
+        {
+          "end": "2025-09-30",
+          "filed": "2025-11-10",
+          "value": 51687504,
+          "form": "release",
+          "accn": "0001178913-25-003708",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891325003708/exhibit_99-1.htm"
+        },
+        {
+          "end": "2025-12-31",
+          "filed": "2026-02-09",
+          "value": 51686448,
+          "form": "release",
+          "accn": "0001178913-26-000346",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326000346/exhibit_99-1.htm"
+        },
+        {
+          "end": "2026-03-31",
+          "filed": "2026-05-11",
+          "value": 48018030,
+          "form": "release",
+          "accn": "0001178913-26-002499",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326002499/exhibit_99-1.htm"
+        },
+        {
+          "end": "2026-06-30",
+          "filed": "2026-08-10",
+          "value": 43697057,
+          "form": "release",
+          "accn": "0001178913-26-003971",
+          "url": "https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm"
+        }
+      ],
       "tags": {
         "revenue": "Revenues",
         "ocf": "NetCashProvidedByUsedInOperatingActivities",
@@ -12583,8 +12725,8 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:19.625Z",
-      "note": "Files 20-F and 6-K as a foreign private issuer; 6-K quarterly reports carry no XBRL, so quarterly filing numbers are not in this feed."
+      "checked": "2026-10-15T11:24:30.576Z",
+      "note": "Foreign filer without quarterly SEC data; quarters are hand-entered from its earnings releases (scripts/data/saas-manual.json)."
     },
     "DOCU": {
       "quarters": [
@@ -12766,7 +12908,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:20.058Z"
+      "checked": "2026-10-15T11:24:31.023Z"
     },
     "ADBE": {
       "quarters": [
@@ -12948,7 +13090,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:20.635Z"
+      "checked": "2026-10-15T11:24:31.382Z"
     },
     "SHOP": {
       "quarters": [
@@ -13116,7 +13258,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:21.724Z"
+      "checked": "2026-10-15T11:24:32.118Z"
     },
     "VEEV": {
       "quarters": [
@@ -13298,9 +13440,9 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:10:21.288Z"
+      "checked": "2026-10-15T11:24:31.701Z"
     }
   },
-  "fundamentalsUpdated": "2026-10-15T11:10:21.974Z",
+  "fundamentalsUpdated": "2026-10-15T11:24:32.369Z",
   "pricesUpdated": "2026-10-15T11:04:59.908Z"
 }
