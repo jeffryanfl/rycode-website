@@ -6,15 +6,25 @@ import '../../../../styles/ai.css';
 
 <Layout
   title="Voice - xAI - Rycode"
-  description="Grok Voice: speech-to-speech, speech-to-text, text-to-speech."
+  description="Grok Voice 3.0: speech-to-speech, speech-to-text, text-to-speech."
   variant="ai"
 >
   <article class="ai-model">
     <p class="ai-model-kicker">xAI · Grok lab</p>
     <h1 class="ai-model-title">Voice</h1>
-    <p class="ai-model-dek">Spoken Grok surface: speech-to-speech, speech-to-text, and text-to-speech. Prices below prefer the live docs.x.ai models table (fetched 13 Sep 2026) over marketing shorthand.</p>
+    <p class="ai-model-dek">Spoken Grok surface: speech-to-speech (you talk, it talks back), speech-to-text, and text-to-speech. xAI released Grok Voice 3.0 on 14 Oct 2026 at the same $0.08 per minute as Grok Voice 2.0. Last checked 15 Oct 2026 against docs.x.ai.</p>
     <hr class="ai-model-rule" />
     <ModelFacts />
+
+    <h2 class="ai-model-section">Grok Voice 3.0 (14 Oct 2026)</h2>
+    <ul>
+      <li><strong>API ids:</strong> <code>grok-voice-3.0</code> is listed on the docs.x.ai models page. xAI says agents using the alias <code>grok-voice-latest</code> (a name that always points to the newest voice model) were switched to 3.0 automatically.</li>
+      <li><strong>Price:</strong> $0.08 per minute of audio ($4.80 per hour) in the Voice Agent API, plus $0.004 per text input (xAI's wording; xAI does not say per what), per docs.x.ai. xAI says this is the same price as Grok Voice 2.0.</li>
+      <li><strong>Older models:</strong> the docs.x.ai pricing table now marks <code>grok-voice-2.0</code> as Deprecated (still sold, but being phased out). <code>grok-voice-think-fast-2.0</code>, the id this page listed in September, no longer appears on the models page.</li>
+      <li><strong>Independent score:</strong> Artificial Analysis (AA), an independent benchmarking firm, measured Grok Voice 3.0 at 86.9 on its Speech-to-Speech Index, first on that index as of 15 Oct 2026 (Grok Voice 2.0: 81.3). AA's data is dated 13 Oct 2026. The index is an equal-weighted average of four parts: spoken reasoning (Big Bench Audio), handling of support calls (τ-Voice), how often listeners prefer it in blind side-by-side calls (Speech Agent Arena), and task success rate.</li>
+      <li><strong>xAI's claims:</strong> xAI says response time is under one second, that the model handles millions of conversations a day in Tesla cars, and that Starlink call centers use Grok Voice for 20,000 calls a day with about 70% resolved without a human. These are xAI's figures, not independently checked.</li>
+    </ul>
+    <p>Not an #aiBench row: that table covers the main text models only.</p>
 
     <h2 class="ai-model-section">API family (as published)</h2>
     <div class="ai-model-table-wrap">
@@ -23,14 +33,14 @@ import '../../../../styles/ai.css';
           <tr>
             <th scope="col">Mode</th>
             <th scope="col">Published id / notes</th>
-            <th scope="col">Price (docs.x.ai, 13 Sep 2026)</th>
+            <th scope="col">Price (docs.x.ai, 15 Oct 2026)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Speech to Speech</td>
-            <td>grok-voice-think-fast-2.0 (current STS on pricing)</td>
-            <td>$0.08/min audio + $0.004 text input</td>
+            <td>grok-voice-3.0 (current; alias grok-voice-latest per xAI)</td>
+            <td>$0.08/min audio plus $0.004 per text input (xAI's wording; xAI does not say per what)</td>
           </tr>
           <tr>
             <td>Speech to Text</td>
@@ -43,21 +53,24 @@ import '../../../../styles/ai.css';
             <td>$15.00 / 1M characters</td>
           </tr>
           <tr>
-            <td>grok-voice-think-fast-1.0</td>
-            <td>Marked Deprecated on the models Voice table</td>
-            <td>Confirm live status on docs</td>
+            <td>grok-voice-2.0</td>
+            <td>Marked Deprecated on the docs.x.ai pricing table</td>
+            <td>Same $0.08/min per xAI</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <p>Speech-to-text and text-to-speech prices are unchanged since 13 Sep 2026 (checked 15 Oct 2026).</p>
 
     <h2 class="ai-model-section">Reconcile against marketing</h2>
     <p>x.ai/api’s marketing table has also shown “starting at $0.05/min” for speech-to-speech. That is not the same row as docs.x.ai’s $0.08/min + $0.004 text input. Prefer the models/pricing table when the two disagree, and date the quote.</p>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
-      <li><a href="https://docs.x.ai/developers/models">Models</a> (fetched 13 Sep 2026)</li>
-      <li><a href="https://docs.x.ai/developers/pricing">Pricing</a></li>
+      <li><a href="https://x.ai/news/grok-voice-3">Introducing Grok Voice 3.0</a> (xAI, 14 Oct 2026)</li>
+      <li><a href="https://artificialanalysis.ai/speech-to-speech">Artificial Analysis Speech-to-Speech leaderboard</a> (checked 15 Oct 2026)</li>
+      <li><a href="https://docs.x.ai/developers/models">Models</a> (checked 15 Oct 2026)</li>
+      <li><a href="https://docs.x.ai/developers/pricing">Pricing</a> (checked 15 Oct 2026)</li>
       <li><a href="https://x.ai/api">x.ai/api</a>: marketing table, including the $0.05/min STS line</li>
     </ul>
   </article>

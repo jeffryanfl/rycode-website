@@ -26,7 +26,7 @@
     "/ai/models/xai/grok-build/": { "name": "Grok Build", "status": "product", "statusNote": "a coding agent app, not a model", "released": "25 May 2026 (early beta)" },
     "/ai/models/xai/grok-bot/": { "name": "Grok Bot", "status": "product", "statusNote": "an xAI product, not a model", "checked": "13 Sep 2026" },
     "/ai/models/xai/imagine/": { "name": "Imagine", "status": "current", "checked": "13 Sep 2026" },
-    "/ai/models/xai/voice/": { "name": "Voice", "status": "current", "checked": "13 Sep 2026" },
+    "/ai/models/xai/voice/": { "name": "Voice", "status": "current", "checked": "15 Oct 2026" },
 
     "/ai/models/google/gemini-4-argon/": { "name": "Gemini 4 Argon", "status": "current", "price": "$2 in, $10 out (introductory, through 30 Nov 2026)", "released": "13 Oct 2026 (announced 30 Sep)", "checked": "14 Oct 2026" },
     "/ai/models/google/gemini-pro/": { "name": "Gemini 3.1 Pro Preview", "status": "preview", "aa": { "value": 30, "fetched": "22 Sep 2026" }, "price": "$2 in, $12 out (up to 200k)", "released": "19 Feb 2026 (announced)", "checked": "22 Sep 2026" },

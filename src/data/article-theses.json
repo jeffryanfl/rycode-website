@@ -30,7 +30,7 @@
   "/ai/models/xai/grok-build/": "Grok Build is xAI's coding agent for the terminal, headless scripts, and the Agent Client Protocol.",
   "/ai/models/xai/grok-bot/": "Grok Bot is xAI's product of named bots on a cloud computer, with jobs and context that persist.",
   "/ai/models/xai/imagine/": "Imagine is xAI's image and video generation family on the API and in consumer Grok.",
-  "/ai/models/xai/voice/": "Voice is xAI's spoken interface: speech to speech, speech to text, and text to speech.",
+  "/ai/models/xai/voice/": "Voice is xAI's spoken interface: speech to speech, speech to text, and text to speech, led by Grok Voice 3.0 since 14 Oct 2026.",
   "/ai/models/google/gemini-flash/": "Gemini 3.8 Flash is Google's current Flash model for long-horizon software work and agents at Flash speed and cost.",
   "/ai/models/google/gemini-pro/": "Gemini 3.1 Pro Preview is Google's Pro-line model for harder reasoning and tool use.",
   "/ai/models/google/gemini-flash-lite/": "Gemini 3.5 Flash-Lite is Google's low-latency model for high-volume parsing, translation, and simple extraction.",
