@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-15T16:10:00-04:00",
-  "asOfLabel": "Thu 15 Oct · after-close",
+  "updated": "2026-10-16T08:02:00-04:00",
+  "asOfLabel": "Fri 16 Oct \u00b7 pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Thu close: S&P 7,744.06 (+0.3%). Dow 52,177.69 (+1.1%). Nasdaq 26,713.03 (+0.1%)."
-    },
-    {
-      "tag": "Rates",
-      "text": "CMT Thu: 10y 5.10% (-9bp). 2y 4.77%. 30y 5.43%."
+      "text": "Fri pre-open: ES ~7,800 (+0.1%). NQ ~30,109 (-0.1%). YM flat."
     },
     {
       "tag": "Oil",
-      "text": "WTI close $96.12 (Wed $95.09). Brent ~$105.78, still above $100."
+      "text": "WTI ~$96.36 (Thu final $97.97). Brent ~$106.29."
+    },
+    {
+      "tag": "Rates",
+      "text": "Thu CMT: 10y 5.10%. 2y 4.77%. 30y 5.43%. Dollar index ~101.68."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-10-15"
+  "date": "2026-10-16"
 }

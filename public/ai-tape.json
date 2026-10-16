@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-15T08:29:13-04:00",
-  "asOfLabel": "Thu 15 Oct · morning",
+  "updated": "2026-10-16T08:28:20-04:00",
+  "asOfLabel": "Fri 16 Oct \u00b7 morning",
   "lines": [
     {
-      "tag": "Release",
-      "text": "SpaceXAI releases Grok Voice 3.0 speech model in its API at the same $0.08 per minute price",
-      "url": "/ai/models/xai/voice/"
+      "tag": "OpenWeight",
+      "text": "Meta releases Muse Spark Open weights, built with Apple to run on linked Mac Studios",
+      "url": "https://research.meta.ai/blog/muse-spark-open"
     },
     {
-      "tag": "Deal",
-      "text": "ByteDance nears deal to buy custom MediaTek AI chips for its data centers, Bloomberg reports",
-      "url": "https://news.bloomberglaw.com/capital-markets/bytedance-in-talks-to-secure-mediatek-ai-chips-for-data-centers"
+      "tag": "News",
+      "text": "Anthropic tells investors Q3 revenue rose 45% to $16.8B ahead of its IPO, Bloomberg and Reuters report",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-14/anthropic-revenue-jumps-to-16-8-billion-in-quarter-before-ipo"
     },
     {
       "tag": "Policy",
-      "text": "Anthropic details Claude's election safeguards ahead of the US midterms",
-      "url": "https://www.anthropic.com/news/2026-us-midterms"
+      "text": "Eight US states sue OpenAI, saying it misled parents about ChatGPT's safety for kids",
+      "url": "https://ago.nebraska.gov/news/attorney-general-hilgers-announces-lawsuit-against-openai-deceiving-nebraskans-about-safety"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-15"
+  "date": "2026-10-16"
 }
