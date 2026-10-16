@@ -100,6 +100,55 @@ import '../styles/hub.css';
 
   <AiBenchCharts />
 
+  <section class="ai-band ai-papers" aria-labelledby="ai-score-updates">
+    <h2 class="ai-section-label" id="ai-score-updates">Score updates</h2>
+    <p class="ai-lab-note">New model pages on <a href="https://artificialanalysis.ai/">Artificial Analysis</a>, an independent group that runs the same tests on every model.</p>
+    <ul class="ai-papers-chips">
+      <li>
+        <a href="https://artificialanalysis.ai/models/claude-haiku-5-5">
+          <time class="ai-papers-chip-date" datetime="2026-10-07">7 Oct</time>
+          <span class="ai-papers-chip-title">AA Haiku 5.5</span>
+          <span class="ai-papers-chip-source">AA</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://artificialanalysis.ai/models/claude-sonnet-5-5">
+          <time class="ai-papers-chip-date" datetime="2026-10-05">5 Oct</time>
+          <span class="ai-papers-chip-title">AA Sonnet 5.5</span>
+          <span class="ai-papers-chip-source">AA</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://artificialanalysis.ai/models/gpt-6-1-sol">
+          <time class="ai-papers-chip-date" datetime="2026-10-05">5 Oct</time>
+          <span class="ai-papers-chip-title">AA 6.1 Sol</span>
+          <span class="ai-papers-chip-source">AA</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://artificialanalysis.ai/models/gemini-4-argon">
+          <time class="ai-papers-chip-date" datetime="2026-10-01">1 Oct</time>
+          <span class="ai-papers-chip-title">AA Argon</span>
+          <span class="ai-papers-chip-source">AA</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://artificialanalysis.ai/articles/claude-opus-5-5">
+          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
+          <span class="ai-papers-chip-title">AA Opus 5.5</span>
+          <span class="ai-papers-chip-source">AA</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">
+          <time class="ai-papers-chip-date" datetime="2026-09-10">10 Sep</time>
+          <span class="ai-papers-chip-title">AA DeepSeek V4.1 Flash</span>
+          <span class="ai-papers-chip-source">AA</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
   <section class="ai-band" aria-labelledby="ai-labs">
     <h2 class="ai-section-label" id="ai-labs">Labs</h2>
     <div class="ai-lab-list">
@@ -161,14 +210,8 @@ import '../styles/hub.css';
       <a href="https://www.deepseek.com/">DeepSeek</a>
     </nav>
     <p class="ai-papers-kicker">New releases</p>
+    <p class="ai-lab-note">Model cards on this site and downloadable model weights.</p>
     <ul class="ai-papers-chips">
-      <li>
-        <a href="https://research.meta.ai/blog/muse-spark-open">
-          <time class="ai-papers-chip-date" datetime="2026-10-15">15 Oct</time>
-          <span class="ai-papers-chip-title">Muse Spark Open</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
       <li>
         <a href="https://huggingface.co/collections/meta-models/muse-spark-open">
           <time class="ai-papers-chip-date" datetime="2026-10-15">15 Oct</time>
@@ -184,6 +227,66 @@ import '../styles/hub.css';
         </a>
       </li>
       <li>
+        <a href="/ai/models/meta/muse/wonder/">
+          <time class="ai-papers-chip-date" datetime="2026-10-12">12 Oct</time>
+          <span class="ai-papers-chip-title">Wonder card</span>
+          <span class="ai-papers-chip-source">docs</span>
+        </a>
+      </li>
+      <li>
+        <a href="/ai/models/anthropic/claude-haiku-5-5/">
+          <time class="ai-papers-chip-date" datetime="2026-10-07">7 Oct</time>
+          <span class="ai-papers-chip-title">Haiku 5.5 card</span>
+          <span class="ai-papers-chip-source">docs</span>
+        </a>
+      </li>
+      <li>
+        <a href="/ai/models/google/gemini-4-argon/">
+          <time class="ai-papers-chip-date" datetime="2026-10-01">1 Oct</time>
+          <span class="ai-papers-chip-title">Argon card</span>
+          <span class="ai-papers-chip-source">docs</span>
+        </a>
+      </li>
+      <li>
+        <a href="/ai/models/openai/gpt-6.1-sol/">
+          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
+          <span class="ai-papers-chip-title">6.1 Sol card</span>
+          <span class="ai-papers-chip-source">docs</span>
+        </a>
+      </li>
+      <li>
+        <a href="/ai/models/anthropic/claude-sonnet-5-5/">
+          <time class="ai-papers-chip-date" datetime="2026-09-28">28 Sep</time>
+          <span class="ai-papers-chip-title">Sonnet 5.5 card</span>
+          <span class="ai-papers-chip-source">docs</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://huggingface.co/collections/XiaomiMiMo/mimo-v26">
+          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
+          <span class="ai-papers-chip-title">MiMo-V2.6 weights</span>
+          <span class="ai-papers-chip-source">HF</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">
+          <time class="ai-papers-chip-date" datetime="2026-09-10">10 Sep</time>
+          <span class="ai-papers-chip-title">DeepSeek-V4.1-Flash weights</span>
+          <span class="ai-papers-chip-source">HF</span>
+        </a>
+      </li>
+    </ul>
+    <p class="ai-papers-kicker">Lab posts</p>
+    <p class="ai-lab-note">Announcements and recaps on each lab's own blog. These are the lab's claims.</p>
+    <ul class="ai-papers-chips">
+      <li>
+        <a href="https://research.meta.ai/blog/muse-spark-open">
+          <time class="ai-papers-chip-date" datetime="2026-10-15">15 Oct</time>
+          <span class="ai-papers-chip-title">Muse Spark Open announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+      <li>
         <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/">
           <time class="ai-papers-chip-date" datetime="2026-10-13">13 Oct</time>
           <span class="ai-papers-chip-title">Argon for everyone</span>
@@ -193,17 +296,73 @@ import '../styles/hub.css';
       <li>
         <a href="https://research.meta.ai/blog/muse-wonder">
           <time class="ai-papers-chip-date" datetime="2026-10-12">12 Oct</time>
-          <span class="ai-papers-chip-title">Muse Wonder</span>
+          <span class="ai-papers-chip-title">Muse Wonder announcement</span>
           <span class="ai-papers-chip-source">blog</span>
         </a>
       </li>
       <li>
-        <a href="/ai/models/meta/muse/wonder/">
-          <time class="ai-papers-chip-date" datetime="2026-10-12">12 Oct</time>
-          <span class="ai-papers-chip-title">Wonder card</span>
-          <span class="ai-papers-chip-source">docs</span>
+        <a href="https://www.anthropic.com/claude-haiku-5-5">
+          <time class="ai-papers-chip-date" datetime="2026-10-07">7 Oct</time>
+          <span class="ai-papers-chip-title">Claude Haiku 5.5 announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
         </a>
       </li>
+      <li>
+        <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">
+          <time class="ai-papers-chip-date" datetime="2026-09-30">30 Sep</time>
+          <span class="ai-papers-chip-title">Gemini 4 Argon announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://openai.com/index/devday-2026-recap/">
+          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
+          <span class="ai-papers-chip-title">DevDay recap</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://openai.com/index/introducing-gpt-6-1-sol/">
+          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
+          <span class="ai-papers-chip-title">GPT-6.1 Sol announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.anthropic.com/claude-sonnet-5-5">
+          <time class="ai-papers-chip-date" datetime="2026-09-28">28 Sep</time>
+          <span class="ai-papers-chip-title">Claude Sonnet 5.5 announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.anthropic.com/claude-opus-5-5">
+          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
+          <span class="ai-papers-chip-title">Claude Opus 5.5 announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://mimo.mi.com/docs/en-US/news/latest/v2-6">
+          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
+          <span class="ai-papers-chip-title">MiMo-V2.6 announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash">
+          <time class="ai-papers-chip-date" datetime="2026-09-10">10 Sep</time>
+          <span class="ai-papers-chip-title">DeepSeek-V4.1-Flash announcement</span>
+          <span class="ai-papers-chip-source">blog</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="ai-band ai-papers" aria-labelledby="ai-products">
+    <h2 class="ai-section-label" id="ai-products">Products and features</h2>
+    <p class="ai-lab-note">Apps, agents and features built on top of models. They are not models themselves.</p>
+    <ul class="ai-papers-chips">
       <li>
         <a href="/ai/models/openai/gpt-6-intelligent-ui/">
           <time class="ai-papers-chip-date" datetime="2026-10-08">8 Oct</time>
@@ -219,79 +378,9 @@ import '../styles/hub.css';
         </a>
       </li>
       <li>
-        <a href="https://www.anthropic.com/claude-haiku-5-5">
-          <time class="ai-papers-chip-date" datetime="2026-10-07">7 Oct</time>
-          <span class="ai-papers-chip-title">Claude Haiku 5.5</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="/ai/models/anthropic/claude-haiku-5-5/">
-          <time class="ai-papers-chip-date" datetime="2026-10-07">7 Oct</time>
-          <span class="ai-papers-chip-title">Haiku 5.5 card</span>
-          <span class="ai-papers-chip-source">docs</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://artificialanalysis.ai/models/claude-haiku-5-5">
-          <time class="ai-papers-chip-date" datetime="2026-10-07">7 Oct</time>
-          <span class="ai-papers-chip-title">AA Haiku 5.5</span>
-          <span class="ai-papers-chip-source">AA</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://artificialanalysis.ai/models/claude-sonnet-5-5">
-          <time class="ai-papers-chip-date" datetime="2026-10-05">5 Oct</time>
-          <span class="ai-papers-chip-title">AA Sonnet 5.5</span>
-          <span class="ai-papers-chip-source">AA</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://artificialanalysis.ai/models/gpt-6-1-sol">
-          <time class="ai-papers-chip-date" datetime="2026-10-05">5 Oct</time>
-          <span class="ai-papers-chip-title">AA 6.1 Sol</span>
-          <span class="ai-papers-chip-source">AA</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">
-          <time class="ai-papers-chip-date" datetime="2026-09-30">30 Sep</time>
-          <span class="ai-papers-chip-title">Gemini 4 Argon</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="/ai/models/google/gemini-4-argon/">
-          <time class="ai-papers-chip-date" datetime="2026-10-01">1 Oct</time>
-          <span class="ai-papers-chip-title">Argon card</span>
-          <span class="ai-papers-chip-source">docs</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://artificialanalysis.ai/models/gemini-4-argon">
-          <time class="ai-papers-chip-date" datetime="2026-10-01">1 Oct</time>
-          <span class="ai-papers-chip-title">AA Argon</span>
-          <span class="ai-papers-chip-source">AA</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://openai.com/index/devday-2026-recap/">
-          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
-          <span class="ai-papers-chip-title">DevDay recap</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
         <a href="https://openai.com/index/introducing-dots/">
           <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
           <span class="ai-papers-chip-title">Dots</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://openai.com/index/introducing-gpt-6-1-sol/">
-          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
-          <span class="ai-papers-chip-title">GPT-6.1 Sol</span>
           <span class="ai-papers-chip-source">blog</span>
         </a>
       </li>
@@ -300,76 +389,6 @@ import '../styles/hub.css';
           <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
           <span class="ai-papers-chip-title">Dots card</span>
           <span class="ai-papers-chip-source">docs</span>
-        </a>
-      </li>
-      <li>
-        <a href="/ai/models/openai/gpt-6.1-sol/">
-          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
-          <span class="ai-papers-chip-title">6.1 Sol card</span>
-          <span class="ai-papers-chip-source">docs</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.anthropic.com/claude-sonnet-5-5">
-          <time class="ai-papers-chip-date" datetime="2026-09-28">28 Sep</time>
-          <span class="ai-papers-chip-title">Claude Sonnet 5.5</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="/ai/models/anthropic/claude-sonnet-5-5/">
-          <time class="ai-papers-chip-date" datetime="2026-09-28">28 Sep</time>
-          <span class="ai-papers-chip-title">Sonnet 5.5 card</span>
-          <span class="ai-papers-chip-source">docs</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.anthropic.com/claude-opus-5-5">
-          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
-          <span class="ai-papers-chip-title">Claude Opus 5.5</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://artificialanalysis.ai/articles/claude-opus-5-5">
-          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
-          <span class="ai-papers-chip-title">AA Opus 5.5</span>
-          <span class="ai-papers-chip-source">AA</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://mimo.mi.com/docs/en-US/news/latest/v2-6">
-          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
-          <span class="ai-papers-chip-title">MiMo-V2.6</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://huggingface.co/collections/XiaomiMiMo/mimo-v26">
-          <time class="ai-papers-chip-date" datetime="2026-09-22">22 Sep</time>
-          <span class="ai-papers-chip-title">MiMo-V2.6 weights</span>
-          <span class="ai-papers-chip-source">HF</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash">
-          <time class="ai-papers-chip-date" datetime="2026-09-10">10 Sep</time>
-          <span class="ai-papers-chip-title">DeepSeek-V4.1-Flash</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">
-          <time class="ai-papers-chip-date" datetime="2026-09-10">10 Sep</time>
-          <span class="ai-papers-chip-title">DeepSeek-V4.1-Flash weights</span>
-          <span class="ai-papers-chip-source">HF</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">
-          <time class="ai-papers-chip-date" datetime="2026-09-10">10 Sep</time>
-          <span class="ai-papers-chip-title">AA DeepSeek V4.1 Flash</span>
-          <span class="ai-papers-chip-source">AA</span>
         </a>
       </li>
     </ul>

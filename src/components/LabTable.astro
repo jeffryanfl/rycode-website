@@ -5,12 +5,14 @@
 import { factsFor, statusText, aaText, isArchived, ARCHIVE_HREF } from '../lib/model-facts';
 
 interface Row { href: string; title: string; dek?: string; meta?: string[] }
-interface Props { rows: Row[]; caption?: string }
-const { rows, caption } = Astro.props;
+interface Props { rows: Row[]; caption?: string; splitProducts?: boolean }
+const { rows, caption, splitProducts = false } = Astro.props;
 
 const withFacts = rows.map((row) => ({ row, f: factsFor(row.href) }));
-const main = withFacts.filter((r) => !isArchived(r.f));
-const archivedCount = withFacts.length - main.length;
+const isProduct = (r: { f?: { status: string } }) => splitProducts && (r.f?.status === 'product' || r.f?.status === 'feature');
+const products = withFacts.filter((r) => !isArchived(r.f) && isProduct(r));
+const main = withFacts.filter((r) => !isArchived(r.f) && !isProduct(r));
+const archivedCount = withFacts.filter((r) => isArchived(r.f)).length;
 const anyAa = main.some((r) => r.f?.aa);
 const groups = [{ label: caption ?? 'Lineup', items: main }].filter((g) => g.items.length > 0);
 ---
@@ -50,6 +52,17 @@ const groups = [{ label: caption ?? 'Lineup', items: main }].filter((g) => g.ite
     </div>
   </>
 ))}
+{products.length > 0 && (
+  <>
+    <h2 class="ai-lab-lane">Products and features</h2>
+    <p class="ai-lab-note">Apps, agents and features from this lab. They run on models but are not models, so they sit outside the model table.</p>
+    <ul class="ai-lab-note">
+      {products.map(({ row, f }) => (
+        <li><a href={row.href}>{row.title}</a>{f?.statusNote && `: ${f.statusNote}`}</li>
+      ))}
+    </ul>
+  </>
+)}
 {archivedCount > 0 && (
   <p class="ai-lab-table-note">{archivedCount === 1 ? 'One older model' : `${archivedCount} older models`} from this lab {archivedCount === 1 ? 'is' : 'are'} in the <a href={ARCHIVE_HREF}>archive</a>.</p>
 )}

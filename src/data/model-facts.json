@@ -47,8 +47,8 @@
     "/ai/models/deepseek/v4-pro/": { "name": "DeepSeek V4 Pro", "status": "current", "price": "$0.66 in, $1.98 out (off-peak, cache miss)" },
     "/ai/models/deepseek/r1/": { "name": "DeepSeek-R1", "status": "archived", "replacedBy": { "name": "V4 line", "href": "/ai/models/deepseek/" }, "released": "20 Jan 2025" },
     "/ai/models/deepseek/v3/": { "name": "DeepSeek-V3", "status": "archived", "replacedBy": { "name": "V4 line", "href": "/ai/models/deepseek/" } },
-    "/ai/models/deepseek/thinking/": { "name": "Thinking mode", "status": "feature", "statusNote": "a setting on Flash and V4 Pro" },
-    "/ai/models/deepseek/api/": { "name": "DeepSeek API", "status": "feature", "statusNote": "endpoints and model ids" },
+    "/ai/models/deepseek/thinking/": { "name": "Thinking mode", "status": "feature", "statusNote": "a setting on Flash and V4 Pro, not a model" },
+    "/ai/models/deepseek/api/": { "name": "DeepSeek API", "status": "feature", "statusNote": "endpoints and model ids, not a model" },
 
     "/ai/models/open-weight/mimo/": { "name": "MiMo-V2.6-Pro", "status": "current", "statusNote": "open weights", "aa": { "value": 46, "fetched": "22 Sep 2026" }, "released": "22 Sep 2026 (announced)", "checked": "22 Sep 2026" },
     "/ai/models/open-weight/glm-5-3/": { "name": "GLM-5.3", "status": "current", "statusNote": "open weights", "aa": { "value": 45, "effort": "max", "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },

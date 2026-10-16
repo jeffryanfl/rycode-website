@@ -3,37 +3,39 @@ import LabTable from '../../../../components/LabTable.astro';
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/ai.css';
 
+// Models only, as listed on https://docs.x.ai/docs/models (checked 16 Oct 2026).
 const rows = [
   {
-    href: '/ai/models/xai/models/',
-    title: 'Models',
-    dek: 'Grok 4.7 is xAI’s current coding and knowledge-work frontier model (API grok-4.7). Same $2/$6 token band as 4.6, with a published fast variant at 2× price. Live in Cursor, Grok Build, and the API; consumer surfaces later.',
-    meta: ['API · chat · reasoning · multimodal', 'Opens the models index →'],
-  },
-  {
-    href: '/ai/models/xai/grok-build/',
-    title: 'Grok Build',
-    dek: 'Agent that works the project.',
-    meta: ['IDE · repos · multi-step build loops', 'Opens Grok Build →'],
-  },
-  {
-    href: '/ai/models/xai/grok-bot/',
-    title: 'Grok Bot',
-    dek: 'Named Bots on a cloud computer.',
-    meta: ['Durable Bots · tools · cloud computer', 'Opens Grok Bot →'],
+    href: '/ai/models/xai/grok-4-7/',
+    title: 'Grok 4.7',
+    dek: 'Text and code model. xAI calls it the most capable model it has built.',
+    meta: ['grok-4.7 · 500k context'],
   },
   {
     href: '/ai/models/xai/imagine/',
-    title: 'Imagine',
-    dek: 'Image generation door.',
-    meta: ['Prompt · image · edit · iterate', 'Opens Imagine →'],
+    title: 'grok-imagine-image-2.0',
+    dek: 'Image model. xAI recommends it for images.',
+    meta: ['$0.04 per image (xAI price)'],
+  },
+  {
+    href: '/ai/models/xai/imagine/',
+    title: 'grok-imagine-video-1.5',
+    dek: 'Video model. xAI recommends it for video.',
+    meta: ['$0.08 per second (xAI price)'],
   },
   {
     href: '/ai/models/xai/voice/',
-    title: 'Voice',
-    dek: 'Spoken Grok surface.',
-    meta: ['Talk · listen · hands-free loops', 'Opens Voice →'],
+    title: 'grok-voice-3.0',
+    dek: 'Speech to speech model. grok-voice-2.0 is marked deprecated.',
+    meta: ['$0.08 per minute (xAI price)'],
   },
+];
+
+const products = [
+  { href: '/ai/models/xai/grok-build/', title: 'Grok Build', note: 'a coding agent app, not a model' },
+  { href: '/ai/models/xai/grok-bot/', title: 'Grok Bot', note: 'an xAI product, not a model' },
+  { href: '/ai/models/xai/imagine/', title: 'Imagine', note: 'the image and video app and API surface, not a single model' },
+  { href: '/ai/models/xai/voice/', title: 'Voice', note: 'the spoken Grok surface, not a single model' },
 ];
 ---
 
@@ -47,5 +49,13 @@ const rows = [
     <p class="ai-lab-dek">Grok 4.7 is xAI’s current coding and knowledge-work frontier model (API grok-4.7). Same $2/$6 token band as 4.6, with a published fast variant at 2× price. Live in Cursor, Grok Build, and the API; consumer surfaces later.</p>
   </div>
 
+  <p class="ai-lab-note">Source: xAI's <a href="https://docs.x.ai/docs/models">models page</a>. Prices are xAI's own. Grok text models also have their own <a href="/ai/models/xai/models/">xAI models index</a>.</p>
+
   <LabTable rows={rows} />
+
+  <h2 class="ai-lab-lane">Products and features</h2>
+  <p class="ai-lab-note">Apps and surfaces from xAI. They run on the models above but are not models, so they sit outside the model table.</p>
+  <ul class="ai-lab-note">
+    {products.map((p) => <li><a href={p.href}>{p.title}</a>: {p.note}</li>)}
+  </ul>
 </Layout>
