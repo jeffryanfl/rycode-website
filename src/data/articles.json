@@ -135,6 +135,22 @@
     "slug": "ai-glossary"
   },
   {
+    "href": "/ai/models/archive/",
+    "title": "Model archive",
+    "description": "Older AI models that a newer model from the same lab replaced, or that the lab now steers users away from",
+    "date": "2026-10-16",
+    "section": "ai",
+    "series": "ai-dive",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      }
+    ],
+    "file": "src/pages/ai/models/archive.astro",
+    "slug": "ai-models-archive"
+  },
+  {
     "href": "/ai/swarms/what-an-agent-swarm-is/",
     "title": "What an agent swarm is, and what 10,000 of them can do",
     "description": "Two swarms, two breakthroughs, every metric on the table.",

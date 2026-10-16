@@ -10,9 +10,10 @@ import { normalizePath } from './site';
 export interface ModelFacts {
   href: string;
   name: string;
-  status: 'current' | 'replaced' | 'older' | 'preview' | 'limited' | 'feature' | 'product';
+  status: 'current' | 'archived' | 'replaced' | 'older' | 'preview' | 'limited' | 'feature' | 'product';
   statusNote?: string;
   replacedBy?: { name: string; href: string };
+  recommended?: { by: string; name: string; href: string };
   aa?: { value: number; effort?: string; label?: string; fetched?: string; fromFeed?: boolean };
   price?: string;
   released?: string;
@@ -69,6 +70,7 @@ export function factsUnder(prefix: string): ModelFacts[] {
 
 export const STATUS_LABEL: Record<ModelFacts['status'], string> = {
   current: 'Current',
+  archived: 'Archived',
   replaced: 'Replaced',
   older: 'Older model',
   preview: 'Preview',
@@ -78,7 +80,14 @@ export const STATUS_LABEL: Record<ModelFacts['status'], string> = {
 };
 
 export function statusText(f: ModelFacts): string {
-  const base = f.status === 'replaced' && f.replacedBy ? `Replaced by ${f.replacedBy.name}` : STATUS_LABEL[f.status];
+  const base =
+    f.status === 'archived' && f.replacedBy
+      ? `Archived, succeeded by ${f.replacedBy.name}`
+      : f.status === 'older' && f.recommended
+        ? `Older model, ${f.recommended.by} now recommends ${f.recommended.name}`
+        : f.status === 'replaced' && f.replacedBy
+        ? `Replaced by ${f.replacedBy.name}`
+        : STATUS_LABEL[f.status];
   return f.statusNote ? `${base}, ${f.statusNote}` : base;
 }
 
@@ -86,4 +95,17 @@ export function aaText(f: ModelFacts): string | undefined {
   if (!f.aa) return undefined;
   const bits = [f.aa.label, f.aa.effort ? `${f.aa.effort} effort` : undefined].filter(Boolean).join(', ');
   return `${f.aa.value}${bits ? ` (${bits})` : ''}`;
+}
+
+/** Archived pages stay live but leave lab tables. Listed on /ai/models/archive/. */
+export const ARCHIVE_HREF = '/ai/models/archive/';
+
+export function isArchived(f?: ModelFacts): boolean {
+  return f?.status === 'archived' || f?.status === 'replaced' || f?.status === 'older';
+}
+
+export function archivedAll(): ModelFacts[] {
+  return Object.keys(RAW)
+    .map((href) => factsFor(href)!)
+    .filter((f) => f && isArchived(f));
 }

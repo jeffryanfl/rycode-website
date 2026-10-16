@@ -1,22 +1,18 @@
 ---
 // Lab comparison table. Replaces the plain link list on lab index pages.
 // Facts come from src/lib/model-facts.ts (model-facts.json + ai-benchmarks.json).
-// Replaced and older models move to a History table below. Empty cells say so.
-import { factsFor, statusText, aaText } from '../lib/model-facts';
+// Archived (superseded) models leave the table; a one-line door points to the archive.
+import { factsFor, statusText, aaText, isArchived, ARCHIVE_HREF } from '../lib/model-facts';
 
 interface Row { href: string; title: string; dek?: string; meta?: string[] }
 interface Props { rows: Row[]; caption?: string }
 const { rows, caption } = Astro.props;
 
 const withFacts = rows.map((row) => ({ row, f: factsFor(row.href) }));
-const isHistory = (s?: string) => s === 'replaced' || s === 'older';
-const main = withFacts.filter((r) => !isHistory(r.f?.status));
-const history = withFacts.filter((r) => isHistory(r.f?.status));
-const anyAa = withFacts.some((r) => r.f?.aa);
-const groups = [
-  { label: caption ?? 'Lineup', items: main },
-  { label: 'History', items: history },
-].filter((g) => g.items.length > 0);
+const main = withFacts.filter((r) => !isArchived(r.f));
+const archivedCount = withFacts.length - main.length;
+const anyAa = main.some((r) => r.f?.aa);
+const groups = [{ label: caption ?? 'Lineup', items: main }].filter((g) => g.items.length > 0);
 ---
 {groups.map((g, i) => (
   <>
@@ -54,6 +50,9 @@ const groups = [
     </div>
   </>
 ))}
+{archivedCount > 0 && (
+  <p class="ai-lab-table-note">{archivedCount === 1 ? 'One older model' : `${archivedCount} older models`} from this lab {archivedCount === 1 ? 'is' : 'are'} in the <a href={ARCHIVE_HREF}>archive</a>.</p>
+)}
 {anyAa && (
   <p class="ai-lab-table-note">AA score is the <a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis</a> Intelligence Index, one independent score built from the same tests on every model. Prices are US dollars per million <a href="/ai/glossary/#token">tokens</a> (word pieces) in and out unless noted. "Not on file" means this site has no checked value yet.</p>
 )}

@@ -327,7 +327,8 @@
         "/ai/models/more-labs/cohere-command-a-plus/",
         "/ai/models/more-labs/inkling/",
         "/ai/models/more-labs/apple-foundation-models/",
-        "/ai/models/more-labs/amazon-nova-2/"
+        "/ai/models/more-labs/amazon-nova-2/",
+        "/ai/models/archive/"
       ],
       "links": [
         "open-weights",

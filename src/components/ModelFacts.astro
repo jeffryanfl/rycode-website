@@ -2,15 +2,36 @@
 // Fixed fact box under the dek on every /ai/models page.
 // Data: src/data/model-facts.json + public/ai-benchmarks.json (see src/lib/model-facts.ts).
 // A field with no verified value is left out, never filled.
-import { factsFor, statusText, aaText, STATUS_LABEL } from '../lib/model-facts';
+import { factsFor, statusText, aaText, STATUS_LABEL, ARCHIVE_HREF } from '../lib/model-facts';
 
 const f = factsFor(Astro.url.pathname);
 const aa = f ? aaText(f) : undefined;
 // The banner already names the replacement, so the box just says Replaced.
-const status = f ? (f.status === 'replaced' && f.replacedBy ? [STATUS_LABEL.replaced, f.statusNote].filter(Boolean).join(', ') : statusText(f)) : '';
+const status = !f
+  ? ''
+  : f.status === 'older' && f.recommended
+    ? [STATUS_LABEL.older, f.statusNote].filter(Boolean).join(', ')
+    : (f.status === 'replaced' || f.status === 'archived') && f.replacedBy
+      ? [STATUS_LABEL[f.status], f.statusNote].filter(Boolean).join(', ')
+      : statusText(f);
 ---
 {f && (
   <>
+    {f.status === 'archived' && f.replacedBy && (
+      <p class="ai-model-banner" role="note">
+        Archived, succeeded by <a href={f.replacedBy.href}>{f.replacedBy.name}</a>. This page stays up as a record. More older models are in the <a href={ARCHIVE_HREF}>archive</a>.
+      </p>
+    )}
+    {f.status === 'older' && f.recommended && (
+      <p class="ai-model-banner" role="note">
+        Archived. {f.recommended.by} now recommends <a href={f.recommended.href}>{f.recommended.name}</a>. This page stays up as a record. More older models are in the <a href={ARCHIVE_HREF}>archive</a>.
+      </p>
+    )}
+    {f.status === 'older' && !f.recommended && (
+      <p class="ai-model-banner" role="note">
+        Archived. This page stays up as a record. More older models are in the <a href={ARCHIVE_HREF}>archive</a>.
+      </p>
+    )}
     {f.status === 'replaced' && f.replacedBy && (
       <p class="ai-model-banner" role="note">
         Replaced by <a href={f.replacedBy.href}>{f.replacedBy.name}</a>. This page stays up as a record.

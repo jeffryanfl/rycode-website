@@ -1,0 +1,82 @@
+---
+// Archive of superseded models. Rows come from src/data/model-facts.json
+// (status archived). Each page stays live with a banner naming its successor.
+import Layout from '../../../layouts/Layout.astro';
+import { archivedAll } from '../../../lib/model-facts';
+import '../../../styles/ai.css';
+
+const LABS: Record<string, { name: string; href: string }> = {
+  anthropic: { name: 'Anthropic', href: '/ai/models/anthropic/' },
+  openai: { name: 'OpenAI', href: '/ai/models/openai/' },
+  xai: { name: 'xAI', href: '/ai/models/xai/' },
+  google: { name: 'Google', href: '/ai/models/google/' },
+  meta: { name: 'Meta', href: '/ai/models/meta/' },
+  deepseek: { name: 'DeepSeek', href: '/ai/models/deepseek/' },
+  'open-weight': { name: 'Open weight', href: '/ai/models/open-weight/' },
+  'more-labs': { name: 'More labs', href: '/ai/models/more-labs/' },
+};
+const ORDER = Object.keys(LABS);
+
+const rows = archivedAll();
+const notes: string[] = [];
+const noteFor = (text?: string) => {
+  if (!text) return undefined;
+  let i = notes.indexOf(text);
+  if (i === -1) { notes.push(text); i = notes.length - 1; }
+  return i + 1;
+};
+const groups = ORDER.map((lab) => ({
+  lab,
+  ...LABS[lab],
+  items: rows
+    .filter((f) => f.href.split('/')[3] === lab)
+    .map((f) => ({ f, note: noteFor(f.href.startsWith('/ai/models/deepseek/') && f.replacedBy?.name === 'V4 line' ? 'V4 line means deepseek-flash (DeepSeek-V4.1-Flash) and deepseek-v4-pro, the only models on DeepSeek\'s API' : f.statusNote) })),
+})).filter((g) => g.items.length > 0);
+---
+
+<Layout
+  title="Model archive - A.I. - Rycode"
+  description="Older AI models that a newer model from the same lab replaced, or that the lab now steers users away from. Each page stays up as a record."
+  variant="ai"
+>
+  <div class="ai-lab-head">
+    <h1 class="ai-lab-title">Model archive</h1>
+    <p class="ai-lab-dek">Older models from each lab. A model lands here when the lab moves it to its legacy list, drops it from its lineup, or tells users to use a newer model instead. Each page stays up as a record, with a line at the top that links to the newer model. The lab pages show only current models.</p>
+  </div>
+
+  {groups.map((g) => (
+    <>
+      <h2 class="ai-lab-lane"><a href={g.href}>{g.name}</a></h2>
+      <div class="ai-lab-table-wrap">
+        <table class="ai-lab-table">
+          <caption class="visually-hidden">{g.name} archived models</caption>
+          <thead>
+            <tr>
+              <th scope="col">Model</th>
+              <th scope="col">Succeeded by or recommended</th>
+              <th scope="col">Last price on file</th>
+              <th scope="col">Released</th>
+            </tr>
+          </thead>
+          <tbody>
+            {g.items.map(({ f, note }) => (
+              <tr>
+                <th scope="row"><a href={f.href}>{f.name}</a>{note && <sup><a href={`#archive-note-${note}`}>{note}</a></sup>}</th>
+                <td>{f.replacedBy ? <a href={f.replacedBy.href}>{f.replacedBy.name}</a> : f.recommended ? <>{f.recommended.by} now recommends <a href={f.recommended.href}>{f.recommended.name}</a></> : '-'}</td>
+                <td>{f.price ?? '-'}</td>
+                <td>{f.released ?? '-'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  ))}
+
+  <p class="ai-lab-table-note">Prices are the lab's list price in US dollars per million <a href="/ai/glossary/#token">tokens</a> (word pieces) in and out, as last checked on each page. They are the lab's own figures. A dash means this site has no checked value.</p>
+  {notes.length > 0 && (
+    <ol class="ai-lab-table-note">
+      {notes.map((n, i) => <li id={`archive-note-${i + 1}`}>{n.charAt(0).toUpperCase() + n.slice(1)}.</li>)}
+    </ol>
+  )}
+</Layout>
