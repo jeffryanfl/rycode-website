@@ -1,0 +1,43 @@
+---
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Beam 1.0 (Reflection) - A.I. - Rycode"
+  description="Beam 1.0 is Reflection's first model, released 16 Oct 2026 as open weights under Apache 2.0. 501B parameters in total, 23B active per token, 1M-token context."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Open weight · new lab</p>
+    <h1 class="ai-model-title">Beam 1.0 (Reflection)</h1>
+    <p class="ai-model-dek">Beam 1.0 is the first model from Reflection, a US lab. It was released on <strong>16 Oct 2026</strong> as open weights, meaning anyone can download the model files and run them. The license is <strong>Apache 2.0</strong>, which allows commercial use. Reflection says Beam is built for coding and long agent tasks, where the model works through many steps on its own.</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <p>Artificial Analysis (AA), an independent group that tests models, ranks Beam <strong>second among US open-weight models</strong>, with <strong>30</strong> on its Intelligence Index (16 Oct 2026 ET). Only Meta's Muse Spark Open scores higher among US open-weight models, per AA.</p>
+    <h2 class="ai-model-section">What is published</h2>
+    <p>From Reflection's launch post and the Hugging Face launch blog:</p>
+    <ul class="ai-model-sources">
+      <li>Mixture of experts, a design where only part of the model runs for each token (a token is a word or piece of a word)</li>
+      <li><strong>501B</strong> parameters in total, <strong>23B</strong> active per token</li>
+      <li><strong>1M</strong>-token context window, the amount of text it can read at once</li>
+      <li>Text in, text out</li>
+      <li>Weights in BF16, FP8 and NVFP4 formats (different number precisions that trade size for accuracy)</li>
+    </ul>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>AA Intelligence Index: <strong>30</strong>, second among US open-weight models (<a href="https://artificialanalysis.ai/articles/reflection-beam">AA article</a>, 16 Oct 2026 ET). Reflection publishes its own lab test results on its model card. Those are Reflection's numbers and are not copied here. Reflection lists AA among the partners that tested Beam before release.</p>
+    <h2 class="ai-model-section">Access</h2>
+    <p>Reflection says Beam is available at launch on Ollama, Together AI, Modal and Cloudflare, among others, and runs on vLLM, an open-source serving library.</p>
+    <ul class="ai-model-sources">
+      <li>Weights: <a href="https://huggingface.co/reflection/Beam-1.0-501B-A23B">huggingface.co/reflection/Beam-1.0-501B-A23B</a></li>
+      <li>API: <a href="https://platform.reflection.ai">platform.reflection.ai</a></li>
+    </ul>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://reflection.ai/blog/beam-is-available">Reflection: Beam is now available</a> (16 Oct 2026)</li>
+      <li><a href="https://huggingface.co/blog/reflection-beam">Hugging Face: Welcome Beam</a> (16 Oct 2026)</li>
+      <li><a href="https://artificialanalysis.ai/articles/reflection-beam">AA: Reflection has released Beam</a> (secondary, Index and rank)</li>
+    </ul>
+  </article>
+</Layout>

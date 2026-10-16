@@ -1203,6 +1203,26 @@
     "slug": "ai-models-open-weight-step-5"
   },
   {
+    "href": "/ai/models/open-weight/beam/",
+    "title": "Beam 1.0",
+    "description": "Reflection. First model. 501B total, 23B active, 1M context. Apache 2.0, released 16 Oct 2026.",
+    "date": "2026-10-16",
+    "section": "ai",
+    "series": "ai-open-weight",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/open-weight/",
+        "label": "Open weight"
+      }
+    ],
+    "file": "src/pages/ai/models/open-weight/beam.astro",
+    "slug": "ai-models-open-weight-beam"
+  },
+  {
     "href": "/ai/models/open-weight/kimi-k3/",
     "title": "Kimi K3",
     "description": "Moonshot. Max effort on the AA Index.",

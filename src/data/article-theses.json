@@ -53,6 +53,7 @@
   "/ai/models/open-weight/glm-5-3/": "GLM-5.3 is Z.AI's flagship coding and agent model, with public weights on Hugging Face.",
   "/ai/models/open-weight/qwen/": "Qwen3.8 Max is Alibaba's lead hosted Qwen model, with an open checkpoint beside it on Hugging Face.",
   "/ai/models/open-weight/step-5/": "Step 5 Preview is StepFun's agent model on the API now, and the weights are dated 15 October 2026.",
+  "/ai/models/open-weight/beam/": "Beam 1.0 is Reflection's first model, a 501-billion-parameter mixture-of-experts model with 23 billion active, released 16 Oct 2026 as open weights under Apache 2.0.",
   "/ai/models/open-weight/kimi-k3/": "Kimi K3 is Moonshot's open-weight flagship for long-horizon coding and knowledge work.",
   "/ai/hardware/chips/terafab/": "Terafab is a planned chip factory from SpaceX and Tesla in Grimes County, Texas, with a Phase 1 figure of $16.8B.",
   "/ai/hardware/data-centers/memphis-colossus/": "Memphis Colossus is a hyperscale training campus. The company page lists 170 PB/s of aggregate memory bandwidth and 2.8 Tb/s per server.",
