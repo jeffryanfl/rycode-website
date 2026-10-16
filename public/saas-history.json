@@ -9384,6 +9384,183 @@
         "collaboration": 91.25,
         "creative-vertical": 96.08
       }
+    },
+    {
+      "date": "2026-10-16",
+      "prices": {
+        "CRM": {
+          "date": "2026-10-16",
+          "close": 240.7,
+          "shares": 820000000,
+          "marketCap": 197374000000,
+          "sharesSource": "10-Q 0001108524-26-000190, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "HUBS": {
+          "date": "2026-10-16",
+          "close": 230.94,
+          "shares": 50569000,
+          "marketCap": 11678404860,
+          "sharesSource": "10-Q 0001193125-26-335232, weighted average basic shares, quarter ended 2026-06-30"
+        },
+        "NOW": {
+          "date": "2026-10-16",
+          "close": 141.97,
+          "shares": 1031351000,
+          "marketCap": 146420901470,
+          "sharesSource": "10-Q 0001373715-26-000076, weighted average basic shares, quarter ended 2026-06-30"
+        },
+        "WDAY": {
+          "date": "2026-10-16",
+          "close": 190.81,
+          "shares": 245181000,
+          "marketCap": 46782986610,
+          "sharesSource": "10-Q 0001327811-26-000044, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "PAYC": {
+          "date": "2026-10-16",
+          "close": 251.64,
+          "shares": 45836000,
+          "marketCap": 11534171040,
+          "sharesSource": "10-Q 0001193125-26-338010, weighted average basic shares, quarter ended 2026-06-30"
+        },
+        "INTU": {
+          "date": "2026-10-16",
+          "close": 325.15,
+          "shares": 276000000,
+          "marketCap": 89741400000,
+          "sharesSource": "10-Q 0000896878-26-000025, weighted average basic shares, quarter ended 2026-04-30"
+        },
+        "BILL": {
+          "date": "2026-10-16",
+          "close": 45.6,
+          "shares": 99285000,
+          "marketCap": 4527396000,
+          "sharesSource": "10-Q 0001628280-26-032387, weighted average basic shares, quarter ended 2026-03-31"
+        },
+        "CRWD": {
+          "date": "2026-10-16",
+          "close": 227.39,
+          "shares": 1019448000,
+          "marketCap": 231812280720,
+          "sharesSource": "10-Q 0001535527-26-000031, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "PANW": {
+          "date": "2026-10-16",
+          "close": 342,
+          "shares": 801000000,
+          "marketCap": 273942000000,
+          "sharesSource": "10-Q 0001327567-26-000015, weighted average basic shares, quarter ended 2026-04-30"
+        },
+        "ZS": {
+          "date": "2026-10-16",
+          "close": 207.38,
+          "shares": 160741000,
+          "marketCap": 33334468580,
+          "sharesSource": "10-Q 0001713683-26-000096, weighted average basic shares, quarter ended 2026-04-30"
+        },
+        "OKTA": {
+          "date": "2026-10-16",
+          "close": 187.26,
+          "shares": 174298000,
+          "marketCap": 32639043480,
+          "sharesSource": "10-Q 0001660134-26-000069, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "NET": {
+          "date": "2026-10-16",
+          "close": 296.3,
+          "shares": 354334000,
+          "marketCap": 104989164200,
+          "sharesSource": "10-Q 0001477333-26-000054, weighted average basic shares, quarter ended 2026-06-30"
+        },
+        "SNOW": {
+          "date": "2026-10-16",
+          "close": 306.84,
+          "shares": 349257000,
+          "marketCap": 107166017880,
+          "sharesSource": "10-Q 0001640147-26-000037, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "DDOG": {
+          "date": "2026-10-16",
+          "close": 247.11,
+          "shares": 356253000,
+          "marketCap": 88033678830,
+          "sharesSource": "10-Q 0001628280-26-054458, weighted average basic shares, quarter ended 2026-06-30"
+        },
+        "MDB": {
+          "date": "2026-10-16",
+          "close": 337.57,
+          "shares": 80497631,
+          "marketCap": 27173585297,
+          "sharesSource": "10-Q 0001628280-26-059830, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "TEAM": {
+          "date": "2026-10-16",
+          "close": 207.82,
+          "shares": 260965000,
+          "marketCap": 54233746300,
+          "sharesSource": "10-Q 0001650372-26-000027, weighted average basic shares, quarter ended 2026-03-31"
+        },
+        "GTLB": {
+          "date": "2026-10-16",
+          "close": 52.76,
+          "shares": 168703000,
+          "marketCap": 8900770280,
+          "sharesSource": "10-Q 0001628280-26-059943, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "ZM": {
+          "date": "2026-10-16",
+          "close": 94.19,
+          "shares": 292879238,
+          "marketCap": 27586295427,
+          "sharesSource": "10-Q 0001585521-26-000121, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "MNDY": {
+          "date": "2026-10-16",
+          "close": 90.37,
+          "shares": 43697057,
+          "marketCap": 3948903041,
+          "sharesSource": "earnings release 2026-08-10 (https://www.sec.gov/Archives/edgar/data/1845338/000117891326003971/exhibit_99-1.htm), weighted average basic shares, quarter ended 2026-06-30"
+        },
+        "DOCU": {
+          "date": "2026-10-16",
+          "close": 74.65,
+          "shares": 191252000,
+          "marketCap": 14276961800,
+          "sharesSource": "10-Q 0001261333-26-000099, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "ADBE": {
+          "date": "2026-10-16",
+          "close": 245.2,
+          "shares": 395000000,
+          "marketCap": 96854000000,
+          "sharesSource": "10-Q 0000796343-26-000156, weighted average basic shares, quarter ended 2026-08-28"
+        },
+        "VEEV": {
+          "date": "2026-10-16",
+          "close": 310.36,
+          "shares": 162344000,
+          "marketCap": 50385083840,
+          "sharesSource": "10-Q 0001393052-26-000036, weighted average basic shares, quarter ended 2026-07-31"
+        },
+        "SHOP": {
+          "date": "2026-10-16",
+          "close": 169.52,
+          "shares": 1295220307,
+          "marketCap": 219565746443,
+          "sharesSource": "10-Q 0001594805-26-000047, weighted average basic shares, quarter ended 2026-06-30"
+        }
+      },
+      "index": 111.58,
+      "sectorIndex": {
+        "front-office": 76.06,
+        "back-office": 79.88,
+        "hr-finance": 87.71,
+        "security": 152.66,
+        "data-infra": 129.91,
+        "dev-tools": 131.01,
+        "collaboration": 91.77,
+        "creative-vertical": 97.73
+      }
     }
   ],
   "fundamentals": {
@@ -9567,7 +9744,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:22.618Z"
+      "checked": "2026-10-16T21:56:51.522Z"
     },
     "HUBS": {
       "quarters": [
@@ -9749,7 +9926,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:23.091Z"
+      "checked": "2026-10-16T21:56:51.850Z"
     },
     "NOW": {
       "quarters": [
@@ -9931,7 +10108,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:23.419Z"
+      "checked": "2026-10-16T21:56:52.499Z"
     },
     "WDAY": {
       "quarters": [
@@ -10113,7 +10290,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:24.060Z"
+      "checked": "2026-10-16T21:56:53.240Z"
     },
     "PAYC": {
       "quarters": [
@@ -10295,7 +10472,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:24.498Z"
+      "checked": "2026-10-16T21:56:53.810Z"
     },
     "INTU": {
       "quarters": [
@@ -10463,7 +10640,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:25.031Z"
+      "checked": "2026-10-16T21:56:54.669Z"
     },
     "BILL": {
       "quarters": [
@@ -10631,7 +10808,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:25.381Z"
+      "checked": "2026-10-16T21:56:55.331Z"
     },
     "CRWD": {
       "quarters": [
@@ -10813,7 +10990,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:25.692Z"
+      "checked": "2026-10-16T21:56:55.849Z"
     },
     "PANW": {
       "quarters": [
@@ -10981,7 +11158,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:26.238Z"
+      "checked": "2026-10-16T21:56:56.410Z"
     },
     "ZS": {
       "quarters": [
@@ -11149,7 +11326,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:26.569Z"
+      "checked": "2026-10-16T21:56:56.925Z"
     },
     "OKTA": {
       "quarters": [
@@ -11331,7 +11508,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:27.015Z"
+      "checked": "2026-10-16T21:56:57.491Z"
     },
     "NET": {
       "quarters": [
@@ -11513,7 +11690,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:27.357Z"
+      "checked": "2026-10-16T21:56:57.998Z"
     },
     "SNOW": {
       "quarters": [
@@ -11674,7 +11851,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:27.662Z"
+      "checked": "2026-10-16T21:56:58.488Z"
     },
     "DDOG": {
       "quarters": [
@@ -11856,7 +12033,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:28.169Z"
+      "checked": "2026-10-16T21:56:59.036Z"
     },
     "MDB": {
       "quarters": [
@@ -12038,7 +12215,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:28.589Z"
+      "checked": "2026-10-16T21:56:59.352Z"
     },
     "TEAM": {
       "quarters": [
@@ -12206,7 +12383,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:29.063Z"
+      "checked": "2026-10-16T21:56:59.865Z"
     },
     "GTLB": {
       "quarters": [
@@ -12388,7 +12565,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:29.552Z"
+      "checked": "2026-10-16T21:57:00.172Z"
     },
     "ZM": {
       "quarters": [
@@ -12570,7 +12747,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:30.173Z"
+      "checked": "2026-10-16T21:57:00.507Z"
     },
     "MNDY": {
       "quarters": [
@@ -12725,7 +12902,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:30.576Z",
+      "checked": "2026-10-16T21:57:00.876Z",
       "note": "Foreign filer without quarterly SEC data; quarters are hand-entered from its earnings releases (scripts/data/saas-manual.json)."
     },
     "DOCU": {
@@ -12908,7 +13085,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:31.023Z"
+      "checked": "2026-10-16T21:57:01.381Z"
     },
     "ADBE": {
       "quarters": [
@@ -13090,7 +13267,7 @@
         "rpo": "RevenueRemainingPerformanceObligation",
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:31.382Z"
+      "checked": "2026-10-16T21:57:01.936Z"
     },
     "SHOP": {
       "quarters": [
@@ -13258,7 +13435,7 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:32.118Z"
+      "checked": "2026-10-16T21:57:02.861Z"
     },
     "VEEV": {
       "quarters": [
@@ -13440,9 +13617,9 @@
         "rpo": null,
         "shares": "WeightedAverageNumberOfSharesOutstandingBasic"
       },
-      "checked": "2026-10-15T11:24:31.701Z"
+      "checked": "2026-10-16T21:57:02.434Z"
     }
   },
-  "fundamentalsUpdated": "2026-10-15T11:24:32.369Z",
-  "pricesUpdated": "2026-10-15T11:04:59.908Z"
+  "fundamentalsUpdated": "2026-10-16T21:57:03.112Z",
+  "pricesUpdated": "2026-10-16T21:56:48.999Z"
 }
