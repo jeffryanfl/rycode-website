@@ -117,20 +117,8 @@ export default defineConfig({
     // Add any new redirect to public/_redirects (both slash forms) as well as here.
     redirects: false,
   },
-  server: {
-    host: true,
-  },
-  preview: {
-    host: true,
-  },
   vite: {
     plugins: [servePublicIndex()],
-    server: {
-      allowedHosts: true,
-    },
-    preview: {
-      allowedHosts: true,
-    },
   },
 });
 

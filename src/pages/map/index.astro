@@ -283,7 +283,7 @@ const legend = [
       ))}
     </section>
 
-    <script id="concept-map-data" type="application/json" set:html={JSON.stringify(clientData)} />
+    <script id="concept-map-data" type="application/json" set:html={JSON.stringify(clientData).replace(/</g, '\\u003c')} />
     <script is:inline src="/concept-map.js"></script>
   </article>
 </Layout>

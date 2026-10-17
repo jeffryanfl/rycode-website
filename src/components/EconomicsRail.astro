@@ -1,5 +1,6 @@
 ---
 import '../styles/economics-rail.css';
+import { safeHref } from '../lib/safe-href';
 
 interface RailLine {
   key: string;
@@ -276,8 +277,8 @@ const tabLabel: Record<string, string> = {
           )}
         </div>
       ))}
-      {card.source ? (
-        <a class="econ-rail-source" href={card.source}>{card.sourceLabel}</a>
+      {safeHref(card.source) ? (
+        <a class="econ-rail-source" href={safeHref(card.source)!}>{card.sourceLabel}</a>
       ) : (
         card.sourceLabel && <p class="econ-rail-source">{card.sourceLabel}</p>
       )}

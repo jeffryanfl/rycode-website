@@ -5,6 +5,7 @@
  * Edit the feed, not this file, to move a number.
  */
 import { benchAsOf, benchBoard } from '../lib/ai-bench-charts';
+import { safeHref } from '../lib/safe-href';
 
 const asOf = benchAsOf();
 const { columns, rows, notes, verifiers } = benchBoard();
@@ -41,7 +42,7 @@ const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.n
                 cell ? (
                   <td data-v={cell.num ?? ''} style={cell.shade !== null ? `--s:${(0.08 + cell.shade * 0.5).toFixed(3)}` : undefined} class={cell.shade !== null ? 'abb-h' : 'abb-u'}>
                     {ci === 0 && cell.num !== null && <span class="abb-bar" style={`width:${(cell.num / aaMax) * 100}%`} aria-hidden="true"></span>}
-                    <span class="abb-v">{cell.source ? <a href={cell.source} target="_blank" rel="noopener noreferrer">{cell.value}</a> : cell.value}</span>
+                    <span class="abb-v">{safeHref(cell.source) ? <a href={safeHref(cell.source)!} target="_blank" rel="noopener noreferrer">{cell.value}</a> : cell.value}</span>
                     {cell.notes.map((n) => <sup><a href={`#abb-n${n}`}>{n}</a></sup>)}
                     <span class="abb-tag">{cell.tag}{cell.effort ? ` · ${cell.effort}` : ''}</span>
                   </td>
@@ -55,7 +56,7 @@ const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.n
       </table>
     </div>
     <ol class="abb-notes">
-      {notes.map((n, i) => <li id={`abb-n${i + 1}`}>{n.text}{n.link && <>{" "}{n.link.source ? <a href={n.link.source} target="_blank" rel="noopener noreferrer">{n.link.text}</a> : n.link.text}.</>}</li>)}
+      {notes.map((n, i) => <li id={`abb-n${i + 1}`}>{n.text}{n.link && <>{" "}{safeHref(n.link.source) ? <a href={safeHref(n.link.source)!} target="_blank" rel="noopener noreferrer">{n.link.text}</a> : n.link.text}.</>}</li>)}
     </ol>
     <dl class="abb-defs">
       {columns.map((c) => <div><dt>{c.base}</dt><dd>{c.def.replace(/^[^:]+:\s*/, '')}</dd></div>)}

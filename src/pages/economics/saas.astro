@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../../layouts/Layout.astro';
 import Cell from '../../components/SaasCell.astro';
+import { safeHref } from '../../lib/safe-href';
 import '../../styles/economics.css';
 import '../../styles/saas-tracker.css';
 
@@ -236,8 +237,8 @@ const maxQ = 5;
       <ol>
         <li><a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces">SEC EDGAR XBRL companyfacts API</a>, checked {day(history.fundamentalsUpdated?.slice(0, 10))}</li>
         <li><a href="https://finance.yahoo.com/">Yahoo Finance</a> daily closes, through Fri {asOf}</li>
-        {releases.map((r) => (
-          <li><a href={r.url}>{r.title.replace(' (6-K exhibit 99.1)', '')}</a>, {day(r.date)} (SEC 6-K exhibit 99.1)</li>
+        {releases.filter((r) => safeHref(r.url)).map((r) => (
+          <li><a href={safeHref(r.url)!}>{r.title.replace(' (6-K exhibit 99.1)', '')}</a>, {day(r.date)} (SEC 6-K exhibit 99.1)</li>
         ))}
         <li>Data files: <a href="/saas-tracker.json">saas-tracker.json</a> (snapshot) and <a href="/saas-history.json">saas-history.json</a> (every week and quarter)</li>
       </ol>
