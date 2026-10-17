@@ -97,6 +97,8 @@ function servePublicIndex() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rycode.dev',
+  // Astro 7 defaults to JSX whitespace rules; keep v6 HTML-aware compression for unchanged markup output.
+  compressHTML: true,
   integrations: [riskCardDrift(), conceptMapDrift(), emDashCheck()],
   redirects: {
     '/research': '/economics/',
