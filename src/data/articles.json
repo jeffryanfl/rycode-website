@@ -1566,7 +1566,7 @@
   {
     "href": "/ai/models/open-weight/step-5/",
     "title": "Step 5 Preview",
-    "description": "StepFun. API live. Weights dated 15 Oct 2026.",
+    "description": "StepFun. API live. Open weights on Hugging Face (checked 17 Oct 2026).",
     "date": "2026-09-22",
     "section": "ai",
     "series": "ai-open-weight",

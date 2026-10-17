@@ -67,12 +67,6 @@ export function benchAsOf(): string {
   return `${d} ${MONTHS[m - 1]} ${y}`;
 }
 
-/** Short label for the bench change strip (e.g. Gemini 4 Argon → Argon). */
-function benchShortName(model: string): string {
-  const parts = model.trim().split(/\s+/);
-  return parts[parts.length - 1] ?? model;
-}
-
 function benchAddedDate(note: string, model: string): string | null {
   const needle = `${model} (added `;
   const idx = note.indexOf(needle);
@@ -93,7 +87,7 @@ export function benchLatestAdditionsLine(): string {
   const list = pair
     .map((lab) => {
       const added = benchAddedDate(note, lab.model);
-      return `${benchShortName(lab.model)} (added ${added})`;
+      return `${lab.model} (added ${added})`;
     })
     .join('; ');
   return `Latest additions: ${list}. Board as of ${benchAsOf()}.`;
