@@ -67,6 +67,38 @@ export function benchAsOf(): string {
   return `${d} ${MONTHS[m - 1]} ${y}`;
 }
 
+/** Short label for the bench change strip (e.g. Gemini 4 Argon → Argon). */
+function benchShortName(model: string): string {
+  const parts = model.trim().split(/\s+/);
+  return parts[parts.length - 1] ?? model;
+}
+
+function benchAddedDate(note: string, model: string): string | null {
+  const needle = `${model} (added `;
+  const idx = note.indexOf(needle);
+  if (idx < 0) return null;
+  const m = note.slice(idx + needle.length).match(/^(\d{1,2} \w+ \d{4})/);
+  return m?.[1] ?? null;
+}
+
+/**
+ * "Latest additions" line for #aiBench: the last two living-table rows whose
+ * full model name carries an "(added …)" clause in the feed note.
+ */
+export function benchLatestAdditionsLine(): string {
+  const note = String((feed as { note?: string }).note ?? '');
+  const latest = data.labs.filter((lab) => benchAddedDate(note, lab.model));
+  const pair = latest.slice(-2);
+  if (pair.length < 2) return `Board as of ${benchAsOf()}.`;
+  const list = pair
+    .map((lab) => {
+      const added = benchAddedDate(note, lab.model);
+      return `${benchShortName(lab.model)} (added ${added})`;
+    })
+    .join('; ');
+  return `Latest additions: ${list}. Board as of ${benchAsOf()}.`;
+}
+
 /**
  * The lines chart is these four version-pinned benches, in this order.
  * A cell is drawn only when its version string matches. A blank, a partial,

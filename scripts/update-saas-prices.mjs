@@ -30,7 +30,7 @@ async function yahooDaily(ticker, fromDate) {
   const p1 = Math.floor(new Date(`${addDays(fromDate, -10)}T00:00:00Z`).getTime() / 1000);
   const p2 = Math.floor(Date.now() / 1000);
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?period1=${p1}&period2=${p2}&interval=1d&events=splits`;
-  const res = await fetchWithTimeout(url, { headers: { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script)' } });
+  const res = await fetchWithTimeout(url, { headers: { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script; contact@rycode.dev)' } });
   if (!res.ok) throw new Error(`${res.status} for ${url}`);
   const result = (await res.json())?.chart?.result?.[0];
   if (!result) throw new Error(`Yahoo ${ticker}: no result`);

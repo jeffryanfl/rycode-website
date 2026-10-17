@@ -4,18 +4,12 @@
  * One table: one row per model, one column per test, AA Intelligence Index first.
  * Edit the feed, not this file, to move a number.
  */
-import fs from 'node:fs';
-import path from 'node:path';
-import { benchAsOf, benchBoard } from '../lib/ai-bench-charts';
+import { benchAsOf, benchBoard, benchLatestAdditionsLine } from '../lib/ai-bench-charts';
 import { safeHref } from '../lib/safe-href';
 
 const asOf = benchAsOf();
 const { columns, rows, notes, verifiers } = benchBoard();
-const benchNote = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'ai-benchmarks.json'), 'utf8')).note ?? '';
-const benchAdds = [...String(benchNote).matchAll(/([A-Za-z0-9.·]+) \(added ([^)]+)\)/g)].map((m) => `${m[1]} (${m[2]})`);
-const changeLine = benchAdds.length
-  ? `Since ${asOf}: ${benchAdds.slice(-2).join('; ')}.`
-  : `As of ${asOf}.`;
+const changeLine = benchLatestAdditionsLine();
 const aaMax = 100;
 const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.num ?? -1));
 ---

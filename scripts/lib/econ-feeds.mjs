@@ -18,9 +18,12 @@ import { fetchWithTimeout, writeFileAtomic } from './feed-io.mjs';
  * A run overwrites a point when the source's value for that date changed.
  */
 
-/* BLS and Treasury answer a browser user agent; FRED refuses it, so FRED gets Node's default. */
+export const UA_YAHOO = 'Mozilla/5.0 (rycode.dev feed script; contact@rycode.dev)';
+export const UA_FRED = 'rycode.dev feed script contact@rycode.dev';
+
+/* BLS and Treasury answer a browser user agent; FRED wants a named requester, not a browser string. */
 export async function get(url, { browser = true, kind = 'text', init = {} } = {}) {
-  const headers = { ...(browser ? { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script)' } : {}), ...(init.headers ?? {}) };
+  const headers = { ...(browser ? { 'User-Agent': UA_YAHOO } : {}), ...(init.headers ?? {}) };
   const res = await fetchWithTimeout(url, { ...init, headers });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`);
   return kind === 'json' ? res.json() : res.text();
@@ -60,7 +63,7 @@ export async function blsMonthly(ids, years = 10) {
 
 /** FRED graph CSV (no key): [{ date, value }] oldest first, from `start` on. */
 export async function fredSeries(id, start = '1900-01-01') {
-  const csv = await get(fredCsvUrl(id), { browser: false });
+  const csv = await get(fredCsvUrl(id), { browser: false, init: { headers: { 'User-Agent': UA_FRED } } });
   const points = csv
     .trim()
     .split(/\r?\n/)

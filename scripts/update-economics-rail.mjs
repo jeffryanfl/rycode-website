@@ -33,7 +33,7 @@ import { yahooBarDateUtcSeconds } from './lib/yahoo-et-date.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public', 'economics-rail.json');
-const UA = { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script)' };
+const UA = { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script; contact@rycode.dev)' };
 const FISCAL = 'https://api.fiscaldata.treasury.gov/services/api/fiscal_service';
 
 const SOURCES = {

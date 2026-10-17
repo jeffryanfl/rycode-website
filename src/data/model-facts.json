@@ -55,7 +55,7 @@
     "/ai/models/open-weight/glm-5-3/": { "name": "GLM-5.3", "status": "current", "statusNote": "open weights", "aa": { "value": 45, "effort": "max", "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
     "/ai/models/open-weight/kimi-k3/": { "name": "Kimi K3", "status": "current", "statusNote": "open weights", "aa": { "value": 44, "effort": "max", "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
     "/ai/models/open-weight/qwen/": { "name": "Qwen3.8 Max", "status": "current", "aa": { "value": 45, "label": "Qwen3.8 Max (0902)", "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
-    "/ai/models/open-weight/step-5/": { "name": "Step 5 Preview", "status": "preview", "statusNote": "the 15 Oct 2026 open-weight date on StepFun's page has passed; this card still has no downloadable weights from the sources cited here", "aa": { "value": 44, "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
+    "/ai/models/open-weight/step-5/": { "name": "Step 5 Preview", "status": "preview", "statusNote": "open weights posted on Hugging Face (stepfun-ai/Step-5-Preview) on 15 Oct 2026; specs on this card are from 22 Sep 2026", "aa": { "value": 44, "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
     "/ai/models/open-weight/beam/": { "name": "Beam 1.0", "status": "current", "statusNote": "open weights, Apache 2.0", "aa": { "value": 30, "label": "AA, 16 Oct 2026, see note 1", "fetched": "16 Oct 2026" }, "released": "16 Oct 2026", "checked": "16 Oct 2026" },
 
     "/ai/models/typesafe/jev/": { "name": "Jev", "status": "preview", "statusNote": "early access", "released": "15 Sep 2026 (announced)", "checked": "15 Sep 2026" },

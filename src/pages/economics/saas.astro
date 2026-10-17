@@ -63,8 +63,20 @@ const sectorWow = sectors
   })
   .filter((row) => row != null)
   .sort((a, b) => b.chg - a.chg);
+const sectorWeak = [...sectorWow].sort((a, b) => a.chg - b.chg).slice(0, 2);
+const sectorChangeParts = [];
+const sectorChangeSeen = new Set();
+if (sectorWow[0]) {
+  sectorChangeParts.push(`${sectorWow[0].label} ${pct(sectorWow[0].chg, true)}`);
+  sectorChangeSeen.add(sectorWow[0].label);
+}
+for (const s of sectorWeak) {
+  if (sectorChangeSeen.has(s.label)) continue;
+  sectorChangeParts.push(`${s.label} ${pct(s.chg, true)}`);
+  sectorChangeSeen.add(s.label);
+}
 const saasChangeLine = basketWow != null && prevWeek
-  ? `Since week of ${day(prevWeek.date)}: basket ${pct(basketWow, true)}${sectorWow[0] ? `; ${sectorWow[0].label} ${pct(sectorWow[0].chg, true)}` : ''}.`
+  ? `Since week of ${day(prevWeek.date)}: basket ${pct(basketWow, true)}${sectorChangeParts.length ? `; ${sectorChangeParts.join('; ')}` : ''}.`
   : `As of week of ${asOf}.`;
 
 /* ---------- index chart (SVG, built here) ---------- */
