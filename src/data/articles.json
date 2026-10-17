@@ -1005,8 +1005,8 @@
   {
     "href": "/ai/models/deepseek/flash/",
     "title": "Flash",
-    "description": "Current recommended API model. DeepSeek-V4.1-Flash.",
-    "date": "2026-09-21",
+    "description": "Current recommended API model. DeepSeek-V4.1-Flash-1017, released 17 Oct 2026.",
+    "date": "2026-10-17",
     "section": "ai",
     "series": "ai-deepseek",
     "crumbs": [
@@ -1021,6 +1021,26 @@
     ],
     "file": "src/pages/ai/models/deepseek/flash.astro",
     "slug": "ai-models-deepseek-flash"
+  },
+  {
+    "href": "/ai/models/deepseek/v4-1-flash/",
+    "title": "V4.1-Flash (10 Sep, archive)",
+    "description": "Archived. The 10 Sep 2026 DeepSeek-V4.1-Flash, upgraded to V4.1-Flash-1017 on 17 Oct 2026.",
+    "date": "2026-09-10",
+    "section": "ai",
+    "series": "ai-deepseek",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/deepseek/",
+        "label": "DeepSeek"
+      }
+    ],
+    "file": "src/pages/ai/models/deepseek/v4-1-flash.astro",
+    "slug": "ai-models-deepseek-v4-1-flash"
   },
   {
     "href": "/ai/models/deepseek/v4-pro/",

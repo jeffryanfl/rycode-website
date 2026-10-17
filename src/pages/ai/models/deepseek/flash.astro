@@ -6,29 +6,44 @@ import '../../../../styles/ai.css';
 
 <Layout
   title="DeepSeek Flash - A.I. - Rycode"
-  description="Current recommended DeepSeek API model. API id deepseek-flash. Model version DeepSeek-V4.1-Flash."
+  description="Current recommended DeepSeek API model. API id deepseek-flash. Model version DeepSeek-V4.1-Flash-1017, released 17 Oct 2026."
   variant="ai"
 >
   <article class="ai-model">
     <p class="ai-model-kicker">DeepSeek · current</p>
-    <h1 class="ai-model-title">DeepSeek Flash (V4.1-Flash)</h1>
-    <p class="ai-model-dek">DeepSeek Flash is DeepSeek’s current recommended API model. The API id is <code>deepseek-flash</code>. The pricing page lists the model version as DeepSeek-V4.1-Flash. Legacy names <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> still route here and bill at Flash prices.</p>
+    <h1 class="ai-model-title">DeepSeek Flash (V4.1-Flash-1017)</h1>
+    <p class="ai-model-dek">DeepSeek Flash is DeepSeek's current recommended API model. The API id is <code>deepseek-flash</code>, and since 17 Oct 2026 the pricing page lists the model version as DeepSeek-V4.1-Flash-1017. DeepSeek's Hugging Face card calls it "a minor update" to DeepSeek-V4.1-Flash. DeepSeek says it scores higher on benchmarks, finishes tasks faster and writes shorter outputs than the previous version. It is live on DeepSeek's website, app and API. The legacy names <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> still route here and bill at Flash prices. The 10 Sep version is in the <a href="/ai/models/deepseek/v4-1-flash/">archive</a>.</p>
     <hr class="ai-model-rule" />
     <ModelFacts />
     <h2 class="ai-model-section">Training</h2>
-    <p>DeepSeek’s 10 Sep 2026 announce describes a 552B-parameter MoE with a Causal Encoder–Decoder architecture (8B active parameters for input, 16B for output) and larger-scale RL post-training. Full dataset mix and FLOPs belong in the tech report on Hugging Face when cited. Knowledge cutoff is not published on the pricing page.</p>
+    <p>DeepSeek says the update uses reinforcement learning (training by trial and reward) with self-feedback to get better at building whole projects, from games to 3D models. It does not publish a new parameter count for this version. The 10 Sep base model is described on the <a href="/ai/models/deepseek/v4-1-flash/">archived card</a>.</p>
     <h2 class="ai-model-section">Inference</h2>
-    <p>Thinking mode is on by default; non-thinking is available. Native vision is supported on Flash. Tool calls, JSON output, the Responses API, and an Anthropic-compatible API are supported. FIM completion is non-thinking only (beta).</p>
+    <p>Thinking mode (the model reasons step by step before answering) is on by default, and non-thinking mode is available. Vision (reading images), tool calls, JSON output, the Responses API and an Anthropic-compatible API are supported. FIM completion (fill in the middle of code) is non-thinking only and in beta. DeepSeek says it tuned the model for DeepSeek Harness, Tencent CodeBuddy and WorkBuddy, and recommends DeepSeek Harness 0.2.1-rc.1 or later.</p>
     <h2 class="ai-model-section">Context</h2>
-    <p>The documented context window is 1 million tokens. Max output is 384K tokens on the pricing page.</p>
-    <h2 class="ai-model-section">Methods</h2>
-    <p>Dual thinking and non-thinking modes. Effort levels are <code>low</code>, <code>high</code>, and <code>max</code> in the docs. Beyond “larger-scale RL post-training,” the exact train-time RL recipe is not published on the announce page.</p>
+    <p>The context window (how much text the model can read at once) is 1 million tokens. Max output is 384K tokens on the pricing page.</p>
     <h2 class="ai-model-section">Benchmarking</h2>
-    <p>The announce claims benchmark results ahead of flagship models including DeepSeek-V4-Pro. Specific shared leaderboard numbers (HLE, Arena, and similar) are not copied here from that announce extract. Prefer the DeepSeek tech report or Hugging Face materials when you need dated figures.</p>
-    <h2 class="ai-model-section">Hardware</h2>
-    <p>The announce claims KV cache use of about 1/4 HBM and 1/8 SSD storage versus the prior generation. Training cluster size is not published. Open weights: <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">DeepSeek-V4.1-Flash on Hugging Face</a></p>
+    <p>These are DeepSeek's own numbers from its 17 Oct 2026 changelog and Hugging Face card. No independent group has re-run them yet.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead><tr><th scope="col">Benchmark</th><th scope="col">V4.1-Flash-1017</th><th scope="col">V4.1-Flash (10 Sep)</th></tr></thead>
+        <tbody>
+          <tr><td>HLE, no tools ¹</td><td>42.6 (44.0 text only) <span class="ai-model-facts-sub">DeepSeek</span></td><td>36.8 (39.1 text only) <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>Terminal-Bench 4.0 ²</td><td>42.3 <span class="ai-model-facts-sub">DeepSeek</span></td><td>31.2 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>DeepSWE v1.1 ²</td><td>77.0 <span class="ai-model-facts-sub">DeepSeek</span></td><td>74.2 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>ProgramBench</td><td>29.1 <span class="ai-model-facts-sub">DeepSeek</span></td><td>20.3 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>NL2Repo-Bench</td><td>68.2 <span class="ai-model-facts-sub">DeepSeek</span></td><td>65.4 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>Automation-Bench v1.0.6</td><td>60.5 <span class="ai-model-facts-sub">DeepSeek</span></td><td>54.8 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>Agents' Last Exam</td><td>35.4 <span class="ai-model-facts-sub">DeepSeek</span></td><td>31.8 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>Apex Bench v1.1 ⁴</td><td>72.1 <span class="ai-model-facts-sub">DeepSeek</span></td><td>64.6 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>Chartography, with tools</td><td>83.0 <span class="ai-model-facts-sub">DeepSeek</span></td><td>78.9 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>BabyVision, with tools</td><td>92.5 <span class="ai-model-facts-sub">DeepSeek</span></td><td>89.6 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+          <tr><td>ZeroBench-main, with tools ³</td><td>51.0 <span class="ai-model-facts-sub">DeepSeek</span></td><td>49.0 <span class="ai-model-facts-sub">DeepSeek</span></td></tr>
+        </tbody></table></div>
+    <p class="ai-lab-table-note">¹ "Text only" is the text subset of HLE. ² DeepSeek ran Terminal-Bench 4.0 in the Claude Code harness and DeepSWE v1.1 in the Mini-SWE-V2 harness. ³ ZeroBench-main is scored Pass@5 (best of five tries). ⁴ The whole 10 Sep column comes from DeepSeek's 17 Oct comparison table. The Apex Bench figure does not appear in DeepSeek's 10 Sep changelog.</p>
+    <h2 class="ai-model-section">Weights and license</h2>
+    <p>Open weights (files you can download and run yourself) are on <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017">Hugging Face</a> and ModelScope under the MIT license. Hugging Face lists the weights in mixed precision, including FP8 (8-bit numbers). Hugging Face counts about 763B stored parameters, while DeepSeek's 10 Sep announce gave 552B. No DeepSeek source explains the difference.</p>
     <h2 class="ai-model-section">Access and pricing</h2>
-    <p>Base URL is <code>https://api.deepseek.com</code> (OpenAI format) or <code>https://api.deepseek.com/anthropic</code>. Peak and off-peak pricing (off-peak is half of peak). Per 1M tokens on the pricing page:</p>
+    <p>Base URL is <code>https://api.deepseek.com</code> (OpenAI format) or <code>https://api.deepseek.com/anthropic</code>. DeepSeek says API calls and pricing are unchanged by the upgrade. Off-peak prices are half of peak. Per 1M tokens on the pricing page:</p>
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead><tr><th scope="col"></th><th scope="col">Off-peak</th><th scope="col">Peak</th></tr></thead>
@@ -40,10 +55,11 @@ import '../../../../styles/ai.css';
     <p>Peak hours (docs): 01:00 to 04:00 and 06:00 to 10:00 UTC, Monday through Friday, excluding Chinese public holidays. Concurrency limit listed: 2500.</p>
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
+      <li><a href="https://api-docs.deepseek.com/news/news261017">V4.1-Flash-1017 announce</a></li>
+      <li><a href="https://api-docs.deepseek.com/updates">Change Log, 17 Oct 2026</a></li>
       <li><a href="https://api-docs.deepseek.com/quick_start/pricing">Models &amp; Pricing</a></li>
-      <li><a href="https://api-docs.deepseek.com/news/news260910">V4.1-Flash announce</a></li>
-      <li><a href="https://api-docs.deepseek.com/guides/thinking_mode/">Thinking mode</a></li>
-      <li><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">Hugging Face: DeepSeek-V4.1-Flash</a></li>
+      <li><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017">Hugging Face: DeepSeek-V4.1-Flash-1017</a></li>
+      <li><a href="https://x.com/deepseek_ai/status/2111375640717033777">DeepSeek on X, 17 Oct 2026</a></li>
     </ul>
   </article>
 </Layout>

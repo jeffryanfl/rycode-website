@@ -15,6 +15,7 @@
         "/ai/models/meta/llama/llama-4/",
         "/ai/models/meta/muse/glimmer/",
         "/ai/models/deepseek/r1/",
+        "/ai/models/deepseek/v4-1-flash/",
         "/ai/glossary/",
         "/ai/models/more-labs/mistral-large-4/",
         "/ai/models/more-labs/cohere-command-a-plus/",

@@ -30,7 +30,7 @@ const groups = ORDER.map((lab) => ({
   ...LABS[lab],
   items: rows
     .filter((f) => f.href.split('/')[3] === lab)
-    .map((f) => ({ f, note: noteFor(f.href.startsWith('/ai/models/deepseek/') && f.replacedBy?.name === 'V4 line' ? 'V4 line means deepseek-flash (DeepSeek-V4.1-Flash) and deepseek-v4-pro, the only models on DeepSeek\'s API' : f.statusNote) })),
+    .map((f) => ({ f, note: noteFor(f.href.startsWith('/ai/models/deepseek/') && f.replacedBy?.name === 'V4 line' ? 'V4 line means deepseek-flash (DeepSeek-V4.1-Flash-1017) and deepseek-v4-pro, the only models on DeepSeek\'s API' : f.statusNote) })),
 })).filter((g) => g.items.length > 0);
 ---
 

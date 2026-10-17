@@ -7,7 +7,7 @@ const current = [
   {
     href: '/ai/models/deepseek/flash/',
     title: 'Flash',
-    dek: 'Current recommended API model. DeepSeek-V4.1-Flash.',
+    dek: 'Current recommended API model. DeepSeek-V4.1-Flash-1017 (17 Oct 2026).',
     meta: ['deepseek-flash · 1M · lead card'],
   },
   {
@@ -43,6 +43,12 @@ const archive = [
     dek: 'Prior chat generation. API name deepseek-chat is retired.',
     meta: ['Archive stub'],
   },
+  {
+    href: '/ai/models/deepseek/v4-1-flash/',
+    title: 'V4.1-Flash (10 Sep)',
+    dek: 'First V4.1-Flash. DeepSeek upgraded deepseek-flash to V4.1-Flash-1017 on 17 Oct 2026.',
+    meta: ['Archive · weights still on Hugging Face'],
+  },
 ];
 ---
 
@@ -53,7 +59,7 @@ const archive = [
 >
   <div class="ai-lab-head">
     <h1 class="ai-lab-title">DeepSeek</h1>
-    <p class="ai-lab-dek">DeepSeek’s current API line is V4: call <code>deepseek-flash</code> (DeepSeek-V4.1-Flash) or <code>deepseek-v4-pro</code>. Older names <code>deepseek-chat</code> and <code>deepseek-reasoner</code> were retired after 24 Jul 2026 UTC. R1 and V3 stay as archive doors.</p>
+    <p class="ai-lab-dek">DeepSeek’s current API line is V4: call <code>deepseek-flash</code> (DeepSeek-V4.1-Flash-1017) or <code>deepseek-v4-pro</code>. Older names <code>deepseek-chat</code> and <code>deepseek-reasoner</code> were retired after 24 Jul 2026 UTC. R1, V3 and the 10 Sep V4.1-Flash are in the <a href="/ai/models/archive/">archive</a>.</p>
   </div>
 
   <LabTable rows={[...current, ...archive]} splitProducts />
