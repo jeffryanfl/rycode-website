@@ -544,9 +544,22 @@ img.hub-glyph--raster {
   }
 
   .hub-doors {
-    grid-template-columns: repeat(2, 6.75rem);
-    column-gap: 1.75rem;
-    row-gap: 1.85rem;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 0.85rem;
+    row-gap: 1.65rem;
+    max-width: 20rem;
+  }
+
+  .hub-doors > li {
+    grid-column: span 2;
+  }
+
+  .hub-doors > li:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .hub-doors > li:nth-child(5) {
+    grid-column: 4 / span 2;
   }
 
   .hub-door {

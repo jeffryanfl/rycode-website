@@ -202,7 +202,15 @@ function chart(points: RailPoint[], lines: RailLine[], unit: string) {
     x: xAt(i),
     anchor: order === 0 ? 'start' : order === all.length - 1 ? 'end' : 'middle',
   }));
-  return { w, h, pad, paths, yTicks, xTicks };
+  const lastPoint = points[points.length - 1];
+  const latest = lines
+    .map((line) => {
+      const value = lastPoint[line.key];
+      if (typeof value !== 'number' || !Number.isFinite(value)) return null;
+      return { label: line.label, value: formatY(value, unit) };
+    })
+    .filter((row): row is { label: string; value: string } => row !== null);
+  return { w, h, pad, paths, yTicks, xTicks, latest, asOf: lastPoint.date };
 }
 
 const tabLabel: Record<string, string> = {
@@ -240,6 +248,15 @@ const tabLabel: Record<string, string> = {
                     <label class="econ-rail-tab" for={inputId}>{tabLabel[tab] || tab}</label>
                     <div class="econ-rail-panel">
                       {drawn ? (
+                        <>
+                        {drawn.latest?.length ? (
+                          <p class="econ-rail-latest">
+                            <span class="econ-rail-latest-asof">Latest {drawn.asOf}</span>
+                            {drawn.latest.map((row) => (
+                              <span class="econ-rail-latest-row"><strong>{row.label}</strong> {row.value}</span>
+                            ))}
+                          </p>
+                        ) : null}
                         <svg viewBox={`0 0 ${drawn.w} ${drawn.h}`} role="img" aria-label={`${card.title}${plot.heading ? ` ${plot.heading}` : ''}, ${tabLabel[tab] || tab}`}>
                           <line class="econ-rail-axis" x1={drawn.pad.l} y1={drawn.pad.t} x2={drawn.pad.l} y2={drawn.h - drawn.pad.b} />
                           <line class="econ-rail-axis" x1={drawn.pad.l} y1={drawn.h - drawn.pad.b} x2={drawn.w - drawn.pad.r} y2={drawn.h - drawn.pad.b} />
@@ -256,6 +273,7 @@ const tabLabel: Record<string, string> = {
                             path.d && <path d={path.d} fill="none" stroke={path.color} stroke-width="1.5" />
                           ))}
                         </svg>
+                        </>
                       ) : (
                         <p class="econ-rail-empty">No points yet.</p>
                       )}

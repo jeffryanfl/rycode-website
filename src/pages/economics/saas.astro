@@ -5,6 +5,7 @@
  * scripts/update-saas-prices.mjs (weekly, Friday close) and
  * scripts/update-saas-fundamentals.mjs (after earnings). No number is typed here.
  */
+/** @typedef {{ date: string, index: number | null, sectorIndex?: Record<string, number | null>, prices?: Record<string, { date?: string, close?: number | null } | null> }} SaasWeek */
 import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../../layouts/Layout.astro';
@@ -13,6 +14,7 @@ import { safeHref } from '../../lib/safe-href';
 import '../../styles/economics.css';
 import '../../styles/saas-tracker.css';
 
+/** @param {string} f */
 const read = (f) => JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', f), 'utf8'));
 const tracker = read('saas-tracker.json');
 const history = read('saas-history.json');
@@ -22,9 +24,13 @@ const releases = Object.entries(manual).filter(([k]) => !k.startsWith('_')).flat
 const fromRelease = (q, t) => (q?.source === 'release' && t ? `${t}, release` : t);
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** @param {string | null | undefined} iso */
 const day = (iso) => { if (!iso) return null; const [y, m, d] = iso.split('-').map(Number); return `${d} ${MONTHS[m - 1]} ${y}`; };
+/** @param {string | null | undefined} iso */
 const qtag = (iso) => { if (!iso) return null; const [y, m] = iso.split('-').map(Number); return `${MONTHS[m - 1]} ${y}`; };
+/** @param {number | null | undefined} v @param {boolean} [signed] */
 const pct = (v, signed = false) => (v == null ? null : `${signed && v > 0 ? '+' : ''}${v.toFixed(1)}%`);
+/** @param {number | null | undefined} v */
 const usd = (v) => {
   if (v == null) return null;
   const a = Math.abs(v);
@@ -33,14 +39,33 @@ const usd = (v) => {
   if (a >= 1e9) return `${s}$${(a / 1e9).toFixed(1)}B`;
   return `${s}$${(a / 1e6).toFixed(0)}M`;
 };
+/** @param {number | null | undefined} v */
 const num = (v) => (v == null ? null : v.toFixed(1));
 
 const sectors = tracker.sectors;
 const companies = tracker.companies;
+/** @type {SaasWeek[]} */
 const weeks = history.weeks;
 const asOf = day(tracker.asOfWeek);
 const base = day(tracker.index.baseWeek);
 const holidayWeeks = weeks.filter((w) => Object.values(w.prices).some((p) => p && p.date !== w.date)).map((w) => day(w.date));
+const prevWeek = weeks.at(-2);
+const lastWeek = weeks.at(-1);
+const basketWow = lastWeek?.index != null && prevWeek?.index != null
+  ? ((lastWeek.index / prevWeek.index - 1) * 100)
+  : null;
+const sectorWow = sectors
+  .map((s) => {
+    const now = lastWeek?.sectorIndex?.[s.id];
+    const then = prevWeek?.sectorIndex?.[s.id];
+    if (now == null || then == null) return null;
+    return { label: s.label, chg: ((now / then - 1) * 100) };
+  })
+  .filter((row) => row != null)
+  .sort((a, b) => b.chg - a.chg);
+const saasChangeLine = basketWow != null && prevWeek
+  ? `Since week of ${day(prevWeek.date)}: basket ${pct(basketWow, true)}${sectorWow[0] ? `; ${sectorWow[0].label} ${pct(sectorWow[0].chg, true)}` : ''}.`
+  : `As of week of ${asOf}.`;
 
 /* ---------- index chart (SVG, built here) ---------- */
 const W = 720, H = 300, L = 44, R = 12, T = 14, B = 30;
@@ -150,6 +175,7 @@ const maxQ = 5;
     </section>
 
     <section class="econ-digest-section saas-wide" id="companies">
+      <p class="data-change-strip">{saasChangeLine}</p>
       <h2>Companies</h2>
       <p>Market cap is the Friday close times weighted average shares from the latest quarterly filing.<sup><a href="#fn-cap">4</a></sup> RPO (remaining performance obligations) is revenue already signed in contracts but not yet earned. Small text in a cell says which week or which quarter end the number is from.</p>
       <div class="saas-scroll">

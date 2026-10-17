@@ -7,6 +7,10 @@
   align-items: start;
 }
 
+.economics-landing-main {
+  min-width: 0;
+}
+
 .econ-rail {
   display: flex;
   flex-direction: column;
@@ -35,6 +39,28 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   color: rgba(248, 250, 252, 0.55);
+}
+
+.econ-rail-latest {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  margin: 0 0 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(248, 250, 252, 0.72);
+}
+
+.econ-rail-latest-asof {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.68rem;
+  color: rgba(248, 250, 252, 0.45);
+}
+
+.econ-rail-latest-row strong {
+  font-weight: 600;
+  color: rgba(248, 250, 252, 0.88);
 }
 
 .econ-rail-empty,

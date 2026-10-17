@@ -61,6 +61,22 @@
   gap: 0.35rem 0.95rem;
 }
 
+@media (max-width: 720px) {
+  .site-nav-list {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+    padding-bottom: 0.15rem;
+  }
+
+  .site-nav-list::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .site-nav a {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.82rem;

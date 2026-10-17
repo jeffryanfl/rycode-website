@@ -13,11 +13,20 @@
 .saas-legend b { color: var(--econ-ink); font-weight: 600; margin-left: 0.2rem; }
 .saas-swatch { display: inline-block; width: 0.75rem; height: 0.2rem; margin-right: 0.35rem; vertical-align: middle; border-radius: 1px; }
 .saas-chart figcaption { font: 0.75rem var(--font-sans); color: var(--econ-faint); }
+.data-change-strip {
+  margin: 0.35rem 0 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--econ-muted);
+}
 .saas-scroll { overflow-x: auto; margin: 0 0 1.25rem; -webkit-overflow-scrolling: touch; }
 .saas-table { border-collapse: collapse; font-family: var(--font-sans); font-size: 0.82rem; font-variant-numeric: tabular-nums; min-width: 100%; }
 .saas-table th, .saas-table td { padding: 0.32rem 0.6rem; border-bottom: 1px solid var(--econ-hair); text-align: right; white-space: nowrap; vertical-align: top; }
 .saas-table thead th { font-weight: 600; color: var(--econ-ink); border-bottom-color: rgba(248, 250, 252, 0.35); }
-.saas-table th:first-child { text-align: left; position: sticky; left: 0; background: #080a10; }
+.saas-table thead th { position: sticky; top: 0; z-index: 2; background: #080a10; }
+.saas-table th:first-child { text-align: left; position: sticky; left: 0; z-index: 3; background: #080a10; box-shadow: 1px 0 0 rgba(248, 250, 252, 0.12); }
+.saas-table tbody th { position: sticky; left: 0; z-index: 1; background: #080a10; }
 .saas-table tbody th { font-weight: 500; }
 .saas-table th span, .saas-table td span { display: block; font-size: 0.68rem; font-weight: 400; color: var(--econ-faint); }
 .saas-table .saas-empty { color: var(--econ-faint); }

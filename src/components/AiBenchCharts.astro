@@ -4,11 +4,18 @@
  * One table: one row per model, one column per test, AA Intelligence Index first.
  * Edit the feed, not this file, to move a number.
  */
+import fs from 'node:fs';
+import path from 'node:path';
 import { benchAsOf, benchBoard } from '../lib/ai-bench-charts';
 import { safeHref } from '../lib/safe-href';
 
 const asOf = benchAsOf();
 const { columns, rows, notes, verifiers } = benchBoard();
+const benchNote = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'ai-benchmarks.json'), 'utf8')).note ?? '';
+const benchAdds = [...String(benchNote).matchAll(/([A-Za-z0-9.·]+) \(added ([^)]+)\)/g)].map((m) => `${m[1]} (${m[2]})`);
+const changeLine = benchAdds.length
+  ? `Since ${asOf}: ${benchAdds.slice(-2).join('; ')}.`
+  : `As of ${asOf}.`;
 const aaMax = 100;
 const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.num ?? -1));
 ---
@@ -17,6 +24,7 @@ const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.n
   <div class="ai-bench-plate">
     <p class="ai-bench-kicker">Rycode · /ai · leaderboard</p>
     <h2 class="ai-bench-title" id="ai-bench-board-heading">Flagships, every score</h2>
+    <p class="data-change-strip">{changeLine}</p>
     <p class="ai-bench-sub">
       As of {asOf} · higher is better · darker = higher in its column · click a header to sort ·
       <strong>Lab</strong> company's own result · <strong>AA</strong> measured by Artificial Analysis {verifiers.map((v) => <> · <strong>{v}</strong> verified by the {v} organizers</>)} · <strong>Dash</strong> = not reported at this version: no score from the model's own lab at this column's test version
@@ -94,12 +102,28 @@ const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.n
   .abb-defs div { display: flex; gap: 0.35rem; }
   .abb-defs dt { font-weight: 600; white-space: nowrap; }
   .abb-defs dd { margin: 0; }
+  .data-change-strip {
+    margin: 0.35rem 0 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: rgba(248, 250, 252, 0.62);
+  }
   @media (max-width: 600px) {
     .abb { min-width: 0; font-size: 0.74rem; }
     .abb th, .abb td { padding: 0.35rem 0.3rem; }
     .abb thead th { min-width: 4.2rem; font-size: 0.62rem; }
+    .abb .abb-model {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: var(--bg, #080a10);
+      box-shadow: 1px 0 0 rgba(248, 250, 252, 0.12);
+      min-width: 0;
+      max-width: 6.6rem;
+      white-space: normal;
+    }
     .abb td:first-of-type { min-width: 4.4rem; }
-    .abb .abb-model { min-width: 0; max-width: 6.6rem; white-space: normal; }
     .abb-bar { height: 2px; left: 0.3rem; max-width: calc(100% - 0.6rem); }
     .abb-tag { font-size: 0.56rem; }
   }

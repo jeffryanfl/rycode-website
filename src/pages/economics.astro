@@ -52,30 +52,32 @@ const cards = pieces.map((piece) => {
   </div>
 
   <div class="economics-landing">
-    <ul class="economics-index">
-      {cards.map((piece) => (
+    <div class="economics-landing-main">
+      <ul class="economics-index">
+        {cards.map((piece) => (
+          <li class="economics-piece-card">
+            {piece.dateLabel && (
+              <p class="economics-piece-meta">
+                <time datetime={piece.date}>{piece.dateLabel}</time>
+              </p>
+            )}
+            <h2 class="economics-piece-title">
+              <a href={piece.href}>{piece.title}</a>
+            </h2>
+            <p class="economics-piece-dek">{piece.dek}</p>
+          </li>
+        ))}
+      </ul>
+      <h2 class="economics-section">SaaS</h2>
+      <ul class="economics-index economics-index--saas">
         <li class="economics-piece-card">
-          {piece.dateLabel && (
-            <p class="economics-piece-meta">
-              <time datetime={piece.date}>{piece.dateLabel}</time>
-            </p>
-          )}
-          <h2 class="economics-piece-title">
-            <a href={piece.href}>{piece.title}</a>
-          </h2>
-          <p class="economics-piece-dek">{piece.dek}</p>
+          <h3 class="economics-piece-title">
+            <a href="/economics/saas/">SaaS tracker</a>
+          </h3>
+          <p class="economics-piece-dek">Twenty-three public subscription software companies by sector, updated every Friday close, with the numbers from their SEC filings.</p>
         </li>
-      ))}
-    </ul>
-    <h2 class="economics-section">SaaS</h2>
-    <ul class="economics-index">
-      <li class="economics-piece-card">
-        <h3 class="economics-piece-title">
-          <a href="/economics/saas/">SaaS tracker</a>
-        </h3>
-        <p class="economics-piece-dek">Twenty-three public subscription software companies by sector, updated every Friday close, with the numbers from their SEC filings.</p>
-      </li>
-    </ul>
+      </ul>
+    </div>
     <EconomicsRail rail={rail} />
   </div>
 </Layout>
