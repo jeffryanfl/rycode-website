@@ -114,10 +114,27 @@ export function articleNav(pathname: string): ArticleNav | null {
   };
 }
 
+const OG_ROOT = path.join(process.cwd(), 'public');
+const META_CHIP_OG = '/og/articles/ai-hardware-chips-meta.png';
+
+function sectionOgImage(section: Article['section']): string {
+  if (section === 'economics') return '/og/sections/economics.png';
+  if (section === 'risk') return '/og/sections/risk.png';
+  if (section === 'ai') return '/og/sections/ai.png';
+  return '/og/sections/home.png';
+}
+
+function articleOgImage(article: Article): string {
+  const card = `/og/articles/${article.slug}.png`;
+  if (fs.existsSync(path.join(OG_ROOT, card.slice(1)))) return card;
+  if (/^ai-hardware-chips-meta-(nvidia|amd|broadcom)$/.test(article.slug)) return META_CHIP_OG;
+  return sectionOgImage(article.section);
+}
+
 export function ogImageFor(pathname: string): string {
   const current = normalizePath(pathname);
   const article = findArticle(current);
-  if (article) return `/og/articles/${article.slug}.png`;
+  if (article) return articleOgImage(article);
   if (current.startsWith('/economics/')) return '/og/sections/economics.png';
   if (current.startsWith('/risk/')) return '/og/sections/risk.png';
   if (current.startsWith('/ai/')) return '/og/sections/ai.png';

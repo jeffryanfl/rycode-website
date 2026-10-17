@@ -20,6 +20,8 @@
  * Append only: weeks already stored are never rewritten. A ticker whose fetch
  * fails gets null for new weeks, nothing stored is touched, and the script exits 1.
  */
+import { fetchWithTimeout } from './lib/feed-io.mjs';
+import { yahooBarDateUtcSeconds } from './lib/yahoo-et-date.mjs';
 import {
   COMPANIES, SECTORS, HISTORY, TRACKER, START_WEEK, readHistory, writeJson, buildTracker, fridaysThrough, addDays, round, sleep,
 } from './lib/saas-feeds.mjs';
@@ -28,11 +30,10 @@ async function yahooDaily(ticker, fromDate) {
   const p1 = Math.floor(new Date(`${addDays(fromDate, -10)}T00:00:00Z`).getTime() / 1000);
   const p2 = Math.floor(Date.now() / 1000);
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?period1=${p1}&period2=${p2}&interval=1d&events=splits`;
-  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script)' } });
+  const res = await fetchWithTimeout(url, { headers: { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script)' } });
   if (!res.ok) throw new Error(`${res.status} for ${url}`);
   const result = (await res.json())?.chart?.result?.[0];
   if (!result) throw new Error(`Yahoo ${ticker}: no result`);
-  const offset = result.meta?.gmtoffset ?? -14400;
   const regular = result.meta?.currentTradingPeriod?.regular;
   const now = Date.now() / 1000;
   const closes = result.indicators?.quote?.[0]?.close ?? [];
@@ -40,10 +41,10 @@ async function yahooDaily(ticker, fromDate) {
   (result.timestamp ?? []).forEach((ts, i) => {
     if (typeof closes[i] !== 'number') return;
     if (regular && ts >= regular.start && now < regular.end) return; // today's bar is not final yet
-    days.push({ date: new Date((ts + offset) * 1000).toISOString().slice(0, 10), close: round(closes[i], 2) });
+    days.push({ date: yahooBarDateUtcSeconds(ts), close: round(closes[i], 2) });
   });
   const splits = Object.values(result.events?.splits ?? {}).map((s) => ({
-    date: new Date((s.date + offset) * 1000).toISOString().slice(0, 10),
+    date: yahooBarDateUtcSeconds(s.date),
     ratio: s.numerator / s.denominator,
   }));
   if (!days.length) throw new Error(`Yahoo ${ticker}: no final closes`);

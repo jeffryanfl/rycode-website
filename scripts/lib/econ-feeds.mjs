@@ -1,3 +1,5 @@
+import { fetchWithTimeout, writeFileAtomic } from './feed-io.mjs';
+
 /**
  * Shared helpers for the Economics feed scripts (update-jobs.mjs,
  * update-inflation.mjs). Node built-ins only.
@@ -19,7 +21,7 @@
 /* BLS and Treasury answer a browser user agent; FRED refuses it, so FRED gets Node's default. */
 export async function get(url, { browser = true, kind = 'text', init = {} } = {}) {
   const headers = { ...(browser ? { 'User-Agent': 'Mozilla/5.0 (rycode.dev feed script)' } : {}), ...(init.headers ?? {}) };
-  const res = await fetch(url, { ...init, headers });
+  const res = await fetchWithTimeout(url, { ...init, headers });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`);
   return kind === 'json' ? res.json() : res.text();
 }
@@ -136,6 +138,6 @@ export async function runAll(jobs, previous) {
 export function writeIfChanged(fs, file, feed, previous) {
   const strip = ({ updated, ...rest }) => JSON.stringify(rest);
   if (previous && previous.series?.length && strip(previous) === strip(feed)) return false;
-  fs.writeFileSync(file, `${JSON.stringify(feed, null, 2)}\n`);
+  writeFileAtomic(file, `${JSON.stringify(feed, null, 2)}\n`);
   return true;
 }

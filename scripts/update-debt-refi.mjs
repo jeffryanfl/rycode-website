@@ -21,6 +21,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fetchWithTimeout, writeFileAtomic } from './lib/feed-io.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public', 'debt-refi.json');
@@ -41,7 +42,7 @@ const SHORT = { January: 'Jan', March: 'Mar', April: 'Apr', June: 'Jun', July: '
 
 /* Treasury and FiscalData answer a browser user agent; FRED refuses it, so FRED gets Node's default. */
 async function get(url, { browser = true, kind = 'text' } = {}) {
-  const res = await fetch(url, { headers: browser ? { 'User-Agent': 'Mozilla/5.0' } : {} });
+  const res = await fetchWithTimeout(url, { headers: browser ? { 'User-Agent': 'rycode.dev contact@rycode.dev' } : {} });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`);
   return kind === 'json' ? res.json() : res.text();
 }
@@ -218,6 +219,6 @@ const feed = {
   note: 'Feed for the Debt refinancing row on /risk/. Refresh with node scripts/update-debt-refi.mjs. Not part of the tape ship. Final values only: borrowing points carry estimate or actual.',
   series,
 };
-fs.writeFileSync(OUT, `${JSON.stringify(feed, null, 2)}\n`);
+writeFileAtomic(OUT, `${JSON.stringify(feed, null, 2)}\n`);
 console.log(`wrote ${path.relative(ROOT, OUT)}`);
 process.exit(failed ? 1 : 0);

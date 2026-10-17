@@ -20,10 +20,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
+import { fetchWithTimeout, writeFileAtomic } from './lib/feed-io.mjs';
+import { yahooBarDateUtcSeconds } from './lib/yahoo-et-date.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public', 'ai-contagion.json');
-const UA = { 'User-Agent': 'Mozilla/5.0' };
+const UA = { 'User-Agent': 'rycode.dev contact@rycode.dev' };
 
 const SOURCES = {
   datacenter: 'https://www.census.gov/construction/c30/xlsx/privtime.xlsx',
@@ -35,7 +37,7 @@ const SOURCES = {
 const MONTHS = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
 
 async function get(url, kind = 'buffer') {
-  const res = await fetch(url, { headers: UA });
+  const res = await fetchWithTimeout(url, { headers: UA });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`);
   return kind === 'json' ? res.json() : Buffer.from(await res.arrayBuffer());
 }
@@ -153,14 +155,13 @@ async function yahooCloses(id, title) {
   const closes = result.indicators?.quote?.[0]?.close ?? [];
   const regular = meta.currentTradingPeriod?.regular;
   const now = Date.now() / 1000;
-  const offset = meta.gmtoffset ?? -14400;
   const points = [];
   timestamp.forEach((ts, i) => {
     const close = closes[i];
     if (typeof close !== 'number') return;
     /* Drop a bar from a session that is still open or has not reached its close. */
     if (regular && ts >= regular.start && now < regular.end) return;
-    points.push({ date: new Date((ts + offset) * 1000).toISOString().slice(0, 10), close: Math.round(close * 100) / 100 });
+    points.push({ date: yahooBarDateUtcSeconds(ts), close: Math.round(close * 100) / 100 });
   });
   if (points.length < 400) throw new Error(`Yahoo ${id}: only ${points.length} closes`);
   return {
@@ -248,6 +249,6 @@ const feed = {
   note: 'Feed for the AI build-out contagion row on /risk/. Refresh with node scripts/update-ai-contagion.mjs. Not part of the tape ship. Daily prices are final closes only.',
   series,
 };
-fs.writeFileSync(OUT, `${JSON.stringify(feed, null, 2)}\n`);
+writeFileAtomic(OUT, `${JSON.stringify(feed, null, 2)}\n`);
 console.log(`wrote ${path.relative(ROOT, OUT)}`);
 process.exit(failed ? 1 : 0);

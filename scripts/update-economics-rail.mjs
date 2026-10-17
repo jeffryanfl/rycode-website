@@ -28,6 +28,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fetchWithTimeout, writeFileAtomic } from './lib/feed-io.mjs';
+import { yahooBarDateUtcSeconds } from './lib/yahoo-et-date.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public', 'economics-rail.json');
@@ -44,7 +46,7 @@ const SOURCES = {
 };
 
 async function get(url, kind = 'text') {
-  const res = await fetch(url, { headers: UA });
+  const res = await fetchWithTimeout(url, { headers: UA });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`);
   return kind === 'json' ? res.json() : res.text();
 }
@@ -86,13 +88,12 @@ async function yahoo(url, key) {
   const closes = result.indicators?.quote?.[0]?.close ?? [];
   const regular = meta.currentTradingPeriod?.regular;
   const now = Date.now() / 1000;
-  const offset = meta.gmtoffset ?? -14400;
   const out = [];
   timestamp.forEach((ts, i) => {
     const close = closes[i];
     if (typeof close !== 'number') return;
     if (regular && ts >= regular.start && now < regular.end) return;
-    out.push({ date: new Date((ts + offset) * 1000).toISOString().slice(0, 10), [key]: Math.round(close * 100) / 100 });
+    out.push({ date: yahooBarDateUtcSeconds(ts), [key]: Math.round(close * 100) / 100 });
   });
   if (!out.length) throw new Error(`Yahoo ${key}: no final closes`);
   return out;
@@ -187,7 +188,7 @@ if (strip(feed) === strip(JSON.parse(before))) {
   console.log(`no change, left ${path.relative(ROOT, OUT)} as it was`);
 } else {
   feed.updated = new Date().toISOString();
-  fs.writeFileSync(OUT, `${JSON.stringify(feed, null, 2)}\n`);
+  writeFileAtomic(OUT, `${JSON.stringify(feed, null, 2)}\n`);
   console.log(`wrote ${path.relative(ROOT, OUT)}`);
 }
 process.exit(failed ? 1 : 0);

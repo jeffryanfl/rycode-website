@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { writeFileAtomic } from './feed-io.mjs';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const HISTORY = path.join(ROOT, 'public', 'saas-history.json');
@@ -73,7 +74,7 @@ export function readHistory() {
 }
 
 export function writeJson(file, data) {
-  fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
+  writeFileAtomic(file, `${JSON.stringify(data, null, 2)}\n`);
 }
 
 /* ---------- dates ---------- */

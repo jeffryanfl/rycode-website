@@ -18,6 +18,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fetchWithTimeout } from './lib/feed-io.mjs';
 import {
   ROOT, COMPANIES, HISTORY, TRACKER, SEC_UA, SEC_DELAY_MS, readHistory, writeJson, buildTracker, sleep, round,
 } from './lib/saas-feeds.mjs';
@@ -40,7 +41,7 @@ const days = (a, b) => (new Date(b) - new Date(a)) / 86400000;
 
 async function companyFacts(cik) {
   const url = `https://data.sec.gov/api/xbrl/companyfacts/CIK${String(cik).padStart(10, '0')}.json`;
-  const res = await fetch(url, { headers: { 'User-Agent': SEC_UA, Accept: 'application/json' } });
+  const res = await fetchWithTimeout(url, { headers: { 'User-Agent': SEC_UA, Accept: 'application/json' } });
   if (!res.ok) throw new Error(`${res.status} for ${url}`);
   return res.json();
 }
