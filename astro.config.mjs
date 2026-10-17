@@ -97,7 +97,7 @@ function servePublicIndex() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rycode.dev',
-  // Astro 7 defaults to JSX whitespace rules; keep v6 HTML-aware compression for unchanged markup output.
+  // Astro 7 defaults to JSX whitespace rules; keep v6 HTML-aware compression. Some pages gain whitespace in source with no visual change.
   compressHTML: true,
   integrations: [riskCardDrift(), conceptMapDrift(), emDashCheck()],
   redirects: {
@@ -128,6 +128,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [servePublicIndex()],
+    build: {
+      cssTarget: ['safari14', 'ios14', 'chrome90', 'firefox90', 'edge90'],
+    },
   },
 });
 
