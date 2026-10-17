@@ -199,6 +199,22 @@ export function reachabilityDrift(outDir, sitemapPaths, site = 'https://rycode.d
   return { unreachable };
 }
 
+/** Live leaf article pages (from src/pages) that have no row in articles.json. */
+export function articleCatalogDrift(articleRoutes, articles) {
+  const catalog = new Set((articles ?? []).map((a) => (a.href.endsWith('/') ? a.href : `${a.href}/`)));
+  const missing = articleRoutes.filter((route) => !catalog.has(route));
+  return { missing };
+}
+
+export function articleCatalogWarning(missing) {
+  if (!missing.length) return '';
+  return [
+    'ARTICLE CATALOG DRIFT: live article pages with no row in src/data/articles.json:',
+    ...missing.map((route) => `  ${route}`),
+    'Add each page to the catalog (scripts/build-chrome-assets.py or a matching hand row).',
+  ].join('\n');
+}
+
 export function reachabilityWarning(unreachable) {
   if (!unreachable.length) return '';
   return [

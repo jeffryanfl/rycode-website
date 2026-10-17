@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { emDashCheck } from './src/lib/copy-check.mjs';
 import { defineConfig } from 'astro/config';
 import {
+  articleCatalogDrift,
+  articleCatalogWarning,
   articleRoutesFromPages,
   conceptDrift,
   conceptShapeDrift,
@@ -41,6 +43,10 @@ function conceptMapDrift() {
         }
         const sitemapPaths = pathsFromSitemapXml(fs.readFileSync(sitemapPath, 'utf8'));
         const articleRoutes = articleRoutesFromPages(path.join(process.cwd(), 'src', 'pages'));
+        const articles = JSON.parse(
+          fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'articles.json'), 'utf8'),
+        );
+        const { missing: catalogMissing } = articleCatalogDrift(articleRoutes, articles);
         const data = JSON.parse(
           fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'concepts.json'), 'utf8'),
         );
@@ -48,6 +54,7 @@ function conceptMapDrift() {
         const { empty, badLinks } = conceptShapeDrift(data.concepts);
         const { unreachable } = reachabilityDrift(outDir, sitemapPaths);
         const warning = [
+          articleCatalogWarning(catalogMissing),
           driftWarning(uncovered, missing),
           conceptShapeWarning(empty, badLinks),
           reachabilityWarning(unreachable),

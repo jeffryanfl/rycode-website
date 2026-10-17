@@ -20,7 +20,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
-import { fetchWithTimeout, writeFileAtomic } from './lib/feed-io.mjs';
+import { writeIfChanged } from './lib/econ-feeds.mjs';
+import { fetchWithTimeout } from './lib/feed-io.mjs';
 import { yahooBarDateUtcSeconds } from './lib/yahoo-et-date.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -249,6 +250,9 @@ const feed = {
   note: 'Feed for the AI build-out contagion row on /risk/. Refresh with node scripts/update-ai-contagion.mjs. Not part of the tape ship. Daily prices are final closes only.',
   series,
 };
-writeFileAtomic(OUT, `${JSON.stringify(feed, null, 2)}\n`);
-console.log(`wrote ${path.relative(ROOT, OUT)}`);
+if (writeIfChanged(fs, OUT, feed, previous)) {
+  console.log(`wrote ${path.relative(ROOT, OUT)}`);
+} else {
+  console.log(`no change, left ${path.relative(ROOT, OUT)} as it was`);
+}
 process.exit(failed ? 1 : 0);

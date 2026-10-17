@@ -36,9 +36,24 @@ GLYPHS = {
     "tools-caliper.png": 82,
 }
 
-GEORGIA = "/System/Library/Fonts/Supplemental/Georgia.ttf"
-GEORGIA_BOLD = "/System/Library/Fonts/Supplemental/Georgia Bold.ttf"
-HELVETICA = "/System/Library/Fonts/Helvetica.ttc"
+def _font_paths() -> tuple[str, str, str]:
+    mac = (
+        "/System/Library/Fonts/Supplemental/Georgia.ttf",
+        "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+        "/System/Library/Fonts/Helvetica.ttc",
+    )
+    linux = (
+        "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    )
+    for trio in (linux, mac):
+        if all(Path(p).exists() for p in trio):
+            return trio
+    raise SystemExit("no serif/sans fonts found for og cards (install fonts-dejavu-core on Linux)")
+
+
+GEORGIA, GEORGIA_BOLD, HELVETICA = _font_paths()
 
 BG = (8, 10, 16, 255)
 INK = (248, 250, 252, 235)
@@ -109,14 +124,21 @@ def pick(match: re.Match[str]) -> str:
     return next(group for group in match.groups() if group is not None)
 
 
-def rows_from(path: Path) -> list[dict]:
-    text = frontmatter(path)
-    hrefs = re.findall(r"href:\s*'([^']+)'", text)
-    titles = [pick(m) for m in re.finditer(r"title:\s*'([^']*)'|title:\s*\"([^\"]*)\"", text)]
-    deks = [pick(m) for m in re.finditer(r"dek:\s*'([^']*)'|dek:\s*\"([^\"]*)\"", text)]
-    if not (len(hrefs) == len(titles) == len(deks)):
-        raise SystemExit(f"row mismatch in {path}: {len(hrefs)} {len(titles)} {len(deks)}")
-    return [{"href": h, "title": t, "description": d} for h, t, d in zip(hrefs, titles, deks)]
+def rows_from(path: Path, var: str = "rows") -> list[dict]:
+    text = path.read_text()
+    block_match = re.search(rf"const {var}\s*=\s*\[(.*?)\]\s*;", text, re.S)
+    if block_match:
+        block = block_match.group(1)
+    else:
+        block = frontmatter(path)
+    hrefs = re.findall(r"href:\s*'([^']+)'", block)
+    titles = [pick(m) for m in re.finditer(r"title:\s*'([^']*)'|title:\s*\"([^\"]*)\"", block)]
+    deks = [pick(m) for m in re.finditer(r"dek:\s*'([^']*)'|dek:\s*\"([^\"]*)\"", block)]
+    notes = [pick(m) for m in re.finditer(r"note:\s*'([^']*)'|note:\s*\"([^\"]*)\"", block)]
+    descriptions = deks if len(deks) == len(hrefs) else deks + notes
+    if not (len(hrefs) == len(titles) == len(descriptions)):
+        raise SystemExit(f"row mismatch in {path}: {len(hrefs)} {len(titles)} {len(descriptions)}")
+    return [{"href": h, "title": t, "description": d} for h, t, d in zip(hrefs, titles, descriptions)]
 
 
 def expand(row: dict) -> list[dict]:
