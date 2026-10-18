@@ -237,14 +237,14 @@ const legend = [
               data-concept={concept.id}
               role="button"
               tabindex="0"
-              aria-label={`${concept.label}, ${concept.articles.length} articles`}
             >
+              <title>{`${concept.label}, ${concept.articles.length}`}</title>
               {concept.bridge && (
                 <circle class="concept-bridge-ring" cx={concept.x} cy={concept.y} r={concept.r + 6} />
               )}
               <circle class="concept-disc" cx={concept.x} cy={concept.y} r={concept.r} />
-              <text class="concept-count" x={concept.x} y={concept.y}>{concept.articles.length}</text>
-              <text class="concept-label" x={concept.x} y={concept.y + concept.r + 16}>{concept.label}</text>
+              <text class="concept-count" x={concept.x} y={concept.y} aria-hidden="true">{concept.articles.length}</text>
+              <text class="concept-label" x={concept.x} y={concept.y + concept.r + 16} aria-hidden="true">{concept.label}</text>
             </g>
           ))}
         </svg>

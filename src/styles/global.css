@@ -552,7 +552,7 @@ ul {
 }
 
 .lead-article {
-  background: #FFFFFF;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 3.5rem 3.5rem 4rem;
@@ -717,7 +717,7 @@ ul {
 }
 
 .draft-card {
-  background: #FFFFFF;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 1.5rem;
@@ -773,7 +773,7 @@ ul {
 
 /* Interactive Browser Scratchpad */
 .scratchpad-box {
-  background: #FFFFFF;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 2rem;
@@ -821,7 +821,7 @@ ul {
 .scratchpad-textarea:focus {
   outline: none;
   border-color: var(--blue);
-  background: #FFFFFF;
+  background: var(--surface);
 }
 
 .scratchpad-actions {

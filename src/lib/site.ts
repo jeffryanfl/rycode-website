@@ -29,6 +29,19 @@ export function normalizePath(pathname: string): string {
   return pathname.endsWith('/') ? pathname : `${pathname}/`;
 }
 
+/** Pages that ship horizontal table scrollers enhanced by public/scroll-regions.js */
+export function pageNeedsScrollRegions(pathname: string): boolean {
+  const p = normalizePath(pathname);
+  if (p === '/ai/') return true;
+  if (p === '/ai/models/archive/') return true;
+  if (p === '/ai/ai-regulation/') return true;
+  if (p.includes('/economics/saas')) return true;
+  if (p.startsWith('/ai/swarms')) return true;
+  if (p.startsWith('/ai/models/')) return true;
+  if (p.startsWith('/ai/hardware/')) return true;
+  return false;
+}
+
 export function findArticle(pathname: string): Article | undefined {
   return byHref.get(normalizePath(pathname));
 }

@@ -5,6 +5,8 @@
   function labelFor(el) {
     const explicit = el.getAttribute('aria-label');
     if (explicit) return explicit;
+    const th = el.querySelector('table thead th');
+    if (th && th.textContent) return 'Scrollable table: ' + th.textContent.trim();
     const cap = el.querySelector('table caption:not(.visually-hidden)');
     if (cap && cap.textContent) return 'Scrollable table: ' + cap.textContent.trim();
     const section = el.closest('section');
@@ -18,12 +20,25 @@
   }
 
   function enhance() {
-    document.querySelectorAll(SELECTOR).forEach(function (el) {
+    const elements = Array.from(document.querySelectorAll(SELECTOR));
+    const baseLabels = elements.map(labelFor);
+    elements.forEach(function (el, index) {
       if (el.getAttribute('data-scroll-region') === '1') return;
       el.setAttribute('data-scroll-region', '1');
       el.setAttribute('tabindex', '0');
       el.setAttribute('role', 'region');
-      el.setAttribute('aria-label', labelFor(el));
+      let label = baseLabels[index];
+      const duplicates = baseLabels.filter(function (l) {
+        return l === label;
+      }).length;
+      if (duplicates > 1) {
+        const ordinal =
+          baseLabels.slice(0, index + 1).filter(function (l) {
+            return l === label;
+          }).length;
+        label = label + ' (' + ordinal + ')';
+      }
+      el.setAttribute('aria-label', label);
     });
   }
 

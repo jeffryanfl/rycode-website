@@ -23,7 +23,11 @@ import '../styles/hub.css';
     >
       <a class="hub-tape-asof" data-hub-ai-tape-asof href="/ai/"></a>
       <button type="button" class="hub-tape-toggle" data-hub-tape-pause aria-pressed="false" aria-label="Pause A.I. tape" hidden>
-        <span data-hub-tape-toggle-icon aria-hidden="true">||</span>
+        <svg class="hub-tape-toggle-icon" data-hub-tape-toggle-icon width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+          <rect class="hub-tape-toggle-pause" x="2" y="1" width="2.5" height="10" fill="currentColor" />
+          <rect class="hub-tape-toggle-pause" x="7.5" y="1" width="2.5" height="10" fill="currentColor" />
+          <path class="hub-tape-toggle-play" d="M2.5 1.2 10.5 6 2.5 10.8z" fill="currentColor" hidden />
+        </svg>
       </button>
       <span class="hub-tape-viewport" data-hub-ai-tape-viewport>
         <span class="hub-tape-track" data-hub-ai-tape-track></span>
@@ -76,7 +80,11 @@ import '../styles/hub.css';
     >
       <a class="hub-tape-asof" data-hub-tape-asof href="/economics/"></a>
       <button type="button" class="hub-tape-toggle" data-hub-tape-pause aria-pressed="false" aria-label="Pause Economics tape" hidden>
-        <span data-hub-tape-toggle-icon aria-hidden="true">||</span>
+        <svg class="hub-tape-toggle-icon" data-hub-tape-toggle-icon width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+          <rect class="hub-tape-toggle-pause" x="2" y="1" width="2.5" height="10" fill="currentColor" />
+          <rect class="hub-tape-toggle-pause" x="7.5" y="1" width="2.5" height="10" fill="currentColor" />
+          <path class="hub-tape-toggle-play" d="M2.5 1.2 10.5 6 2.5 10.8z" fill="currentColor" hidden />
+        </svg>
       </button>
       <span class="hub-tape-viewport" data-hub-tape-viewport>
         <span class="hub-tape-track" data-hub-tape-track></span>

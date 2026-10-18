@@ -6,7 +6,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ArticleTop from '../components/ArticleTop.astro';
 import ArticlePager from '../components/ArticlePager.astro';
 import ArticleTail from '../components/ArticleTail.astro';
-import { articleNav, normalizePath, ogImageFor } from '../lib/site';
+import { articleNav, normalizePath, ogImageFor, pageNeedsScrollRegions } from '../lib/site';
 
 interface Props {
   title?: string;
@@ -30,6 +30,7 @@ const pathname = normalizePath(Astro.url.pathname);
 const isHome = pathname === "/";
 const showSectionMark = isRisk || isAi || isEconomics || isOpinions;
 const piece = articleNav(pathname);
+const needsScrollRegions = pageNeedsScrollRegions(pathname);
 
 const canonicalURL = new URL(pathname, Astro.site);
 const ogImageURL = new URL(ogImageFor(pathname), Astro.site);
@@ -121,6 +122,6 @@ const rssURL = new URL("/rss.xml", Astro.site);
       </div>
     </footer>
   </div>
-  {!isLanding && <script is:inline src="/scroll-regions.js" defer></script>}
+  {needsScrollRegions && <script is:inline src="/scroll-regions.js" defer></script>}
 </body>
 </html>
