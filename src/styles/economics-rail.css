@@ -55,7 +55,7 @@
 .econ-rail-latest-asof {
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.68rem;
-  color: rgba(248, 250, 252, 0.45);
+  color: #949aa2;
 }
 
 .econ-rail-latest-row strong {
@@ -68,7 +68,7 @@
   margin: 0.35rem 0 0;
   font-size: 0.78rem;
   line-height: 1.35;
-  color: rgba(248, 250, 252, 0.4);
+  color: #949aa2;
 }
 
 .econ-rail-tabs {
@@ -87,7 +87,7 @@
 
 .econ-rail-tab {
   font-size: 0.72rem;
-  color: rgba(248, 250, 252, 0.45);
+  color: #949aa2;
   cursor: pointer;
 }
 

@@ -43,8 +43,8 @@
   --border-subtle:  rgba(248, 250, 252, 0.08);
 
   --text:           rgba(248, 250, 252, 0.92);
-  --text-muted:     rgba(248, 250, 252, 0.52);
-  --text-faint:     rgba(248, 250, 252, 0.4);
+  --text-muted:     #949aa2;
+  --text-faint:     #949aa2;
 
   --blue:           rgba(248, 250, 252, 0.72);
   --blue-hover:     rgba(248, 250, 252, 0.92);

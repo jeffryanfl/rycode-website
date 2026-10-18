@@ -52,6 +52,8 @@
     const track = root.querySelector('[data-hub-tape-track]');
     const viewport = root.querySelector('[data-hub-tape-viewport]');
     const rows = linesFrom(data);
+    const afterMarquee =
+      typeof window.hubTapeWirePause === 'function' ? window.hubTapeWirePause(root) : null;
     if (!asof || !track || rows.length === 0) return false;
 
     const asOfLabel = typeof data.asOfLabel === 'string' ? data.asOfLabel.trim() : '';
@@ -71,7 +73,8 @@
       track.append(item);
     });
 
-    root.setAttribute('href', doorHref(data.doorHref));
+    const door = doorHref(data.doorHref);
+    asof.setAttribute('href', door);
     root.setAttribute(
       'aria-label',
       asOfLabel ? 'Economics tape, ' + asOfLabel : 'Economics tape'
@@ -83,6 +86,7 @@
       window.requestAnimationFrame(function () {
         window.requestAnimationFrame(function () {
           enableMarquee(track, viewport);
+          if (afterMarquee) afterMarquee();
         });
       });
     }

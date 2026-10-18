@@ -20,7 +20,16 @@
   line-height: 1.4;
   color: var(--econ-muted);
 }
-.saas-scroll { overflow-x: auto; margin: 0 0 1.25rem; -webkit-overflow-scrolling: touch; }
+.saas-scroll {
+  overflow-x: auto;
+  margin: 0 0 1.25rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.saas-scroll:focus-visible {
+  outline: 2px solid rgba(248, 250, 252, 0.85);
+  outline-offset: 2px;
+}
 .saas-table { border-collapse: collapse; font-family: var(--font-sans); font-size: 0.82rem; font-variant-numeric: tabular-nums; min-width: 100%; }
 .saas-table th, .saas-table td { padding: 0.32rem 0.6rem; border-bottom: 1px solid var(--econ-hair); text-align: right; white-space: nowrap; vertical-align: top; }
 .saas-table thead th { font-weight: 600; color: var(--econ-ink); border-bottom-color: rgba(248, 250, 252, 0.35); }

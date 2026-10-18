@@ -18,7 +18,7 @@ const { name, agents, hours, tokens, messages, cost, human } = Astro.props;
 
 <figure class="swarm-stat">
   <figcaption class="swarm-stat-name">{name}</figcaption>
-  <div class="swarm-stat-scroll">
+  <div class="swarm-stat-scroll" tabindex="0" role="region" aria-label={`Scrollable table: ${name} statistics`}>
     <table>
       <thead>
         <tr>

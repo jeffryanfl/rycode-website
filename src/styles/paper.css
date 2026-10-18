@@ -7,8 +7,8 @@
   --paper: #080a10;
   --ink: #e8eaee;
   --ink-muted: rgba(232, 234, 238, 0.74);
-  --ink-faint: rgba(232, 234, 238, 0.46);
-  --ink-sat: rgba(232, 234, 238, 0.38);
+  --ink-faint: #949aa2;
+  --ink-sat: #949aa2;
   --cyan: rgba(248, 250, 252, 0.72);
   --hair: rgba(248, 250, 252, 0.16);
   --hair-strong: rgba(248, 250, 252, 0.28);
@@ -112,6 +112,18 @@ html:has(.editorial-shell--ai:has(.paper)) body {
 
 .editorial-shell--ai:has(.paper) .paper a {
   color: var(--cyan);
+}
+
+.editorial-shell--ai:has(.paper) .paper a:not(.paper-skip) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.editorial-shell--opinions:has(.paper) .paper a:not(.paper-skip) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
 }
 
 .editorial-shell--ai:has(.paper) .paper a:hover {

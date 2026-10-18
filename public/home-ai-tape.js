@@ -64,6 +64,8 @@
     const track = root.querySelector('[data-hub-ai-tape-track]');
     const viewport = root.querySelector('[data-hub-ai-tape-viewport]');
     const rows = linesFrom(data);
+    const afterMarquee =
+      typeof window.hubTapeWirePause === 'function' ? window.hubTapeWirePause(root) : null;
     if (!asof || !track) return false;
 
     const asOfLabel = typeof data.asOfLabel === 'string' ? data.asOfLabel.trim() : '';
@@ -84,6 +86,7 @@
       if (!asOfLabel) return false;
       if (viewport) viewport.hidden = true;
       root.hidden = false;
+      if (afterMarquee) afterMarquee();
       return true;
     }
 
@@ -109,6 +112,7 @@
       window.requestAnimationFrame(function () {
         window.requestAnimationFrame(function () {
           enableMarquee(track, viewport);
+          if (afterMarquee) afterMarquee();
         });
       });
     }

@@ -121,5 +121,6 @@ const rssURL = new URL("/rss.xml", Astro.site);
       </div>
     </footer>
   </div>
+  {!isLanding && <script is:inline src="/scroll-regions.js" defer></script>}
 </body>
 </html>

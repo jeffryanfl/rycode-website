@@ -712,13 +712,10 @@ const anchorAt = (x: number) => (x < 40 ? 'start' : x > SW - 40 ? 'end' : 'middl
     fill: var(--ai-ink, #f8fafc);
   }
 
-  .bc-axis-link:focus-visible {
-    outline: none;
-  }
-
   .bc-axis-link:focus-visible .bc-axis-text {
-    stroke: rgba(248, 250, 252, 0.85);
-    stroke-width: 0.4;
+    stroke: rgba(248, 250, 252, 0.95);
+    stroke-width: 1.2;
+    paint-order: stroke fill;
   }
 
   .bc-spark {

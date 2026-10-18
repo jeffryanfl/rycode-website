@@ -7,7 +7,7 @@
 .editorial-shell--opinions {
   --opinions-paper: #080a10;
   --opinions-ink: rgba(248, 250, 252, 0.92);
-  --opinions-muted: rgba(248, 250, 252, 0.52);
+  --opinions-muted: #949aa2;
   --opinions-faint: rgba(248, 250, 252, 0.4);
   --opinions-hair: rgba(248, 250, 252, 0.16);
   --opinions-pad: clamp(1.4rem, 5.2vw, 3.75rem);
@@ -37,7 +37,7 @@ html:has(.editorial-shell--opinions) .skip-link {
 }
 
 .editorial-shell--opinions a:focus-visible {
-  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline: 2px solid rgba(248, 250, 252, 0.85);
   outline-offset: 4px;
 }
 

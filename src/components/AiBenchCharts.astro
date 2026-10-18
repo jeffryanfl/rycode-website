@@ -70,7 +70,17 @@ const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.n
 <script is:inline src="/ai-bench-sort.js" defer></script>
 
 <style>
-  .abb-wrap { margin-top: 0.85rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .abb-wrap {
+    margin-top: 0.85rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  .abb-wrap:focus-visible {
+    outline: 2px solid rgba(248, 250, 252, 0.85);
+    outline-offset: 2px;
+  }
   .abb { border-collapse: separate; border-spacing: 0; font-size: 0.8rem; line-height: 1.2; min-width: 58rem; width: 100%; font-variant-numeric: tabular-nums; }
   .abb th, .abb td { border-top: 1px solid rgba(248, 250, 252, 0.12); padding: 0.45rem 0.5rem; text-align: right; vertical-align: middle; white-space: nowrap; }
   .abb thead th { vertical-align: bottom; font-weight: 600; font-size: 0.7rem; white-space: normal; min-width: 5.5rem; border-top: 0; }
@@ -78,7 +88,20 @@ const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.n
   .abb thead button:focus-visible { outline: 2px solid #8ab4ff; }
   .abb thead th[aria-sort='descending'] button::after { content: ' ▾'; }
   .abb thead th[aria-sort='ascending'] button::after { content: ' ▴'; }
-  .abb-ext { margin-left: 0.2rem; opacity: 0.55; text-decoration: none; font-size: 0.65rem; }
+  .abb-ext {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 4px 6px;
+    box-sizing: border-box;
+    margin-left: 0.05rem;
+    opacity: 0.55;
+    text-decoration: none;
+    font-size: 0.65rem;
+    vertical-align: middle;
+  }
   .abb .abb-model { position: sticky; left: 0; z-index: 1; background: var(--bg, #080a10); text-align: left; font-weight: 600; min-width: 8.5rem; }
   .abb tbody th.abb-model { box-shadow: 1px 0 0 rgba(248, 250, 252, 0.15); }
   .abb-h { background: rgba(96, 165, 250, var(--s)); }
@@ -89,7 +112,17 @@ const sorted = [...rows].sort((a, b) => (b.cells[0]?.num ?? -1) - (a.cells[0]?.n
   .abb-v a:hover { text-decoration: underline; }
   .abb-tag { display: block; font-family: var(--font-mono); font-size: 0.6rem; opacity: 0.72; letter-spacing: 0.03em; }
   .abb sup { font-size: 0.6rem; margin-left: 0.1rem; }
-  .abb sup a { color: #fbbf24; text-decoration: none; }
+  .abb sup a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 4px;
+    box-sizing: border-box;
+    color: #fbbf24;
+    text-decoration: none;
+  }
   .abb-e { color: var(--text-faint, rgba(248, 250, 252, 0.4)); }
   .abb-notes { margin: 0.8rem 0 0; padding-left: 1.2rem; font-size: 0.72rem; line-height: 1.45; opacity: 0.85; }
   .abb-defs { margin: 0.6rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 0.25rem 1rem; font-size: 0.68rem; opacity: 0.7; }

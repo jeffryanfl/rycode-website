@@ -6,8 +6,8 @@
 .editorial-shell--risk {
   --risk-paper: #080a10;
   --risk-ink: rgba(248, 250, 252, 0.92);
-  --risk-muted: rgba(248, 250, 252, 0.52);
-  --risk-faint: rgba(248, 250, 252, 0.4);
+  --risk-muted: #949aa2;
+  --risk-faint: #949aa2;
   --risk-hair: rgba(248, 250, 252, 0.16);
   --risk-pad: clamp(1.4rem, 5.2vw, 3.75rem);
   background: var(--risk-paper);
@@ -36,7 +36,7 @@ html:has(.editorial-shell--risk) .skip-link {
 }
 
 .editorial-shell--risk a:focus-visible {
-  outline: 1px solid rgba(248, 250, 252, 0.85);
+  outline: 2px solid rgba(248, 250, 252, 0.85);
   outline-offset: 4px;
 }
 
@@ -468,8 +468,8 @@ html:has(.risk-digest) .skip-link {
 .risk-digest {
   --digest-pad: clamp(1.4rem, 5.2vw, 3.75rem);
   --digest-ink: rgba(248, 250, 252, 0.92);
-  --digest-muted: rgba(248, 250, 252, 0.52);
-  --digest-faint: rgba(248, 250, 252, 0.4);
+  --digest-muted: #949aa2;
+  --digest-faint: #949aa2;
   --digest-hair: rgba(248, 250, 252, 0.16);
   display: flex;
   flex-direction: column;
