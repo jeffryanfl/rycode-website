@@ -1,20 +1,47 @@
 {
-  "updated": "2026-10-19T08:04:00-04:00",
-  "asOfLabel": "Mon 19 Oct \u00b7 pre-open",
-  "lines": [
+  "schema": "macro-tape-v1",
+  "asOf": "2026-10-19T16:15:00-04:00",
+  "cadence": "after-close",
+  "hook": "WTI fell back below $100 to ~$98.40 after Friday's $101.41 close, and tech bounced 1.1%.",
+  "door": "Economics",
+  "essayWorthy": true,
+  "ticker": [
     {
+      "date": "2026-10-19",
       "tag": "Oil",
-      "text": "WTI Fri final close $101.41, above $100. Now ~$98.26. Brent ~$108.63."
+      "line": "WTI ~$98.40 (-3.0%), back under $100 after Fri $101.41. Brent ~$109.38."
     },
     {
+      "date": "2026-10-19",
       "tag": "Tape",
-      "text": "Mon pre-open: NQ ~29,732 (+1.2%). ES ~7,736 (+0.4%). YM -0.3%."
+      "line": "S&P 7,690.73 (+0.4%). Nasdaq 26,430.89 (+1.1%). Dow 51,966.03 (-0.1%)."
     },
     {
+      "date": "2026-10-19",
       "tag": "Rates",
-      "text": "Fri CMT: 10y 5.09%. 2y 4.74%. 30y 5.43%."
+      "line": "10y 5.15% (+6bp). 2y 4.77%. 30y 5.48%."
     }
   ],
-  "doorHref": "/economics",
-  "date": "2026-10-19"
+  "levels": {
+    "spx": 7690.73,
+    "dow": 51966.03,
+    "nasdaq": 26430.89,
+    "yield2y": 4.77,
+    "yield10y": 5.15,
+    "yield30y": 5.48,
+    "dxy": 101.99,
+    "wti": 98.4,
+    "brent": 109.38,
+    "fedwatchHikePct": null,
+    "fedFundsImplied": "3.75-4.00"
+  },
+  "calendar": [
+    "Next FOMC Oct 27\u201328."
+  ],
+  "watch": [
+    "Whether WTI gets back above $100.",
+    "Whether the 10y keeps rising off 5.09%.",
+    "Whether tech's bounce holds."
+  ],
+  "chatPosted": true
 }

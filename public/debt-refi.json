@@ -1,6 +1,6 @@
 {
   "schema": "debt-refi-v1",
-  "updated": "2026-10-16T21:41:42.920Z",
+  "updated": "2026-10-19T20:18:55.703Z",
   "note": "Feed for the Debt refinancing row on /risk/. Refresh with node scripts/update-debt-refi.mjs. Not part of the tape ship. Final values only: borrowing points carry estimate or actual.",
   "series": [
     {
@@ -336,10 +336,6 @@
       "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US",
       "sourceLabel": "FRED MORTGAGE30US, Freddie Mac Primary Mortgage Market Survey",
       "points": [
-        {
-          "date": "2024-10-17",
-          "rate": 6.44
-        },
         {
           "date": "2024-10-24",
           "rate": 6.54
