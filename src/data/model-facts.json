@@ -43,7 +43,7 @@
     "/ai/models/meta/muse/video/": { "name": "Muse Video", "status": "preview", "statusNote": "coming soon", "checked": "12 Oct 2026" },
     "/ai/models/meta/llama/llama-4/": { "name": "Llama 4", "status": "current", "statusNote": "open weights" },
 
-    "/ai/models/deepseek/flash/": { "name": "DeepSeek Flash (V4.1-Flash-1017)", "status": "current", "statusNote": "open weights, MIT", "price": "$0.15 in, $0.60 out (off-peak, cache miss)", "released": "17 Oct 2026", "checked": "17 Oct 2026" },
+    "/ai/models/deepseek/flash/": { "name": "DeepSeek Flash (V4.1-Flash-1017)", "status": "current", "statusNote": "open weights, MIT", "aa": { "value": 45, "effort": "max", "fetched": "19 Oct 2026" }, "price": "$0.15 in, $0.60 out (off-peak, cache miss)", "released": "17 Oct 2026", "checked": "19 Oct 2026" },
     "/ai/models/deepseek/v4-1-flash/": { "name": "DeepSeek-V4.1-Flash (10 Sep)", "status": "older", "recommended": { "by": "DeepSeek", "name": "DeepSeek Flash (V4.1-Flash-1017)", "href": "/ai/models/deepseek/flash/" }, "statusNote": "upgraded to V4.1-Flash-1017 on 17 Oct 2026", "price": "$0.15 in, $0.60 out (off-peak, cache miss)", "released": "10 Sep 2026 (announced)", "checked": "17 Oct 2026" },
     "/ai/models/deepseek/v4-pro/": { "name": "DeepSeek V4 Pro", "status": "current", "price": "$0.66 in, $1.98 out (off-peak, cache miss)" },
     "/ai/models/deepseek/r1/": { "name": "DeepSeek-R1", "status": "archived", "replacedBy": { "name": "V4 line", "href": "/ai/models/deepseek/" }, "released": "20 Jan 2025" },
