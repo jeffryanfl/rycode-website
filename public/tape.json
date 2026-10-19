@@ -1,15 +1,15 @@
 {
   "schema": "macro-tape-v1",
-  "asOf": "2026-10-19T16:15:00-04:00",
+  "asOf": "2026-10-19T21:45:00-04:00",
   "cadence": "after-close",
-  "hook": "WTI fell back below $100 to ~$98.40 after Friday's $101.41 close, and tech bounced 1.1%.",
+  "hook": "WTI fell back below $100 to ~$98.24 after Friday's $101.41 close, and tech bounced 1.1%.",
   "door": "Economics",
   "essayWorthy": true,
   "ticker": [
     {
       "date": "2026-10-19",
       "tag": "Oil",
-      "line": "WTI ~$98.40 (-3.0%), back under $100 after Fri $101.41. Brent ~$109.38."
+      "line": "WTI ~$98.24 (-3.1%), back under $100 after Fri $101.41. Brent ~$109.21."
     },
     {
       "date": "2026-10-19",
@@ -30,8 +30,8 @@
     "yield10y": 5.15,
     "yield30y": 5.48,
     "dxy": 101.99,
-    "wti": 98.4,
-    "brent": 109.38,
+    "wti": 98.24,
+    "brent": 109.21,
     "fedwatchHikePct": null,
     "fedFundsImplied": "3.75-4.00"
   },
