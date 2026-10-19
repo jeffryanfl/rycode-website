@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-16T08:28:20-04:00",
-  "asOfLabel": "Fri 16 Oct \u00b7 morning",
+  "updated": "2026-10-19T08:32:00-04:00",
+  "asOfLabel": "Mon 19 Oct \u00b7 morning",
   "lines": [
     {
       "tag": "OpenWeight",
-      "text": "Meta releases Muse Spark Open weights, built with Apple to run on linked Mac Studios",
-      "url": "https://research.meta.ai/blog/muse-spark-open"
+      "text": "Reflection releases Beam, a 501B open-weight coding model, on Hugging Face under Apache 2.0",
+      "url": "https://reflection.ai/blog/beam-is-available"
+    },
+    {
+      "tag": "OpenWeight",
+      "text": "DeepSeek ships V4.1-Flash-1017 with MIT-licensed weights and a paid web-search API",
+      "url": "/ai/models/deepseek/flash/"
     },
     {
       "tag": "News",
-      "text": "Anthropic tells investors Q3 revenue rose 45% to $16.8B ahead of its IPO, Bloomberg and Reuters report",
-      "url": "https://www.bloomberg.com/news/articles/2026-10-14/anthropic-revenue-jumps-to-16-8-billion-in-quarter-before-ipo"
-    },
-    {
-      "tag": "Policy",
-      "text": "Eight US states sue OpenAI, saying it misled parents about ChatGPT's safety for kids",
-      "url": "https://ago.nebraska.gov/news/attorney-general-hilgers-announces-lawsuit-against-openai-deceiving-nebraskans-about-safety"
+      "text": "Artificial Analysis confirms Meta's Muse Spark Open scores 39, top tier for open models its size",
+      "url": "https://artificialanalysis.ai/models/muse-spark-open"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-16"
+  "date": "2026-10-19"
 }
