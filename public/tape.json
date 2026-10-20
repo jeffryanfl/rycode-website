@@ -2,14 +2,14 @@
   "schema": "macro-tape-v1",
   "asOf": "2026-10-20T16:15:00-04:00",
   "cadence": "after-close",
-  "hook": "Oil's main contract rolled from Nov to Dec: Nov expired at $101.09, Dec closed ~$98.06. The Dow rose 1.0%.",
+  "hook": "Oil's main contract rolled from Nov to Dec: Nov expired at $101.09, Dec closed ~$98.18. The Dow rose 1.0%.",
   "door": "Economics",
   "essayWorthy": true,
   "ticker": [
     {
       "date": "2026-10-20",
       "tag": "Oil",
-      "line": "WTI ~$98.06 (Dec, now front month). Nov expired at $101.09. Mon close fixed to $103.66."
+      "line": "WTI ~$98.18 (Dec, now front month). Nov expired at $101.09. Mon close fixed to $103.66."
     },
     {
       "date": "2026-10-20",
@@ -30,8 +30,8 @@
     "yield10y": 5.12,
     "yield30y": 5.42,
     "dxy": 101.71,
-    "wti": 98.06,
-    "brent": 109.02,
+    "wti": 98.18,
+    "brent": 109.12,
     "fedwatchHikePct": null,
     "fedFundsImplied": "3.75-4.00"
   },
@@ -44,6 +44,6 @@
     "Whether the 10y keeps easing from 5.15%.",
     "Whether the Dow's lead over tech holds."
   ],
-  "wtiSourceNote": "2026-10-19 wti locked at 103.66 = Yahoo CLX26.NYM / CL=F final daily bar (Nov, front month that day). 2026-10-20 wti 98.06 = Dec CLZ26 (CL=F rolled; Nov expired 10-20 at 101.09). CME settle blocked; EIA spot not yet out.",
+  "wtiSourceNote": "2026-10-19 wti locked at 103.66 = Yahoo CLX26.NYM / CL=F final daily bar (Nov, front month that day). 2026-10-20 wti 98.18 = Dec CLZ26 (CL=F rolled; Nov expired 10-20 at 101.09). CME settle blocked; EIA spot not yet out.",
   "chatPosted": true
 }
