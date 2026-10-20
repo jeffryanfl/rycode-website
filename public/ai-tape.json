@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-19T08:32:00-04:00",
-  "asOfLabel": "Mon 19 Oct \u00b7 morning",
+  "updated": "2026-10-20T08:35:00-04:00",
+  "asOfLabel": "Tue 20 Oct \u00b7 morning",
   "lines": [
     {
-      "tag": "OpenWeight",
-      "text": "Reflection releases Beam, a 501B open-weight coding model, on Hugging Face under Apache 2.0",
-      "url": "https://reflection.ai/blog/beam-is-available"
+      "tag": "Policy",
+      "text": "DHS orders federal civilian agencies to remove DeepSeek products, including tools built on its models",
+      "url": "/ai/models/deepseek/"
+    },
+    {
+      "tag": "Deal",
+      "text": "Anthropic in talks for a second $45B Nscale compute deal, Reuters says, as Microsoft drops an Nscale UK site",
+      "url": "https://www.channelnewsasia.com/business/nvidia-backed-nscale-anthropic-in-talks-new-45-billion-ai-cloud-deal-source-says-6473376"
     },
     {
       "tag": "OpenWeight",
-      "text": "DeepSeek ships V4.1-Flash-1017 with MIT-licensed weights and a paid web-search API",
-      "url": "/ai/models/deepseek/flash/"
-    },
-    {
-      "tag": "News",
-      "text": "Artificial Analysis confirms Meta's Muse Spark Open scores 39, top tier for open models its size",
-      "url": "https://artificialanalysis.ai/models/muse-spark-open"
+      "text": "Artificial Analysis scores Reflection's open-weight Beam 30, second among US open models",
+      "url": "https://artificialanalysis.ai/articles/reflection-beam"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-19"
+  "date": "2026-10-20"
 }
