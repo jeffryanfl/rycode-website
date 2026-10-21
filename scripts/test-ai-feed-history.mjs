@@ -17,6 +17,11 @@ import {
   sortFeedItems,
   todayYmdInTimeZone,
 } from './lib/ai-feed-history-core.mjs';
+import {
+  selectTickerItems,
+  tickerItemTag,
+  tickerItemText,
+} from './lib/ai-week-ticker.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SCRIPT = path.join(ROOT, 'scripts/update-ai-feed-history.mjs');
@@ -60,6 +65,26 @@ const sample = (id, date, tag) => ({
   source: 'S',
   status: 'confirmed',
 });
+const feedSample = [
+  sample('2026-10-21-01', '2026-10-20', 'Safety'),
+  sample('2026-10-21-02', '2026-10-21', 'Deal'),
+  sample('2026-10-21-03', '2026-10-20', 'News'),
+  sample('2026-10-21-09', '2026-10-31', 'Calendar'),
+];
+const tick = selectTickerItems(
+  feedSample.map((row) => ({ ...row, headline: 'h', why: 'w', url: 'https://example.com/x', source: 'S', status: 'confirmed' })),
+  today,
+);
+if (tick.items.map((i) => i.id).join(',') !== '2026-10-21-02,2026-10-21-09') {
+  bad('ticker pick', tick.items.map((i) => i.id).join(','));
+} else ok('ticker latest day plus future calendar');
+const reported = { ...sample('r', '2026-10-21', 'News'), status: 'reported', headline: 'Head' };
+if (tickerItemText(reported, today) !== 'REPORTED · Head') bad('ticker reported', tickerItemText(reported, today));
+else ok('ticker reported label');
+const cal = { ...sample('c', '2026-10-31', 'Calendar'), headline: 'Bill', status: 'confirmed' };
+if (tickerItemTag(cal, '2026-10-31') !== 'Due 31 Oct') bad('ticker due tag', tickerItemTag(cal, '2026-10-31'));
+else ok('ticker due tag on due day');
+
 const sortOrder = sortFeedItems(
   [
     sample('2026-10-21-09', '2026-10-31', 'Calendar'),
