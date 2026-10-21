@@ -1,4 +1,9 @@
 import feedHistory from '../../public/ai-feed-history.json';
+import {
+  formatFeedDateLabel,
+  sortFeedItems,
+  todayYmdLocal,
+} from '../../scripts/lib/ai-feed-history-core.mjs';
 import { safeHref } from './safe-href';
 
 export type AiFeedItem = {
@@ -28,6 +33,8 @@ export function formatNewsDate(ymd: string): string {
   if (!y || !m || !d) return ymd;
   return `${d} ${MONTHS[m - 1] ?? ''}`.trim();
 }
+
+export { formatFeedDateLabel as formatNewsDateLabel, sortFeedItems, todayYmdLocal };
 
 export function statusLabel(status: string): string | null {
   const s = status?.toLowerCase();
@@ -79,14 +86,15 @@ export type WeekNewsRow = {
   outlined: boolean;
 };
 
-export function weekNewsRows(items: AiFeedItem[], cap = 12): WeekNewsRow[] {
+export function weekNewsRows(items: AiFeedItem[], cap = 12, todayYmd = todayYmdLocal()): WeekNewsRow[] {
+  const sorted = sortFeedItems(items, todayYmd);
   const rows: WeekNewsRow[] = [];
-  for (const item of items.slice(0, cap)) {
+  for (const item of sorted.slice(0, cap)) {
     const statusText = statusLabel(item.status);
     rows.push({
       id: item.id,
       dateYmd: item.date,
-      dateLabel: formatNewsDate(item.date),
+      dateLabel: formatFeedDateLabel(item, todayYmd),
       headline: item.headline,
       href: safeHref(item.url),
       source: item.source,

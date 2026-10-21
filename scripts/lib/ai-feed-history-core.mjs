@@ -43,12 +43,7 @@ export function mergeAiFeedHistory(historyItems, feedItems, todayYmd) {
     if (item?.id) byId.set(item.id, item);
   }
   const merged = [...byId.values()].filter((item) => keepFeedItem(todayYmd, item));
-  merged.sort((a, b) => {
-    const dateCmp = b.date.localeCompare(a.date);
-    if (dateCmp !== 0) return dateCmp;
-    return b.id.localeCompare(a.id);
-  });
-  return merged;
+  return sortFeedItems(merged, todayYmd);
 }
 
 /** @param {string} ymd */
@@ -58,4 +53,50 @@ export function todayYmdLocal() {
   const m = String(now.getMonth() + 1).padStart(2, '0');
   const d = String(now.getDate()).padStart(2, '0');
   return `${y}-${m}-${d}`;
+}
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/** @param {string} ymd */
+export function formatYmdShort(ymd) {
+  const [y, m, d] = ymd.split('-').map(Number);
+  if (!y || !m || !d) return ymd;
+  return `${d} ${MONTHS[m - 1] ?? ''}`.trim();
+}
+
+/** @param {FeedItem} item @param {string} todayYmd */
+export function isFutureCalendarItem(item, todayYmd) {
+  return item.tag === 'Calendar' && item.date > todayYmd;
+}
+
+/**
+ * Past and today items newest first; future Calendar items at the bottom, soonest first.
+ * @param {FeedItem[]} items
+ * @param {string} todayYmd
+ */
+export function sortFeedItems(items, todayYmd) {
+  const regular = [];
+  const futureCal = [];
+  for (const item of items) {
+    if (isFutureCalendarItem(item, todayYmd)) futureCal.push(item);
+    else regular.push(item);
+  }
+  regular.sort((a, b) => {
+    const dateCmp = b.date.localeCompare(a.date);
+    if (dateCmp !== 0) return dateCmp;
+    return b.id.localeCompare(a.id);
+  });
+  futureCal.sort((a, b) => {
+    const dateCmp = a.date.localeCompare(b.date);
+    if (dateCmp !== 0) return dateCmp;
+    return a.id.localeCompare(b.id);
+  });
+  return [...regular, ...futureCal];
+}
+
+/** @param {FeedItem} item @param {string} todayYmd */
+export function formatFeedDateLabel(item, todayYmd) {
+  const base = formatYmdShort(item.date);
+  if (isFutureCalendarItem(item, todayYmd)) return `Due ${base}`;
+  return base;
 }
