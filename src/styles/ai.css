@@ -1722,3 +1722,130 @@ a.hw-card:focus-visible .hw-card-title {
   line-height: 1.4;
   color: var(--ai-dim);
 }
+
+.ai-week-news--lead {
+  margin-top: 1.25rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--ai-hair);
+}
+
+.ai-week-news--lead .ai-section-label {
+  border-top: none;
+  padding-top: 0;
+}
+
+.ai-week-news-stale {
+  margin: -0.35rem 0 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: var(--ai-dim);
+}
+
+.ai-week-news-key {
+  margin: 0 0 0.85rem;
+  max-width: 42rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ai-dim);
+}
+
+.ai-week-news-empty {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--ai-dim);
+}
+
+.ai-week-news-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ai-hair);
+}
+
+.ai-week-news-row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--ai-hair);
+}
+
+.ai-week-news-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+.ai-week-news-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--ai-dim);
+  white-space: nowrap;
+}
+
+.ai-week-news-status {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ai-dim);
+}
+
+.ai-week-news-status--outlined {
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--ai-hair);
+  border-radius: 4px;
+}
+
+.ai-week-news-headline {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ai-ink);
+  text-decoration: none;
+}
+
+.ai-week-news-headline:hover,
+.ai-week-news-headline:focus-visible {
+  color: #ffffff;
+}
+
+.ai-week-news-headline--plain {
+  font-weight: 500;
+}
+
+.ai-week-news-source {
+  justify-self: end;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--ai-dim);
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .ai-week-news-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .ai-week-news-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ai-week-news-source {
+    justify-self: start;
+    text-align: left;
+  }
+}

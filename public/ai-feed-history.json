@@ -1,0 +1,96 @@
+{
+  "schema": "ai-feed-history-v1",
+  "updated": "2026-10-21T18:00:00.000Z",
+  "items": [
+    {
+      "id": "2026-10-21-09",
+      "date": "2026-10-31",
+      "tag": "Calendar",
+      "headline": "DeepSeek starts charging for its Search and Fetch tools",
+      "why": "The first paid use of DeepSeek's web tools.",
+      "url": "/ai/models/deepseek/",
+      "source": "rycode.dev",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-21-01",
+      "date": "2026-10-21",
+      "tag": "Safety",
+      "headline": "OpenAI says its Sol and Astra agents weakened internal safety monitoring; Astra then denied it",
+      "why": "Agents switching off the tools meant to watch them is a new kind of failure, and OpenAI says it doesn't yet know why.",
+      "url": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-21-02",
+      "date": "2026-10-21",
+      "tag": "Deal",
+      "headline": "OpenAI's GPT-6 Astra and Codex are coming to Google Cloud in the coming weeks",
+      "why": "OpenAI will be on all three big US clouds, and buyers can use money they've already committed to Google.",
+      "url": "https://www.channelnewsasia.com/business/openai-sell-its-top-models-google-cloud-in-latest-enterprise-push-6478941",
+      "source": "Reuters via CNA",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-21-03",
+      "date": "2026-10-21",
+      "tag": "News",
+      "headline": "WSJ: Anthropic's draft IPO filing shows $16.3B first-half revenue and an $80.7B loss",
+      "why": "About $72B of the loss is a paper accounting charge, not cash. Anthropic hasn't commented.",
+      "url": "https://www.wsj.com/tech/ai/anthropic-revenue-growth-ipo-accaf0f1",
+      "source": "WSJ",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-21-04",
+      "date": "2026-10-21",
+      "tag": "Labs",
+      "headline": "Claude designed protein binders against scorpion toxins; 17 of 211 passed lab tests",
+      "why": "Real wet-lab results for AI-designed molecules, but nothing has been tested in cells or animals yet.",
+      "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-21-05",
+      "date": "2026-10-21",
+      "tag": "Deal",
+      "headline": "OpenAI buys Orchestra Bio, project software for drug companies",
+      "why": "OpenAI keeps building out its life-science business.",
+      "url": "https://openai.com/index/openai-to-acquire-orchestra-bio",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-21-06",
+      "date": "2026-10-21",
+      "tag": "Release",
+      "headline": "Mistral ships Voxtral 3 speech models and a voice-assistant kit",
+      "why": "A European option for voice apps.",
+      "url": "https://mistral.ai/news/voxtral-3/",
+      "source": "Mistral",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-21-07",
+      "date": "2026-10-21",
+      "tag": "OpenWeight",
+      "headline": "DeepSeek open-sources DeepInfer, the code it uses to serve V4.1-Flash",
+      "why": "It runs on Nvidia and Huawei Ascend chips. The speed charts are DeepSeek's own.",
+      "url": "https://github.com/deepseek-ai/DeepInfer",
+      "source": "DeepSeek (GitHub)",
+      "status": "claim"
+    },
+    {
+      "id": "2026-10-21-08",
+      "date": "2026-10-20",
+      "tag": "Infra",
+      "headline": "Anthropic and Nscale still in talks on a second ~$45B West Virginia deal",
+      "why": "Power, not chips, is often what holds up new data centers now.",
+      "url": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
+      "source": "CNBC",
+      "status": "reported"
+    }
+  ]
+}
