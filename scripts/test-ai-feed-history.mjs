@@ -72,6 +72,18 @@ if (formatFeedDateLabel(sample('n', '2026-10-21', 'News'), today) !== '21 Oct') 
   bad('news date label', formatFeedDateLabel(sample('n', '2026-10-21', 'News'), today));
 } else ok('plain date label');
 
+const sameDay = sortFeedItems(
+  [
+    sample('2026-10-21-07', '2026-10-21', 'OpenWeight'),
+    sample('2026-10-21-01', '2026-10-21', 'Safety'),
+    sample('2026-10-21-03', '2026-10-21', 'News'),
+  ],
+  today,
+);
+if (sameDay.map((i) => i.id).join(',') !== '2026-10-21-01,2026-10-21-03,2026-10-21-07') {
+  bad('same-day id order', sameDay.map((i) => i.id).join(','));
+} else ok('same date sorts by id ascending');
+
 const merged = mergeAiFeedHistory(
   [{ id: 'old-1', date: oldDate, tag: 'News', headline: 'old', why: 'x', url: 'https://example.com/a', source: 'X', status: 'confirmed' }],
   [

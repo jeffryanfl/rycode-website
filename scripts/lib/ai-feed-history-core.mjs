@@ -84,7 +84,7 @@ export function sortFeedItems(items, todayYmd) {
   regular.sort((a, b) => {
     const dateCmp = b.date.localeCompare(a.date);
     if (dateCmp !== 0) return dateCmp;
-    return b.id.localeCompare(a.id);
+    return a.id.localeCompare(b.id);
   });
   futureCal.sort((a, b) => {
     const dateCmp = a.date.localeCompare(b.date);
