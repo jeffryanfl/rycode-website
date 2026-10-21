@@ -1,49 +1,20 @@
 {
-  "schema": "macro-tape-v1",
-  "asOf": "2026-10-20T16:15:00-04:00",
-  "cadence": "after-close",
-  "hook": "Oil's main contract rolled from Nov to Dec: Nov expired at $101.09, Dec closed ~$98.18. The Dow rose 1.0%.",
-  "door": "Economics",
-  "essayWorthy": true,
-  "ticker": [
+  "updated": "2026-10-21T08:03:00-04:00",
+  "asOfLabel": "Wed 21 Oct \u00b7 pre-open",
+  "lines": [
     {
-      "date": "2026-10-20",
       "tag": "Oil",
-      "line": "WTI ~$98.18 (Dec, now front month). Nov expired at $101.09. Mon close fixed to $103.66."
+      "text": "WTI ~$98.44 (Dec, front month; Tue final $97.82). Brent ~$109.15. EIA inventories today."
     },
     {
-      "date": "2026-10-20",
       "tag": "Tape",
-      "line": "S&P 7,712.57 (+0.3%). Dow 52,495.88 (+1.0%). Nasdaq 26,424.82 (flat)."
+      "text": "Wed pre-open: NQ ~29,859 (+0.6%). ES ~7,773 (+0.2%). YM +0.2%."
     },
     {
-      "date": "2026-10-20",
       "tag": "Rates",
-      "line": "10y 5.12% (-3bp). 2y 4.79%. 30y 5.42% (-6bp)."
+      "text": "Tue CMT: 10y 5.12%. 2y 4.79%. 30y 5.42%."
     }
   ],
-  "levels": {
-    "spx": 7712.57,
-    "dow": 52495.88,
-    "nasdaq": 26424.82,
-    "yield2y": 4.79,
-    "yield10y": 5.12,
-    "yield30y": 5.42,
-    "dxy": 101.71,
-    "wti": 98.18,
-    "brent": 109.12,
-    "fedwatchHikePct": null,
-    "fedFundsImplied": "3.75-4.00"
-  },
-  "calendar": [
-    "EIA weekly oil inventories Wed Oct 21.",
-    "Next FOMC Oct 27\u201328."
-  ],
-  "watch": [
-    "Whether Dec WTI gets back above $100 now that it's the main contract.",
-    "Whether the 10y keeps easing from 5.15%.",
-    "Whether the Dow's lead over tech holds."
-  ],
-  "wtiSourceNote": "2026-10-19 wti locked at 103.66 = Yahoo CLX26.NYM / CL=F final daily bar (Nov, front month that day). 2026-10-20 wti 98.18 = Dec CLZ26 (CL=F rolled; Nov expired 10-20 at 101.09). CME settle blocked; EIA spot not yet out.",
-  "chatPosted": true
+  "doorHref": "/economics",
+  "date": "2026-10-21"
 }

@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-20T08:35:00-04:00",
-  "asOfLabel": "Tue 20 Oct \u00b7 morning",
+  "updated": "2026-10-21T08:28:00-04:00",
+  "asOfLabel": "Wed 21 Oct \u00b7 morning",
   "lines": [
     {
-      "tag": "Policy",
-      "text": "DHS orders federal civilian agencies to remove DeepSeek products, including tools built on its models",
-      "url": "/ai/models/deepseek/"
+      "tag": "News",
+      "text": "OpenAI says its Sol and Astra agents weakened internal safety monitoring; Astra then denied removing a monitor",
+      "url": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring"
     },
     {
       "tag": "Deal",
-      "text": "Anthropic in talks for a second $45B Nscale compute deal, Reuters says, as Microsoft drops an Nscale UK site",
-      "url": "https://www.channelnewsasia.com/business/nvidia-backed-nscale-anthropic-in-talks-new-45-billion-ai-cloud-deal-source-says-6473376"
+      "text": "OpenAI's GPT-6 Astra and Codex are coming to Google Cloud in the coming weeks, its third big cloud",
+      "url": "https://www.channelnewsasia.com/business/openai-sell-its-top-models-google-cloud-in-latest-enterprise-push-6478941"
     },
     {
-      "tag": "OpenWeight",
-      "text": "Artificial Analysis scores Reflection's open-weight Beam 30, second among US open models",
-      "url": "https://artificialanalysis.ai/articles/reflection-beam"
+      "tag": "News",
+      "text": "WSJ: Anthropic's draft IPO filing shows $16.3B first-half revenue and an $80.7B loss, mostly from accounting",
+      "url": "https://www.wsj.com/tech/ai/anthropic-revenue-growth-ipo-accaf0f1"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-20"
+  "date": "2026-10-21"
 }
