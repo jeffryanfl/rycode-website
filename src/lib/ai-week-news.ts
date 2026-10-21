@@ -1,6 +1,7 @@
 import feedHistory from '../../public/ai-feed-history.json';
 import {
   formatFeedDateLabel,
+  keepFeedItem,
   sortFeedItems,
   todayYmdLocal,
 } from '../../scripts/lib/ai-feed-history-core.mjs';
@@ -34,7 +35,12 @@ export function formatNewsDate(ymd: string): string {
   return `${d} ${MONTHS[m - 1] ?? ''}`.trim();
 }
 
-export { formatFeedDateLabel as formatNewsDateLabel, sortFeedItems, todayYmdLocal };
+export { formatFeedDateLabel as formatNewsDateLabel, keepFeedItem, sortFeedItems, todayYmdLocal };
+
+/** Drop items outside the 7-day window (same rules as the morning history script). */
+export function feedItemsInWindow(items: AiFeedItem[], todayYmd = todayYmdLocal()): AiFeedItem[] {
+  return items.filter((item) => keepFeedItem(todayYmd, item));
+}
 
 export function statusLabel(status: string): string | null {
   const s = status?.toLowerCase();
@@ -87,7 +93,7 @@ export type WeekNewsRow = {
 };
 
 export function weekNewsRows(items: AiFeedItem[], cap = 12, todayYmd = todayYmdLocal()): WeekNewsRow[] {
-  const sorted = sortFeedItems(items, todayYmd);
+  const sorted = sortFeedItems(feedItemsInWindow(items, todayYmd), todayYmd);
   const rows: WeekNewsRow[] = [];
   for (const item of sorted.slice(0, cap)) {
     const statusText = statusLabel(item.status);

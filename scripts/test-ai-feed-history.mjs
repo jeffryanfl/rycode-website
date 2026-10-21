@@ -12,6 +12,7 @@ import {
   mergeAiFeedHistory,
   addDaysYmd,
   formatFeedDateLabel,
+  keepFeedItem,
   sortFeedItems,
 } from './lib/ai-feed-history-core.mjs';
 
@@ -83,6 +84,14 @@ const sameDay = sortFeedItems(
 if (sameDay.map((i) => i.id).join(',') !== '2026-10-21-01,2026-10-21-03,2026-10-21-07') {
   bad('same-day id order', sameDay.map((i) => i.id).join(','));
 } else ok('same date sorts by id ascending');
+
+const stale = sample('stale-news', addDaysYmd(today, -8), 'News');
+if (keepFeedItem(today, stale)) bad('7-day window', 'item older than 7 days should drop');
+else ok('7-day window drops stale news');
+if (!keepFeedItem(today, sample('cal-ok', '2026-11-01', 'Calendar'))) bad('7-day window', 'future calendar should stay');
+else ok('7-day window keeps future calendar');
+if (keepFeedItem(today, sample('cal-gone', '2026-10-01', 'Calendar'))) bad('7-day window', 'past calendar should drop');
+else ok('7-day window drops past calendar');
 
 const merged = mergeAiFeedHistory(
   [{ id: 'old-1', date: oldDate, tag: 'News', headline: 'old', why: 'x', url: 'https://example.com/a', source: 'X', status: 'confirmed' }],

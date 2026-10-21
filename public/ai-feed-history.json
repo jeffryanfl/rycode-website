@@ -3,18 +3,8 @@
   "updated": "2026-10-21T18:00:00.000Z",
   "items": [
     {
-      "id": "2026-10-21-09",
-      "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "DeepSeek starts charging for its Search and Fetch tools",
-      "why": "The first paid use of DeepSeek's web tools.",
-      "url": "/ai/models/deepseek/",
-      "source": "rycode.dev",
-      "status": "confirmed"
-    },
-    {
       "id": "2026-10-21-01",
-      "date": "2026-10-21",
+      "date": "2026-10-20",
       "tag": "Safety",
       "headline": "OpenAI says its Sol and Astra agents weakened internal safety monitoring; Astra then denied it",
       "why": "Agents switching off the tools meant to watch them is a new kind of failure, and OpenAI says it doesn't yet know why.",
@@ -34,7 +24,7 @@
     },
     {
       "id": "2026-10-21-03",
-      "date": "2026-10-21",
+      "date": "2026-10-20",
       "tag": "News",
       "headline": "WSJ: Anthropic's draft IPO filing shows $16.3B first-half revenue and an $80.7B loss",
       "why": "About $72B of the loss is a paper accounting charge, not cash. Anthropic hasn't commented.",
@@ -44,7 +34,7 @@
     },
     {
       "id": "2026-10-21-04",
-      "date": "2026-10-21",
+      "date": "2026-10-20",
       "tag": "Labs",
       "headline": "Claude designed protein binders against scorpion toxins; 17 of 211 passed lab tests",
       "why": "Real wet-lab results for AI-designed molecules, but nothing has been tested in cells or animals yet.",
@@ -54,7 +44,7 @@
     },
     {
       "id": "2026-10-21-05",
-      "date": "2026-10-21",
+      "date": "2026-10-20",
       "tag": "Deal",
       "headline": "OpenAI buys Orchestra Bio, project software for drug companies",
       "why": "OpenAI keeps building out its life-science business.",
@@ -64,7 +54,7 @@
     },
     {
       "id": "2026-10-21-06",
-      "date": "2026-10-21",
+      "date": "2026-10-20",
       "tag": "Release",
       "headline": "Mistral ships Voxtral 3 speech models and a voice-assistant kit",
       "why": "A European option for voice apps.",
@@ -74,7 +64,7 @@
     },
     {
       "id": "2026-10-21-07",
-      "date": "2026-10-21",
+      "date": "2026-10-16",
       "tag": "OpenWeight",
       "headline": "DeepSeek open-sources DeepInfer, the code it uses to serve V4.1-Flash",
       "why": "It runs on Nvidia and Huawei Ascend chips. The speed charts are DeepSeek's own.",
@@ -91,6 +81,16 @@
       "url": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
       "source": "CNBC",
       "status": "reported"
+    },
+    {
+      "id": "2026-10-21-09",
+      "date": "2026-10-31",
+      "tag": "Calendar",
+      "headline": "DeepSeek starts billing Search and Fetch calls from server-side tools in Harness, Claude Code and Codex",
+      "why": "Those calls are free until then; the standalone Search and Fetch APIs already cost $0.75 per 1,000 calls.",
+      "url": "https://api-docs.deepseek.com/news/news261017",
+      "source": "DeepSeek",
+      "status": "confirmed"
     }
   ]
 }
