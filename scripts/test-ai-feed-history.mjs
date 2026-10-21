@@ -65,19 +65,23 @@ const sample = (id, date, tag) => ({
   source: 'S',
   status: 'confirmed',
 });
-const feedSample = [
-  sample('2026-10-21-01', '2026-10-20', 'Safety'),
-  sample('2026-10-21-02', '2026-10-21', 'Deal'),
-  sample('2026-10-21-03', '2026-10-20', 'News'),
-  sample('2026-10-21-09', '2026-10-31', 'Calendar'),
-];
-const tick = selectTickerItems(
-  feedSample.map((row) => ({ ...row, headline: 'h', why: 'w', url: 'https://example.com/x', source: 'S', status: 'confirmed' })),
-  today,
-);
-if (tick.items.map((i) => i.id).join(',') !== '2026-10-21-02,2026-10-21-09') {
-  bad('ticker pick', tick.items.map((i) => i.id).join(','));
-} else ok('ticker latest day plus future calendar');
+const fullCard = [];
+for (let n = 1; n <= 9; n += 1) {
+  const nn = String(n).padStart(2, '0');
+  fullCard.push({
+    ...sample(`2026-10-21-${nn}`, n === 9 ? '2026-10-31' : '2026-10-20', n === 9 ? 'Calendar' : 'News'),
+    headline: 'h',
+    why: 'w',
+    url: 'https://example.com/x',
+    source: 'S',
+    status: 'confirmed',
+  });
+}
+const tick = selectTickerItems(fullCard, today);
+if (tick.items.length !== 9) bad('ticker card day', `expected 9 got ${tick.items.length}`);
+else ok('ticker picks full latest card by id prefix');
+if (tick.cardDay !== '2026-10-21') bad('ticker cardDay', tick.cardDay);
+else ok('ticker card day for as-of');
 const reported = { ...sample('r', '2026-10-21', 'News'), status: 'reported', headline: 'Head' };
 if (tickerItemText(reported, today) !== 'REPORTED · Head') bad('ticker reported', tickerItemText(reported, today));
 else ok('ticker reported label');

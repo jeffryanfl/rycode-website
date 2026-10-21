@@ -1,5 +1,5 @@
 /**
- * /ai week news ticker: latest date group + future Calendar items (build + tests).
+ * /ai week news ticker: latest morning card (id YYYY-MM-DD prefix) + future Calendar items.
  */
 import { formatFeedDateLabel, isFutureCalendarItem, keepFeedItem } from './ai-feed-history-core.mjs';
 
@@ -28,6 +28,12 @@ export function tickerItemText(item, todayYmd) {
   return tag ? `${tag} · ${headline}` : headline;
 }
 
+/** @param {string} id */
+export function cardDayFromId(id) {
+  const match = /^(\d{4}-\d{2}-\d{2})-/.exec(String(id ?? ''));
+  return match ? match[1] : '';
+}
+
 /** @param {string} ymd */
 export function asOfLabelFromYmd(ymd) {
   const [y, m, d] = ymd.split('-').map(Number);
@@ -38,22 +44,22 @@ export function asOfLabelFromYmd(ymd) {
 }
 
 /**
- * Latest calendar date among non-future-calendar rows, plus future Calendar rows, id order, cap 10.
+ * Latest card day from id prefix, plus future Calendar rows, id order, cap 10.
  * @param {import('./ai-feed-history-core.mjs').FeedItem[]} items
  * @param {string} todayYmd
  * @param {number} [cap]
  */
 export function selectTickerItems(items, todayYmd, cap = 10) {
   const windowed = feedItemsInWindow(items, todayYmd);
-  const regular = windowed.filter((item) => !(item.tag === 'Calendar' && isFutureCalendarItem(item, todayYmd)));
-  let latestDate = '';
-  for (const item of regular) {
-    if (!latestDate || item.date > latestDate) latestDate = item.date;
+  let cardDay = '';
+  for (const item of windowed) {
+    const day = cardDayFromId(item.id);
+    if (day && (!cardDay || day > cardDay)) cardDay = day;
   }
   const picked = windowed.filter((item) => {
     if (item.tag === 'Calendar' && isFutureCalendarItem(item, todayYmd)) return true;
-    return latestDate && item.date === latestDate;
+    return cardDay && cardDayFromId(item.id) === cardDay;
   });
   picked.sort((a, b) => a.id.localeCompare(b.id));
-  return { latestDate, items: picked.slice(0, cap) };
+  return { cardDay, items: picked.slice(0, cap) };
 }

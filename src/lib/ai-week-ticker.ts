@@ -22,7 +22,7 @@ export function buildTickerTape(
   todayYmd = todayYmdLocal(),
   cap = 10,
 ): { asOfLabel: string; items: TickerTapeItem[] } {
-  const { latestDate, items: picked } = selectTickerItems(items, todayYmd, cap);
+  const { cardDay, items: picked } = selectTickerItems(items, todayYmd, cap);
   const tapeItems: TickerTapeItem[] = [];
   for (const item of picked) {
     const href = safeHref(item.url);
@@ -35,7 +35,7 @@ export function buildTickerTape(
     });
   }
   return {
-    asOfLabel: latestDate ? asOfLabelFromYmd(latestDate) : '',
+    asOfLabel: cardDay ? asOfLabelFromYmd(cardDay) : '',
     items: tapeItems,
   };
 }
