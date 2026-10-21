@@ -12,6 +12,7 @@ import {
   mergeAiFeedHistory,
   addDaysYmd,
   formatFeedDateLabel,
+  isLastUpdatedStale,
   keepFeedItem,
   sortFeedItems,
   todayYmdInTimeZone,
@@ -74,6 +75,9 @@ if (sortOrder.map((i) => i.id).join(',') !== '2026-10-21-01,2026-10-21-08,2026-1
 if (formatFeedDateLabel(sample('c', '2026-10-31', 'Calendar'), today) !== 'Due 31 Oct') {
   bad('due label', formatFeedDateLabel(sample('c', '2026-10-31', 'Calendar'), today));
 } else ok('due date label');
+if (formatFeedDateLabel(sample('c', '2026-10-31', 'Calendar'), '2026-10-31') !== 'Due 31 Oct') {
+  bad('due label on due day', formatFeedDateLabel(sample('c', '2026-10-31', 'Calendar'), '2026-10-31'));
+} else ok('due label on due day');
 if (formatFeedDateLabel(sample('n', '2026-10-21', 'News'), today) !== '21 Oct') {
   bad('news date label', formatFeedDateLabel(sample('n', '2026-10-21', 'News'), today));
 } else ok('plain date label');
@@ -104,6 +108,14 @@ if (!keepFeedItem('2026-10-31', sample('cal-due', '2026-10-31', 'Calendar'))) ba
 else ok('calendar visible on due date');
 if (keepFeedItem('2026-11-01', sample('cal-due', '2026-10-31', 'Calendar'))) bad('calendar due', 'day after due should drop');
 else ok('calendar drops after due date');
+
+const nyNow = new Date('2026-10-22T01:00:00.000Z');
+if (!isLastUpdatedStale('2026-10-14T18:00:00.000Z', nyNow)) {
+  bad('last updated stale', 'expected stale when NY today is 21 Oct and updated 14 Oct');
+} else ok('last updated stale uses NY today');
+if (isLastUpdatedStale('2026-10-20T18:00:00.000Z', nyNow)) {
+  bad('last updated fresh', 'expected fresh within two NY weekdays');
+} else ok('last updated fresh within two NY weekdays');
 
 const merged = mergeAiFeedHistory(
   [{ id: 'old-1', date: oldDate, tag: 'News', headline: 'old', why: 'x', url: 'https://example.com/a', source: 'X', status: 'confirmed' }],

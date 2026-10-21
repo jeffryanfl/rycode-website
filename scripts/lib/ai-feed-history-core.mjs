@@ -6,7 +6,7 @@
 /** @typedef {{ id: string, date: string, tag: string, headline: string, why: string, url: string, source: string, status: string }} FeedItem */
 
 /**
- * @param {string} todayYmd - YYYY-MM-DD (UTC or local; caller must be consistent)
+ * @param {string} todayYmd - YYYY-MM-DD calendar day (usually America/New_York via todayYmdLocal)
  * @param {FeedItem} item
  */
 export function keepFeedItem(todayYmd, item) {
@@ -72,7 +72,7 @@ export function formatYmdShort(ymd) {
 
 /** @param {FeedItem} item @param {string} todayYmd */
 export function isFutureCalendarItem(item, todayYmd) {
-  return item.tag === 'Calendar' && item.date > todayYmd;
+  return item.tag === 'Calendar' && item.date >= todayYmd;
 }
 
 /**
@@ -105,4 +105,27 @@ export function formatFeedDateLabel(item, todayYmd) {
   const base = formatYmdShort(item.date);
   if (isFutureCalendarItem(item, todayYmd)) return `Due ${base}`;
   return base;
+}
+
+/** Weekdays strictly after fromYmd through toYmd (Mon–Fri, calendar YMD strings). */
+export function weekdaysAfterYmd(fromYmd, toYmd) {
+  const start = addDaysYmd(fromYmd, 0);
+  const end = addDaysYmd(toYmd, 0);
+  let count = 0;
+  let cursor = addDaysYmd(start, 1);
+  while (cursor <= end) {
+    const day = new Date(`${cursor}T12:00:00.000Z`).getUTCDay();
+    if (day !== 0 && day !== 6) count += 1;
+    cursor = addDaysYmd(cursor, 1);
+  }
+  return count;
+}
+
+/** True when the feed updated timestamp is more than two NY weekdays behind NY today. */
+export function isLastUpdatedStale(updatedIso, now = new Date()) {
+  const updated = new Date(updatedIso);
+  if (Number.isNaN(updated.getTime())) return false;
+  const todayYmd = todayYmdInTimeZone(now);
+  const updatedYmd = todayYmdInTimeZone(updated);
+  return weekdaysAfterYmd(updatedYmd, todayYmd) > 2;
 }
