@@ -25,14 +25,6 @@
       track.style.animationPlayState = paused ? 'paused' : 'running';
       btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
       btn.setAttribute('aria-label', paused ? playLabel : pauseLabel);
-      const icon = btn.querySelector('[data-hub-tape-toggle-icon]');
-      if (icon) {
-        icon.querySelectorAll('.hub-tape-toggle-pause').forEach(function (el) {
-          el.hidden = paused;
-        });
-        const play = icon.querySelector('.hub-tape-toggle-play');
-        if (play) play.hidden = !paused;
-      }
     }
 
     btn.addEventListener('click', function () {
