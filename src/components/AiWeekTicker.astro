@@ -2,7 +2,7 @@
 import { loadAiWeekTicker } from '../lib/ai-week-ticker';
 
 const tape = loadAiWeekTicker();
-const ariaLabel = tape.asOfLabel ? `This week in A.I., ${tape.asOfLabel}` : 'This week in A.I.';
+const ariaLabel = tape.asOfLabel ? `Today in A.I., ${tape.asOfLabel}` : 'Today in A.I.';
 ---
 
 {!tape.hidden && (

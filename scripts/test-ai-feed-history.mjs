@@ -82,6 +82,56 @@ if (tick.items.length !== 9) bad('ticker card day', `expected 9 got ${tick.items
 else ok('ticker picks full latest card by id prefix');
 if (tick.cardDay !== '2026-10-21') bad('ticker cardDay', tick.cardDay);
 else ok('ticker card day for as-of');
+
+const twoCards = [
+  {
+    ...sample('2026-10-20-01', '2026-10-20', 'News'),
+    headline: 'old',
+    why: 'w',
+    url: 'https://example.com/x',
+    source: 'S',
+    status: 'confirmed',
+  },
+  {
+    ...sample('2026-10-21-01', '2026-10-21', 'News'),
+    headline: 'new',
+    why: 'w',
+    url: 'https://example.com/x',
+    source: 'S',
+    status: 'confirmed',
+  },
+];
+const latestOnly = selectTickerItems(twoCards, today);
+if (latestOnly.items.some((i) => i.id.startsWith('2026-10-20'))) bad('older card', latestOnly.items.map((i) => i.id).join(','));
+else ok('ticker skips older card day');
+
+const eleven = [];
+for (let n = 1; n <= 11; n += 1) {
+  const nn = String(n).padStart(2, '0');
+  eleven.push({
+    ...sample(`2026-10-21-${nn}`, '2026-10-21', 'News'),
+    headline: 'h',
+    why: 'w',
+    url: 'https://example.com/x',
+    source: 'S',
+    status: 'confirmed',
+  });
+}
+if (selectTickerItems(eleven, today).items.length !== 10) bad('ticker cap', 'expected 10');
+else ok('ticker caps at 10 items');
+
+const pastCal = {
+  ...sample('2026-10-21-99', '2026-10-01', 'Calendar'),
+  headline: 'past cal',
+  why: 'w',
+  url: 'https://example.com/x',
+  source: 'S',
+  status: 'confirmed',
+};
+const withPastCal = [...fullCard.slice(0, 2), pastCal];
+if (selectTickerItems(withPastCal, today).items.some((i) => i.id === '2026-10-21-99')) bad('past calendar', 'should exclude');
+else ok('ticker excludes past calendar');
+
 const reported = { ...sample('r', '2026-10-21', 'News'), status: 'reported', headline: 'Head' };
 if (tickerItemText(reported, today) !== 'REPORTED · Head') bad('ticker reported', tickerItemText(reported, today));
 else ok('ticker reported label');

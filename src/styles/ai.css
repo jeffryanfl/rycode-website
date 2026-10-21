@@ -1739,3 +1739,43 @@ a.hw-card:focus-visible .hw-card-title {
   padding-top: 0.35rem;
   padding-bottom: 0.35rem;
 }
+
+.editorial-shell--ai .hub-tape--inline .hub-tape-toggle {
+  position: relative;
+  z-index: 2;
+}
+
+.editorial-shell--ai .hub-tape--inline .hub-tape-toggle[hidden],
+.editorial-shell--ai .hub-tape--inline:not(.hub-tape--paused) .hub-tape-toggle-play,
+.editorial-shell--ai .hub-tape--inline.hub-tape--paused .hub-tape-toggle-pause {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-shell--ai .hub-tape--inline {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .editorial-shell--ai .hub-tape--inline .hub-tape-viewport {
+    overflow: visible;
+    flex-basis: 100%;
+  }
+
+  .editorial-shell--ai .hub-tape--inline .hub-tape-track {
+    width: auto;
+    max-width: none;
+    overflow: visible;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    white-space: normal;
+  }
+
+  .editorial-shell--ai .hub-tape--inline .hub-tape-item {
+    display: block;
+    min-height: 24px;
+    padding: 0.2rem 0;
+    line-height: 1.35;
+  }
+}
