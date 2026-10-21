@@ -19,10 +19,17 @@
   }
 
   function linesFrom(data) {
-    if (!Array.isArray(data.lines)) return [];
-    return data.lines.slice(0, MAX_LINES).filter(
-      (row) => row && typeof row.tag === 'string' && typeof row.text === 'string'
-    );
+    if (Array.isArray(data.lines)) {
+      return data.lines.slice(0, MAX_LINES).filter(
+        (row) => row && typeof row.tag === 'string' && typeof row.text === 'string'
+      );
+    }
+    if (!Array.isArray(data.ticker)) return [];
+    return data.ticker.slice(0, MAX_LINES).filter(
+      (row) => row && typeof row.tag === 'string' && typeof row.line === 'string'
+    ).map(function (row) {
+      return { tag: row.tag, text: row.line };
+    });
   }
 
   function enableMarquee(track, viewport) {
