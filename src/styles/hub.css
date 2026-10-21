@@ -193,6 +193,12 @@ html:has(.landing-stage--charcoal) body {
   outline-offset: 2px;
 }
 
+.hub-tape-toggle[hidden],
+.hub-tape:not(.hub-tape--paused) .hub-tape-toggle-play,
+.hub-tape.hub-tape--paused .hub-tape-toggle-pause {
+  display: none;
+}
+
 .hub-tape--paused .hub-tape-track--scroll {
   animation-play-state: paused;
 }
@@ -238,19 +244,44 @@ html:has(.landing-stage--charcoal) body {
   }
 }
 
+@media (max-width: 1279px) {
+  .hub-tape-toggle {
+    position: relative;
+    z-index: 2;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hub-tape-track--scroll {
     animation: none;
   }
 
+  .hub-tape {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
   .hub-tape-viewport {
     mask-image: none;
+    overflow: visible;
+    flex-basis: 100%;
   }
 
   .hub-tape-track {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: auto;
+    max-width: none;
+    overflow: visible;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    white-space: normal;
+  }
+
+  .hub-tape-item {
+    display: block;
+    min-height: 24px;
+    padding: 0.2rem 0;
+    line-height: 1.35;
   }
 }
 
