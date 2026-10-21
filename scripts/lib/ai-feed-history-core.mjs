@@ -13,10 +13,9 @@ export function keepFeedItem(todayYmd, item) {
   const date = item.date;
   if (!date || typeof date !== 'string') return false;
   if (item.tag === 'Calendar') {
-    if (date > todayYmd) return true;
-    return false;
+    return date >= todayYmd;
   }
-  const cutoff = addDaysYmd(todayYmd, -7);
+  const cutoff = addDaysYmd(todayYmd, -6);
   return date >= cutoff;
 }
 
@@ -46,13 +45,20 @@ export function mergeAiFeedHistory(historyItems, feedItems, todayYmd) {
   return sortFeedItems(merged, todayYmd);
 }
 
-/** @param {string} ymd */
+const NY_TIME_ZONE = 'America/New_York';
+
+/** @param {Date} [date] @param {string} [timeZone] */
+export function todayYmdInTimeZone(date = new Date(), timeZone = NY_TIME_ZONE) {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date);
+}
+
 export function todayYmdLocal() {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
+  return todayYmdInTimeZone();
 }
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

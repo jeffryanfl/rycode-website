@@ -64,7 +64,7 @@
     },
     {
       "id": "2026-10-21-07",
-      "date": "2026-10-16",
+      "date": "2026-10-20",
       "tag": "OpenWeight",
       "headline": "DeepSeek open-sources DeepInfer, the code it uses to serve V4.1-Flash",
       "why": "It runs on Nvidia and Huawei Ascend chips. The speed charts are DeepSeek's own.",

@@ -14,6 +14,7 @@ import {
   formatFeedDateLabel,
   keepFeedItem,
   sortFeedItems,
+  todayYmdInTimeZone,
 } from './lib/ai-feed-history-core.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -42,7 +43,11 @@ function bad(label, detail) {
 }
 
 const today = '2026-10-21';
-const oldDate = addDaysYmd(today, -8);
+const oldDate = addDaysYmd(today, -7);
+
+if (todayYmdInTimeZone(new Date('2026-10-22T01:00:00.000Z')) !== '2026-10-21') {
+  bad('NY today', todayYmdInTimeZone(new Date('2026-10-22T01:00:00.000Z')));
+} else ok('todayYmd uses America/New_York');
 
 const sample = (id, date, tag) => ({
   id,
@@ -85,13 +90,20 @@ if (sameDay.map((i) => i.id).join(',') !== '2026-10-21-01,2026-10-21-03,2026-10-
   bad('same-day id order', sameDay.map((i) => i.id).join(','));
 } else ok('same date sorts by id ascending');
 
-const stale = sample('stale-news', addDaysYmd(today, -8), 'News');
-if (keepFeedItem(today, stale)) bad('7-day window', 'item older than 7 days should drop');
-else ok('7-day window drops stale news');
+const stale = sample('stale-news', addDaysYmd(today, -7), 'News');
+if (keepFeedItem(today, stale)) bad('7-day window', 'day before cutoff should drop');
+else ok('7-day window drops day before cutoff');
+const edge = sample('edge-news', addDaysYmd(today, -6), 'News');
+if (!keepFeedItem(today, edge)) bad('7-day window', 'cutoff day should stay');
+else ok('7-day window keeps cutoff day (7 days including today)');
 if (!keepFeedItem(today, sample('cal-ok', '2026-11-01', 'Calendar'))) bad('7-day window', 'future calendar should stay');
 else ok('7-day window keeps future calendar');
 if (keepFeedItem(today, sample('cal-gone', '2026-10-01', 'Calendar'))) bad('7-day window', 'past calendar should drop');
 else ok('7-day window drops past calendar');
+if (!keepFeedItem('2026-10-31', sample('cal-due', '2026-10-31', 'Calendar'))) bad('calendar due', 'due date should stay visible');
+else ok('calendar visible on due date');
+if (keepFeedItem('2026-11-01', sample('cal-due', '2026-10-31', 'Calendar'))) bad('calendar due', 'day after due should drop');
+else ok('calendar drops after due date');
 
 const merged = mergeAiFeedHistory(
   [{ id: 'old-1', date: oldDate, tag: 'News', headline: 'old', why: 'x', url: 'https://example.com/a', source: 'X', status: 'confirmed' }],
