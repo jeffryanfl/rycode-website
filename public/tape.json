@@ -1,6 +1,6 @@
 {
   "schema": "macro-tape-v1",
-  "asOf": "2026-10-21T16:15:00-04:00",
+  "asOf": "2026-10-21T17:37:00-04:00",
   "cadence": "after-close",
   "hook": "Tech led a broad rise (Nasdaq +1.1%) as Dec WTI held just under $100 at ~$97.69.",
   "door": "Economics",
@@ -9,7 +9,7 @@
     {
       "date": "2026-10-21",
       "tag": "Oil",
-      "line": "WTI ~$97.69 (Dec). Tue Dec close fixed to $97.82. Brent ~$109.58."
+      "line": "WTI ~$97.71 (Dec). Tue Dec close fixed to $97.82. Brent ~$109.58."
     },
     {
       "date": "2026-10-21",
@@ -30,7 +30,7 @@
     "yield10y": 5.13,
     "yield30y": 5.42,
     "dxy": 101.69,
-    "wti": 97.69,
+    "wti": 97.71,
     "brent": 109.58,
     "fedwatchHikePct": null,
     "fedFundsImplied": "3.75-4.00"
