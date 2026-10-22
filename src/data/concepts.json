@@ -353,6 +353,7 @@
         "/ai/hardware/chips/rubin/",
         "/ai/hardware/chips/instinct/",
         "/ai/hardware/chips/ironwood/",
+        "/ai/hardware/chips/intel-d270/",
         "/ai/hardware/chips/trainium/",
         "/ai/hardware/chips/maia/",
         "/ai/hardware/chips/cerebras-wse/",

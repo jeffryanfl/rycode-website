@@ -67,6 +67,7 @@
   "/ai/hardware/chips/rubin/": "The Rubin GPU is 50 PFLOPS of NVFP4 inference and 288 GB of HBM4, and Vera Rubin NVL72 is 72 Rubin GPUs and 36 Vera CPUs.",
   "/ai/hardware/chips/instinct/": "The custom Instinct GPU is based on the MI450 architecture, and MI300 and MI350 are the series Meta already runs.",
   "/ai/hardware/chips/ironwood/": "Ironwood is Google's seventh-generation TPU, listed at $12 per chip-hour on demand and $5.40 on a three-year commitment in us-central1, and Trillium (TPU v6e) is the generation before it.",
+  "/ai/hardware/chips/intel-d270/": "Intel GPU D270 is an inference data center GPU on Xe3P: Intel states 1.3 PFLOPS FP8, 160 GB LPDDR5X on Intel's card, up to 480 GB on partner cards, 1.5 TB/s, 350 W air-cooled PCIe.",
   "/ai/hardware/chips/trainium/": "Trainium2 is the AI chip Amazon's Annapurna Labs designs for AWS: 1.3 PFLOPS of dense FP8 and 96 GiB of HBM per chip, 64 chips to a Trn2 UltraServer.",
   "/ai/hardware/chips/maia/": "Maia 200 is Microsoft's own inference chip: TSMC 3nm, over 10 PFLOPS of FP4, 216 GB of HBM3e at 7 TB/s, in a 750 W envelope.",
   "/ai/hardware/chips/cerebras-wse/": "The Cerebras WSE-3 is one chip the size of a silicon wafer: 4 trillion transistors, 900,000 AI cores, 44 GB of on-chip SRAM, and 125 PFLOPS of peak AI compute.",

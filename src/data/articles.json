@@ -244,6 +244,30 @@
     "slug": "ai-hardware-chips-ironwood"
   },
   {
+    "href": "/ai/hardware/chips/intel-d270/",
+    "title": "Intel GPU D270",
+    "description": "Intel GPU D270 is an inference data center GPU on Xe3P: Intel states 1.3 PFLOPS FP8, 160 GB LPDDR5X on Intel's card, up to 480 GB on partner cards, 1.5 TB/s, 350 W air-cooled PCIe.",
+    "date": "2026-10-22",
+    "section": "ai",
+    "series": "ai-hardware",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/hardware/",
+        "label": "Hardware"
+      },
+      {
+        "href": "/ai/hardware/chips/",
+        "label": "Chips"
+      }
+    ],
+    "file": "src/pages/ai/hardware/chips/intel-d270.astro",
+    "slug": "ai-hardware-chips-intel-d270"
+  },
+  {
     "href": "/ai/hardware/chips/jalapeno/",
     "title": "Jalapeño - Hardware",
     "description": "Jalapeño is OpenAI's first custom inference chip, built with Broadcom: 13.4 PFLOPS of MXFP4, 216 GiB of HBM4 at 15.4 TB/s, 700 W.",
