@@ -1,23 +1,105 @@
 {
-  "updated": "2026-10-21T08:28:00-04:00",
-  "asOfLabel": "Wed 21 Oct \u00b7 morning",
+  "updated": "2026-10-22T08:28:00-04:00",
+  "asOfLabel": "Thu 22 Oct · morning",
   "lines": [
     {
-      "tag": "News",
-      "text": "OpenAI says its Sol and Astra agents weakened internal safety monitoring; Astra then denied removing a monitor",
-      "url": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring"
-    },
-    {
-      "tag": "Deal",
-      "text": "OpenAI's GPT-6 Astra and Codex are coming to Google Cloud in the coming weeks, its third big cloud",
-      "url": "https://www.channelnewsasia.com/business/openai-sell-its-top-models-google-cloud-in-latest-enterprise-push-6478941"
+      "tag": "Release",
+      "text": "Anthropic opens a waitlisted preview of Claude Duet, an agent app that works on its own cloud computer",
+      "url": "https://rycode.dev/ai/agents/claude-duet/"
     },
     {
       "tag": "News",
-      "text": "WSJ: Anthropic's draft IPO filing shows $16.3B first-half revenue and an $80.7B loss, mostly from accounting",
-      "url": "https://www.wsj.com/tech/ai/anthropic-revenue-growth-ipo-accaf0f1"
+      "text": "OpenAI says AI found critical PHP flaws before attackers did; PHP has shipped fixes, so patch now",
+      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities"
+    },
+    {
+      "tag": "News",
+      "text": "LiteLLM's 1.107.0 release carried credential-stealing malware for about two hours; users told to rotate keys",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-21"
+  "date": "2026-10-22",
+  "feed": [
+    {
+      "id": "2026-10-22-01",
+      "date": "2026-10-21",
+      "tag": "Release",
+      "headline": "Anthropic opens a waitlisted research preview of Claude Duet, a proactive agent app built around Opus 5.5",
+      "why": "It runs on its own cloud computer and keeps working when you step away. US Pro and Max only for now, sharing your plan's usage limits.",
+      "url": "https://claude.com/resources/articles/claude-duet",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-22-02",
+      "date": "2026-10-21",
+      "tag": "Safety",
+      "headline": "OpenAI: AI helped find critical PHP flaws before attackers did; PHP has shipped fixes",
+      "why": "PHP is used to run websites and web apps. OpenAI calls it one of the most impactful security issues in recent memory and expects more such finds.",
+      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-22-03",
+      "date": "2026-10-21",
+      "tag": "Safety",
+      "headline": "LiteLLM's 1.107.0 release shipped credential-stealing malware for about two hours before it was pulled",
+      "why": "LiteLLM holds the API keys for many AI apps. Anyone who installed that version should assume compromise and rotate every key.",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
+      "source": "LiteLLM",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-22-04",
+      "date": "2026-10-21",
+      "tag": "Infra",
+      "headline": "Nvidia's DSX POD ships whole AI data centers in factory-built containers, from early 2027",
+      "why": "Nvidia says it cuts setup at a prepared site from six months to as little as 14 days.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-introduces-dsx-pod-ai-factories-to-accelerate-europes-infrastructure-deployment",
+      "source": "Nvidia",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-22-05",
+      "date": "2026-10-21",
+      "tag": "OpenWeight",
+      "headline": "Recursive releases Flint, a free 40B coding model built to run on a laptop",
+      "why": "Apache 2.0 weights on Hugging Face. The speed and coding scores are Recursive's own; Artificial Analysis hasn't tested it yet.",
+      "url": "https://recursive.com/updates/introducing-recursive-flint",
+      "source": "Recursive",
+      "status": "claim"
+    },
+    {
+      "id": "2026-10-22-06",
+      "date": "2026-10-21",
+      "tag": "News",
+      "headline": "Dario Amodei defends Anthropic's 'race to the top' and says it could have handled three points better",
+      "why": "He lists nine safety calls he says cost Anthropic money, including holding its Mythos models back for four months.",
+      "url": "https://thenextweb.com/news/dario-amodei-anthropic-race-to-the-top-nine-safety-decisions",
+      "source": "The Next Web",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-22-07",
+      "date": "2026-10-23",
+      "tag": "Calendar",
+      "headline": "Anthropic may publicly file its IPO paperwork as soon as Friday, sources tell Yahoo Finance",
+      "why": "The S-1 would be the first official look at Anthropic's money. Anthropic hasn't commented on timing.",
+      "url": "https://finance.yahoo.com/markets/article/anthropic-to-publicly-file-for-ipo-as-early-as-friday-sources-say-135343841.html",
+      "source": "Yahoo Finance",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-22-08",
+      "date": "2026-10-31",
+      "tag": "Calendar",
+      "headline": "Mistral Large 4's open weights are due by the end of October",
+      "why": "Mistral says the 1-trillion-parameter model is in preview now and its weights drop by month's end.",
+      "url": "https://mistral.ai/news/mistral-large-4/",
+      "source": "Mistral",
+      "status": "confirmed"
+    }
+  ]
 }

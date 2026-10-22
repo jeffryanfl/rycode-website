@@ -1,67 +1,69 @@
 {
-  "updated": "2026-10-21T17:37:00-04:00",
-  "asOfLabel": "Wed 21 Oct · after close",
+  "updated": "2026-10-22T08:17:00-04:00",
+  "asOfLabel": "Thu 22 Oct · pre-open",
   "lines": [
     {
       "tag": "Oil",
-      "text": "WTI ~$97.71 (Dec). Tue Dec close fixed to $97.82. Brent ~$109.58."
+      "text": "WTI ~$99.38 (Dec, +2.3%), just under $100. Brent ~$111.94. Wed final Dec bar re-check: $97.15."
     },
     {
       "tag": "Tape",
-      "text": "S&P 7,757.17 (+0.6%). Nasdaq 26,702.86 (+1.1%). Dow 52,856.09 (+0.7%)."
+      "text": "Thu pre-open: NQ ~29,527 (-1.6%). ES ~7,725 (-1.0%). YM -0.6%."
     },
     {
       "tag": "Rates",
-      "text": "10y 5.13% (+1bp). 2y 4.81%. 30y 5.42%."
+      "text": "Wed CMT: 10y 5.13%. 2y 4.81%. 30y 5.42%."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "schema": "macro-tape-v1",
-  "asOf": "2026-10-21T17:37:00-04:00",
-  "cadence": "after-close",
-  "hook": "Tech led a broad rise (Nasdaq +1.1%) as Dec WTI held just under $100 at ~$97.71.",
+  "asOf": "2026-10-22T08:17:00-04:00",
+  "cadence": "pre-open",
+  "hook": "Futures are lower, led by tech (NQ -1.6%), while Dec WTI jumps to ~$99.38, just under $100.",
   "door": "Economics",
   "essayWorthy": true,
   "ticker": [
     {
-      "date": "2026-10-21",
+      "date": "2026-10-22",
       "tag": "Oil",
-      "line": "WTI ~$97.71 (Dec). Tue Dec close fixed to $97.82. Brent ~$109.58."
+      "line": "WTI ~$99.38 (Dec, +2.3%), just under $100. Brent ~$111.94. Wed final Dec bar re-check: $97.15."
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-22",
       "tag": "Tape",
-      "line": "S&P 7,757.17 (+0.6%). Nasdaq 26,702.86 (+1.1%). Dow 52,856.09 (+0.7%)."
+      "line": "Thu pre-open: NQ ~29,527 (-1.6%). ES ~7,725 (-1.0%). YM -0.6%."
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-22",
       "tag": "Rates",
-      "line": "10y 5.13% (+1bp). 2y 4.81%. 30y 5.42%."
+      "line": "Wed CMT: 10y 5.13%. 2y 4.81%. 30y 5.42%."
     }
   ],
   "levels": {
+    "es": 7724.5,
+    "nq": 29527,
+    "ym": 52753,
     "spx": 7757.17,
     "dow": 52856.09,
     "nasdaq": 26702.86,
     "yield2y": 4.81,
     "yield10y": 5.13,
     "yield30y": 5.42,
-    "dxy": 101.69,
-    "wti": 97.71,
-    "brent": 109.58,
+    "dxy": 101.79,
+    "wti": 99.38,
+    "brent": 111.94,
     "fedwatchHikePct": null,
     "fedFundsImplied": "3.75-4.00"
   },
   "calendar": [
-    "Tesla Q3 results after the close today.",
     "Next FOMC Oct 27–28."
   ],
   "watch": [
-    "Whether Dec WTI gets back above $100.",
-    "Whether the S&P retakes its 7,818.93 high.",
-    "Tesla's after-hours move."
+    "Whether Dec WTI closes back above $100 (would re-cross line 2).",
+    "Whether tech selling holds at the open.",
+    "Whether the 10y holds near 5.13%."
   ],
-  "wtiSourceNote": "2026-10-20 wti locked at 97.82 = Yahoo CLZ26.NYM final daily bar (Dec, front month after the roll). Supersedes 98.06 and 98.18. CL=F's stitched 10-20 bar of 101.79 is the expiring Nov contract, so it isn't used. CME settle blocked. 2026-10-21 wti 97.71 = Yahoo CLZ26.NYM and CL=F final daily close (Dec).",
+  "wtiSourceNote": "Yahoo CLZ26 Dec front month pre-open quote. Yahoo now shows Wed 10-21 final Dec bar at 97.15 (read 97.71 at 5:55pm Wed); re-check and fix history at Thu after-close.",
   "chatPosted": true
 }
