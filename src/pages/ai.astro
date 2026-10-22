@@ -2,8 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import AiBenchCharts from '../components/AiBenchCharts.astro';
 import AiWeekTicker from '../components/AiWeekTicker.astro';
+import { agentToolsForDoor } from '../lib/agent-tools';
 import '../styles/ai.css';
 import '../styles/hub.css';
+
+const agentDoorRows = agentToolsForDoor();
 ---
 
 <Layout
@@ -430,6 +433,21 @@ import '../styles/hub.css';
         </a>
       </li>
     </ul>
+  </section>
+
+  <section class="ai-band" aria-labelledby="ai-agent-tools">
+    <h2 class="ai-section-label" id="ai-agent-tools">Agent tools</h2>
+    <p class="ai-lab-note">Personal agents that work in the background on a cloud computer and through your apps.</p>
+    <ul class="ai-agent-door-list">
+      {agentDoorRows.map((tool) => (
+        <li class="ai-agent-door-row">
+          <a href={`/ai/agents/${tool.slug}/`}>{tool.name}</a>
+          <span class="ai-agent-door-maker">{tool.maker}</span>
+          <span class="ai-agent-door-line">{tool.doorLine}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="ai-agent-door-all"><a href="/ai/agents/">All agent tools</a></p>
   </section>
 
   <section class="ai-band ai-papers" aria-labelledby="ai-products">

@@ -1,0 +1,13 @@
+---
+import AgentToolProfile from '../../../components/AgentToolProfile.astro';
+import Layout from '../../../layouts/Layout.astro';
+import { agentToolBySlug } from '../../../lib/agent-tools';
+import '../../../styles/ai.css';
+
+const tool = agentToolBySlug('dots');
+if (!tool) throw new Error('Missing agent tool: dots');
+---
+
+<Layout title={`${tool.name} - Agent tools - Rycode`} description={tool.dek} variant="ai">
+  <AgentToolProfile tool={tool} />
+</Layout>

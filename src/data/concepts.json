@@ -397,6 +397,21 @@
         "hardware-compute",
         "agent-swarms"
       ]
+    },
+    {
+      "id": "agent-tools",
+      "label": "Agent tools",
+      "blurb": "Personal agents from the major labs that run on a cloud computer, use connectors, and act on your goals between chats.",
+      "articles": [
+        "/ai/agents/claude-duet/",
+        "/ai/agents/muse/",
+        "/ai/agents/dots/",
+        "/ai/agents/grok-bot/"
+      ],
+      "links": [
+        "agent-swarms",
+        "model-releases"
+      ]
     }
   ]
 }

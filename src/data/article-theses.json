@@ -101,5 +101,9 @@
   "/ai/models/more-labs/apple-foundation-models/": "Apple's third-generation Foundation Models: five models, two on the device and three on Private Cloud Compute, built with Google, announced 8 Jun 2026.",
   "/ai/models/more-labs/cohere-command-a-plus/": "Cohere Command A+: Cohere's first Mixture of Experts model, 218 billion parameters with 25 billion active, open under Apache 2.0, released 20 May 2026.",
   "/ai/models/more-labs/inkling/": "Thinking Machines Lab's Inkling: 975 billion parameters, 41 billion active, 1M context, open weights, released 15 Jul 2026.",
-  "/ai/models/more-labs/mistral-large-4/": "Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights promised by end of October."
+  "/ai/models/more-labs/mistral-large-4/": "Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights promised by end of October.",
+  "/ai/agents/claude-duet/": "Claude Duet is Anthropic's waitlisted research preview agent on a cloud VM, included with US Claude Pro and Max, running on Claude Opus 5.5.",
+  "/ai/agents/muse/": "Muse is Meta's personal agent in a secure cloud VM, rolling out in the US with a free tier and paid weekly token plans on Muse Spark.",
+  "/ai/agents/dots/": "dots is OpenAI's always-on ChatGPT agent on GPT-6 Astra, with its own cloud computer and optional use of your desktop.",
+  "/ai/agents/grok-bot/": "Grok Bot is SpaceXAI's named Bots product on a shared cloud computer, with parallel agents, routines, and desktop apps on paid X and Cursor plans."
 }
