@@ -1003,8 +1003,12 @@
           "label": "Modalities out",
           "parts": [
             {
-              "text": "Text messages, documents, decks, code and pull requests, and videos showing those changes.",
+              "text": "Text messages, documents, code and pull requests, and videos showing those changes.",
               "sourceKey": "O1"
+            },
+            {
+              "text": " Decks.",
+              "sourceKey": "O2"
             },
             {
               "text": " The dot can't start a call to you.",
@@ -1664,7 +1668,7 @@
             ],
             [
               {
-                "text": "Routines at any schedule you set; you pick the cadence.",
+                "text": "Routines on daily, hourly or interval schedules, or event triggers.",
                 "sourceKey": "G11"
               }
             ],
