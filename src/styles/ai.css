@@ -1197,6 +1197,26 @@ a.hw-card:focus-visible .hw-card-title {
   color: var(--ai-dim);
 }
 
+/* Intel D270 only: numbered Sources rows and [n] backrefs (other chip pages keep inline links). */
+.ai-model-intel-d270 .ai-model-sources--numbered .ai-model-sources-n {
+  margin-right: 0.3em;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--ai-dim);
+}
+
+.ai-model-intel-d270 .ai-model-cite-ref {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ai-model-intel-d270 .ai-model-cite-ref:hover,
+.ai-model-intel-d270 .ai-model-cite-ref:focus-visible {
+  text-decoration: underline;
+}
+
 .ai-model-siblings {
   margin-top: 2rem;
   padding-top: 0.2rem;
