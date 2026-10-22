@@ -761,7 +761,7 @@
             [
               {
                 "text": "Memory may persist after you delete something.",
-                "sourceKey": "M6"
+                "sourceKey": "M4"
               },
               {
                 "text": "Reset deletes everything.",
@@ -1037,7 +1037,7 @@
               "sourceKey": "O2"
             },
             {
-              "text": " Teams.",
+              "text": " Also on Microsoft Teams.",
               "sourceKey": "O1"
             }
           ]
@@ -1156,7 +1156,7 @@
                 "sourceKey": "O2"
               },
               {
-                "text": "Teams.",
+                "text": "Also on Microsoft Teams.",
                 "sourceKey": "O1"
               },
               {
@@ -1438,10 +1438,6 @@
               "sourceKey": "G6"
             },
             {
-              "text": " Plus does not include Grok Bot.",
-              "sourceKey": "G6"
-            },
-            {
               "text": " Plus and Free don't include it.",
               "sourceKey": "G5"
             },
@@ -1614,7 +1610,7 @@
                 "sourceKey": "G12"
               },
               {
-                "text": "The X plugin.",
+                "text": "Also the X plugin.",
                 "sourceKey": "G10"
               }
             ],
