@@ -32,7 +32,11 @@
           "label": "Status and access",
           "parts": [
             {
-              "text": "Research preview opened 21 Oct 2026 by waitlist. Access opens in waves; features can change during the preview.",
+              "text": "Research preview opened 21 Oct 2026 by waitlist.",
+              "sourceKey": "D1"
+            },
+            {
+              "text": " Access opens in waves; features can change during the preview.",
               "sourceKey": "D2"
             }
           ]
@@ -81,8 +85,12 @@
           "label": "Modalities out",
           "parts": [
             {
-              "text": "Text messages and notifications, plus files you can review and edit: research briefs, financial models, slide decks, dashboards, and web apps.",
+              "text": "Text messages and notifications.",
               "sourceKey": "D1"
+            },
+            {
+              "text": " Files you can review and edit: research briefs, financial models, slide decks, dashboards, and web apps.",
+              "sourceKey": "D2"
             },
             {
               "text": " Image or video output is not described on these pages.",
@@ -102,8 +110,12 @@
               "sourceKey": "D1"
             },
             {
-              "text": " Separate from the main Claude app for now. It cannot see files on your computer.",
+              "text": " Separate from the main Claude app for now.",
               "sourceKey": "D1"
+            },
+            {
+              "text": " It cannot see files on your computer.",
+              "sourceKey": "D2"
             },
             {
               "text": " A desktop app is not listed on these pages.",
@@ -119,7 +131,7 @@
               "sourceKey": "D1"
             },
             {
-              "text": " Morning brief once each morning; checks at set intervals you configure.",
+              "text": " Morning brief once each morning; checks at set intervals.",
               "sourceKey": "D2"
             },
             {
@@ -158,7 +170,7 @@
             ],
             [
               {
-                "text": "Monitors connected apps through the day and messages you only when something needs you; follows up on threads that have gone quiet.",
+                "text": "Monitors connected apps through the day and messages you when something needs you; follows up on threads that have gone quiet.",
                 "sourceKey": "D2"
               }
             ],
@@ -170,8 +182,12 @@
             ],
             [
               {
-                "text": "Builds dashboards, forecasts, prototypes, and web apps; uses its cloud browser for sites with no connector; buys through Stripe Link or Shop Pay after approval.",
+                "text": "Builds dashboards, forecasts, prototypes, and web apps; buys through Stripe Link or Shop Pay after approval.",
                 "sourceKey": "D1"
+              },
+              {
+                "text": "Uses its cloud browser for sites with no connector.",
+                "sourceKey": "D2"
               }
             ]
           ]
@@ -661,8 +677,12 @@
             ],
             [
               {
-                "text": "Muse can build a Custom Connector for any service with an API; Meta does not review these. Payments through Link by Stripe.",
+                "text": "Muse can build a Custom Connector for any service with an API; Meta does not review these.",
                 "sourceKey": "M6"
+              },
+              {
+                "text": "Payments through Link by Stripe.",
+                "sourceKey": "M2"
               }
             ]
           ]
@@ -740,7 +760,11 @@
             ],
             [
               {
-                "text": "Memory may persist after you delete something. Reset deletes everything.",
+                "text": "Memory may persist after you delete something.",
+                "sourceKey": "M6"
+              },
+              {
+                "text": "Reset deletes everything.",
                 "sourceKey": "M7"
               }
             ],
@@ -1009,8 +1033,12 @@
               "sourceKey": "O2"
             },
             {
-              "text": " Reach it in ChatGPT desktop, web, and mobile apps, plus Slack and Teams. Not on mobile web. Texting is a limited US Pro beta.",
+              "text": " Reach it in ChatGPT desktop, web, and mobile apps, plus Slack. Not on mobile web. Texting is a limited US Pro beta.",
               "sourceKey": "O2"
+            },
+            {
+              "text": " Teams.",
+              "sourceKey": "O1"
             }
           ]
         },
@@ -1065,8 +1093,12 @@
             ],
             [
               {
-                "text": "Starts and manages Codex cloud tasks and reads and edits ChatGPT Work automations; works on several projects at once using background agents.",
+                "text": "Starts and manages Codex cloud tasks; works on several projects at once using background agents.",
                 "sourceKey": "O4"
+              },
+              {
+                "text": "Reads and edits ChatGPT Work automations.",
+                "sourceKey": "O5"
               }
             ]
           ]
@@ -1120,8 +1152,12 @@
             ],
             [
               {
-                "text": "Slack, Teams, and personal email. It can't have its own standalone email address at launch.",
+                "text": "Slack and personal email. It can't have its own standalone email address at launch.",
                 "sourceKey": "O2"
+              },
+              {
+                "text": "Teams.",
+                "sourceKey": "O1"
               },
               {
                 "text": "It can have its own separate Slack account.",
@@ -1358,7 +1394,7 @@
           "label": "Maker",
           "parts": [
             {
-              "text": "SpaceXAI (xAI), with Cursor. Docs and help live on both x.ai and cursor.com.",
+              "text": "SpaceXAI (xAI), with Cursor.",
               "sourceKey": "G3"
             },
             {
@@ -1402,8 +1438,12 @@
               "sourceKey": "G6"
             },
             {
-              "text": " Not on Plus ($8) or Free.",
+              "text": " Plus does not include Grok Bot.",
               "sourceKey": "G6"
+            },
+            {
+              "text": " Plus and Free don't include it.",
+              "sourceKey": "G5"
             },
             {
               "text": " Also on legacy Cursor paid plans and Teams, or by linking SuperGrok tiers.",
@@ -1570,8 +1610,12 @@
           "bullets": [
             [
               {
-                "text": "Plugin catalogue includes Gmail, Outlook, Slack, GitHub, GitLab, Notion, Figma, Canva, Google Drive, OneDrive, 1Password, and the X plugin.",
+                "text": "Plugin catalogue includes Gmail, Outlook, Slack, GitHub, GitLab, Notion, Figma, Canva, Google Drive, OneDrive, and 1Password.",
                 "sourceKey": "G12"
+              },
+              {
+                "text": "The X plugin.",
+                "sourceKey": "G10"
               }
             ],
             [
