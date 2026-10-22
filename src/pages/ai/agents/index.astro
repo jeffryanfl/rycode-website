@@ -23,7 +23,7 @@ import '../../../styles/ai.css';
           <a class="ai-agent-tool-card" href={`/ai/agents/${tool.slug}/`}>
             <span class="ai-agent-tool-card-head">
               <span class="ai-agent-tool-card-name">{tool.name}</span>
-              <span class="ai-agent-tool-status" data-status={tool.statusChip.toLowerCase()}>{tool.statusChip}</span>
+              <span class="ai-agent-tool-status" data-status={tool.statusChip.toLowerCase().replace(/\s+/g, '-')}>{tool.statusChip}</span>
             </span>
             <span class="ai-agent-tool-card-maker">{tool.maker}</span>
             <span class="ai-agent-tool-card-line">{tool.cardLine}</span>

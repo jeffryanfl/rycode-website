@@ -31,7 +31,33 @@ const sectionOrder: { key: keyof AgentTool['sections']; title: string }[] = [
   { key: 'comingSoon', title: 'Coming soon' },
 ];
 
-const updates = tool.updates.slice(0, 8);
+const MONTHS: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function updateSortKey(label: string): number {
+  const match = /^(\d{1,2})\s+(\w{3})\s+(\d{4})$/.exec(label.trim());
+  if (!match) return 0;
+  const day = Number(match[1]);
+  const month = MONTHS[match[2]] ?? 0;
+  const year = Number(match[3]);
+  return Date.UTC(year, month, day);
+}
+
+const updates = [...tool.updates]
+  .sort((a, b) => updateSortKey(b.date) - updateSortKey(a.date))
+  .slice(0, 8);
 ---
 
 <article class="ai-agent-tool ai-agent-tool-page">

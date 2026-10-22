@@ -107,6 +107,8 @@ export default defineConfig({
     '/research/ten-thousand-agents-is-not-a-genius': '/ai/ten-thousand-agents-is-not-a-genius/',
     '/research/saaspocalypse': '/economics/',
     '/ai/models/openai/gpt-5-6-sol': '/ai/models/openai/gpt-6-sol/',
+    '/ai/models/openai/dots': '/ai/agents/dots/',
+    '/ai/models/xai/grok-bot': '/ai/agents/grok-bot/',
     '/risk/panic-before-the-breach': '/risk/',
     '/ai/hardware/terafab': '/ai/hardware/chips/terafab/',
     '/ai/hardware/memphis-colossus': '/ai/hardware/data-centers/memphis-colossus/',

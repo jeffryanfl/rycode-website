@@ -17,18 +17,6 @@ const rows = [
     meta: ['1.05M · 128K · $2/$10 · gpt-6.1-sol'],
   },
   {
-    href: '/ai/agents/dots/',
-    title: 'dots',
-    dek: 'Always-on agent. Own cloud computer. Astra.',
-    meta: ['Pro / Business Premium · first dot included'],
-  },
-  {
-    href: '/ai/models/openai/gpt-6-intelligent-ui/',
-    title: 'Intelligent UI in ChatGPT',
-    dek: 'GPT-6 answers with visuals and controls in the Chat tab.',
-    meta: ['Chat tab · Instant to Extra High · no API'],
-  },
-  {
     href: '/ai/models/openai/gpt-6-sol/',
     title: 'GPT-6 Sol',
     dek: 'Mid-tier for complex coding and agentic work.',
@@ -39,6 +27,19 @@ const rows = [
     title: 'GPT-6 Luna',
     dek: 'Cheaper, faster GPT-6 tier.',
     meta: ['1.05M · 128K · $0.10/$0.50'],
+  },
+];
+
+const products = [
+  {
+    href: '/ai/models/openai/gpt-6-intelligent-ui/',
+    title: 'Intelligent UI in ChatGPT',
+    note: 'a ChatGPT feature, not an API model',
+  },
+  {
+    href: '/ai/agents/dots/',
+    title: 'dots',
+    note: 'always-on ChatGPT agent on GPT-6 Astra, not an API model',
   },
 ];
 ---
@@ -54,5 +55,13 @@ const rows = [
     <p class="ai-lab-note">GPT-6.1 Astra was not released.</p>
   </div>
 
-  <LabTable rows={rows} splitProducts />
+  <LabTable rows={rows} />
+
+  <h2 class="ai-lab-lane">Products and features</h2>
+  <p class="ai-lab-note">Apps and agents from OpenAI. They run on GPT models but are not API models.</p>
+  <ul class="ai-lab-note">
+    {products.map((p) => (
+      <li><a href={p.href}>{p.title}</a>: {p.note}</li>
+    ))}
+  </ul>
 </Layout>

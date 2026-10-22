@@ -15,7 +15,6 @@
     "/ai/models/openai/gpt-6-luna/": { "name": "GPT-6 Luna", "status": "current", "aa": { "value": 38, "effort": "max", "fetched": "8 Oct 2026" }, "price": "$0.10 in, $0.50 out", "released": "22 Sep 2026", "checked": "12 Oct 2026" },
     "/ai/models/openai/gpt-6-sol/": { "name": "GPT-6 Sol", "status": "archived", "replacedBy": { "name": "GPT-6.1 Sol", "href": "/ai/models/openai/gpt-6.1-sol/" }, "statusNote": "on the API; it still powers GPT-6 in ChatGPT for paid plans", "aa": { "value": 48, "effort": "max", "fetched": "22 Sep 2026" }, "price": "$2 in, $10 out", "released": "22 Sep 2026" },
     "/ai/models/openai/gpt-6-intelligent-ui/": { "name": "Intelligent UI", "status": "feature", "statusNote": "a ChatGPT feature, not an API model", "released": "7 Oct 2026", "checked": "12 Oct 2026" },
-    "/ai/models/openai/dots/": { "name": "Dots", "status": "feature", "statusNote": "a ChatGPT agent, not an API model" },
 
     "/ai/models/xai/grok-4-7/": { "name": "Grok 4.7", "status": "current", "price": "$2 in, $6 out (under 200k)", "released": "21 Sep 2026" },
     "/ai/models/xai/models/grok-4-6/": { "name": "Grok 4.6", "status": "archived", "replacedBy": { "name": "Grok 4.7", "href": "/ai/models/xai/grok-4-7/" }, "statusNote": "still on the API", "price": "$2 in, $6 out (under 200k)", "checked": "13 Sep 2026" },
@@ -24,7 +23,6 @@
     "/ai/models/xai/models/grok-4-20/": { "name": "Grok 4.20", "status": "older", "recommended": { "by": "xAI", "name": "Grok 4.7", "href": "/ai/models/xai/grok-4-7/" }, "statusNote": "still on the API", "price": "$1.25 in, $2.50 out (under 200k)", "checked": "13 Sep 2026" },
     "/ai/models/xai/models/grok-build-0-1/": { "name": "grok-build-0.1", "status": "older", "recommended": { "by": "xAI", "name": "Grok 4.7", "href": "/ai/models/xai/grok-4-7/" }, "statusNote": "still on the API", "price": "$1 in, $2 out (under 200k)", "checked": "13 Sep 2026" },
     "/ai/models/xai/grok-build/": { "name": "Grok Build", "status": "product", "statusNote": "a coding agent app, not a model", "released": "25 May 2026 (early beta)" },
-    "/ai/models/xai/grok-bot/": { "name": "Grok Bot", "status": "product", "statusNote": "an xAI product, not a model", "checked": "13 Sep 2026" },
     "/ai/models/xai/imagine/": { "name": "Imagine", "status": "current", "checked": "13 Sep 2026" },
     "/ai/models/xai/voice/": { "name": "Voice", "status": "current", "checked": "15 Oct 2026" },
 

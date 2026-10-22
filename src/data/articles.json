@@ -1584,26 +1584,6 @@
     "slug": "ai-models-open-weight-step-5"
   },
   {
-    "href": "/ai/models/openai/dots/",
-    "title": "Dots",
-    "description": "Always-on agent. Own cloud computer. Astra.",
-    "date": "2026-09-29",
-    "section": "ai",
-    "series": "ai-openai",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/models/openai/",
-        "label": "OpenAI"
-      }
-    ],
-    "file": "src/pages/ai/models/openai/dots.astro",
-    "slug": "ai-models-openai-dots"
-  },
-  {
     "href": "/ai/models/openai/gpt-6-astra/",
     "title": "GPT-6 Astra",
     "description": "Flagship for hard end-to-end work.",
@@ -1742,26 +1722,6 @@
     ],
     "file": "src/pages/ai/models/xai/grok-4-7.astro",
     "slug": "ai-models-xai-grok-4-7"
-  },
-  {
-    "href": "/ai/models/xai/grok-bot/",
-    "title": "Grok Bot",
-    "description": "Named Bots on a cloud computer.",
-    "date": "2026-09-13",
-    "section": "ai",
-    "series": "ai-xai",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/models/xai/",
-        "label": "xAI"
-      }
-    ],
-    "file": "src/pages/ai/models/xai/grok-bot.astro",
-    "slug": "ai-models-xai-grok-bot"
   },
   {
     "href": "/ai/models/xai/grok-build/",
