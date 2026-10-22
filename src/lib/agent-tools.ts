@@ -1,6 +1,6 @@
 import raw from '../data/agent-tools.json';
 
-export type StatusChip = 'Live' | 'Beta' | 'Waitlist' | 'Retired';
+export type StatusChip = 'Live' | 'Beta' | 'Waitlist' | 'Retired' | 'Rolling out';
 
 export type ClaimTag = 'reported' | 'claim';
 
