@@ -1,0 +1,34 @@
+---
+import type { TextPart } from '../lib/agent-tools';
+import { tagLabel } from '../lib/agent-tools';
+
+interface Props {
+  parts: TextPart[];
+  sourceAnchors?: Record<string, number>;
+}
+
+const { parts, sourceAnchors = {} } = Astro.props;
+---
+
+{parts.map((part) => {
+  const sourceNum = part.sourceKey ? sourceAnchors[part.sourceKey] : undefined;
+  return (
+    <>
+      {part.tag ? (
+        <>
+          <span class="agent-tool-claim-tag">{tagLabel(part.tag)}</span>
+          {' · '}
+        </>
+      ) : null}
+      {part.text}
+      {sourceNum ? (
+        <>
+          {' '}
+          <a class="agent-tool-source-ref" href={`#source-${sourceNum}`}>
+            [{sourceNum}]
+          </a>
+        </>
+      ) : null}
+    </>
+  );
+})}

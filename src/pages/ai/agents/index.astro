@@ -1,0 +1,66 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import {
+  agentToolsDefinition,
+  allAgentTools,
+} from '../../../lib/agent-tools';
+import '../../../styles/ai.css';
+---
+
+<Layout
+  title="Agent tools - A.I. - Rycode"
+  description="Personal AI agents that work on your goals in the background: Claude Duet, Muse, dots, and Grok Bot."
+  variant="ai"
+>
+  <div class="ai-agent-tools-index">
+    <p class="ai-agent-tool-kicker"><a href="/ai/">A.I.</a></p>
+    <h1 class="ai-agent-tool-title">Agent tools</h1>
+    <p class="ai-agent-tool-dek">{agentToolsDefinition}</p>
+
+    <ul class="ai-agent-tool-cards">
+      {allAgentTools().map((tool) => (
+        <li>
+          <a class="ai-agent-tool-card" href={`/ai/agents/${tool.slug}/`}>
+            <span class="ai-agent-tool-card-head">
+              <span class="ai-agent-tool-card-name">{tool.name}</span>
+              <span class="ai-agent-tool-status" data-status={tool.statusChip.toLowerCase().replace(/\s+/g, '-')}>{tool.statusChip}</span>
+            </span>
+            <span class="ai-agent-tool-card-maker">{tool.maker}</span>
+            <span class="ai-agent-tool-card-line">{tool.cardLine}</span>
+            <span class="ai-agent-tool-card-updated">Updated {tool.updated}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <h2 class="ai-agent-tool-section-title">Compare</h2>
+    <div class="ai-agent-tool-compare-wrap">
+      <table class="ai-agent-tool-compare">
+        <caption class="visually-hidden">Compare personal agent tools</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tool</th>
+            <th scope="col">Underlying models</th>
+            <th scope="col">Modalities</th>
+            <th scope="col">Where it runs</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allAgentTools().map((tool) => (
+            <tr>
+              <th scope="row" data-label="Tool">
+                <a href={`/ai/agents/${tool.slug}/`}>{tool.name}</a>
+                <span class="ai-agent-tool-compare-maker">{tool.maker}</span>
+              </th>
+              <td data-label="Underlying models">{tool.compare.underlyingModels}</td>
+              <td data-label="Modalities">{tool.compare.modalities}</td>
+              <td data-label="Where it runs">{tool.compare.whereRuns}</td>
+              <td data-label="Price">{tool.compare.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Layout>

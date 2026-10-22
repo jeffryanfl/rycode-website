@@ -1,0 +1,1850 @@
+{
+  "definition": "Software that works toward your goals on a cloud computer and through connectors, not only when you send a chat message.",
+  "tools": [
+    {
+      "slug": "claude-duet",
+      "name": "Claude Duet",
+      "maker": "Anthropic",
+      "makerShort": "Anthropic",
+      "statusChip": "Waitlist",
+      "doorLine": "Always-on agent on a cloud VM for Pro and Max.",
+      "dek": "Anthropic's always-on personal agent on a cloud virtual machine, included with US Claude Pro and Max during the research preview.",
+      "cardLine": "Morning briefs, background checks, and admin work through connectors and a cloud browser.",
+      "lastChecked": "22 Oct 2026",
+      "updated": "22 Oct 2026",
+      "compare": {
+        "underlyingModels": "Claude Opus 5.5 (fixed)",
+        "modalities": "In: text, voice messages. Out: text, files",
+        "whereRuns": "iOS, Android, claude.ai; cloud VM",
+        "price": "US Pro and Max, no extra cost in preview"
+      },
+      "specRows": [
+        {
+          "label": "Maker",
+          "parts": [
+            {
+              "text": "Anthropic",
+              "sourceKey": "D1"
+            }
+          ]
+        },
+        {
+          "label": "Status and access",
+          "parts": [
+            {
+              "text": "Research preview opened 21 Oct 2026 by waitlist.",
+              "sourceKey": "D1"
+            },
+            {
+              "text": " Access opens in waves; features can change during the preview.",
+              "sourceKey": "D2"
+            }
+          ]
+        },
+        {
+          "label": "Price",
+          "parts": [
+            {
+              "text": "Included in US Claude Pro and Max at no extra cost during the preview. Not on Team or Enterprise yet; Anthropic plans to bring it to those plans later.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " Dollar prices for Pro and Max are not listed on these pages.",
+              "sourceKey": "D2"
+            }
+          ]
+        },
+        {
+          "label": "Underlying models",
+          "parts": [
+            {
+              "text": "Claude Opus 5.5 for all work. You cannot choose a model; Duet decides how much effort a job needs.",
+              "sourceKey": "D2"
+            }
+          ]
+        },
+        {
+          "label": "Modalities in",
+          "parts": [
+            {
+              "text": "Typed text and recorded voice messages.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " Every says there is no real voice mode yet, just transcription.",
+              "sourceKey": "D4",
+              "tag": "reported"
+            },
+            {
+              "text": " Image or video input is not described on Anthropic's Duet pages.",
+              "sourceKey": "D2"
+            }
+          ]
+        },
+        {
+          "label": "Modalities out",
+          "parts": [
+            {
+              "text": "Text messages and notifications.",
+              "sourceKey": "D1"
+            },
+            {
+              "text": " Files you can review and edit: research briefs, financial models, slide decks, dashboards, and web apps.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " Image or video output is not described on these pages.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " You cannot watch or take over its browser.",
+              "sourceKey": "D2"
+            }
+          ]
+        },
+        {
+          "label": "Where it runs",
+          "parts": [
+            {
+              "text": "Standalone app on iOS and Android, plus claude.ai. Works from its own cloud virtual machine with its own browser.",
+              "sourceKey": "D1"
+            },
+            {
+              "text": " Separate from the main Claude app for now.",
+              "sourceKey": "D1"
+            },
+            {
+              "text": " It cannot see files on your computer.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " A desktop app is not listed on these pages.",
+              "sourceKey": "D1"
+            }
+          ]
+        },
+        {
+          "label": "Known specs",
+          "parts": [
+            {
+              "text": "Checks connected accounts every few hours.",
+              "sourceKey": "D1"
+            },
+            {
+              "text": " Morning brief once each morning; checks at set intervals.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " Over 6,000 connectors and plugins in the Claude Marketplace.",
+              "sourceKey": "D1",
+              "tag": "claim"
+            },
+            {
+              "text": " Uses the plan's five-hour session and weekly limits at the same rate as chat; background checks count.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " One full reset of both limits on admission, usable until 30 Nov 2026.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " One main thread plus separate channels that share memory.",
+              "sourceKey": "D2"
+            },
+            {
+              "text": " Context window size, memory size, and task-count limits are not listed on these pages.",
+              "sourceKey": "D2"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "capabilities": {
+          "lead": "What Anthropic says Duet can do during the research preview.",
+          "bullets": [
+            [
+              {
+                "text": "Sends a morning brief across email, calendar, and connected apps, and can start first steps such as drafting replies.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Monitors connected apps through the day and messages you when something needs you; follows up on threads that have gone quiet.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Handles admin tasks such as scheduling meetings, unpaid invoices in QuickBooks or Stripe, payroll in Gusto, and agreements through Docusign after you approve.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "Builds dashboards, forecasts, prototypes, and web apps; buys through Stripe Link or Shop Pay after approval.",
+                "sourceKey": "D1"
+              },
+              {
+                "text": "Uses its cloud browser for sites with no connector.",
+                "sourceKey": "D2"
+              }
+            ]
+          ]
+        },
+        "strengths": {
+          "lead": "Where Anthropic's published design stands out against the other tools on this page.",
+          "bullets": [
+            [
+              {
+                "text": "Most explicit hard never list for money: no trades, no transfers between accounts, and no access to someone else's account, even with your approval.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Dedicated classifier and safety prompt for the strictest tier of sensitive information, with health and finance details only on your explicit instruction.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": " Largest stated connector catalogue: 6,000+.",
+                "sourceKey": "D1",
+                "tag": "claim"
+              }
+            ],
+            [
+              {
+                "text": " Every called it the first personal agent they would call a pro tool, with strong channels and task list, but said email drafts are worse than Dot's.",
+                "sourceKey": "D4",
+                "tag": "reported"
+              }
+            ]
+          ]
+        },
+        "connectors": {
+          "lead": "Apps and services Duet can use.",
+          "bullets": [
+            [
+              {
+                "text": "Uses connectors you already set up in Claude, such as Gmail, Google Calendar, Google Drive, Slack, QuickBooks, HubSpot, Docusign, and Calendly.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Supports plugins, including a small business plugin.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Partner services: Stripe, Link, and Shop Pay. Link and Shop Pay are Duet-only for now. Slack works with limits. Microsoft 365 is not available yet.",
+                "sourceKey": "D2"
+              }
+            ]
+          ]
+        },
+        "approval": {
+          "lead": "When Duet must stop and show you the action first.",
+          "bullets": [
+            [
+              {
+                "text": "Before it sends a message, makes a payment, signs a document, or deletes anything, it shows you exactly what it will do and waits for approval.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "If you cannot approve right away, it finishes the rest of the task and brings the approval back later.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Actions are checked by Anthropic's auto mode classifier.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "Link asks you to approve the spend.",
+                "sourceKey": "D1"
+              },
+              {
+                "text": "Each purchase uses a one-time card.",
+                "sourceKey": "D2"
+              }
+            ]
+          ]
+        },
+        "proactive": {
+          "lead": "When Duet reaches out without a fresh prompt from you.",
+          "bullets": [
+            [
+              {
+                "text": "Morning brief each morning.",
+                "sourceKey": "D2"
+              },
+              {
+                "text": "Checks connected accounts every few hours and messages you only when needed.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "You can tell it what to hear about and how often. Anthropic is still tuning when it messages you.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "Something urgent can arrive between checks.",
+                "sourceKey": "D2"
+              }
+            ]
+          ]
+        },
+        "memory": {
+          "lead": "What carries over between sessions.",
+          "bullets": [
+            [
+              {
+                "text": "Carries over your Claude memory, skills, and connected apps. Channels share the same memory.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Disconnecting an app keeps memory of past info. Past-chat search can be turned off in Settings > Memory.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Searches your past Duet chats and Claude chats outside projects.",
+                "sourceKey": "D2"
+              }
+            ]
+          ]
+        },
+        "limits": {
+          "lead": "Hard stops Anthropic documents.",
+          "bullets": [
+            [
+              {
+                "text": "Won't trade securities, move money between accounts, or access someone else's account, even with your approval.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Doesn't make phone calls or text other people. Can read your Claude work but can't change it. Can't show its browser.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Personal errands, such as booking tickets, are weaker. Bigger tasks use more of your plan limits.",
+                "sourceKey": "D1"
+              }
+            ]
+          ]
+        },
+        "privacy": {
+          "lead": "How credentials and sensitive data are handled.",
+          "bullets": [
+            [
+              {
+                "text": "Never directly sees your passwords or sign-in tokens, following the Claude Managed Agents design.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "When a site asks for a password, you type it into a separate form on your device, and the form sends it straight to the browser.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Tested by red teams and an external penetration-test firm, and covered by the public bug bounty.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "Whether Duet data is used for training is not described on these pages.",
+                "sourceKey": "D2"
+              }
+            ]
+          ]
+        },
+        "comingSoon": {
+          "lead": "What Anthropic says is still ahead.",
+          "bullets": [
+            [
+              {
+                "text": "Team and Enterprise plans later.",
+                "sourceKey": "D2"
+              }
+            ],
+            [
+              {
+                "text": "Signing in with 1Password logins.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "A richer Shopify visual editor: coming soon.",
+                "sourceKey": "D1"
+              }
+            ],
+            [
+              {
+                "text": "More safety details in the coming days.",
+                "sourceKey": "D1"
+              }
+            ]
+          ]
+        }
+      },
+      "sources": [
+        {
+          "key": "D1",
+          "label": "Anthropic, Introducing Claude Duet",
+          "url": "https://claude.com/resources/articles/claude-duet",
+          "primary": true
+        },
+        {
+          "key": "D2",
+          "label": "Claude Help Center, Get started with Claude Duet",
+          "url": "https://support.claude.com/en/articles/17631495-get-started-with-claude-duet"
+        },
+        {
+          "key": "D4",
+          "label": "Every, Vibe Check: Duet",
+          "url": "https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent"
+        }
+      ],
+      "updates": [
+        {
+          "date": "21 Oct 2026",
+          "text": "Research preview and waitlist opened for US Claude Pro and Max subscribers."
+        }
+      ]
+    },
+    {
+      "slug": "muse",
+      "name": "Muse",
+      "maker": "Meta (Meta Superintelligence Labs)",
+      "makerShort": "Meta",
+      "statusChip": "Rolling out",
+      "doorLine": "Personal agent in a secure VM; free tier plus paid plans.",
+      "dek": "Meta's personal agent in an isolated cloud virtual machine, rolling out in the US with optional paid token plans.",
+      "cardLine": "Email, travel, forms, and long-term goals with connectors and a browser you can watch.",
+      "lastChecked": "22 Oct 2026",
+      "updated": "22 Oct 2026",
+      "compare": {
+        "underlyingModels": "Muse Spark family (1.3 in safety post)",
+        "modalities": "In: text, files. Out: text, docs, images, podcasts",
+        "whereRuns": "iOS, Android, muse.ai, WhatsApp; secure VM",
+        "price": "Free tier; $20 Power; $100 Maximum per month"
+      },
+      "specRows": [
+        {
+          "label": "Maker",
+          "parts": [
+            {
+              "text": "Meta (Meta Superintelligence Labs). Internal code name Hatch.",
+              "sourceKey": "M2"
+            }
+          ]
+        },
+        {
+          "label": "Status and access",
+          "parts": [
+            {
+              "text": "Introduced 8 Sep 2026, rolling out in the US.",
+              "sourceKey": "M1"
+            },
+            {
+              "text": " Muse and its subscriptions are in limited testing and aren't available in all locations yet.",
+              "sourceKey": "M5"
+            }
+          ]
+        },
+        {
+          "label": "Price",
+          "parts": [
+            {
+              "text": "Free tier with a weekly usage limit; the free allowance size is not listed on Meta's subscription page.",
+              "sourceKey": "M5"
+            },
+            {
+              "text": " Power plan: $20/month for 500M Muse tokens per week.",
+              "sourceKey": "M5"
+            },
+            {
+              "text": " Maximum plan: $100/month for 3B Muse tokens per week.",
+              "sourceKey": "M5"
+            },
+            {
+              "text": " Subscribers must be 18+ (or age of majority) with a Meta account.",
+              "sourceKey": "M5"
+            },
+            {
+              "text": " Over 900,000 downloads in the first week, per Sensor Tower.",
+              "sourceKey": "M12",
+              "tag": "reported"
+            }
+          ]
+        },
+        {
+          "label": "Underlying models",
+          "parts": [
+            {
+              "text": "Muse Spark family; Meta's safety post names Muse Spark 1.3.",
+              "sourceKey": "M2"
+            }
+          ]
+        },
+        {
+          "label": "Modalities in",
+          "parts": [
+            {
+              "text": "Text messages and file uploads.",
+              "sourceKey": "M3"
+            },
+            {
+              "text": " Apple Health or Android SMS connectors.",
+              "sourceKey": "M6"
+            },
+            {
+              "text": " Photos of documents or meals are suggested in-app.",
+              "sourceKey": "M12",
+              "tag": "reported"
+            },
+            {
+              "text": " Voice in the phone app today is not described on Meta's help pages.",
+              "sourceKey": "M3"
+            }
+          ]
+        },
+        {
+          "label": "Modalities out",
+          "parts": [
+            {
+              "text": "Text, PDFs, spreadsheets, documents, images, and podcasts.",
+              "sourceKey": "M3"
+            },
+            {
+              "text": " Video generation.",
+              "sourceKey": "M11",
+              "tag": "reported"
+            },
+            {
+              "text": " You can see its browser and take over at any time.",
+              "sourceKey": "M2"
+            }
+          ]
+        },
+        {
+          "label": "Where it runs",
+          "parts": [
+            {
+              "text": "Muse Secure VM on a dedicated, isolated cloud virtual machine. Clients: iOS, Android, muse.ai web, and inside WhatsApp.",
+              "sourceKey": "M1"
+            },
+            {
+              "text": " Linux cloud VM with Chromium.",
+              "sourceKey": "M2"
+            },
+            {
+              "text": " AI glasses: coming soon.",
+              "sourceKey": "M1"
+            }
+          ]
+        },
+        {
+          "label": "Known specs",
+          "parts": [
+            {
+              "text": "Paid plans: 500M or 3B tokens per week.",
+              "sourceKey": "M5"
+            },
+            {
+              "text": " Bug bounty up to $300,000.",
+              "sourceKey": "M2"
+            },
+            {
+              "text": " MEMORY.md file you can view.",
+              "sourceKey": "M4"
+            },
+            {
+              "text": " Context window size, check-in frequency, and task limits are not listed on these pages.",
+              "sourceKey": "M5"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "capabilities": {
+          "lead": "Tasks Meta highlights for Muse.",
+          "bullets": [
+            [
+              {
+                "text": "Send email, book travel, fill out forms, and negotiate on your behalf.",
+                "sourceKey": "M1"
+              }
+            ],
+            [
+              {
+                "text": "Turn a long-term goal into a plan and advance it on its own; examples include selling a car, lowering a bill, or adjusting a training plan.",
+                "sourceKey": "M1"
+              }
+            ],
+            [
+              {
+                "text": "Turn a saved Instagram recipe reel into a grocery list; plan a dinner-party menu that respects friends' dietary needs.",
+                "sourceKey": "M1"
+              }
+            ],
+            [
+              {
+                "text": "Spawn subagents, build its own tools, and write custom connectors.",
+                "sourceKey": "M2"
+              },
+              {
+                "text": "Make and edit artifacts and side chats that stay aware of the main chat.",
+                "sourceKey": "M3"
+              }
+            ]
+          ]
+        },
+        "strengths": {
+          "lead": "Where Meta's published design compares to the other tools here.",
+          "bullets": [
+            [
+              {
+                "text": "Free tier and works inside WhatsApp.",
+                "sourceKey": "M1"
+              }
+            ],
+            [
+              {
+                "text": "Published security design: Sentinel approves connector actions and outbound network traffic; credentials are stand-ins so the model never sees them; sensitive work runs in isolated helper processes.",
+                "sourceKey": "M2"
+              }
+            ],
+            [
+              {
+                "text": " First AI agent covered by Link's purchase protections.",
+                "sourceKey": "M1",
+                "tag": "claim"
+              }
+            ],
+            [
+              {
+                "text": " WIRED said Muse rarely seems to get lost while browsing.",
+                "sourceKey": "M12",
+                "tag": "reported"
+              }
+            ]
+          ]
+        },
+        "connectors": {
+          "lead": "How Muse reaches your apps.",
+          "bullets": [
+            [
+              {
+                "text": "Meta and third-party connectors, including Gmail, calendar, Apple Health, and Android SMS.",
+                "sourceKey": "M6"
+              },
+              {
+                "text": " Amazon.",
+                "sourceKey": "M11",
+                "tag": "reported"
+              }
+            ],
+            [
+              {
+                "text": "Facebook, Instagram, and Threads connect automatically if they are in the same Accounts Center.",
+                "sourceKey": "M6"
+              }
+            ],
+            [
+              {
+                "text": "Muse can build a Custom Connector for any service with an API; Meta does not review these.",
+                "sourceKey": "M6"
+              },
+              {
+                "text": "Payments through Link by Stripe.",
+                "sourceKey": "M2"
+              }
+            ]
+          ]
+        },
+        "approval": {
+          "lead": "Sentinel and in-app approval dialogs.",
+          "bullets": [
+            [
+              {
+                "text": "Checks with you before sensitive actions such as sending email or purchasing.",
+                "sourceKey": "M4"
+              }
+            ],
+            [
+              {
+                "text": "Sentinel is the sole permission authority for connector actions and outbound network access; Muse cannot override it.",
+                "sourceKey": "M2"
+              }
+            ],
+            [
+              {
+                "text": "Approval options: Allow once, Allow for this task, Allow for this site, Always allow, Deny.",
+                "sourceKey": "M7"
+              },
+              {
+                "text": "Every purchase needs approval and uses a single-use card tied to one merchant, one amount, and a limited time.",
+                "sourceKey": "M2"
+              }
+            ]
+          ]
+        },
+        "proactive": {
+          "lead": "Unprompted help Meta describes.",
+          "bullets": [
+            [
+              {
+                "text": "Proactively helps with people's goals and suggests ideas; keeps working after you close the app and comes back when something changes.",
+                "sourceKey": "M1"
+              }
+            ],
+            [
+              {
+                "text": "Calendar connectors can push changes to Muse.",
+                "sourceKey": "M6"
+              }
+            ],
+            [
+              {
+                "text": "Has an Ideas tab.",
+                "sourceKey": "M11",
+                "tag": "reported"
+              },
+              {
+                "text": " Muse nudged the tester the next day.",
+                "sourceKey": "M12",
+                "tag": "reported"
+              }
+            ],
+            [
+              {
+                "text": "Fixed brief or check-in cadence is not listed on Meta's pages.",
+                "sourceKey": "M1"
+              }
+            ]
+          ]
+        },
+        "memory": {
+          "lead": "What Muse keeps about you.",
+          "bullets": [
+            [
+              {
+                "text": "Remembers what matters to you; you can tell it to forget things or ask what it knows.",
+                "sourceKey": "M4"
+              }
+            ],
+            [
+              {
+                "text": "Memory may persist after you delete something.",
+                "sourceKey": "M4"
+              },
+              {
+                "text": "Reset deletes everything.",
+                "sourceKey": "M7"
+              }
+            ],
+            [
+              {
+                "text": " No toggle to turn memory off entirely.",
+                "sourceKey": "M12",
+                "tag": "reported"
+              }
+            ]
+          ]
+        },
+        "limits": {
+          "lead": "Safety standards and connector filters.",
+          "bullets": [
+            [
+              {
+                "text": "Blocked by safety standards: harmful or illegal content, fraud and scams, actions that harm you or others, and harm to minors.",
+                "sourceKey": "M4"
+              }
+            ],
+            [
+              {
+                "text": "The email connector filters out one-time codes, password-reset links, and magic links.",
+                "sourceKey": "M2"
+              }
+            ],
+            [
+              {
+                "text": "For the full list of what it isn't built to do, Meta points to the Muse Terms.",
+                "sourceKey": "M7"
+              }
+            ]
+          ]
+        },
+        "privacy": {
+          "lead": "VM data, ads, and training defaults.",
+          "bullets": [
+            [
+              {
+                "text": "Your data and credentials live in your VM; credentials are surrogated so the model never sees them.",
+                "sourceKey": "M2"
+              }
+            ],
+            [
+              {
+                "text": "Muse doesn't share your conversations or VM data with Meta ad systems; browsing can still indirectly influence the ads you see.",
+                "sourceKey": "M2"
+              }
+            ],
+            [
+              {
+                "text": "Training on your Muse data is on by default; you can opt out under Data controls.",
+                "sourceKey": "M4"
+              },
+              {
+                "text": "Meta can access VM data when necessary to support, secure, or operate the service until Confidential VM ships.",
+                "sourceKey": "M2"
+              }
+            ]
+          ]
+        },
+        "comingSoon": {
+          "lead": "Meta's published roadmap items.",
+          "bullets": [
+            [
+              {
+                "text": "Muse Confidential VM, encrypted with a key only you hold, later this year.",
+                "sourceKey": "M1"
+              }
+            ],
+            [
+              {
+                "text": "AI glasses integration.",
+                "sourceKey": "M9"
+              }
+            ],
+            [
+              {
+                "text": "Shop Pay and 1Password connectors.",
+                "sourceKey": "M1"
+              }
+            ]
+          ]
+        }
+      },
+      "sources": [
+        {
+          "key": "M1",
+          "label": "Meta Newsroom, Introducing Muse",
+          "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+          "primary": true
+        },
+        {
+          "key": "M2",
+          "label": "Meta AI Research, How We Built Safety Into Muse",
+          "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+        },
+        {
+          "key": "M3",
+          "label": "Meta Help, How to get started with Muse",
+          "url": "https://www.meta.com/help/artificial-intelligence/1331373868832401/"
+        },
+        {
+          "key": "M4",
+          "label": "Meta Help, How Muse handles your privacy, safety and security",
+          "url": "https://www.meta.com/help/artificial-intelligence/1047255454427887/"
+        },
+        {
+          "key": "M5",
+          "label": "Meta Help, About Muse subscriptions",
+          "url": "https://www.meta.com/help/subscriptions/1021145227643680/"
+        },
+        {
+          "key": "M6",
+          "label": "Meta Help, How Muse works with Connectors",
+          "url": "https://www.meta.com/help/artificial-intelligence/1687253048996149/"
+        },
+        {
+          "key": "M7",
+          "label": "Meta Help, How Muse works with your guidance and approval",
+          "url": "https://www.meta.com/help/superintelligence/1385290430137537/"
+        },
+        {
+          "key": "M9",
+          "label": "Meta, Your Personal Agent Coming to AI Glasses",
+          "url": "https://www.meta.com/blog/muse-personal-agent-ai-glasses/"
+        },
+        {
+          "key": "M11",
+          "label": "The Verge, Meta's Muse AI works and creeps me out",
+          "url": "https://www.theverge.com/tech/993391/meta-muse-ai-hands-on"
+        },
+        {
+          "key": "M12",
+          "label": "WIRED, Meta's Muse Is Better at Surveilling Than Helping Me",
+          "url": "https://www.wired.com/story/metas-muse-is-better-at-surveilling-than-helping-me/"
+        }
+      ],
+      "updates": [
+        {
+          "date": "30 Sep 2026",
+          "text": "Newsroom post updated."
+        },
+        {
+          "date": "8 Sep 2026",
+          "text": "Muse introduced; rolling out in the US."
+        }
+      ]
+    },
+    {
+      "slug": "dots",
+      "name": "dots",
+      "maker": "OpenAI",
+      "makerShort": "OpenAI",
+      "statusChip": "Live",
+      "doorLine": "Always-on ChatGPT agent with its own cloud computer.",
+      "dek": "OpenAI's always-on personal agent inside ChatGPT, powered by GPT-6 Astra, with its own cloud computer and browser.",
+      "cardLine": "Software, creative, and ops work with plugins, optional use of your PC, and voice calls.",
+      "lastChecked": "22 Oct 2026",
+      "updated": "22 Oct 2026",
+      "compare": {
+        "underlyingModels": "GPT-6 Astra",
+        "modalities": "In: text, voice, files. Out: text, docs, code, video",
+        "whereRuns": "ChatGPT apps, Slack, Teams; cloud PC",
+        "price": "Pro (~$100 reported), Business Premium, Enterprise"
+      },
+      "specRows": [
+        {
+          "label": "Maker",
+          "parts": [
+            {
+              "text": "OpenAI",
+              "sourceKey": "O1"
+            }
+          ]
+        },
+        {
+          "label": "Status and access",
+          "parts": [
+            {
+              "text": "Announced and rolling out 29 Sep 2026.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " Gradual rollout; access may take several days. Enterprise is a beta, off by default.",
+              "sourceKey": "O2"
+            }
+          ]
+        },
+        {
+          "label": "Price",
+          "parts": [
+            {
+              "text": "OpenAI lists Pro (18+ outside the EEA, Switzerland, and the UK), Business Premium, and Enterprise, Edu, and Healthcare when an admin enables it. Plus is not listed on these pages.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " First dot included at no extra cost with an allowance for deeper work in the first month.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " Pro costs $100/month.",
+              "sourceKey": "O8",
+              "tag": "reported"
+            }
+          ]
+        },
+        {
+          "label": "Underlying models",
+          "parts": [
+            {
+              "text": "GPT-6 Astra for all dot work.",
+              "sourceKey": "O1"
+            }
+          ]
+        },
+        {
+          "label": "Modalities in",
+          "parts": [
+            {
+              "text": "Text and voice calls.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " File or photo attachments.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " Camera, microphone, and screen only if you connect your computer and grant permission.",
+              "sourceKey": "O3"
+            }
+          ]
+        },
+        {
+          "label": "Modalities out",
+          "parts": [
+            {
+              "text": "Text messages, documents, code and pull requests, and videos showing those changes.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " Decks.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " The dot can't start a call to you.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " You can open its computer to inspect it or take over.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " Edited video clips.",
+              "sourceKey": "O8",
+              "tag": "reported"
+            }
+          ]
+        },
+        {
+          "label": "Where it runs",
+          "parts": [
+            {
+              "text": "Its own cloud computer and browser.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " Optionally your computer through the ChatGPT desktop app; this is off by default.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " Reach it in ChatGPT desktop, web, and mobile apps, plus Slack. Not on mobile web. Texting is a limited US Pro beta.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " Also on Microsoft Teams.",
+              "sourceKey": "O1"
+            }
+          ]
+        },
+        {
+          "label": "Known specs",
+          "parts": [
+            {
+              "text": "One primary dot for now.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " 4,000+ apps through plugins.",
+              "sourceKey": "O1",
+              "tag": "claim"
+            },
+            {
+              "text": " Chat with the dot doesn't count toward ChatGPT limits; Codex and Work tasks do.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " Check-in timing: it decides when to follow up, or you set fixed schedules and event triggers.",
+              "sourceKey": "O6"
+            },
+            {
+              "text": " Context window size, memory size, deeper-work allowance numbers, and parallel task count are not listed on these pages.",
+              "sourceKey": "O2"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "capabilities": {
+          "lead": "Work OpenAI documents for dots.",
+          "bullets": [
+            [
+              {
+                "text": "Turns customer feedback into tested fixes and pull requests, with videos of the changes.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": "Revises launch materials when scope changes; reruns analyses and updates figures for a paper.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": "Updates a sales proposal and builds a proof of concept; turns interview transcripts into clips, show notes, and social posts.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": "Starts and manages Codex cloud tasks; works on several projects at once using background agents.",
+                "sourceKey": "O4"
+              },
+              {
+                "text": "Reads and edits ChatGPT Work automations.",
+                "sourceKey": "O5"
+              }
+            ]
+          ]
+        },
+        "strengths": {
+          "lead": "Where OpenAI's design differs from the other tools here.",
+          "bullets": [
+            [
+              {
+                "text": "Optional use of your computer through the ChatGPT desktop app, off by default.",
+                "sourceKey": "O2"
+              },
+              {
+                "text": " You can hop on a voice call with the dot.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": "Starts and manages Codex cloud tasks; maker examples include customer feedback turned into pull requests with videos of the changes.",
+                "sourceKey": "O1"
+              },
+              {
+                "text": " October docs also describe reading and editing ChatGPT Work automations.",
+                "sourceKey": "O5"
+              }
+            ],
+            [
+              {
+                "text": "Reachable in Slack and Teams.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": " Every said Dot's email drafts beat Duet's.",
+                "sourceKey": "D4",
+                "tag": "reported"
+              }
+            ]
+          ]
+        },
+        "connectors": {
+          "lead": "Plugins and messaging surfaces.",
+          "bullets": [
+            [
+              {
+                "text": "Plugins are shared with ChatGPT, ChatGPT Work, and Codex.",
+                "sourceKey": "O3"
+              }
+            ],
+            [
+              {
+                "text": "Slack and personal email. It can't have its own standalone email address at launch.",
+                "sourceKey": "O2"
+              },
+              {
+                "text": "Also on Microsoft Teams.",
+                "sourceKey": "O1"
+              },
+              {
+                "text": "It can have its own separate Slack account.",
+                "sourceKey": "O3"
+              }
+            ],
+            [
+              {
+                "text": "Specialist dots via Microsoft Agent 365 are in progress.",
+                "sourceKey": "O1"
+              }
+            ]
+          ]
+        },
+        "approval": {
+          "lead": "Custom Rules and auto-review.",
+          "bullets": [
+            [
+              {
+                "text": "Custom Rules with four settings: take action without asking, take action if pre-approved, ask first, or hand off to you.",
+                "sourceKey": "O2"
+              }
+            ],
+            [
+              {
+                "text": "Auto-review checks actions such as email recipients and content.",
+                "sourceKey": "O3"
+              }
+            ],
+            [
+              {
+                "text": "Password changes and money transfers require you to take over. Merchant-saved-card purchases need approval.",
+                "sourceKey": "O3"
+              },
+              {
+                "text": "Asking for a draft doesn't authorise sending it.",
+                "sourceKey": "O2"
+              }
+            ],
+            [
+              {
+                "text": " No Stripe virtual-card checkout at review time.",
+                "sourceKey": "O8",
+                "tag": "reported"
+              }
+            ]
+          ]
+        },
+        "proactive": {
+          "lead": "Background research and schedules.",
+          "bullets": [
+            [
+              {
+                "text": "Proactive research: read-only background review of connected apps; research tools can't send, change content, or control a browser.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": "Decides when to pause and wake.",
+                "sourceKey": "O4"
+              }
+            ],
+            [
+              {
+                "text": "Fixed schedules are optional, for example each weekday at 9 AM Central.",
+                "sourceKey": "O6"
+              }
+            ]
+          ]
+        },
+        "memory": {
+          "lead": "ChatGPT memory plus dot-specific notes.",
+          "bullets": [
+            [
+              {
+                "text": "Receives ChatGPT memory and creates its own memories, including from connected apps.",
+                "sourceKey": "O2"
+              }
+            ],
+            [
+              {
+                "text": "You can't view or edit individual dot memories; resetting deletes them.",
+                "sourceKey": "O3"
+              }
+            ],
+            [
+              {
+                "text": "Its context doesn't keep credentials, images, or screenshots. Disconnecting an app doesn't delete what the dot learned from it.",
+                "sourceKey": "O3"
+              }
+            ]
+          ]
+        },
+        "limits": {
+          "lead": "Regional and safety limits OpenAI lists.",
+          "bullets": [
+            [
+              {
+                "text": "Not for under-18s; not in the EEA, Switzerland, or UK.",
+                "sourceKey": "O2"
+              }
+            ],
+            [
+              {
+                "text": "Some steps, such as password changes, are always yours. Custom Rules cannot override core safety requirements.",
+                "sourceKey": "O3"
+              }
+            ],
+            [
+              {
+                "text": "Websites may block its cloud browser.",
+                "sourceKey": "O2"
+              }
+            ]
+          ]
+        },
+        "privacy": {
+          "lead": "Training and encryption.",
+          "bullets": [
+            [
+              {
+                "text": "Personal plans: the Improve the model setting controls training. Business, Enterprise, and Edu: no training by default.",
+                "sourceKey": "O3"
+              }
+            ],
+            [
+              {
+                "text": "No direct training on proactive research or the dot's own notes. Humans may review activity for safety even when training is off.",
+                "sourceKey": "O3"
+              }
+            ],
+            [
+              {
+                "text": "Content is encrypted at rest and in transit.",
+                "sourceKey": "O3"
+              }
+            ]
+          ]
+        },
+        "comingSoon": {
+          "lead": "OpenAI's stated next steps.",
+          "bullets": [
+            [
+              {
+                "text": "More dots per user; scaling speed or monthly work.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": "Wider texting and expansion to more users soon.",
+                "sourceKey": "O1"
+              }
+            ],
+            [
+              {
+                "text": "Specialist dots (enterprise pilots) and Agent 365.",
+                "sourceKey": "O1"
+              }
+            ]
+          ]
+        }
+      },
+      "sources": [
+        {
+          "key": "O1",
+          "label": "OpenAI, Introducing dots",
+          "url": "https://openai.com/index/introducing-dots/",
+          "primary": true
+        },
+        {
+          "key": "O2",
+          "label": "OpenAI Help, Getting started with your dot",
+          "url": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot"
+        },
+        {
+          "key": "O3",
+          "label": "OpenAI Help, Dots privacy, security, and safety FAQs",
+          "url": "https://help.openai.com/en/articles/20001529-dots-privacy-security-and-safety-faqs"
+        },
+        {
+          "key": "O4",
+          "label": "ChatGPT Learn, Meet dots",
+          "url": "https://learn.chatgpt.com/docs/dots"
+        },
+        {
+          "key": "O5",
+          "label": "ChatGPT Learn, What's new 5-9 Oct 2026",
+          "url": "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026.md"
+        },
+        {
+          "key": "O6",
+          "label": "ChatGPT Learn, Get started with your dot",
+          "url": "https://learn.chatgpt.com/docs/dots/getting-started"
+        },
+        {
+          "key": "O8",
+          "label": "The Verge, OpenAI's Dot agent is enterprise software that can also order your dinner",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/1004096/openai-chatgpt-dots-hands-on-agent"
+        },
+        {
+          "key": "D4",
+          "label": "Every, Vibe Check: Duet",
+          "url": "https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent"
+        }
+      ],
+      "updates": [
+        {
+          "date": "29 Sep 2026",
+          "text": "dots announced; gradual rollout begins."
+        }
+      ]
+    },
+    {
+      "slug": "grok-bot",
+      "name": "Grok Bot",
+      "maker": "SpaceXAI (xAI), with Cursor",
+      "makerShort": "SpaceXAI",
+      "statusChip": "Beta",
+      "doorLine": "Named Bots on a shared cloud computer and desktop apps.",
+      "dek": "SpaceXAI's named Bots product with a persistent cloud computer, built with Cursor, on paid X Subscription and Cursor plans.",
+      "cardLine": "Parallel Bots, routines, teach-by-demo skills, and rich event triggers.",
+      "lastChecked": "22 Oct 2026",
+      "updated": "22 Oct 2026",
+      "compare": {
+        "underlyingModels": "Routed xAI and approved third-party (incl. Opus 5.5)",
+        "modalities": "In: text, voice, files up to 250 MB. Out: text, decks, audio",
+        "whereRuns": "macOS, Windows, Linux, iOS, Android, X @bot",
+        "price": "X Subscription Premium ($30/mo), Super, Ultra; legacy Cursor paid"
+      },
+      "specRows": [
+        {
+          "label": "Maker",
+          "parts": [
+            {
+              "text": "SpaceXAI (xAI), with Cursor.",
+              "sourceKey": "G3"
+            },
+            {
+              "text": " 9to5Mac says the two firms are in the process of becoming a single company.",
+              "sourceKey": "G13",
+              "tag": "reported"
+            }
+          ]
+        },
+        {
+          "label": "Status and access",
+          "parts": [
+            {
+              "text": "Beta launched 11 Aug 2026.",
+              "sourceKey": "G2"
+            },
+            {
+              "text": " Access expanded to more plans 21 Aug 2026.",
+              "sourceKey": "G13",
+              "tag": "reported"
+            },
+            {
+              "text": " Enterprise: generally available.",
+              "sourceKey": "G4"
+            },
+            {
+              "text": " 3 Sep 2026.",
+              "sourceKey": "G12"
+            },
+            {
+              "text": " Consumer GA label is not used on current docs.",
+              "sourceKey": "G3"
+            }
+          ]
+        },
+        {
+          "label": "Price",
+          "parts": [
+            {
+              "text": "Included on X Subscription Premium ($30/mo), Super ($100/mo), and Ultra ($200/mo).",
+              "sourceKey": "G6"
+            },
+            {
+              "text": " Plus and Free don't include it.",
+              "sourceKey": "G5"
+            },
+            {
+              "text": " Also on legacy Cursor paid plans and Teams, or by linking SuperGrok tiers.",
+              "sourceKey": "G5"
+            },
+            {
+              "text": " Pricing changed quickly from $200 a month to $60 to $30 in about three days.",
+              "sourceKey": "G15",
+              "tag": "reported"
+            }
+          ]
+        },
+        {
+          "label": "Underlying models",
+          "parts": [
+            {
+              "text": "Routes each request to a first-party xAI model or an approved third-party model; Opus 5.5 is named as one. No model picker, and the model used is not shown.",
+              "sourceKey": "G7"
+            }
+          ]
+        },
+        {
+          "label": "Modalities in",
+          "parts": [
+            {
+              "text": "Type, dictate, and voice chat.",
+              "sourceKey": "G3"
+            },
+            {
+              "text": " Attachments up to 250 MB per file and 1 GB per video, 20 per message, 200 MB total.",
+              "sourceKey": "G12"
+            }
+          ]
+        },
+        {
+          "label": "Modalities out",
+          "parts": [
+            {
+              "text": "Text and voice memos.",
+              "sourceKey": "G3"
+            },
+            {
+              "text": " Files, Pages, slide decks, images, audio files, and PDFs of web pages.",
+              "sourceKey": "G12"
+            }
+          ]
+        },
+        {
+          "label": "Where it runs",
+          "parts": [
+            {
+              "text": "Persistent cloud computer with browser, filesystem, and terminal in Cursor's cloud. All your Bots share one computer, each with its own screen.",
+              "sourceKey": "G3"
+            },
+            {
+              "text": " Apps on macOS, Windows, Linux, iPhone, iPad, and Android. Also reachable via @bot on X.",
+              "sourceKey": "G3"
+            },
+            {
+              "text": " Optional local-computer execution when you enable it and approve commands.",
+              "sourceKey": "G10"
+            }
+          ]
+        },
+        {
+          "label": "Known specs",
+          "parts": [
+            {
+              "text": "Bot computer screen 1920x1200. Up to 200 plugin skills per Bot. More than 50 Bots allowed.",
+              "sourceKey": "G12"
+            },
+            {
+              "text": " One computer-use task per Bot screen at a time.",
+              "sourceKey": "G3"
+            },
+            {
+              "text": " Unanswered approvals from background work expire after about 10 minutes.",
+              "sourceKey": "G9"
+            },
+            {
+              "text": " Connector calls wait up to 2 minutes.",
+              "sourceKey": "G12"
+            },
+            {
+              "text": " Usage resets weekly from a pool shared with Grok and Cursor.",
+              "sourceKey": "G5"
+            },
+            {
+              "text": " Context window size is not listed on these pages.",
+              "sourceKey": "G7"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "capabilities": {
+          "lead": "What Grok Bot docs describe.",
+          "bullets": [
+            [
+              {
+                "text": "Runs multiple named Bots in parallel; Bots message each other in group chats and hand off tasks.",
+                "sourceKey": "G3"
+              }
+            ],
+            [
+              {
+                "text": "Learns a workflow from one demonstration, saves it as a skill, and reruns it on a schedule.",
+                "sourceKey": "G3"
+              }
+            ],
+            [
+              {
+                "text": "Routines on a schedule or triggered by Slack, GitHub, Linear, Sentry, PagerDuty, email, or webhook events.",
+                "sourceKey": "G11"
+              },
+              {
+                "text": "Microsoft Teams message triggers.",
+                "sourceKey": "G12"
+              }
+            ],
+            [
+              {
+                "text": "Bots get their own email address with +tag aliases; pays with Stripe Link or X Money.",
+                "sourceKey": "G12"
+              },
+              {
+                "text": "Searches public X posts.",
+                "sourceKey": "G10"
+              }
+            ]
+          ]
+        },
+        "strengths": {
+          "lead": "Where Grok Bot's design stands out on this page.",
+          "bullets": [
+            [
+              {
+                "text": "Many Bots can coordinate in group chats, plus teach-by-demonstration skills.",
+                "sourceKey": "G3"
+              }
+            ],
+            [
+              {
+                "text": "Full desktop apps on macOS, Windows, and Linux, plus iOS and Android.",
+                "sourceKey": "G3"
+              }
+            ],
+            [
+              {
+                "text": "Routines can start from webhook and developer-tool events.",
+                "sourceKey": "G11"
+              }
+            ],
+            [
+              {
+                "text": "Changelog lists frequent releases, including v0.66.0 (2 Oct), v0.68.1 (7 Oct), v0.70.2 (11 Oct), and v0.71.2 (14 Oct).",
+                "sourceKey": "G12"
+              }
+            ]
+          ]
+        },
+        "connectors": {
+          "lead": "Plugin catalogue and computer use.",
+          "bullets": [
+            [
+              {
+                "text": "Plugin catalogue includes Gmail, Outlook, Slack, GitHub, GitLab, Notion, Figma, Canva, Google Drive, OneDrive, and 1Password.",
+                "sourceKey": "G12"
+              },
+              {
+                "text": "Also the X plugin.",
+                "sourceKey": "G10"
+              }
+            ],
+            [
+              {
+                "text": "Computer use for sites without a connector.",
+                "sourceKey": "G3"
+              },
+              {
+                "text": " Total connector count is not listed on these pages.",
+                "sourceKey": "G10"
+              }
+            ]
+          ]
+        },
+        "approval": {
+          "lead": "Approval cards and Auto Review.",
+          "bullets": [
+            [
+              {
+                "text": "Approval cards offer Allow once, Always allow, or Deny.",
+                "sourceKey": "G9"
+              }
+            ],
+            [
+              {
+                "text": "Auto Review, an independent review model, checks shell commands, plugin calls, computer use, routine writes, and delegation.",
+                "sourceKey": "G8"
+              }
+            ],
+            [
+              {
+                "text": "Before irreversible sends, posts, buys, or deletes, it checks your own messages for approval.",
+                "sourceKey": "G12"
+              },
+              {
+                "text": "Enterprise admins can enforce Auto Review.",
+                "sourceKey": "G8"
+              }
+            ]
+          ]
+        },
+        "proactive": {
+          "lead": "Offers and routines.",
+          "bullets": [
+            [
+              {
+                "text": "Your primary Bot will spot work it can take off your plate and offer to handle it.",
+                "sourceKey": "G12"
+              }
+            ],
+            [
+              {
+                "text": "Routines on daily, hourly or interval schedules, or event triggers.",
+                "sourceKey": "G11"
+              }
+            ],
+            [
+              {
+                "text": "Fixed default check-in is not listed on these pages.",
+                "sourceKey": "G3"
+              }
+            ]
+          ]
+        },
+        "memory": {
+          "lead": "Per-Bot context on a shared computer.",
+          "bullets": [
+            [
+              {
+                "text": "Stable preferences, role context, and summaries of prior work, kept per Bot.",
+                "sourceKey": "G3"
+              }
+            ],
+            [
+              {
+                "text": "Shared files and browser sessions across Bots.",
+                "sourceKey": "G10"
+              }
+            ],
+            [
+              {
+                "text": "Everything on the shared computer is visible to every Bot on your account.",
+                "sourceKey": "G10"
+              }
+            ]
+          ]
+        },
+        "limits": {
+          "lead": "Steps Grok Bot won't bypass.",
+          "bullets": [
+            [
+              {
+                "text": "Hands you passwords, 2FA, CAPTCHAs, and identity checks rather than working around them.",
+                "sourceKey": "G10"
+              }
+            ],
+            [
+              {
+                "text": "Routines share a run-rate limit; some runs fail with Automation run rate limit exceeded.",
+                "sourceKey": "G11"
+              }
+            ]
+          ]
+        },
+        "privacy": {
+          "lead": "Cursor SSO and enterprise controls.",
+          "bullets": [
+            [
+              {
+                "text": "Uses Cursor SSO and privacy mode; encrypted in transit and at rest; training opt-out.",
+                "sourceKey": "G4"
+              }
+            ],
+            [
+              {
+                "text": "Third-party model providers are limited to the sub-processor list.",
+                "sourceKey": "G7"
+              }
+            ],
+            [
+              {
+                "text": "Enterprise controls: data-loss prevention and network policy.",
+                "sourceKey": "G4"
+              },
+              {
+                "text": "Audit logs.",
+                "sourceKey": "G8"
+              }
+            ]
+          ]
+        },
+        "comingSoon": {
+          "lead": "Published roadmap.",
+          "bullets": [
+            [
+              {
+                "text": "SpaceXAI and Cursor do not publish a forward roadmap for Grok Bot on these pages.",
+                "sourceKey": "G3"
+              }
+            ]
+          ]
+        }
+      },
+      "sources": [
+        {
+          "key": "G2",
+          "label": "SpaceXAI, Grok Bot is now included with more plans",
+          "url": "https://x.ai/news/grok-bot-more-plans",
+          "primary": true
+        },
+        {
+          "key": "G3",
+          "label": "Grok Bot docs, overview",
+          "url": "https://docs.x.ai/grok-bot/overview"
+        },
+        {
+          "key": "G4",
+          "label": "Grok Bot product page",
+          "url": "https://x.ai/bot"
+        },
+        {
+          "key": "G5",
+          "label": "Cursor Help, Plans and billing",
+          "url": "https://cursor.com/help/grok-bot/plans"
+        },
+        {
+          "key": "G6",
+          "label": "SpaceXAI docs, X Subscription pricing",
+          "url": "https://docs.x.ai/x-subscription/pricing"
+        },
+        {
+          "key": "G7",
+          "label": "Cursor Help, Which AI models power Grok Bot?",
+          "url": "https://cursor.com/help/grok-bot/models"
+        },
+        {
+          "key": "G8",
+          "label": "Grok Bot docs, Security",
+          "url": "https://docs.x.ai/grok-bot/security"
+        },
+        {
+          "key": "G9",
+          "label": "Grok Bot docs, Approvals, security, and privacy",
+          "url": "https://docs.x.ai/grok-bot/approvals-security-and-privacy"
+        },
+        {
+          "key": "G10",
+          "label": "Grok Bot docs, Use the computer and apps",
+          "url": "https://docs.x.ai/grok-bot/computer-and-apps"
+        },
+        {
+          "key": "G11",
+          "label": "Cursor Help, Routines",
+          "url": "https://cursor.com/help/grok-bot/routines"
+        },
+        {
+          "key": "G12",
+          "label": "Grok Bot changelog",
+          "url": "https://x.ai/changelog/bot"
+        },
+        {
+          "key": "G13",
+          "label": "9to5Mac, Grok Bot is an all-new iPhone and Mac app from SpaceXAI and Cursor",
+          "url": "https://9to5mac.com/2026/08/21/grok-bot-is-an-all-new-iphone-and-mac-app-from-spacexai-and-cursor/"
+        },
+        {
+          "key": "G15",
+          "label": "Create With, We both tried GrokBot. We disagree.",
+          "url": "https://createwith.com/blog/we-both-tried-grokbot-we-disagree"
+        }
+      ],
+      "updates": [
+        {
+          "date": "14 Oct 2026",
+          "text": "Changelog v0.71.2: 200 plugin skills per Bot."
+        },
+        {
+          "date": "3 Sep 2026",
+          "text": "Enterprise generally available."
+        },
+        {
+          "date": "21 Aug 2026",
+          "text": "Access expanded to more plans (reported)."
+        },
+        {
+          "date": "11 Aug 2026",
+          "text": "Grok Bot beta launched."
+        }
+      ]
+    }
+  ]
+}

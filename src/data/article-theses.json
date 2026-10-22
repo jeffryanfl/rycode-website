@@ -18,7 +18,6 @@
   "/ai/models/anthropic/claude-haiku-4-5/": "Claude Haiku 4.5 was Anthropic's fastest model, priced for cost-sensitive work, and is now archived, succeeded by Claude Haiku 5.5.",
   "/ai/models/openai/gpt-6-astra/": "GPT-6 Astra is OpenAI's flagship for hard end-to-end work: reasoning, coding, computer use, research, and documents.",
   "/ai/models/openai/gpt-6.1-sol/": "GPT-6.1 Sol is an upgrade to GPT-6 Sol, released 29 September 2026, at $2 input, $0.10 cached input, and $10 output per million tokens.",
-  "/ai/models/openai/dots/": "Dots is an always-on ChatGPT agent powered by GPT-6 Astra, with its own cloud computer and browser.",
   "/ai/models/openai/gpt-6-intelligent-ui/": "Intelligent UI lets GPT-6 answers in ChatGPT include visuals and controls you can tap, rolling out in the Chat tab from 7 October 2026.",
   "/ai/models/openai/gpt-6-sol/": "GPT-6 Sol was OpenAI's mid-tier GPT-6 model, released 22 September 2026 at $2 and $10 per million tokens, and is now archived, succeeded by GPT-6.1 Sol.",
   "/ai/models/openai/gpt-6-luna/": "GPT-6 Luna is the cheaper, faster GPT-6 tier released with Sol on 22 September 2026, at $0.10 and $0.50 per million tokens.",
@@ -29,7 +28,6 @@
   "/ai/models/xai/models/grok-4-20/": "Grok 4.20 is listed as three API ids, for reasoning, non-reasoning, and multi-agent use, on the same token prices as Grok 4.3.",
   "/ai/models/xai/models/grok-build-0-1/": "grok-build-0.1 is a dedicated coding model on the xAI API, separate from the Grok Build product.",
   "/ai/models/xai/grok-build/": "Grok Build is xAI's coding agent for the terminal, headless scripts, and the Agent Client Protocol.",
-  "/ai/models/xai/grok-bot/": "Grok Bot is xAI's product of named bots on a cloud computer, with jobs and context that persist.",
   "/ai/models/xai/imagine/": "Imagine is xAI's image and video generation family on the API and in consumer Grok.",
   "/ai/models/xai/voice/": "Voice is xAI's spoken interface: speech to speech, speech to text, and text to speech, led by Grok Voice 3.0 since 14 Oct 2026.",
   "/ai/models/google/gemini-flash/": "Gemini 3.8 Flash is Google's current Flash model for long-horizon software work and agents at Flash speed and cost.",
@@ -101,5 +99,9 @@
   "/ai/models/more-labs/apple-foundation-models/": "Apple's third-generation Foundation Models: five models, two on the device and three on Private Cloud Compute, built with Google, announced 8 Jun 2026.",
   "/ai/models/more-labs/cohere-command-a-plus/": "Cohere Command A+: Cohere's first Mixture of Experts model, 218 billion parameters with 25 billion active, open under Apache 2.0, released 20 May 2026.",
   "/ai/models/more-labs/inkling/": "Thinking Machines Lab's Inkling: 975 billion parameters, 41 billion active, 1M context, open weights, released 15 Jul 2026.",
-  "/ai/models/more-labs/mistral-large-4/": "Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights promised by end of October."
+  "/ai/models/more-labs/mistral-large-4/": "Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights promised by end of October.",
+  "/ai/agents/claude-duet/": "Claude Duet is Anthropic's waitlisted research preview agent on a cloud VM, included with US Claude Pro and Max, running on Claude Opus 5.5.",
+  "/ai/agents/muse/": "Muse is Meta's personal agent in a secure cloud VM, rolling out in the US with a free tier and paid weekly token plans on Muse Spark.",
+  "/ai/agents/dots/": "dots is OpenAI's always-on ChatGPT agent on GPT-6 Astra, with its own cloud computer and optional use of your desktop.",
+  "/ai/agents/grok-bot/": "Grok Bot is SpaceXAI's named Bots product on a shared cloud computer, with parallel agents, routines, and desktop apps on paid X and Cursor plans."
 }

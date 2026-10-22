@@ -2,8 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import AiBenchCharts from '../components/AiBenchCharts.astro';
 import AiWeekTicker from '../components/AiWeekTicker.astro';
+import { agentToolsForDoor } from '../lib/agent-tools';
 import '../styles/ai.css';
 import '../styles/hub.css';
+
+const agentDoorRows = agentToolsForDoor();
 ---
 
 <Layout
@@ -432,6 +435,21 @@ import '../styles/hub.css';
     </ul>
   </section>
 
+  <section class="ai-band" aria-labelledby="ai-agent-tools">
+    <h2 class="ai-section-label" id="ai-agent-tools">Agent tools</h2>
+    <p class="ai-lab-note">Personal agents that work in the background on a cloud computer and through your apps.</p>
+    <ul class="ai-agent-door-list">
+      {agentDoorRows.map((tool) => (
+        <li class="ai-agent-door-row">
+          <a href={`/ai/agents/${tool.slug}/`}>{tool.name}</a>
+          <span class="ai-agent-door-maker">{tool.maker}</span>
+          <span class="ai-agent-door-line">{tool.doorLine}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="ai-agent-door-all"><a href="/ai/agents/">All agent tools</a></p>
+  </section>
+
   <section class="ai-band ai-papers" aria-labelledby="ai-products">
     <h2 class="ai-section-label" id="ai-products">Products and features</h2>
     <p class="ai-lab-note">Apps, agents and features built on top of models. They are not models themselves.</p>
@@ -448,20 +466,6 @@ import '../styles/hub.css';
           <time class="ai-papers-chip-date" datetime="2026-10-07">7 Oct</time>
           <span class="ai-papers-chip-title">GPT-6 + Intelligent UI</span>
           <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://openai.com/index/introducing-dots/">
-          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
-          <span class="ai-papers-chip-title">Dots</span>
-          <span class="ai-papers-chip-source">blog</span>
-        </a>
-      </li>
-      <li>
-        <a href="/ai/models/openai/dots/">
-          <time class="ai-papers-chip-date" datetime="2026-09-29">29 Sep</time>
-          <span class="ai-papers-chip-title">Dots card</span>
-          <span class="ai-papers-chip-source">docs</span>
         </a>
       </li>
     </ul>

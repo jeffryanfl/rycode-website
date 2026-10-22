@@ -62,14 +62,15 @@
         "/ai/ten-thousand-agents-is-not-a-genius/",
         "/ai/meta-named-an-enterprise-stack/",
         "/ai/models/meta/muse/code/",
-        "/ai/models/xai/grok-bot/",
+        "/ai/agents/grok-bot/",
         "/ai/glossary/"
       ],
       "links": [
         "open-weights",
         "model-releases",
         "evals-safety",
-        "training-loop"
+        "training-loop",
+        "agent-tools"
       ]
     },
     {
@@ -91,7 +92,8 @@
       ],
       "links": [
         "agent-swarms",
-        "model-releases"
+        "model-releases",
+        "agent-tools"
       ]
     },
     {
@@ -312,7 +314,6 @@
         "/ai/models/xai/models/grok-4-3/",
         "/ai/models/xai/models/grok-4-5/",
         "/ai/models/xai/models/grok-4-6/",
-        "/ai/models/xai/grok-bot/",
         "/ai/models/xai/grok-build/",
         "/ai/models/xai/imagine/",
         "/ai/models/xai/voice/",
@@ -323,7 +324,6 @@
         "/ai/models/anthropic/claude-sonnet-5/",
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/openai/gpt-6.1-sol/",
-        "/ai/models/openai/dots/",
         "/ai/models/openai/gpt-6-intelligent-ui/",
         "/ai/models/more-labs/mistral-large-4/",
         "/ai/models/more-labs/cohere-command-a-plus/",
@@ -396,6 +396,21 @@
         "model-releases",
         "hardware-compute",
         "agent-swarms"
+      ]
+    },
+    {
+      "id": "agent-tools",
+      "label": "Agent tools",
+      "blurb": "Personal agents from the major labs that run on a cloud computer, use connectors, and act on your goals between chats.",
+      "articles": [
+        "/ai/agents/claude-duet/",
+        "/ai/agents/muse/",
+        "/ai/agents/dots/",
+        "/ai/agents/grok-bot/"
+      ],
+      "links": [
+        "agent-swarms",
+        "evals-safety"
       ]
     }
   ]

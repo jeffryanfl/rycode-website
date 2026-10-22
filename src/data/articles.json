@@ -1584,26 +1584,6 @@
     "slug": "ai-models-open-weight-step-5"
   },
   {
-    "href": "/ai/models/openai/dots/",
-    "title": "Dots",
-    "description": "Always-on agent. Own cloud computer. Astra.",
-    "date": "2026-09-29",
-    "section": "ai",
-    "series": "ai-openai",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/models/openai/",
-        "label": "OpenAI"
-      }
-    ],
-    "file": "src/pages/ai/models/openai/dots.astro",
-    "slug": "ai-models-openai-dots"
-  },
-  {
     "href": "/ai/models/openai/gpt-6-astra/",
     "title": "GPT-6 Astra",
     "description": "Flagship for hard end-to-end work.",
@@ -1742,26 +1722,6 @@
     ],
     "file": "src/pages/ai/models/xai/grok-4-7.astro",
     "slug": "ai-models-xai-grok-4-7"
-  },
-  {
-    "href": "/ai/models/xai/grok-bot/",
-    "title": "Grok Bot",
-    "description": "Named Bots on a cloud computer.",
-    "date": "2026-09-13",
-    "section": "ai",
-    "series": "ai-xai",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/models/xai/",
-        "label": "xAI"
-      }
-    ],
-    "file": "src/pages/ai/models/xai/grok-bot.astro",
-    "slug": "ai-models-xai-grok-bot"
   },
   {
     "href": "/ai/models/xai/grok-build/",
@@ -2109,5 +2069,61 @@
     "file": "src/pages/risk/when-the-spender-runs-the-printer.astro",
     "slug": "risk-when-the-spender-runs-the-printer",
     "minutes": 3
+  },
+  {
+    "href": "/ai/agents/claude-duet/",
+    "title": "Claude Duet",
+    "description": "Anthropic's always-on personal agent on a cloud virtual machine for US Claude Pro and Max.",
+    "date": "2026-10-22",
+    "section": "ai",
+    "series": "ai-agents",
+    "crumbs": [
+      { "href": "/ai/", "label": "A.I." },
+      { "href": "/ai/agents/", "label": "Agent tools" }
+    ],
+    "file": "src/pages/ai/agents/claude-duet.astro",
+    "slug": "ai-agents-claude-duet"
+  },
+  {
+    "href": "/ai/agents/muse/",
+    "title": "Muse",
+    "description": "Meta's personal agent in an isolated cloud VM, with connectors and optional paid plans.",
+    "date": "2026-10-22",
+    "section": "ai",
+    "series": "ai-agents",
+    "crumbs": [
+      { "href": "/ai/", "label": "A.I." },
+      { "href": "/ai/agents/", "label": "Agent tools" }
+    ],
+    "file": "src/pages/ai/agents/muse.astro",
+    "slug": "ai-agents-muse"
+  },
+  {
+    "href": "/ai/agents/dots/",
+    "title": "dots",
+    "description": "OpenAI's always-on ChatGPT agent powered by GPT-6 Astra, with its own cloud computer.",
+    "date": "2026-10-22",
+    "section": "ai",
+    "series": "ai-agents",
+    "crumbs": [
+      { "href": "/ai/", "label": "A.I." },
+      { "href": "/ai/agents/", "label": "Agent tools" }
+    ],
+    "file": "src/pages/ai/agents/dots.astro",
+    "slug": "ai-agents-dots"
+  },
+  {
+    "href": "/ai/agents/grok-bot/",
+    "title": "Grok Bot",
+    "description": "SpaceXAI named Bots on a persistent cloud computer, with Cursor apps and paid plan access.",
+    "date": "2026-10-22",
+    "section": "ai",
+    "series": "ai-agents",
+    "crumbs": [
+      { "href": "/ai/", "label": "A.I." },
+      { "href": "/ai/agents/", "label": "Agent tools" }
+    ],
+    "file": "src/pages/ai/agents/grok-bot.astro",
+    "slug": "ai-agents-grok-bot"
   }
 ]

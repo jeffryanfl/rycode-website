@@ -1,0 +1,131 @@
+---
+import AgentToolText from './AgentToolText.astro';
+import type { AgentTool } from '../lib/agent-tools';
+
+interface Props {
+  tool: AgentTool;
+}
+
+const { tool } = Astro.props;
+
+const sourceOrder = [...tool.sources].sort((a, b) => {
+  if (a.primary && !b.primary) return -1;
+  if (!a.primary && b.primary) return 1;
+  return 0;
+});
+
+const sourceAnchors: Record<string, number> = {};
+sourceOrder.forEach((source, index) => {
+  sourceAnchors[source.key] = index + 1;
+});
+
+const sectionOrder: { key: keyof AgentTool['sections']; title: string }[] = [
+  { key: 'capabilities', title: 'Capabilities' },
+  { key: 'strengths', title: 'Strengths' },
+  { key: 'connectors', title: 'Connectors' },
+  { key: 'approval', title: 'Approval and safety' },
+  { key: 'proactive', title: 'Proactive behaviour' },
+  { key: 'memory', title: 'Memory' },
+  { key: 'limits', title: 'Limits' },
+  { key: 'privacy', title: 'Privacy' },
+  { key: 'comingSoon', title: 'Coming soon' },
+];
+
+const MONTHS: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function updateSortKey(label: string): number {
+  const match = /^(\d{1,2})\s+(\w{3})\s+(\d{4})$/.exec(label.trim());
+  if (!match) return 0;
+  const day = Number(match[1]);
+  const month = MONTHS[match[2]] ?? 0;
+  const year = Number(match[3]);
+  return Date.UTC(year, month, day);
+}
+
+const updates = [...tool.updates]
+  .sort((a, b) => updateSortKey(b.date) - updateSortKey(a.date))
+  .slice(0, 8);
+---
+
+<article class="ai-agent-tool ai-agent-tool-page">
+  <p class="ai-agent-tool-kicker">
+    <a href="/ai/agents/">Agent tools</a> · {tool.maker}
+  </p>
+  <h1 class="ai-agent-tool-title">{tool.name}</h1>
+  <p class="ai-agent-tool-dek">{tool.dek}</p>
+  <p class="ai-agent-tool-checked">
+    Last checked <time datetime={tool.lastChecked}>{tool.lastChecked}</time>
+  </p>
+  <hr class="ai-agent-tool-rule" />
+
+  <h2 class="visually-hidden">Spec sheet</h2>
+  <div class="ai-agent-tool-spec-wrap">
+    <table class="ai-agent-tool-spec">
+      <caption class="visually-hidden">Spec sheet for {tool.name}</caption>
+      <tbody>
+        {tool.specRows.map((row) => (
+          <tr>
+            <th scope="row">{row.label}</th>
+            <td>
+              <AgentToolText parts={row.parts} sourceAnchors={sourceAnchors} />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {sectionOrder.map(({ key, title }) => {
+    const section = tool.sections[key];
+    return (
+      <section class="ai-agent-tool-section" aria-labelledby={`agent-${key}`}>
+        <h2 class="ai-agent-tool-section-title" id={`agent-${key}`}>{title}</h2>
+        <p class="ai-agent-tool-section-lead">{section.lead}</p>
+        <ul class="ai-agent-tool-bullets">
+          {section.bullets.map((bullet) => (
+            <li>
+              <AgentToolText parts={bullet} sourceAnchors={sourceAnchors} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  })}
+
+  <section class="ai-agent-tool-section" aria-labelledby="agent-sources">
+    <h2 class="ai-agent-tool-section-title" id="agent-sources">Sources</h2>
+    <ol class="ai-agent-tool-sources">
+      {sourceOrder.map((source, index) => (
+        <li id={`source-${index + 1}`}>
+          <a href={source.url} rel="noopener noreferrer" target="_blank">{source.label}</a>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="ai-agent-tool-section" aria-labelledby="agent-updates">
+    <h2 class="ai-agent-tool-section-title" id="agent-updates">Updates</h2>
+    <ol class="ai-agent-tool-updates">
+      {updates.map((row) => (
+        <li>
+          <time datetime={row.date}>{row.date}</time>
+          {' · '}
+          {row.text}
+        </li>
+      ))}
+    </ol>
+  </section>
+</article>

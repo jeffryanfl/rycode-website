@@ -16,6 +16,11 @@
 /ai/models/openai/gpt-5-6-sol      /ai/models/openai/gpt-6-sol/  301!
 /ai/models/openai/gpt-5-6-sol/     /ai/models/openai/gpt-6-sol/  301!
 
+/ai/models/openai/dots             /ai/agents/dots/  301!
+/ai/models/openai/dots/            /ai/agents/dots/  301!
+/ai/models/xai/grok-bot            /ai/agents/grok-bot/  301!
+/ai/models/xai/grok-bot/           /ai/agents/grok-bot/  301!
+
 /risk/panic-before-the-breach      /risk/  301!
 /risk/panic-before-the-breach/     /risk/  301!
 
