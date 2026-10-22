@@ -55,7 +55,7 @@
           "parts": [
             {
               "text": "Claude Opus 5.5 for all work. You cannot choose a model; Duet decides how much effort a job needs.",
-              "sourceKey": "D1"
+              "sourceKey": "D2"
             }
           ]
         },
@@ -64,7 +64,7 @@
           "parts": [
             {
               "text": "Typed text and recorded voice messages.",
-              "sourceKey": "D1"
+              "sourceKey": "D2"
             },
             {
               "text": " Every says there is no real voice mode yet, just transcription.",
@@ -103,7 +103,7 @@
             },
             {
               "text": " Separate from the main Claude app for now. It cannot see files on your computer.",
-              "sourceKey": "D2"
+              "sourceKey": "D1"
             },
             {
               "text": " A desktop app is not listed on these pages.",
@@ -115,7 +115,11 @@
           "label": "Known specs",
           "parts": [
             {
-              "text": "Checks connected accounts every few hours at set intervals; morning brief once each morning.",
+              "text": "Checks connected accounts every few hours.",
+              "sourceKey": "D1"
+            },
+            {
+              "text": " Morning brief once each morning; checks at set intervals you configure.",
               "sourceKey": "D2"
             },
             {
@@ -149,7 +153,7 @@
             [
               {
                 "text": "Sends a morning brief across email, calendar, and connected apps, and can start first steps such as drafting replies.",
-                "sourceKey": "D1"
+                "sourceKey": "D2"
               }
             ],
             [
@@ -161,7 +165,7 @@
             [
               {
                 "text": "Handles admin tasks such as scheduling meetings, unpaid invoices in QuickBooks or Stripe, payroll in Gusto, and agreements through Docusign after you approve.",
-                "sourceKey": "D2"
+                "sourceKey": "D1"
               }
             ],
             [
@@ -249,7 +253,11 @@
             ],
             [
               {
-                "text": "Each purchase uses a one-time card, and Link asks you to approve the spend.",
+                "text": "Link asks you to approve the spend.",
+                "sourceKey": "D1"
+              },
+              {
+                "text": "Each purchase uses a one-time card.",
                 "sourceKey": "D2"
               }
             ]
@@ -260,8 +268,12 @@
           "bullets": [
             [
               {
-                "text": "Morning brief each morning; checks connected accounts every few hours and messages you only when needed.",
+                "text": "Morning brief each morning.",
                 "sourceKey": "D2"
+              },
+              {
+                "text": "Checks connected accounts every few hours and messages you only when needed.",
+                "sourceKey": "D1"
               }
             ],
             [
@@ -284,7 +296,7 @@
             [
               {
                 "text": "Carries over your Claude memory, skills, and connected apps. Channels share the same memory.",
-                "sourceKey": "D1"
+                "sourceKey": "D2"
               }
             ],
             [
@@ -396,11 +408,6 @@
           "url": "https://support.claude.com/en/articles/17631495-get-started-with-claude-duet"
         },
         {
-          "key": "D3",
-          "label": "MacRumors, Anthropic Launches Claude Duet",
-          "url": "https://www.macrumors.com/2026/10/21/anthropic-claude-duet/"
-        },
-        {
           "key": "D4",
           "label": "Every, Vibe Check: Duet",
           "url": "https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent"
@@ -436,7 +443,7 @@
           "parts": [
             {
               "text": "Meta (Meta Superintelligence Labs). Internal code name Hatch.",
-              "sourceKey": "M1"
+              "sourceKey": "M2"
             }
           ]
         },
@@ -492,8 +499,12 @@
           "label": "Modalities in",
           "parts": [
             {
-              "text": "Text messages, file uploads, and Apple Health or Android SMS connectors.",
+              "text": "Text messages and file uploads.",
               "sourceKey": "M3"
+            },
+            {
+              "text": " Apple Health or Android SMS connectors.",
+              "sourceKey": "M6"
             },
             {
               "text": " Photos of documents or meals are suggested in-app.",
@@ -528,8 +539,12 @@
           "label": "Where it runs",
           "parts": [
             {
-              "text": "Muse Secure VM: dedicated, isolated Linux cloud VM with Chromium. Clients: iOS, Android, muse.ai web, and inside WhatsApp.",
+              "text": "Muse Secure VM on a dedicated, isolated cloud virtual machine. Clients: iOS, Android, muse.ai web, and inside WhatsApp.",
               "sourceKey": "M1"
+            },
+            {
+              "text": " Linux cloud VM with Chromium.",
+              "sourceKey": "M2"
             },
             {
               "text": " AI glasses: coming soon.",
@@ -583,8 +598,12 @@
             ],
             [
               {
-                "text": "Spawn subagents, build its own tools, and write custom connectors; make and edit artifacts and side chats that stay aware of the main chat.",
+                "text": "Spawn subagents, build its own tools, and write custom connectors.",
                 "sourceKey": "M2"
+              },
+              {
+                "text": "Make and edit artifacts and side chats that stay aware of the main chat.",
+                "sourceKey": "M3"
               }
             ]
           ]
@@ -625,8 +644,13 @@
           "bullets": [
             [
               {
-                "text": "Meta and third-party connectors, including Gmail, calendar, Apple Health, Android SMS, and Amazon.",
+                "text": "Meta and third-party connectors, including Gmail, calendar, Apple Health, and Android SMS.",
                 "sourceKey": "M6"
+              },
+              {
+                "text": " Amazon.",
+                "sourceKey": "M11",
+                "tag": "reported"
               }
             ],
             [
@@ -660,8 +684,12 @@
             ],
             [
               {
-                "text": "Approval options: Allow once, Allow for this task, Allow for this site, Always allow, Deny. Every purchase needs approval and uses a single-use card tied to one merchant, one amount, and a limited time.",
+                "text": "Approval options: Allow once, Allow for this task, Allow for this site, Always allow, Deny.",
                 "sourceKey": "M7"
+              },
+              {
+                "text": "Every purchase needs approval and uses a single-use card tied to one merchant, one amount, and a limited time.",
+                "sourceKey": "M2"
               }
             ]
           ]
@@ -760,13 +788,17 @@
             [
               {
                 "text": "Muse doesn't share your conversations or VM data with Meta ad systems; browsing can still indirectly influence the ads you see.",
-                "sourceKey": "M1"
+                "sourceKey": "M2"
               }
             ],
             [
               {
-                "text": "Training on your Muse data is on by default; you can opt out under Data controls. Meta can access VM data when necessary to support, secure, or operate the service until Confidential VM ships.",
+                "text": "Training on your Muse data is on by default; you can opt out under Data controls.",
                 "sourceKey": "M4"
+              },
+              {
+                "text": "Meta can access VM data when necessary to support, secure, or operate the service until Confidential VM ships.",
+                "sourceKey": "M2"
               }
             ]
           ]
@@ -890,7 +922,11 @@
           "label": "Status and access",
           "parts": [
             {
-              "text": "Announced and rolling out 29 Sep 2026. Gradual rollout; access may take several days. Enterprise is a beta, off by default.",
+              "text": "Announced and rolling out 29 Sep 2026.",
+              "sourceKey": "O1"
+            },
+            {
+              "text": " Gradual rollout; access may take several days. Enterprise is a beta, off by default.",
               "sourceKey": "O2"
             }
           ]
@@ -926,8 +962,12 @@
           "label": "Modalities in",
           "parts": [
             {
-              "text": "Text, voice calls, and file or photo attachments.",
+              "text": "Text and voice calls.",
               "sourceKey": "O1"
+            },
+            {
+              "text": " File or photo attachments.",
+              "sourceKey": "O2"
             },
             {
               "text": " Camera, microphone, and screen only if you connect your computer and grant permission.",
@@ -939,8 +979,12 @@
           "label": "Modalities out",
           "parts": [
             {
-              "text": "Text messages, documents, decks, code and pull requests, and videos showing those changes. The dot can't start a call to you.",
+              "text": "Text messages, documents, decks, code and pull requests, and videos showing those changes.",
               "sourceKey": "O1"
+            },
+            {
+              "text": " The dot can't start a call to you.",
+              "sourceKey": "O2"
             },
             {
               "text": " You can open its computer to inspect it or take over.",
@@ -1076,8 +1120,12 @@
             ],
             [
               {
-                "text": "Slack, Teams, and personal email. It can't have its own standalone email address at launch. It can have its own separate Slack account.",
+                "text": "Slack, Teams, and personal email. It can't have its own standalone email address at launch.",
                 "sourceKey": "O2"
+              },
+              {
+                "text": "It can have its own separate Slack account.",
+                "sourceKey": "O3"
               }
             ],
             [
@@ -1105,8 +1153,12 @@
             ],
             [
               {
-                "text": "Password changes and money transfers require you to take over. Merchant-saved-card purchases need approval. Asking for a draft doesn't authorise sending it.",
+                "text": "Password changes and money transfers require you to take over. Merchant-saved-card purchases need approval.",
                 "sourceKey": "O3"
+              },
+              {
+                "text": "Asking for a draft doesn't authorise sending it.",
+                "sourceKey": "O2"
               }
             ],
             [
@@ -1329,8 +1381,12 @@
               "tag": "reported"
             },
             {
-              "text": " Enterprise: generally available 3 Sep 2026.",
+              "text": " Enterprise: generally available.",
               "sourceKey": "G4"
+            },
+            {
+              "text": " 3 Sep 2026.",
+              "sourceKey": "G12"
             },
             {
               "text": " Consumer GA label is not used on current docs.",
@@ -1343,7 +1399,7 @@
           "parts": [
             {
               "text": "Included on X Subscription Premium ($30/mo), Super ($100/mo), and Ultra ($200/mo).",
-              "sourceKey": "G5"
+              "sourceKey": "G6"
             },
             {
               "text": " Not on Plus ($8) or Free.",
@@ -1373,8 +1429,12 @@
           "label": "Modalities in",
           "parts": [
             {
-              "text": "Type, dictate, voice chat; attachments up to 250 MB per file and 1 GB per video, 20 per message, 200 MB total.",
+              "text": "Type, dictate, and voice chat.",
               "sourceKey": "G3"
+            },
+            {
+              "text": " Attachments up to 250 MB per file and 1 GB per video, 20 per message, 200 MB total.",
+              "sourceKey": "G12"
             }
           ]
         },
@@ -1382,8 +1442,12 @@
           "label": "Modalities out",
           "parts": [
             {
-              "text": "Text, voice memos, files, Pages, slide decks, images, audio files, and PDFs of web pages.",
+              "text": "Text and voice memos.",
               "sourceKey": "G3"
+            },
+            {
+              "text": " Files, Pages, slide decks, images, audio files, and PDFs of web pages.",
+              "sourceKey": "G12"
             }
           ]
         },
@@ -1399,7 +1463,7 @@
               "sourceKey": "G3"
             },
             {
-              "text": " Optional local-computer execution with per-command approval by default.",
+              "text": " Optional local-computer execution when you enable it and approve commands.",
               "sourceKey": "G10"
             }
           ]
@@ -1452,14 +1516,22 @@
             ],
             [
               {
-                "text": "Routines on a schedule or triggered by Slack, GitHub, Linear, Sentry, PagerDuty, Microsoft Teams, email, or webhook events.",
+                "text": "Routines on a schedule or triggered by Slack, GitHub, Linear, Sentry, PagerDuty, email, or webhook events.",
                 "sourceKey": "G11"
+              },
+              {
+                "text": "Microsoft Teams message triggers.",
+                "sourceKey": "G12"
               }
             ],
             [
               {
-                "text": "Bots get their own email address with +tag aliases; searches public X posts; pays with Stripe Link or X Money.",
-                "sourceKey": "G3"
+                "text": "Bots get their own email address with +tag aliases; pays with Stripe Link or X Money.",
+                "sourceKey": "G12"
+              },
+              {
+                "text": "Searches public X posts.",
+                "sourceKey": "G10"
               }
             ]
           ]
@@ -1499,7 +1571,7 @@
             [
               {
                 "text": "Plugin catalogue includes Gmail, Outlook, Slack, GitHub, GitLab, Notion, Figma, Canva, Google Drive, OneDrive, 1Password, and the X plugin.",
-                "sourceKey": "G10"
+                "sourceKey": "G12"
               }
             ],
             [
@@ -1531,8 +1603,12 @@
             ],
             [
               {
-                "text": "Before irreversible sends, posts, buys, or deletes, it checks your own messages for approval. Enterprise admins can enforce Auto Review.",
+                "text": "Before irreversible sends, posts, buys, or deletes, it checks your own messages for approval.",
                 "sourceKey": "G12"
+              },
+              {
+                "text": "Enterprise admins can enforce Auto Review.",
+                "sourceKey": "G8"
               }
             ]
           ]
@@ -1617,8 +1693,12 @@
             ],
             [
               {
-                "text": "Enterprise controls: data-loss prevention, network policy, and audit logs.",
+                "text": "Enterprise controls: data-loss prevention and network policy.",
                 "sourceKey": "G4"
+              },
+              {
+                "text": "Audit logs.",
+                "sourceKey": "G8"
               }
             ]
           ]
@@ -1637,15 +1717,10 @@
       },
       "sources": [
         {
-          "key": "G1",
-          "label": "SpaceXAI, Introducing Grok Bot",
-          "url": "https://x.ai/news/introducing-grok-bot",
-          "primary": true
-        },
-        {
           "key": "G2",
           "label": "SpaceXAI, Grok Bot is now included with more plans",
-          "url": "https://x.ai/news/grok-bot-more-plans"
+          "url": "https://x.ai/news/grok-bot-more-plans",
+          "primary": true
         },
         {
           "key": "G3",
@@ -1699,12 +1774,12 @@
         },
         {
           "key": "G13",
-          "label": "Grok Bot is an all-new iPhone and Mac app from SpaceXAI and Cursor",
+          "label": "9to5Mac, Grok Bot is an all-new iPhone and Mac app from SpaceXAI and Cursor",
           "url": "https://9to5mac.com/2026/08/21/grok-bot-is-an-all-new-iphone-and-mac-app-from-spacexai-and-cursor/"
         },
         {
           "key": "G15",
-          "label": "We both tried GrokBot. We disagree.",
+          "label": "Create With, We both tried GrokBot. We disagree.",
           "url": "https://createwith.com/blog/we-both-tried-grokbot-we-disagree"
         }
       ],
