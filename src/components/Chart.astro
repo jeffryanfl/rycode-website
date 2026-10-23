@@ -236,7 +236,7 @@ const legendAbove = kind === 'line' && series.length >= 4;
           const token = s.token ?? (`s${Math.min(si + 1, 9)}` as TimeSeries['token']);
           return (
             <li>
-              <span class:list={['chart-legend-swatch', `chart-series-${token}`]} style="background: currentColor"></span>
+              <span class:list={['chart-legend-swatch', `chart-series-${token}`]} style={`background: var(--chart-${token})`}></span>
               <span style={`color: var(--chart-${token})`}>{s.name}</span>
             </li>
           );
@@ -297,7 +297,7 @@ const legendAbove = kind === 'line' && series.length >= 4;
           const token = s.token ?? (`s${Math.min(si + 1, 9)}` as TimeSeries['token']);
           return (
             <li>
-              <span class:list={['chart-legend-swatch', `chart-series-${token}`]} style="background: currentColor"></span>
+              <span class:list={['chart-legend-swatch', `chart-series-${token}`]} style={`background: var(--chart-${token})`}></span>
               <span style={`color: var(--chart-${token})`}>{s.name}</span>
             </li>
           );

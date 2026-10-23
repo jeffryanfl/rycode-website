@@ -635,7 +635,45 @@ export function riskWatchChains(list: WatchListName = 'risk'): ChainRow[] {
   }));
 }
 
-export type WatchSourceLink = { href: string; label: string };
+export type WatchCaptionPublisher = { href: string; label: string };
+
+const WATCH_PUBLISHERS: Record<string, { label: string; href: string; order: number }> = {
+  treasury: {
+    label: 'Treasury',
+    href: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates',
+    order: 1,
+  },
+  fiscaldata: {
+    label: 'FiscalData',
+    href: 'https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/auctions',
+    order: 2,
+  },
+  yahoo: {
+    label: 'Yahoo Finance',
+    href: 'https://finance.yahoo.com/',
+    order: 3,
+  },
+  census: {
+    label: 'Census',
+    href: 'https://www.census.gov/construction/c30/',
+    order: 4,
+  },
+  statestreet: {
+    label: 'State Street',
+    href: 'https://www.ssga.com/us/en/individual/etfs/funds/spy-spdr-sp-500-etf-trust',
+    order: 5,
+  },
+  fred: {
+    label: 'FRED',
+    href: 'https://fred.stlouisfed.org/series/MORTGAGE30US',
+    order: 6,
+  },
+  bls: {
+    label: 'BLS',
+    href: 'https://www.bls.gov/',
+    order: 7,
+  },
+};
 
 function collectFeedRefs(node: unknown, out: FeedRef[]): void {
   if (!node || typeof node !== 'object') return;
@@ -649,49 +687,62 @@ function collectFeedRefs(node: unknown, out: FeedRef[]): void {
   if (extra?.reading?.feed) out.push(extra.reading);
 }
 
-function economicsRailSource(seriesId: string): WatchSourceLink | null {
-  const rail = readFeed('public/economics-rail.json');
-  const list = Array.isArray(rail?.series) ? rail.series : [];
-  const found = list.find((s: { id?: string }) => s?.id === seriesId);
-  if (found?.source && found?.sourceLabel) return { href: found.source, label: found.sourceLabel };
-  return null;
-}
-
-function macroHistorySource(key: string): WatchSourceLink | null {
-  if (key === 'y30' || key === 'y10' || key === 'y2') return economicsRailSource('yields');
-  if (key === 'wti') return economicsRailSource('oil');
-  if (key === 'spx') {
-    const feed = readFeed('public/ai-contagion.json');
-    const list = Array.isArray(feed?.series) ? feed.series : [];
-    const found = list.find((s: { id?: string }) => s?.id === 'gspc');
-    if (found?.source && found?.sourceLabel) return { href: found.source, label: found.sourceLabel };
+function publisherKeyForFeedRef(ref: FeedRef): string | null {
+  if (ref.feed === 'public/macro-history.json') {
+    if (ref.key === 'y30' || ref.key === 'y10' || ref.key === 'y2') return 'treasury';
+    if (ref.key === 'wti' || ref.key === 'spx') return 'yahoo';
+    return null;
+  }
+  if (ref.feed === 'public/economics-rail.json') {
+    if (ref.series === 'yields') return 'treasury';
+    if (ref.series === 'oil') return 'yahoo';
+    if (ref.series === 'debt' || ref.series === 'tga') return 'fiscaldata';
+    return null;
+  }
+  if (ref.feed === 'public/ai-contagion.json') {
+    if (ref.series === 'datacenter') return 'census';
+    if (ref.series === 'smh' || ref.series === 'gspc') return 'yahoo';
+    if (ref.series === 'spyTop10') return 'statestreet';
+    return null;
+  }
+  if (ref.feed === 'public/debt-refi.json') {
+    if (ref.series === 'borrowing') return 'treasury';
+    if (ref.series === 'auctions10y') return 'fiscaldata';
+    if (ref.series === 'mortgage30') return 'fred';
+    return null;
+  }
+  if (ref.feed === 'public/jobs.json') {
+    if (ref.series === 'claims') return 'fred';
+    return 'bls';
+  }
+  if (ref.feed === 'public/inflation.json') {
+    if (ref.series === 'pce' || ref.series === 'corePce') return 'fred';
+    return 'bls';
   }
   return null;
 }
 
-function sourceForFeedRef(ref: FeedRef): WatchSourceLink | null {
-  if (ref.feed === 'public/macro-history.json') return macroHistorySource(ref.key);
-  const feed = readFeed(ref.feed);
-  const list = Array.isArray(feed?.series) ? feed.series : [];
-  if (ref.series) {
-    const found = list.find((s: { id?: string }) => s?.id === ref.series);
-    if (found?.source && found?.sourceLabel) return { href: found.source, label: found.sourceLabel };
-  }
-  return null;
+/** Latest reading date across simple rows and chain steps (for the watch-list caption). */
+export function watchListAsOf(list: WatchListName): string {
+  const dates = [
+    ...riskWatchRows(list).map((row) => row.date),
+    ...riskWatchChains(list).flatMap((chain) => chain.steps.map((step) => step.date)),
+  ];
+  return dates.reduce((max, date) => (date > max ? date : max), '');
 }
 
-/** Linked feed sources for the watch-list caption (deduped by URL). */
-export function watchListSourceLinks(list: WatchListName): WatchSourceLink[] {
+/** Short publisher names for the watch-list caption (deduped, human landing pages). */
+export function watchListCaptionPublishers(list: WatchListName): WatchCaptionPublisher[] {
   const refs: FeedRef[] = [];
   for (const row of watchRows(list)) collectFeedRefs(row, refs);
-  const seen = new Set<string>();
-  const links: WatchSourceLink[] = [];
+  const keys = new Set<string>();
   for (const ref of refs) {
-    const link = sourceForFeedRef(ref);
-    if (link && !seen.has(link.href)) {
-      seen.add(link.href);
-      links.push(link);
-    }
+    const key = publisherKeyForFeedRef(ref);
+    if (key) keys.add(key);
   }
-  return links;
+  return [...keys]
+    .map((key) => WATCH_PUBLISHERS[key])
+    .filter((row): row is (typeof WATCH_PUBLISHERS)[string] => Boolean(row))
+    .sort((a, b) => a.order - b.order)
+    .map(({ label, href }) => ({ label, href }));
 }

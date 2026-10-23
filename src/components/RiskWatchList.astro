@@ -7,7 +7,7 @@
  * their feeds at build time.
  */
 import Chart from './Chart.astro';
-import { dateLabel, riskWatchChains, riskWatchRows, watchListSourceLinks, type WatchListName } from '../lib/risk-watch';
+import { dateLabel, riskWatchChains, riskWatchRows, watchListAsOf, watchListCaptionPublishers, type WatchListName } from '../lib/risk-watch';
 
 interface Props {
   /** Which rows file to read: "risk" (src/data/risk-watch.json) or "economics" (src/data/economics-watch.json). */
@@ -18,8 +18,8 @@ const { list = 'risk', headingClass = 'risk-section' } = Astro.props;
 const headingId = `${list}-watch-heading`;
 const rows = riskWatchRows(list);
 const chains = riskWatchChains(list);
-const watchAsOf = rows.reduce((max, row) => (row.date > max ? row.date : max), '');
-const watchSources = watchListSourceLinks(list);
+const watchAsOf = watchListAsOf(list);
+const watchSources = watchListCaptionPublishers(list);
 const explainBasisPoints = rows.some((row) => row.usesBasisPoints);
 const short = (label: string) => label.replace(/ \d{4}$/, '');
 ---
@@ -235,14 +235,13 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
   </ul>
   {watchAsOf && watchSources.length > 0 && (
     <p class="chart-caption rw-watch-caption">
-      Source:{' '}
-      {watchSources.map((source, index) => (
-        <>
-          {index > 0 ? ', ' : ''}
-          <a href={source.href}>{source.label}</a>
-        </>
-      ))}
-      {' '}· as of {dateLabel(watchAsOf)}
+      {watchSources.length > 1 ? 'Sources:' : 'Source:'}{' '}
+      {watchSources.flatMap((source, index) =>
+        index === 0
+          ? [<a href={source.href}>{source.label}</a>]
+          : [', ', <a href={source.href}>{source.label}</a>],
+      )}
+      {' · as of '}{dateLabel(watchAsOf)}
     </p>
   )}
 </section>
