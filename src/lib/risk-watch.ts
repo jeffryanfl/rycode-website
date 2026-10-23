@@ -640,7 +640,7 @@ export type WatchCaptionPublisher = { href: string; label: string };
 const WATCH_PUBLISHERS: Record<string, { label: string; href: string; order: number }> = {
   treasury: {
     label: 'Treasury',
-    href: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates',
+    href: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve',
     order: 1,
   },
   fiscaldata: {
@@ -655,17 +655,17 @@ const WATCH_PUBLISHERS: Record<string, { label: string; href: string; order: num
   },
   census: {
     label: 'Census',
-    href: 'https://www.census.gov/construction/c30/',
+    href: 'https://www.census.gov/construction/c30/c30index.html',
     order: 4,
   },
   statestreet: {
     label: 'State Street',
-    href: 'https://www.ssga.com/us/en/individual/etfs/funds/spy-spdr-sp-500-etf-trust',
+    href: 'https://www.ssga.com/us/en/individual/etfs/state-street-spdr-sp-500-etf-trust-spy',
     order: 5,
   },
   fred: {
     label: 'FRED',
-    href: 'https://fred.stlouisfed.org/series/MORTGAGE30US',
+    href: 'https://fred.stlouisfed.org/',
     order: 6,
   },
   bls: {

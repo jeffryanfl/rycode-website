@@ -331,26 +331,11 @@
   min-width: 640px;
 }
 
-@media (min-width: 641px) {
-  .rack-figure.chart-diagram-scroll {
-    overflow-x: visible;
-  }
-
-  .rack-figure.chart-diagram-scroll .rack-svg {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .rack-figure.chart-diagram-scroll .rack-svg {
-    width: 920px;
-    min-width: 920px;
-    max-width: none;
-    height: auto;
-  }
+.rack-figure.chart-diagram-scroll .rack-svg {
+  width: 920px;
+  min-width: 920px;
+  max-width: none;
+  height: auto;
 }
 
 .chart-stage .stage-tick--rlvr .stage-dot {
