@@ -155,7 +155,7 @@
   display: inline-block;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 960px) {
   .economics-landing {
     grid-template-columns: 1fr;
   }

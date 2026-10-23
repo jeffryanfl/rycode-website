@@ -1,4 +1,5 @@
 @import "../../public/site-nav.css";
+@import "./chart.css";
 
 /* Self-hosted OFL fonts (public/fonts). One @font-face source of truth for the editorial chrome. */
 @font-face {

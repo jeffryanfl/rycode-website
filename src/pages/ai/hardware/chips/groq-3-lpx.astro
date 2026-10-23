@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
 import '../../../../styles/ai.css';
 ---
 
@@ -12,6 +13,7 @@ import '../../../../styles/ai.css';
     <p class="ai-model-kicker">Hardware · Chips</p>
     <h1 class="ai-model-title">Groq 3 LPX</h1>
     <p class="ai-model-dek">The Groq 3 LPU, or language processing unit, is an inference chip Nvidia sells. Instead of large stacked memory, it keeps the model's working data in SRAM, small and very fast memory on the chip itself. LPX is the rack of 256 of these chips. Nvidia sells it to sit beside a <a href="/ai/hardware/chips/rubin/">Vera Rubin NVL72</a> rack: the Rubin GPUs read the prompt and handle attention, and the LPUs speed up the rest of each new word (<a href="https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/">Nvidia Technical Blog, 16 Mar 2026</a>).</p>
+    <ChipFigure src="/ai/hardware/chips/groq-3-lpx.jpg" alt="NVIDIA Groq 3 LPU accelerator package on a black background." caption="NVIDIA Groq 3 LPU." credit="Image: NVIDIA" />
     <hr class="ai-model-rule" />
 
     <h2 class="ai-model-section">The chip</h2>
@@ -44,6 +46,7 @@ import '../../../../styles/ai.css';
     </div>
     <p>DRAM is ordinary memory, slower than SRAM but much larger. Each tray is 2U tall and liquid cooled.</p>
     <h2 class="ai-model-section">The rack</h2>
+    <ChipFigure src="/ai/hardware/chips/groq-3-lpx-rack.jpg" alt="NVIDIA Groq 3 LPX rack render on a black background." caption="NVIDIA Groq 3 LPX rack." credit="Image: NVIDIA" variant="rack" />
     <div class="ai-model-table-wrap">
       <table class="ai-model-table ai-model-table--prose">
         <thead><tr><th scope="col">Figure</th><th scope="col">One Groq 3 LPX rack</th></tr></thead>

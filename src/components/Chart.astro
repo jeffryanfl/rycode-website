@@ -1,0 +1,326 @@
+---
+import '../styles/chart.css';
+import { formatChartAsOf, formatChartX, formatChartY } from '../lib/chart-format';
+
+interface RefLine {
+  value: number;
+  label?: string;
+}
+
+interface TimeSeries {
+  name: string;
+  values: (number | null)[];
+  token?: `s${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}`;
+  main?: boolean;
+}
+
+interface NumberRow {
+  label: string;
+  cells: string[];
+}
+
+interface Props {
+  title: string;
+  sub?: string;
+  kind: 'spark' | 'line';
+  size?: 'card' | 'page';
+  points?: number[];
+  highLabel?: string;
+  lowLabel?: string;
+  refValue?: number;
+  refLabel?: string;
+  refs?: RefLine[];
+  refLabelSide?: 'start' | 'end';
+  dates?: string[];
+  series?: TimeSeries[];
+  unit?: string;
+  threshold?: number;
+  sourceLabel?: string;
+  sourceHref?: string;
+  asOf?: string;
+  changeNote?: string;
+  numbers?: NumberRow[];
+  numberColumns?: string[];
+  frame?: boolean;
+  href?: string;
+}
+
+const {
+  title,
+  sub,
+  kind,
+  size = 'card',
+  points = [],
+  highLabel,
+  lowLabel,
+  refValue,
+  refLabel,
+  refs = [],
+  refLabelSide = 'end',
+  dates = [],
+  series = [],
+  unit = 'percent',
+  threshold,
+  sourceLabel,
+  sourceHref,
+  asOf,
+  changeNote,
+  numbers = [],
+  numberColumns = [],
+  frame = true,
+  href,
+} = Astro.props;
+
+const refLines = [
+  ...(typeof refValue === 'number' ? [{ value: refValue, label: refLabel }] : []),
+  ...refs.filter((r) => typeof r?.value === 'number'),
+];
+
+const captionParts: string[] = [];
+if (sourceLabel) {
+  captionParts.push(sourceHref ? `<a href="${sourceHref}">${sourceLabel}</a>` : sourceLabel);
+}
+const captionAsOf = asOf ? formatChartAsOf(asOf) : null;
+const captionHtml =
+  captionParts.length && captionAsOf
+    ? `Source: ${captionParts.join(', ')} · as of ${captionAsOf}`
+    : captionParts.length
+      ? `Source: ${captionParts.join(', ')}`
+      : captionAsOf
+        ? `Source: rycode.dev · as of ${captionAsOf}`
+        : null;
+
+/* Spark (T1) */
+const SW = 160;
+const SH = 48;
+const SPX = 4;
+const SPT = 10;
+const SPB = 10;
+const sparkVals = [...points, ...refLines.map((r) => r.value)];
+const sparkLo = sparkVals.length ? Math.min(...sparkVals) : 0;
+const sparkHi = sparkVals.length ? Math.max(...sparkVals) : 1;
+const sparkSpan = sparkHi - sparkLo || 1;
+const sx = (i: number) => SPX + (i / Math.max(points.length - 1, 1)) * (SW - 2 * SPX);
+const sy = (v: number) => SPT + (1 - (v - sparkLo) / sparkSpan) * (SH - SPT - SPB);
+const sparkXY = points.map((v, i) => ({ x: sx(i), y: sy(v), pctX: (sx(i) / SW) * 100, pctY: (sy(v) / SH) * 100 }));
+const sparkLast = sparkXY[sparkXY.length - 1];
+const hiIdx = points.length ? points.lastIndexOf(Math.max(...points)) : -1;
+const loIdx = points.length ? points.lastIndexOf(Math.min(...points)) : -1;
+const refLabelBelow = refLines.map((r, i) =>
+  refLines.some((o, j) => j !== i && o.value > r.value && Math.abs(o.value - r.value) / sparkSpan < 0.25),
+);
+
+type LineGeom = {
+  paths: { token: string; d: string; main: boolean }[];
+  yTicks: { label: string; y: number }[];
+  xTicks: { label: string; x: number; anchor: string }[];
+  thresholdY: number | null;
+  w: number;
+  h: number;
+  pad: { l: number; r: number; t: number; b: number };
+};
+
+function lineGeom(): LineGeom | null {
+  if (!dates.length || !series.length) return null;
+  const w = size === 'page' ? 720 : 280;
+  const h = size === 'page' ? 280 : 160;
+  const pad = size === 'page' ? { l: 44, r: 12, t: 14, b: 30 } : { l: 50, r: 10, t: 10, b: 20 };
+  const plotW = w - pad.l - pad.r;
+  const plotH = h - pad.t - pad.b;
+  const nums: number[] = [];
+  for (const s of series) {
+    for (const v of s.values) {
+      if (typeof v === 'number' && Number.isFinite(v)) nums.push(v);
+    }
+  }
+  if (threshold != null && Number.isFinite(threshold)) nums.push(threshold);
+  if (!nums.length) return null;
+  const min = Math.min(...nums);
+  const max = Math.max(...nums);
+  const span = max - min || 1;
+  const last = dates.length - 1;
+  const xAt = (i: number) => (dates.length === 1 ? pad.l + plotW / 2 : pad.l + (i * plotW) / last);
+  const yAt = (value: number) => pad.t + (1 - (value - min) / span) * plotH;
+  const paths = series.map((s, si) => {
+    const cmds: string[] = [];
+    s.values.forEach((v, i) => {
+      if (typeof v !== 'number' || !Number.isFinite(v)) return;
+      cmds.push(`${cmds.length ? 'L' : 'M'}${xAt(i).toFixed(1)} ${yAt(v).toFixed(1)}`);
+    });
+    const token = s.token ?? (`s${Math.min(si + 1, 9)}` as TimeSeries['token']);
+    return { token: `chart-series-${token}`, d: cmds.join(' '), main: Boolean(s.main) || si === 0 };
+  });
+  const yValues = [max, (max + min) / 2, min];
+  const yTicks = yValues
+    .map((value) => ({ value, label: formatChartY(value, unit), y: yAt(value) }))
+    .filter((tick, i, all) => all.findIndex((other) => other.label === tick.label) === i)
+    .map((t) => ({ label: t.label, y: (t.y / h) * 100 }));
+  const firstDate = dates[0];
+  const lastDate = dates[last];
+  const xIndex = dates.length === 1 ? [0] : dates.length === 2 ? [0, last] : [0, Math.round(last / 2), last];
+  const xTicks = xIndex.map((i, order, all) => ({
+    label: formatChartX(dates[i], firstDate, lastDate),
+    x: (xAt(i) / w) * 100,
+    anchor: order === 0 ? 'start' : order === all.length - 1 ? 'end' : 'middle',
+  }));
+  const thresholdY = threshold != null && Number.isFinite(threshold) ? yAt(threshold) : null;
+  return { paths, yTicks, xTicks, thresholdY, w, h, pad };
+}
+
+const geom = kind === 'line' ? lineGeom() : null;
+---
+
+{kind === 'spark' ? (
+  <div class="chart-plot chart-plot--spark" role="img" aria-label={title}>
+    <svg viewBox={`0 0 ${SW} ${SH}`} preserveAspectRatio="none" aria-hidden="true">
+      <polyline
+        class="chart-line chart-line--spark"
+        points={sparkXY.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')}
+      />
+      {refLines.map((r) => (
+        <line
+          class="chart-line chart-line--threshold"
+          x1={SPX}
+          x2={SW - SPX}
+          y1={sy(r.value)}
+          y2={sy(r.value)}
+        />
+      ))}
+    </svg>
+    <div class="chart-spark-overlay" aria-hidden="true">
+      {refLines.map((r, i) => (
+        r.label && (
+          <span
+            class="chart-spark-label chart-spark-label--ref"
+            style={`left: ${refLabelSide === 'start' ? `${(SPX / SW) * 100}%` : `${((SW - SPX) / SW) * 100}%`}; top: ${refLabelBelow[i] ? sy(r.value) / SH * 100 + 4 : sy(r.value) / SH * 100 - 8}%`}
+          >
+            {r.label}
+          </span>
+        )
+      ))}
+      {highLabel && hiIdx >= 0 && (
+        <>
+          <span class="chart-spark-ring" style={`left: ${sparkXY[hiIdx].pctX}%; top: ${sparkXY[hiIdx].pctY}%`}></span>
+          <span class="chart-spark-label" style={`left: ${sparkXY[hiIdx].pctX}%; top: ${sparkXY[hiIdx].pctY - 12}%`}>{highLabel}</span>
+        </>
+      )}
+      {lowLabel && loIdx >= 0 && (
+        <>
+          <span class="chart-spark-ring" style={`left: ${sparkXY[loIdx].pctX}%; top: ${sparkXY[loIdx].pctY}%`}></span>
+          <span class="chart-spark-label" style={`left: ${sparkXY[loIdx].pctX}%; top: ${sparkXY[loIdx].pctY + 10}%`}>{lowLabel}</span>
+        </>
+      )}
+      {sparkLast && <span class="chart-dot-end" style={`left: ${sparkLast.pctX}%; top: ${sparkLast.pctY}%`}></span>}
+    </div>
+  </div>
+) : geom ? (
+  <figure class:list={['chart-frame', { 'chart-frame--open': !frame, 'chart-frame--page': size === 'page' }]}>
+    {(title || sub) && (
+      <div class="chart-head">
+        {href ? (
+          <a class="chart-title chart-title-link" href={href} target="_blank" rel="noopener noreferrer">{title}</a>
+        ) : title ? (
+          <span class="chart-title">{title}</span>
+        ) : null}
+        {sub && <p class="chart-sub">{sub}</p>}
+      </div>
+    )}
+    <div class:list={['chart-plot', size === 'page' ? 'chart-plot--page' : 'chart-plot--card']}>
+      <svg viewBox={`0 0 ${geom.w} ${geom.h}`} preserveAspectRatio="none" role="img" aria-label={title}>
+        {geom.yTicks.map((tick) => (
+          <line
+            class="chart-grid"
+            x1={geom.pad.l}
+            x2={geom.w - geom.pad.r}
+            y1={(tick.y / 100) * geom.h}
+            y2={(tick.y / 100) * geom.h}
+          />
+        ))}
+        <line class="chart-axis-line" x1={geom.pad.l} y1={geom.pad.t} x2={geom.pad.l} y2={geom.h - geom.pad.b} />
+        <line
+          class="chart-axis-line"
+          x1={geom.pad.l}
+          y1={geom.h - geom.pad.b}
+          x2={geom.w - geom.pad.r}
+          y2={geom.h - geom.pad.b}
+        />
+        {geom.thresholdY != null && (
+          <line
+            class="chart-line chart-line--threshold"
+            x1={geom.pad.l}
+            x2={geom.w - geom.pad.r}
+            y1={geom.thresholdY}
+            y2={geom.thresholdY}
+          />
+        )}
+        {geom.paths.map((path) => (
+          path.d && (
+            <path
+              d={path.d}
+              class:list={['chart-line', path.token, path.main ? 'chart-line--main' : 'chart-line--alt']}
+            />
+          )
+        ))}
+      </svg>
+      <div class="chart-yticks" aria-hidden="true">
+        {geom.yTicks.map((tick) => (
+          <span style={`top: ${tick.y}%`}>{tick.label}</span>
+        ))}
+      </div>
+    </div>
+    <div class="chart-xticks" aria-hidden="true">
+      {geom.xTicks.map((tick) => (
+        <span style={`text-align: ${tick.anchor}`}>{tick.label}</span>
+      ))}
+    </div>
+    {series.length > 1 && (
+      <ul class="chart-legend">
+        {series.map((s, si) => {
+          const token = s.token ?? (`s${Math.min(si + 1, 9)}` as TimeSeries['token']);
+          return (
+            <li>
+              <span class:list={['chart-legend-swatch', `chart-series-${token}`]} style="background: currentColor"></span>
+              <span style={`color: var(--chart-${token})`}>{s.name}</span>
+            </li>
+          );
+        })}
+      </ul>
+    )}
+    {captionHtml && <p class="chart-caption" set:html={captionHtml} />}
+    {changeNote && <p class="data-change-strip">{changeNote}</p>}
+    {numbers.length > 0 && (
+      <details class="chart-numbers">
+        <summary>See the numbers</summary>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">{numberColumns[0] ?? 'Series'}</th>
+              {numberColumns.slice(1).map((c) => <th scope="col">{c}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {numbers.map((row) => (
+              <tr>
+                <th scope="row">{row.label}</th>
+                {row.cells.map((cell) => <td>{cell}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </details>
+    )}
+  </figure>
+) : null}
+
+<style>
+  .chart-sub {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chart-dim);
+  }
+
+  .chart-head {
+    margin-bottom: 0.35rem;
+  }
+</style>

@@ -702,7 +702,7 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   padding: 1.15rem 1.15rem 1.05rem;
   border: 1px solid var(--hair);
   border-radius: var(--radius-card, 14px);
-  background: #07090f;
+  background: var(--chart-bg, #080a10);
 }
 
 .paper-fig-kicker {
@@ -1021,8 +1021,8 @@ html:has(.editorial-shell--ai:has(.paper)) body {
   fill: var(--ink-faint);
 }
 
-.rack-svg .rack-cyan {
-  stroke: var(--cyan);
+.rack-svg .rack-accent {
+  stroke: var(--chart-s2);
   fill: none;
 }
 
