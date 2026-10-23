@@ -1,45 +1,65 @@
 {
-  "updated": "2026-10-22T16:10:00-04:00",
-  "asOfLabel": "Thu 22 Oct · after close",
+  "updated": "2026-10-23T08:16:00-04:00",
+  "asOfLabel": "Fri 23 Oct · pre-open",
   "lines": [
     {
-      "tag": "Rates",
-      "text": "10y 4.96% (-0.17), back under 5%. 2y 4.65%. 30y 5.29%."
+      "tag": "Oil",
+      "text": "Dec WTI ~$100.96 pre-open, back above the $100 line in trading; Thu final bar $99.47."
     },
     {
       "tag": "Tape",
-      "text": "Nasdaq 26,008.86 (-2.6%). S&P 7,663.43 (-1.2%). Dow 52,867.98 (flat)."
+      "text": "S&P futures ~7,685 (-0.2%), Nasdaq futures flat after Thursday's -2.6% tech drop."
     },
     {
-      "tag": "Oil",
-      "text": "WTI ~$99.31 (Dec, +2.2%), still under $100. Brent ~$113.09. Wed final fixed to $97.15."
+      "tag": "Rates",
+      "text": "10-year Treasury yield 4.96% at Thursday's close, still under 5%; 2-year 4.65%."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "schema": "macro-tape-v1",
-  "cadence": "after-close",
-  "hook": "Tech fell hard (Nasdaq -2.6%) while the 10-year yield dropped below 5% to 4.96%; Dec WTI ~$99.31.",
+  "asOf": "2026-10-23T08:16:00-04:00",
+  "cadence": "pre-open",
+  "hook": "Dec oil is trading back above $100 (~$100.96) before the open, while stock futures sit slightly lower after Thursday's tech drop.",
+  "door": "Economics",
+  "essayWorthy": false,
+  "ticker": [
+    {
+      "date": "2026-10-23",
+      "tag": "Oil",
+      "line": "Dec WTI ~$100.96 pre-open, back above the $100 line in trading; Thu final bar $99.47."
+    },
+    {
+      "date": "2026-10-23",
+      "tag": "Tape",
+      "line": "S&P futures ~7,685 (-0.2%), Nasdaq futures flat after Thursday's -2.6% tech drop."
+    },
+    {
+      "date": "2026-10-23",
+      "tag": "Rates",
+      "line": "10-year Treasury yield 4.96% at Thursday's close, still under 5%; 2-year 4.65%."
+    }
+  ],
   "levels": {
+    "es": 7685.25,
+    "nq": 29121.25,
+    "ym": 52723.0,
     "spx": 7663.43,
-    "dow": 52867.98,
-    "nasdaq": 26008.86,
     "yield2y": 4.65,
     "yield10y": 4.96,
     "yield30y": 5.29,
-    "dxy": 101.63,
-    "wti": 99.31,
-    "brent": 113.09,
-    "fedwatchHikePct": null,
-    "fedFundsImplied": "3.75-4.00"
+    "dxy": 101.83,
+    "wti": 100.96,
+    "brent": 110.0
   },
-  "wtiSourceNote": "Yahoo CLZ26 Dec front month, same-day 10-22 bar 99.31 (re-check Fri). 10-21 final Dec bar corrected to 97.15 (was 97.71/97.69).",
+  "wtiSourceNote": "Yahoo CLZ26.NYM pre-open quote 100.96 (not a close). Yahoo now shows 10-22 Dec final bar 99.47 vs 99.31 shipped; fix history at Fri after-close.",
   "calendar": [
-    "Next FOMC Oct 27 to 28."
+    "Next FOMC Oct 27–28."
   ],
   "watch": [
-    "Whether the 10y stays under 5%.",
-    "Whether Dec WTI closes above $100.",
-    "Whether the tech selloff spreads."
-  ]
+    "Whether Dec WTI closes above $100 today.",
+    "Whether the 10-year stays under 5%.",
+    "Whether chip stocks (SMH) keep sliding after entering a bear market."
+  ],
+  "chatPosted": true
 }
