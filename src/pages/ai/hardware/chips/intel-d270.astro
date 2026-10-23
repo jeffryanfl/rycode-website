@@ -1,0 +1,120 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import ChipFigure from '../../../../components/ChipFigure.astro';
+import '../../../../styles/ai.css';
+
+const sources = [
+  {
+    href: 'https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/intel-accelerates-open-infrastructure-agentic-ai-era.html',
+    label: 'Intel, Intel Accelerates Open Infrastructure for the Agentic AI Era (OCP Global Summit 2026)',
+  },
+  {
+    href: 'https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html',
+    label: 'Intel, Intel GPU D270, Inference-Optimized Data Center GPU (product page)',
+  },
+  {
+    href: 'https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/intel-to-expand-ai-accelerator-portfolio-with-new-gpu.html',
+    label: 'Intel, Intel to Expand AI Accelerator Portfolio with New GPU (14 Oct 2025)',
+  },
+  {
+    href: 'https://moorinsightsstrategy.com/field-notes/where-intels-gpu-d270-fits-in-enterprise-ai/',
+    label: 'Moor Insights & Strategy, Matt Kimball, Where Intel\'s GPU D270 Fits In Enterprise AI (16 Oct 2026)',
+  },
+  {
+    href: 'https://www.phoronix.com/news/Intel-GPU-D-Series',
+    label: 'Phoronix, Intel Announces The GPU D Series For Crescent Island (12 Oct 2026)',
+  },
+  {
+    href: 'https://mlcommons.org/2026/09/chairs-mlperf-inference-v6-1/',
+    label: 'MLCommons, Where the Industry Is Investing: A Look at MLPerf Inference v6.1 (17 Sep 2026)',
+  },
+  {
+    href: 'https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/intel-delivers-ai-performance-mlperf-inference-v6-0.html',
+    label: 'Intel, Intel Delivers Open, Scalable AI Performance in MLPerf Inference v6.0 (1 Apr 2026)',
+  },
+  {
+    href: '/ai/hardware/chips/rubin/',
+    label: 'Rubin (rycode.dev)',
+  },
+];
+---
+
+<Layout
+  title="Intel GPU D270 - Hardware - Rycode"
+  description="Intel GPU D270 is an inference data center GPU on Xe3P: Intel states 1.3 PFLOPS FP8, 160 GB LPDDR5X on Intel's card, up to 480 GB on partner cards, 1.5 TB/s, 350 W air-cooled PCIe."
+  variant="ai"
+>
+  <article class="ai-model ai-model-intel-d270">
+    <p class="ai-model-kicker">Hardware · Chips</p>
+    <h1 class="ai-model-title">Intel GPU D270</h1>
+    <p class="ai-model-dek">The Intel GPU D270 is a data center accelerator built only for inference, which means running an already trained AI model to answer requests, not training one. Intel announced the GPU D-series on 12 October 2026 (<a href={sources[4].href}>{sources[4].label}</a>). At the Open Compute Project (OCP) Global Summit, a yearly data center hardware conference, Intel shared new technical details in its newsroom post (<a href={sources[0].href}>{sources[0].label}</a>). Intel first announced Crescent Island on 14 October 2025 (<a href={sources[2].href}>{sources[2].label}</a>).</p>
+    <ChipFigure src="/ai/hardware/chips/intel-d270.jpg" alt="Intel data center GPU processor package with an exposed chip die on a dark background." caption="Intel GPU D-series package." credit="Image: Intel Corporation" />
+    <hr class="ai-model-rule" />
+
+    <h2 class="ai-model-section">The card</h2>
+    <p>Intel states the figures below in <a class="ai-model-cite-ref" href="#source-1">[1]</a> and on the <a href={sources[1].href}>{sources[1].label}</a>. Intel does not say whether the FP8 compute figure is dense or sparse.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Intel GPU D270</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Architecture</td><td>32 Xe3P cores, 256 XMX Xe3P matrix engines</td></tr>
+          <tr><td>Compute</td><td>1.3 PFLOPS FP8</td></tr>
+          <tr><td>Number formats</td><td>From native low-precision inference to FP64 scientific computing; Intel does not list formats</td></tr>
+          <tr><td>Memory type</td><td>LPDDR5X</td></tr>
+          <tr><td>Memory size (Intel branded PCIe card)</td><td>160 GB LPDDR5X</td></tr>
+          <tr><td>Memory size (partner ODM cards)</td><td>Up to 480 GB LPDDR5X per card</td></tr>
+          <tr><td>Memory bandwidth</td><td>1.5 TB/s</td></tr>
+          <tr><td>Power</td><td>350 W, air-cooled</td></tr>
+          <tr><td>Form factor</td><td>Standard PCIe 5.0</td></tr>
+          <tr><td>Cooling</td><td>Passive cooling in existing racks; no liquid-cooling retrofit</td></tr>
+          <tr><td>Model size, one card</td><td>Up to 300 billion parameters on a single card</td></tr>
+          <tr><td>Model size, eight cards</td><td>More than one trillion parameters in an eight-GPU system</td></tr>
+          <tr><td>Status</td><td>Customer sampling underway</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A PFLOPS is a thousand trillion math operations per second. FP8 stores each number in 8 bits. LPDDR5X is low-power memory like that in laptops and phones, not HBM (high-bandwidth memory stacked next to the chip). PCIe is the standard slot plug-in cards use in ordinary servers. Parameters are the numbers a model learned in training; more parameters need more memory. ODM means a contract maker who builds cards under its own brand. Air-cooled and passive here mean the server's fans move heat, with no water lines.</p>
+
+    <h2 class="ai-model-section">Intel card vs partner cards</h2>
+    <p>Intel states that its own branded PCIe card carries 160 GB of LPDDR5X, while the design lets partners build ODM branded cards with flexible options up to 480 GB <a class="ai-model-cite-ref" href="#source-1">[1]</a>. Reported by <a href={sources[3].href}>{sources[3].label}</a>: Dell, HPE, Lenovo, and Supermicro are named as system partners, and Moor says Intel's own card ships with 160 GB while ODM partners can build cards with up to 480 GB <a class="ai-model-cite-ref" href="#source-4">[4]</a>. Intel does not list which partner ships a 480 GB card or when.</p>
+    <p>Reported by Moor: the 300-billion-parameter single-card claim belongs to the 480 GB partner cards; on the 160 GB Intel card, a model that size fits only at roughly 4-bit precision, with little room left for context <a class="ai-model-cite-ref" href="#source-4">[4]</a>. Intel does not state what precision or context length the 300B claim assumes.</p>
+
+    <h2 class="ai-model-section">What Intel claims</h2>
+    <p>These are Intel's own claims, not outside test results. No independent tests yet.</p>
+    <ul>
+      <li>Intel calls the D270 an inference-optimized data center GPU designed for the agentic AI era, and says it moved chip area from graphics and ray-tracing pipelines to Xe3P cores and matrix compute <a class="ai-model-cite-ref" href="#source-1">[1]</a>, <a class="ai-model-cite-ref" href="#source-2">[2]</a>. Reported by Moor: the graphics and ray-tracing hardware are gone <a class="ai-model-cite-ref" href="#source-4">[4]</a>.</li>
+      <li>Intel targets enterprise AI, SaaS, GPUaaS, and government or sovereign-cloud deployments that need memory-rich, power-efficient AI acceleration <a class="ai-model-cite-ref" href="#source-2">[2]</a>. Workloads include agentic AI, long-context RAG (retrieval-augmented generation, looking up documents before answering), assistants, coding assistants, document understanding, multimodal models, diffusion, and high-concurrency serving <a class="ai-model-cite-ref" href="#source-2">[2]</a>.</li>
+      <li>Intel's pitch against HBM chips: fewer GPUs and no HBM, working within existing data centers without specialized rack or cooling infrastructure <a class="ai-model-cite-ref" href="#source-1">[1]</a>, <a class="ai-model-cite-ref" href="#source-2">[2]</a>. For contrast, the <a href={sources[7].href}>Rubin</a> GPU is listed on this site at 19.2 TB/s of memory bandwidth on liquid-cooled racks <a class="ai-model-cite-ref" href="#source-8">[8]</a>. The D270 trades speed for capacity: slower memory (1.5 TB/s), with partner cards holding up to 480 GB, more than Rubin's 288 GB. Intel's own 160 GB card holds less. It fits ordinary air-cooled servers.</li>
+      <li>Reported by Moor: capacity is the pitch, not speed; Moor compares the D270 with PCIe server cards such as Nvidia's RTX PRO 6000 Blackwell Server Edition, not flagship HBM chips <a class="ai-model-cite-ref" href="#source-4">[4]</a>.</li>
+      <li>Intel's product page footnote says performance projections versus RTX Pro 6000 are based on publicly available information and Intel internal analysis as of February 2026; the page we cite shows no number for that comparison <a class="ai-model-cite-ref" href="#source-2">[2]</a>.</li>
+    </ul>
+
+    <h2 class="ai-model-section">Software</h2>
+    <p>Intel states the card runs on a common Xe software foundation that supports software portability across Intel GPU platforms <a class="ai-model-cite-ref" href="#source-1">[1]</a>. The product page lists zero-day support for leading open models on vLLM and the open PyTorch ecosystem <a class="ai-model-cite-ref" href="#source-2">[2]</a>. vLLM is popular open-source software for serving models, and PyTorch is a widely used AI toolkit. Intel cites Day 0 support for Meta's Muse Glimmer <a class="ai-model-cite-ref" href="#source-1">[1]</a>. Reported by Moor: SGLang, another model-serving program, is also in the stack <a class="ai-model-cite-ref" href="#source-4">[4]</a>.</p>
+
+    <h2 class="ai-model-section">What is not known</h2>
+    <ul>
+      <li>Price. Intel names no price; the product page asks readers to connect with Intel for updates <a class="ai-model-cite-ref" href="#source-2">[2]</a>.</li>
+      <li>Intel-stated general availability date. Intel says only that sampling is underway <a class="ai-model-cite-ref" href="#source-1">[1]</a>. Reported by Moor: broader availability in 2027; no Intel page we cite gives 2027 <a class="ai-model-cite-ref" href="#source-4">[4]</a>.</li>
+      <li>Whether the 1.3 PFLOPS FP8 figure is dense or sparse <a class="ai-model-cite-ref" href="#source-1">[1]</a>.</li>
+      <li>Which partners ship 480 GB cards, and when.</li>
+      <li>What precision and context length the 300-billion-parameter-on-one-card claim assumes, and whether it holds on the 160 GB Intel card.</li>
+      <li>Independent benchmark results. <a href={sources[5].href}>{sources[5].label}</a> shows Intel with Xeon and Arc Pro B70 systems, not D270 <a class="ai-model-cite-ref" href="#source-6">[6]</a>. Intel's v6.0 entry used Arc Pro B70 and B65, per <a href={sources[6].href}>{sources[6].label}</a>. Reported by Moor: there is no independent performance data yet <a class="ai-model-cite-ref" href="#source-4">[4]</a>.</li>
+    </ul>
+
+    <h2 class="ai-model-section">Sources</h2>
+    <ol class="ai-model-sources ai-model-sources--numbered">
+      {sources.map((source, index) => (
+        <li id={`source-${index + 1}`}>
+          <span class="ai-model-sources-n" aria-hidden="true">[{index + 1}]</span>
+          <a href={source.href}>{source.label}</a>
+        </li>
+      ))}
+    </ol>
+  </article>
+</Layout>

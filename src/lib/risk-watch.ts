@@ -634,3 +634,115 @@ export function riskWatchChains(list: WatchListName = 'risk'): ChainRow[] {
     }),
   }));
 }
+
+export type WatchCaptionPublisher = { href: string; label: string };
+
+const WATCH_PUBLISHERS: Record<string, { label: string; href: string; order: number }> = {
+  treasury: {
+    label: 'Treasury',
+    href: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve',
+    order: 1,
+  },
+  fiscaldata: {
+    label: 'FiscalData',
+    href: 'https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/auctions',
+    order: 2,
+  },
+  yahoo: {
+    label: 'Yahoo Finance',
+    href: 'https://finance.yahoo.com/',
+    order: 3,
+  },
+  census: {
+    label: 'Census',
+    href: 'https://www.census.gov/construction/c30/c30index.html',
+    order: 4,
+  },
+  statestreet: {
+    label: 'State Street',
+    href: 'https://www.ssga.com/us/en/individual/etfs/state-street-spdr-sp-500-etf-trust-spy',
+    order: 5,
+  },
+  fred: {
+    label: 'FRED',
+    href: 'https://fred.stlouisfed.org/',
+    order: 6,
+  },
+  bls: {
+    label: 'BLS',
+    href: 'https://www.bls.gov/',
+    order: 7,
+  },
+};
+
+function collectFeedRefs(node: unknown, out: FeedRef[]): void {
+  if (!node || typeof node !== 'object') return;
+  const row = node as Record<string, unknown>;
+  const reading = row.reading as FeedRef | undefined;
+  const history = row.history as FeedRef | undefined;
+  if (reading?.feed) out.push(reading);
+  if (history?.feed) out.push(history);
+  if (Array.isArray(row.steps)) row.steps.forEach((step) => collectFeedRefs(step, out));
+  const extra = row.extra as { reading?: FeedRef } | undefined;
+  if (extra?.reading?.feed) out.push(extra.reading);
+}
+
+function publisherKeyForFeedRef(ref: FeedRef): string | null {
+  if (ref.feed === 'public/macro-history.json') {
+    if (ref.key === 'y30' || ref.key === 'y10' || ref.key === 'y2') return 'treasury';
+    if (ref.key === 'wti' || ref.key === 'spx') return 'yahoo';
+    return null;
+  }
+  if (ref.feed === 'public/economics-rail.json') {
+    if (ref.series === 'yields') return 'treasury';
+    if (ref.series === 'oil') return 'yahoo';
+    if (ref.series === 'debt' || ref.series === 'tga') return 'fiscaldata';
+    return null;
+  }
+  if (ref.feed === 'public/ai-contagion.json') {
+    if (ref.series === 'datacenter') return 'census';
+    if (ref.series === 'smh' || ref.series === 'gspc') return 'yahoo';
+    if (ref.series === 'spyTop10') return 'statestreet';
+    return null;
+  }
+  if (ref.feed === 'public/debt-refi.json') {
+    if (ref.series === 'borrowing') return 'treasury';
+    if (ref.series === 'auctions10y') return 'fiscaldata';
+    if (ref.series === 'mortgage30') return 'fred';
+    return null;
+  }
+  if (ref.feed === 'public/jobs.json') {
+    if (ref.series === 'claims') return 'fred';
+    return 'bls';
+  }
+  if (ref.feed === 'public/inflation.json') {
+    if (ref.series === 'pce' || ref.series === 'corePce') return 'fred';
+    return 'bls';
+  }
+  return null;
+}
+
+/** Latest reading date across simple rows and chain steps (for the watch-list caption). */
+export function watchListAsOf(list: WatchListName): string {
+  const dates = [
+    ...riskWatchRows(list).map((row) => row.date),
+    ...riskWatchChains(list).flatMap((chain) => chain.steps.map((step) => step.date)),
+  ];
+  return dates.reduce((max, date) => (date > max ? date : max), '');
+}
+
+/** Short publisher names for the watch-list caption (deduped, human landing pages). */
+export function watchListCaptionPublishers(list: WatchListName): WatchCaptionPublisher[] {
+  const refs: FeedRef[] = [];
+  for (const row of watchRows(list)) collectFeedRefs(row, refs);
+  const keys = new Set<string>();
+  for (const ref of refs) {
+    const key = publisherKeyForFeedRef(ref);
+    if (key) keys.add(key);
+  }
+  return [...keys]
+    .map((key) => WATCH_PUBLISHERS[key])
+    .filter((row): row is (typeof WATCH_PUBLISHERS)[string] => Boolean(row))
+    .sort((a, b) => a.order - b.order)
+    .map(({ label, href }) => ({ label, href }));
+}

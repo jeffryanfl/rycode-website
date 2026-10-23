@@ -241,7 +241,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
             </table>
           </div>
 
-          <figure class="paper-figure stage-strip">
+          <figure class="paper-figure stage-strip chart-stage">
             <figcaption class="paper-fig-kicker">Training stages</figcaption>
             <p class="paper-fig-sub">Distill view of training. Accent on RLVR.</p>
             <div class="stage-ticks" role="radiogroup" aria-label="Training stage">
@@ -266,6 +266,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
                 </div>
               ))}
             </div>
+            <p class="chart-caption">Source: rycode.dev · as of 23 Oct 2026</p>
           </figure>
 
           <blockquote class="pull-quote">
@@ -333,7 +334,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
           <h2 class="paper-h2" id="the-rack">The rack, not the GPU</h2>
           <p class="rack-claim">You buy a liquid-cooled 72-GPU rack, not a GPU.</p>
 
-          <figure class="paper-figure rack-figure">
+          <figure class="paper-figure rack-figure chart-frame chart-diagram-scroll">
             <figcaption class="paper-fig-kicker">The rack</figcaption>
             <p class="paper-fig-sub">
               Bind order on the drawing: grid →
@@ -362,7 +363,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
                 <line x1="92" y1="58" x2="92" y2="432" />
                 <line x1="304" y1="58" x2="304" y2="432" />
               </g>
-              <g class="rack-cyan" stroke-width="1.4">
+              <g class="rack-accent" stroke-width="1.4">
                 <line x1="96" y1="62" x2="300" y2="62" />
                 <line x1="96" y1="62" x2="96" y2="74" />
                 <line x1="300" y1="62" x2="300" y2="74" />
@@ -379,14 +380,14 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
                   </g>
                 ))}
               </g>
-              <g class="rack-cyan" stroke-width="1.6">
+              <g class="rack-accent" stroke-width="1.6">
                 <rect x="348" y="130" width="18" height="250" />
                 <line x1="366" y1="160" x2="396" y2="175" />
                 <line x1="366" y1="220" x2="396" y2="235" />
                 <line x1="366" y1="280" x2="396" y2="295" />
                 <line x1="366" y1="340" x2="396" y2="355" />
               </g>
-              <g class="rack-cyan" stroke-width="1.1">
+              <g class="rack-accent" stroke-width="1.1">
                 <line x1="338" y1="130" x2="348" y2="130" />
                 <line x1="338" y1="380" x2="348" y2="380" />
               </g>
@@ -394,7 +395,7 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
                 <rect x="98" y="368" width="204" height="22" />
                 <line x1="110" y1="379" x2="290" y2="379" />
               </g>
-              <g class="rack-cyan" stroke-width="1.15">
+              <g class="rack-accent" stroke-width="1.15">
                 <rect x="110" y="400" width="180" height="32" />
                 <circle cx="150" cy="416" r="8" />
                 <circle cx="190" cy="416" r="8" />
@@ -402,11 +403,11 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
                 <line x1="230" y1="416" x2="272" y2="416" />
                 <line x1="230" y1="424" x2="272" y2="424" />
               </g>
-              <g class="rack-cyan" stroke-width="1.4">
+              <g class="rack-accent" stroke-width="1.4">
                 <line x1="96" y1="438" x2="300" y2="438" />
                 <line x1="330" y1="452" x2="396" y2="486" />
               </g>
-              <g class="rack-cyan" stroke-width="1.3">
+              <g class="rack-accent" stroke-width="1.3">
                 <line x1="388" y1="112" x2="388" y2="486" />
                 <line x1="376" y1="118" x2="376" y2="478" />
               </g>
@@ -414,31 +415,31 @@ const sleds = Array.from({ length: 18 }, (_, i) => 78 + i * 15.6);
                 <rect x="560" y="300" width="200" height="132" />
                 <rect x="600" y="346" width="72" height="48" />
               </g>
-              <g class="rack-cyan" stroke-width="1">
+              <g class="rack-accent" stroke-width="1">
                 <rect x="574" y="322" width="18" height="88" />
                 <rect x="594" y="322" width="18" height="88" />
                 <rect x="708" y="322" width="18" height="88" />
                 <rect x="728" y="322" width="18" height="88" />
                 <line x1="304" y1="260" x2="560" y2="340" />
               </g>
-              <g font-size="13">
+              <g>
                 <text x="430" y="156">1  GRID</text>
-                <text class="rack-muted" x="430" y="174" font-size="11">NVLink switch fabric</text>
+                <text class="rack-muted" x="430" y="174">NVLink switch fabric</text>
                 <text x="780" y="292">2  CoWoS</text>
-                <text class="rack-muted" x="780" y="310" font-size="11">advanced package</text>
+                <text class="rack-muted" x="780" y="310">advanced package</text>
                 <text x="780" y="380">3  HBM</text>
-                <text class="rack-muted" x="780" y="398" font-size="11">on-package memory</text>
+                <text class="rack-muted" x="780" y="398">on-package memory</text>
                 <text x="430" y="508">4  RACK</text>
-                <text class="rack-muted" x="510" y="508" font-size="11">liquid-cooled 72-GPU cabinet</text>
+                <text class="rack-muted" x="510" y="508">liquid-cooled 72-GPU cabinet</text>
               </g>
-              <g class="rack-cyan" stroke-width="0.8">
+              <g class="rack-accent" stroke-width="0.8">
                 <line x1="366" y1="168" x2="424" y2="154" />
                 <line x1="636" y1="346" x2="774" y2="292" />
                 <line x1="728" y1="366" x2="774" y2="374" />
                 <line x1="200" y1="448" x2="424" y2="502" />
               </g>
             </svg>
-            <p class="paper-caption">Google’s line is TPU, <a href="/ai/hardware/chips/ironwood/">Ironwood</a> / TPU7x-class, Google-specific. For <a href="/ai/glossary/#open-weight-model">open-weight</a> serving on NVIDIA, vLLM is the default.</p>
+            <p class="chart-caption">Source: rycode.dev · as of 23 Oct 2026. Google’s line is TPU, <a href="/ai/hardware/chips/ironwood/">Ironwood</a> / TPU7x-class, Google-specific. For <a href="/ai/glossary/#open-weight-model">open-weight</a> serving on NVIDIA, vLLM is the default.</p>
           </figure>
 
           <div class="paper-body">

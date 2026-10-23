@@ -6,8 +6,8 @@
  * 52 weeks. Rows come from src/data/risk-watch.json; readings resolve against
  * their feeds at build time.
  */
-import BenchChart from './BenchChart.astro';
-import { dateLabel, riskWatchChains, riskWatchRows, type WatchListName } from '../lib/risk-watch';
+import Chart from './Chart.astro';
+import { dateLabel, riskWatchChains, riskWatchRows, watchListAsOf, watchListCaptionPublishers, type WatchListName } from '../lib/risk-watch';
 
 interface Props {
   /** Which rows file to read: "risk" (src/data/risk-watch.json) or "economics" (src/data/economics-watch.json). */
@@ -18,6 +18,8 @@ const { list = 'risk', headingClass = 'risk-section' } = Astro.props;
 const headingId = `${list}-watch-heading`;
 const rows = riskWatchRows(list);
 const chains = riskWatchChains(list);
+const watchAsOf = watchListAsOf(list);
+const watchSources = watchListCaptionPublishers(list);
 const explainBasisPoints = rows.some((row) => row.usesBasisPoints);
 const short = (label: string) => label.replace(/ \d{4}$/, '');
 ---
@@ -71,7 +73,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
         </div>
 
         <div class="rw-trend">
-          <BenchChart
+          <Chart
             kind="spark"
             title={`${row.tracker} since ${dateLabel(row.trendFrom)}, high ${row.periodHigh.value}, low ${row.periodLow.value}`}
             points={row.trend}
@@ -182,7 +184,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
                 </div>
               )}
               <div class="rw-step-spark">
-                <BenchChart
+                <Chart
                   kind="spark"
                   title={`${step.tracker}, last ${step.windowLabel}, high ${step.high.value}, low ${step.low.value}${step.compare ? `, ${step.compare.label} ${step.compare.average}` : ''}`}
                   points={step.trend}
@@ -190,8 +192,6 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
                   lowLabel={step.low.value}
                   refs={step.lines.map((l) => ({ value: l.value, label: l.short }))}
                   refLabelSide="start"
-                  sparkWidth={260}
-                  sparkHeight={84}
                 />
               </div>
               <p class="rw-step-range">
@@ -233,6 +233,17 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
       </li>
     ))}
   </ul>
+  {watchAsOf && watchSources.length > 0 && (
+    <p class="chart-caption rw-watch-caption">
+      {watchSources.length > 1 ? 'Sources:' : 'Source:'}{' '}
+      {watchSources.flatMap((source, index) =>
+        index === 0
+          ? [<a href={source.href}>{source.label}</a>]
+          : [', ', <a href={source.href}>{source.label}</a>],
+      )}
+      {' · as of '}{dateLabel(watchAsOf)}
+    </p>
+  )}
 </section>
 
 <style>
@@ -302,7 +313,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #e39a45;
+    color: var(--chart-threshold);
     text-decoration: none;
   }
 
@@ -313,7 +324,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
   }
 
   .rw-brief:hover {
-    color: #e39a45;
+    color: var(--chart-threshold);
   }
 
   .rw-tracker:hover {
@@ -372,7 +383,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     font-size: 0.76rem;
     font-weight: 500;
     line-height: 1.3;
-    color: #e39a45;
+    color: var(--chart-threshold);
   }
 
   .rw-gauge {
@@ -384,7 +395,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     display: block;
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(90deg, rgba(248, 250, 252, 0.12), rgba(227, 154, 69, 0.55));
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.12), color-mix(in srgb, var(--chart-threshold) 55%, transparent));
   }
 
   .rw-gauge-mark {
@@ -393,7 +404,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     width: 2px;
     height: 10px;
     margin-left: -1px;
-    background: #f8fafc;
+    background: var(--chart-s1);
   }
 
   .rw-gauge-ends {
@@ -475,7 +486,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
 
   .rw-chain-summary:focus-visible,
   .rw-more-summary:focus-visible {
-    outline: 2px solid #e39a45;
+    outline: 2px solid var(--chart-threshold);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -489,7 +500,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     border-bottom: 1.5px solid currentColor;
     transform: translateY(-0.12rem) rotate(-45deg);
     transition: transform 0.15s ease;
-    color: #e39a45;
+    color: var(--chart-threshold);
   }
 
   details[open] > summary > .rw-chevron {
@@ -539,7 +550,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #e39a45;
+    color: var(--chart-threshold);
   }
 
   .rw-chain-details[open] {
@@ -611,7 +622,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #e39a45;
+    color: var(--chart-threshold);
   }
 
   .rw-step-arrow {
@@ -639,7 +650,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
   }
 
   .rw-gauge-peak {
-    background: linear-gradient(90deg, rgba(248, 250, 252, 0.12), rgba(227, 154, 69, 0.6));
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.12), color-mix(in srgb, var(--chart-threshold) 60%, transparent));
   }
 
   .rw-gauge-tick {
@@ -647,23 +658,23 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     top: -2px;
     width: 1px;
     height: 8px;
-    background: rgba(227, 154, 69, 0.9);
+    background: color-mix(in srgb, var(--chart-threshold) 90%, transparent);
   }
 
   .rw-step-spark {
     margin-top: 0.35rem;
   }
 
-  .rw-step-spark :global(.bc-spark) {
+  .rw-step-spark :global(.chart-plot--spark) {
     max-width: 100%;
   }
 
-  /* Keep reference labels readable where the trend line crosses them. */
-  .rw-step-spark :global(.bc-spark-ref-text) {
-    paint-order: stroke;
-    stroke: var(--risk-paper, #080a10);
-    stroke-width: 3px;
-    stroke-linejoin: round;
+  .rw-step-spark :global(.chart-spark-label--ref) {
+    text-shadow: 0 0 3px var(--risk-paper, var(--chart-bg)), 0 0 3px var(--risk-paper, var(--chart-bg));
+  }
+
+  .rw-watch-caption {
+    margin-top: 1rem;
   }
 
   .rw-step-range {
@@ -725,7 +736,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #e39a45;
+    color: var(--chart-threshold);
   }
 
   .rw-step-list {
@@ -762,7 +773,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
   }
 
   .rw-step-list .rw-est {
-    color: #e39a45;
+    color: var(--chart-threshold);
   }
 
   .rw-step-extra a:hover {
@@ -784,7 +795,7 @@ const short = (label: string) => label.replace(/ \d{4}$/, '');
     color: var(--risk-muted, rgba(248, 250, 252, 0.52));
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 960px) {
     .rw-steps {
       grid-template-columns: minmax(0, 1fr);
     }

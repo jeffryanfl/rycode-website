@@ -1,5 +1,6 @@
 ---
 import '../styles/economics-rail.css';
+import Chart from './Chart.astro';
 import { safeHref } from '../lib/safe-href';
 
 interface RailLine {
@@ -160,12 +161,16 @@ function formatX(date: string, first: string, last: string): string {
   return date.slice(5);
 }
 
-function chart(points: RailPoint[], lines: RailLine[], unit: string) {
-  const w = 280;
-  const h = 120;
-  const pad = { t: 10, r: 10, b: 20, l: 50 };
-  const plotW = w - pad.l - pad.r;
-  const plotH = h - pad.t - pad.b;
+const YIELD_TOKEN: Record<string, `s${1 | 2 | 3}`> = { y2: 's1', y10: 's2', y30: 's3' };
+
+function lineToken(line: RailLine, index: number, cardId: string): `s${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}` {
+  if (cardId === 'yields' && YIELD_TOKEN[line.key]) return YIELD_TOKEN[line.key];
+  const n = Math.min(index + 1, 9) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  return `s${n}`;
+}
+
+function panelChart(points: RailPoint[], lines: RailLine[], unit: string, cardId: string) {
+  if (points.length === 0) return null;
   const nums: number[] = [];
   for (const point of points) {
     for (const line of lines) {
@@ -173,35 +178,7 @@ function chart(points: RailPoint[], lines: RailLine[], unit: string) {
       if (typeof value === 'number' && Number.isFinite(value)) nums.push(value);
     }
   }
-  if (points.length === 0 || nums.length === 0) return null;
-  const min = Math.min(...nums);
-  const max = Math.max(...nums);
-  const span = max - min || 1;
-  const last = points.length - 1;
-  const xAt = (i: number) =>
-    points.length === 1 ? pad.l + plotW / 2 : pad.l + (i * plotW) / last;
-  const yAt = (value: number) => pad.t + (1 - (value - min) / span) * plotH;
-  const paths = lines.map((line) => {
-    const cmds: string[] = [];
-    points.forEach((point, i) => {
-      const value = point[line.key];
-      if (typeof value !== 'number' || !Number.isFinite(value)) return;
-      cmds.push(`${cmds.length ? 'L' : 'M'}${xAt(i).toFixed(1)} ${yAt(value).toFixed(1)}`);
-    });
-    return { ...line, d: cmds.join(' ') };
-  });
-  const yValues = [max, (max + min) / 2, min];
-  const yTicks = yValues
-    .map((value) => ({ value, label: formatY(value, unit), y: yAt(value) }))
-    .filter((tick, i, all) => all.findIndex((other) => other.label === tick.label) === i);
-  const firstDate = points[0].date;
-  const lastDate = points[last].date;
-  const xIndex = points.length === 1 ? [0] : points.length === 2 ? [0, last] : [0, Math.round(last / 2), last];
-  const xTicks = xIndex.map((i, order, all) => ({
-    label: formatX(points[i].date, firstDate, lastDate),
-    x: xAt(i),
-    anchor: order === 0 ? 'start' : order === all.length - 1 ? 'end' : 'middle',
-  }));
+  if (!nums.length) return null;
   const lastPoint = points[points.length - 1];
   const latest = lines
     .map((line) => {
@@ -210,7 +187,17 @@ function chart(points: RailPoint[], lines: RailLine[], unit: string) {
       return { label: line.label, value: formatY(value, unit) };
     })
     .filter((row): row is { label: string; value: string } => row !== null);
-  return { w, h, pad, paths, yTicks, xTicks, latest, asOf: lastPoint.date };
+  const dates = points.map((p) => p.date);
+  const series = lines.map((line, index) => ({
+    name: line.label,
+    token: lineToken(line, index, cardId),
+    main: index === 0,
+    values: points.map((p) => {
+      const v = p[line.key];
+      return typeof v === 'number' && Number.isFinite(v) ? v : null;
+    }),
+  }));
+  return { dates, series, latest, asOf: lastPoint.date };
 }
 
 const tabLabel: Record<string, string> = {
@@ -233,7 +220,7 @@ const tabLabel: Record<string, string> = {
           ) : (
             <div class="econ-rail-tabs">
               {plot.tabs.map((tab, index) => {
-                const drawn = chart(viewPoints(plot.points, tab as Grain), plot.lines, plot.unit);
+                const drawn = panelChart(viewPoints(plot.points, tab as Grain), plot.lines, plot.unit, card.id);
                 const inputId = `econ-rail-${plot.id}-${tab}`;
                 const name = `econ-rail-${plot.id}`;
                 return (
@@ -248,32 +235,20 @@ const tabLabel: Record<string, string> = {
                     <label class="econ-rail-tab" for={inputId}>{tabLabel[tab] || tab}</label>
                     <div class="econ-rail-panel">
                       {drawn ? (
-                        <>
-                        {drawn.latest?.length ? (
-                          <p class="econ-rail-latest">
-                            <span class="econ-rail-latest-asof">Latest {drawn.asOf}</span>
-                            {drawn.latest.map((row) => (
-                              <span class="econ-rail-latest-row"><strong>{row.label}</strong> {row.value}</span>
-                            ))}
-                          </p>
-                        ) : null}
-                        <svg viewBox={`0 0 ${drawn.w} ${drawn.h}`} role="img" aria-label={`${card.title}${plot.heading ? ` ${plot.heading}` : ''}, ${tabLabel[tab] || tab}`}>
-                          <line class="econ-rail-axis" x1={drawn.pad.l} y1={drawn.pad.t} x2={drawn.pad.l} y2={drawn.h - drawn.pad.b} />
-                          <line class="econ-rail-axis" x1={drawn.pad.l} y1={drawn.h - drawn.pad.b} x2={drawn.w - drawn.pad.r} y2={drawn.h - drawn.pad.b} />
-                          {drawn.yTicks.map((tick, i) => (
-                            <g>
-                              <line class="econ-rail-grid" x1={drawn.pad.l} y1={tick.y} x2={drawn.w - drawn.pad.r} y2={tick.y} />
-                              <text class="econ-rail-tick" x={drawn.pad.l - 5} y={tick.y + (i === 0 ? 3 : i === drawn.yTicks.length - 1 ? -1 : 3)} text-anchor="end">{tick.label}</text>
-                            </g>
-                          ))}
-                          {drawn.xTicks.map((tick) => (
-                            <text class="econ-rail-tick" x={tick.x} y={drawn.h - 5} text-anchor={tick.anchor}>{tick.label}</text>
-                          ))}
-                          {drawn.paths.map((path) => (
-                            path.d && <path d={path.d} fill="none" stroke={path.color} stroke-width="1.5" />
-                          ))}
-                        </svg>
-                        </>
+                        <Chart
+                          kind="line"
+                          size="card"
+                          title={`${card.title}${plot.heading ? ` · ${plot.heading}` : ''} · ${tabLabel[tab] || tab}`}
+                          frame={true}
+                          dates={drawn.dates}
+                          series={drawn.series}
+                          unit={plot.unit}
+                          sourceHref={safeHref(card.source) ?? undefined}
+                          sourceLabel={card.sourceLabel ?? card.title}
+                          asOf={drawn.asOf}
+                          numbers={drawn.latest.map((row) => ({ label: row.label, cells: [row.value] }))}
+                          numberColumns={['Series', `As of ${drawn.asOf}`]}
+                        />
                       ) : (
                         <p class="econ-rail-empty">No points yet.</p>
                       )}
@@ -283,23 +258,8 @@ const tabLabel: Record<string, string> = {
               })}
             </div>
           )}
-          {plot.lines.length > 1 && (
-            <ul class="econ-rail-legend">
-              {plot.lines.map((line) => (
-                <li>
-                  <span class="econ-rail-swatch" style={`background:${line.color}`} />
-                  {line.label}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       ))}
-      {safeHref(card.source) ? (
-        <a class="econ-rail-source" href={safeHref(card.source)!}>{card.sourceLabel}</a>
-      ) : (
-        card.sourceLabel && <p class="econ-rail-source">{card.sourceLabel}</p>
-      )}
     </section>
   ))}
 </aside>

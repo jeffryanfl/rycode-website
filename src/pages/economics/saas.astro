@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../../layouts/Layout.astro';
 import Cell from '../../components/SaasCell.astro';
+import Chart from '../../components/Chart.astro';
 import { safeHref } from '../../lib/safe-href';
 import '../../styles/economics.css';
 import '../../styles/saas-tracker.css';
@@ -79,22 +80,23 @@ const saasChangeLine = basketWow != null && prevWeek
   ? `Since week of ${day(prevWeek.date)}: basket ${pct(basketWow, true)}${sectorChangeParts.length ? `; ${sectorChangeParts.join('; ')}` : ''}.`
   : `As of week of ${asOf}.`;
 
-/* ---------- index chart (SVG, built here) ---------- */
-const W = 720, H = 300, L = 44, R = 12, T = 14, B = 30;
-const COLORS = ['#e0a458', '#c9837a', '#9fb57a', '#b49ad6', '#d6c36a', '#7f9fd6', '#c7a07a', '#d38fb8'];
-const lines = [
-  { id: 'overall', label: 'All 23 (basket)', color: 'rgba(248,250,252,0.95)', width: 2.6, values: weeks.map((w) => w.index) },
-  ...sectors.map((s, i) => ({ id: s.id, label: s.label, color: COLORS[i % COLORS.length], width: 1.4, values: weeks.map((w) => w.sectorIndex?.[s.id] ?? null) })),
+const chartDates = weeks.map((w) => w.date);
+const chartSeries = [
+  {
+    name: 'All 23 (basket)',
+    token: 's1' as const,
+    main: true,
+    values: weeks.map((w) => w.index),
+  },
+  ...sectors.map((s, i) => ({
+    name: s.label,
+    token: (`s${Math.min(i + 2, 9)}` as `s${2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}`),
+    values: weeks.map((w) => w.sectorIndex?.[s.id] ?? null),
+  })),
 ];
-const all = lines.flatMap((l) => l.values).filter((v) => v != null);
-const lo = Math.floor(Math.min(...all) / 20) * 20;
-const hi = Math.ceil(Math.max(...all) / 20) * 20;
-const x = (i) => L + (i * (W - L - R)) / Math.max(1, weeks.length - 1);
-const y = (v) => T + ((hi - v) * (H - T - B)) / (hi - lo);
-const pathOf = (vals) => vals.map((v, i) => (v == null ? null : `${x(i).toFixed(1)},${y(v).toFixed(1)}`)).filter(Boolean).map((p, i) => `${i ? 'L' : 'M'}${p}`).join(' ');
-const yTicks = []; for (let v = lo; v <= hi; v += 20) yTicks.push(v);
-const xTicks = weeks.map((w, i) => ({ i, w })).filter(({ w }, i) => i === 0 || w.date.slice(5, 7) !== weeks[i - 1].date.slice(5, 7)).filter((_, k) => k % 2 === 0);
-const legend = lines.map((l) => ({ ...l, last: l.values.at(-1) })).sort((a, b) => (b.last ?? 0) - (a.last ?? 0));
+const chartNumbers = chartSeries
+  .map((s) => ({ label: s.name, cells: [s.values.at(-1) != null ? num(s.values.at(-1)) ?? '-' : '-'] }))
+  .sort((a, b) => parseFloat(b.cells[0]) - parseFloat(a.cells[0]));
 
 /* ---------- tables ---------- */
 const bySector = sectors.map((s) => ({ ...s, rows: companies.filter((c) => c.sector === s.id) }));
@@ -117,27 +119,21 @@ const maxQ = 5;
     <section class="econ-digest-section saas-wide" id="index">
       <h2>How the basket moved</h2>
       <p>The basket index is our own, not a vendor's: every company counts the same (equal weight), and each line starts at 100 on {base}. A line at 120 means its companies are up about 20% since then, on average.<sup><a href="#fn-index">1</a></sup></p>
-      <figure class="saas-chart">
-        <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Equal-weight price index by sector, base 100 on ${base}, weekly to ${asOf}`}>
-          {yTicks.map((v) => (
-            <g>
-              <line x1={L} x2={W - R} y1={y(v)} y2={y(v)} class={v === 100 ? 'saas-grid saas-grid-base' : 'saas-grid'} />
-              <text x={L - 6} y={y(v) + 4} text-anchor="end" class="saas-axis">{v}</text>
-            </g>
-          ))}
-          {xTicks.map(({ i, w }) => (
-            <text x={x(i)} y={H - 10} text-anchor="middle" class="saas-axis">{qtag(w.date)}</text>
-          ))}
-          {lines.slice(1).map((l) => <path d={pathOf(l.values)} fill="none" stroke={l.color} stroke-width={l.width} />)}
-          <path d={pathOf(lines[0].values)} fill="none" stroke={lines[0].color} stroke-width={lines[0].width} />
-        </svg>
-        <ul class="saas-legend">
-          {legend.map((l) => (
-            <li><span class="saas-swatch" style={`background:${l.color}`}></span>{l.label} <b>{num(l.last) ?? '-'}</b></li>
-          ))}
-        </ul>
-        <figcaption>Weekly, Friday close, {base} to {asOf}. Sources: Yahoo Finance daily closes; rycode math.</figcaption>
-      </figure>
+      <Chart
+        kind="line"
+        size="page"
+        title={`Equal-weight price index by sector, base 100 on ${base}`}
+        dates={chartDates}
+        series={chartSeries}
+        unit="index"
+        threshold={100}
+        sourceHref="https://finance.yahoo.com/"
+        sourceLabel="Yahoo Finance daily closes; rycode math"
+        asOf={tracker.asOfWeek}
+        changeNote={saasChangeLine}
+        numbers={chartNumbers}
+        numberColumns={['Sector', `Index · Fri ${asOf}`]}
+      />
     </section>
 
     <section class="econ-digest-section saas-wide" id="sectors">
@@ -187,7 +183,6 @@ const maxQ = 5;
     </section>
 
     <section class="econ-digest-section saas-wide" id="companies">
-      <p class="data-change-strip">{saasChangeLine}</p>
       <h2>Companies</h2>
       <p>Market cap is the Friday close times weighted average shares from the latest quarterly filing.<sup><a href="#fn-cap">4</a></sup> RPO (remaining performance obligations) is revenue already signed in contracts but not yet earned. Small text in a cell says which week or which quarter end the number is from.</p>
       <div class="saas-scroll" tabindex="0" role="region" aria-label="Companies table">
