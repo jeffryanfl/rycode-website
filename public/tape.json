@@ -1,65 +1,64 @@
 {
-  "updated": "2026-10-23T08:16:00-04:00",
-  "asOfLabel": "Fri 23 Oct · pre-open",
+  "updated": "2026-10-23T16:08:00-04:00",
+  "asOfLabel": "Fri 23 Oct · after close",
   "lines": [
     {
       "tag": "Oil",
-      "text": "Dec WTI ~$100.96 pre-open, back above the $100 line in trading; Thu final bar $99.47."
-    },
-    {
-      "tag": "Tape",
-      "text": "S&P futures ~7,685 (-0.2%), Nasdaq futures flat after Thursday's -2.6% tech drop."
+      "text": "Dec WTI ~$103.63 at the close, back above the $100 line; Thu final bar revised to $99.47."
     },
     {
       "tag": "Rates",
-      "text": "10-year Treasury yield 4.96% at Thursday's close, still under 5%; 2-year 4.65%."
+      "text": "10-year Treasury yield back to 5.00% (from 4.96%); 2-year 4.69%, 30-year 5.33%."
+    },
+    {
+      "tag": "Tape",
+      "text": "S&P 500 7,623.68 (-0.5%), Dow -1.2%, Nasdaq -0.2%; chip stocks (SMH) bounced 0.7%."
     }
   ],
   "doorHref": "/economics",
   "date": "2026-10-23",
   "schema": "macro-tape-v1",
-  "asOf": "2026-10-23T08:16:00-04:00",
-  "cadence": "pre-open",
-  "hook": "Dec oil is trading back above $100 (~$100.96) before the open, while stock futures sit slightly lower after Thursday's tech drop.",
+  "asOf": "2026-10-23T16:08:00-04:00",
+  "cadence": "after-close",
+  "hook": "Oil closed back above $100 (Dec WTI ~$103.63) and the 10-year yield climbed back to 5.00%, while stocks slipped again.",
   "door": "Economics",
   "essayWorthy": false,
   "ticker": [
     {
       "date": "2026-10-23",
       "tag": "Oil",
-      "line": "Dec WTI ~$100.96 pre-open, back above the $100 line in trading; Thu final bar $99.47."
-    },
-    {
-      "date": "2026-10-23",
-      "tag": "Tape",
-      "line": "S&P futures ~7,685 (-0.2%), Nasdaq futures flat after Thursday's -2.6% tech drop."
+      "line": "Dec WTI ~$103.63 at the close, back above the $100 line; Thu final bar revised to $99.47."
     },
     {
       "date": "2026-10-23",
       "tag": "Rates",
-      "line": "10-year Treasury yield 4.96% at Thursday's close, still under 5%; 2-year 4.65%."
+      "line": "10-year Treasury yield back to 5.00% (from 4.96%); 2-year 4.69%, 30-year 5.33%."
+    },
+    {
+      "date": "2026-10-23",
+      "tag": "Tape",
+      "line": "S&P 500 7,623.68 (-0.5%), Dow -1.2%, Nasdaq -0.2%; chip stocks (SMH) bounced 0.7%."
     }
   ],
   "levels": {
-    "es": 7685.25,
-    "nq": 29121.25,
-    "ym": 52723.0,
-    "spx": 7663.43,
-    "yield2y": 4.65,
-    "yield10y": 4.96,
-    "yield30y": 5.29,
-    "dxy": 101.83,
-    "wti": 100.96,
-    "brent": 110.0
+    "spx": 7623.68,
+    "dow": 52215.16,
+    "nasdaq": 25955.34,
+    "yield2y": 4.69,
+    "yield10y": 5,
+    "yield30y": 5.33,
+    "dxy": 101.81,
+    "wti": 103.63,
+    "brent": 111.96
   },
-  "wtiSourceNote": "Yahoo CLZ26.NYM pre-open quote 100.96 (not a close). Yahoo now shows 10-22 Dec final bar 99.47 vs 99.31 shipped; fix history at Fri after-close.",
+  "wtiSourceNote": "Yahoo CLZ26.NYM 10-23 same-day bar 103.63 (re-check Mon). 10-22 history wti corrected 99.31 -> 99.47 (Yahoo final bar).",
   "calendar": [
     "Next FOMC Oct 27–28."
   ],
   "watch": [
-    "Whether Dec WTI closes above $100 today.",
-    "Whether the 10-year stays under 5%.",
-    "Whether chip stocks (SMH) keep sliding after entering a bear market."
+    "Whether oil holds above $100 into Monday.",
+    "Whether the 10-year pushes above 5%.",
+    "Whether the Fed meeting next week shifts rates."
   ],
   "chatPosted": true
 }
