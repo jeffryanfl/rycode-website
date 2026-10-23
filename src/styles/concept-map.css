@@ -45,7 +45,7 @@
   height: 0.7rem;
   border: 1.5px solid transparent;
   border-radius: 50%;
-  background: #12151c;
+  background: var(--chart-disc);
 }
 
 .concept-swatch.cluster-macro { border-color: var(--chart-s2); }
@@ -70,7 +70,7 @@
   overflow: auto;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-card, 14px);
-  background: #080a10;
+  background: var(--chart-bg);
 }
 
 .concept-map-bar {
@@ -91,15 +91,15 @@
 .concept-map-search input {
   width: 100%;
   padding: 0.45rem 0.6rem;
-  border: 1px solid #8b919a;
-  background: #080a10;
+  border: 1px solid var(--chart-dim);
+  background: var(--chart-bg);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 0.92rem;
 }
 
 .concept-map-search input:focus-visible {
-  outline: 1px solid #ffffff;
+  outline: 1px solid var(--chart-ink);
   outline-offset: 1px;
 }
 
@@ -114,8 +114,8 @@
   margin: 0;
   padding: 0.25rem 0;
   list-style: none;
-  border: 1px solid #8b919a;
-  background: #12151c;
+  border: 1px solid var(--chart-dim);
+  background: var(--chart-disc);
 }
 
 .concept-search-list button {
@@ -170,8 +170,8 @@ html.js .concept-map-tools {
   min-width: 2rem;
   min-height: 2rem;
   padding: 0 0.55rem;
-  border: 1px solid #8b919a;
-  background: #080a10;
+  border: 1px solid var(--chart-dim);
+  background: var(--chart-bg);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 0.85rem;
@@ -180,8 +180,8 @@ html.js .concept-map-tools {
 
 .concept-map-tools button:hover,
 .concept-map-tools button:focus-visible {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: var(--chart-ink);
+  color: var(--chart-ink);
 }
 
 .concept-edge {
@@ -200,7 +200,7 @@ html.js .concept-map-tools {
 }
 
 .concept-disc {
-  fill: #12151c;
+  fill: var(--chart-disc);
   stroke-width: 1.75;
 }
 
@@ -236,7 +236,7 @@ html.js .concept-map-tools {
 }
 
 .concept-node:focus-visible .concept-disc {
-  stroke: #ffffff;
+  stroke: var(--chart-ink);
   stroke-width: 2.4;
 }
 
@@ -262,7 +262,7 @@ html.js .concept-map-tools {
 }
 
 .concept-map-svg.is-active .concept-node.is-focus .concept-disc {
-  stroke: #d97706;
+  stroke: var(--chart-threshold);
   stroke-width: 2.6;
 }
 
@@ -345,7 +345,7 @@ html.js .concept-panel {
 .concept-panel button.linkish:hover,
 .concept-panel a:focus-visible,
 .concept-panel button.linkish:focus-visible {
-  color: #d97706;
+  color: var(--chart-threshold);
 }
 
 .concept-panel-thesis {
@@ -365,7 +365,7 @@ html.js .concept-panel {
 }
 
 .concept-panel li.is-hit a {
-  color: #d97706;
+  color: var(--chart-threshold);
 }
 
 .concept-map-fallback {

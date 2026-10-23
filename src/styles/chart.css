@@ -20,6 +20,11 @@
   --chart-frame: rgba(248, 250, 252, 0.16);
   --chart-bg: #080a10;
   --chart-dim: #8b919a;
+  --chart-ink: #f8fafc;
+  --chart-disc: #12151c;
+  --chart-focus: #8ab4ff;
+  --chart-note: #fbbf24;
+  --chart-muted: #949aa2;
   --chart-tier-spark-h: 48px;
   --chart-tier-card-h: 160px;
   --chart-tier-page-h: 280px;
@@ -55,7 +60,7 @@
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--ai-ink, #f8fafc);
+  color: var(--chart-ink);
 }
 
 .chart-title-link {
@@ -67,7 +72,7 @@
 
 .chart-title-link:hover,
 .chart-title-link:focus-visible {
-  text-decoration-color: var(--ai-ink, #f8fafc);
+  text-decoration-color: var(--chart-ink);
 }
 
 .chart-plot {
@@ -147,10 +152,14 @@
 .chart-series-s9 { stroke: var(--chart-s9); opacity: 0.6; }
 
 .chart-dot-end {
-  fill: var(--chart-s1);
+  position: absolute;
+  display: block;
   width: 4px;
   height: 4px;
+  margin: 0;
   border-radius: 50%;
+  background: var(--chart-s1);
+  transform: translate(-50%, -50%);
 }
 
 .chart-yticks {
@@ -220,13 +229,17 @@
   gap: 0.35rem 0.9rem;
   font-family: var(--font-sans);
   font-size: 12px;
-  color: var(--ai-ink, #f8fafc);
+  color: var(--chart-ink);
 }
 
 .chart-legend li {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+.chart-legend--above {
+  margin: 0 0 0.5rem;
 }
 
 .chart-legend-swatch {
@@ -314,8 +327,15 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.chart-diagram-scroll svg {
+.chart-diagram-scroll:not(.rack-figure) svg {
   min-width: 640px;
+}
+
+.rack-figure.chart-diagram-scroll .rack-svg {
+  width: 920px;
+  min-width: 920px;
+  max-width: none;
+  height: auto;
 }
 
 .chart-stage .stage-tick--rlvr .stage-dot {
@@ -338,7 +358,28 @@
 }
 
 .chart-heatmap-wrap td.abb-h {
-  background: color-mix(in srgb, var(--chart-scale) calc(var(--s, 0.25) * 100%), transparent);
+  background: color-mix(in srgb, var(--chart-scale) calc(min(var(--s, 0.25), 0.38) * 100%), transparent);
+}
+
+.chart-heatmap-wrap td.abb-h .abb-tag {
+  color: var(--chart-s1);
+  opacity: 1;
+}
+
+.chart-heatmap-wrap .abb thead button:focus-visible {
+  outline: 2px solid var(--chart-focus);
+}
+
+.chart-heatmap-wrap .abb .abb-model {
+  background: var(--chart-bg);
+}
+
+.chart-heatmap-wrap .abb-v {
+  color: var(--chart-ink);
+}
+
+.chart-heatmap-wrap .abb sup a {
+  color: var(--chart-note);
 }
 
 .chart-heatmap-wrap .abb-bar {

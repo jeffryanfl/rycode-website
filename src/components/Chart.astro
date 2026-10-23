@@ -150,7 +150,10 @@ function lineGeom(): LineGeom | null {
     const token = s.token ?? (`s${Math.min(si + 1, 9)}` as TimeSeries['token']);
     return { token: `chart-series-${token}`, d: cmds.join(' '), main: Boolean(s.main) || si === 0 };
   });
-  const yValues = [max, (max + min) / 2, min];
+  const yValues =
+    size === 'page'
+      ? Array.from({ length: 5 }, (_, i) => min + (span * i) / 4)
+      : [max, (max + min) / 2, min];
   const yTicks = yValues
     .map((value) => ({ value, label: formatChartY(value, unit), y: yAt(value) }))
     .filter((tick, i, all) => all.findIndex((other) => other.label === tick.label) === i)
@@ -168,7 +171,9 @@ function lineGeom(): LineGeom | null {
 }
 
 const geom = kind === 'line' ? lineGeom() : null;
+const legendAbove = kind === 'line' && series.length >= 4;
 ---
+
 
 {kind === 'spark' ? (
   <div class="chart-plot chart-plot--spark" role="img" aria-label={title}>
@@ -225,6 +230,19 @@ const geom = kind === 'line' ? lineGeom() : null;
         {sub && <p class="chart-sub">{sub}</p>}
       </div>
     )}
+    {series.length > 1 && legendAbove && (
+      <ul class="chart-legend chart-legend--above">
+        {series.map((s, si) => {
+          const token = s.token ?? (`s${Math.min(si + 1, 9)}` as TimeSeries['token']);
+          return (
+            <li>
+              <span class:list={['chart-legend-swatch', `chart-series-${token}`]} style="background: currentColor"></span>
+              <span style={`color: var(--chart-${token})`}>{s.name}</span>
+            </li>
+          );
+        })}
+      </ul>
+    )}
     <div class:list={['chart-plot', size === 'page' ? 'chart-plot--page' : 'chart-plot--card']}>
       <svg viewBox={`0 0 ${geom.w} ${geom.h}`} preserveAspectRatio="none" role="img" aria-label={title}>
         {geom.yTicks.map((tick) => (
@@ -273,7 +291,7 @@ const geom = kind === 'line' ? lineGeom() : null;
         <span style={`text-align: ${tick.anchor}`}>{tick.label}</span>
       ))}
     </div>
-    {series.length > 1 && (
+    {series.length > 1 && !legendAbove && (
       <ul class="chart-legend">
         {series.map((s, si) => {
           const token = s.token ?? (`s${Math.min(si + 1, 9)}` as TimeSeries['token']);

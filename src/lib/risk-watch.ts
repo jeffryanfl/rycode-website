@@ -634,3 +634,64 @@ export function riskWatchChains(list: WatchListName = 'risk'): ChainRow[] {
     }),
   }));
 }
+
+export type WatchSourceLink = { href: string; label: string };
+
+function collectFeedRefs(node: unknown, out: FeedRef[]): void {
+  if (!node || typeof node !== 'object') return;
+  const row = node as Record<string, unknown>;
+  const reading = row.reading as FeedRef | undefined;
+  const history = row.history as FeedRef | undefined;
+  if (reading?.feed) out.push(reading);
+  if (history?.feed) out.push(history);
+  if (Array.isArray(row.steps)) row.steps.forEach((step) => collectFeedRefs(step, out));
+  const extra = row.extra as { reading?: FeedRef } | undefined;
+  if (extra?.reading?.feed) out.push(extra.reading);
+}
+
+function economicsRailSource(seriesId: string): WatchSourceLink | null {
+  const rail = readFeed('public/economics-rail.json');
+  const list = Array.isArray(rail?.series) ? rail.series : [];
+  const found = list.find((s: { id?: string }) => s?.id === seriesId);
+  if (found?.source && found?.sourceLabel) return { href: found.source, label: found.sourceLabel };
+  return null;
+}
+
+function macroHistorySource(key: string): WatchSourceLink | null {
+  if (key === 'y30' || key === 'y10' || key === 'y2') return economicsRailSource('yields');
+  if (key === 'wti') return economicsRailSource('oil');
+  if (key === 'spx') {
+    const feed = readFeed('public/ai-contagion.json');
+    const list = Array.isArray(feed?.series) ? feed.series : [];
+    const found = list.find((s: { id?: string }) => s?.id === 'gspc');
+    if (found?.source && found?.sourceLabel) return { href: found.source, label: found.sourceLabel };
+  }
+  return null;
+}
+
+function sourceForFeedRef(ref: FeedRef): WatchSourceLink | null {
+  if (ref.feed === 'public/macro-history.json') return macroHistorySource(ref.key);
+  const feed = readFeed(ref.feed);
+  const list = Array.isArray(feed?.series) ? feed.series : [];
+  if (ref.series) {
+    const found = list.find((s: { id?: string }) => s?.id === ref.series);
+    if (found?.source && found?.sourceLabel) return { href: found.source, label: found.sourceLabel };
+  }
+  return null;
+}
+
+/** Linked feed sources for the watch-list caption (deduped by URL). */
+export function watchListSourceLinks(list: WatchListName): WatchSourceLink[] {
+  const refs: FeedRef[] = [];
+  for (const row of watchRows(list)) collectFeedRefs(row, refs);
+  const seen = new Set<string>();
+  const links: WatchSourceLink[] = [];
+  for (const ref of refs) {
+    const link = sourceForFeedRef(ref);
+    if (link && !seen.has(link.href)) {
+      seen.add(link.href);
+      links.push(link);
+    }
+  }
+  return links;
+}
