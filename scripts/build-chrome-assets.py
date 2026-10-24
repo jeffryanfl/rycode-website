@@ -162,9 +162,6 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "what-an-agent-swarm-is.astro":
         # Explainer date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-27"
-    elif target.name == "what-xai-has-running.astro":
-        # Brief date is locked to the page kicker. A later catalog rebuild must not use the commit day.
-        date = "2026-10-04"
     elif target.name == "glossary.astro":
         # Glossary card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-09-28"
@@ -254,11 +251,6 @@ def build_catalog_real() -> list[dict]:
             "href": "/ai/swarms/what-an-agent-swarm-is/",
             "title": "What an agent swarm is, and what 10,000 of them can do",
             "description": "Two swarms, two breakthroughs, every metric on the table.",
-        },
-        {
-            "href": "/ai/what-xai-has-running/",
-            "title": "What xAI has running",
-            "description": "A first-cluster claim, not a finished campus.",
         },
         {
             "href": "/ai/models/typesafe/jev/",

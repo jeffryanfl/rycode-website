@@ -104,7 +104,7 @@ const legend = [
 ---
 
 <Layout
-  title={`${title} — Rycode`}
+  title={`${title} - Rycode`}
   description="OpenAI’s Navier–Stokes claim is a systems result: concurrent agents, wall-clock, messages, and tokens. Not a genius that transcends the harness."
   variant="ai"
 >
@@ -133,12 +133,12 @@ const legend = [
       </div>
     </aside>
 
-    <p class="ai-digest-lede">OpenAI published a claim that a multi-agent system helped resolve a famous open problem in fluid mathematics. The numbers in that post are large. The lesson is not that a single model woke up as a god. The lesson is that the harness, the tools, and a huge token budget did the work.</p>
+    <p class="ai-digest-lede">OpenAI published a claim that a multi-agent system helped resolve a famous open problem in fluid mathematics. The numbers in that post are large. The lesson is not that a single model woke up as a god. The lesson is that the harness, the tools, and a huge <a href="/ai/glossary/#token">token</a> budget did the work.</p>
 
     <section class="ai-digest-section" id="claimed" data-digest-section="claimed">
       <h2>What was claimed, in plain English</h2>
       <p>The Navier–Stokes equations are a set of equations that describe how fluids move. A related Millennium Prize question asks whether solutions to those equations always stay smooth, or whether they can “blow up” in finite time. That question has sat open for decades. OpenAI’s public note says an internal model, still in training and described as more capable than its released frontier line, powered a system of coordinating agents that worked the problem.</p>
-      <p>An agent here is a program that can use tools, write and run code, and hand work to other programs. OpenAI says the agents could read from a cached version of the internet and run code. They were split into groups that could talk inside the group. The group that produced the Navier–Stokes resolution involved on the order of 10,000 concurrent agents. OpenAI says those agents arrived at their resolution after about 88 hours from launch. Formalization and verification in Lean, a language used to check mathematical proofs by computer, took another 17 hours via GPT-6 Astra.</p>
+      <p>An agent here is a program that can use tools, write and run code, and hand work to other programs. OpenAI says the agents could read from a cached version of the internet and run code. They were split into groups that could talk inside the group. The group that produced the Navier–Stokes resolution involved on the order of 10,000 concurrent agents. OpenAI says those agents arrived at their resolution after about 88 hours from launch. Formalization and verification in Lean, a language used to check mathematical proofs by computer, took another 17 hours via <a href="/ai/models/openai/gpt-6-astra/">GPT-6 Astra</a>.</p>
       {cards.filter((card) => ['agents', 'hours', 'lean'].includes(card.id)).map((card) => (
         <article class="ai-card ai-card--inline">
           <p class="ai-card-kicker">{card.kicker}</p>
