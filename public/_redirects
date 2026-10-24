@@ -6,8 +6,8 @@
 /research/ten-trillion-to-roll/        /economics/    301!
 /research/saas-barbell-2026            /economics/    301!
 /research/saas-barbell-2026/           /economics/    301!
-/research/ten-thousand-agents-is-not-a-genius    /ai/ten-thousand-agents-is-not-a-genius/    301!
-/research/ten-thousand-agents-is-not-a-genius/   /ai/ten-thousand-agents-is-not-a-genius/    301!
+/research/ten-thousand-agents-is-not-a-genius    /ai/  301!
+/research/ten-thousand-agents-is-not-a-genius/   /ai/  301!
 /research/saaspocalypse                /economics/    301!
 /research/saaspocalypse/               /economics/    301!
 /research                              /economics/    301!
@@ -47,3 +47,17 @@
 /risk/the-ban-lands-on-open-source/                              /risk/  301!
 /opinions/the-license-starts-at-their-scale                      /opinions/  301!
 /opinions/the-license-starts-at-their-scale/                     /opinions/  301!
+
+# A.I. essays pulled 24 Oct 2026. Each old URL goes to /ai/.
+/ai/what-xai-has-running                                         /ai/  301!
+/ai/what-xai-has-running/                                        /ai/  301!
+/ai/meta-named-an-enterprise-stack                               /ai/  301!
+/ai/meta-named-an-enterprise-stack/                              /ai/  301!
+/ai/frontier-price-meets-open-weight-ipo                         /ai/  301!
+/ai/frontier-price-meets-open-weight-ipo/                        /ai/  301!
+/ai/grok-bot-set-a-new-bar                                       /ai/  301!
+/ai/grok-bot-set-a-new-bar/                                      /ai/  301!
+/ai/chat-models-write-strings-system-one-returns-decisions       /ai/  301!
+/ai/chat-models-write-strings-system-one-returns-decisions/      /ai/  301!
+/ai/ten-thousand-agents-is-not-a-genius                          /ai/  301!
+/ai/ten-thousand-agents-is-not-a-genius/                         /ai/  301!

@@ -104,7 +104,7 @@ export default defineConfig({
     '/research': '/economics/',
     '/research/ten-trillion-to-roll': '/economics/',
     '/research/saas-barbell-2026': '/economics/',
-    '/research/ten-thousand-agents-is-not-a-genius': '/ai/ten-thousand-agents-is-not-a-genius/',
+    '/research/ten-thousand-agents-is-not-a-genius': '/ai/',
     '/research/saaspocalypse': '/economics/',
     '/ai/models/openai/gpt-5-6-sol': '/ai/models/openai/gpt-6-sol/',
     '/ai/models/openai/dots': '/ai/agents/dots/',
@@ -114,7 +114,13 @@ export default defineConfig({
     '/ai/hardware/memphis-colossus': '/ai/hardware/data-centers/memphis-colossus/',
     // Oil brief moved to /risk/ on 5 Oct 2026.
     '/economics/warsh-first-hike-oil-and-five-percent-ten-year': '/risk/oil-and-the-100-line/',
-    // Economics, risk, and opinions essays pulled on 5 Oct 2026 stay at the door. The six A.I. essays are live again.
+    // Economics, risk, and opinions essays pulled on 5 Oct 2026 stay at the door. Six A.I. essays pulled on 24 Oct 2026 go to /ai/.
+    '/ai/what-xai-has-running': '/ai/',
+    '/ai/meta-named-an-enterprise-stack': '/ai/',
+    '/ai/frontier-price-meets-open-weight-ipo': '/ai/',
+    '/ai/grok-bot-set-a-new-bar': '/ai/',
+    '/ai/chat-models-write-strings-system-one-returns-decisions': '/ai/',
+    '/ai/ten-thousand-agents-is-not-a-genius': '/ai/',
     '/economics/long-yields-hike-ai-credit-stress': '/economics/',
     '/economics/post-inflation-dollars-pay-pre-inflation-debts': '/economics/',
     '/economics/saas-barbell-2026': '/economics/',
