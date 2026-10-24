@@ -16,6 +16,8 @@ import '../../../../styles/ai.css';
     <hr class="ai-model-rule" />
     <ModelFacts />
     <p>On the Artificial Analysis Intelligence Index (fetched 22 Sep 2026 ET), <strong>Kimi K3 (max)</strong> scores <strong>44</strong>. AA’s open-weights FAQ on that fetch lists it third among open weights after MiMo-V2.6-Pro and GLM-5.3.</p>
+    <h2 class="ai-model-section">Kimi K3.1 Pro</h2>
+    <p>Kimi K3.1 Pro is Moonshot AI's updated version of Kimi K3, released on 23 Oct 2026 according to <a href="https://openrouter.ai/moonshotai/kimi-k3.1-pro">Kimi K3.1 Pro on OpenRouter</a>. Moonshot's <a href="https://www.kimi.ai/blog/kimi-k3-1-pro">Kimi K3.1 Pro Tech Blog</a> calls it a post-trained version of K3, which means the same base model given more training after its first training run. It has a 1,048,576-token context window, which is how much text it can read in one request, per Moonshot's <a href="https://platform.kimi.ai/docs/pricing/chat">Model Inference Pricing Explanation</a>. On the Kimi API it is <code>kimi-k3.1-pro</code> at $2 per million input tokens and $10 per million output tokens, and <code>kimi-k3.1-pro-highspeed</code> costs $4 and $20 [7]. Moonshot says Highspeed runs at two to three times the speed of K3.1 Pro [6]. The blog also says the full weights will be released by 4 Nov 2026, so for now it runs only through Moonshot's API and apps [6].</p>
     <h2 class="ai-model-section">Training</h2>
     <p>The paper *Kimi K3: Open Frontier Intelligence* (arXiv:2607.24653) and the Hugging Face card describe a Mixture-of-Experts model with Kimi Delta Attention (KDA), Attention Residuals, and Stable LatentMoE. Post-training emphasizes reinforcement learning across general, agentic, and coding domains with multiple reasoning-effort levels. Exact train FLOPs and full data recipes belong in the paper and card, not restated here beyond published summaries.</p>
     <h2 class="ai-model-section">Inference</h2>
@@ -44,11 +46,14 @@ import '../../../../styles/ai.css';
       <li>GitHub mirror / tooling: <a href="https://github.com/moonshotai/Kimi-K3">MoonshotAI/Kimi-K3</a></li>
     </ul>
     <h2 class="ai-model-section">Sources</h2>
-    <ul class="ai-model-sources">
+    <ol class="ai-model-sources">
       <li><a href="https://huggingface.co/moonshotai/Kimi-K3">Hugging Face: moonshotai/Kimi-K3</a></li>
       <li><a href="https://arxiv.org/abs/2607.24653">arXiv:2607.24653</a></li>
       <li><a href="https://platform.kimi.ai">Kimi platform</a></li>
       <li><a href="https://artificialanalysis.ai/leaderboards/models">AA LLM leaderboard</a> (secondary, Index)</li>
-    </ul>
+      <li><a href="https://openrouter.ai/moonshotai/kimi-k3.1-pro">Kimi K3.1 Pro - API Pricing &amp; Benchmarks | OpenRouter</a></li>
+      <li><a href="https://www.kimi.ai/blog/kimi-k3-1-pro">Kimi K3.1 Pro Tech Blog: Advancing Open Intelligence</a></li>
+      <li><a href="https://platform.kimi.ai/docs/pricing/chat">Model Inference Pricing Explanation - Kimi API Platform</a></li>
+    </ol>
   </article>
 </Layout>
