@@ -235,10 +235,10 @@
       },
       "image": {
         "src": "/ai/hardware/data-centers/colossus.jpg",
-        "alt": "Colossus data center site, Memphis",
-        "credit": "",
-        "creditUrl": "",
-        "kind": "pending"
+        "alt": "Aerial view of Colossus in Memphis",
+        "credit": "xAI / SpaceXSI",
+        "creditUrl": "https://x.ai/colossus",
+        "kind": "official"
       },
       "notes": [
         {
@@ -395,10 +395,10 @@
       "extraRows": [],
       "image": {
         "src": "/ai/hardware/data-centers/stargate-abilene.jpg",
-        "alt": "Stargate Abilene campus",
-        "credit": "",
-        "creditUrl": "",
-        "kind": "pending"
+        "alt": "Aerial view of Stargate Abilene campus",
+        "credit": "Crusoe",
+        "creditUrl": "https://www.crusoe.ai/resources/newsroom/crusoe-announces-flagship-abilene-data-center-is-live",
+        "kind": "official"
       },
       "notes": [
         {
@@ -535,10 +535,10 @@
       ],
       "image": {
         "src": "/ai/hardware/data-centers/fairwater.jpg",
-        "alt": "Fairwater data center site",
-        "credit": "",
-        "creditUrl": "",
-        "kind": "pending"
+        "alt": "Aerial view of Fairwater in Mount Pleasant, Wisconsin",
+        "credit": "Microsoft",
+        "creditUrl": "https://blogs.microsoft.com/blog/2025/09/18/inside-the-worlds-most-powerful-ai-datacenter/",
+        "kind": "official"
       },
       "notes": [
         {
