@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { homesFor, KWH_PER_HOME_YEAR_DEFAULT } from '../src/lib/homes-math.ts';
+import { homesFor, KWH_PER_HOME_YEAR_DEFAULT } from '../src/lib/homes-math.mjs';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const packPath = path.join(root, 'docs/ai/hardware.datacenters.json');

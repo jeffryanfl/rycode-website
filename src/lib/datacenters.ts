@@ -1,6 +1,6 @@
 import pack from '../../docs/ai/hardware.datacenters.json';
 import plantsFile from '../../docs/ai/hardware.plants.json';
-import { homesFor as homesForMath } from './homes-math';
+import { homesFor as homesForMath } from './homes-math.mjs';
 
 export type ImageKind = 'official' | 'illustration' | 'pending';
 

@@ -362,7 +362,7 @@
       },
       "chips": [
         {
-          "type": "NVIDIA GB200 GPUs in NVL72 racks",
+          "type": "NVIDIA GB200 GPUs",
           "count": null,
           "countText": "hundreds of thousands of GPUs on one fabric at completion",
           "source": "crusoe-2025-09"
