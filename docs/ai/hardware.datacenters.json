@@ -42,6 +42,16 @@
       "url": "https://x.ai/memphis/updates",
       "primary": false
     },
+    "xai-memphis-xai": {
+      "label": "x.ai/memphis/xai",
+      "url": "https://x.ai/memphis/xai",
+      "primary": false
+    },
+    "naacp-order-2026-10-19": {
+      "label": "NAACP v. X.AI Corp., opinion and order (N.D. Miss., 19 Oct 2026)",
+      "url": "https://storage.courtlistener.com/recap/gov.uscourts.msnd.52261/gov.uscourts.msnd.52261.135.0.pdf",
+      "primary": false
+    },
     "xai-series-c": {
       "label": "xAI, Series C (23 Dec 2024)",
       "url": "https://x.ai/news/series-c",
@@ -127,6 +137,16 @@
         "note": "Colossus II still being built out.",
         "source": "spacex-424b4"
       },
+      "powerSegments": [
+        {
+          "text": "Colossus 1: more than 300 MW (Anthropic, 6 May 2026).",
+          "source": "anthropic-2026-05"
+        },
+        {
+          "text": "Both sites together: approximately 1.0 gigawatt of compute power, with additional capacity available (SpaceX prospectus, 12 Jun 2026).",
+          "source": "spacex-424b4"
+        }
+      ],
       "power": {
         "mw": 1000,
         "text": "Colossus 1: more than 300 MW (Anthropic, 6 May 2026). Both sites together: approximately 1.0 gigawatt of compute power, with additional capacity available (SpaceX prospectus, 12 Jun 2026).",
@@ -181,7 +201,7 @@
         "source": "spacex-424b4"
       },
       "water": {
-        "text": "Closed-loop reuse; planned water recycling plant to protect Memphis Aquifer supply (gallons not stated)",
+        "text": "Closed-loop reuse; planned $80 million water recycling plant to protect about 4.745 billion gallons of the Memphis Aquifer a year (company claim)",
         "source": "xai-memphis-info"
       },
       "network": {
@@ -222,13 +242,13 @@
       },
       "notes": [
         {
-          "text": "Plan to equip the Memphis facility with 1 million GPUs by 2026.",
-          "source": "xai-colossus",
+          "text": "SpaceXSI plans to equip this facility with 1 million GPUs by 2026.",
+          "source": "xai-memphis-xai",
           "claim": false
         },
         {
-          "text": "NAACP v. X.AI Corp. litigation over temporary gas turbines at Colossus II continues (court order, 19 Oct 2026).",
-          "source": "xai-memphis-updates",
+          "text": "NAACP v. X.AI Corp. over gas turbines at Colossus II continues: on 19 Oct 2026 the court let the US join the case and refused to dismiss it.",
+          "source": "naacp-order-2026-10-19",
           "claim": false
         }
       ],
@@ -260,7 +280,7 @@
         },
         {
           "date": "25 Oct 2026",
-          "text": "Live colossus page: built in 122 days, doubled in 92 days; hero cites 200,000 H100 GPUs and elsewhere 180K H100 GPUs in one cluster.",
+          "text": "x.ai/colossus: built in 122 days, doubled to 200,000 GPUs in 92 days; elsewhere on the page, 180,000 H100 GPUs in one cluster.",
           "source": "xai-colossus"
         },
         {
@@ -276,6 +296,8 @@
         "xai-colossus",
         "xai-memphis-info",
         "xai-memphis-updates",
+        "xai-memphis-xai",
+        "naacp-order-2026-10-19",
         "xai-series-c",
         "xai-series-e",
         "xai-grok-4",
@@ -305,6 +327,26 @@
         "note": "6 of 8 buildings delivered to the customer (Oracle, 10 Sep 2026). Crusoe expects campus completion by end of 2026.",
         "source": "oracle-call-2026-09"
       },
+      "statusSegments": [
+        {
+          "text": "6 of 8 buildings delivered to the customer (Oracle, 10 Sep 2026).",
+          "source": "oracle-call-2026-09"
+        },
+        {
+          "text": "Crusoe expects campus completion by end of 2026.",
+          "source": "crusoe-2026-03"
+        }
+      ],
+      "powerSegments": [
+        {
+          "text": "618 MW delivered (6 of 8 buildings, 75% of total capacity per Oracle).",
+          "source": "oracle-call-2026-09"
+        },
+        {
+          "text": "Campus planned at 1.2 GW (8 buildings, about 4 million sq ft).",
+          "source": "crusoe-2025-03"
+        }
+      ],
       "power": {
         "mw": 618,
         "text": "618 MW delivered (6 of 8 buildings, 75% of total capacity per Oracle). Campus planned at 1.2 GW (8 buildings, about 4 million sq ft).",
@@ -315,14 +357,14 @@
       "powerPlanned": {
         "mw": 1200,
         "text": "1.2 GW planned campus",
-        "homesQualifier": "at full planned power",
+        "homesQualifier": "",
         "source": "crusoe-2025-03"
       },
       "chips": [
         {
-          "type": "NVIDIA GB200 NVL72 racks",
+          "type": "NVIDIA GB200 GPUs in NVL72 racks",
           "count": null,
-          "countText": "hundreds of thousands at completion on one fabric",
+          "countText": "hundreds of thousands of GPUs on one fabric at completion",
           "source": "crusoe-2025-09"
         }
       ],
@@ -416,6 +458,10 @@
         "text": "Mount Pleasant, Wisconsin and Atlanta, Georgia",
         "source": "ms-blog-2025-09"
       },
+      "locationSegments": [
+        { "text": "Mount Pleasant, Wisconsin", "source": "ms-blog-2025-09" },
+        { "text": "Atlanta, Georgia", "source": "ms-source-2025-11" }
+      ],
       "owner": {
         "text": "Microsoft (Azure)",
         "source": "ms-blog-2025-09"
@@ -429,6 +475,13 @@
         "note": "Wisconsin building 1 fully operational (23 Jun 2026); building 2 due 2028. Atlanta running since October 2025.",
         "source": "ms-news-2026-06"
       },
+      "statusSegments": [
+        {
+          "text": "Wisconsin building 1 fully operational (23 Jun 2026); building 2 due 2028.",
+          "source": "ms-news-2026-06"
+        },
+        { "text": "Atlanta running since October 2025.", "source": "ms-source-2025-11" }
+      ],
       "power": null,
       "chips": [
         {
@@ -443,13 +496,20 @@
         {
           "who": "OpenAI, Microsoft AI, Copilot",
           "what": "training frontier models and inference for leading AI workloads",
-          "source": "ms-blog-2025-11"
+          "source": "ms-blog-2025-09"
         }
       ],
       "cooling": {
-        "text": "Closed-loop liquid cooling; about 90% on water loop and about 10% outdoor air on hottest days; 172 fans, each 20 feet across",
+        "text": "Closed-loop liquid cooling; over 90% on water loop and about 10% outdoor air on hottest days; 172 fans, each 20 feet across",
         "source": "ms-blog-2025-09"
       },
+      "waterSegments": [
+        {
+          "text": "Initial fill equals what 20 homes use in a year (Atlanta); replaced only when water chemistry requires",
+          "source": "ms-source-2025-11"
+        },
+        { "text": "designed for 6+ years", "source": "ms-blog-2025-11" }
+      ],
       "water": {
         "text": "Initial fill equals what 20 homes use in a year (Atlanta); replaced only when water chemistry requires; designed for 6+ years",
         "source": "ms-source-2025-11"
@@ -468,7 +528,7 @@
       },
       "extraRows": [
         {
-          "label": "Rack design",
+          "label": "Other figures",
           "text": "Up to 72 Blackwell GPUs per rack; about 140 kW per rack and 1,360 kW per row",
           "source": "ms-blog-2025-11"
         }

@@ -2,15 +2,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-function homesFor(mw, kwhPerHomeYear) {
-  const raw = (mw * 1000 * 8760) / kwhPerHomeYear;
-  const rounded = Number(raw.toPrecision(2));
-  return `about ${rounded.toLocaleString('en-US')}`;
-}
+import { homesFor, KWH_PER_HOME_YEAR_DEFAULT } from '../src/lib/homes-math.ts';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const packPath = path.join(root, 'docs/ai/hardware.datacenters.json');
 const plantsPath = path.join(root, 'docs/ai/hardware.plants.json');
+const distRoot = path.join(root, 'dist/ai/hardware/data-centers');
 
 const pack = JSON.parse(fs.readFileSync(packPath, 'utf8'));
 const plants = JSON.parse(fs.readFileSync(plantsPath, 'utf8'));
@@ -136,8 +133,35 @@ for (const [mw, expected] of homesCases) {
   }
 }
 
+if (KWH_PER_HOME_YEAR_DEFAULT !== 10791) fail('KWH_PER_HOME_YEAR_DEFAULT must be 10791');
 if (!pack.sources['eia-home']) fail('missing eia-home source');
 if (pack.realTerms.kwhPerHomeYear !== 10791) fail('realTerms.kwhPerHomeYear must be 10791');
+
+const builtPages = [
+  ['colossus', 'memphis-colossus'],
+  ['stargate-abilene', 'stargate-abilene'],
+  ['fairwater', 'fairwater'],
+];
+
+if (fs.existsSync(distRoot)) {
+  for (const [, slug] of builtPages) {
+    const htmlPath = path.join(distRoot, slug, 'index.html');
+    if (!fs.existsSync(htmlPath)) {
+      fail(`missing built page ${htmlPath} (run npm run build before test)`);
+      continue;
+    }
+    const html = fs.readFileSync(htmlPath, 'utf8');
+    if (!html.includes('class="ai-dc-sources"')) {
+      fail(`${slug}: Sources section must use ai-dc-sources (visible wrapper)`);
+    }
+    if (!html.includes('id="source-1"')) {
+      fail(`${slug}: Sources list must start at source-1`);
+    }
+    if (html.includes('ai-model-section') && html.match(/Sources<\/h2>[\s\S]*ai-model-section:last-child/)) {
+      fail(`${slug}: Sources must not be the hidden ai-model-section:last-child`);
+    }
+  }
+}
 
 if (errors.length) {
   console.error('test-datacenters: FAILED\n' + errors.map((e) => `  - ${e}`).join('\n'));

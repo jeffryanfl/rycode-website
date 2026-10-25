@@ -1,9 +1,15 @@
 import pack from '../../docs/ai/hardware.datacenters.json';
 import plantsFile from '../../docs/ai/hardware.plants.json';
+import { homesFor as homesForMath } from './homes-math';
 
 export type ImageKind = 'official' | 'illustration' | 'pending';
 
 export type SourcedText = {
+  text: string;
+  source: string;
+};
+
+export type SourcedPart = {
   text: string;
   source: string;
 };
@@ -47,6 +53,10 @@ export type DataCenterSite = {
   owner: SourcedText;
   operator: SourcedText | null;
   status: { value: string; note: string; source: string };
+  statusSegments?: SourcedPart[];
+  locationSegments?: SourcedPart[];
+  powerSegments?: SourcedPart[];
+  waterSegments?: SourcedPart[];
   power: DataCenterPower | null;
   powerPlanned?: DataCenterPower;
   powerSupplement?: { mw: number; homesQualifier: string; source: string };
@@ -100,9 +110,35 @@ const realTerms = pack.realTerms as DataCenterRealTerms;
 
 /** Round MW to US-home equivalent at EIA average; two significant figures with "about". */
 export function homesFor(mw: number, kwhPerHomeYear = realTerms.kwhPerHomeYear): string {
-  const raw = (mw * 1000 * 8760) / kwhPerHomeYear;
-  const rounded = Number(raw.toPrecision(2));
-  return `about ${rounded.toLocaleString('en-US')}`;
+  return homesForMath(mw, kwhPerHomeYear);
+}
+
+const MONTHS: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function updateSortKey(label: string): number {
+  const match = /^(\d{1,2})\s+(\w{3})\s+(\d{4})$/.exec(label.trim());
+  if (!match) return 0;
+  const day = Number(match[1]);
+  const month = MONTHS[match[2]] ?? 0;
+  const year = Number(match[3]);
+  return Date.UTC(year, month, day);
+}
+
+export function sortedUpdates(site: DataCenterSite): DataCenterSite['updates'] {
+  return [...site.updates].sort((a, b) => updateSortKey(b.date) - updateSortKey(a.date)).slice(0, 8);
 }
 
 export function homesSubLine(): string {
@@ -144,12 +180,25 @@ export function orderedSources(site: DataCenterSite): DataCenterSource[] {
   });
 }
 
-export function sourceAnchors(site: DataCenterSite): Record<string, number> {
+/** Sources listed on the page (EIA omitted when there is no homes figure). */
+export function sourcesForPage(site: DataCenterSite): DataCenterSource[] {
+  const all = orderedSources(site);
+  if (site.power?.mw) return all;
+  return all.filter((source) => source.key !== realTerms.sourceKey);
+}
+
+/** Contiguous 1..N anchor numbers matching the visible Sources list. */
+export function displayAnchors(site: DataCenterSite): Record<string, number> {
   const anchors: Record<string, number> = {};
-  orderedSources(site).forEach((source, index) => {
+  sourcesForPage(site).forEach((source, index) => {
     anchors[source.key] = index + 1;
   });
   return anchors;
+}
+
+/** @deprecated Use displayAnchors for in-page cites. */
+export function sourceAnchors(site: DataCenterSite): Record<string, number> {
+  return displayAnchors(site);
 }
 
 export function headlinePower(site: DataCenterSite): string | undefined {

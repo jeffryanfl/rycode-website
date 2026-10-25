@@ -2305,3 +2305,38 @@ a.hw-card:focus-visible .hw-card-title {
   color: var(--ai-dim);
 }
 
+.ai-dc-sources {
+  margin: 1.5rem 0 0;
+}
+
+.ai-dc-sources-title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ai-ink);
+}
+
+.ai-dc-sources-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--ai-ink);
+}
+
+.ai-dc-sources-list li {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.4rem;
+}
+
+.ai-dc-sources-n {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ai-dim);
+}
+
