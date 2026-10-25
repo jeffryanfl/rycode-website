@@ -1,5 +1,6 @@
 import plantsFile from '../../docs/ai/hardware.plants.json';
 import themesFile from '../../docs/ai/hardware.themes.json';
+import { siteCardImage, siteCardOwner, siteCardRows } from './datacenters';
 
 /** The same short figure list on every chip card, in this order. A missing figure shows as not stated. Price shows only when sourced. */
 export type ChipSpec = {
@@ -40,6 +41,11 @@ export type HardwareCard = {
   imageCaption?: string;
   /** Chip figures. When set, the card is a chip card with the shared figure list. */
   spec?: ChipSpec;
+  /** Data-center site card rows when the plant has a datacenters.json entry. */
+  siteRows?: { label: string; value: string }[];
+  /** Site card owner line under the title. */
+  siteOwner?: string;
+  imageKind?: 'official' | 'illustration' | 'pending';
 };
 
 type HardwarePlant = HardwareCard & {
@@ -80,9 +86,30 @@ export function hardwareTheme(id: string): HardwareCard {
   return theme;
 }
 
+function enrichSiteCard(plant: HardwarePlant): HardwareCard {
+  const rows = siteCardRows(plant.id);
+  if (!rows) return plant;
+  const image = siteCardImage(plant.id);
+  const siteOwner = siteCardOwner(plant.id);
+  return {
+    ...plant,
+    siteOwner,
+    image: image?.kind === 'pending' ? undefined : image?.src,
+    imageAlt: image?.alt,
+    imageKind: image?.kind,
+    siteRows: [
+      { label: 'Power', value: rows.power },
+      { label: 'Chips', value: rows.chips },
+      { label: 'Used for', value: rows.usedFor },
+    ],
+  };
+}
+
 /** Plant cards for one theme. An empty list means the theme index shows the quiet card. */
 export function hardwarePlants(themeId: string): HardwareCard[] {
-  return plants.filter((plant) => plant.theme === themeId);
+  return plants
+    .filter((plant) => plant.theme === themeId)
+    .map((plant) => enrichSiteCard(plant));
 }
 
 /** Plants for one theme, in file order, under the lab each page already belongs to. */
@@ -96,7 +123,7 @@ export function hardwarePlantsByLab(themeId: string): { lab: string; cards: Hard
       group = { lab: plant.lab, cards: [] };
       groups.push(group);
     }
-    group.cards.push(plant);
+    group.cards.push(enrichSiteCard(plant));
   }
   return groups;
 }

@@ -1,0 +1,290 @@
+---
+import ChipFigure from './ChipFigure.astro';
+import {
+  datacenterSite,
+  headlineChips,
+  headlineHomes,
+  headlinePower,
+  headlineStatus,
+  homesFor,
+  homesSubLine,
+  notStatedBy,
+  orderedSources,
+  sourceAnchors,
+  statusLabel,
+} from '../lib/datacenters';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const site = datacenterSite(id);
+const anchors = sourceAnchors(site);
+const sources = orderedSources(site);
+const owner = site.ownerName;
+
+function ref(key: string | undefined): number | undefined {
+  if (!key) return undefined;
+  return anchors[key];
+}
+
+function sourcedOrNot(row: { text?: string; source?: string } | null | undefined): { text: string; source?: string } {
+  if (!row?.text) return { text: notStatedBy(owner) };
+  return { text: row.text, source: row.source };
+}
+
+const realTermsKey = 'eia-home';
+
+const powerRow = site.power
+  ? { text: site.power.text, source: site.power.source }
+  : { text: notStatedBy(owner) };
+
+const powerHomes = site.power?.mw
+  ? {
+      text: `${homesFor(site.power.mw)} homes${site.power.homesQualifier ? `, ${site.power.homesQualifier}` : ''}`,
+      source: realTermsKey,
+    }
+  : { text: notStatedBy(owner) };
+
+const chipsText =
+  site.chips.length === 0
+    ? notStatedBy(owner)
+    : site.chips
+        .map((chip) => {
+          const count = chip.countText ?? (chip.count != null ? String(chip.count) : '');
+          return count ? `${count}: ${chip.type}` : chip.type;
+        })
+        .join('; ');
+
+const chipsSource = site.chips[0]?.source;
+
+const computeRow = site.compute
+  ? {
+      text: `${site.compute.text} (${site.compute.basis === 'stated' ? 'Company figure' : 'Rycode math'})`,
+      source: site.compute.source,
+    }
+  : { text: notStatedBy(owner) };
+
+const usedForText =
+  site.usedFor.length === 0
+    ? notStatedBy(owner)
+    : site.usedFor.map((row) => `${row.who}: ${row.what}`).join('; ');
+const usedForSource = site.usedFor[0]?.source;
+
+const specRows: { label: string; text: string; source?: string }[] = [
+  { label: 'Location', ...sourcedOrNot(site.location) },
+  { label: 'Owner', ...sourcedOrNot(site.owner) },
+  {
+    label: 'Operator',
+    ...(site.operator?.text ? { text: site.operator.text, source: site.operator.source } : { text: notStatedBy(owner) }),
+  },
+  {
+    label: 'Status',
+    text: `${statusLabel(site.status.value)}${site.status.note ? `. ${site.status.note}` : ''}`,
+    source: site.status.source,
+  },
+  { label: 'Power', ...powerRow },
+  { label: 'Power in real terms', ...powerHomes },
+  { label: 'Chips', text: chipsText, source: chipsSource },
+  { label: 'Compute', ...computeRow },
+  { label: 'Used for', text: usedForText, source: usedForSource },
+  { label: 'Cooling', ...sourcedOrNot(site.cooling) },
+  { label: 'Water', ...sourcedOrNot(site.water) },
+  { label: 'Network', ...sourcedOrNot(site.network) },
+  { label: 'Cost', ...sourcedOrNot(site.cost) },
+  { label: 'Site', ...sourcedOrNot(site.site) },
+  site.extraRows.length
+    ? {
+        label: site.extraRows.length === 1 ? site.extraRows[0].label : 'Other figures',
+        text:
+          site.extraRows.length === 1
+            ? site.extraRows[0].text
+            : site.extraRows.map((row) => `${row.label}: ${row.text}`).join('; '),
+        source: site.extraRows[0].source,
+      }
+    : { label: 'Other figures', text: notStatedBy(owner) },
+];
+
+const tilePower = headlinePower(site) ?? 'Not stated';
+const tileHomes = headlineHomes(site) ?? 'Not stated';
+const tileChips = headlineChips(site) ?? 'Not stated';
+const tileStatus = headlineStatus(site);
+
+const showHomesInSources = Boolean(site.power?.mw);
+const updates = [...site.updates].slice(0, 8);
+const notes = site.notes.slice(0, 4);
+
+const plannedHomes =
+  site.powerPlanned?.mw
+    ? `${homesFor(site.powerPlanned.mw)} homes${site.powerPlanned.homesQualifier ? `, ${site.powerPlanned.homesQualifier}` : ''}`
+    : undefined;
+
+const supplementHomes =
+  site.powerSupplement?.mw
+    ? `${homesFor(site.powerSupplement.mw)} homes, ${site.powerSupplement.homesQualifier}`
+    : undefined;
+---
+
+<article class="ai-model">
+  <p class="ai-model-kicker">
+    Hardware · <a href="/ai/hardware/data-centers/">Data center</a> · {site.owner.text}
+  </p>
+  <h1 class="ai-model-title">{site.name}</h1>
+  <p class="ai-model-dek">{site.dek}</p>
+  <p class="ai-model-checked">Last checked <time datetime={site.asOf}>{site.asOf}</time></p>
+  <hr class="ai-model-rule" />
+
+  {site.image.kind !== 'pending' && (
+    <ChipFigure
+      variant="site"
+      src={site.image.src}
+      alt={site.image.alt}
+      credit={site.image.credit}
+      creditUrl={site.image.creditUrl}
+      imageKind={site.image.kind}
+    />
+  )}
+
+  <dl class="ai-model-facts" aria-label="Headline figures">
+    <div>
+      <dt>Power</dt>
+      <dd class:list={{ 'ai-dc-muted': tilePower === 'Not stated' }}>{tilePower}</dd>
+    </div>
+    <div>
+      <dt>Homes equivalent</dt>
+      <dd class:list={{ 'ai-dc-muted': tileHomes === 'Not stated' }}>
+        {tileHomes}
+        {site.power?.mw ? <span class="ai-model-facts-sub">{homesSubLine()}</span> : null}
+      </dd>
+    </div>
+    <div>
+      <dt>Chips</dt>
+      <dd class:list={{ 'ai-dc-muted': tileChips === 'Not stated' }}>{tileChips}</dd>
+    </div>
+    <div>
+      <dt>Status</dt>
+      <dd>{tileStatus}</dd>
+    </div>
+  </dl>
+
+  <h2 class="visually-hidden">Spec sheet</h2>
+  <div class="ai-agent-tool-spec-wrap">
+    <table class="ai-agent-tool-spec ai-dc-spec">
+      <caption class="visually-hidden">Spec sheet for {site.name}</caption>
+      <tbody>
+        {specRows.map((row) => (
+          <tr>
+            <th scope="row">{row.label}</th>
+            <td>
+              {row.text}
+              {row.source && row.text !== notStatedBy(owner) && ref(row.source) ? (
+                <a class="agent-tool-source-ref" href={`#source-${ref(row.source)}`}>[{ref(row.source)}]</a>
+              ) : null}
+              {row.label === 'Power in real terms' && site.power?.mw ? (
+                <span class="ai-model-facts-sub">{homesSubLine()}</span>
+              ) : null}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {site.power?.mw ? (
+    <section class="ai-dc-real-terms" aria-labelledby={`dc-real-${id}`}>
+      <h2 class="ai-model-section" id={`dc-real-${id}`}>Power in real terms</h2>
+      <p>
+        {homesFor(site.power.mw)} US homes worth of electricity per year, if the site ran at full rated power all year
+        {site.power.homesQualifier ? ` (${site.power.homesQualifier})` : ''}.
+        {ref(realTermsKey) ? (
+          <a class="agent-tool-source-ref" href={`#source-${ref(realTermsKey)}`}>[{ref(realTermsKey)}]</a>
+        ) : null}
+      </p>
+      {supplementHomes ? (
+        <p>
+          {supplementHomes}.
+          {ref(site.powerSupplement?.source) ? (
+            <a class="agent-tool-source-ref" href={`#source-${ref(site.powerSupplement?.source)}`}>[{ref(site.powerSupplement?.source)}]</a>
+          ) : null}
+        </p>
+      ) : null}
+      {plannedHomes ? (
+        <p>
+          At full planned power: {plannedHomes}.
+          {ref(site.powerPlanned?.source) ? (
+            <a class="agent-tool-source-ref" href={`#source-${ref(site.powerPlanned?.source)}`}>[{ref(site.powerPlanned?.source)}]</a>
+          ) : null}
+        </p>
+      ) : null}
+      {site.onSiteGeneration?.text ? (
+        <p>
+          {site.onSiteGeneration.text}
+          {ref(site.onSiteGeneration.source) ? (
+            <a class="agent-tool-source-ref" href={`#source-${ref(site.onSiteGeneration.source)}`}>[{ref(site.onSiteGeneration.source)}]</a>
+          ) : null}
+        </p>
+      ) : null}
+      {site.gridNotes?.text ? (
+        <p>
+          {site.gridNotes.text}
+          {ref(site.gridNotes.source) ? (
+            <a class="agent-tool-source-ref" href={`#source-${ref(site.gridNotes.source)}`}>[{ref(site.gridNotes.source)}]</a>
+          ) : null}
+        </p>
+      ) : null}
+      <p class="ai-model-facts-sub">{homesSubLine()}</p>
+    </section>
+  ) : null}
+
+  {notes.length > 0 ? (
+    <section class="ai-dc-notes" aria-labelledby={`dc-notes-${id}`}>
+      <h2 class="ai-model-section" id={`dc-notes-${id}`}>Notes</h2>
+      <ul class="ai-model-sources">
+        {notes.map((note) => (
+          <li>
+            {note.claim ? <span class="ai-dc-claim">Claim · </span> : null}
+            {note.text}
+            {ref(note.source) ? (
+              <a class="agent-tool-source-ref" href={`#source-${ref(note.source)}`}>[{ref(note.source)}]</a>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ) : null}
+
+  {updates.length > 0 ? (
+    <section class="ai-dc-updates" aria-labelledby={`dc-updates-${id}`}>
+      <h2 class="ai-model-section" id={`dc-updates-${id}`}>Updates</h2>
+      <ul class="ai-dc-update-list">
+        {updates.map((line) => (
+          <li>
+            <time datetime={line.date}>{line.date}</time>
+            {' · '}
+            {line.text}
+            {ref(line.source) ? (
+              <a class="agent-tool-source-ref" href={`#source-${ref(line.source)}`}>[{ref(line.source)}]</a>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ) : null}
+
+  <section class="ai-model-section" aria-labelledby={`dc-sources-${id}`}>
+    <h2 class="ai-model-section" id={`dc-sources-${id}`}>Sources</h2>
+    <ol class="ai-model-sources">
+      {sources
+        .filter((source) => showHomesInSources || source.key !== realTermsKey)
+        .map((source, index) => {
+          const num = anchors[source.key] ?? index + 1;
+          return (
+            <li id={`source-${num}`}>
+              <a href={source.url} rel="noopener noreferrer" target="_blank">{source.label}</a>
+            </li>
+          );
+        })}
+    </ol>
+  </section>
+</article>

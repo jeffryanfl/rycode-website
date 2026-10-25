@@ -10,9 +10,10 @@ interface Props {
 
 const { cards, listLabel, emptyTitle } = Astro.props;
 const chipGrid = cards.some((card) => card.spec);
+const siteGrid = cards.some((card) => card.siteRows);
 ---
 
-<ul class:list={["hw-card-grid", { "hw-chip-grid": chipGrid }]} aria-label={listLabel}>
+<ul class:list={["hw-card-grid", { "hw-chip-grid": chipGrid, "hw-site-grid": siteGrid }]} aria-label={listLabel}>
   {cards.length === 0 && emptyTitle ? (
     <li>
       <div class="hw-card hw-card--quiet">
@@ -54,6 +55,27 @@ const chipGrid = cards.some((card) => card.spec);
               </dl>
               {card.spec.note ? <p class="hw-chip-note">{card.spec.note}</p> : null}
             </div>
+          </a>
+        ) : card.siteRows ? (
+          <a class="hw-card hw-site" href={card.href}>
+            <div class="hw-site-art">
+              {card.image ? (
+                <img src={card.image} alt={card.imageAlt ?? ''} width="1600" height="900" loading="lazy" decoding="async" />
+              ) : (
+                <span class="hw-site-art-empty" aria-hidden="true">{card.siteOwner ?? card.title}</span>
+              )}
+              {card.imageKind === 'illustration' ? <span class="hw-site-art-tag">Illustration</span> : null}
+            </div>
+            <h2 class="hw-card-title">{card.title}</h2>
+            {card.siteOwner ? <p class="hw-site-owner">{card.siteOwner}</p> : null}
+            <dl class="hw-site-rows">
+              {card.siteRows.map((row) => (
+                <div class="hw-site-row">
+                  <dt>{row.label}</dt>
+                  <dd class:list={{ 'hw-site-none': row.value === 'Not stated' }}>{row.value}</dd>
+                </div>
+              ))}
+            </dl>
           </a>
         ) : (
           <a class="hw-card" href={card.href}>
