@@ -6,15 +6,51 @@ interface Props {
   credit: string;
   /** Optional words before the credit, such as the chip's name on the photo. */
   caption?: string;
-  /** Hero sits under the dek. Section figures sit inside a generation's section. Rack figures are 4:3 rack or system images. */
-  variant?: 'hero' | 'section' | 'rack';
+  /** Hero sits under the dek. Section figures sit inside a generation's section. Rack figures are 4:3 rack or system images. Site is 16:9 data-center hero. */
+  variant?: 'hero' | 'section' | 'rack' | 'site';
+  imageKind?: 'official' | 'illustration' | 'pending';
+  creditUrl?: string;
 }
 
-const { src, alt, credit, caption, variant = 'hero' } = Astro.props;
-const [width, height] = variant === 'rack' ? [1280, 960] : [760, 760];
+const { src, alt, credit, caption, variant = 'hero', imageKind, creditUrl } = Astro.props;
+const [width, height] =
+  variant === 'rack' ? [1280, 960] : variant === 'site' ? [1600, 900] : [760, 760];
+
+const showFigure = !(variant === 'site' && imageKind === 'pending');
 ---
 
-<figure class:list={['ai-model-figure', { 'ai-model-figure--section': variant === 'section', 'ai-model-figure--rack': variant === 'rack' }]}>
-  <img src={src} alt={alt} width={width} height={height} loading={variant === 'hero' ? 'eager' : 'lazy'} decoding="async" />
-  <figcaption class="ai-model-credit">{caption ? `${caption} ` : ''}{credit}</figcaption>
+{showFigure ? (
+<figure
+  class:list={[
+    'ai-model-figure',
+    {
+      'ai-model-figure--section': variant === 'section',
+      'ai-model-figure--rack': variant === 'rack',
+      'ai-model-figure--site': variant === 'site',
+    },
+  ]}
+>
+  <img src={src} alt={alt} width={width} height={height} loading={variant === 'hero' || variant === 'site' ? 'eager' : 'lazy'} decoding="async" />
+  {variant === 'site' && imageKind === 'illustration' ? (
+    <figcaption class="ai-model-credit">
+      Illustration, not the actual site.
+      {creditUrl ? (
+        <a href={creditUrl} rel="noopener noreferrer" target="_blank">{credit}</a>
+      ) : (
+        credit
+      )}
+    </figcaption>
+  ) : variant === 'site' && imageKind === 'official' ? (
+    <figcaption class="ai-model-credit">
+      Photo:
+      {creditUrl ? (
+        <a href={creditUrl} rel="noopener noreferrer" target="_blank">{credit}</a>
+      ) : (
+        ` ${credit}`
+      )}
+    </figcaption>
+  ) : (
+    <figcaption class="ai-model-credit">{caption ? `${caption} ` : ''}{credit}</figcaption>
+  )}
 </figure>
+) : null}

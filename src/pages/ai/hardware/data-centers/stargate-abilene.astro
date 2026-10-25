@@ -1,44 +1,16 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
+import DataCenterSpec from '../../../../components/DataCenterSpec.astro';
+import { datacenterSite } from '../../../../lib/datacenters';
 import '../../../../styles/ai.css';
+
+const site = datacenterSite('stargate-abilene');
 ---
 
 <Layout
   title="Stargate Abilene - Hardware - Rycode"
-  description="OpenAI's flagship Stargate campus in Abilene, Texas: built by Crusoe, run on Oracle Cloud, 8 buildings and 1.2 GW planned."
+  description={`${site.name}. ${site.dek}`}
   variant="ai"
 >
-  <article class="ai-model">
-    <p class="ai-model-kicker">Hardware · Data center</p>
-    <h1 class="ai-model-title">Stargate Abilene</h1>
-    <p class="ai-model-dek">Stargate is OpenAI's name for its AI data center build-out with Oracle, SoftBank, and other partners. Its flagship site is in Abilene, Texas. Crusoe builds the campus, Oracle runs it on Oracle Cloud Infrastructure (OCI), and OpenAI uses it. OpenAI said in September 2025 that Oracle began delivering the first Nvidia GB200 racks there in June 2025 and that early training and inference had started (<a href="https://openai.com/index/five-new-stargate-sites/">OpenAI, 23 Sep 2025</a>).</p>
-    <hr class="ai-model-rule" />
-
-    <h2 class="ai-model-section">Key figures</h2>
-    <div class="ai-model-table-wrap">
-      <table class="ai-model-table ai-model-table--prose">
-        <thead><tr><th scope="col">Figure</th><th scope="col">Abilene campus</th></tr></thead>
-        <tbody>
-          <tr><td>Buildings</td><td>8 planned</td></tr>
-          <tr><td>Floor space</td><td>About 4 million sq ft</td></tr>
-          <tr><td>Power capacity</td><td>1.2 GW planned</td></tr>
-          <tr><td>First phase</td><td>2 buildings, 200+ MW</td></tr>
-          <tr><td>Second phase</td><td>6 buildings, expected mid-2026, per Crusoe's March 2025 release</td></tr>
-          <tr><td>Chips</td><td>Nvidia GB200 NVL72 racks</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>A gigawatt (GW) is a billion watts, about the output of one large power plant; a megawatt (MW) is a thousandth of that. Data centers are sized by the power they can draw. Figures are from Crusoe's 18 March 2025 release.</p>
-    <h2 class="ai-model-section">Power and cooling</h2>
-    <p>Crusoe says the site has a 1.2 GW grid connection, plus batteries and solar on site, with natural gas turbines as backup power. Cooling is direct-to-chip liquid cooling in a closed loop that does not evaporate water. Direct-to-chip means cold plates sit on the chips themselves.</p>
-    <h2 class="ai-model-section">What changed</h2>
-    <p>OpenAI's September 2025 post named a possible 600 MW expansion near Abilene. This page does not have a primary source on whether that expansion went ahead.</p>
-    <p>Other Stargate partners include CoreWeave; see <a href="/ai/hardware/ai-clouds/">AI cloud providers</a>.</p>
-
-    <h2 class="ai-model-section">Sources</h2>
-    <ul class="ai-model-sources">
-      <li><a href="https://www.crusoe.ai/resources/newsroom/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts">Crusoe, Abilene campus to 1.2 GW (18 Mar 2025)</a></li>
-      <li><a href="https://openai.com/index/five-new-stargate-sites/">OpenAI, five new Stargate sites (23 Sep 2025)</a></li>
-    </ul>
-  </article>
+  <DataCenterSpec id="stargate-abilene" />
 </Layout>

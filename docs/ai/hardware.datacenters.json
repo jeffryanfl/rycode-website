@@ -1,0 +1,585 @@
+{
+  "asOfLabel": "25 Oct 2026 · data-center pack",
+  "realTerms": {
+    "kwhPerHomeYear": 10791,
+    "dataYear": 2022,
+    "sourceKey": "eia-home",
+    "fetched": "25 Oct 2026"
+  },
+  "sources": {
+    "eia-home": {
+      "label": "EIA, How much electricity does an American home use?",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=97&t=3",
+      "primary": true
+    },
+    "spacex-424b4": {
+      "label": "SpaceX, Form 424B4 prospectus (12 Jun 2026)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
+      "primary": true
+    },
+    "anthropic-2026-05": {
+      "label": "Anthropic, Higher limits for Claude Pro and Max users (6 May 2026)",
+      "url": "https://www.anthropic.com/news/higher-limits-spacex",
+      "primary": false
+    },
+    "xai-anthropic-partnership": {
+      "label": "xAI, Anthropic compute partnership (6 May 2026)",
+      "url": "https://x.ai/news/anthropic-compute-partnership",
+      "primary": false
+    },
+    "xai-colossus": {
+      "label": "x.ai/colossus (fetched 25 Oct 2026)",
+      "url": "https://x.ai/colossus",
+      "primary": false
+    },
+    "xai-memphis-info": {
+      "label": "x.ai/memphis/info",
+      "url": "https://x.ai/memphis/info",
+      "primary": false
+    },
+    "xai-memphis-updates": {
+      "label": "x.ai/memphis/updates (30 Jul 2026)",
+      "url": "https://x.ai/memphis/updates",
+      "primary": false
+    },
+    "xai-memphis-xai": {
+      "label": "x.ai/memphis/xai",
+      "url": "https://x.ai/memphis/xai",
+      "primary": false
+    },
+    "naacp-order-2026-10-19": {
+      "label": "NAACP v. X.AI Corp., opinion and order (N.D. Miss., 19 Oct 2026)",
+      "url": "https://storage.courtlistener.com/recap/gov.uscourts.msnd.52261/gov.uscourts.msnd.52261.135.0.pdf",
+      "primary": false
+    },
+    "xai-series-c": {
+      "label": "xAI, Series C (23 Dec 2024)",
+      "url": "https://x.ai/news/series-c",
+      "primary": false
+    },
+    "xai-series-e": {
+      "label": "xAI, Series E (6 Jan 2026)",
+      "url": "https://x.ai/news/series-e",
+      "primary": false
+    },
+    "xai-grok-4": {
+      "label": "xAI, Grok 4 (9 Jul 2025)",
+      "url": "https://x.ai/news/grok-4",
+      "primary": false
+    },
+    "crusoe-2025-03": {
+      "label": "Crusoe, Abilene campus to 1.2 GW (18 Mar 2025)",
+      "url": "https://www.crusoe.ai/resources/newsroom/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts",
+      "primary": true
+    },
+    "crusoe-2025-09": {
+      "label": "Crusoe, Abilene data center is live (30 Sep 2025)",
+      "url": "https://www.crusoe.ai/resources/newsroom/crusoe-announces-flagship-abilene-data-center-is-live",
+      "primary": false
+    },
+    "crusoe-2026-03": {
+      "label": "Crusoe, 900 MW Microsoft campus adjacent to Abilene (27 Mar 2026)",
+      "url": "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure",
+      "primary": false
+    },
+    "openai-2025-09": {
+      "label": "OpenAI, Five new Stargate sites (23 Sep 2025)",
+      "url": "https://openai.com/index/five-new-stargate-sites/",
+      "primary": false
+    },
+    "oracle-call-2026-09": {
+      "label": "Oracle Q1 FY27 earnings call transcript (10 Sep 2026)",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-oracle-beats-q1-2026-estimates-lifts-guidance-93CH-4897013",
+      "primary": false
+    },
+    "ms-blog-2025-09": {
+      "label": "Microsoft, Inside the world's most powerful AI datacenter (18 Sep 2025)",
+      "url": "https://blogs.microsoft.com/blog/2025/09/18/inside-the-worlds-most-powerful-ai-datacenter/",
+      "primary": true
+    },
+    "ms-blog-2025-11": {
+      "label": "Microsoft, Infinite scale: the Azure AI superfactory (12 Nov 2025)",
+      "url": "https://blogs.microsoft.com/blog/2025/11/12/infinite-scale-the-architecture-behind-the-azure-ai-superfactory/",
+      "primary": false
+    },
+    "ms-news-2026-06": {
+      "label": "Microsoft, Mount Pleasant Wisconsin datacenter complete (23 Jun 2026)",
+      "url": "https://news.microsoft.com/source/2026/06/23/microsoft-completes-construction-on-first-datacenter-facility-in-mount-pleasant-wisconsin/",
+      "primary": false
+    },
+    "ms-source-2025-11": {
+      "label": "Microsoft Source, Wisconsin to Atlanta AI superfactory (12 Nov 2025)",
+      "url": "https://news.microsoft.com/source/features/ai/from-wisconsin-to-atlanta-microsoft-connects-datacenters-to-build-its-first-ai-superfactory/",
+      "primary": false
+    }
+  },
+  "sites": [
+    {
+      "id": "colossus",
+      "name": "Memphis / Colossus",
+      "ownerName": "SpaceX",
+      "dek": "SpaceXAI training campus in Memphis and Southaven: Colossus 1 and Colossus II on about 1 gigawatt of company-stated compute power.",
+      "asOf": "25 Oct 2026",
+      "location": {
+        "text": "Memphis, Tennessee; Colossus II also in Southaven, Mississippi",
+        "source": "spacex-424b4"
+      },
+      "owner": {
+        "text": "SpaceX (xAI)",
+        "source": "spacex-424b4"
+      },
+      "operator": {
+        "text": "SpaceX",
+        "source": "spacex-424b4"
+      },
+      "status": {
+        "value": "running",
+        "note": "Colossus II still being built out.",
+        "source": "spacex-424b4"
+      },
+      "powerSegments": [
+        {
+          "text": "Colossus 1: more than 300 MW (Anthropic, 6 May 2026).",
+          "source": "anthropic-2026-05"
+        },
+        {
+          "text": "Both sites together: approximately 1.0 gigawatt of compute power, with additional capacity available (SpaceX prospectus, 12 Jun 2026).",
+          "source": "spacex-424b4"
+        }
+      ],
+      "power": {
+        "mw": 1000,
+        "text": "Colossus 1: more than 300 MW (Anthropic, 6 May 2026). Both sites together: approximately 1.0 gigawatt of compute power, with additional capacity available (SpaceX prospectus, 12 Jun 2026).",
+        "kind": "running",
+        "homesQualifier": "at both sites, company-stated compute power",
+        "source": "spacex-424b4"
+      },
+      "powerSupplement": {
+        "mw": 300,
+        "homesQualifier": "Colossus 1 floor (more than 300 MW stated)",
+        "source": "anthropic-2026-05"
+      },
+      "chips": [
+        {
+          "type": "NVIDIA H100, H200, GB200",
+          "count": null,
+          "countText": "over 220,000 on Colossus 1",
+          "source": "xai-anthropic-partnership"
+        },
+        {
+          "type": "NVIDIA GB200",
+          "count": null,
+          "countText": "about 110,000 (first Colossus II cluster)",
+          "source": "spacex-424b4"
+        },
+        {
+          "type": "NVIDIA GB300",
+          "count": null,
+          "countText": "about 110,000 (second Colossus II cluster); at least 220,000 more GB300 in next phase",
+          "source": "spacex-424b4"
+        }
+      ],
+      "compute": {
+        "text": "over 1 million H100-equivalents across Colossus I and II at the end of 2025",
+        "basis": "stated",
+        "source": "xai-series-e"
+      },
+      "usedFor": [
+        {
+          "who": "SpaceXAI",
+          "what": "training and inference for frontier models, including Grok-5 on Colossus II",
+          "source": "spacex-424b4"
+        },
+        {
+          "who": "Anthropic",
+          "what": "all Colossus 1 capacity for Claude Pro and Max users",
+          "source": "anthropic-2026-05"
+        }
+      ],
+      "cooling": {
+        "text": "Liquid cooling; advanced water cleaning, reclamation, and recycling",
+        "source": "spacex-424b4"
+      },
+      "water": {
+        "text": "Closed-loop reuse; planned $80 million water recycling plant to protect about 4.745 billion gallons of the Memphis Aquifer a year (company claim)",
+        "source": "xai-memphis-info"
+      },
+      "network": {
+        "text": "2.8 Tb/s per server",
+        "source": "xai-colossus"
+      },
+      "cost": null,
+      "site": {
+        "text": "Colossus 1 on Paul R. Lowry Road, Memphis (repurposed factory shell); Colossus II on Tulane Road, Memphis and Stateline Road, Southaven",
+        "source": "spacex-424b4"
+      },
+      "extraRows": [
+        {
+          "label": "Memory bandwidth",
+          "text": "170 PB/s aggregate",
+          "source": "xai-colossus"
+        },
+        {
+          "label": "Storage",
+          "text": "0.5 EB",
+          "source": "xai-colossus"
+        }
+      ],
+      "onSiteGeneration": {
+        "text": "A 1.2 GW permanent natural gas plant with 41 turbines is under construction in Southaven (Clean Air Act permit, March 2026).",
+        "source": "xai-memphis-updates"
+      },
+      "gridNotes": {
+        "text": "150 MW substation ($35M) plus a second substation ($20M) on the Memphis grid.",
+        "source": "xai-memphis-info"
+      },
+      "image": {
+        "src": "/ai/hardware/data-centers/colossus.jpg",
+        "alt": "Colossus data center site, Memphis",
+        "credit": "",
+        "creditUrl": "",
+        "kind": "pending"
+      },
+      "notes": [
+        {
+          "text": "SpaceXSI plans to equip this facility with 1 million GPUs by 2026.",
+          "source": "xai-memphis-xai",
+          "claim": false
+        },
+        {
+          "text": "NAACP v. X.AI Corp. over gas turbines at Colossus II continues: on 19 Oct 2026 the court let the US join the case and refused to dismiss it.",
+          "source": "naacp-order-2026-10-19",
+          "claim": false
+        }
+      ],
+      "updates": [
+        {
+          "date": "12 Jun 2026",
+          "text": "First Colossus cluster online in 122 days; first Colossus II cluster in 91 days; both sites together about 1 gigawatt of compute power.",
+          "source": "spacex-424b4"
+        },
+        {
+          "date": "6 May 2026",
+          "text": "Anthropic uses all Colossus 1 capacity: more than 300 MW and over 220,000 NVIDIA GPUs within the month.",
+          "source": "anthropic-2026-05"
+        },
+        {
+          "date": "6 May 2026",
+          "text": "Colossus 1: over 220,000 Nvidia chips, a mix of H100, H200, and GB200.",
+          "source": "xai-anthropic-partnership"
+        },
+        {
+          "date": "6 Jan 2026",
+          "text": "Colossus I and II ended 2025 above one million H100-equivalents.",
+          "source": "xai-series-e"
+        },
+        {
+          "date": "9 Jul 2025",
+          "text": "Grok 4 training used Colossus, described as a 200,000 GPU cluster.",
+          "source": "xai-grok-4"
+        },
+        {
+          "date": "25 Oct 2026",
+          "text": "x.ai/colossus: built in 122 days, doubled to 200,000 GPUs in 92 days; elsewhere on the page, 180,000 H100 GPUs in one cluster.",
+          "source": "xai-colossus"
+        },
+        {
+          "date": "23 Dec 2024",
+          "text": "100,000 Nvidia Hopper GPUs operating in 122 days; plan to double to 200,000 Hopper GPUs.",
+          "source": "xai-series-c"
+        }
+      ],
+      "sourceKeys": [
+        "spacex-424b4",
+        "anthropic-2026-05",
+        "xai-anthropic-partnership",
+        "xai-colossus",
+        "xai-memphis-info",
+        "xai-memphis-updates",
+        "xai-memphis-xai",
+        "naacp-order-2026-10-19",
+        "xai-series-c",
+        "xai-series-e",
+        "xai-grok-4",
+        "eia-home"
+      ]
+    },
+    {
+      "id": "stargate-abilene",
+      "name": "Stargate Abilene",
+      "ownerName": "OpenAI",
+      "dek": "OpenAI's flagship Stargate campus in Abilene, Texas: Crusoe builds it, Oracle runs it on OCI, with GB200 racks.",
+      "asOf": "25 Oct 2026",
+      "location": {
+        "text": "Lancium Clean Campus, Abilene, Texas",
+        "source": "crusoe-2025-03"
+      },
+      "owner": {
+        "text": "OpenAI",
+        "source": "openai-2025-09"
+      },
+      "operator": {
+        "text": "Built by Crusoe; compute on Oracle Cloud Infrastructure",
+        "source": "crusoe-2025-09"
+      },
+      "status": {
+        "value": "partly-running",
+        "note": "6 of 8 buildings delivered to the customer (Oracle, 10 Sep 2026). Crusoe expects campus completion by end of 2026.",
+        "source": "oracle-call-2026-09"
+      },
+      "statusSegments": [
+        {
+          "text": "6 of 8 buildings delivered to the customer (Oracle, 10 Sep 2026).",
+          "source": "oracle-call-2026-09"
+        },
+        {
+          "text": "Crusoe expects campus completion by end of 2026.",
+          "source": "crusoe-2026-03"
+        }
+      ],
+      "powerSegments": [
+        {
+          "text": "618 MW delivered (6 of 8 buildings, 75% of total capacity per Oracle).",
+          "source": "oracle-call-2026-09"
+        },
+        {
+          "text": "Campus planned at 1.2 GW (8 buildings, about 4 million sq ft).",
+          "source": "crusoe-2025-03"
+        }
+      ],
+      "power": {
+        "mw": 618,
+        "text": "618 MW delivered (6 of 8 buildings, 75% of total capacity per Oracle). Campus planned at 1.2 GW (8 buildings, about 4 million sq ft).",
+        "kind": "running",
+        "homesQualifier": "delivered capacity",
+        "source": "oracle-call-2026-09"
+      },
+      "powerPlanned": {
+        "mw": 1200,
+        "text": "1.2 GW planned campus",
+        "homesQualifier": "",
+        "source": "crusoe-2025-03"
+      },
+      "chips": [
+        {
+          "type": "NVIDIA GB200 GPUs",
+          "count": null,
+          "countText": "hundreds of thousands of GPUs on one fabric at completion",
+          "source": "crusoe-2025-09"
+        }
+      ],
+      "compute": null,
+      "usedFor": [
+        {
+          "who": "OpenAI",
+          "what": "AI training and inference",
+          "source": "openai-2025-09"
+        },
+        {
+          "who": "OpenAI (per Oracle)",
+          "what": "GPT-6 Astra trained at Abilene",
+          "source": "oracle-call-2026-09"
+        }
+      ],
+      "cooling": {
+        "text": "Direct-to-chip liquid cooling in a closed loop with zero-water evaporation",
+        "source": "crusoe-2025-03"
+      },
+      "water": null,
+      "network": null,
+      "cost": null,
+      "site": {
+        "text": "8 buildings planned, about 4 million sq ft",
+        "source": "crusoe-2025-03"
+      },
+      "extraRows": [],
+      "image": {
+        "src": "/ai/hardware/data-centers/stargate-abilene.jpg",
+        "alt": "Stargate Abilene campus",
+        "credit": "",
+        "creditUrl": "",
+        "kind": "pending"
+      },
+      "notes": [
+        {
+          "text": "Oracle delivered 131,000 GPUs at Abilene in Q1 FY27 alone (earnings call, 10 Sep 2026). Cumulative site GPU count is not stated in writing.",
+          "source": "oracle-call-2026-09",
+          "claim": false
+        },
+        {
+          "text": "A separate 900 MW Crusoe campus for Microsoft sits adjacent; it is not the Stargate site.",
+          "source": "crusoe-2026-03",
+          "claim": false
+        }
+      ],
+      "updates": [
+        {
+          "date": "10 Sep 2026",
+          "text": "6 of 8 buildings, 618 MW, and 75% of total capacity delivered; 131,000 GPUs delivered in the quarter.",
+          "source": "oracle-call-2026-09"
+        },
+        {
+          "date": "27 Mar 2026",
+          "text": "Phase 2 expected to reach completion by end of 2026.",
+          "source": "crusoe-2026-03"
+        },
+        {
+          "date": "30 Sep 2025",
+          "text": "First phase up on OCI with early training and inference workloads.",
+          "source": "crusoe-2025-09"
+        },
+        {
+          "date": "23 Sep 2025",
+          "text": "OpenAI names Abilene as flagship Stargate site; Oracle began delivering GB200 racks in June 2025.",
+          "source": "openai-2025-09"
+        },
+        {
+          "date": "18 Mar 2025",
+          "text": "Campus expanded to 1.2 GW; 1.2 GW grid connection with batteries, solar, and gas turbine backup.",
+          "source": "crusoe-2025-03"
+        }
+      ],
+      "sourceKeys": [
+        "crusoe-2025-03",
+        "crusoe-2025-09",
+        "crusoe-2026-03",
+        "openai-2025-09",
+        "oracle-call-2026-09",
+        "eia-home"
+      ]
+    },
+    {
+      "id": "fairwater",
+      "name": "Fairwater",
+      "ownerName": "Microsoft",
+      "dek": "Microsoft Fairwater sites in Mount Pleasant, Wisconsin and Atlanta, Georgia, linked by the AI WAN into one superfactory design.",
+      "asOf": "25 Oct 2026",
+      "location": {
+        "text": "Mount Pleasant, Wisconsin and Atlanta, Georgia",
+        "source": "ms-blog-2025-09"
+      },
+      "locationSegments": [
+        { "text": "Mount Pleasant, Wisconsin", "source": "ms-blog-2025-09" },
+        { "text": "Atlanta, Georgia", "source": "ms-source-2025-11" }
+      ],
+      "owner": {
+        "text": "Microsoft (Azure)",
+        "source": "ms-blog-2025-09"
+      },
+      "operator": {
+        "text": "Microsoft",
+        "source": "ms-blog-2025-09"
+      },
+      "status": {
+        "value": "partly-running",
+        "note": "Wisconsin building 1 fully operational (23 Jun 2026); building 2 due 2028. Atlanta running since October 2025.",
+        "source": "ms-news-2026-06"
+      },
+      "statusSegments": [
+        {
+          "text": "Wisconsin building 1 fully operational (23 Jun 2026); building 2 due 2028.",
+          "source": "ms-news-2026-06"
+        },
+        { "text": "Atlanta running since October 2025.", "source": "ms-source-2025-11" }
+      ],
+      "power": null,
+      "chips": [
+        {
+          "type": "NVIDIA GB200 and GB300",
+          "count": null,
+          "countText": "hundreds of thousands across the Fairwater design",
+          "source": "ms-blog-2025-11"
+        }
+      ],
+      "compute": null,
+      "usedFor": [
+        {
+          "who": "OpenAI, Microsoft AI, Copilot",
+          "what": "training frontier models and inference for leading AI workloads",
+          "source": "ms-blog-2025-09"
+        }
+      ],
+      "cooling": {
+        "text": "Closed-loop liquid cooling; over 90% on water loop and about 10% outdoor air on hottest days; 172 fans, each 20 feet across",
+        "source": "ms-blog-2025-09"
+      },
+      "waterSegments": [
+        {
+          "text": "Initial fill equals what 20 homes use in a year (Atlanta); replaced only when water chemistry requires",
+          "source": "ms-source-2025-11"
+        },
+        { "text": "designed for 6+ years", "source": "ms-blog-2025-11" }
+      ],
+      "water": {
+        "text": "Initial fill equals what 20 homes use in a year (Atlanta); replaced only when water chemistry requires; designed for 6+ years",
+        "source": "ms-source-2025-11"
+      },
+      "network": {
+        "text": "800 Gb/s GPU to GPU, two-tier Ethernet backend; AI WAN links sites across 120,000+ new fiber miles in the US",
+        "source": "ms-blog-2025-11"
+      },
+      "cost": {
+        "text": "About $4.7 billion local Wisconsin construction spend, 2024 to 2028",
+        "source": "ms-news-2026-06"
+      },
+      "site": {
+        "text": "Wisconsin: 315 acres, three buildings, 1.2 million sq ft under roof",
+        "source": "ms-blog-2025-09"
+      },
+      "extraRows": [
+        {
+          "label": "Other figures",
+          "text": "Up to 72 Blackwell GPUs per rack; about 140 kW per rack and 1,360 kW per row",
+          "source": "ms-blog-2025-11"
+        }
+      ],
+      "image": {
+        "src": "/ai/hardware/data-centers/fairwater.jpg",
+        "alt": "Fairwater data center site",
+        "credit": "",
+        "creditUrl": "",
+        "kind": "pending"
+      },
+      "notes": [
+        {
+          "text": "Microsoft claim: Fairwater will deliver 10 times the performance of the world's fastest supercomputer today.",
+          "source": "ms-blog-2025-09",
+          "claim": true
+        },
+        {
+          "text": "Microsoft claim: Wisconsin is home to the world's most powerful supercomputer (23 Jun 2026 announcement).",
+          "source": "ms-news-2026-06",
+          "claim": true
+        },
+        {
+          "text": "Atlanta site uses grid power with 4x9 availability at 3x9 cost: no on-site generators or UPS for GPUs; on-site energy storage smooths swings.",
+          "source": "ms-blog-2025-11",
+          "claim": false
+        }
+      ],
+      "updates": [
+        {
+          "date": "23 Jun 2026",
+          "text": "First Wisconsin facility fully operational; second facility scheduled for 2028.",
+          "source": "ms-news-2026-06"
+        },
+        {
+          "date": "12 Nov 2025",
+          "text": "Atlanta Fairwater site unveiled; began operation in October 2025.",
+          "source": "ms-source-2025-11"
+        },
+        {
+          "date": "18 Sep 2025",
+          "text": "Fairwater Wisconsin introduced: GB200 cluster, closed-loop cooling, two-story buildings.",
+          "source": "ms-blog-2025-09"
+        }
+      ],
+      "sourceKeys": [
+        "ms-blog-2025-09",
+        "ms-blog-2025-11",
+        "ms-news-2026-06",
+        "ms-source-2025-11"
+      ]
+    }
+  ]
+}

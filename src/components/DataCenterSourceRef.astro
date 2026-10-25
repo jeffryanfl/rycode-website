@@ -1,0 +1,13 @@
+---
+interface Props {
+  sourceKey?: string;
+  anchors: Record<string, number>;
+}
+
+const { sourceKey, anchors } = Astro.props;
+const n = sourceKey ? anchors[sourceKey] : undefined;
+---
+
+{n ? (
+  <a class="agent-tool-source-ref" href={`#source-${n}`}>[{n}]</a>
+) : null}
