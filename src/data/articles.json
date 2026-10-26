@@ -1484,6 +1484,26 @@
     "slug": "ai-models-open-weight-kimi-k3"
   },
   {
+    "href": "/ai/models/open-weight/kimi-k3-1-pro/",
+    "title": "Kimi K3.1 Pro",
+    "description": "Moonshot. Post-trained K3, API only until weights ship by 4 Nov.",
+    "date": "2026-10-23",
+    "section": "ai",
+    "series": "ai-open-weight",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/open-weight/",
+        "label": "Open weight"
+      }
+    ],
+    "file": "src/pages/ai/models/open-weight/kimi-k3-1-pro.astro",
+    "slug": "ai-models-open-weight-kimi-k3-1-pro"
+  },
+  {
     "href": "/ai/models/open-weight/mimo/",
     "title": "MiMo-V2.6-Pro",
     "description": "Xiaomi. Downloadable weights near the closed frontier.",

@@ -283,6 +283,7 @@
         "/ai/models/google/gemini-flash/",
         "/ai/models/google/gemma/",
         "/ai/models/open-weight/kimi-k3/",
+        "/ai/models/open-weight/kimi-k3-1-pro/",
         "/ai/models/open-weight/mimo/",
         "/ai/models/open-weight/qwen/",
         "/ai/models/open-weight/step-5/",

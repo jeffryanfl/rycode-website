@@ -5,6 +5,12 @@ import '../../../../styles/ai.css';
 
 const rows = [
   {
+    href: '/ai/models/open-weight/kimi-k3-1-pro/',
+    title: 'Kimi K3.1 Pro',
+    dek: 'Moonshot. API only until the weights ship (due by 4 Nov 2026).',
+    meta: ['AA Index 55²'],
+  },
+  {
     href: '/ai/models/open-weight/mimo/',
     title: 'MiMo-V2.6-Pro',
     dek: 'Xiaomi. Downloadable weights near the closed frontier.',
@@ -55,6 +61,7 @@ const rows = [
 
   <LabTable rows={rows} />
 
-  <p class="ai-lab-note">AA Index is an independent composite (v4.3.2, 22 Sep 2026 for all rows except Beam), not a lab announce score. Effort labels matter when you compare rows.</p>
+  <p class="ai-lab-note">AA Index is an independent composite (v4.3.2, 22 Sep 2026 for all rows except Beam and Kimi K3.1 Pro), not a lab announce score. Effort labels matter when you compare rows.</p>
   <p class="ai-lab-note">¹ Beam was added on 16 Oct 2026, after the 22 Sep snapshot. AA scores it 30 on its Intelligence Index v4.3 (the version named on AA's Beam page) and ranks it second among US open-weight models (<a href="https://artificialanalysis.ai/articles/reflection-beam">AA, 16 Oct 2026</a>). The other rows use the 22 Sep figures, so the numbers are not directly comparable.</p>
+  <p class="ai-lab-note">² Kimi K3.1 Pro was added on 23 Oct 2026. AA scores it 55 on its Intelligence Index v4.3.2 (<a href="https://artificialanalysis.ai/models/kimi-k3-1-pro">AA model page</a>, fetched 24 Oct 2026). Moonshot says the full weights will be released by 4 Nov 2026; until then it runs only through Moonshot's API and apps. Kimi K3 is in the <a href="/ai/models/archive/">archive</a>.</p>
 </Layout>

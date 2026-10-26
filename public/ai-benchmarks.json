@@ -501,8 +501,8 @@
       "lab": "Moonshot AI",
       "model": "Kimi K3.1 Pro",
       "apiId": "kimi-k3.1-pro",
-      "doorHref": "/ai/models/open-weight/kimi-k3/",
-      "role": "Moonshot's post-trained successor to Kimi K3 (Moonshot wording: most capable 3T-class open-weight model); API launch 23 Oct 2026; weights promised by 4 Nov 2026.",
+      "doorHref": "/ai/models/open-weight/kimi-k3-1-pro/",
+      "role": "Moonshot's most capable 3T-class open-weight model (Moonshot wording); post-trained update after Kimi K3; API launch 23 Oct 2026; weights promised by 4 Nov 2026.",
       "benches": {
         "cursorBench": null,
         "deepSwe": {
