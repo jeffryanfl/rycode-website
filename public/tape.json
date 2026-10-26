@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-26T08:20:00-04:00",
-  "asOfLabel": "Mon 26 Oct · pre-open",
+  "updated": "2026-10-26T16:12:00-04:00",
+  "asOfLabel": "Mon 26 Oct · after close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "S&P futures ~7,692 (+0.4% vs Fri settle), Nasdaq futures ~29,337; cash S&P last 7,624."
+      "text": "S&P 500 7,676.77 (+0.7%), Nasdaq +0.8%, Dow +0.3%; SMH 541.62 above the ~535 bear line."
     },
     {
       "tag": "Oil",
-      "text": "Dec WTI ~$101.09 pre-open, still above $100; Fri final bar revised to $103.27 from $103.63."
+      "text": "Dec WTI ~$101.58, still above $100; Fri final bar corrected to $103.27 from $103.63."
     },
     {
       "tag": "Rates",
-      "text": "10-year still at Friday's 5.00%; Fed meeting starts tomorrow (Oct 27-28)."
+      "text": "10-year Treasury still 5.00%; 2-year 4.68%, 30-year 5.31. Fed starts tomorrow."
     }
   ],
   "doorHref": "/economics",
