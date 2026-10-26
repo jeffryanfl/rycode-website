@@ -1,64 +1,20 @@
 {
-  "updated": "2026-10-23T16:08:00-04:00",
-  "asOfLabel": "Fri 23 Oct · after close",
+  "updated": "2026-10-26T08:20:00-04:00",
+  "asOfLabel": "Mon 26 Oct · pre-open",
   "lines": [
     {
+      "tag": "Tape",
+      "text": "S&P futures ~7,692 (+0.4% vs Fri settle), Nasdaq futures ~29,337; cash S&P last 7,624."
+    },
+    {
       "tag": "Oil",
-      "text": "Dec WTI ~$103.63 at the close, back above the $100 line; Thu final bar revised to $99.47."
+      "text": "Dec WTI ~$101.09 pre-open, still above $100; Fri final bar revised to $103.27 from $103.63."
     },
     {
       "tag": "Rates",
-      "text": "10-year Treasury yield back to 5.00% (from 4.96%); 2-year 4.69%, 30-year 5.33%."
-    },
-    {
-      "tag": "Tape",
-      "text": "S&P 500 7,623.68 (-0.5%), Dow -1.2%, Nasdaq -0.2%; chip stocks (SMH) bounced 0.7%."
+      "text": "10-year still at Friday's 5.00%; Fed meeting starts tomorrow (Oct 27-28)."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-10-23",
-  "schema": "macro-tape-v1",
-  "asOf": "2026-10-23T16:08:00-04:00",
-  "cadence": "after-close",
-  "hook": "Oil closed back above $100 (Dec WTI ~$103.63) and the 10-year yield climbed back to 5.00%, while stocks slipped again.",
-  "door": "Economics",
-  "essayWorthy": false,
-  "ticker": [
-    {
-      "date": "2026-10-23",
-      "tag": "Oil",
-      "line": "Dec WTI ~$103.63 at the close, back above the $100 line; Thu final bar revised to $99.47."
-    },
-    {
-      "date": "2026-10-23",
-      "tag": "Rates",
-      "line": "10-year Treasury yield back to 5.00% (from 4.96%); 2-year 4.69%, 30-year 5.33%."
-    },
-    {
-      "date": "2026-10-23",
-      "tag": "Tape",
-      "line": "S&P 500 7,623.68 (-0.5%), Dow -1.2%, Nasdaq -0.2%; chip stocks (SMH) bounced 0.7%."
-    }
-  ],
-  "levels": {
-    "spx": 7623.68,
-    "dow": 52215.16,
-    "nasdaq": 25955.34,
-    "yield2y": 4.69,
-    "yield10y": 5,
-    "yield30y": 5.33,
-    "dxy": 101.81,
-    "wti": 103.63,
-    "brent": 111.96
-  },
-  "wtiSourceNote": "Yahoo CLZ26.NYM 10-23 same-day bar 103.63 (re-check Mon). 10-22 history wti corrected 99.31 -> 99.47 (Yahoo final bar).",
-  "calendar": [
-    "Next FOMC Oct 27–28."
-  ],
-  "watch": [
-    "Whether oil holds above $100 into Monday.",
-    "Whether the 10-year pushes above 5%.",
-    "Whether the Fed meeting next week shifts rates."
-  ],
-  "chatPosted": true
+  "date": "2026-10-26"
 }

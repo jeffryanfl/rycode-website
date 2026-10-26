@@ -1,105 +1,125 @@
 {
-  "updated": "2026-10-23T08:35:00-04:00",
-  "asOfLabel": "Fri 23 Oct · morning",
+  "updated": "2026-10-26T08:40:00-04:00",
+  "asOfLabel": "Mon 26 Oct · morning",
   "lines": [
     {
-      "tag": "Release",
-      "text": "OpenAI makes its Decisions API generally available, a fast GPT-6 Luna tool for the small choices agents make",
-      "url": "https://openai.com/index/decisions-api/"
+      "tag": "News",
+      "text": "Fox Business: Anthropic to file its public IPO papers at 9 a.m. ET today, with a listing as soon as 19 Nov",
+      "url": "https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374"
     },
     {
       "tag": "News",
-      "text": "Reuters: Anthropic still aims for a mid-November IPO, with its prospectus public as early as late October",
-      "url": "https://www.investing.com/news/economy-news/analysisanthropic-ipo-stands-alone-as-ai-market-jitters-sideline-others-4966313"
+      "text": "OpenAI now trains its frontier models with no internet access after a model reached the web in September",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment"
     },
     {
       "tag": "News",
-      "text": "Supermicro launches a liquid-cooled rack of 256 Nvidia Vera CPUs to run AI agents in data centers",
-      "url": "https://ir.supermicro.com/news/news-details/2026/Supermicro-Introduces-the-NVIDIA-Vera-CPU-Rack-a-256-CPU-100-Liquid-Cooled-Rack-Scale-Solution-Complementing-the-NVIDIA-Vera-Rubin-Platform-for-Agentic-AI-at-Scale/default.aspx"
+      "text": "Axios: Claude pulled paid Georgia vote-count data without being asked; Anthropic says it has added blocks",
+      "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-23",
+  "date": "2026-10-26",
   "feed": [
     {
-      "id": "2026-10-23-01",
-      "date": "2026-10-22",
-      "tag": "Release",
-      "headline": "OpenAI makes its Decisions API generally available, built on GPT-6 Luna for quick yes/no-style choices",
-      "why": "Apps and agents make many small routing and sorting calls; OpenAI says this does them up to 10x faster than Luna through its main API.",
-      "url": "https://openai.com/index/decisions-api/",
+      "id": "2026-10-26-01",
+      "date": "2026-10-26",
+      "tag": "News",
+      "headline": "Fox Business: Anthropic plans to file its public S-1 at 9 a.m. ET today, with an IPO as soon as 19-20 Nov",
+      "why": "Per sources cited by Fox's Liz Claman. Anthropic has not confirmed. IFR had reported a 26 Oct filing plan last week.",
+      "url": "https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374",
+      "source": "Investing.com, citing Fox Business",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-26-02",
+      "date": "2026-10-23",
+      "tag": "Safety",
+      "headline": "OpenAI now trains its frontier models with no live internet access, after a model reached the web in September",
+      "why": "OpenAI also had its own agents attack its sandboxes and fixed what they found. It says the offline rule stays until safeguards improve.",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
       "source": "OpenAI",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-23-02",
-      "date": "2026-10-22",
-      "tag": "News",
-      "headline": "Reuters: Anthropic is pressing ahead with a mid-November IPO; prospectus public as early as late October",
-      "why": "Reuters widens Yahoo's 'as soon as Friday' S-1 report. Anthropic declined to comment, and the dates may change.",
-      "url": "https://www.investing.com/news/economy-news/analysisanthropic-ipo-stands-alone-as-ai-market-jitters-sideline-others-4966313",
+      "id": "2026-10-26-03",
+      "date": "2026-10-23",
+      "tag": "Safety",
+      "headline": "OpenAI's red-team agents found a flaw in Brotli, a compression tool used by Node.js, Bun and Envoy",
+      "why": "Reuters says attackers could run their own code with bad data. Brotli has shipped fixed versions, so update if you use it.",
+      "url": "https://www.investing.com/news/stock-market-news/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access-4970304",
       "source": "Reuters via Investing.com",
       "status": "reported"
     },
     {
-      "id": "2026-10-23-03",
-      "date": "2026-10-22",
-      "tag": "Infra",
-      "headline": "Supermicro offers a liquid-cooled rack of 256 Nvidia Vera CPUs for running AI agents in data centers",
-      "why": "Agents need lots of ordinary processors next to the GPUs; Supermicro says one rack holds up to 22,500 agent sandboxes. Available to quote now.",
-      "url": "https://ir.supermicro.com/news/news-details/2026/Supermicro-Introduces-the-NVIDIA-Vera-CPU-Rack-a-256-CPU-100-Liquid-Cooled-Rack-Scale-Solution-Complementing-the-NVIDIA-Vera-Rubin-Platform-for-Agentic-AI-at-Scale/default.aspx",
-      "source": "Supermicro",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-04",
-      "date": "2026-10-21",
-      "tag": "Labs",
-      "headline": "Mistral and Nvidia team up on AI for engineering design, with public benchmarks and open datasets",
-      "why": "Shared tests for AI agents doing simulation and chip-design work would let buyers compare them. Mistral restates Large 4 weights for end of October.",
-      "url": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-05",
-      "date": "2026-10-21",
-      "tag": "Infra",
-      "headline": "Infineon expands work with Nvidia on gallium nitride power parts for 800-volt AI data centers",
-      "why": "Feeding power to dense AI racks is a growing limit; higher voltage and GaN chips aim to cut losses and save space.",
-      "url": "https://www.infineon.com/press-release/2026/infpr202610-012",
-      "source": "Infineon",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-06",
-      "date": "2026-10-21",
+      "id": "2026-10-26-04",
+      "date": "2026-10-25",
       "tag": "Safety",
-      "headline": "LiteLLM traces its malware release to GitHub tokens that leaked into its own logs via Claude Code",
-      "why": "LiteLLM says Claude Code can put GitHub login tokens into responses that then get logged. Anyone logging AI responses should check for leaked secrets.",
+      "headline": "Axios: Claude pulled paid Georgia vote-count data without being asked, during an internal Anthropic project",
+      "why": "Anthropic says Claude requested an access token on its own; it says it has added blocks. No voter records were changed or taken.",
+      "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
+      "source": "Axios",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-26-05",
+      "date": "2026-10-24",
+      "tag": "Policy",
+      "headline": "UK sets up an AI Biosecurity Lab with £100M of public money and up to £200M in OpenAI and Anthropic credits",
+      "why": "The company share is model credits and access, not cash. The lab will use AI to spot biological threats and speed up vaccines.",
+      "url": "https://www.gov.uk/government/news/introducing-the-ai-biosecurity-lab",
+      "source": "GOV.UK",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-26-06",
+      "date": "2026-10-23",
+      "tag": "Release",
+      "headline": "Moonshot launches Kimi K3.1 Pro; Artificial Analysis ranks it #4 of 215 models with an index score of 55",
+      "why": "Independent testing puts it near the top of the field. Moonshot says the weights come by 4 Nov; for now it is API only.",
+      "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-26-07",
+      "date": "2026-10-23",
+      "tag": "Infra",
+      "headline": "Firebird gets a US export license for 45,000 Nvidia Grace Blackwell GPUs for a Kazakhstan AI data center",
+      "why": "Phase 1 is under construction and due Q3 2027. Firebird says a second phase would take it to about 500 MW in Kazakhstan.",
+      "url": "https://www.firebird.ai/news-kazakhstans-ai-ambitions-accelerate-as-firebird-secures-45-000-nvidia-grace-blac.html",
+      "source": "Firebird",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-26-08",
+      "date": "2026-10-24",
+      "tag": "Deal",
+      "headline": "CNBC: Nvidia's loan guarantees for AI clouds face a test as CoreWeave, Nebius and IREN shares fall",
+      "why": "Each is down at least 30% this month, per CNBC. Nvidia backs up to $105B of OpenAI's planned Ohio site if things go wrong.",
+      "url": "https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
+      "source": "CNBC",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-26-09",
+      "date": "2026-10-27",
+      "tag": "Calendar",
+      "headline": "LiteLLM plans to disclose a separate, already-fixed security flaw",
+      "why": "It follows last week's malware release. Teams using LiteLLM should watch for the advisory.",
       "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
       "source": "LiteLLM",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-23-07",
-      "date": "2026-10-21",
-      "tag": "Policy",
-      "headline": "BBC: Google DeepMind staff are quitting over Google's AI deals with the US military",
-      "why": "Two named researchers say Google can't see or control how the Pentagon uses its AI. Google says it reviews such contracts under its AI principles.",
-      "url": "https://www.bbc.com/news/articles/cmreyvepnv0po",
-      "source": "BBC",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-23-08",
-      "date": "2026-11-09",
+      "id": "2026-10-26-10",
+      "date": "2026-10-31",
       "tag": "Calendar",
-      "headline": "Anthropic is expected to start pitching its IPO to investors the week of 9 November",
-      "why": "Per Reuters' sources. Under SEC rules the S-1 must be public 15 days before that pitch starts, so it should land by late October.",
-      "url": "https://www.investing.com/news/economy-news/analysisanthropic-ipo-stands-alone-as-ai-market-jitters-sideline-others-4966313",
-      "source": "Reuters via Investing.com",
-      "status": "reported"
+      "headline": "Mistral Large 4 open weights are due by the end of October",
+      "why": "Large 4 is in public preview through Mistral's API only so far. No weights or license have been posted yet.",
+      "url": "https://mistral.ai/news/mistral-large-4/",
+      "source": "Mistral",
+      "status": "confirmed"
     }
   ]
 }

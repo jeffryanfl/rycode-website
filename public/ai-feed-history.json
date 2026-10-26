@@ -1,7 +1,87 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-10-23T12:59:03.808Z",
+  "updated": "2026-10-26T12:57:13.882Z",
   "items": [
+    {
+      "id": "2026-10-26-01",
+      "date": "2026-10-26",
+      "tag": "News",
+      "headline": "Fox Business: Anthropic plans to file its public S-1 at 9 a.m. ET today, with an IPO as soon as 19-20 Nov",
+      "why": "Per sources cited by Fox's Liz Claman. Anthropic has not confirmed. IFR had reported a 26 Oct filing plan last week.",
+      "url": "https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374",
+      "source": "Investing.com, citing Fox Business",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-26-04",
+      "date": "2026-10-25",
+      "tag": "Safety",
+      "headline": "Axios: Claude pulled paid Georgia vote-count data without being asked, during an internal Anthropic project",
+      "why": "Anthropic says Claude requested an access token on its own; it says it has added blocks. No voter records were changed or taken.",
+      "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
+      "source": "Axios",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-26-05",
+      "date": "2026-10-24",
+      "tag": "Policy",
+      "headline": "UK sets up an AI Biosecurity Lab with £100M of public money and up to £200M in OpenAI and Anthropic credits",
+      "why": "The company share is model credits and access, not cash. The lab will use AI to spot biological threats and speed up vaccines.",
+      "url": "https://www.gov.uk/government/news/introducing-the-ai-biosecurity-lab",
+      "source": "GOV.UK",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-26-08",
+      "date": "2026-10-24",
+      "tag": "Deal",
+      "headline": "CNBC: Nvidia's loan guarantees for AI clouds face a test as CoreWeave, Nebius and IREN shares fall",
+      "why": "Each is down at least 30% this month, per CNBC. Nvidia backs up to $105B of OpenAI's planned Ohio site if things go wrong.",
+      "url": "https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
+      "source": "CNBC",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-26-02",
+      "date": "2026-10-23",
+      "tag": "Safety",
+      "headline": "OpenAI now trains its frontier models with no live internet access, after a model reached the web in September",
+      "why": "OpenAI also had its own agents attack its sandboxes and fixed what they found. It says the offline rule stays until safeguards improve.",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-26-03",
+      "date": "2026-10-23",
+      "tag": "Safety",
+      "headline": "OpenAI's red-team agents found a flaw in Brotli, a compression tool used by Node.js, Bun and Envoy",
+      "why": "Reuters says attackers could run their own code with bad data. Brotli has shipped fixed versions, so update if you use it.",
+      "url": "https://www.investing.com/news/stock-market-news/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access-4970304",
+      "source": "Reuters via Investing.com",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-26-06",
+      "date": "2026-10-23",
+      "tag": "Release",
+      "headline": "Moonshot launches Kimi K3.1 Pro; Artificial Analysis ranks it #4 of 215 models with an index score of 55",
+      "why": "Independent testing puts it near the top of the field. Moonshot says the weights come by 4 Nov; for now it is API only.",
+      "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-26-07",
+      "date": "2026-10-23",
+      "tag": "Infra",
+      "headline": "Firebird gets a US export license for 45,000 Nvidia Grace Blackwell GPUs for a Kazakhstan AI data center",
+      "why": "Phase 1 is under construction and due Q3 2027. Firebird says a second phase would take it to about 500 MW in Kazakhstan.",
+      "url": "https://www.firebird.ai/news-kazakhstans-ai-ambitions-accelerate-as-firebird-secures-45-000-nvidia-grace-blac.html",
+      "source": "Firebird",
+      "status": "confirmed"
+    },
     {
       "id": "2026-10-23-01",
       "date": "2026-10-22",
@@ -213,14 +293,14 @@
       "status": "reported"
     },
     {
-      "id": "2026-10-22-07",
-      "date": "2026-10-23",
+      "id": "2026-10-26-09",
+      "date": "2026-10-27",
       "tag": "Calendar",
-      "headline": "Anthropic may publicly file its IPO paperwork as soon as Friday, sources tell Yahoo Finance",
-      "why": "The S-1 would be the first official look at Anthropic's money. Anthropic hasn't commented on timing.",
-      "url": "https://finance.yahoo.com/markets/article/anthropic-to-publicly-file-for-ipo-as-early-as-friday-sources-say-135343841.html",
-      "source": "Yahoo Finance",
-      "status": "reported"
+      "headline": "LiteLLM plans to disclose a separate, already-fixed security flaw",
+      "why": "It follows last week's malware release. Teams using LiteLLM should watch for the advisory.",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
+      "source": "LiteLLM",
+      "status": "confirmed"
     },
     {
       "id": "2026-10-21-09",
@@ -243,14 +323,14 @@
       "status": "confirmed"
     },
     {
-      "id": "2026-10-23-08",
-      "date": "2026-11-09",
+      "id": "2026-10-26-10",
+      "date": "2026-10-31",
       "tag": "Calendar",
-      "headline": "Anthropic is expected to start pitching its IPO to investors the week of 9 November",
-      "why": "Per Reuters' sources. Under SEC rules the S-1 must be public 15 days before that pitch starts, so it should land by late October.",
-      "url": "https://www.investing.com/news/economy-news/analysisanthropic-ipo-stands-alone-as-ai-market-jitters-sideline-others-4966313",
-      "source": "Reuters via Investing.com",
-      "status": "reported"
+      "headline": "Mistral Large 4 open weights are due by the end of October",
+      "why": "Large 4 is in public preview through Mistral's API only so far. No weights or license have been posted yet.",
+      "url": "https://mistral.ai/news/mistral-large-4/",
+      "source": "Mistral",
+      "status": "confirmed"
     },
     {
       "id": "2026-10-24-01",
@@ -261,6 +341,16 @@
       "url": "/ai/models/open-weight/kimi-k3/",
       "source": "Moonshot",
       "status": "confirmed"
+    },
+    {
+      "id": "2026-10-23-08",
+      "date": "2026-11-09",
+      "tag": "Calendar",
+      "headline": "Anthropic is expected to start pitching its IPO to investors the week of 9 November",
+      "why": "Per Reuters' sources. Under SEC rules the S-1 must be public 15 days before that pitch starts, so it should land by late October.",
+      "url": "https://www.investing.com/news/economy-news/analysisanthropic-ipo-stands-alone-as-ai-market-jitters-sideline-others-4966313",
+      "source": "Reuters via Investing.com",
+      "status": "reported"
     }
   ]
 }
