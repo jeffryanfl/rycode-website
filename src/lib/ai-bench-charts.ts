@@ -107,7 +107,7 @@ const LINE_BENCHES: { id: string; version: string; label: string; name?: string 
 /**
  * One look per model. Claude colors are Anthropic's published accents
  * (orange on the mark, then blue, green, and mid gray) so the Claude lines stay apart.
- * OpenAI's blossom stays black. Astra and Sol differ by a step of gray.
+ * OpenAI's blossom stays black. Astra, Sol, and Terra differ by a step of gray.
  * Grok is the black-and-white xAI mark. Gemini uses Google's four colors.
  */
 const MODEL_STYLE: Record<
@@ -120,6 +120,7 @@ const MODEL_STYLE: Record<
   'Claude Fable 5.1': { color: '#788C5D', mark: 'claude', disc: '#788C5D', glyph: '#ffffff' },
   'GPT-6 Astra': { color: '#F4F4F5', mark: 'openai', disc: '#F4F4F5', glyph: '#141413' },
   'GPT-6.1 Sol': { color: '#B4B4BC', mark: 'openai', disc: '#D4D4D8', glyph: '#141413' },
+  'GPT-6.1 Terra': { color: '#71717A', mark: 'openai', disc: '#A1A1AA', glyph: '#141413' },
   'Grok 4.7': { color: '#F8FAFC', mark: 'xai', disc: '#141413', glyph: '#ffffff', ring: '#F8FAFC' },
   'Gemini 4 Argon': { color: '#4285F4', mark: 'gemini', disc: '#141413', glyph: 'url(#bc-gemini)', ring: '#F8FAFC' },
 };
@@ -130,6 +131,7 @@ function shortModel(model: string): string {
   if (model.includes('Haiku 5.5')) return 'Haiku 5.5';
   if (model.includes('Fable')) return 'Fable 5.1';
   if (model.includes('Astra')) return 'Astra';
+  if (model.includes('Terra')) return 'Terra';
   if (model.includes('6.1')) return 'GPT-6.1 Sol';
   if (model.includes('Grok')) return 'Grok 4.7';
   if (model.includes('Argon')) return 'Argon';

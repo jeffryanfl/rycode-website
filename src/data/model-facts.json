@@ -12,6 +12,7 @@
 
     "/ai/models/openai/gpt-6-astra/": { "name": "GPT-6 Astra", "status": "current", "price": "$10 in, $50 out" },
     "/ai/models/openai/gpt-6.1-sol/": { "name": "GPT-6.1 Sol", "status": "current", "price": "$2 in, $10 out", "released": "29 Sep 2026", "checked": "5 Oct 2026" },
+    "/ai/models/openai/gpt-6.1-terra/": { "name": "GPT-6.1 Terra", "status": "current", "price": "$1 in, $5 out", "released": "26 Oct 2026", "checked": "26 Oct 2026" },
     "/ai/models/openai/gpt-6-luna/": { "name": "GPT-6 Luna", "status": "current", "aa": { "value": 38, "effort": "max", "fetched": "8 Oct 2026" }, "price": "$0.10 in, $0.50 out", "released": "22 Sep 2026", "checked": "12 Oct 2026" },
     "/ai/models/openai/gpt-6-sol/": { "name": "GPT-6 Sol", "status": "archived", "replacedBy": { "name": "GPT-6.1 Sol", "href": "/ai/models/openai/gpt-6.1-sol/" }, "statusNote": "on the API; it still powers GPT-6 in ChatGPT for paid plans", "aa": { "value": 48, "effort": "max", "fetched": "22 Sep 2026" }, "price": "$2 in, $10 out", "released": "22 Sep 2026" },
     "/ai/models/openai/gpt-6-intelligent-ui/": { "name": "Intelligent UI", "status": "feature", "statusNote": "a ChatGPT feature, not an API model", "released": "7 Oct 2026", "checked": "12 Oct 2026" },

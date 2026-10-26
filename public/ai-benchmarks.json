@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-10-24",
-  "updated": "2026-10-24T12:00:00-04:00",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Ten rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026) · Kimi K3.1 Pro (added 24 Oct 2026; weights promised by 4 Nov; DeepSWE v1.1 75.5%, Terminal-Bench 4.0 65.7% and HLE 70.0% with tools are lab claims; OSWorld and AutomationBench blank because Moonshot prints V2.1 and -AA versions that do not match these columns; AA Index 55, fetched 24 Oct 2026; aaIndex effort is null because the AA page shows one entry with no effort label, an exception to the always-store-effort rule). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One section stays on /ai below the agent tools band. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0): name the version; do not mix without naming. Labels pass 12 Oct 2026: every non-AA cell carries sourceKind lab (company's own claim) or verifier (third party that ran the test, e.g. ARC Prize); null renders as 'not reported'. Astra ARC-AGI-3 now shows ARC Prize Standard harness 62.7% first; the Provider Adapter 99.9% is kept as altSetup.",
+  "asOf": "2026-10-26",
+  "updated": "2026-10-26T18:00:00-04:00",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Eleven rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026) · Kimi K3.1 Pro (added 24 Oct 2026; weights promised by 4 Nov; DeepSWE v1.1 75.5%, Terminal-Bench 4.0 65.7% and HLE 70.0% with tools are lab claims; OSWorld and AutomationBench blank because Moonshot prints V2.1 and -AA versions that do not match these columns; AA Index 55, fetched 24 Oct 2026; aaIndex effort is null because the AA page shows one entry with no effort label, an exception to the always-store-effort rule) · GPT-6.1 Terra (added 26 Oct 2026; Terminal-Bench 4.0 50.3% at max effort is a lab claim; OSWorld blank because OpenAI prints OSWorld 2.1, which does not match this column; AA Index 48, effort max, fetched 26 Oct 2026). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One section stays on /ai below the agent tools band. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0): name the version; do not mix without naming. Labels pass 12 Oct 2026: every non-AA cell carries sourceKind lab (company's own claim) or verifier (third party that ran the test, e.g. ARC Prize); null renders as 'not reported'. Astra ARC-AGI-3 now shows ARC Prize Standard harness 62.7% first; the Provider Adapter 99.9% is kept as altSetup.",
   "columns": [
     {
       "id": "cursorBench",
@@ -542,6 +542,43 @@
         "https://www.kimi.ai/blog/kimi-k3-1-pro",
         "https://platform.kimi.ai/docs/pricing/chat",
         "https://artificialanalysis.ai/models/kimi-k3-1-pro"
+      ]
+    },
+    {
+      "lab": "OpenAI",
+      "model": "GPT-6.1 Terra",
+      "apiId": "gpt-6.1-terra",
+      "doorHref": "/ai/models/openai/gpt-6.1-terra/",
+      "role": "GPT-6.1 fast, lower-cost tier for high-volume computer use and visual work; released 26 Oct 2026",
+      "benches": {
+        "cursorBench": null,
+        "deepSwe": null,
+        "terminalBench": {
+          "value": "50.3%",
+          "version": "4.0",
+          "notes": "Lab claim, max reasoning effort, from OpenAI's announce text. GPT-5.6 Terra's published score was 21.5% (same page).",
+          "source": "https://openai.com/index/introducing-gpt-6-1-terra",
+          "sourceKind": "lab"
+        },
+        "osworld": null,
+        "automationBench": null,
+        "hle": null,
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 48,
+          "effort": "max",
+          "aaModelLabel": "GPT-6.1 Terra (max)",
+          "source": "https://artificialanalysis.ai/models/gpt-6-1-terra",
+          "sourceKind": "aa",
+          "fetched": "2026-10-26",
+          "notes": "AA Intelligence Index v4.3.2 from the model page fetched 26 Oct 2026. #25 of 221. Not a lab score."
+        }
+      },
+      "sources": [
+        "https://openai.com/index/introducing-gpt-6-1-terra",
+        "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+        "https://deploymentsafety.openai.com/gpt-6-1-terra",
+        "https://artificialanalysis.ai/models/gpt-6-1-terra"
       ]
     }
   ]

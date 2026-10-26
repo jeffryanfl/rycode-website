@@ -18,6 +18,7 @@
   "/ai/models/anthropic/claude-haiku-4-5/": "Claude Haiku 4.5 was Anthropic's fastest model, priced for cost-sensitive work, and is now archived, succeeded by Claude Haiku 5.5.",
   "/ai/models/openai/gpt-6-astra/": "GPT-6 Astra is OpenAI's flagship for hard end-to-end work: reasoning, coding, computer use, research, and documents.",
   "/ai/models/openai/gpt-6.1-sol/": "GPT-6.1 Sol is an upgrade to GPT-6 Sol, released 29 September 2026, at $2 input, $0.10 cached input, and $10 output per million tokens.",
+  "/ai/models/openai/gpt-6.1-terra/": "GPT-6.1 Terra is OpenAI's fast, cheaper GPT-6.1 model for computer use and visual work, released 26 October 2026 at $1 input and $5 output per million tokens.",
   "/ai/models/openai/gpt-6-intelligent-ui/": "Intelligent UI lets GPT-6 answers in ChatGPT include visuals and controls you can tap, rolling out in the Chat tab from 7 October 2026.",
   "/ai/models/openai/gpt-6-sol/": "GPT-6 Sol was OpenAI's mid-tier GPT-6 model, released 22 September 2026 at $2 and $10 per million tokens, and is now archived, succeeded by GPT-6.1 Sol.",
   "/ai/models/openai/gpt-6-luna/": "GPT-6 Luna is the cheaper, faster GPT-6 tier released with Sol on 22 September 2026, at $0.10 and $0.50 per million tokens.",

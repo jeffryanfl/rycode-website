@@ -1,0 +1,77 @@
+---
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="GPT-6.1 Terra - A.I. - Rycode"
+  description="GPT-6.1 Terra is OpenAI’s fast, lower-cost GPT-6.1 model for high-volume computer use and visual work, released 26 October 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">GPT-6.1 Terra</h1>
+    <p class="ai-model-dek">GPT-6.1 Terra is OpenAI’s fast, lower-cost GPT-6.1 model, released 26 October 2026 according to the <a href="https://deploymentsafety.openai.com/gpt-6-1-terra">Addendum to GPT-6 Astra System Card: GPT-6.1 Terra</a> [2]. It is built for high-volume work that reads images and screens, uses a computer, and writes clearly, per <a href="https://openai.com/index/introducing-gpt-6-1-terra">Introducing GPT-6.1 Terra</a> [1]. List price is $1 input, $0.05 cached input, and $5 output per million tokens. OpenAI says that is 50% below GPT-5.6 Terra and <a href="/ai/models/openai/gpt-6.1-sol/">GPT-6.1 Sol</a>, matching the <a href="https://developers.openai.com/api/docs/models/gpt-6.1-terra">GPT-6.1 Terra model page</a> [1][3]. The API id is <code>gpt-6.1-terra</code>. In ChatGPT it is in Work and Codex, not Chat, per the <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes</a> and the <a href="https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes">ChatGPT Business release notes</a> [4][5].</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Knowledge cutoff on the model page is 1 June 2026 [3]. OpenAI has not published a parameter count for GPT-6.1 Terra in the sources on this page. Its safety write-up is an addendum to the <a href="/ai/models/openai/gpt-6-astra/">GPT-6 Astra</a> system card [2]. Under its Preparedness Framework, OpenAI treats the model as Critical in cybersecurity and High for Biological and Chemical capability [2].</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p><code>reasoning.effort</code> supports <code>none</code>, <code>low</code>, <code>medium</code> (default), <code>high</code>, <code>xhigh</code>, and <code>max</code> [3]. The API endpoints are Responses, Chat Completions, and Batch. Use the Responses API for tool calling [3]. OpenAI says Terra finishes tasks more than three times faster than GPT-6 Astra and GPT-6.1 Sol [1].</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>The documented context window is 1,050,000 tokens. Max input is 922,000 tokens and max output is 128,000 tokens. Inputs are text and images. Output is text [3].</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>OpenAI aims Terra at high-volume work: reading images and screens, using a computer, and writing [1]. OpenAI also says that for the most complex coding tasks, GPT-6.1 Sol and GPT-6 Astra remain the better choice [1].</p>
+    <p>In ChatGPT, Terra is in Work and Codex for Plus, Pro, Business, Enterprise, and Edu users. It is not in Chat [4][5]. The announce leaves Business out of its plan list. The ChatGPT and Business release notes include it [4][5]. Some Plus and Pro users may get Terra at Medium in place of GPT-6.1 Sol at Light in Work’s default Power presets [4].</p>
+    <p>AWS says GPT-6.1 Terra is generally available on Amazon Bedrock from 26 October 2026, and that ChatGPT Work and Codex can be set to use the model on Bedrock, per <a href="https://aws.amazon.com/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/">OpenAI GPT-6.1 Terra is now generally available on Amazon Bedrock</a> [6]. That comes from AWS. OpenAI’s announce does not mention Bedrock.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>OpenAI says GPT-6.1 Terra solves 50.3% of Terminal-Bench 4.0 tasks at max reasoning effort, more than double GPT-5.6 Terra’s published score of 21.5% [1]. That is the company’s own test, not an outside check.</p>
+    <p>OpenAI also says Terra scores 15 points higher than GPT-5.6 Terra on Agents’ Last Exam at medium effort, on par with GPT-6 Astra at one-tenth Astra’s price per token [1]. It reports an error rate of 16.7% at low effort and 4.3% at max effort on its internal benchmark of error-inducing prompts [1]. The announce names OSWorld 2.1 but prints no score for it in the page text.</p>
+    <p><a href="https://artificialanalysis.ai/models/gpt-6-1-terra">Artificial Analysis, GPT-6.1 Terra (max)</a> scores GPT-6.1 Terra (max) at <strong>48</strong> on its Intelligence Index, version 4.3.2, fetched 26 October 2026 [7]. That ranks it 25th of 221 models. The Intelligence Index is one number Artificial Analysis builds by running the same tests on every model. It is an independent score, not an OpenAI number. Artificial Analysis also measured 90.9 output tokens per second and a cost of $0.40 per Index task [7].</p>
+    <p>The cell below is OpenAI’s announce text at max effort. It is a company claim.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">GPT-6.1 Terra</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Terminal-Bench 4.0</td><td>50.3%</td><td>Company announce text, max effort. GPT-5.6 Terra: 21.5% on the same page.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Developers can use it on the API as <code>gpt-6.1-terra</code> [1][3]. In ChatGPT it is in Work and Codex for Plus, Pro, Business, Enterprise, and Edu users, not in Chat [4][5]. On Amazon Bedrock it is generally available per AWS [6]. The Bedrock price and regions are not in the sources on this page.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">GPT-6.1 Terra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>$1</td></tr>
+          <tr><td>Cached input / MTok</td><td>$0.05</td></tr>
+          <tr><td>Cache writes / MTok</td><td>$1.25</td></tr>
+          <tr><td>Output / MTok</td><td>$5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Prompts with more than 272K input tokens are priced at 2× input and cache rates and 1.5× output for the full request. Batch and Flex are 50% lower. Regional processing adds 10%. Fast mode is 2× the standard price [3].</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ol class="ai-model-sources">
+      <li><a href="https://openai.com/index/introducing-gpt-6-1-terra">Introducing GPT-6.1 Terra</a></li>
+      <li><a href="https://deploymentsafety.openai.com/gpt-6-1-terra">Addendum to GPT-6 Astra System Card: GPT-6.1 Terra</a> (OpenAI Deployment Safety Hub)</li>
+      <li><a href="https://developers.openai.com/api/docs/models/gpt-6.1-terra">GPT-6.1 Terra model page</a> (OpenAI API docs)</li>
+      <li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes</a> (OpenAI Help Center)</li>
+      <li><a href="https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes">ChatGPT Business release notes</a> (OpenAI Help Center)</li>
+      <li><a href="https://aws.amazon.com/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/">OpenAI GPT-6.1 Terra is now generally available on Amazon Bedrock</a> (AWS)</li>
+      <li><a href="https://artificialanalysis.ai/models/gpt-6-1-terra">Artificial Analysis, GPT-6.1 Terra (max)</a> (secondary)</li>
+    </ol>
+  </article>
+</Layout>

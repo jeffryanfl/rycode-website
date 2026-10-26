@@ -1664,6 +1664,26 @@
     "slug": "ai-models-openai-gpt-6.1-sol"
   },
   {
+    "href": "/ai/models/openai/gpt-6.1-terra/",
+    "title": "GPT-6.1 Terra",
+    "description": "Fast, lower-cost GPT-6.1 tier for computer use.",
+    "date": "2026-10-26",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6.1-terra.astro",
+    "slug": "ai-models-openai-gpt-6.1-terra"
+  },
+  {
     "href": "/ai/models/typesafe/jev/",
     "title": "Jev",
     "description": "Typed decisions for software, not a chat flagship.",
