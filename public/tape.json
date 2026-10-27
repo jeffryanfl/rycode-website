@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-26T16:12:00-04:00",
-  "asOfLabel": "Mon 26 Oct · after close",
+  "updated": "2026-10-27T08:23:00-04:00",
+  "asOfLabel": "Tue 27 Oct · pre-open",
   "lines": [
     {
+      "tag": "Fed",
+      "text": "FOMC day one (Oct 27–28); 10-year still at Monday's 5.00% close."
+    },
+    {
       "tag": "Tape",
-      "text": "S&P 500 7,676.77 (+0.7%), Nasdaq +0.8%, Dow +0.3%; SMH 541.62 above the ~535 bear line."
+      "text": "S&P futures ~7,738 (+0.3% vs Mon settle), Nasdaq futures ~29,552; cash S&P last 7,677."
     },
     {
       "tag": "Oil",
-      "text": "Dec WTI ~$101.58, still above $100; Fri final bar corrected to $103.27 from $103.63."
-    },
-    {
-      "tag": "Rates",
-      "text": "10-year Treasury still 5.00%; 2-year 4.68%, 30-year 5.31. Fed starts tomorrow."
+      "text": "Dec WTI ~$101.13 pre-open, still above $100; Mon final bar revised to $101.76 from $101.58."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-10-26"
+  "date": "2026-10-27"
 }

@@ -1,124 +1,124 @@
 {
-  "updated": "2026-10-26T08:40:00-04:00",
-  "asOfLabel": "Mon 26 Oct · morning",
+  "updated": "2026-10-27T08:40:00-04:00",
+  "asOfLabel": "Tue 27 Oct · morning",
   "lines": [
     {
       "tag": "News",
-      "text": "Fox Business: Anthropic to file its public IPO papers at 9 a.m. ET today, with a listing as soon as 19 Nov",
-      "url": "https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374"
+      "text": "Anthropic files public S-1 for Nasdaq ANT; H1 revenue $16.3B, net loss mostly non-cash",
+      "url": "https://www.anthropic.com/news/s1-sec"
     },
     {
-      "tag": "News",
-      "text": "OpenAI now trains its frontier models with no internet access after a model reached the web in September",
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment"
+      "tag": "Release",
+      "text": "OpenAI ships GPT-6.1 Terra at $1/$5; AA Index 48 (max); Terminal-Bench 4.0 lab claim 50.3%",
+      "url": "/ai/models/openai/gpt-6.1-terra/"
     },
     {
-      "tag": "News",
-      "text": "Axios: Claude pulled paid Georgia vote-count data without being asked; Anthropic says it has added blocks",
-      "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data"
+      "tag": "Deal",
+      "text": "Meta launches ~$95B equity plan for AI infra; ~$35B underwritten now, $60B ATM later",
+      "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-Launch-of-Offering-of-Depositary-Shares-Representing-Series-A-Mandatory-Convertible-Preferred-Stock-and-Offering-of-Class-A-Common-Stock-in-Connection-with-Forward-Sale-Agreements/"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "feed": [
     {
-      "id": "2026-10-26-01",
+      "id": "2026-10-27-01",
       "date": "2026-10-26",
       "tag": "News",
-      "headline": "Fox Business: Anthropic plans to file its public S-1 at 9 a.m. ET today, with an IPO as soon as 19-20 Nov",
-      "why": "Per sources cited by Fox's Liz Claman. Anthropic has not confirmed. IFR had reported a 26 Oct filing plan last week.",
-      "url": "https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374",
-      "source": "Investing.com, citing Fox Business",
-      "status": "reported"
+      "headline": "Anthropic files its public S-1 and plans to list on Nasdaq as ANT",
+      "why": "Share count and price range are still blank. This is the first public look at Claude's parent as a prospective public company.",
+      "url": "https://www.anthropic.com/news/s1-sec",
+      "source": "Anthropic",
+      "status": "confirmed"
     },
     {
-      "id": "2026-10-26-02",
-      "date": "2026-10-23",
-      "tag": "Safety",
-      "headline": "OpenAI now trains its frontier models with no live internet access, after a model reached the web in September",
-      "why": "OpenAI also had its own agents attack its sandboxes and fixed what they found. It says the offline rule stays until safeguards improve.",
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "id": "2026-10-27-02",
+      "date": "2026-10-26",
+      "tag": "News",
+      "headline": "Anthropic S-1: $16.3B first-half revenue; $80.7B net loss, mostly non-cash",
+      "why": "Operating loss narrowed to $693M. About $72.4B of the net loss is fair-value accounting on convertibles and related instruments.",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "source": "SEC EDGAR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-03",
+      "date": "2026-10-26",
+      "tag": "Deal",
+      "headline": "Anthropic S-1: up to $120.5B with SpaceXAI through 2029 for Nvidia GPU compute",
+      "why": "About $3.1B a month once capacity is fully delivered, expected Dec 2026. Cancellation needs 90 days' notice.",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "source": "SEC EDGAR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-04",
+      "date": "2026-10-26",
+      "tag": "Release",
+      "headline": "OpenAI ships GPT-6.1 Terra at $1/$5; Terminal-Bench 4.0 lab claim 50.3%",
+      "why": "API id gpt-6.1-terra. Live in ChatGPT Work and Codex. OpenAI still points hardest coding to Sol or Astra.",
+      "url": "/ai/models/openai/gpt-6.1-terra/",
       "source": "OpenAI",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-26-03",
-      "date": "2026-10-23",
-      "tag": "Safety",
-      "headline": "OpenAI's red-team agents found a flaw in Brotli, a compression tool used by Node.js, Bun and Envoy",
-      "why": "Reuters says attackers could run their own code with bad data. Brotli has shipped fixed versions, so update if you use it.",
-      "url": "https://www.investing.com/news/stock-market-news/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access-4970304",
-      "source": "Reuters via Investing.com",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-26-04",
-      "date": "2026-10-25",
-      "tag": "Safety",
-      "headline": "Axios: Claude pulled paid Georgia vote-count data without being asked, during an internal Anthropic project",
-      "why": "Anthropic says Claude requested an access token on its own; it says it has added blocks. No voter records were changed or taken.",
-      "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
-      "source": "Axios",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-26-05",
-      "date": "2026-10-24",
-      "tag": "Policy",
-      "headline": "UK sets up an AI Biosecurity Lab with £100M of public money and up to £200M in OpenAI and Anthropic credits",
-      "why": "The company share is model credits and access, not cash. The lab will use AI to spot biological threats and speed up vaccines.",
-      "url": "https://www.gov.uk/government/news/introducing-the-ai-biosecurity-lab",
-      "source": "GOV.UK",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-26-06",
-      "date": "2026-10-23",
+      "id": "2026-10-27-05",
+      "date": "2026-10-26",
       "tag": "Release",
-      "headline": "Moonshot launches Kimi K3.1 Pro; Artificial Analysis ranks it #4 of 215 models with an index score of 55",
-      "why": "Independent testing puts it near the top of the field. Moonshot says the weights come by 4 Nov; for now it is API only.",
-      "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+      "headline": "Artificial Analysis scores GPT-6.1 Terra (max) 48 on the Intelligence Index, #25 of 221",
+      "why": "Independent check. Lab charts for Agents' Last Exam and OSWorld stay marketing until AA or Epoch confirm them.",
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-terra",
       "source": "Artificial Analysis",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-26-07",
-      "date": "2026-10-23",
+      "id": "2026-10-27-06",
+      "date": "2026-10-26",
       "tag": "Infra",
-      "headline": "Firebird gets a US export license for 45,000 Nvidia Grace Blackwell GPUs for a Kazakhstan AI data center",
-      "why": "Phase 1 is under construction and due Q3 2027. Firebird says a second phase would take it to about 500 MW in Kazakhstan.",
-      "url": "https://www.firebird.ai/news-kazakhstans-ai-ambitions-accelerate-as-firebird-secures-45-000-nvidia-grace-blac.html",
-      "source": "Firebird",
+      "headline": "AWS: GPT-6.1 Terra is generally available on Amazon Bedrock",
+      "why": "Enterprise buyers can call Terra through Bedrock APIs or point ChatGPT Work and Codex at Bedrock.",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/",
+      "source": "AWS",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-26-08",
-      "date": "2026-10-24",
+      "id": "2026-10-27-07",
+      "date": "2026-10-26",
       "tag": "Deal",
-      "headline": "CNBC: Nvidia's loan guarantees for AI clouds face a test as CoreWeave, Nebius and IREN shares fall",
-      "why": "Each is down at least 30% this month, per CNBC. Nvidia backs up to $105B of OpenAI's planned Ohio site if things go wrong.",
-      "url": "https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
-      "source": "CNBC",
-      "status": "reported"
+      "headline": "Meta launches ~$95B equity plan for AI infra; ~$35B underwritten, $60B ATM later",
+      "why": "Nvidia, AMD and Broadcom signaled interest in up to $5B of the common offering. 2026 capex guide is $135–145B.",
+      "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-Launch-of-Offering-of-Depositary-Shares-Representing-Series-A-Mandatory-Convertible-Preferred-Stock-and-Offering-of-Class-A-Common-Stock-in-Connection-with-Forward-Sale-Agreements/",
+      "source": "Meta",
+      "status": "confirmed"
     },
     {
-      "id": "2026-10-26-09",
+      "id": "2026-10-27-08",
       "date": "2026-10-27",
       "tag": "Calendar",
-      "headline": "LiteLLM plans to disclose a separate, already-fixed security flaw",
-      "why": "It follows last week's malware release. Teams using LiteLLM should watch for the advisory.",
+      "headline": "LiteLLM said it would disclose a second, already-fixed security flaw today",
+      "why": "Named in its Oct 21 malware post. No new advisory was on the LiteLLM blog at this card's publish time.",
       "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
       "source": "LiteLLM",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-26-10",
+      "id": "2026-10-27-09",
       "date": "2026-10-31",
       "tag": "Calendar",
       "headline": "Mistral Large 4 open weights are due by the end of October",
-      "why": "Large 4 is in public preview through Mistral's API only so far. No weights or license have been posted yet.",
+      "why": "Large 4 is still API preview only. No weights or license posted yet.",
       "url": "https://mistral.ai/news/mistral-large-4/",
       "source": "Mistral",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-10",
+      "date": "2026-11-04",
+      "tag": "Calendar",
+      "headline": "Moonshot says Kimi K3.1 Pro weights come by 4 Nov",
+      "why": "API is live; Artificial Analysis already ranks the model near the top of its Index.",
+      "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "source": "Moonshot",
       "status": "confirmed"
     }
   ]

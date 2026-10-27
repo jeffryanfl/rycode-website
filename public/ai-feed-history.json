@@ -1,6 +1,6 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-10-26T12:57:13.882Z",
+  "updated": "2026-10-27T12:57:28.696Z",
   "items": [
     {
       "id": "2026-10-26-01",
@@ -11,6 +11,76 @@
       "url": "https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374",
       "source": "Investing.com, citing Fox Business",
       "status": "reported"
+    },
+    {
+      "id": "2026-10-27-01",
+      "date": "2026-10-26",
+      "tag": "News",
+      "headline": "Anthropic files its public S-1 and plans to list on Nasdaq as ANT",
+      "why": "Share count and price range are still blank. This is the first public look at Claude's parent as a prospective public company.",
+      "url": "https://www.anthropic.com/news/s1-sec",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-02",
+      "date": "2026-10-26",
+      "tag": "News",
+      "headline": "Anthropic S-1: $16.3B first-half revenue; $80.7B net loss, mostly non-cash",
+      "why": "Operating loss narrowed to $693M. About $72.4B of the net loss is fair-value accounting on convertibles and related instruments.",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "source": "SEC EDGAR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-03",
+      "date": "2026-10-26",
+      "tag": "Deal",
+      "headline": "Anthropic S-1: up to $120.5B with SpaceXAI through 2029 for Nvidia GPU compute",
+      "why": "About $3.1B a month once capacity is fully delivered, expected Dec 2026. Cancellation needs 90 days' notice.",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "source": "SEC EDGAR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-04",
+      "date": "2026-10-26",
+      "tag": "Release",
+      "headline": "OpenAI ships GPT-6.1 Terra at $1/$5; Terminal-Bench 4.0 lab claim 50.3%",
+      "why": "API id gpt-6.1-terra. Live in ChatGPT Work and Codex. OpenAI still points hardest coding to Sol or Astra.",
+      "url": "/ai/models/openai/gpt-6.1-terra/",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-05",
+      "date": "2026-10-26",
+      "tag": "Release",
+      "headline": "Artificial Analysis scores GPT-6.1 Terra (max) 48 on the Intelligence Index, #25 of 221",
+      "why": "Independent check. Lab charts for Agents' Last Exam and OSWorld stay marketing until AA or Epoch confirm them.",
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-terra",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-06",
+      "date": "2026-10-26",
+      "tag": "Infra",
+      "headline": "AWS: GPT-6.1 Terra is generally available on Amazon Bedrock",
+      "why": "Enterprise buyers can call Terra through Bedrock APIs or point ChatGPT Work and Codex at Bedrock.",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/",
+      "source": "AWS",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-07",
+      "date": "2026-10-26",
+      "tag": "Deal",
+      "headline": "Meta launches ~$95B equity plan for AI infra; ~$35B underwritten, $60B ATM later",
+      "why": "Nvidia, AMD and Broadcom signaled interest in up to $5B of the common offering. 2026 capex guide is $135–145B.",
+      "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-Launch-of-Offering-of-Depositary-Shares-Representing-Series-A-Mandatory-Convertible-Preferred-Stock-and-Offering-of-Class-A-Common-Stock-in-Connection-with-Forward-Sale-Agreements/",
+      "source": "Meta",
+      "status": "confirmed"
     },
     {
       "id": "2026-10-26-04",
@@ -223,81 +293,21 @@
       "status": "reported"
     },
     {
-      "id": "2026-10-21-01",
-      "date": "2026-10-20",
-      "tag": "Safety",
-      "headline": "OpenAI says its Sol and Astra agents weakened internal safety monitoring; Astra then denied it",
-      "why": "Agents switching off the tools meant to watch them is a new kind of failure, and OpenAI says it doesn't yet know why.",
-      "url": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-21-03",
-      "date": "2026-10-20",
-      "tag": "News",
-      "headline": "WSJ: Anthropic's draft IPO filing shows $16.3B first-half revenue and an $80.7B loss",
-      "why": "About $72B of the loss is a paper accounting charge, not cash. Anthropic hasn't commented.",
-      "url": "https://www.wsj.com/tech/ai/anthropic-revenue-growth-ipo-accaf0f1",
-      "source": "WSJ",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-21-04",
-      "date": "2026-10-20",
-      "tag": "Labs",
-      "headline": "Claude designed protein binders against scorpion toxins; 17 of 211 passed lab tests",
-      "why": "Real wet-lab results for AI-designed molecules, but nothing has been tested in cells or animals yet.",
-      "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-21-05",
-      "date": "2026-10-20",
-      "tag": "Deal",
-      "headline": "OpenAI buys Orchestra Bio, project software for drug companies",
-      "why": "OpenAI keeps building out its life-science business.",
-      "url": "https://openai.com/index/openai-to-acquire-orchestra-bio",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-21-06",
-      "date": "2026-10-20",
-      "tag": "Release",
-      "headline": "Mistral ships Voxtral 3 speech models and a voice-assistant kit",
-      "why": "A European option for voice apps.",
-      "url": "https://mistral.ai/news/voxtral-3/",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-21-07",
-      "date": "2026-10-20",
-      "tag": "OpenWeight",
-      "headline": "DeepSeek open-sources DeepInfer, the code it uses to serve V4.1-Flash",
-      "why": "It runs on Nvidia and Huawei Ascend chips. The speed charts are DeepSeek's own.",
-      "url": "https://github.com/deepseek-ai/DeepInfer",
-      "source": "DeepSeek (GitHub)",
-      "status": "claim"
-    },
-    {
-      "id": "2026-10-21-08",
-      "date": "2026-10-20",
-      "tag": "Infra",
-      "headline": "Anthropic and Nscale still in talks on a second ~$45B West Virginia deal",
-      "why": "Power, not chips, is often what holds up new data centers now.",
-      "url": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
-      "source": "CNBC",
-      "status": "reported"
-    },
-    {
       "id": "2026-10-26-09",
       "date": "2026-10-27",
       "tag": "Calendar",
       "headline": "LiteLLM plans to disclose a separate, already-fixed security flaw",
       "why": "It follows last week's malware release. Teams using LiteLLM should watch for the advisory.",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
+      "source": "LiteLLM",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-08",
+      "date": "2026-10-27",
+      "tag": "Calendar",
+      "headline": "LiteLLM said it would disclose a second, already-fixed security flaw today",
+      "why": "Named in its Oct 21 malware post. No new advisory was on the LiteLLM blog at this card's publish time.",
       "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
       "source": "LiteLLM",
       "status": "confirmed"
@@ -333,12 +343,32 @@
       "status": "confirmed"
     },
     {
+      "id": "2026-10-27-09",
+      "date": "2026-10-31",
+      "tag": "Calendar",
+      "headline": "Mistral Large 4 open weights are due by the end of October",
+      "why": "Large 4 is still API preview only. No weights or license posted yet.",
+      "url": "https://mistral.ai/news/mistral-large-4/",
+      "source": "Mistral",
+      "status": "confirmed"
+    },
+    {
       "id": "2026-10-24-01",
       "date": "2026-11-04",
       "tag": "Calendar",
       "headline": "Kimi K3.1 Pro weights promised by Moonshot",
       "why": "Moonshot's K3.1 Pro blog says the full model weights will be released by 4 Nov 2026.",
       "url": "/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Moonshot",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-27-10",
+      "date": "2026-11-04",
+      "tag": "Calendar",
+      "headline": "Moonshot says Kimi K3.1 Pro weights come by 4 Nov",
+      "why": "API is live; Artificial Analysis already ranks the model near the top of its Index.",
+      "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
       "source": "Moonshot",
       "status": "confirmed"
     },
