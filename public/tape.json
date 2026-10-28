@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-28T08:19:34-04:00",
-  "asOfLabel": "Wed 28 Oct · pre-open",
+  "updated": "2026-10-28T16:08:30-04:00",
+  "asOfLabel": "Wed 28 Oct · after-close",
   "lines": [
     {
       "tag": "Fed",
-      "text": "FOMC day two: statement + Warsh presser; 10-year still just under 5%."
+      "text": "Fed held 3.75–4% (10–2; Cook & Hammack wanted +25bp). Inflation elevated; wait for data."
     },
     {
-      "tag": "Tape",
-      "text": "S&P futures ~7,772 (+0.2% vs Tue settle), Nasdaq futures ~29,940; cash S&P last 7,723."
+      "tag": "Rates",
+      "text": "10-year Treasury 5.05% (re-crossed above 5% from 4.99%); 2-year 4.67%, 30-year 5.37%."
     },
     {
       "tag": "Oil",
-      "text": "Dec WTI ~$101.66 pre-open, back above $100; Tue final bar revised to $99.90 from $100.03."
+      "text": "Dec WTI ~$102.42, back above $100; Tue final bar corrected to $99.90 from $100.03."
     }
   ],
   "doorHref": "/economics",
