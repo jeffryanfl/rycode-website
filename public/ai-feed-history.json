@@ -1,7 +1,97 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-10-27T12:57:28.696Z",
+  "updated": "2026-10-28T12:53:15.859Z",
   "items": [
+    {
+      "id": "2026-10-28-01",
+      "date": "2026-10-27",
+      "tag": "OpenWeight",
+      "headline": "Liquid AI ships LFM3: six open-weight ~2B models on one backbone",
+      "why": "Text, vision, audio, omni, and two decision models. Built to fine-tune on one GPU and run on phones or laptops.",
+      "url": "https://www.liquid.ai/blog/lfm3",
+      "source": "Liquid AI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-02",
+      "date": "2026-10-27",
+      "tag": "OpenWeight",
+      "headline": "LFM3-1.7B: 256K context, ~1GB at 4-bit; AA has no Index score yet",
+      "why": "Liquid's own 29-bench average is 49.37 vs 47.24 for Qwen3.5-9B. Treat lab benches as marketing until AA or Epoch confirm.",
+      "url": "https://artificialanalysis.ai/models/creators/liquidai",
+      "source": "Liquid AI / Artificial Analysis",
+      "status": "claim"
+    },
+    {
+      "id": "2026-10-28-03",
+      "date": "2026-10-27",
+      "tag": "Release",
+      "headline": "DeepMind Genie 4 adds native audio to real-time interactive world sims",
+      "why": "Trusted-tester preview now; later for Google AI Ultra Project Genie and early Gemini API partners. SynthID on outputs.",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "source": "Google DeepMind",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-04",
+      "date": "2026-10-27",
+      "tag": "Safety",
+      "headline": "LiteLLM Critical: Enterprise proxy unauth file read can leak master key",
+      "why": "Affects licensed Enterprise proxies only. Open-source without a license is not hit. Patch to the listed fixed versions.",
+      "url": "https://github.com/BerriAI/litellm/security/advisories/GHSA-w4c7-34wj-hqm8",
+      "source": "LiteLLM (GitHub)",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-06",
+      "date": "2026-10-27",
+      "tag": "Deal",
+      "headline": "OpenAI and Oracle put Oracle apps and data into ChatGPT",
+      "why": "Oracle AI Workspace, Security Mesh, App Composer, and SMB Bundle. US buyers can use Universal Credits on Marketplace.",
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt/",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-07",
+      "date": "2026-10-27",
+      "tag": "Labs",
+      "headline": "Anthropic posts early Claude results with six drug-development partners",
+      "why": "BigHat, BMS, Divergence, Enveda, Generate, and The Column Group. Mostly preclinical; Anthropic also acquired Mithril Medicine.",
+      "url": "https://www.anthropic.com/research/early-progress-drug-development",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-08",
+      "date": "2026-10-27",
+      "tag": "Policy",
+      "headline": "Anthropic expands GSA OneGov deal: 40% off Claude for all US government levels",
+      "why": "Covers Enterprise, Claude for Government, and API. No minimum spend. Anthropic estimates about $1B in government savings.",
+      "url": "https://www.anthropic.com/news/expanding-partnership-gsa",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-09",
+      "date": "2026-10-27",
+      "tag": "Deal",
+      "headline": "Nvidia will invest $3B in Meta's equity raise and deepen Muse work",
+      "why": "Also more Vera Rubin and Vera CPU for Meta agents, plus Spectrum-X and BlueField-4. Follows Meta's large AI financing plan.",
+      "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Meta-to-Expand-Collaboration-on-Muse-and-Muse-Family-of-Models-Amid-Robust-Growth/default.aspx",
+      "source": "NVIDIA",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-10",
+      "date": "2026-10-27",
+      "tag": "Infra",
+      "headline": "Oracle will offer Google TPUs on OCI starting in calendar 2027",
+      "why": "First hyperscaler outside Google to rent Google TPUs. TPU 8t for training and TPU 8i for inference are named.",
+      "url": "/ai/hardware/chips/tpu-8/",
+      "source": "Oracle",
+      "status": "confirmed"
+    },
     {
       "id": "2026-10-26-01",
       "date": "2026-10-26",
@@ -81,6 +171,16 @@
       "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-Launch-of-Offering-of-Depositary-Shares-Representing-Series-A-Mandatory-Convertible-Preferred-Stock-and-Offering-of-Class-A-Common-Stock-in-Connection-with-Forward-Sale-Agreements/",
       "source": "Meta",
       "status": "confirmed"
+    },
+    {
+      "id": "2026-10-28-05",
+      "date": "2026-10-26",
+      "tag": "News",
+      "headline": "OpenAI: models claim local-smoothing in all dims and that ETH is false",
+      "why": "Lean formalizations are public. Impagliazzo, Paturi, and Williams shepherd the ETH check. Not settled science yet.",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+      "source": "OpenAI",
+      "status": "claim"
     },
     {
       "id": "2026-10-26-04",
@@ -180,136 +280,6 @@
       "why": "Agents need lots of ordinary processors next to the GPUs; Supermicro says one rack holds up to 22,500 agent sandboxes. Available to quote now.",
       "url": "https://ir.supermicro.com/news/news-details/2026/Supermicro-Introduces-the-NVIDIA-Vera-CPU-Rack-a-256-CPU-100-Liquid-Cooled-Rack-Scale-Solution-Complementing-the-NVIDIA-Vera-Rubin-Platform-for-Agentic-AI-at-Scale/default.aspx",
       "source": "Supermicro",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-21-02",
-      "date": "2026-10-21",
-      "tag": "Deal",
-      "headline": "OpenAI's GPT-6 Astra and Codex are coming to Google Cloud in the coming weeks",
-      "why": "OpenAI will be on all three big US clouds, and buyers can use money they've already committed to Google.",
-      "url": "https://www.channelnewsasia.com/business/openai-sell-its-top-models-google-cloud-in-latest-enterprise-push-6478941",
-      "source": "Reuters via CNA",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-22-01",
-      "date": "2026-10-21",
-      "tag": "Release",
-      "headline": "Anthropic opens a waitlisted research preview of Claude Duet, a proactive agent app built around Opus 5.5",
-      "why": "It runs on its own cloud computer and keeps working when you step away. US Pro and Max only for now, sharing your plan's usage limits.",
-      "url": "https://claude.com/resources/articles/claude-duet",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-22-02",
-      "date": "2026-10-21",
-      "tag": "Safety",
-      "headline": "OpenAI: AI helped find critical PHP flaws before attackers did; PHP has shipped fixes",
-      "why": "PHP is used to run websites and web apps. OpenAI calls it one of the most impactful security issues in recent memory and expects more such finds.",
-      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-22-03",
-      "date": "2026-10-21",
-      "tag": "Safety",
-      "headline": "LiteLLM's 1.107.0 release shipped credential-stealing malware for about two hours before it was pulled",
-      "why": "LiteLLM holds the API keys for many AI apps. Anyone who installed that version should assume compromise and rotate every key.",
-      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
-      "source": "LiteLLM",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-22-04",
-      "date": "2026-10-21",
-      "tag": "Infra",
-      "headline": "Nvidia's DSX POD ships whole AI data centers in factory-built containers, from early 2027",
-      "why": "Nvidia says it cuts setup at a prepared site from six months to as little as 14 days.",
-      "url": "https://nvidianews.nvidia.com/news/nvidia-introduces-dsx-pod-ai-factories-to-accelerate-europes-infrastructure-deployment",
-      "source": "Nvidia",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-22-05",
-      "date": "2026-10-21",
-      "tag": "OpenWeight",
-      "headline": "Recursive releases Flint, a free 40B coding model built to run on a laptop",
-      "why": "Apache 2.0 weights on Hugging Face. The speed and coding scores are Recursive's own; Artificial Analysis hasn't tested it yet.",
-      "url": "https://recursive.com/updates/introducing-recursive-flint",
-      "source": "Recursive",
-      "status": "claim"
-    },
-    {
-      "id": "2026-10-22-06",
-      "date": "2026-10-21",
-      "tag": "News",
-      "headline": "Dario Amodei defends Anthropic's 'race to the top' and says it could have handled three points better",
-      "why": "He lists nine safety calls he says cost Anthropic money, including holding its Mythos models back for four months.",
-      "url": "https://thenextweb.com/news/dario-amodei-anthropic-race-to-the-top-nine-safety-decisions",
-      "source": "The Next Web",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-23-04",
-      "date": "2026-10-21",
-      "tag": "Labs",
-      "headline": "Mistral and Nvidia team up on AI for engineering design, with public benchmarks and open datasets",
-      "why": "Shared tests for AI agents doing simulation and chip-design work would let buyers compare them. Mistral restates Large 4 weights for end of October.",
-      "url": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-05",
-      "date": "2026-10-21",
-      "tag": "Infra",
-      "headline": "Infineon expands work with Nvidia on gallium nitride power parts for 800-volt AI data centers",
-      "why": "Feeding power to dense AI racks is a growing limit; higher voltage and GaN chips aim to cut losses and save space.",
-      "url": "https://www.infineon.com/press-release/2026/infpr202610-012",
-      "source": "Infineon",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-06",
-      "date": "2026-10-21",
-      "tag": "Safety",
-      "headline": "LiteLLM traces its malware release to GitHub tokens that leaked into its own logs via Claude Code",
-      "why": "LiteLLM says Claude Code can put GitHub login tokens into responses that then get logged. Anyone logging AI responses should check for leaked secrets.",
-      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
-      "source": "LiteLLM",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-07",
-      "date": "2026-10-21",
-      "tag": "Policy",
-      "headline": "BBC: Google DeepMind staff are quitting over Google's AI deals with the US military",
-      "why": "Two named researchers say Google can't see or control how the Pentagon uses its AI. Google says it reviews such contracts under its AI principles.",
-      "url": "https://www.bbc.com/news/articles/cmreyvepnv0po",
-      "source": "BBC",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-26-09",
-      "date": "2026-10-27",
-      "tag": "Calendar",
-      "headline": "LiteLLM plans to disclose a separate, already-fixed security flaw",
-      "why": "It follows last week's malware release. Teams using LiteLLM should watch for the advisory.",
-      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
-      "source": "LiteLLM",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-08",
-      "date": "2026-10-27",
-      "tag": "Calendar",
-      "headline": "LiteLLM said it would disclose a second, already-fixed security flaw today",
-      "why": "Named in its Oct 21 malware post. No new advisory was on the LiteLLM blog at this card's publish time.",
-      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
-      "source": "LiteLLM",
       "status": "confirmed"
     },
     {
