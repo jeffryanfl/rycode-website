@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-10-26",
-  "updated": "2026-10-26T18:00:00-04:00",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Eleven rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026) · Kimi K3.1 Pro (added 24 Oct 2026; weights promised by 4 Nov; DeepSWE v1.1 75.5%, Terminal-Bench 4.0 65.7% and HLE 70.0% with tools are lab claims; OSWorld and AutomationBench blank because Moonshot prints V2.1 and -AA versions that do not match these columns; AA Index 55, fetched 24 Oct 2026; aaIndex effort is null because the AA page shows one entry with no effort label, an exception to the always-store-effort rule) · GPT-6.1 Terra (added 26 Oct 2026; Terminal-Bench 4.0 50.3% at max effort is a lab claim; OSWorld blank because OpenAI prints OSWorld 2.1, which does not match this column; AA Index 48, effort max, fetched 26 Oct 2026). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One section stays on /ai below the agent tools band. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0): name the version; do not mix without naming. Labels pass 12 Oct 2026: every non-AA cell carries sourceKind lab (company's own claim) or verifier (third party that ran the test, e.g. ARC Prize); null renders as 'not reported'. Astra ARC-AGI-3 now shows ARC Prize Standard harness 62.7% first; the Provider Adapter 99.9% is kept as altSetup.",
+  "asOf": "2026-10-28",
+  "updated": "2026-10-28T16:30:00-04:00",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Twelve rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026) · Kimi K3.1 Pro (added 24 Oct 2026; weights promised by 4 Nov; DeepSWE v1.1 75.5%, Terminal-Bench 4.0 65.7% and HLE 70.0% with tools are lab claims; OSWorld and AutomationBench blank because Moonshot prints V2.1 and -AA versions that do not match these columns; AA Index 55, fetched 24 Oct 2026; aaIndex effort is null because the AA page shows one entry with no effort label, an exception to the always-store-effort rule) · GPT-6.1 Terra (added 26 Oct 2026; Terminal-Bench 4.0 50.3% at max effort is a lab claim; OSWorld blank because OpenAI prints OSWorld 2.1, which does not match this column; AA Index 48, effort max, fetched 26 Oct 2026)) · Gemini 4 Carbon (added 28 Oct 2026; Google frontier model, Fairwind cyber defenders first, not generally available; AA Index 59, effort high, fetched 28 Oct 2026 from the v5.0 leaderboard, #1 on Index v5.0; lab columns blank because Google prints only cyber evals and WebDev Arena, none of which match these columns; Argon stays a live row because Google says Carbon builds on Argon, not that it replaces it). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One section stays on /ai below the agent tools band. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0): name the version; do not mix without naming. Labels pass 12 Oct 2026: every non-AA cell carries sourceKind lab (company's own claim) or verifier (third party that ran the test, e.g. ARC Prize); null renders as 'not reported'. Astra ARC-AGI-3 now shows ARC Prize Standard harness 62.7% first; the Provider Adapter 99.9% is kept as altSetup. AA Index v5.0 pass 28 Oct 2026: Artificial Analysis replaced Index v4.3.2 with v5.0 on 27 Oct 2026 (nine evals, new scale). All eleven aaIndex cells re-fetched from the v5.0 leaderboard at each row's stored effort; earlier per-row AA numbers in this note are v4.3.2 history. Gemini 4 Carbon was added the same day as a twelfth row at 59 (high), #1 on v5.0 ahead of Claude Opus 5.5 (max) at 58.",
   "columns": [
     {
       "id": "cursorBench",
@@ -50,7 +50,7 @@
       "id": "aaIndex",
       "label": "AA Intelligence Index",
       "href": "https://artificialanalysis.ai/leaderboards/models",
-      "notes": "Artificial Analysis composite (Index v4.3.2 eval set on AA site). Independent of lab announces. Always store effort label (max/xhigh/high/…). Do not mix with CursorBench, OSWorld, or ARC-AGI cells. sourceKind must be aa.",
+      "notes": "Artificial Analysis composite (Index v5.0 eval set on AA site, launched 27 Oct 2026; all rows re-fetched 28 Oct 2026, v4.3.2 scores retired). Independent of lab announces. Always store effort label (max/xhigh/high/…). Do not mix with CursorBench, OSWorld, or ARC-AGI cells. sourceKind must be aa.",
       "sourceKind": "aa",
       "primaryUrl": "https://artificialanalysis.ai/leaderboards/models"
     }
@@ -102,10 +102,11 @@
           "value": 58,
           "effort": "max",
           "aaModelLabel": "Claude Opus 5.5 (max with fallback)",
-          "source": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-09-23",
-          "notes": "AA Intelligence Index from AA Opus 5.5 article/model page 22 Sep 2026; not a lab announce score. Highest Index AA reported on that article."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 58 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -143,13 +144,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 56,
+          "value": 54,
           "effort": "max",
           "aaModelLabel": "Claude Sonnet 5.5 (max with fallback)",
-          "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-02",
-          "notes": "AA Intelligence Index from the model page fetched 2 Oct 2026. Page intelligenceIndex 56.0001286580794, stored as 56. Effort label on the page is max. Not a lab announce score."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 56 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -184,13 +186,14 @@
         },
         "arcAgi": null,
         "aaIndex": {
-          "value": 43,
+          "value": 36,
           "effort": "max",
           "aaModelLabel": "Claude Haiku 5.5 (max)",
-          "source": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-08",
-          "notes": "AA Intelligence Index v4.3.2 from the model page, re-fetched 8 Oct 2026 (unchanged from 7 Oct). AA label is Claude Haiku 5.5 (max). #2 of 182 in its price class. Not a lab announce score."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 43 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -240,13 +243,14 @@
         },
         "arcAgi": null,
         "aaIndex": {
-          "value": 53,
+          "value": 49,
           "effort": "max",
           "aaModelLabel": "Claude Fable 5.1 (max with fallback)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-09-22",
-          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh with fallback also 53 on same fetch."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 53 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score. xhigh with fallback scores 50 on the same fetch; table keeps the stored max effort.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -317,13 +321,14 @@
           "verifier": "ARC Prize"
         },
         "aaIndex": {
-          "value": 53,
+          "value": 57,
           "effort": "max",
           "aaModelLabel": "GPT-6 Astra (max)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-09-22",
-          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. xhigh is 52 on same fetch."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 53 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -355,13 +360,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 52,
+          "value": 55,
           "effort": "max",
           "aaModelLabel": "GPT-6.1 Sol (max)",
-          "source": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-02",
-          "notes": "AA Intelligence Index from the model page fetched 2 Oct 2026. Page intelligenceIndex 51.8332597011541, stored as the integer 52. Effort label on the page is max. Not a lab announce score."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 52 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -404,13 +410,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 46,
+          "value": 34,
           "effort": "xhigh",
           "aaModelLabel": "Grok 4.7 (xhigh)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-09-22",
-          "notes": "AA Intelligence Index from LLM leaderboard; not a lab announce score. high also 46 on same fetch."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 46 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score. high scores 35 on the same fetch; table keeps the stored xhigh effort.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -447,18 +454,50 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 53,
+          "value": 50,
           "effort": "high",
-          "aaModelLabel": "Gemini 4 Argon (High)",
-          "source": "https://artificialanalysis.ai/models/gemini-4-argon",
+          "aaModelLabel": "Gemini 4 Argon (high)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-01",
-          "notes": "Artificial Analysis Intelligence Index from the model page fetched 1 Oct 2026. Not a lab score."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 53 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [
         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
         "https://artificialanalysis.ai/models/gemini-4-argon"
+      ]
+    },
+    {
+      "lab": "Google DeepMind",
+      "model": "Gemini 4 Carbon",
+      "apiId": null,
+      "doorHref": "/ai/models/google/gemini-4-carbon/",
+      "role": "Google frontier model announced 28 Oct 2026. Fairwind cyber defenders first; not yet for developers, businesses, or consumers.",
+      "benches": {
+        "cursorBench": null,
+        "deepSwe": null,
+        "terminalBench": null,
+        "osworld": null,
+        "automationBench": null,
+        "hle": null,
+        "arcAgi": null,
+        "aaIndex": {
+          "value": 59,
+          "effort": "high",
+          "aaModelLabel": "Gemini 4 Carbon (high)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
+          "sourceKind": "aa",
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 from the AA LLM leaderboard and the AA Carbon article, both fetched 28 Oct 2026. #1 on Index v5.0. AA tested Carbon with high reasoning before public release. apiId is null because Google has not published one. Not a lab score.",
+          "version": "v5.0"
+        }
+      },
+      "sources": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1",
+        "https://artificialanalysis.ai/models/gemini-4-carbon"
       ]
     },
     {
@@ -482,13 +521,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 52,
+          "value": 43,
           "effort": "max",
-          "aaModelLabel": "Muse Wonder (Max)",
-          "source": "https://artificialanalysis.ai/models/muse-wonder",
+          "aaModelLabel": "Muse Wonder (max)",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-12",
-          "notes": "AA Intelligence Index from the model page fetched 12 Oct 2026. Not a lab score."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 52 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -529,13 +569,14 @@
         },
         "arcAgi": null,
         "aaIndex": {
-          "value": 55,
+          "value": 46,
           "effort": null,
           "aaModelLabel": "Kimi K3.1 Pro",
-          "source": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-24",
-          "notes": "AA Intelligence Index v4.3.2 from the model page fetched 24 Oct 2026. Page intelligenceIndex 55.0869, stored as 55. AA shows a single unsuffixed entry; no effort label printed (Moonshot API default is max). #4 of 215. Not a lab score."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 55 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score. AA still shows one entry with no effort label.",
+          "version": "v5.0"
         }
       },
       "sources": [
@@ -565,13 +606,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 48,
+          "value": 51,
           "effort": "max",
           "aaModelLabel": "GPT-6.1 Terra (max)",
-          "source": "https://artificialanalysis.ai/models/gpt-6-1-terra",
+          "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-26",
-          "notes": "AA Intelligence Index v4.3.2 from the model page fetched 26 Oct 2026. #25 of 221. Not a lab score."
+          "fetched": "2026-10-28",
+          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 48 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
+          "version": "v5.0"
         }
       },
       "sources": [

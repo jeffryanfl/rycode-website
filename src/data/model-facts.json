@@ -27,7 +27,8 @@
     "/ai/models/xai/imagine/": { "name": "Imagine", "status": "current", "checked": "13 Sep 2026" },
     "/ai/models/xai/voice/": { "name": "Voice", "status": "current", "checked": "15 Oct 2026" },
 
-    "/ai/models/google/gemini-4-argon/": { "name": "Gemini 4 Argon", "status": "current", "price": "$2 in, $10 out (introductory, through 30 Nov 2026)", "released": "13 Oct 2026 (announced 30 Sep)", "checked": "14 Oct 2026" },
+    "/ai/models/google/gemini-4-carbon/": { "name": "Gemini 4 Carbon", "status": "limited", "statusNote": "cyber defenders in the Fairwind Program first, not yet for developers or consumers", "price": "$2 in, $10 out (introductory; $4 in, $20 out after)", "released": "28 Oct 2026 (announced)", "checked": "28 Oct 2026" },
+    "/ai/models/google/gemini-4-argon/": { "name": "Gemini 4 Argon", "status": "current", "price": "$2 in, $10 out (introductory, through 30 Nov 2026)", "released": "13 Oct 2026 (announced 30 Sep)", "checked": "28 Oct 2026" },
     "/ai/models/google/gemini-pro/": { "name": "Gemini 3.1 Pro Preview", "status": "older", "statusNote": "still on the Gemini API as a preview; Google names no successor", "aa": { "value": 30, "fetched": "22 Sep 2026" }, "price": "$2 in, $12 out (up to 200k)", "released": "19 Feb 2026 (announced)", "checked": "22 Sep 2026" },
     "/ai/models/google/gemini-flash/": { "name": "Gemini 3.8 Flash", "status": "current", "aa": { "value": 41, "effort": "high", "fetched": "22 Sep 2026" }, "price": "$0.75 in, $3.75 out (through 31 Dec 2026)", "released": "2 Sep 2026 (announced)", "checked": "22 Sep 2026" },
     "/ai/models/google/gemini-flash-lite/": { "name": "Gemini 3.5 Flash-Lite", "status": "current", "aa": { "value": 22, "fetched": "22 Sep 2026" }, "price": "$0.30 in, $2.50 out", "released": "21 Jul 2026 (announced)", "checked": "22 Sep 2026" },

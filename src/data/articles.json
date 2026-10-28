@@ -1080,6 +1080,26 @@
     "slug": "ai-models-google-gemini-4-argon"
   },
   {
+    "href": "/ai/models/google/gemini-4-carbon/",
+    "title": "Gemini 4 Carbon",
+    "description": "Announced 28 Oct 2026. Cyber defenders first, not the public.",
+    "date": "2026-10-28",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-4-carbon.astro",
+    "slug": "ai-models-google-gemini-4-carbon"
+  },
+  {
     "href": "/ai/models/google/gemini-flash-lite/",
     "title": "Gemini 3.5 Flash-Lite",
     "description": "Low-latency Flash-Lite for high-throughput work.",

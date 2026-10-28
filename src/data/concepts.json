@@ -44,6 +44,7 @@
         "/ai/models/openai/gpt-6-luna/",
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/google/gemini-4-argon/",
+        "/ai/models/google/gemini-4-carbon/",
         "/ai/models/xai/grok-4-7/"
       ],
       "links": [
@@ -76,6 +77,7 @@
       "articles": [
         "/ai/models/google/gemini-pro/",
         "/ai/models/google/gemini-4-argon/",
+        "/ai/models/google/gemini-4-carbon/",
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/openai/gpt-6.1-terra/",
         "/ai/models/anthropic/claude-opus-5-5/",
@@ -282,6 +284,7 @@
         "/ai/models/google/gemini-pro/",
         "/ai/models/google/gemini-flash-lite/",
         "/ai/models/google/gemini-4-argon/",
+        "/ai/models/google/gemini-4-carbon/",
         "/ai/models/google/gemini-flash/",
         "/ai/models/google/gemma/",
         "/ai/models/open-weight/kimi-k3/",

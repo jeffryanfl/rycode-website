@@ -1,0 +1,80 @@
+---
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Gemini 4 Carbon - A.I. - Rycode"
+  description="Gemini 4 Carbon, Google DeepMind's frontier model announced 28 October 2026, for cyber defenders first."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Gemini 4 Carbon</h1>
+    <p class="ai-model-dek">Gemini 4 Carbon is a Google DeepMind model announced 28 October 2026. Google calls it its strongest model, aimed at cybersecurity and long, multi-step work. It is not generally available. Google says it is giving Carbon first to a subset of cyber defenders, then to more trusted partners through the <a href="https://deepmind.google/fairwind-program/">Fairwind Program</a>, and will bring it to developers, businesses, and consumers later. Google says Carbon builds on <a href="/ai/models/google/gemini-4-argon/">Gemini 4 Argon</a>. It does not say Carbon replaces Argon. Google has not published an API id, the name a program uses to call the model. The introductory price is $2 per million input tokens and $10 per million output tokens, the same as Argon’s. Tokens are the word pieces models are billed by. Cached input, text the service has already seen and stored, is 95% off. After the intro period, $4 and $20 apply. Google gives no end date for Carbon’s intro price.</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Google says it trained Carbon to handle complex or high-pressure tasks the right way, and cut shortcut attempts during training. Google says Carbon brought successful cheating on Terminal-Bench 4.0 to 0.0%, with cheating attempts at 0.4%, while its overall score went up. Those are Google’s figures. Parameter count, training compute, dataset, and knowledge cutoff are not in the 28 October post.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Google says Carbon is built for long agent work, and that its own teams have seen it run for days on multi-step engineering jobs, such as finding and patching subtle bugs across large codebases. Google does not publish tokens per second, rate limits, regions, or thinking-level controls in the announce. Artificial Analysis tested Gemini 4 Carbon with high reasoning. Artificial Analysis lists text, image, video, and speech input, with text output. That list is Artificial Analysis’s, not a Google sentence.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context is how much text the model can take in and write in one job. Artificial Analysis lists a 1 million token context window for Gemini 4 Carbon. The 28 October Google post does not give a context length.</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Google says Carbon uses the same layered safety setup as Argon: model training, real-time misuse defenses, prompt-injection resistance, and monitoring of the chain of thought. Google says it is taking part in the U.S. government’s voluntary process for testing models before release. In live coding with its own teams, Google says high-severity misalignment alerts fell by almost 80%, and in internal tests Carbon made about half as many unsupported claims as Argon. Google says Carbon had 0.0% attack success on Gray Swan’s Indirect Prompt Injection benchmark, against 0.7% for Argon. Indirect prompt injection means hidden instructions in a webpage, email, or file that try to hijack the model. Those are Google’s figures.</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Artificial Analysis scores Gemini 4 Carbon (high) at 59 on its Intelligence Index v5.0, fetched 28 October 2026. That is #1 on the v5.0 leaderboard, one point above Claude Opus 5.5 (max) at 58. Gemini 4 Argon (high) scores 50 on the same index. Artificial Analysis moved to Intelligence Index v5.0 on 27 October 2026, a new nine-test set on a new scale, so v5.0 scores do not line up with older v4.3.2 numbers. That is an independent score, not a Google chart number.</p>
+    <p>Artificial Analysis says Carbon has the top score on 4 of the 9 Index tests, and that it is not leading in coding and knowledge work. On the Artificial Analysis Coding Agent Index, Carbon (high) in Antigravity CLI scores 59, behind Claude Code with Claude Opus 5.5 (max) at 62.</p>
+    <p>The cells below are Google’s 28 October post. They are lab claims, and Google says they were run without guardrails.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Gemini 4 Carbon</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>SEC-bench Pro</td><td>88.2%</td><td>Lab claim. Finding vulnerabilities. Google calls it state of the art.</td></tr>
+          <tr><td>ExploitGym</td><td>54.8%</td><td>Lab claim. Exploiting vulnerabilities. Google calls it state of the art.</td></tr>
+          <tr><td>CWE-bench</td><td>71.0%</td><td>Lab claim. Collinear. Patching vulnerabilities.</td></tr>
+          <tr><td>WebDev Arena</td><td>1768</td><td>Lab claim. Google says rank 4, up 89 points.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The post also cites internal secure-code tests, the Chrome team, and Wiz. Those have no shared test and stay off this card.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>As of 28 October 2026, Google says:</p>
+    <ul>
+      <li>Cyber defenders: a subset gets Carbon starting this week. Google will then add more trusted partners through the Fairwind Program.</li>
+      <li>Developers, businesses, and everyday users: not yet. Google says it is gathering feedback and working on guardrails first, and will open Carbon in its products as soon as possible.</li>
+    </ul>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Intro</th>
+            <th scope="col">After intro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>$2</td><td>$4</td></tr>
+          <tr><td>Cached input</td><td>95% off the input price</td><td>95% off the input price</td></tr>
+          <tr><td>Output / MTok</td><td>$10</td><td>$20</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Artificial Analysis calls the intro price a 50% launch discount with no confirmed end date, and its charts use the $4 and $20 price.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ul class="ai-model-sources">
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/">Gemini 4 Carbon: our next frontier model (28 Oct 2026)</a></li>
+      <li><a href="https://deepmind.google/fairwind-program/">Fairwind Program</a></li>
+      <li><a href="https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1">Artificial Analysis, Gemini 4 Carbon is the new #1 on Intelligence Index v5 (28 Oct 2026)</a></li>
+      <li><a href="https://artificialanalysis.ai/models/gemini-4-carbon">Artificial Analysis, Gemini 4 Carbon (high)</a></li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis LLM leaderboard</a></li>
+    </ul>
+  </article>
+</Layout>
