@@ -108,7 +108,7 @@ const LINE_BENCHES: { id: string; version: string; label: string; name?: string 
  * One look per model. Claude colors are Anthropic's published accents
  * (orange on the mark, then blue, green, and mid gray) so the Claude lines stay apart.
  * OpenAI's blossom stays black. Astra, Sol, and Terra differ by a step of gray.
- * Grok is the black-and-white xAI mark. Gemini uses Google's four colors.
+ * Grok is the black-and-white xAI mark. Gemini uses Google's four colors: Argon blue, Carbon yellow.
  */
 const MODEL_STYLE: Record<
   string,
@@ -123,6 +123,7 @@ const MODEL_STYLE: Record<
   'GPT-6.1 Terra': { color: '#71717A', mark: 'openai', disc: '#A1A1AA', glyph: '#141413' },
   'Grok 4.7': { color: '#F8FAFC', mark: 'xai', disc: '#141413', glyph: '#ffffff', ring: '#F8FAFC' },
   'Gemini 4 Argon': { color: '#4285F4', mark: 'gemini', disc: '#141413', glyph: 'url(#bc-gemini)', ring: '#F8FAFC' },
+  'Gemini 4 Carbon': { color: '#FBBC04', mark: 'gemini', disc: '#141413', glyph: 'url(#bc-gemini)', ring: '#FBBC04' },
 };
 
 function shortModel(model: string): string {
@@ -135,6 +136,7 @@ function shortModel(model: string): string {
   if (model.includes('6.1')) return 'GPT-6.1 Sol';
   if (model.includes('Grok')) return 'Grok 4.7';
   if (model.includes('Argon')) return 'Argon';
+  if (model.includes('Carbon')) return 'Carbon';
   return model;
 }
 
@@ -316,7 +318,7 @@ const DEFS: Record<string, string> = {
   arcAgi: 'ARC-AGI-3: the ARC Prize test of learning and beating new games without instructions.',
 };
 const HEAD_VERSION: Record<string, string> = {
-  aaIndex: 'v4.3.2',
+  aaIndex: 'v5.0',
   cursorBench: '4.0',
   deepSwe: 'v1.1',
   terminalBench: '4.0',
