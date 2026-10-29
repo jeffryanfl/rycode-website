@@ -924,12 +924,12 @@
       "doorLine": "Always-on ChatGPT agent with its own cloud computer.",
       "dek": "OpenAI's always-on personal agent inside ChatGPT, powered by GPT-6 Astra, with its own cloud computer and browser.",
       "cardLine": "Software, creative, and ops work with plugins, optional use of your PC, and voice calls.",
-      "lastChecked": "22 Oct 2026",
-      "updated": "22 Oct 2026",
+      "lastChecked": "28 Oct 2026",
+      "updated": "28 Oct 2026",
       "compare": {
         "underlyingModels": "GPT-6 Astra",
         "modalities": "In: text, voice, files. Out: text, docs, code, video",
-        "whereRuns": "ChatGPT apps, Slack, Teams; cloud PC",
+        "whereRuns": "ChatGPT apps, Slack, Teams, texting (US Pro beta); cloud PC",
         "price": "Pro (~$100 reported), Business Premium, Enterprise"
       },
       "specRows": [
@@ -1037,8 +1037,12 @@
               "sourceKey": "O2"
             },
             {
-              "text": " Reach it in ChatGPT desktop, web, and mobile apps, plus Slack. Not on mobile web. Texting is a limited US Pro beta.",
+              "text": " Reach it in ChatGPT desktop, web, and mobile apps, plus Slack. Not on mobile web.",
               "sourceKey": "O2"
+            },
+            {
+              "text": " Texting over iMessage or RCS is rolling out in beta to US Pro users.",
+              "sourceKey": "O9"
             },
             {
               "text": " Also on Microsoft Teams.",
@@ -1173,6 +1177,12 @@
                 "text": "Specialist dots via Microsoft Agent 365 are in progress.",
                 "sourceKey": "O1"
               }
+            ],
+            [
+              {
+                "text": "Text messages over iMessage or RCS (US Pro beta). Texts run through Linq, a third-party messaging provider, and share the dot's memory and plugins.",
+                "sourceKey": "O9"
+              }
             ]
           ]
         },
@@ -1229,6 +1239,12 @@
               {
                 "text": "Fixed schedules are optional, for example each weekday at 9 AM Central.",
                 "sourceKey": "O6"
+              }
+            ],
+            [
+              {
+                "text": "In the texting beta, it can text you first with updates.",
+                "sourceKey": "O9"
               }
             ]
           ]
@@ -1299,6 +1315,12 @@
                 "text": "Content is encrypted at rest and in transit.",
                 "sourceKey": "O3"
               }
+            ],
+            [
+              {
+                "text": "Texting is one-to-one: only you can text your dot, and it can only text you. It doesn't get access to your other text conversations.",
+                "sourceKey": "O9"
+              }
             ]
           ]
         },
@@ -1313,7 +1335,7 @@
             ],
             [
               {
-                "text": "Wider texting and expansion to more users soon.",
+                "text": "Expansion to more users soon.",
                 "sourceKey": "O1"
               }
             ],
@@ -1367,9 +1389,23 @@
           "key": "D4",
           "label": "Every, Vibe Check: Duet",
           "url": "https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent"
+        },
+        {
+          "key": "O9",
+          "label": "OpenAI Help, ChatGPT release notes: Texting your dot",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+        },
+        {
+          "key": "O10",
+          "label": "The Verge, OpenAI now lets you text your Dot",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/1021183/openai-now-lets-you-text-your-dot"
         }
       ],
       "updates": [
+        {
+          "date": "28 Oct 2026",
+          "text": "Texting beta starts for US Pro users over iMessage or RCS."
+        },
         {
           "date": "29 Sep 2026",
           "text": "dots announced; gradual rollout begins."
