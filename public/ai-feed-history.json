@@ -1,7 +1,77 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-10-28T12:53:15.859Z",
+  "updated": "2026-10-29T12:50:54.884Z",
   "items": [
+    {
+      "id": "2026-10-29-01",
+      "date": "2026-10-28",
+      "tag": "Release",
+      "headline": "Google announces Gemini 4 Carbon; AA Index v5 #1 at 59 (high)",
+      "why": "Fairwind cyber-defender preview first. Argon stays live; Google says Carbon builds on Argon, not that it replaces it.",
+      "url": "/ai/models/google/gemini-4-carbon/",
+      "source": "Google / Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-29-02",
+      "date": "2026-10-28",
+      "tag": "Release",
+      "headline": "Carbon price: intro $2/$10 then $4/$20; 1M context; text out",
+      "why": "Same intro path as Argon. AA charts use standard $4/$20. Multimodal input; text output per AA.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+      "source": "Google",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-29-03",
+      "date": "2026-10-28",
+      "tag": "Infra",
+      "headline": "Alphabet: Google Cloud revenue grew 103% YoY on AI infra demand",
+      "why": "Pichai: AI infra and solutions drive Cloud. SEC release: Cloud operating income $11.1B vs $3.6B a year ago; TPU systems a meaningful contributor.",
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm",
+      "source": "Alphabet SEC / Google",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-29-04",
+      "date": "2026-10-28",
+      "tag": "Infra",
+      "headline": "Microsoft: Azure +48%; Microsoft Cloud $63.9B, up 30%",
+      "why": "Commercial remaining performance obligation up 73% to $677B. Official Q1 FY27 release.",
+      "url": "https://news.microsoft.com/source/2026/10/28/microsoft-announces-first-quarter-results-2/",
+      "source": "Microsoft",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-29-05",
+      "date": "2026-10-28",
+      "tag": "OpenWeight",
+      "headline": "Nvidia ships open-weight Nemotron 3.5 Transcribe (OpenMDW-1.1)",
+      "why": "~4.3B active; 40 languages; recordings up to one hour. Nvidia claims best open-weights Open ASR Leaderboard WER; treat as lab until independent recheck.",
+      "url": "https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/",
+      "source": "NVIDIA",
+      "status": "claim"
+    },
+    {
+      "id": "2026-10-29-06",
+      "date": "2026-10-28",
+      "tag": "News",
+      "headline": "Report: DeepSeek and Moonshot distilled GPT-6 Astra for latest models",
+      "why": "The Information via Reuters; OpenAI, DeepSeek, and Moonshot did not immediately comment. Status is reported only.",
+      "url": "https://economictimes.indiatimes.com/tech/artificial-intelligence/deepseek-moonshot-used-openais-gpt-6-astra-to-train-latest-models-report/articleshow/135286994.cms",
+      "source": "Reuters via Economic Times",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-29-07",
+      "date": "2026-10-28",
+      "tag": "Policy",
+      "headline": "Report: DOJ inquiring about Nvidia’s ~$12.9B Hugging Face deal",
+      "why": "Reuters exclusive; CNBC also heard it. DOJ, Nvidia, and Hugging Face have not confirmed. Inquiry is not a finding.",
+      "url": "https://www.cnbc.com/2026/10/28/doj-questions-nvidias-12point9-billion-hugging-face-deal.html",
+      "source": "Reuters / CNBC",
+      "status": "reported"
+    },
     {
       "id": "2026-10-28-01",
       "date": "2026-10-27",
@@ -253,33 +323,13 @@
       "status": "confirmed"
     },
     {
-      "id": "2026-10-23-01",
-      "date": "2026-10-22",
-      "tag": "Release",
-      "headline": "OpenAI makes its Decisions API generally available, built on GPT-6 Luna for quick yes/no-style choices",
-      "why": "Apps and agents make many small routing and sorting calls; OpenAI says this does them up to 10x faster than Luna through its main API.",
-      "url": "https://openai.com/index/decisions-api/",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-02",
-      "date": "2026-10-22",
-      "tag": "News",
-      "headline": "Reuters: Anthropic is pressing ahead with a mid-November IPO; prospectus public as early as late October",
-      "why": "Reuters widens Yahoo's 'as soon as Friday' S-1 report. Anthropic declined to comment, and the dates may change.",
-      "url": "https://www.investing.com/news/economy-news/analysisanthropic-ipo-stands-alone-as-ai-market-jitters-sideline-others-4966313",
-      "source": "Reuters via Investing.com",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-23-03",
-      "date": "2026-10-22",
-      "tag": "Infra",
-      "headline": "Supermicro offers a liquid-cooled rack of 256 Nvidia Vera CPUs for running AI agents in data centers",
-      "why": "Agents need lots of ordinary processors next to the GPUs; Supermicro says one rack holds up to 22,500 agent sandboxes. Available to quote now.",
-      "url": "https://ir.supermicro.com/news/news-details/2026/Supermicro-Introduces-the-NVIDIA-Vera-CPU-Rack-a-256-CPU-100-Liquid-Cooled-Rack-Scale-Solution-Complementing-the-NVIDIA-Vera-Rubin-Platform-for-Agentic-AI-at-Scale/default.aspx",
-      "source": "Supermicro",
+      "id": "2026-10-29-08",
+      "date": "2026-10-29",
+      "tag": "Calendar",
+      "headline": "Amazon reports after the close today (call 5:00 PM ET)",
+      "why": "Cloud and AI spend commentary is the AI tape angle after Alphabet and Microsoft.",
+      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-to-Webcast-Third-Quarter-2026-Financial-Results-Conference-Call/default.aspx",
+      "source": "Calendar",
       "status": "confirmed"
     },
     {
@@ -323,6 +373,16 @@
       "status": "confirmed"
     },
     {
+      "id": "2026-10-29-09",
+      "date": "2026-10-31",
+      "tag": "Calendar",
+      "headline": "DeepSeek starts billing Search and Fetch; Mistral Large 4 weights due by month end",
+      "why": "Two open-weight calendar markers still in the next few days.",
+      "url": "/ai/models/deepseek/",
+      "source": "Calendar",
+      "status": "confirmed"
+    },
+    {
       "id": "2026-10-24-01",
       "date": "2026-11-04",
       "tag": "Calendar",
@@ -340,6 +400,16 @@
       "why": "API is live; Artificial Analysis already ranks the model near the top of its Index.",
       "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
       "source": "Moonshot",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-29-10",
+      "date": "2026-11-04",
+      "tag": "Calendar",
+      "headline": "Moonshot: Kimi K3.1 Pro weights by 4 Nov",
+      "why": "Weights still outstanding after the API/product launch.",
+      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Moonshot / rycode.dev",
       "status": "confirmed"
     },
     {
