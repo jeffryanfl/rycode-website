@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-29T08:20:45-04:00",
-  "asOfLabel": "Thu 29 Oct · pre-open",
+  "updated": "2026-10-29T16:10:00-04:00",
+  "asOfLabel": "Thu 29 Oct \u00b7 after-close",
   "lines": [
     {
       "tag": "Jobs",
-      "text": "8:30 ET: Q3 GDP advance, September PCE/core PCE, personal income/spending, weekly claims."
+      "text": "Q3 GDP +3.4%; Sept PCE 3.6% y/y (core 3.1%). Backs Fed inflation-elevated hold."
     },
     {
-      "tag": "Tape",
-      "text": "S&P futures ~7,748 (−0.5% vs Wed settle), Nasdaq futures ~29,595 (−1.3%); cash S&P last 7,744."
+      "tag": "Rates",
+      "text": "10-year Treasury 4.98% (cleared under 5% from 5.05%); 2-year 4.61%, 30-year 5.32%."
     },
     {
       "tag": "Oil",
-      "text": "Dec WTI ~$101.88 pre-open, still above $100; Wed final bar revised to $102.78 from $102.42."
+      "text": "Dec WTI ~$102.72, still above $100; Wed final bar corrected to $102.78 from $102.42."
     }
   ],
   "doorHref": "/economics",

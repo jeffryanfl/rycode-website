@@ -1,6 +1,6 @@
 {
   "schema": "inflation-v1",
-  "updated": "2026-10-15T14:23:02.539Z",
+  "updated": "2026-10-29T20:12:55.643Z",
   "note": "Inflation feed for the Economics watch list. Refresh with node scripts/update-inflation.mjs (after-close push). mom and yoy are percent changes, one decimal, as published. The Fed's inflation target is 2% on PCE. Each point carries status preliminary, revised, or final; a revision overwrites the value and keeps revisedFrom. Never hand-edit.",
   "series": [
     {
@@ -4263,16 +4263,29 @@
         },
         {
           "date": "2026-07-01",
-          "index": 131.172,
+          "index": 131.187,
           "mom": 0.1,
           "yoy": 3.4,
-          "status": "revised"
+          "status": "revised",
+          "revisedFrom": {
+            "index": 131.172
+          }
         },
         {
           "date": "2026-08-01",
-          "index": 131.579,
+          "index": 131.611,
           "mom": 0.3,
           "yoy": 3.4,
+          "status": "revised",
+          "revisedFrom": {
+            "index": 131.579
+          }
+        },
+        {
+          "date": "2026-09-01",
+          "index": 132.257,
+          "mom": 0.5,
+          "yoy": 3.6,
           "status": "preliminary"
         }
       ]
@@ -5169,16 +5182,29 @@
         },
         {
           "date": "2026-07-01",
-          "index": 130.133,
+          "index": 130.148,
           "mom": 0.1,
           "yoy": 3,
-          "status": "revised"
+          "status": "revised",
+          "revisedFrom": {
+            "index": 130.133
+          }
         },
         {
           "date": "2026-08-01",
-          "index": 130.455,
-          "mom": 0.2,
+          "index": 130.489,
+          "mom": 0.3,
           "yoy": 3,
+          "status": "revised",
+          "revisedFrom": {
+            "index": 130.455
+          }
+        },
+        {
+          "date": "2026-09-01",
+          "index": 130.902,
+          "mom": 0.3,
+          "yoy": 3.1,
           "status": "preliminary"
         }
       ]
