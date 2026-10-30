@@ -1,7 +1,77 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-10-29T12:50:54.884Z",
+  "updated": "2026-10-30T12:50:15.174Z",
   "items": [
+    {
+      "id": "2026-10-30-01",
+      "date": "2026-10-29",
+      "tag": "OpenWeight",
+      "headline": "Mistral releases open weights for Large 4 (Le Chonk)",
+      "why": "1.1T MoE, 52B active, 1M context, multimodal in / text out. Mistral Ecosystem Open-Weight license (MIT-like; MaaS needs a separate commercial license).",
+      "url": "https://mistral.ai/news/mistral-large-4-oss/",
+      "source": "Mistral",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-30-02",
+      "date": "2026-10-29",
+      "tag": "OpenWeight",
+      "headline": "AA: Mistral Large 4 (high) scores 26 on Intelligence Index v5",
+      "why": "Independent. Trails DeepSeek V4.1 Flash and GLM-5.3 (both 32). AA Terminal-Bench 25% and FrontierCode 15% vs Mistral’s claimed 41% and 19.7%.",
+      "url": "https://artificialanalysis.ai/models/mistral-large-4",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-30-03",
+      "date": "2026-10-29",
+      "tag": "Infra",
+      "headline": "Amazon: AWS sales +39% YoY to $46.0B; $184B annualized run rate",
+      "why": "Fastest AWS growth in nearly five years per the IR release. Jassy projects AWS growth over 40% in 2027 and 2028.",
+      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/",
+      "source": "Amazon IR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-30-04",
+      "date": "2026-10-29",
+      "tag": "Infra",
+      "headline": "Amazon Bedrock: Fortune 500 spend nearly 7x YoY; tokens nearly 17x",
+      "why": "Official IR. Also Bedrock Managed Agents public preview (OpenAI-powered) and open-sourced Strands harness (32% token claim is lab).",
+      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/",
+      "source": "Amazon IR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-30-05",
+      "date": "2026-10-29",
+      "tag": "Infra",
+      "headline": "Amazon: TTM free cash flow outflow $42.4B; 2026 cash capex still ~$220B",
+      "why": "PPE purchases drove the swing; Amazon says the increase primarily reflects AI investments. Capex guide unchanged in the same release.",
+      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/",
+      "source": "Amazon IR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-30-06",
+      "date": "2026-10-29",
+      "tag": "Infra",
+      "headline": "Call: Amazon to sell Trainium AI chips outside AWS starting late 2027",
+      "why": "From a third-party earnings transcript, not Amazon’s IR page. Also reported: AWS backlog $578B; Q3 cash capex about $75.9B.",
+      "url": "https://stockanalysis.com/stocks/amzn/transcripts/720308-q3-2026/",
+      "source": "Amazon call via Quartr/StockAnalysis",
+      "status": "reported"
+    },
+    {
+      "id": "2026-10-30-07",
+      "date": "2026-10-29",
+      "tag": "News",
+      "headline": "Google shutting down Jules coding agent; folds into Antigravity",
+      "why": "Sessions usable until 11 Nov, then read-only; winds down 31 Dec. Export tool available. Learnings move into Antigravity.",
+      "url": "https://jules.google/docs/changelog/2026-10-29/",
+      "source": "Google Jules",
+      "status": "confirmed"
+    },
     {
       "id": "2026-10-29-01",
       "date": "2026-10-28",
@@ -283,56 +353,6 @@
       "status": "reported"
     },
     {
-      "id": "2026-10-26-02",
-      "date": "2026-10-23",
-      "tag": "Safety",
-      "headline": "OpenAI now trains its frontier models with no live internet access, after a model reached the web in September",
-      "why": "OpenAI also had its own agents attack its sandboxes and fixed what they found. It says the offline rule stays until safeguards improve.",
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-26-03",
-      "date": "2026-10-23",
-      "tag": "Safety",
-      "headline": "OpenAI's red-team agents found a flaw in Brotli, a compression tool used by Node.js, Bun and Envoy",
-      "why": "Reuters says attackers could run their own code with bad data. Brotli has shipped fixed versions, so update if you use it.",
-      "url": "https://www.investing.com/news/stock-market-news/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access-4970304",
-      "source": "Reuters via Investing.com",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-26-06",
-      "date": "2026-10-23",
-      "tag": "Release",
-      "headline": "Moonshot launches Kimi K3.1 Pro; Artificial Analysis ranks it #4 of 215 models with an index score of 55",
-      "why": "Independent testing puts it near the top of the field. Moonshot says the weights come by 4 Nov; for now it is API only.",
-      "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-26-07",
-      "date": "2026-10-23",
-      "tag": "Infra",
-      "headline": "Firebird gets a US export license for 45,000 Nvidia Grace Blackwell GPUs for a Kazakhstan AI data center",
-      "why": "Phase 1 is under construction and due Q3 2027. Firebird says a second phase would take it to about 500 MW in Kazakhstan.",
-      "url": "https://www.firebird.ai/news-kazakhstans-ai-ambitions-accelerate-as-firebird-secures-45-000-nvidia-grace-blac.html",
-      "source": "Firebird",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-29-08",
-      "date": "2026-10-29",
-      "tag": "Calendar",
-      "headline": "Amazon reports after the close today (call 5:00 PM ET)",
-      "why": "Cloud and AI spend commentary is the AI tape angle after Alphabet and Microsoft.",
-      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-to-Webcast-Third-Quarter-2026-Financial-Results-Conference-Call/default.aspx",
-      "source": "Calendar",
-      "status": "confirmed"
-    },
-    {
       "id": "2026-10-21-09",
       "date": "2026-10-31",
       "tag": "Calendar",
@@ -383,6 +403,26 @@
       "status": "confirmed"
     },
     {
+      "id": "2026-10-30-08",
+      "date": "2026-10-31",
+      "tag": "Calendar",
+      "headline": "DeepSeek Search/Fetch free harness window ends Sat (noon ET)",
+      "why": "Docs: Harness/Claude Code/Codex server-side tool calls bill from 00:00 Beijing 1 Nov (= noon ET 31 Oct). $0.75 per 1,000 successful requests.",
+      "url": "https://api-docs.deepseek.com/guides/search",
+      "source": "DeepSeek docs",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-30-10",
+      "date": "2026-11-02",
+      "tag": "Calendar",
+      "headline": "Next week: Apple Mon 2 Nov; AMD Tue 3 Nov after the close",
+      "why": "Apple call 5:00 PM ET. CoreWeave reports Tue 10 Nov. Jules goes read-only Wed 11 Nov.",
+      "url": "https://investor.apple.com/investor-relations/event-details/2026/FY-26-Fourth-Quarter-Results/default.aspx",
+      "source": "Apple IR / AMD IR",
+      "status": "confirmed"
+    },
+    {
       "id": "2026-10-24-01",
       "date": "2026-11-04",
       "tag": "Calendar",
@@ -408,6 +448,16 @@
       "tag": "Calendar",
       "headline": "Moonshot: Kimi K3.1 Pro weights by 4 Nov",
       "why": "Weights still outstanding after the API/product launch.",
+      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Moonshot / rycode.dev",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-10-30-09",
+      "date": "2026-11-04",
+      "tag": "Calendar",
+      "headline": "Moonshot: Kimi K3.1 Pro weights still due by 4 Nov",
+      "why": "Weights still outstanding. HF still shows Kimi-K3 only as of this morning. Site stub live.",
       "url": "/ai/models/open-weight/kimi-k3-1-pro/",
       "source": "Moonshot / rycode.dev",
       "status": "confirmed"
