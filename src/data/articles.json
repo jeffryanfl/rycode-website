@@ -1426,7 +1426,7 @@
   {
     "href": "/ai/models/more-labs/mistral-large-4/",
     "title": "Mistral Large 4 - A.I.",
-    "description": "Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights promised by end of October.",
+    "description": "Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights released 29 Oct 2026.",
     "date": "2026-10-13",
     "section": "ai",
     "series": "ai-more-labs",
