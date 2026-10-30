@@ -6,13 +6,13 @@ import '../../../../styles/ai.css';
 
 <Layout
   title="Mistral Large 4 - A.I. - Rycode"
-  description="Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights promised by end of October."
+  description="Mistral Large 4: 1.05 trillion parameters, 52 billion active, 1M context, public preview 6 Oct 2026, open weights released 29 Oct 2026."
   variant="ai"
 >
   <article class="ai-model">
     <p class="ai-model-kicker">More labs</p>
     <h1 class="ai-model-title">Mistral Large 4</h1>
-    <p class="ai-model-dek">Mistral Large 4 is the flagship model of Mistral AI, a French lab. It went into public preview on 6 October 2026, and Mistral says the weights, the downloadable model files, will be released by the end of that month (<a href="https://mistral.ai/news/mistral-large-4/">Mistral, 6 Oct 2026</a>).</p>
+    <p class="ai-model-dek">Mistral Large 4 is the flagship model of Mistral AI, a French lab. It went into public preview on 6 October 2026 (<a href="https://mistral.ai/news/mistral-large-4/">Mistral, 6 Oct 2026</a>). On 29 October 2026 Mistral released an improved version with open weights, the downloadable model files, so anyone can run it on their own computers (<a href="https://mistral.ai/news/mistral-large-4-oss/">Mistral, 29 Oct 2026</a>).</p>
     <hr class="ai-model-rule" />
     <ModelFacts />
     <h2 class="ai-model-section">Key facts</h2>
@@ -24,26 +24,35 @@ import '../../../../styles/ai.css';
           <tr><td>Design</td><td>Mixture of Experts</td></tr>
           <tr><td>Context</td><td>1M tokens</td></tr>
           <tr><td>Inputs</td><td>Text and images</td></tr>
-          <tr><td>Price, list</td><td>$1.36 in, $4.18 out, $0.14 cached input</td></tr>
-          <tr><td>Price, preview sale</td><td>$0.68 in, $2.09 out, $0.07 cached input</td></tr>
-          <tr><td>Weights</td><td>Promised by end of October 2026</td></tr>
+          <tr><td>Reasoning modes</td><td>Low, Medium, and High (the default)</td></tr>
+          <tr><td>Price</td><td>$0.70 in, $2.10 out, $0.07 cached input, from 29 Oct 2026</td></tr>
+          <tr><td>Weights</td><td>Released 29 Oct 2026 on <a href="https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B">Hugging Face</a></td></tr>
+          <tr><td>License</td><td>Mistral Ecosystem Open-Weight License, a modified MIT license. Free to use, change, and sell; a company that sells the model as a hosted service needs a separate commercial license from Mistral</td></tr>
+          <tr><td>Where it runs</td><td>Mistral Studio, the Mistral API, OpenRouter, Microsoft Foundry, NVIDIA endpoints and NIM containers, or your own servers with the Hugging Face weights</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Size and price are from Mistral's model docs (<a href="https://docs.mistral.ai/models/mistral-large">Mistral docs</a>); the announcement rounds the size to 1 trillion. A parameter is one learned number in the model. Mixture of Experts means only part of the model, the 52 billion active parameters, runs for each token. A token is a chunk of text, often part of a word. Prices are US dollars per million tokens. Cached input is repeated text the service has already read, billed cheaper.</p>
+    <p>Size and price are from Mistral's model docs (<a href="https://docs.mistral.ai/models/mistral-large-4-0">Mistral docs</a>); the announcements round the size to 1 trillion. Price, weights, license, and where it runs are from the 29 October post. A parameter is one learned number in the model. Mixture of Experts means only part of the model, the 52 billion active parameters, runs for each token. A token is a chunk of text, often part of a word. Prices are US dollars per million tokens. Cached input is repeated text the service has already read, billed cheaper. A reasoning mode sets how long the model thinks before it answers; higher modes cost more tokens.</p>
     <h2 class="ai-model-section">Training</h2>
     <p>Mistral says it trained the model from scratch on 3,800 Nvidia Grace Blackwell GPUs in its own European data centers, with training data in more than 160 languages.</p>
     <h2 class="ai-model-section">What Mistral claims</h2>
+    <p>Scores for the 29 October open-weight version:</p>
     <ul>
-      <li>61.7% on DeepSWE v1.1, 59.4% on SWE-Atlas-QnA, and 28.3% on Terminal-Bench 4, all coding tests.</li>
-      <li>Top five on the Artificial Analysis Cyber Index, which tests finding and fixing security flaws.</li>
-      <li>These are Mistral's own reported scores. Mistral's announcement says several closed models score near zero on one cyber test because they refuse the task.</li>
+      <li>48% on the Artificial Analysis Coding Agent Index, about tied with GLM-5.3, the top open-weight model on that index, while using 47% fewer tokens per task.</li>
+      <li>41% on Terminal-Bench 4.0, a coding test run in a terminal, up 13 points from the preview.</li>
+      <li>51% on the Artificial Analysis Cyber Index, which tests finding, checking, and fixing security flaws in code.</li>
+      <li>19.7% on Cognition's private FrontierCode 2.0, which asks whether a project's maintainer would merge the model's code change.</li>
+      <li>84.5% on BrowseComp, a web browsing test.</li>
+      <li>At preview on 6 October, Mistral reported 61.7% on DeepSWE v1.1, 59.4% on SWE-Atlas-QnA, and 28.3% on Terminal-Bench 4.</li>
+      <li>These are Mistral's own reported scores.</li>
     </ul>
 
     <h2 class="ai-model-section">Sources</h2>
     <ul class="ai-model-sources">
+      <li><a href="https://mistral.ai/news/mistral-large-4-oss/">Mistral, Mistral Large 4 (Le Chonk) is now open weight (29 Oct 2026)</a></li>
+      <li><a href="https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B">Hugging Face, mistralai/Mistral-Large-4-1T-A52B model card</a></li>
       <li><a href="https://mistral.ai/news/mistral-large-4/">Mistral, Introducing Mistral Large 4 (6 Oct 2026)</a></li>
-      <li><a href="https://docs.mistral.ai/models/mistral-large">Mistral docs, Mistral Large 4</a></li>
+      <li><a href="https://docs.mistral.ai/models/mistral-large-4-0">Mistral docs, Mistral Large 4</a></li>
     </ul>
   </article>
 </Layout>

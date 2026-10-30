@@ -60,7 +60,7 @@
     "/ai/models/open-weight/beam/": { "name": "Beam 1.0", "status": "current", "statusNote": "open weights, Apache 2.0", "aa": { "value": 30, "label": "AA, 16 Oct 2026, see note 1", "fetched": "16 Oct 2026" }, "released": "16 Oct 2026", "checked": "16 Oct 2026" },
 
     "/ai/models/typesafe/jev/": { "name": "Jev", "status": "preview", "statusNote": "early access", "released": "15 Sep 2026 (announced)", "checked": "15 Sep 2026" },
-    "/ai/models/more-labs/mistral-large-4/": { "name": "Mistral Large 4", "status": "preview", "price": "$1.36 in, $4.18 out (list)", "released": "6 Oct 2026", "checked": "12 Oct 2026" },
+    "/ai/models/more-labs/mistral-large-4/": { "name": "Mistral Large 4", "status": "preview", "statusNote": "open weights out 29 Oct 2026", "price": "$0.70 in, $2.10 out", "released": "6 Oct 2026 (preview); weights 29 Oct 2026", "checked": "29 Oct 2026" },
     "/ai/models/more-labs/cohere-command-a-plus/": { "name": "Command A+", "status": "current", "released": "20 May 2026", "checked": "12 Oct 2026" },
     "/ai/models/more-labs/inkling/": { "name": "Inkling", "status": "current", "released": "15 Jul 2026", "checked": "12 Oct 2026" },
     "/ai/models/more-labs/apple-foundation-models/": { "name": "Apple Foundation Models 3", "status": "current", "released": "8 Jun 2026", "checked": "12 Oct 2026" },
