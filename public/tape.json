@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-30T08:16:00-04:00",
-  "asOfLabel": "Fri 30 Oct · pre-open",
+  "updated": "2026-10-30T16:15:00-04:00",
+  "asOfLabel": "Fri 30 Oct · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "S&P futures ~7,670 (−1.1%), Nasdaq futures ~28,819 (−2.5%) pre-open; cash S&P last 7,720."
-    },
-    {
-      "tag": "Oil",
-      "text": "Dec WTI ~$104 pre-open, still above $100; Thu final revised to $102.00 from $102.72."
+      "text": "Chip rout: SMH -8.7% to 512.55, below 535 bear line; S&P -1.8% to 7,581, Nasdaq -2.9%."
     },
     {
       "tag": "Jobs",
-      "text": "8:30 ET: Q3 Employment Cost Index (wages and benefits); 10-year last 4.98%."
+      "text": "Q3 ECI +0.8% (in line), 3.4% y/y; wages 3.1% y/y. No new wage pressure."
+    },
+    {
+      "tag": "Oil",
+      "text": "Dec WTI $104.44 (+2.4%), above $100; 10-year eases to 4.94%. Thu WTI fixed to $102.00."
     }
   ],
   "doorHref": "/economics",
