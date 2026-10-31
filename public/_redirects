@@ -13,8 +13,17 @@
 /research                              /economics/    301!
 /research/                             /economics/    301!
 
-/ai/models/openai/gpt-5-6-sol      /ai/models/openai/gpt-6-sol/  301!
-/ai/models/openai/gpt-5-6-sol/     /ai/models/openai/gpt-6-sol/  301!
+/ai/models/openai/gpt-5-6-sol      /ai/models/openai/gpt-6.1-sol/  301!
+/ai/models/openai/gpt-5-6-sol/     /ai/models/openai/gpt-6.1-sol/  301!
+/ai/models/openai/gpt-6-sol        /ai/models/openai/gpt-6.1-sol/  301!
+/ai/models/openai/gpt-6-sol/       /ai/models/openai/gpt-6.1-sol/  301!
+
+/ai/hardware/chips/meta-nvidia     /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-nvidia/    /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-amd        /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-amd/       /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-broadcom   /ai/hardware/chips/meta/  301!
+/ai/hardware/chips/meta-broadcom/  /ai/hardware/chips/meta/  301!
 
 /ai/models/openai/dots             /ai/agents/dots/  301!
 /ai/models/openai/dots/            /ai/agents/dots/  301!

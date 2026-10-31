@@ -924,8 +924,8 @@
       "doorLine": "Always-on ChatGPT agent with its own cloud computer.",
       "dek": "OpenAI's always-on personal agent inside ChatGPT, powered by GPT-6 Astra, with its own cloud computer and browser.",
       "cardLine": "Software, creative, and ops work with plugins, optional use of your PC, and voice calls.",
-      "lastChecked": "28 Oct 2026",
-      "updated": "28 Oct 2026",
+      "lastChecked": "30 Oct 2026",
+      "updated": "30 Oct 2026",
       "compare": {
         "underlyingModels": "GPT-6 Astra",
         "modalities": "In: text, voice, files. Out: text, docs, code, video",
@@ -1037,7 +1037,11 @@
               "sourceKey": "O2"
             },
             {
-              "text": " Reach it in ChatGPT desktop, web, and mobile apps, plus Slack. Not on mobile web.",
+              "text": " Reach it in ChatGPT desktop, web, and mobile apps, plus Slack.",
+              "sourceKey": "O2"
+            },
+            {
+              "text": " OpenAI Help (updated 30 Oct 2026) says dots are not supported on mobile web.",
               "sourceKey": "O2"
             },
             {
