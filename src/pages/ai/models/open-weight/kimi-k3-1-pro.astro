@@ -16,6 +16,25 @@ import '../../../../styles/ai.css';
     <hr class="ai-model-rule" />
     <ModelFacts />
     <p>Kimi K3.1 Pro is Moonshot AI's updated version of Kimi K3, released on 23 Oct 2026 according to <a href="https://openrouter.ai/moonshotai/kimi-k3.1-pro">Kimi K3.1 Pro on OpenRouter</a> [1]. Moonshot's <a href="https://www.kimi.ai/blog/kimi-k3-1-pro">Kimi K3.1 Pro Tech Blog</a> calls it a post-trained version of K3, which means the same base model given more training after its first training run [2]. It has a 1,048,576-token context window, which is how much text it can read in one request, per Moonshot's <a href="https://platform.kimi.ai/docs/pricing/chat">Model Inference Pricing Explanation</a> [3].</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>The cells below are Moonshot's 24 Oct 2026 tech blog [2]. They are lab claims on Moonshot harnesses unless noted.</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Kimi K3.1 Pro</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Terminal-Bench 4.0</td><td>65.7%</td><td>Lab claim. Ahead of GPT-6 Astra (58.2%); behind Claude Opus 5.5 (66.4%).</td></tr>
+          <tr><td>Kimi Code Bench 3.0 Long-horizon</td><td>61.2%</td><td>Lab claim. Internal benchmark; K3 scored 55.95%.</td></tr>
+          <tr><td>BenchCAD (with tools)</td><td>92.7%</td><td>Lab claim. 3D reconstruction via CAD code; Moonshot cites Claude Opus 5.5 at 96.2% and GPT-6 Astra at 95.9% on the same chart.</td></tr>
+          <tr><td>Kimi Hallu Bench Hard (claim-level)</td><td>8.3%</td><td>Lab claim. Hallucination rate on a stress-test set; K3 was 23.4%. Lower is better.</td></tr>
+        </tbody>
+      </table>
+    </div>
     <h2 class="ai-model-section">Access and price</h2>
     <p>On the Kimi API it is <code>kimi-k3.1-pro</code> at $2 per million input tokens and $10 per million output tokens, and <code>kimi-k3.1-pro-highspeed</code> costs $4 and $20 [3]. Moonshot says Highspeed runs at two to three times the speed of K3.1 Pro [2]. Moonshot lists it on Kimi.ai, Kimi Work, Kimi Code, and the Kimi API [2].</p>
     <h2 class="ai-model-section">Weights</h2>

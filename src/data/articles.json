@@ -268,78 +268,6 @@
     "slug": "ai-hardware-chips-maia"
   },
   {
-    "href": "/ai/hardware/chips/meta-amd/",
-    "title": "Meta and AMD",
-    "description": "AMD will supply up to 6 gigawatts of Instinct GPUs. The first gigawatt is a custom MI450, with Helios racks. Meta already runs MI300 and MI350.",
-    "date": "2026-02-24",
-    "section": "ai",
-    "series": "ai-hardware",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/hardware/",
-        "label": "Hardware"
-      },
-      {
-        "href": "/ai/hardware/chips/",
-        "label": "Chips"
-      }
-    ],
-    "file": "src/pages/ai/hardware/chips/meta-amd.astro",
-    "slug": "ai-hardware-chips-meta-amd"
-  },
-  {
-    "href": "/ai/hardware/chips/meta-broadcom/",
-    "title": "Meta and Broadcom",
-    "description": "Broadcom will deliver custom accelerator technology for Meta's MTIA program through 2029. The first phase is more than 1 gigawatt.",
-    "date": "2026-04-14",
-    "section": "ai",
-    "series": "ai-hardware",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/hardware/",
-        "label": "Hardware"
-      },
-      {
-        "href": "/ai/hardware/chips/",
-        "label": "Chips"
-      }
-    ],
-    "file": "src/pages/ai/hardware/chips/meta-broadcom.astro",
-    "slug": "ai-hardware-chips-meta-broadcom"
-  },
-  {
-    "href": "/ai/hardware/chips/meta-nvidia/",
-    "title": "Meta and Nvidia",
-    "description": "Nvidia says the Meta partnership deploys millions of Blackwell and Rubin GPUs, including GB300 systems, plus Grace CPUs.",
-    "date": "2026-02-17",
-    "section": "ai",
-    "series": "ai-hardware",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/hardware/",
-        "label": "Hardware"
-      },
-      {
-        "href": "/ai/hardware/chips/",
-        "label": "Chips"
-      }
-    ],
-    "file": "src/pages/ai/hardware/chips/meta-nvidia.astro",
-    "slug": "ai-hardware-chips-meta-nvidia"
-  },
-  {
     "href": "/ai/hardware/chips/meta/",
     "title": "Meta stack",
     "description": "Meta's stack is MTIA, a Broadcom 2nm accelerator through 2029, millions of Nvidia Blackwell and Rubin GPUs, and up to 6 gigawatts of AMD Instinct.",
@@ -1642,26 +1570,6 @@
     ],
     "file": "src/pages/ai/models/openai/gpt-6-luna.astro",
     "slug": "ai-models-openai-gpt-6-luna"
-  },
-  {
-    "href": "/ai/models/openai/gpt-6-sol/",
-    "title": "GPT-6 Sol",
-    "description": "Mid-tier for complex coding and agentic work.",
-    "date": "2026-09-23",
-    "section": "ai",
-    "series": "ai-openai",
-    "crumbs": [
-      {
-        "href": "/ai/",
-        "label": "A.I."
-      },
-      {
-        "href": "/ai/models/openai/",
-        "label": "OpenAI"
-      }
-    ],
-    "file": "src/pages/ai/models/openai/gpt-6-sol.astro",
-    "slug": "ai-models-openai-gpt-6-sol"
   },
   {
     "href": "/ai/models/openai/gpt-6.1-sol/",
