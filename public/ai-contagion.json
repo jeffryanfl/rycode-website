@@ -1,6 +1,6 @@
 {
   "schema": "ai-contagion-v1",
-  "updated": "2026-10-30T20:13:13.685Z",
+  "updated": "2026-11-02T21:16:05.408Z",
   "note": "Feed for the AI build-out contagion row on /risk/. Refresh with node scripts/update-ai-contagion.mjs. Not part of the tape ship. Daily prices are final closes only.",
   "series": [
     {
@@ -10,7 +10,7 @@
       "frequency": "monthly",
       "source": "https://www.census.gov/construction/c30/xlsx/privtime.xlsx",
       "sourceLabel": "Census C30, private, not seasonally adjusted, millions of dollars",
-      "release": "October 1, 2026",
+      "release": "November 2, 2026",
       "points": [
         {
           "date": "2014-01-01",
@@ -610,17 +610,21 @@
         },
         {
           "date": "2026-06-01",
-          "value": 6244,
-          "status": "revised"
+          "value": 6244
         },
         {
           "date": "2026-07-01",
-          "value": 6898,
+          "value": 6988,
           "status": "revised"
         },
         {
           "date": "2026-08-01",
-          "value": 7535,
+          "value": 7909,
+          "status": "revised"
+        },
+        {
+          "date": "2026-09-01",
+          "value": 8517,
           "status": "preliminary"
         }
       ]
@@ -633,14 +637,6 @@
       "source": "https://query1.finance.yahoo.com/v8/finance/chart/SMH?range=2y&interval=1d",
       "sourceLabel": "Yahoo Finance daily close",
       "points": [
-        {
-          "date": "2024-10-31",
-          "close": 241.68
-        },
-        {
-          "date": "2024-11-01",
-          "close": 244.75
-        },
         {
           "date": "2024-11-04",
           "close": 244.27
@@ -2635,7 +2631,11 @@
         },
         {
           "date": "2026-10-30",
-          "close": 512.3
+          "close": 522.49
+        },
+        {
+          "date": "2026-11-02",
+          "close": 508.31
         }
       ]
     },
@@ -2647,14 +2647,6 @@
       "source": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=2y&interval=1d",
       "sourceLabel": "Yahoo Finance daily close",
       "points": [
-        {
-          "date": "2024-10-31",
-          "close": 5705.45
-        },
-        {
-          "date": "2024-11-01",
-          "close": 5728.8
-        },
         {
           "date": "2024-11-04",
           "close": 5712.69
@@ -4649,7 +4641,11 @@
         },
         {
           "date": "2026-10-30",
-          "close": 7569.6
+          "close": 7580.07
+        },
+        {
+          "date": "2026-11-02",
+          "close": 7541.4
         }
       ]
     },
@@ -6275,6 +6271,83 @@
                 "MU"
               ],
               "weight": 1.5859
+            }
+          ]
+        },
+        {
+          "date": "2026-10-30",
+          "share": 38.82,
+          "companies": [
+            {
+              "name": "APPLE INC",
+              "tickers": [
+                "AAPL"
+              ],
+              "weight": 7.6987
+            },
+            {
+              "name": "NVIDIA CORP",
+              "tickers": [
+                "NVDA"
+              ],
+              "weight": 7.5803
+            },
+            {
+              "name": "MICROSOFT CORP",
+              "tickers": [
+                "MSFT"
+              ],
+              "weight": 5.9317
+            },
+            {
+              "name": "ALPHABET INC",
+              "tickers": [
+                "GOOGL",
+                "GOOG"
+              ],
+              "weight": 4.5376
+            },
+            {
+              "name": "AMAZON.COM INC",
+              "tickers": [
+                "AMZN"
+              ],
+              "weight": 3.6109
+            },
+            {
+              "name": "BROADCOM INC",
+              "tickers": [
+                "AVGO"
+              ],
+              "weight": 2.3745
+            },
+            {
+              "name": "META PLATFORMS INC",
+              "tickers": [
+                "META"
+              ],
+              "weight": 2.0757
+            },
+            {
+              "name": "ELI LILLY + CO",
+              "tickers": [
+                "LLY"
+              ],
+              "weight": 1.7363
+            },
+            {
+              "name": "TESLA INC",
+              "tickers": [
+                "TSLA"
+              ],
+              "weight": 1.7248
+            },
+            {
+              "name": "BERKSHIRE HATHAWAY INC",
+              "tickers": [
+                "BRK.B"
+              ],
+              "weight": 1.5466
             }
           ]
         }

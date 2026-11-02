@@ -1,6 +1,6 @@
 {
   "schema": "debt-refi-v1",
-  "updated": "2026-10-29T20:12:52.710Z",
+  "updated": "2026-11-02T21:18:17.681Z",
   "note": "Feed for the Debt refinancing row on /risk/. Refresh with node scripts/update-debt-refi.mjs. Not part of the tape ship. Final values only: borrowing points carry estimate or actual.",
   "series": [
     {
@@ -10,16 +10,8 @@
       "frequency": "quarterly",
       "source": "https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/quarterly-refunding-archives/quarterly-refunding-financing-estimates-by-calendar-year",
       "sourceLabel": "Treasury quarterly refunding financing estimates; each point is the latest estimate or the actual",
-      "latestRelease": "https://home.treasury.gov/news/press-releases/sb0584",
+      "latestRelease": "https://home.treasury.gov/news/press-releases/sb0675",
       "points": [
-        {
-          "date": "2023-07-01",
-          "quarter": "Jul to Sep 2023",
-          "value": 1010,
-          "status": "actual",
-          "release": "https://home.treasury.gov/news/press-releases/jy1851",
-          "released": "October 30, 2023"
-        },
         {
           "date": "2023-10-01",
           "quarter": "Oct to Dec 2023",
@@ -111,18 +103,26 @@
         {
           "date": "2026-07-01",
           "quarter": "Jul to Sep 2026",
-          "value": 739,
-          "status": "estimate",
-          "release": "https://home.treasury.gov/news/press-releases/sb0584",
-          "released": "August 3, 2026"
+          "value": 742,
+          "status": "actual",
+          "release": "https://home.treasury.gov/news/press-releases/sb0675",
+          "released": "November 2, 2026"
         },
         {
           "date": "2026-10-01",
           "quarter": "Oct to Dec 2026",
-          "value": 628,
+          "value": 618,
           "status": "estimate",
-          "release": "https://home.treasury.gov/news/press-releases/sb0584",
-          "released": "August 3, 2026"
+          "release": "https://home.treasury.gov/news/press-releases/sb0675",
+          "released": "November 2, 2026"
+        },
+        {
+          "date": "2027-01-01",
+          "quarter": "Jan to Mar 2027",
+          "value": 800,
+          "status": "estimate",
+          "release": "https://home.treasury.gov/news/press-releases/sb0675",
+          "released": "November 2, 2026"
         }
       ]
     },
@@ -336,10 +336,6 @@
       "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US",
       "sourceLabel": "FRED MORTGAGE30US, Freddie Mac Primary Mortgage Market Survey",
       "points": [
-        {
-          "date": "2024-10-31",
-          "rate": 6.72
-        },
         {
           "date": "2024-11-07",
           "rate": 6.79
