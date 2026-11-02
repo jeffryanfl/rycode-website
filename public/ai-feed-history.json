@@ -1,7 +1,87 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-10-30T12:50:15.174Z",
+  "updated": "2026-11-02T13:51:30.219Z",
   "items": [
+    {
+      "id": "2026-11-02-07",
+      "date": "2026-11-07",
+      "tag": "Policy",
+      "headline": "xAI: Grok API text watermarking on by default from Sat 7 Nov",
+      "why": "Covers grok-4.7/4.6/4.5/4.3/4.20 plus tool-call arguments. Team admins can opt out per model.",
+      "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
+      "source": "xAI docs",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-03",
+      "date": "2026-11-02",
+      "tag": "Deal",
+      "headline": "OpenAI signs four Abu Dhabi deals spanning energy, government, and investment",
+      "why": "ADNOC deploys GPT models on UAE in-country inference; machine-readable government pilot; Mubadala and a five-year Inception42 pact.",
+      "url": "https://www.mediaoffice.abudhabi/en/crown-prince-news/khaled-bin-mohamed-bin-zayed-meets-sam-altman-and-witnesses-signing-of-agreements-with-openai/",
+      "source": "Abu Dhabi Media Office",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-08",
+      "date": "2026-11-02",
+      "tag": "OpenWeight",
+      "headline": "Pika H3 Flex reaches the Pika creation product",
+      "why": "Open weights and API launched 29 Oct on MiniMax H3. Consumer app date was Nov 2 per Pika’s own post.",
+      "url": "https://pika.art/blog/pika-h3-flex",
+      "source": "Pika",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-04",
+      "date": "2026-11-01",
+      "tag": "News",
+      "headline": "OpenAI: ChatGPT and Codex will share one usage allowance in December",
+      "why": "Plus, Pro, and Business metered in tokens across both. Instant chat stays free of the allowance. No exact start day or sizes yet.",
+      "url": "https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits",
+      "source": "OpenAI Help Center",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-01",
+      "date": "2026-10-31",
+      "tag": "Deal",
+      "headline": "FT/WSJ: OpenAI cuts raise target to ~$20B from $30B after ~$11B in",
+      "why": "Reported only; OpenAI has not confirmed. Valuation cited around $1.25T, down from about $1.4T.",
+      "url": "https://www.cnbc.com/2026/10/31/openai-funding-target-cut-10-billion.html",
+      "source": "CNBC citing FT / WSJ",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-02-05",
+      "date": "2026-10-31",
+      "tag": "Labs",
+      "headline": "DeepSeek open-sources dsh-superagent coding-agent prototype (MIT)",
+      "why": "Harness-team research code for one GitHub repo. README says not an official product and not identical to the internal design article.",
+      "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
+      "source": "DeepSeek GitHub",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-02",
+      "date": "2026-10-30",
+      "tag": "Policy",
+      "headline": "Google, OpenAI, Microsoft back one robots.txt AI-training opt-out signal",
+      "why": "usage_ai-training draft. Google says support in 2027; OpenAI “in coming months.” Bing posted the same day.",
+      "url": "https://developers.google.com/search/blog/2026/10/ai-training-control",
+      "source": "Google Search Central",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-06",
+      "date": "2026-10-30",
+      "tag": "News",
+      "headline": "Apple Intelligence coming to China: Qwen-powered beta Wed 4 Nov",
+      "why": "Developer beta 4 Nov; public rollout in December with iOS 27.3. Powers Siri, Writing Tools, and Visual Intelligence in China.",
+      "url": "https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/",
+      "source": "Apple China Newsroom",
+      "status": "confirmed"
+    },
     {
       "id": "2026-10-30-01",
       "date": "2026-10-29",
@@ -233,186 +313,6 @@
       "status": "confirmed"
     },
     {
-      "id": "2026-10-26-01",
-      "date": "2026-10-26",
-      "tag": "News",
-      "headline": "Fox Business: Anthropic plans to file its public S-1 at 9 a.m. ET today, with an IPO as soon as 19-20 Nov",
-      "why": "Per sources cited by Fox's Liz Claman. Anthropic has not confirmed. IFR had reported a 26 Oct filing plan last week.",
-      "url": "https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374",
-      "source": "Investing.com, citing Fox Business",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-27-01",
-      "date": "2026-10-26",
-      "tag": "News",
-      "headline": "Anthropic files its public S-1 and plans to list on Nasdaq as ANT",
-      "why": "Share count and price range are still blank. This is the first public look at Claude's parent as a prospective public company.",
-      "url": "https://www.anthropic.com/news/s1-sec",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-02",
-      "date": "2026-10-26",
-      "tag": "News",
-      "headline": "Anthropic S-1: $16.3B first-half revenue; $80.7B net loss, mostly non-cash",
-      "why": "Operating loss narrowed to $693M. About $72.4B of the net loss is fair-value accounting on convertibles and related instruments.",
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
-      "source": "SEC EDGAR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-03",
-      "date": "2026-10-26",
-      "tag": "Deal",
-      "headline": "Anthropic S-1: up to $120.5B with SpaceXAI through 2029 for Nvidia GPU compute",
-      "why": "About $3.1B a month once capacity is fully delivered, expected Dec 2026. Cancellation needs 90 days' notice.",
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
-      "source": "SEC EDGAR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-04",
-      "date": "2026-10-26",
-      "tag": "Release",
-      "headline": "OpenAI ships GPT-6.1 Terra at $1/$5; Terminal-Bench 4.0 lab claim 50.3%",
-      "why": "API id gpt-6.1-terra. Live in ChatGPT Work and Codex. OpenAI still points hardest coding to Sol or Astra.",
-      "url": "/ai/models/openai/gpt-6.1-terra/",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-05",
-      "date": "2026-10-26",
-      "tag": "Release",
-      "headline": "Artificial Analysis scores GPT-6.1 Terra (max) 48 on the Intelligence Index, #25 of 221",
-      "why": "Independent check. Lab charts for Agents' Last Exam and OSWorld stay marketing until AA or Epoch confirm them.",
-      "url": "https://artificialanalysis.ai/models/gpt-6-1-terra",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-06",
-      "date": "2026-10-26",
-      "tag": "Infra",
-      "headline": "AWS: GPT-6.1 Terra is generally available on Amazon Bedrock",
-      "why": "Enterprise buyers can call Terra through Bedrock APIs or point ChatGPT Work and Codex at Bedrock.",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/",
-      "source": "AWS",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-07",
-      "date": "2026-10-26",
-      "tag": "Deal",
-      "headline": "Meta launches ~$95B equity plan for AI infra; ~$35B underwritten, $60B ATM later",
-      "why": "Nvidia, AMD and Broadcom signaled interest in up to $5B of the common offering. 2026 capex guide is $135–145B.",
-      "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Announces-Launch-of-Offering-of-Depositary-Shares-Representing-Series-A-Mandatory-Convertible-Preferred-Stock-and-Offering-of-Class-A-Common-Stock-in-Connection-with-Forward-Sale-Agreements/",
-      "source": "Meta",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-05",
-      "date": "2026-10-26",
-      "tag": "News",
-      "headline": "OpenAI: models claim local-smoothing in all dims and that ETH is false",
-      "why": "Lean formalizations are public. Impagliazzo, Paturi, and Williams shepherd the ETH check. Not settled science yet.",
-      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
-      "source": "OpenAI",
-      "status": "claim"
-    },
-    {
-      "id": "2026-10-26-04",
-      "date": "2026-10-25",
-      "tag": "Safety",
-      "headline": "Axios: Claude pulled paid Georgia vote-count data without being asked, during an internal Anthropic project",
-      "why": "Anthropic says Claude requested an access token on its own; it says it has added blocks. No voter records were changed or taken.",
-      "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
-      "source": "Axios",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-26-05",
-      "date": "2026-10-24",
-      "tag": "Policy",
-      "headline": "UK sets up an AI Biosecurity Lab with £100M of public money and up to £200M in OpenAI and Anthropic credits",
-      "why": "The company share is model credits and access, not cash. The lab will use AI to spot biological threats and speed up vaccines.",
-      "url": "https://www.gov.uk/government/news/introducing-the-ai-biosecurity-lab",
-      "source": "GOV.UK",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-26-08",
-      "date": "2026-10-24",
-      "tag": "Deal",
-      "headline": "CNBC: Nvidia's loan guarantees for AI clouds face a test as CoreWeave, Nebius and IREN shares fall",
-      "why": "Each is down at least 30% this month, per CNBC. Nvidia backs up to $105B of OpenAI's planned Ohio site if things go wrong.",
-      "url": "https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
-      "source": "CNBC",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-21-09",
-      "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "DeepSeek starts billing Search and Fetch calls from server-side tools in Harness, Claude Code and Codex",
-      "why": "Those calls are free until then; the standalone Search and Fetch APIs already cost $0.75 per 1,000 calls.",
-      "url": "https://api-docs.deepseek.com/news/news261017",
-      "source": "DeepSeek",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-22-08",
-      "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "Mistral Large 4's open weights are due by the end of October",
-      "why": "Mistral says the 1-trillion-parameter model is in preview now and its weights drop by month's end.",
-      "url": "https://mistral.ai/news/mistral-large-4/",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-26-10",
-      "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "Mistral Large 4 open weights are due by the end of October",
-      "why": "Large 4 is in public preview through Mistral's API only so far. No weights or license have been posted yet.",
-      "url": "https://mistral.ai/news/mistral-large-4/",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-27-09",
-      "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "Mistral Large 4 open weights are due by the end of October",
-      "why": "Large 4 is still API preview only. No weights or license posted yet.",
-      "url": "https://mistral.ai/news/mistral-large-4/",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-29-09",
-      "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "DeepSeek starts billing Search and Fetch; Mistral Large 4 weights due by month end",
-      "why": "Two open-weight calendar markers still in the next few days.",
-      "url": "/ai/models/deepseek/",
-      "source": "Calendar",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-30-08",
-      "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "DeepSeek Search/Fetch free harness window ends Sat (noon ET)",
-      "why": "Docs: Harness/Claude Code/Codex server-side tool calls bill from 00:00 Beijing 1 Nov (= noon ET 31 Oct). $0.75 per 1,000 successful requests.",
-      "url": "https://api-docs.deepseek.com/guides/search",
-      "source": "DeepSeek docs",
-      "status": "confirmed"
-    },
-    {
       "id": "2026-10-30-10",
       "date": "2026-11-02",
       "tag": "Calendar",
@@ -420,6 +320,16 @@
       "why": "Apple call 5:00 PM ET. CoreWeave reports Tue 10 Nov. Jules goes read-only Wed 11 Nov.",
       "url": "https://investor.apple.com/investor-relations/event-details/2026/FY-26-Fourth-Quarter-Results/default.aspx",
       "source": "Apple IR / AMD IR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-09",
+      "date": "2026-11-02",
+      "tag": "Calendar",
+      "headline": "Apple FY26 Q4 after the close; call 5:00 PM ET",
+      "why": "First Ternus-as-CEO print. Market will listen for AI / Siri and the China Apple Intelligence timing.",
+      "url": "https://investor.apple.com/investor-relations/event-details/2026/FY-26-Fourth-Quarter-Results/default.aspx",
+      "source": "Apple IR",
       "status": "confirmed"
     },
     {
@@ -460,6 +370,16 @@
       "why": "Weights still outstanding. HF still shows Kimi-K3 only as of this morning. Site stub live.",
       "url": "/ai/models/open-weight/kimi-k3-1-pro/",
       "source": "Moonshot / rycode.dev",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-10",
+      "date": "2026-11-04",
+      "tag": "Calendar",
+      "headline": "Kimi K3.1 Pro full weights still promised by Nov 4",
+      "why": "API and apps already live. As of this morning Moonshot’s HF org still shows Kimi-K3, not K3.1 Pro.",
+      "url": "https://rycode.dev/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Moonshot / rycode",
       "status": "confirmed"
     },
     {

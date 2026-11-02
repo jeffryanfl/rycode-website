@@ -1,124 +1,124 @@
 {
-  "updated": "2026-10-30T08:32:00-04:00",
-  "asOfLabel": "Fri 30 Oct · morning",
+  "updated": "2026-11-02T08:32:00-05:00",
+  "asOfLabel": "Mon 2 Nov · morning",
   "lines": [
     {
-      "tag": "OpenWeight",
-      "text": "Mistral Large 4 weights live: 1.1T MoE / 52B active; AA Index 26 (high)",
-      "url": "/ai/models/more-labs/mistral-large-4/"
+      "tag": "Deal",
+      "text": "OpenAI cuts raise target to ~$20B from $30B after ~$11B raised; FT/WSJ (~$1.25T)",
+      "url": "https://www.cnbc.com/2026/10/31/openai-funding-target-cut-10-billion.html"
     },
     {
-      "tag": "Infra",
-      "text": "Amazon: AWS +39% to $46B (fastest in ~5 yrs); Bedrock F500 spend ~7x YoY",
-      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/"
+      "tag": "Policy",
+      "text": "Google, OpenAI, Microsoft back one robots.txt signal to opt sites out of AI training",
+      "url": "https://developers.google.com/search/blog/2026/10/ai-training-control"
     },
     {
-      "tag": "Infra",
-      "text": "Amazon AI spend: FCF outflow $42.4B TTM; 2026 cash capex guide still ~$220B",
-      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/"
+      "tag": "Deal",
+      "text": "OpenAI signs UAE deals: ADNOC, machine-readable gov, Mubadala/Inception42",
+      "url": "https://www.mediaoffice.abudhabi/en/crown-prince-news/khaled-bin-mohamed-bin-zayed-meets-sam-altman-and-witnesses-signing-of-agreements-with-openai/"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-10-30",
+  "date": "2026-11-02",
   "feed": [
     {
-      "id": "2026-10-30-01",
-      "date": "2026-10-29",
-      "tag": "OpenWeight",
-      "headline": "Mistral releases open weights for Large 4 (Le Chonk)",
-      "why": "1.1T MoE, 52B active, 1M context, multimodal in / text out. Mistral Ecosystem Open-Weight license (MIT-like; MaaS needs a separate commercial license).",
-      "url": "https://mistral.ai/news/mistral-large-4-oss/",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-30-02",
-      "date": "2026-10-29",
-      "tag": "OpenWeight",
-      "headline": "AA: Mistral Large 4 (high) scores 26 on Intelligence Index v5",
-      "why": "Independent. Trails DeepSeek V4.1 Flash and GLM-5.3 (both 32). AA Terminal-Bench 25% and FrontierCode 15% vs Mistral’s claimed 41% and 19.7%.",
-      "url": "https://artificialanalysis.ai/models/mistral-large-4",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-30-03",
-      "date": "2026-10-29",
-      "tag": "Infra",
-      "headline": "Amazon: AWS sales +39% YoY to $46.0B; $184B annualized run rate",
-      "why": "Fastest AWS growth in nearly five years per the IR release. Jassy projects AWS growth over 40% in 2027 and 2028.",
-      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/",
-      "source": "Amazon IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-30-04",
-      "date": "2026-10-29",
-      "tag": "Infra",
-      "headline": "Amazon Bedrock: Fortune 500 spend nearly 7x YoY; tokens nearly 17x",
-      "why": "Official IR. Also Bedrock Managed Agents public preview (OpenAI-powered) and open-sourced Strands harness (32% token claim is lab).",
-      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/",
-      "source": "Amazon IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-30-05",
-      "date": "2026-10-29",
-      "tag": "Infra",
-      "headline": "Amazon: TTM free cash flow outflow $42.4B; 2026 cash capex still ~$220B",
-      "why": "PPE purchases drove the swing; Amazon says the increase primarily reflects AI investments. Capex guide unchanged in the same release.",
-      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/",
-      "source": "Amazon IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-30-06",
-      "date": "2026-10-29",
-      "tag": "Infra",
-      "headline": "Call: Amazon to sell Trainium AI chips outside AWS starting late 2027",
-      "why": "From a third-party earnings transcript, not Amazon’s IR page. Also reported: AWS backlog $578B; Q3 cash capex about $75.9B.",
-      "url": "https://stockanalysis.com/stocks/amzn/transcripts/720308-q3-2026/",
-      "source": "Amazon call via Quartr/StockAnalysis",
+      "id": "2026-11-02-01",
+      "date": "2026-10-31",
+      "tag": "Deal",
+      "headline": "FT/WSJ: OpenAI cuts raise target to ~$20B from $30B after ~$11B in",
+      "why": "Reported only; OpenAI has not confirmed. Valuation cited around $1.25T, down from about $1.4T.",
+      "url": "https://www.cnbc.com/2026/10/31/openai-funding-target-cut-10-billion.html",
+      "source": "CNBC citing FT / WSJ",
       "status": "reported"
     },
     {
-      "id": "2026-10-30-07",
-      "date": "2026-10-29",
+      "id": "2026-11-02-02",
+      "date": "2026-10-30",
+      "tag": "Policy",
+      "headline": "Google, OpenAI, Microsoft back one robots.txt AI-training opt-out signal",
+      "why": "usage_ai-training draft. Google says support in 2027; OpenAI “in coming months.” Bing posted the same day.",
+      "url": "https://developers.google.com/search/blog/2026/10/ai-training-control",
+      "source": "Google Search Central",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-03",
+      "date": "2026-11-02",
+      "tag": "Deal",
+      "headline": "OpenAI signs four Abu Dhabi deals spanning energy, government, and investment",
+      "why": "ADNOC deploys GPT models on UAE in-country inference; machine-readable government pilot; Mubadala and a five-year Inception42 pact.",
+      "url": "https://www.mediaoffice.abudhabi/en/crown-prince-news/khaled-bin-mohamed-bin-zayed-meets-sam-altman-and-witnesses-signing-of-agreements-with-openai/",
+      "source": "Abu Dhabi Media Office",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-04",
+      "date": "2026-11-01",
       "tag": "News",
-      "headline": "Google shutting down Jules coding agent; folds into Antigravity",
-      "why": "Sessions usable until 11 Nov, then read-only; winds down 31 Dec. Export tool available. Learnings move into Antigravity.",
-      "url": "https://jules.google/docs/changelog/2026-10-29/",
-      "source": "Google Jules",
+      "headline": "OpenAI: ChatGPT and Codex will share one usage allowance in December",
+      "why": "Plus, Pro, and Business metered in tokens across both. Instant chat stays free of the allowance. No exact start day or sizes yet.",
+      "url": "https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits",
+      "source": "OpenAI Help Center",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-30-08",
+      "id": "2026-11-02-05",
       "date": "2026-10-31",
-      "tag": "Calendar",
-      "headline": "DeepSeek Search/Fetch free harness window ends Sat (noon ET)",
-      "why": "Docs: Harness/Claude Code/Codex server-side tool calls bill from 00:00 Beijing 1 Nov (= noon ET 31 Oct). $0.75 per 1,000 successful requests.",
-      "url": "https://api-docs.deepseek.com/guides/search",
-      "source": "DeepSeek docs",
+      "tag": "Labs",
+      "headline": "DeepSeek open-sources dsh-superagent coding-agent prototype (MIT)",
+      "why": "Harness-team research code for one GitHub repo. README says not an official product and not identical to the internal design article.",
+      "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
+      "source": "DeepSeek GitHub",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-30-09",
-      "date": "2026-11-04",
-      "tag": "Calendar",
-      "headline": "Moonshot: Kimi K3.1 Pro weights still due by 4 Nov",
-      "why": "Weights still outstanding. HF still shows Kimi-K3 only as of this morning. Site stub live.",
-      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
-      "source": "Moonshot / rycode.dev",
+      "id": "2026-11-02-06",
+      "date": "2026-10-30",
+      "tag": "News",
+      "headline": "Apple Intelligence coming to China: Qwen-powered beta Wed 4 Nov",
+      "why": "Developer beta 4 Nov; public rollout in December with iOS 27.3. Powers Siri, Writing Tools, and Visual Intelligence in China.",
+      "url": "https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/",
+      "source": "Apple China Newsroom",
       "status": "confirmed"
     },
     {
-      "id": "2026-10-30-10",
+      "id": "2026-11-02-07",
+      "date": "2026-11-07",
+      "tag": "Policy",
+      "headline": "xAI: Grok API text watermarking on by default from Sat 7 Nov",
+      "why": "Covers grok-4.7/4.6/4.5/4.3/4.20 plus tool-call arguments. Team admins can opt out per model.",
+      "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
+      "source": "xAI docs",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-08",
+      "date": "2026-11-02",
+      "tag": "OpenWeight",
+      "headline": "Pika H3 Flex reaches the Pika creation product",
+      "why": "Open weights and API launched 29 Oct on MiniMax H3. Consumer app date was Nov 2 per Pika’s own post.",
+      "url": "https://pika.art/blog/pika-h3-flex",
+      "source": "Pika",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-09",
       "date": "2026-11-02",
       "tag": "Calendar",
-      "headline": "Next week: Apple Mon 2 Nov; AMD Tue 3 Nov after the close",
-      "why": "Apple call 5:00 PM ET. CoreWeave reports Tue 10 Nov. Jules goes read-only Wed 11 Nov.",
+      "headline": "Apple FY26 Q4 after the close; call 5:00 PM ET",
+      "why": "First Ternus-as-CEO print. Market will listen for AI / Siri and the China Apple Intelligence timing.",
       "url": "https://investor.apple.com/investor-relations/event-details/2026/FY-26-Fourth-Quarter-Results/default.aspx",
-      "source": "Apple IR / AMD IR",
+      "source": "Apple IR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-02-10",
+      "date": "2026-11-04",
+      "tag": "Calendar",
+      "headline": "Kimi K3.1 Pro full weights still promised by Nov 4",
+      "why": "API and apps already live. As of this morning Moonshot’s HF org still shows Kimi-K3, not K3.1 Pro.",
+      "url": "https://rycode.dev/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Moonshot / rycode",
       "status": "confirmed"
     }
   ]
