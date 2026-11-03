@@ -1,6 +1,6 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-02T13:51:30.219Z",
+  "updated": "2026-11-03T13:50:01.597Z",
   "items": [
     {
       "id": "2026-11-02-07",
@@ -30,6 +30,86 @@
       "why": "Open weights and API launched 29 Oct on MiniMax H3. Consumer app date was Nov 2 per Pika’s own post.",
       "url": "https://pika.art/blog/pika-h3-flex",
       "source": "Pika",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-03-01",
+      "date": "2026-11-02",
+      "tag": "Deal",
+      "headline": "Anthropic S-1/A: ~$17B Q3 revenue (+47% q/q); ~$895B compute commitments",
+      "why": "Nine-month revenue $33.24B. Growth slowed from +144% in Q2. Nasdaq ANT; price range still blank.",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+      "source": "SEC / CNBC",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-03-02",
+      "date": "2026-11-02",
+      "tag": "News",
+      "headline": "Apple: Siri AI usage limits coming; paid expanded access later",
+      "why": "Ternus on the call. No prices or caps yet. Dec GM guided 45–46% on memory plus Siri AI ramp.",
+      "url": "https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/",
+      "source": "Apple / MacRumors",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-03-03",
+      "date": "2026-11-02",
+      "tag": "Safety",
+      "headline": "Anthropic S-1/A: may ‘imminently’ hit RSP bar for AI-accelerated progress",
+      "why": "Filing risk factor on AI speeding its own research. No model designated over the threshold yet.",
+      "url": "https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/",
+      "source": "TechCrunch quoting S-1/A",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-03-04",
+      "date": "2026-11-02",
+      "tag": "Safety",
+      "headline": "Anthropic open-sources FlashProve zkSNARK for MoE inference",
+      "why": "~110 tok/s on one H100 for Llama 4 Maverick 4-bit. Research prototype with Lean proofs, not a product.",
+      "url": "https://www.anthropic.com/research/provable-inference",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-03-05",
+      "date": "2026-11-02",
+      "tag": "Labs",
+      "headline": "Anthropic: Messages API message threads in public beta",
+      "why": "Send history once, then only new turns. ~35% median TTFT cut on 500k–1M-token requests. Pricing unchanged.",
+      "url": "https://claude.com/resources/articles/message-threads",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-03-06",
+      "date": "2026-11-02",
+      "tag": "News",
+      "headline": "Palantir Q3 revenue +96% to $2.31B; US commercial tops government",
+      "why": "First time US commercial passed US gov. AIP-led; FY guide raised to about $8.53B.",
+      "url": "https://investors.palantir.com/news-details/2026/Palantir-Reports-Q3-2026",
+      "source": "Palantir IR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-03-07",
+      "date": "2026-11-02",
+      "tag": "News",
+      "headline": "Musk: Grok Bot limits cut; serving cost ‘unsustainably high’ vs revenue",
+      "why": "Fits Apple’s Siri caps and OpenAI’s shared ChatGPT+Codex allowance. Usage rationing is the cost story.",
+      "url": "https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/",
+      "source": "TechCrunch",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-03-08",
+      "date": "2026-11-02",
+      "tag": "OpenWeight",
+      "headline": "Deep Principle open-sources Hydrogen-1.0, a 753B science model (MIT)",
+      "why": "Built on GLM-5.3. ‘Beats Astra’ science scores are lab-only; no AA or Epoch score yet.",
+      "url": "https://huggingface.co/deep-principle/Hydrogen-1.0",
+      "source": "Deep Principle / Hugging Face",
       "status": "confirmed"
     },
     {
@@ -223,113 +303,13 @@
       "status": "reported"
     },
     {
-      "id": "2026-10-28-01",
-      "date": "2026-10-27",
-      "tag": "OpenWeight",
-      "headline": "Liquid AI ships LFM3: six open-weight ~2B models on one backbone",
-      "why": "Text, vision, audio, omni, and two decision models. Built to fine-tune on one GPU and run on phones or laptops.",
-      "url": "https://www.liquid.ai/blog/lfm3",
-      "source": "Liquid AI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-02",
-      "date": "2026-10-27",
-      "tag": "OpenWeight",
-      "headline": "LFM3-1.7B: 256K context, ~1GB at 4-bit; AA has no Index score yet",
-      "why": "Liquid's own 29-bench average is 49.37 vs 47.24 for Qwen3.5-9B. Treat lab benches as marketing until AA or Epoch confirm.",
-      "url": "https://artificialanalysis.ai/models/creators/liquidai",
-      "source": "Liquid AI / Artificial Analysis",
-      "status": "claim"
-    },
-    {
-      "id": "2026-10-28-03",
-      "date": "2026-10-27",
-      "tag": "Release",
-      "headline": "DeepMind Genie 4 adds native audio to real-time interactive world sims",
-      "why": "Trusted-tester preview now; later for Google AI Ultra Project Genie and early Gemini API partners. SynthID on outputs.",
-      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-      "source": "Google DeepMind",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-04",
-      "date": "2026-10-27",
-      "tag": "Safety",
-      "headline": "LiteLLM Critical: Enterprise proxy unauth file read can leak master key",
-      "why": "Affects licensed Enterprise proxies only. Open-source without a license is not hit. Patch to the listed fixed versions.",
-      "url": "https://github.com/BerriAI/litellm/security/advisories/GHSA-w4c7-34wj-hqm8",
-      "source": "LiteLLM (GitHub)",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-06",
-      "date": "2026-10-27",
-      "tag": "Deal",
-      "headline": "OpenAI and Oracle put Oracle apps and data into ChatGPT",
-      "why": "Oracle AI Workspace, Security Mesh, App Composer, and SMB Bundle. US buyers can use Universal Credits on Marketplace.",
-      "url": "https://openai.com/index/oracle-apps-in-chatgpt/",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-07",
-      "date": "2026-10-27",
-      "tag": "Labs",
-      "headline": "Anthropic posts early Claude results with six drug-development partners",
-      "why": "BigHat, BMS, Divergence, Enveda, Generate, and The Column Group. Mostly preclinical; Anthropic also acquired Mithril Medicine.",
-      "url": "https://www.anthropic.com/research/early-progress-drug-development",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-08",
-      "date": "2026-10-27",
-      "tag": "Policy",
-      "headline": "Anthropic expands GSA OneGov deal: 40% off Claude for all US government levels",
-      "why": "Covers Enterprise, Claude for Government, and API. No minimum spend. Anthropic estimates about $1B in government savings.",
-      "url": "https://www.anthropic.com/news/expanding-partnership-gsa",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-09",
-      "date": "2026-10-27",
-      "tag": "Deal",
-      "headline": "Nvidia will invest $3B in Meta's equity raise and deepen Muse work",
-      "why": "Also more Vera Rubin and Vera CPU for Meta agents, plus Spectrum-X and BlueField-4. Follows Meta's large AI financing plan.",
-      "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Meta-to-Expand-Collaboration-on-Muse-and-Muse-Family-of-Models-Amid-Robust-Growth/default.aspx",
-      "source": "NVIDIA",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-28-10",
-      "date": "2026-10-27",
-      "tag": "Infra",
-      "headline": "Oracle will offer Google TPUs on OCI starting in calendar 2027",
-      "why": "First hyperscaler outside Google to rent Google TPUs. TPU 8t for training and TPU 8i for inference are named.",
-      "url": "/ai/hardware/chips/tpu-8/",
-      "source": "Oracle",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-30-10",
-      "date": "2026-11-02",
+      "id": "2026-11-03-09",
+      "date": "2026-11-03",
       "tag": "Calendar",
-      "headline": "Next week: Apple Mon 2 Nov; AMD Tue 3 Nov after the close",
-      "why": "Apple call 5:00 PM ET. CoreWeave reports Tue 10 Nov. Jules goes read-only Wed 11 Nov.",
-      "url": "https://investor.apple.com/investor-relations/event-details/2026/FY-26-Fourth-Quarter-Results/default.aspx",
-      "source": "Apple IR / AMD IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-02-09",
-      "date": "2026-11-02",
-      "tag": "Calendar",
-      "headline": "Apple FY26 Q4 after the close; call 5:00 PM ET",
-      "why": "First Ternus-as-CEO print. Market will listen for AI / Siri and the China Apple Intelligence timing.",
-      "url": "https://investor.apple.com/investor-relations/event-details/2026/FY-26-Fourth-Quarter-Results/default.aspx",
-      "source": "Apple IR",
+      "headline": "AMD fiscal Q3 after the close; call 5:00 PM ET",
+      "why": "Chip tape after Apple’s memory-cost warning. Watch AI GPU / Instinct commentary.",
+      "url": "https://ir.amd.com/news-events/ir-calendar/detail/20261103-amd-fiscal-third-quarter-2026-financial-results",
+      "source": "AMD IR",
       "status": "confirmed"
     },
     {
@@ -379,6 +359,16 @@
       "headline": "Kimi K3.1 Pro full weights still promised by Nov 4",
       "why": "API and apps already live. As of this morning Moonshot’s HF org still shows Kimi-K3, not K3.1 Pro.",
       "url": "https://rycode.dev/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Moonshot / rycode",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-03-10",
+      "date": "2026-11-04",
+      "tag": "Calendar",
+      "headline": "Kimi K3.1 Pro full weights still promised by Nov 4",
+      "why": "API and apps already live. As of this morning Moonshot’s HF org still shows Kimi-K3, not K3.1 Pro.",
+      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
       "source": "Moonshot / rycode",
       "status": "confirmed"
     },

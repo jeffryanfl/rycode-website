@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-02T16:20:00-05:00",
-  "asOfLabel": "Mon 2 Nov · after-close",
+  "updated": "2026-11-03T08:20:00-05:00",
+  "asOfLabel": "Tue 3 Nov · pre-open",
   "lines": [
     {
       "tag": "Oil",
-      "text": "Dec WTI −8.0% to $95.82, back under $100 on US-Iran peace-talk hopes. Fri fixed to $104.12."
+      "text": "Dec WTI ~$97.52 pre-open (+1.1%), still under $100 as US-Iran talks stall; Brent ~$105.35."
     },
     {
       "tag": "Tape",
-      "text": "S&P −0.5% to 7,541, Nasdaq −1.1%, Dow +0.4%. SMH −2.7% to 508.31, still under 535."
+      "text": "S&P futures ~7,563 (-0.2%), Nasdaq futures ~28,202 (+0.3%), Dow futures -0.7% on election day."
     },
     {
-      "tag": "Data",
-      "text": "ISM manufacturing 55.5 (above 54.7 forecast); prices paid eased to 75.2. 10-year 4.91%."
+      "tag": "Rates",
+      "text": "10-year ~4.89%, still under 5% into Friday's October jobs report."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-11-02"
+  "date": "2026-11-03"
 }
