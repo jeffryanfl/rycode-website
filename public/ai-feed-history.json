@@ -1,6 +1,6 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-03T13:50:01.597Z",
+  "updated": "2026-11-04T13:49:58.084Z",
   "items": [
     {
       "id": "2026-11-02-07",
@@ -10,6 +10,86 @@
       "why": "Covers grok-4.7/4.6/4.5/4.3/4.20 plus tool-call arguments. Team admins can opt out per model.",
       "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
       "source": "xAI docs",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-05",
+      "date": "2026-11-04",
+      "tag": "OpenWeight",
+      "headline": "Tencent launches Hy4 (vision + computer use); weights in coming days",
+      "why": "Another big Chinese open-weight promise. No Artificial Analysis or Epoch score yet.",
+      "url": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
+      "source": "Tencent",
+      "status": "claim"
+    },
+    {
+      "id": "2026-11-04-08",
+      "date": "2026-11-04",
+      "tag": "OpenWeight",
+      "headline": "Kimi K3.1 Pro weights still absent on Hugging Face on Nov 4",
+      "why": "Moonshot promised by Nov 4. Newest moonshotai repo is still Kimi-K3 (2 Sep). Watch Beijing EOD.",
+      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Moonshot / Hugging Face",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-01",
+      "date": "2026-11-03",
+      "tag": "Infra",
+      "headline": "AMD Q3: revenue $13.4B; data center a record $8.5B, up 97%",
+      "why": "DC now 64% of sales. Q4 guide about $17B ±3%, non-GAAP GM about 55%. Instinct + EPYC led.",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
+      "source": "AMD IR",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-02",
+      "date": "2026-11-03",
+      "tag": "Infra",
+      "headline": "AMD ships MI455X in volume; Anthropic, Meta, OpenAI run first Helios racks",
+      "why": "Su on the call. Helios to ramp in Q4 as HPE, Dell, Lenovo, Supermicro and others ship systems.",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
+      "source": "AMD IR / call",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-03",
+      "date": "2026-11-03",
+      "tag": "Release",
+      "headline": "Apple opens Siri AI to any developer in iOS 27.3 beta",
+      "why": "App Intents + skills. App Store submissions open in spring. Daily usage limits restated; paid access later.",
+      "url": "https://developer.apple.com/news/?id=gdk2umrf",
+      "source": "Apple Developer",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-04",
+      "date": "2026-11-03",
+      "tag": "News",
+      "headline": "Apple Intelligence enters China developer beta with Qwen inside Siri",
+      "why": "Writing Tools and Visual Intelligence too. No Siri AI in China. Public release expected in December.",
+      "url": "https://www.macrumors.com/2026/11/03/ios-27-3-apple-intelligence-china-2/",
+      "source": "MacRumors / TechNode",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-04-06",
+      "date": "2026-11-03",
+      "tag": "Infra",
+      "headline": "NYT: Anthropic aims to double compute to over 7 GW in 2027",
+      "why": "About 3.5 GW by year-end. Sits behind the ~$895B commitments already on the S-1/A.",
+      "url": "https://www.investing.com/news/stock-market-news/anthropic-targets-doubling-computing-capacity-to-7-gigawatts-next-year-nyt-report-4994999",
+      "source": "NYT via Investing.com",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-04-07",
+      "date": "2026-11-03",
+      "tag": "News",
+      "headline": "Artificial Analysis moves speed headline to Time per Task; CritPt regrade",
+      "why": "Methodology change only. Gemini 4 Carbon High still #1 on Index v5 at 59.",
+      "url": "https://artificialanalysis.ai/changelog",
+      "source": "Artificial Analysis",
       "status": "confirmed"
     },
     {
@@ -230,86 +310,6 @@
       "why": "Sessions usable until 11 Nov, then read-only; winds down 31 Dec. Export tool available. Learnings move into Antigravity.",
       "url": "https://jules.google/docs/changelog/2026-10-29/",
       "source": "Google Jules",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-29-01",
-      "date": "2026-10-28",
-      "tag": "Release",
-      "headline": "Google announces Gemini 4 Carbon; AA Index v5 #1 at 59 (high)",
-      "why": "Fairwind cyber-defender preview first. Argon stays live; Google says Carbon builds on Argon, not that it replaces it.",
-      "url": "/ai/models/google/gemini-4-carbon/",
-      "source": "Google / Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-29-02",
-      "date": "2026-10-28",
-      "tag": "Release",
-      "headline": "Carbon price: intro $2/$10 then $4/$20; 1M context; text out",
-      "why": "Same intro path as Argon. AA charts use standard $4/$20. Multimodal input; text output per AA.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
-      "source": "Google",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-29-03",
-      "date": "2026-10-28",
-      "tag": "Infra",
-      "headline": "Alphabet: Google Cloud revenue grew 103% YoY on AI infra demand",
-      "why": "Pichai: AI infra and solutions drive Cloud. SEC release: Cloud operating income $11.1B vs $3.6B a year ago; TPU systems a meaningful contributor.",
-      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm",
-      "source": "Alphabet SEC / Google",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-29-04",
-      "date": "2026-10-28",
-      "tag": "Infra",
-      "headline": "Microsoft: Azure +48%; Microsoft Cloud $63.9B, up 30%",
-      "why": "Commercial remaining performance obligation up 73% to $677B. Official Q1 FY27 release.",
-      "url": "https://news.microsoft.com/source/2026/10/28/microsoft-announces-first-quarter-results-2/",
-      "source": "Microsoft",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-29-05",
-      "date": "2026-10-28",
-      "tag": "OpenWeight",
-      "headline": "Nvidia ships open-weight Nemotron 3.5 Transcribe (OpenMDW-1.1)",
-      "why": "~4.3B active; 40 languages; recordings up to one hour. Nvidia claims best open-weights Open ASR Leaderboard WER; treat as lab until independent recheck.",
-      "url": "https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/",
-      "source": "NVIDIA",
-      "status": "claim"
-    },
-    {
-      "id": "2026-10-29-06",
-      "date": "2026-10-28",
-      "tag": "News",
-      "headline": "Report: DeepSeek and Moonshot distilled GPT-6 Astra for latest models",
-      "why": "The Information via Reuters; OpenAI, DeepSeek, and Moonshot did not immediately comment. Status is reported only.",
-      "url": "https://economictimes.indiatimes.com/tech/artificial-intelligence/deepseek-moonshot-used-openais-gpt-6-astra-to-train-latest-models-report/articleshow/135286994.cms",
-      "source": "Reuters via Economic Times",
-      "status": "reported"
-    },
-    {
-      "id": "2026-10-29-07",
-      "date": "2026-10-28",
-      "tag": "Policy",
-      "headline": "Report: DOJ inquiring about Nvidia’s ~$12.9B Hugging Face deal",
-      "why": "Reuters exclusive; CNBC also heard it. DOJ, Nvidia, and Hugging Face have not confirmed. Inquiry is not a finding.",
-      "url": "https://www.cnbc.com/2026/10/28/doj-questions-nvidias-12point9-billion-hugging-face-deal.html",
-      "source": "Reuters / CNBC",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-03-09",
-      "date": "2026-11-03",
-      "tag": "Calendar",
-      "headline": "AMD fiscal Q3 after the close; call 5:00 PM ET",
-      "why": "Chip tape after Apple’s memory-cost warning. Watch AI GPU / Instinct commentary.",
-      "url": "https://ir.amd.com/news-events/ir-calendar/detail/20261103-amd-fiscal-third-quarter-2026-financial-results",
-      "source": "AMD IR",
       "status": "confirmed"
     },
     {

@@ -1,124 +1,104 @@
 {
-  "updated": "2026-11-03T08:40:00-05:00",
-  "asOfLabel": "Tue 3 Nov · morning",
+  "updated": "2026-11-04T08:35:00-05:00",
+  "asOfLabel": "Wed 4 Nov · morning",
   "lines": [
     {
-      "tag": "Deal",
-      "text": "Anthropic S-1/A: ~$17B Q3 revenue; ~$895B compute/infra commitments (Nasdaq: ANT)",
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm"
+      "tag": "Infra",
+      "text": "AMD data center revenue +97% to $8.5B; MI455X ships; Helios racks online at labs",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results"
     },
     {
-      "tag": "News",
-      "text": "Apple: Siri AI will have usage limits; paid expanded access later; GM guide 45–46%",
-      "url": "https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/"
+      "tag": "Release",
+      "text": "Apple opens Siri AI to all developers in iOS 27.3 beta; App Store submissions in spring",
+      "url": "https://developer.apple.com/news/?id=gdk2umrf"
     },
     {
-      "tag": "Safety",
-      "text": "Anthropic open-sources FlashProve zkSNARK for MoE inference (~110 tok/s on H100)",
-      "url": "https://www.anthropic.com/research/provable-inference"
+      "tag": "OpenWeight",
+      "text": "Kimi K3.1 Pro weights still not on Hugging Face on Nov 4; Moonshot still says by today",
+      "url": "https://rycode.dev/ai/models/open-weight/kimi-k3-1-pro/"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "feed": [
     {
-      "id": "2026-11-03-01",
-      "date": "2026-11-02",
-      "tag": "Deal",
-      "headline": "Anthropic S-1/A: ~$17B Q3 revenue (+47% q/q); ~$895B compute commitments",
-      "why": "Nine-month revenue $33.24B. Growth slowed from +144% in Q2. Nasdaq ANT; price range still blank.",
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
-      "source": "SEC / CNBC",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-02",
-      "date": "2026-11-02",
-      "tag": "News",
-      "headline": "Apple: Siri AI usage limits coming; paid expanded access later",
-      "why": "Ternus on the call. No prices or caps yet. Dec GM guided 45–46% on memory plus Siri AI ramp.",
-      "url": "https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/",
-      "source": "Apple / MacRumors",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-03",
-      "date": "2026-11-02",
-      "tag": "Safety",
-      "headline": "Anthropic S-1/A: may ‘imminently’ hit RSP bar for AI-accelerated progress",
-      "why": "Filing risk factor on AI speeding its own research. No model designated over the threshold yet.",
-      "url": "https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/",
-      "source": "TechCrunch quoting S-1/A",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-03-04",
-      "date": "2026-11-02",
-      "tag": "Safety",
-      "headline": "Anthropic open-sources FlashProve zkSNARK for MoE inference",
-      "why": "~110 tok/s on one H100 for Llama 4 Maverick 4-bit. Research prototype with Lean proofs, not a product.",
-      "url": "https://www.anthropic.com/research/provable-inference",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-05",
-      "date": "2026-11-02",
-      "tag": "Labs",
-      "headline": "Anthropic: Messages API message threads in public beta",
-      "why": "Send history once, then only new turns. ~35% median TTFT cut on 500k–1M-token requests. Pricing unchanged.",
-      "url": "https://claude.com/resources/articles/message-threads",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-06",
-      "date": "2026-11-02",
-      "tag": "News",
-      "headline": "Palantir Q3 revenue +96% to $2.31B; US commercial tops government",
-      "why": "First time US commercial passed US gov. AIP-led; FY guide raised to about $8.53B.",
-      "url": "https://investors.palantir.com/news-details/2026/Palantir-Reports-Q3-2026",
-      "source": "Palantir IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-07",
-      "date": "2026-11-02",
-      "tag": "News",
-      "headline": "Musk: Grok Bot limits cut; serving cost ‘unsustainably high’ vs revenue",
-      "why": "Fits Apple’s Siri caps and OpenAI’s shared ChatGPT+Codex allowance. Usage rationing is the cost story.",
-      "url": "https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/",
-      "source": "TechCrunch",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-03-08",
-      "date": "2026-11-02",
-      "tag": "OpenWeight",
-      "headline": "Deep Principle open-sources Hydrogen-1.0, a 753B science model (MIT)",
-      "why": "Built on GLM-5.3. ‘Beats Astra’ science scores are lab-only; no AA or Epoch score yet.",
-      "url": "https://huggingface.co/deep-principle/Hydrogen-1.0",
-      "source": "Deep Principle / Hugging Face",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-09",
+      "id": "2026-11-04-01",
       "date": "2026-11-03",
-      "tag": "Calendar",
-      "headline": "AMD fiscal Q3 after the close; call 5:00 PM ET",
-      "why": "Chip tape after Apple’s memory-cost warning. Watch AI GPU / Instinct commentary.",
-      "url": "https://ir.amd.com/news-events/ir-calendar/detail/20261103-amd-fiscal-third-quarter-2026-financial-results",
+      "tag": "Infra",
+      "headline": "AMD Q3: revenue $13.4B; data center a record $8.5B, up 97%",
+      "why": "DC now 64% of sales. Q4 guide about $17B ±3%, non-GAAP GM about 55%. Instinct + EPYC led.",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
       "source": "AMD IR",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-03-10",
+      "id": "2026-11-04-02",
+      "date": "2026-11-03",
+      "tag": "Infra",
+      "headline": "AMD ships MI455X in volume; Anthropic, Meta, OpenAI run first Helios racks",
+      "why": "Su on the call. Helios to ramp in Q4 as HPE, Dell, Lenovo, Supermicro and others ship systems.",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
+      "source": "AMD IR / call",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-03",
+      "date": "2026-11-03",
+      "tag": "Release",
+      "headline": "Apple opens Siri AI to any developer in iOS 27.3 beta",
+      "why": "App Intents + skills. App Store submissions open in spring. Daily usage limits restated; paid access later.",
+      "url": "https://developer.apple.com/news/?id=gdk2umrf",
+      "source": "Apple Developer",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-04",
+      "date": "2026-11-03",
+      "tag": "News",
+      "headline": "Apple Intelligence enters China developer beta with Qwen inside Siri",
+      "why": "Writing Tools and Visual Intelligence too. No Siri AI in China. Public release expected in December.",
+      "url": "https://www.macrumors.com/2026/11/03/ios-27-3-apple-intelligence-china-2/",
+      "source": "MacRumors / TechNode",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-04-05",
       "date": "2026-11-04",
-      "tag": "Calendar",
-      "headline": "Kimi K3.1 Pro full weights still promised by Nov 4",
-      "why": "API and apps already live. As of this morning Moonshot’s HF org still shows Kimi-K3, not K3.1 Pro.",
+      "tag": "OpenWeight",
+      "headline": "Tencent launches Hy4 (vision + computer use); weights in coming days",
+      "why": "Another big Chinese open-weight promise. No Artificial Analysis or Epoch score yet.",
+      "url": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
+      "source": "Tencent",
+      "status": "claim"
+    },
+    {
+      "id": "2026-11-04-06",
+      "date": "2026-11-03",
+      "tag": "Infra",
+      "headline": "NYT: Anthropic aims to double compute to over 7 GW in 2027",
+      "why": "About 3.5 GW by year-end. Sits behind the ~$895B commitments already on the S-1/A.",
+      "url": "https://www.investing.com/news/stock-market-news/anthropic-targets-doubling-computing-capacity-to-7-gigawatts-next-year-nyt-report-4994999",
+      "source": "NYT via Investing.com",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-04-07",
+      "date": "2026-11-03",
+      "tag": "News",
+      "headline": "Artificial Analysis moves speed headline to Time per Task; CritPt regrade",
+      "why": "Methodology change only. Gemini 4 Carbon High still #1 on Index v5 at 59.",
+      "url": "https://artificialanalysis.ai/changelog",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-04-08",
+      "date": "2026-11-04",
+      "tag": "OpenWeight",
+      "headline": "Kimi K3.1 Pro weights still absent on Hugging Face on Nov 4",
+      "why": "Moonshot promised by Nov 4. Newest moonshotai repo is still Kimi-K3 (2 Sep). Watch Beijing EOD.",
       "url": "/ai/models/open-weight/kimi-k3-1-pro/",
-      "source": "Moonshot / rycode",
+      "source": "Moonshot / Hugging Face",
       "status": "confirmed"
     }
   ]

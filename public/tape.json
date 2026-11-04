@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-03T16:20:00-05:00",
-  "asOfLabel": "Tue 3 Nov · after-close",
+  "updated": "2026-11-04T08:15:00-05:00",
+  "asOfLabel": "Wed 4 Nov · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "S&P +0.4% to 7,569, Nasdaq +0.8%, Dow -0.4%. SMH +2.0% to 518.52, still under 535."
+      "text": "Dems take House+Senate (AP/NBC); ES +0.9%, YM +1.8%, NQ +0.3% pre-open. SMH still under 535."
     },
     {
-      "tag": "Data",
-      "text": "Sept job openings 7.52M (forecast ~7.15M), most since May. 10-year up to 4.95%."
+      "tag": "Rates",
+      "text": "10-year near 4.95%, still just under 5% ahead of Friday jobs."
     },
     {
       "tag": "Oil",
-      "text": "Dec WTI +0.3% to $96.73, still under $100 as US-Iran talks stall. Mon fixed to $96.46."
+      "text": "Dec WTI near $94.36, still under $100. Tue final bar 96.09 (not 96.73)."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-11-03"
+  "date": "2026-11-04"
 }
