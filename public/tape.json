@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-04T08:15:00-05:00",
-  "asOfLabel": "Wed 4 Nov · pre-open",
+  "updated": "2026-11-04T16:20:00-05:00",
+  "asOfLabel": "Wed 4 Nov · after-close",
   "lines": [
     {
+      "tag": "Oil",
+      "text": "Dec WTI plunges 7.9% to $88.55 after Trump says no plans to attack Iran. Brent $95.08."
+    },
+    {
       "tag": "Tape",
-      "text": "Dems take House+Senate (AP/NBC); ES +0.9%, YM +1.8%, NQ +0.3% pre-open. SMH still under 535."
+      "text": "Dow +3.0% to 53,356, S&P +1.6%, Nasdaq +1.4% after Dem sweep. SMH −2.7% to 504, under 535."
     },
     {
       "tag": "Rates",
-      "text": "10-year near 4.95%, still just under 5% ahead of Friday jobs."
-    },
-    {
-      "tag": "Oil",
-      "text": "Dec WTI near $94.36, still under $100. Tue final bar 96.09 (not 96.73)."
+      "text": "10-year falls to 4.90%, 2-year 4.58%. ADP +86K beat; ISM services 54.5."
     }
   ],
   "doorHref": "/economics",
