@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-05T08:15:00-05:00",
-  "asOfLabel": "Thu 5 Nov · pre-open",
+  "updated": "2026-11-05T16:12:10-05:00",
+  "asOfLabel": "Thu 5 Nov · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Mixed futures: YM +0.7%, ES +0.1%, NQ −0.8%. SMH still 504, under 535."
-    },
-    {
-      "tag": "Oil",
-      "text": "Dec WTI near $89.21 after Wed plunge; Yahoo Wed final 88.12 (not 88.55). Under $100."
+      "text": "Nasdaq −5.5% to 24,315; S&P −4.4%; Dow −3.4%. SMH −11% to 448, deeper under 535."
     },
     {
       "tag": "Rates",
-      "text": "10-year near 4.89%, still under 5% ahead of Friday jobs. Claims/productivity 8:30 ET."
+      "text": "Official 11/5 CMT: 2y 4.46%, 10y 4.84%, 30y 5.25%. 10-year further under 5%."
+    },
+    {
+      "tag": "Oil",
+      "text": "Dec WTI provisional $90.72 (+3% vs Yahoo Wed final $88.12). Still under $100."
     }
   ],
   "doorHref": "/economics",
