@@ -1,0 +1,63 @@
+---
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Gemini Omni 1.2 Flash - A.I. - Rycode"
+  description="Gemini Omni 1.2 Flash is Google’s generally available video model, released 5 November 2026, for clips up to 15 seconds with audio at about $0.07 a second for 720p."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Google · Gemini Omni</p>
+    <h1 class="ai-model-title">Gemini Omni 1.2 Flash</h1>
+    <p class="ai-model-dek">Gemini Omni 1.2 Flash is Google’s video model, generally available on the Gemini API and Google Cloud from 5 November 2026, per <a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/">Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips</a> [1]. It makes clips up to 15 seconds long with audio, up from 10 seconds with Omni 1.1, and you can refine a clip over several turns of conversation [1]. Google says it costs $0.07 per second of 720p video, 30% less than Omni 1.1, a figure the <a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-omni-1-2-flash-generally-available">Google Cloud Blog</a> repeats [1][2]. The API id is <code>gemini-omni-1.2-flash</code>, per the <a href="https://aistudio.google.com/docs/omni">Gemini API Omni docs</a> [3]. It is a separate line from <a href="/ai/models/google/gemini-4-carbon/">Gemini 4 Carbon</a> and <a href="/ai/models/google/gemini-4-argon/">Gemini 4 Argon</a>.</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">What it is</h2>
+    <p>Gemini Omni 1.2 Flash generates and edits video. Per the <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/omni-1-2-flash">Google Cloud model page</a>, it takes text, images, and video as input and returns text and video, with synchronized audio such as speech, music, and sound effects in the video [5]. Audio input is not supported [5]. Parameter count, training data, and training compute are not in the sources on this page.</p>
+    <h2 class="ai-model-section">Generation</h2>
+    <p>Google says clip length can be set in one-second steps from 3 to 15 seconds [1]. On the Gemini API the default is 10 seconds. First-and-last-frame interpolation and each extension turn run 3 to 10 seconds, and extending a clip can reach 30 seconds in total [3]. Output comes in 360p, 720p, 1080p, and 4K. Google says 1080p and 4K are upscaled [3].</p>
+    <p>All generated videos carry an imperceptible SynthID watermark [1][2][3]. The Cloud model page also lists Content Credentials (C2PA) as supported [5].</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Max input is 131,072 tokens and max output is 260,640 tokens [5]. The <a href="https://aistudio.google.com/docs/pricing#gemini-omni-1.2-flash">Gemini API pricing page</a> counts one second of 720p video as 5,792 tokens [4].</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Editing happens in conversation. Google says you can refine the same clip turn by turn, across full 15-second clips [1]. On the Gemini API, editing and extension run through the Interactions API, which links each turn to the last with <code>previous_interaction_id</code> [3]. Editing or extending uploaded videos is not available in the EEA, Switzerland, or the UK [3].</p>
+    <p>Google says the model is also in Flow, in Google Vids (15-second clips at no extra cost with a Google account or Workspace), in Google Ads, and rolling out in the Gemini app to Google AI Ultra subscribers [1]. Google’s Cloud Blog says video creation for business users in Gemini is coming soon [2].</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>This card carries no benchmark scores. Gemini Omni 1.2 Flash is a video model and is not on the Artificial Analysis Intelligence Index, which scores text models. The <a href="https://artificialanalysis.ai/video/leaderboard/text-to-video">Artificial Analysis text-to-video leaderboard</a> lists the earlier Omni 1.1 Flash but not 1.2 as of 6 November 2026 [6]. The model has no row in the #aiBench table.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>On the Gemini API it is generally available on the paid tier only. There is no free tier [4]. On Google Cloud it is generally available, with Provisioned Throughput, standard pay-as-you-go, and fixed quota, in the global region [2][5]. The Gemini API docs say provisioned throughput is not supported there, so that option is a Cloud one [3]. Google lists retirement on Cloud as 5 November 2027 or later [5].</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col">Gemini API, paid tier</th>
+            <th scope="col">Gemini Omni 1.2 Flash</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok (text, image, video)</td><td>$1.50</td></tr>
+          <tr><td>Text output / MTok</td><td>$9.00</td></tr>
+          <tr><td>Video output / MTok</td><td>$12.00</td></tr>
+          <tr><td>360p video, per second</td><td>$0.023</td></tr>
+          <tr><td>720p video, per second</td><td>About $0.07</td></tr>
+          <tr><td>1080p video (upscaled), per second</td><td>$0.104</td></tr>
+          <tr><td>4K video (upscaled), per second</td><td>$0.209</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>At 720p a 10-second clip is about $0.70 and a 15-second clip about $1.04 [4]. Google describes the drop as 30%. Its video output price goes from $17.50 per million tokens on Omni 1.1 to $12.00 on 1.2 [4]. The Cloud per-token price is not in the sources on this page.</p>
+    <p>The old id <code>gemini-omni-1.1-flash</code> stays available for a four-week transition. From 3 December 2026, requests to it go to <code>gemini-omni-1.2-flash</code> at 1.2 rates [3][4]. That change is inside the Omni line only.</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ol class="ai-model-sources">
+      <li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/">Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips</a> (Google Keyword, 5 Nov 2026)</li>
+      <li><a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-omni-1-2-flash-generally-available">Gemini Omni 1.2 Flash now GA</a> (Google Cloud Blog)</li>
+      <li><a href="https://aistudio.google.com/docs/omni">Generate and edit videos with Gemini Omni Flash</a> (Gemini API docs)</li>
+      <li><a href="https://aistudio.google.com/docs/pricing#gemini-omni-1.2-flash">Gemini API pricing, Gemini Omni 1.2 Flash</a> (Google)</li>
+      <li><a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/omni-1-2-flash">Gemini Omni 1.2 Flash model page</a> (Google Cloud documentation)</li>
+      <li><a href="https://artificialanalysis.ai/video/leaderboard/text-to-video">Artificial Analysis text-to-video leaderboard</a> (secondary, checked 6 Nov 2026)</li>
+    </ol>
+  </article>
+</Layout>
