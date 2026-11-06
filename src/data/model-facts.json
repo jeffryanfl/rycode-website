@@ -45,7 +45,7 @@
       "name": "Gemini Omni 1.2 Flash",
       "status": "current",
       "statusNote": "generally available on the Gemini API and Google Cloud",
-      "price": "About $0.07 per second of 720p video (not per token)",
+      "price": "About $0.07 per second of 720p video",
       "released": "5 Nov 2026",
       "checked": "5 Nov 2026"
     },
