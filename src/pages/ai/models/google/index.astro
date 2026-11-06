@@ -35,6 +35,12 @@ const rows = [
     meta: ['Stub'],
   },
   {
+    href: '/ai/models/google/gemini-omni-1-2-flash/',
+    title: 'Gemini Omni 1.2 Flash',
+    dek: 'Video model: 15-second clips with audio, edited in conversation.',
+    meta: ['gemini-omni-1.2-flash · about $0.07 per second of 720p video'],
+  },
+  {
     href: '/ai/models/google/gemma/',
     title: 'Gemma 4',
     dek: 'Open-weight family, separate from hosted Gemini.',
@@ -50,8 +56,9 @@ const rows = [
 >
   <div class="ai-lab-head">
     <h1 class="ai-lab-title">Google</h1>
-    <p class="ai-lab-dek">Google DeepMind’s Gemini family: hosted multimodal models, plus a short door for open-weight Gemma 4. Current models are Gemini 4 Carbon (cyber defenders first, announced 28 October 2026), Gemini 4 Argon, Gemini 3.8 Flash (Google's newest Flash model) and Gemini 3.5 Flash-Lite. Gemini 3.1 Pro Preview is in the archive.</p>
+    <p class="ai-lab-dek">Google DeepMind’s Gemini family: hosted multimodal models, plus a short door for open-weight Gemma 4. Current models are Gemini 4 Carbon (cyber defenders first, announced 28 October 2026), Gemini 4 Argon, Gemini 3.8 Flash (Google's newest Flash model), Gemini 3.5 Flash-Lite, and the video model Gemini Omni 1.2 Flash. Gemini 3.1 Pro Preview is in the archive.</p>
   </div>
 
   <LabTable rows={rows} />
+  <p class="ai-lab-table-note">Gemini Omni 1.2 Flash is a video model. It is priced per second of video, not per million tokens, and it is not on the Artificial Analysis Intelligence Index, so its AA cell reads "Not on file".</p>
 </Layout>

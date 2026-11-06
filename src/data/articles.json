@@ -1612,6 +1612,46 @@
     "slug": "ai-models-openai-gpt-6.1-terra"
   },
   {
+    "href": "/ai/models/openai/gpt-6-cyber/",
+    "title": "GPT-6 Cyber",
+    "description": "Security model for authorized exploit work, Daybreak Red only.",
+    "date": "2026-11-05",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6-cyber.astro",
+    "slug": "ai-models-openai-gpt-6-cyber"
+  },
+  {
+    "href": "/ai/models/google/gemini-omni-1-2-flash/",
+    "title": "Gemini Omni 1.2 Flash",
+    "description": "Video model: 15-second clips with audio, edited in conversation.",
+    "date": "2026-11-05",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-omni-1-2-flash.astro",
+    "slug": "ai-models-google-gemini-omni-1-2-flash"
+  },
+  {
     "href": "/ai/models/typesafe/jev/",
     "title": "Jev",
     "description": "Typed decisions for software, not a chat flagship.",

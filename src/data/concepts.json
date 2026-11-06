@@ -44,6 +44,8 @@
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/google/gemini-4-argon/",
         "/ai/models/google/gemini-4-carbon/",
+        "/ai/models/google/gemini-omni-1-2-flash/",
+        "/ai/models/openai/gpt-6-cyber/",
         "/ai/models/xai/grok-4-7/"
       ],
       "links": [
@@ -77,6 +79,7 @@
         "/ai/models/google/gemini-pro/",
         "/ai/models/google/gemini-4-argon/",
         "/ai/models/google/gemini-4-carbon/",
+        "/ai/models/openai/gpt-6-cyber/",
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/openai/gpt-6.1-terra/",
         "/ai/models/anthropic/claude-opus-5-5/",
@@ -303,6 +306,8 @@
         "/ai/models/meta/muse/spark-open/",
         "/ai/models/meta/muse/video/",
         "/ai/models/meta/muse/wonder/",
+        "/ai/models/openai/gpt-6-cyber/",
+        "/ai/models/google/gemini-omni-1-2-flash/",
         "/ai/models/deepseek/r1/",
         "/ai/models/deepseek/thinking/",
         "/ai/models/deepseek/v3/",
