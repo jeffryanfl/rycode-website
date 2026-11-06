@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-06T08:18:35-05:00",
-  "asOfLabel": "Fri 6 Nov · pre-open",
+  "updated": "2026-11-06T16:18:49-05:00",
+  "asOfLabel": "Fri 6 Nov · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Mixed futures: NQ +1.3%, ES flat, YM −1.1%. SMH premkt +4.9% after −11% Thu."
+      "text": "Nasdaq +1.1% to 24,579; S&P +0.3% to 7,377; Dow −0.5%. SMH +3.6% to 464, still under 535."
     },
     {
       "tag": "Jobs",
-      "text": "October Employment Situation due 8:30 ET; still pending as of ~8:17 ET."
+      "text": "October payrolls +165k; unemployment little changed at 4.1%. Hourly earnings +0.4%, +3.1% y/y."
     },
     {
-      "tag": "Oil",
-      "text": "Dec WTI ~$90.86; Yahoo Thu final $90.52 (not provisional $90.72). Under $100."
+      "tag": "Rates",
+      "text": "Official 11/6 CMT: 2y 4.51%, 10y 4.86%, 30y 5.26%. 10-year still under 5%."
     }
   ],
   "doorHref": "/economics",

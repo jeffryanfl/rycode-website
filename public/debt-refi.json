@@ -1,6 +1,6 @@
 {
   "schema": "debt-refi-v1",
-  "updated": "2026-11-05T21:15:36.896Z",
+  "updated": "2026-11-06T21:23:10.784Z",
   "note": "Feed for the Debt refinancing row on /risk/. Refresh with node scripts/update-debt-refi.mjs. Not part of the tape ship. Final values only: borrowing points carry estimate or actual.",
   "series": [
     {
@@ -134,14 +134,6 @@
       "source": "https://fiscaldata.treasury.gov/datasets/treasury-securities-auctions-data/auctions",
       "sourceLabel": "FiscalData Treasury securities auctions data; nominal 10-year notes, TIPS excluded; final results only",
       "points": [
-        {
-          "date": "2024-11-05",
-          "bidToCover": 2.58,
-          "highYield": 4.347,
-          "status": "new issue",
-          "cusip": "91282CLW9",
-          "term": "10-Year"
-        },
         {
           "date": "2024-12-11",
           "bidToCover": 2.7,
