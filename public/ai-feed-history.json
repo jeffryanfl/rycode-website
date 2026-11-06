@@ -1,6 +1,6 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-05T13:51:59.160Z",
+  "updated": "2026-11-06T13:52:35.993Z",
   "items": [
     {
       "id": "2026-11-02-07",
@@ -10,6 +10,86 @@
       "why": "Covers grok-4.7/4.6/4.5/4.3/4.20 plus tool-call arguments. Team admins can opt out per model.",
       "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
       "source": "xAI docs",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-06-01",
+      "date": "2026-11-05",
+      "tag": "Release",
+      "headline": "Thinking Machines ships Inkling 2 Small; AA Index 31; Apache 2.0 weights next week",
+      "why": "594B MoE / 17B active, 1M context; Tinker now with closed weights. AA: would lead non-China open-weights once weights land.",
+      "url": "https://thinkingmachines.ai/news/inkling-2-small/",
+      "source": "Thinking Machines / AA",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-06-02",
+      "date": "2026-11-05",
+      "tag": "Release",
+      "headline": "OpenAI launches GPT-6 Cyber for approved Daybreak Red security customers",
+      "why": "OpenAI reports ExploitGym 48.5% vs 32.1%, a Critical cyber class, 81 novel Firefox highs, and 948 Linux exploits.",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-06-03",
+      "date": "2026-11-05",
+      "tag": "OpenWeight",
+      "headline": "AA now labels Kimi K3.1 Pro as open-weights; Index still 46",
+      "why": "Live AA page says open weights and links Hugging Face. It leads AA's open-source comparison. No Index rescore.",
+      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-06-04",
+      "date": "2026-11-05",
+      "tag": "Release",
+      "headline": "Google Gemini Omni 1.2 Flash GA: 15-second video, 30% cheaper",
+      "why": "Price is $0.07/sec at 720p, with multi-turn edits. API and Cloud GA. Outputs carry a SynthID watermark.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+      "source": "Google",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-06-05",
+      "date": "2026-11-05",
+      "tag": "News",
+      "headline": "Anthropic rolls out Claude Personal Finance beta in the US",
+      "why": "Read-only Plaid bank links on Pro, Max, and Ultra. Cannot move or invest money. Hub chats are not used for training.",
+      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-06-06",
+      "date": "2026-11-05",
+      "tag": "Labs",
+      "headline": "Mistral Studio adds Managed Agents, apps, and workflow builder",
+      "why": "Public preview dated 5 Nov. Python Agents SDK can run locally, self-hosted, or on Mistral, including durable background jobs.",
+      "url": "https://docs.mistral.ai/resources/release-notes.md",
+      "source": "Mistral",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-06-07",
+      "date": "2026-11-05",
+      "tag": "News",
+      "headline": "Perplexity launches Teammates, persistent agents for ongoing work",
+      "why": "Always-on work agents. The Verge says Max-plan access and compares them to OpenAI Dots and Claude Duet.",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work",
+      "source": "The Verge",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-06-08",
+      "date": "2026-11-05",
+      "tag": "OpenWeight",
+      "headline": "AA scores Nanbeige4.3-33B at 20 on Intelligence Index v5",
+      "why": "Apache 2.0 dense 33B model matching Qwen3.8 27B (xhigh). Weights have been on Hugging Face since late October.",
+      "url": "https://artificialanalysis.ai/articles/nanbeige-has-released-nanbeige4-3-33b-scoring-20-on-the-intelligence-index",
+      "source": "Artificial Analysis",
       "status": "confirmed"
     },
     {
@@ -300,26 +380,6 @@
       "why": "Harness-team research code for one GitHub repo. README says not an official product and not identical to the internal design article.",
       "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
       "source": "DeepSeek GitHub",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-02-02",
-      "date": "2026-10-30",
-      "tag": "Policy",
-      "headline": "Google, OpenAI, Microsoft back one robots.txt AI-training opt-out signal",
-      "why": "usage_ai-training draft. Google says support in 2027; OpenAI “in coming months.” Bing posted the same day.",
-      "url": "https://developers.google.com/search/blog/2026/10/ai-training-control",
-      "source": "Google Search Central",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-02-06",
-      "date": "2026-10-30",
-      "tag": "News",
-      "headline": "Apple Intelligence coming to China: Qwen-powered beta Wed 4 Nov",
-      "why": "Developer beta 4 Nov; public rollout in December with iOS 27.3. Powers Siri, Writing Tools, and Visual Intelligence in China.",
-      "url": "https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/",
-      "source": "Apple China Newsroom",
       "status": "confirmed"
     },
     {
