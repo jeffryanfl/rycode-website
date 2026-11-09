@@ -318,7 +318,7 @@ const DEFS: Record<string, string> = {
   arcAgi: 'ARC-AGI-3: the ARC Prize test of learning and beating new games without instructions.',
 };
 const HEAD_VERSION: Record<string, string> = {
-  aaIndex: 'v5.0',
+  aaIndex: 'v5.0.1',
   cursorBench: '4.0',
   deepSwe: 'v1.1',
   terminalBench: '4.0',
