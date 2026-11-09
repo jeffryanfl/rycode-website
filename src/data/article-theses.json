@@ -11,6 +11,8 @@
   "/ai/models/anthropic/claude-opus-5-5/": "Claude Opus 5.5 is the first Claude 5.5 model, released 22 September 2026, and Anthropic prices it below Opus 5 for similar work.",
   "/ai/models/anthropic/claude-sonnet-5-5/": "Claude Sonnet 5.5 is the second Claude 5.5 model, released 28 September 2026, at $2 per million input tokens and $10 per million output tokens.",
   "/ai/models/anthropic/claude-haiku-5-5/": "Claude Haiku 5.5 is the third Claude 5.5 model, released 7 October 2026, and Anthropic's fastest, priced from $0.10 per million input tokens and $0.50 per million output tokens.",
+  "/ai/models/anthropic/claude-fable-5-2/": "Claude Fable 5.2 is Anthropic's model for the hardest long-running technical work, available for general use, released 9 November 2026 at $8 input and $40 output per million tokens, with a 1M context window.",
+  "/ai/models/anthropic/claude-mythos-5-2/": "Claude Mythos 5.2 is the same underlying model as Fable 5.2 with looser cyber and biology safeguards, released 9 November 2026 for organizations verified through Anthropic's Cyber or Life Sciences Verification Programs at $8 input and $40 output per million tokens.",
   "/ai/models/anthropic/claude-fable-5-1/": "Claude Fable 5.1 is Anthropic's most capable widely released model, built for long-running agents and document work.",
   "/ai/models/archive/": "The model archive lists older models from each lab that a newer model replaced, or that the lab now steers users away from, with each page kept up as a record.",
   "/ai/models/anthropic/claude-opus-5/": "Claude Opus 5 was Anthropic's default model for agentic coding and enterprise work at $5 and $25 per million tokens, and is now archived, succeeded by Claude Opus 5.5.",
