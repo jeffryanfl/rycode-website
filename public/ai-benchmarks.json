@@ -1,8 +1,8 @@
 {
   "schema": "ai-benchmarks-v1",
-  "asOf": "2026-10-28",
-  "updated": "2026-10-28T16:30:00-04:00",
-  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Twelve rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026) · Kimi K3.1 Pro (added 24 Oct 2026; weights promised by 4 Nov; DeepSWE v1.1 75.5%, Terminal-Bench 4.0 65.7% and HLE 70.0% with tools are lab claims; OSWorld and AutomationBench blank because Moonshot prints V2.1 and -AA versions that do not match these columns; AA Index 55, fetched 24 Oct 2026; aaIndex effort is null because the AA page shows one entry with no effort label, an exception to the always-store-effort rule) · GPT-6.1 Terra (added 26 Oct 2026; Terminal-Bench 4.0 50.3% at max effort is a lab claim; OSWorld blank because OpenAI prints OSWorld 2.1, which does not match this column; AA Index 48, effort max, fetched 26 Oct 2026)) · Gemini 4 Carbon (added 28 Oct 2026; Google frontier model, Fairwind cyber defenders first, not generally available; AA Index 59, effort high, fetched 28 Oct 2026 from the v5.0 leaderboard, #1 on Index v5.0; lab columns blank because Google prints only cyber evals and WebDev Arena, none of which match these columns; Argon stays a live row because Google says Carbon builds on Argon, not that it replaces it). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One section stays on /ai below the agent tools band. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0): name the version; do not mix without naming. Labels pass 12 Oct 2026: every non-AA cell carries sourceKind lab (company's own claim) or verifier (third party that ran the test, e.g. ARC Prize); null renders as 'not reported'. Astra ARC-AGI-3 now shows ARC Prize Standard harness 62.7% first; the Provider Adapter 99.9% is kept as altSetup. AA Index v5.0 pass 28 Oct 2026: Artificial Analysis replaced Index v4.3.2 with v5.0 on 27 Oct 2026 (nine evals, new scale). All eleven aaIndex cells re-fetched from the v5.0 leaderboard at each row's stored effort; earlier per-row AA numbers in this note are v4.3.2 history. Gemini 4 Carbon was added the same day as a twelfth row at 59 (high), #1 on v5.0 ahead of Claude Opus 5.5 (max) at 58.",
+  "asOf": "2026-11-09",
+  "updated": "2026-11-09T08:30:00-05:00",
+  "note": "Highest-reasoning / flagship living comparison for /ai landing (#aiBench). Twelve rows: Claude Opus 5.5, Claude Sonnet 5.5 (added 29 Sep 2026; Terminal-Bench 4.0 and CursorBench 4.0; AA Index 56, effort max, fetched 2 Oct 2026), Claude Haiku 5.5 (added 7 Oct 2026; AA Index 43, effort max, fetched 7 Oct 2026; AA Index only), Claude Fable 5.1 · GPT-6 Astra · GPT-6.1 Sol (added 29 Sep 2026; DeepSWE v1.1 High 75.2% from the company announce chart; OSWorld and AutomationBench blank because the Sol card commits only that DeepSWE line; AA Index 52, effort max, fetched 2 Oct 2026 from intelligenceIndex 51.83) · Grok 4.7 · Gemini 4 Argon (added 1 Oct 2026; DeepSWE 77.9% and AutomationBench 51.3% are lab claims; AA Index 53) · Muse Wonder (added 12 Oct 2026; Meta returns with Wonder; DeepSWE v1.1 78.8% is a lab claim; Terminal-Bench, OSWorld and AutomationBench blank because Meta prints 4.0-AA, V2.1 and -AA versions that do not match these columns; AA Index 52, effort max, fetched 12 Oct 2026) · Kimi K3.1 Pro (added 24 Oct 2026; weights promised by 4 Nov; DeepSWE v1.1 75.5%, Terminal-Bench 4.0 65.7% and HLE 70.0% with tools are lab claims; OSWorld and AutomationBench blank because Moonshot prints V2.1 and -AA versions that do not match these columns; AA Index 55, fetched 24 Oct 2026; aaIndex effort is null because the AA page shows one entry with no effort label, an exception to the always-store-effort rule) · GPT-6.1 Terra (added 26 Oct 2026; Terminal-Bench 4.0 50.3% at max effort is a lab claim; OSWorld blank because OpenAI prints OSWorld 2.1, which does not match this column; AA Index 48, effort max, fetched 26 Oct 2026)) · Gemini 4 Carbon (added 28 Oct 2026; Google frontier model, Fairwind cyber defenders first, not generally available; AA Index 59, effort high, fetched 28 Oct 2026 from the v5.0 leaderboard, #1 on Index v5.0; lab columns blank because Google prints only cyber evals and WebDev Arena, none of which match these columns; Argon stays a live row because Google says Carbon builds on Argon, not that it replaces it). Muse Spark and DeepSeek Flash dropped from the table; their model pages stay live. Shared lab columns only when a lab primary publishes that eval for this SKU. aaIndex is Artificial Analysis Intelligence Index (independent composite); never paste aaIndex into CursorBench/OSWorld/ARC. Label AA vs lab in UI. Blank means no shared primary in this pack. Never invent. TypeSafe Jev is not a living-table row; System One section stays on /ai below the agent tools band. CursorBench versions differ (Fable 3.2.0 vs Opus/Grok 4.0): name the version; do not mix without naming. Labels pass 12 Oct 2026: every non-AA cell carries sourceKind lab (company's own claim) or verifier (third party that ran the test, e.g. ARC Prize); null renders as 'not reported'. Astra ARC-AGI-3 now shows ARC Prize Standard harness 62.7% first; the Provider Adapter 99.9% is kept as altSetup. AA Index v5.0 pass 28 Oct 2026: Artificial Analysis replaced Index v4.3.2 with v5.0 on 27 Oct 2026 (nine evals, new scale). All eleven aaIndex cells re-fetched from the v5.0 leaderboard at each row's stored effort; earlier per-row AA numbers in this note are v4.3.2 history. Gemini 4 Carbon was added the same day as a twelfth row at 59 (high), #1 on v5.0 ahead of Claude Opus 5.5 (max) at 58. AA Index v5.0.1 pass 9 Nov 2026: Artificial Analysis published v5.0.1 on 3 Nov 2026 (same nine evals and weights; every model regraded on CritPt v2). All twelve aaIndex cells re-fetched 9 Nov 2026 at each row's stored effort. Five rounded scores moved: Gemini 4 Carbon 59 to 60, Claude Opus 5.5 58 to 59, Claude Sonnet 5.5 54 to 55, Muse Wonder 43 to 44, Grok 4.7 34 to 35. The other seven are unchanged. Carbon stays #1, Opus #2.",
   "columns": [
     {
       "id": "cursorBench",
@@ -99,14 +99,14 @@
         },
         "arcAgi": null,
         "aaIndex": {
-          "value": 58,
+          "value": 59,
           "effort": "max",
           "aaModelLabel": "Claude Opus 5.5 (max with fallback)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 58 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (59.11 unrounded). Was 58 on v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -144,14 +144,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 54,
+          "value": 55,
           "effort": "max",
           "aaModelLabel": "Claude Sonnet 5.5 (max with fallback)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 56 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (54.54 unrounded). Was 54 on v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -191,9 +191,9 @@
           "aaModelLabel": "Claude Haiku 5.5 (max)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 43 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (36.48 unrounded). Same rounded score as v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -248,9 +248,9 @@
           "aaModelLabel": "Claude Fable 5.1 (max with fallback)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 53 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score. xhigh with fallback scores 50 on the same fetch; table keeps the stored max effort.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (49.16 unrounded). Same rounded score as v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -326,9 +326,9 @@
           "aaModelLabel": "GPT-6 Astra (max)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 53 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (56.85 unrounded). Same rounded score as v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -365,9 +365,9 @@
           "aaModelLabel": "GPT-6.1 Sol (max)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 52 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (54.61 unrounded). Same rounded score as v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -410,14 +410,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 34,
+          "value": 35,
           "effort": "xhigh",
           "aaModelLabel": "Grok 4.7 (xhigh)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 46 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score. high scores 35 on the same fetch; table keeps the stored xhigh effort.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (35.49 unrounded). Was 34 on v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -459,9 +459,9 @@
           "aaModelLabel": "Gemini 4 Argon (high)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 53 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (50.41 unrounded). Same rounded score as v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -484,14 +484,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 59,
+          "value": 60,
           "effort": "high",
           "aaModelLabel": "Gemini 4 Carbon (high)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 from the AA LLM leaderboard and the AA Carbon article, both fetched 28 Oct 2026. #1 on Index v5.0. AA tested Carbon with high reasoning before public release. apiId is null because Google has not published one. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (60.03 unrounded). Was 59 on v5.0 (fetched 28 Oct 2026). #1 on Index v5.0.1. AA tested Carbon with high reasoning before public release. apiId is null because Google has not published one. Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -521,14 +521,14 @@
         "hle": null,
         "arcAgi": null,
         "aaIndex": {
-          "value": 43,
+          "value": 44,
           "effort": "max",
           "aaModelLabel": "Muse Wonder (max)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 52 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (43.57 unrounded). Was 43 on v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -574,9 +574,9 @@
           "aaModelLabel": "Kimi K3.1 Pro",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 55 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score. AA still shows one entry with no effort label.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (46.45 unrounded). Same rounded score as v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
@@ -611,9 +611,9 @@
           "aaModelLabel": "GPT-6.1 Terra (max)",
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
-          "fetched": "2026-10-28",
-          "notes": "AA Intelligence Index v5.0 (launched 27 Oct 2026) from the AA LLM leaderboard fetched 28 Oct 2026. Was 48 on Index v4.3.2; v5.0 is a new scale and does not compare with v4.3.2 scores. Not a lab score.",
-          "version": "v5.0"
+          "fetched": "2026-11-09",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (51.33 unrounded). Same rounded score as v5.0 (fetched 28 Oct 2026). Not a lab score.",
+          "version": "v5.0.1"
         }
       },
       "sources": [
