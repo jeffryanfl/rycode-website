@@ -1,6 +1,6 @@
 {
   "schema": "ai-contagion-v1",
-  "updated": "2026-11-06T21:21:02.074Z",
+  "updated": "2026-11-09T21:14:34.477Z",
   "note": "Feed for the AI build-out contagion row on /risk/. Refresh with node scripts/update-ai-contagion.mjs. Not part of the tape ship. Daily prices are final closes only.",
   "series": [
     {
@@ -637,14 +637,6 @@
       "source": "https://query1.finance.yahoo.com/v8/finance/chart/SMH?range=2y&interval=1d",
       "sourceLabel": "Yahoo Finance daily close",
       "points": [
-        {
-          "date": "2024-11-07",
-          "close": 261.02
-        },
-        {
-          "date": "2024-11-08",
-          "close": 259.34
-        },
         {
           "date": "2024-11-11",
           "close": 253.53
@@ -2640,6 +2632,10 @@
         {
           "date": "2026-11-06",
           "close": 463.96
+        },
+        {
+          "date": "2026-11-09",
+          "close": 487.41
         }
       ]
     },
@@ -2651,14 +2647,6 @@
       "source": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=2y&interval=1d",
       "sourceLabel": "Yahoo Finance daily close",
       "points": [
-        {
-          "date": "2024-11-07",
-          "close": 5973.1
-        },
-        {
-          "date": "2024-11-08",
-          "close": 5995.54
-        },
         {
           "date": "2024-11-11",
           "close": 6001.35
@@ -4654,6 +4642,10 @@
         {
           "date": "2026-11-06",
           "close": 7376.86
+        },
+        {
+          "date": "2026-11-09",
+          "close": 7549.94
         }
       ]
     },
@@ -6664,6 +6656,83 @@
                 "TSLA"
               ],
               "weight": 1.5266
+            }
+          ]
+        },
+        {
+          "date": "2026-11-06",
+          "share": 39.15,
+          "companies": [
+            {
+              "name": "APPLE INC",
+              "tickers": [
+                "AAPL"
+              ],
+              "weight": 7.8507
+            },
+            {
+              "name": "NVIDIA CORP",
+              "tickers": [
+                "NVDA"
+              ],
+              "weight": 7.0967
+            },
+            {
+              "name": "MICROSOFT CORP",
+              "tickers": [
+                "MSFT"
+              ],
+              "weight": 6.1906
+            },
+            {
+              "name": "ALPHABET INC",
+              "tickers": [
+                "GOOGL",
+                "GOOG"
+              ],
+              "weight": 4.7458
+            },
+            {
+              "name": "AMAZON.COM INC",
+              "tickers": [
+                "AMZN"
+              ],
+              "weight": 3.9989
+            },
+            {
+              "name": "BROADCOM INC",
+              "tickers": [
+                "AVGO"
+              ],
+              "weight": 2.1953
+            },
+            {
+              "name": "META PLATFORMS INC",
+              "tickers": [
+                "META"
+              ],
+              "weight": 2.1138
+            },
+            {
+              "name": "ELI LILLY + CO",
+              "tickers": [
+                "LLY"
+              ],
+              "weight": 1.7021
+            },
+            {
+              "name": "BERKSHIRE HATHAWAY INC",
+              "tickers": [
+                "BRK.B"
+              ],
+              "weight": 1.6704
+            },
+            {
+              "name": "TESLA INC",
+              "tickers": [
+                "TSLA"
+              ],
+              "weight": 1.5861
             }
           ]
         }

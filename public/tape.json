@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-09T08:15:37-05:00",
-  "asOfLabel": "Mon 9 Nov · pre-open",
+  "updated": "2026-11-09T16:13:27-05:00",
+  "asOfLabel": "Mon 9 Nov · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Futures bounce: ES +0.9%, NQ +1.0%, YM +1.2%. NVDA premkt ~−5% on Huang probe."
+      "text": "S&P +2.3% to 7,550; Nasdaq +2.7% to 25,253; Dow +2.2%. SMH +5.1% to 487, under 535."
     },
     {
       "tag": "Oil",
-      "text": "Dec WTI ~$87.21 (−4%), well under $100 after Trump dials back Iran-strike talk."
+      "text": "Dec WTI $87.03 (−4.2% vs Fri $90.83), well under $100 after Iran-strike talk cools."
     },
     {
       "tag": "Rates",
-      "text": "Overnight 10y ~4.86%, still under 5%. Oct CPI Tue 8:30 ET; Fed speakers today."
+      "text": "Official 11/9 CMT: 2y 4.56%, 10y 4.88%, 30y 5.26%. 10-year still under 5%."
     }
   ],
   "doorHref": "/economics",

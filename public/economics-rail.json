@@ -1,6 +1,6 @@
 {
   "schema": "economics-rail-v1",
-  "updated": "2026-11-06T21:23:31.651Z",
+  "updated": "2026-11-09T21:17:03.052Z",
   "append": "node scripts/update-economics-rail.mjs (after-close push) appends each new date and corrects a recent date only when its source value changed (for example a final futures close). It never rewrites points outside the fetched window, does not rebuild weekly/monthly/yearly, and does not edit essay pages. Those tabs are views of points. Oil points are the Yahoo bar. Do not splice the after-close tape over them.",
   "series": [
     {
@@ -55352,6 +55352,12 @@
           "y2": 4.51,
           "y10": 4.86,
           "y30": 5.26
+        },
+        {
+          "date": "2026-11-09",
+          "y2": 4.56,
+          "y10": 4.88,
+          "y30": 5.26
         }
       ]
     },
@@ -88283,6 +88289,11 @@
           "date": "2026-11-05",
           "wti": 90.52,
           "brent": 98.29
+        },
+        {
+          "date": "2026-11-06",
+          "wti": 90.83,
+          "brent": 98.32
         }
       ]
     },
@@ -135039,6 +135050,10 @@
         {
           "date": "2026-11-04",
           "tga": 936248000000
+        },
+        {
+          "date": "2026-11-05",
+          "tga": 922752000000
         }
       ]
     }
