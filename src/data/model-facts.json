@@ -5,7 +5,23 @@
     "/ai/models/anthropic/claude-opus-5-5/": { "name": "Claude Opus 5.5", "status": "current", "price": "$4 in, $20 out", "released": "22 Sep 2026", "checked": "12 Oct 2026" },
     "/ai/models/anthropic/claude-sonnet-5-5/": { "name": "Claude Sonnet 5.5", "status": "current", "price": "$2 in, $10 out", "released": "28 Sep 2026", "checked": "5 Oct 2026" },
     "/ai/models/anthropic/claude-haiku-5-5/": { "name": "Claude Haiku 5.5", "status": "current", "price": "$0.10 in, $0.50 out", "released": "7 Oct 2026", "checked": "8 Oct 2026" },
-    "/ai/models/anthropic/claude-fable-5-1/": { "name": "Claude Fable 5.1", "status": "current", "price": "$10 in, $50 out" },
+    "/ai/models/anthropic/claude-fable-5-2/": {
+      "name": "Claude Fable 5.2",
+      "status": "current",
+      "aa": { "value": 65, "effort": "max", "fetched": "9 Nov 2026" },
+      "price": "$8 in, $40 out",
+      "released": "9 Nov 2026",
+      "checked": "9 Nov 2026"
+    },
+    "/ai/models/anthropic/claude-mythos-5-2/": {
+      "name": "Claude Mythos 5.2",
+      "status": "limited",
+      "statusNote": "verified organizations only (Cyber or Life Sciences Verification Programs)",
+      "price": "$8 in, $40 out",
+      "released": "9 Nov 2026",
+      "checked": "9 Nov 2026"
+    },
+    "/ai/models/anthropic/claude-fable-5-1/": { "name": "Claude Fable 5.1", "status": "current", "price": "$10 in, $50 out", "released": "1 Sep 2026", "checked": "9 Nov 2026" },
     "/ai/models/anthropic/claude-opus-5/": { "name": "Claude Opus 5", "status": "archived", "replacedBy": { "name": "Claude Opus 5.5", "href": "/ai/models/anthropic/claude-opus-5-5/" }, "price": "$5 in, $25 out" },
     "/ai/models/anthropic/claude-sonnet-5/": { "name": "Claude Sonnet 5", "status": "archived", "replacedBy": { "name": "Claude Sonnet 5.5", "href": "/ai/models/anthropic/claude-sonnet-5-5/" }, "price": "$2 in, $10 out" },
     "/ai/models/anthropic/claude-haiku-4-5/": { "name": "Claude Haiku 4.5", "status": "archived", "replacedBy": { "name": "Claude Haiku 5.5", "href": "/ai/models/anthropic/claude-haiku-5-5/" }, "price": "$1 in, $5 out" },

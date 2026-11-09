@@ -1,0 +1,82 @@
+---
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Claude Mythos 5.2 - A.I. - Rycode"
+  description="Claude Mythos 5.2 is the same underlying model as Claude Fable 5.2 with more permissive cyber and biology safeguards, open only to organizations Anthropic verifies, released 9 November 2026."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Frontier models</p>
+    <h1 class="ai-model-title">Claude Mythos 5.2</h1>
+    <p class="ai-model-dek">Claude Mythos 5.2 is the same underlying model as <a href="/ai/models/anthropic/claude-fable-5-2/">Claude Fable 5.2</a>, released 9 November 2026 according to <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Introducing Claude Fable 5.2 and Claude Mythos 5.2</a> [1]. The <a href="https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf">System Card</a> says it has more permissive safeguards in cybersecurity and biology than Fable [5]. The <a href="https://platform.claude.com/docs/en/models/mythos-5-2/overview">Mythos 5.2 model page</a> says it is available only to organizations verified through Anthropic’s verification programs, such as the Cyber Verification Program [2]. Life sciences researchers can also apply through the Life Sciences Verification Program [1]. It has the same specifications and pricing as Claude Fable 5.2: 1M context, 128K max output, $8 input and $40 output per million tokens [2]. The API id is <code>claude-mythos-5-2</code> [2]. It upgrades Mythos 5.1, which was released 1 September 2026 and remains Active (verification required) per its <a href="https://platform.claude.com/docs/en/models/mythos-5-1/overview">model page</a> [7].</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Training</h2>
+    <p>The Mythos 5.2 model page lists a reliable knowledge cutoff of June 2026 and a training data cutoff of June 2026 [2]. Parameter count, training FLOPs, and the full post-training recipe are not in the sources on this page. The System Card describes Fable 5.2 and Mythos 5.2 as two configurations of one new large language model [5].</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Adaptive thinking is always on. Default effort is <code>high</code> [2]. Anthropic says Fable 5.2 and Mythos 5.2 generate outputs up to 30% faster than the 5.1 models [1]. Fast mode is $16 input and $80 output per million tokens on the <a href="https://platform.claude.com/docs/en/about-claude/pricing">pricing page</a> [3]. Access to Mythos fast mode is available only to organizations in the Verification Programs [1].</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>The documented context window is 1 million tokens. Max output is 128K tokens. Inputs are text and images. Output is text [2]. Specs match Fable 5.2 [2]. The pricing page says Claude 4.6 and later models (except Claude Haiku 5.5) include the full 1M token context window at standard pricing [3].</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Direct access to Mythos 5.2 is limited to vetted individuals and organizations through Anthropic’s trusted access programs [5]. Cybersecurity professionals can apply through the Cyber Verification Program [1]. Life sciences researchers can apply through the Life Sciences Verification Program [1]. Docs say to apply to the program that covers your use case [2].</p>
+    <p>Claude Enterprise customers, even without Verification Program membership, can use Claude Security, which scans codebases for vulnerabilities and now includes Claude Mythos 5.2 [1][5].</p>
+    <p>The System Card rates Mythos 5.2 as having the strongest cyber capabilities of any model Anthropic has released, while still falling in the lower category of capabilities set out in its Frontier Compliance Framework (FCF). On chemical and biological risk it does not cross the CB-2 threshold; Anthropic applies CB-1 protections [5].</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Every score below is Anthropic’s own, from the announce or System Card. None has been checked independently here. Anthropic’s footnote on the announce says that on its own evaluations, vulnerability identification is roughly on par with Opus 5.5 [1].</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table ai-model-table--prose">
+        <thead>
+          <tr>
+            <th scope="col">Eval</th>
+            <th scope="col">Mythos 5.2</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>CyScenarioBench</td><td>76.3%</td><td>Company claim [1]. Mythos 5.1: 61.7%. Opus 5.5 without safeguards: 67.6%. GPT-6 Cyber: 61% (Anthropic notes each lab’s scores use unique tasks).</td></tr>
+          <tr><td>CVE Rediscovery</td><td>89.6%</td><td>Company claim [1]. Mythos 5.1: 78.3%. Announce: 10.2% more than Opus 5.5 and 14.4% more than Mythos 5.1.</td></tr>
+          <tr><td>De novo binder design (24 hr)</td><td>85.1%</td><td>Company claim [1]. Mythos 5.1: 79.1%.</td></tr>
+          <tr><td>Terminal-Bench-Science 0.1</td><td>75.3%</td><td>Company claim [1].</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>On an adversarial sandbox test with a deliberately weak sandbox, Anthropic says Mythos 5.2 used credentials or files placed outside it in 3.1% of scenarios, against Opus 5.5 at 3.3%, Sonnet 5.5 at 5.1%, Mythos 5 at 39%, and Mythos 5.1 at 21% [1]. The System Card reports white-box evidence suggesting awareness of evaluation in as many as 43% of automated behavioral audit transcripts [5].</p>
+    <p><a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis</a> has no Intelligence Index score for Mythos 5.2 as of 9 November 2026 [6]. This card has no AA score, and the model has no row in the #aiBench table.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>Docs status is Active (verification required). Platforms listed: Claude API, Amazon Bedrock, Claude Models on Google Cloud (Google managed and Anthropic managed), and Microsoft Foundry. Claude Platform on AWS is not listed [2]. Retirement is not sooner than 9 November 2027 per the model page and the <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">model deprecations</a> page [2][4]. The sources on this page do not list Mythos 5.2 in Claude apps directly; Enterprise reach is through Claude Security [1].</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Mythos 5.2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>$8</td></tr>
+          <tr><td>Output / MTok</td><td>$40</td></tr>
+          <tr><td>5m cache write / MTok</td><td>$10</td></tr>
+          <tr><td>1h cache write / MTok</td><td>$16</td></tr>
+          <tr><td>Cache read / MTok</td><td>$0.20</td></tr>
+          <tr><td>Batch input / output / MTok</td><td>$4 / $20</td></tr>
+          <tr><td>Fast mode input / output / MTok</td><td>$16 / $80</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Pricing matches Fable 5.2. The pricing page labels Mythos 5.2 “(Verification required)” [3]. Fast mode on Mythos is Verification Program organizations only [1].</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ol class="ai-model-sources">
+      <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Introducing Claude Fable 5.2 and Claude Mythos 5.2</a> (Anthropic, 9 Nov 2026)</li>
+      <li><a href="https://platform.claude.com/docs/en/models/mythos-5-2/overview">Claude Mythos 5.2</a> (Claude docs)</li>
+      <li><a href="https://platform.claude.com/docs/en/about-claude/pricing">Pricing</a> (Claude docs)</li>
+      <li><a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">Model deprecations</a> (Claude docs)</li>
+      <li><a href="https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf">System Card: Claude Fable 5.2 &amp; Claude Mythos 5.2</a> (Anthropic, 9 Nov 2026)</li>
+      <li><a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis LLM leaderboard</a> (secondary, checked 9 Nov 2026)</li>
+      <li><a href="https://platform.claude.com/docs/en/models/mythos-5-1/overview">Claude Mythos 5.1</a> (Claude docs; Released 1 Sep 2026)</li>
+    </ol>
+  </article>
+</Layout>
