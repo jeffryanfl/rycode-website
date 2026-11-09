@@ -1,7 +1,37 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-06T13:52:35.993Z",
+  "updated": "2026-11-09T13:48:57.066Z",
   "items": [
+    {
+      "id": "2026-11-09-01",
+      "date": "2026-11-08",
+      "tag": "News",
+      "headline": "AA Decision Index v2: decision models top out at 73; Haiku 5.5 Max 77",
+      "why": "Drex Max and GLiDE tie at 73, Mammoth 72. Language models score higher but cost far more per task (Luna Max 76).",
+      "url": "https://artificialanalysis.ai/articles/decision-index-v2",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-03",
+      "date": "2026-11-08",
+      "tag": "Labs",
+      "headline": "Sapiens AI's Agnes 2.5 Pro Theta scores 24 on AA Intelligence Index",
+      "why": "Proprietary, 1M context, $0.10/$0.30 per 1M tokens. Released Nov 7; no lab launch post found.",
+      "url": "https://artificialanalysis.ai/models/agnes-2-5-pro-theta",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-06",
+      "date": "2026-11-08",
+      "tag": "Infra",
+      "headline": "FT: Anthropic bought ~$3.4B of gas generators, about 1.7 GW, from OnePWR",
+      "why": "Commitments from late September per FT. Anthropic and OnePWR did not comment.",
+      "url": "https://www.cnbc.com/2026/11/08/anthropic-generator-deal-ai-data-centers.html",
+      "source": "FT / CNBC",
+      "status": "reported"
+    },
     {
       "id": "2026-11-02-07",
       "date": "2026-11-07",
@@ -10,6 +40,66 @@
       "why": "Covers grok-4.7/4.6/4.5/4.3/4.20 plus tool-call arguments. Team admins can opt out per model.",
       "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
       "source": "xAI docs",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-07",
+      "date": "2026-11-07",
+      "tag": "Safety",
+      "headline": "xAI turns on default Grok API text watermarking",
+      "why": "Listed grok-4.x models from Nov 7. Admins can opt out per model; check the x-watermark header.",
+      "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
+      "source": "xAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-02",
+      "date": "2026-11-06",
+      "tag": "Release",
+      "headline": "Meta rolls Wonder-trained models into Muse and Meta AI",
+      "why": "Meta's own eval: Active Memory 90% vs 76% on using critical context. Muse Spaces shipped the same day.",
+      "url": "https://research.meta.ai/blog/specialized-models-for-muse-and-metaai",
+      "source": "Meta",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-04",
+      "date": "2026-11-06",
+      "tag": "OpenWeight",
+      "headline": "Nous drops Arete-27B, an Apache 2.0 fine-tune of Qwen3.8-27B",
+      "why": "Post-trained to cut propaganda-style answers (lab: 22% to about 1%). No AA Index score yet.",
+      "url": "https://nousresearch.com/arete",
+      "source": "Nous Research",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-05",
+      "date": "2026-11-06",
+      "tag": "Safety",
+      "headline": "OpenAI partners with Hacktron and widens its Daybreak Red access",
+      "why": "Joint testing of how OpenAI systems touch third-party services, alongside higher bug bounties.",
+      "url": "https://openai.com/index/partnering-with-hacktron",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-08",
+      "date": "2026-11-06",
+      "tag": "Deal",
+      "headline": "OpenAI reportedly closes ~$11B tranche at ~$1.25T valuation",
+      "why": "Bloomberg via TechCrunch. Full round may reach about $20B. OpenAI had not commented.",
+      "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+      "source": "Bloomberg / TechCrunch",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-09-09",
+      "date": "2026-11-06",
+      "tag": "News",
+      "headline": "Anthropic publishes agent-memory research on notes and dreaming",
+      "why": "How agents keep notes in session and consolidate memory offline, with Managed Agents case studies.",
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "source": "Anthropic",
       "status": "confirmed"
     },
     {
@@ -250,136 +340,6 @@
       "why": "Methodology change only. Gemini 4 Carbon High still #1 on Index v5 at 59.",
       "url": "https://artificialanalysis.ai/changelog",
       "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-02-03",
-      "date": "2026-11-02",
-      "tag": "Deal",
-      "headline": "OpenAI signs four Abu Dhabi deals spanning energy, government, and investment",
-      "why": "ADNOC deploys GPT models on UAE in-country inference; machine-readable government pilot; Mubadala and a five-year Inception42 pact.",
-      "url": "https://www.mediaoffice.abudhabi/en/crown-prince-news/khaled-bin-mohamed-bin-zayed-meets-sam-altman-and-witnesses-signing-of-agreements-with-openai/",
-      "source": "Abu Dhabi Media Office",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-02-08",
-      "date": "2026-11-02",
-      "tag": "OpenWeight",
-      "headline": "Pika H3 Flex reaches the Pika creation product",
-      "why": "Open weights and API launched 29 Oct on MiniMax H3. Consumer app date was Nov 2 per Pika’s own post.",
-      "url": "https://pika.art/blog/pika-h3-flex",
-      "source": "Pika",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-01",
-      "date": "2026-11-02",
-      "tag": "Deal",
-      "headline": "Anthropic S-1/A: ~$17B Q3 revenue (+47% q/q); ~$895B compute commitments",
-      "why": "Nine-month revenue $33.24B. Growth slowed from +144% in Q2. Nasdaq ANT; price range still blank.",
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
-      "source": "SEC / CNBC",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-02",
-      "date": "2026-11-02",
-      "tag": "News",
-      "headline": "Apple: Siri AI usage limits coming; paid expanded access later",
-      "why": "Ternus on the call. No prices or caps yet. Dec GM guided 45–46% on memory plus Siri AI ramp.",
-      "url": "https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/",
-      "source": "Apple / MacRumors",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-03",
-      "date": "2026-11-02",
-      "tag": "Safety",
-      "headline": "Anthropic S-1/A: may ‘imminently’ hit RSP bar for AI-accelerated progress",
-      "why": "Filing risk factor on AI speeding its own research. No model designated over the threshold yet.",
-      "url": "https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/",
-      "source": "TechCrunch quoting S-1/A",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-03-04",
-      "date": "2026-11-02",
-      "tag": "Safety",
-      "headline": "Anthropic open-sources FlashProve zkSNARK for MoE inference",
-      "why": "~110 tok/s on one H100 for Llama 4 Maverick 4-bit. Research prototype with Lean proofs, not a product.",
-      "url": "https://www.anthropic.com/research/provable-inference",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-05",
-      "date": "2026-11-02",
-      "tag": "Labs",
-      "headline": "Anthropic: Messages API message threads in public beta",
-      "why": "Send history once, then only new turns. ~35% median TTFT cut on 500k–1M-token requests. Pricing unchanged.",
-      "url": "https://claude.com/resources/articles/message-threads",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-06",
-      "date": "2026-11-02",
-      "tag": "News",
-      "headline": "Palantir Q3 revenue +96% to $2.31B; US commercial tops government",
-      "why": "First time US commercial passed US gov. AIP-led; FY guide raised to about $8.53B.",
-      "url": "https://investors.palantir.com/news-details/2026/Palantir-Reports-Q3-2026",
-      "source": "Palantir IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-03-07",
-      "date": "2026-11-02",
-      "tag": "News",
-      "headline": "Musk: Grok Bot limits cut; serving cost ‘unsustainably high’ vs revenue",
-      "why": "Fits Apple’s Siri caps and OpenAI’s shared ChatGPT+Codex allowance. Usage rationing is the cost story.",
-      "url": "https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/",
-      "source": "TechCrunch",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-03-08",
-      "date": "2026-11-02",
-      "tag": "OpenWeight",
-      "headline": "Deep Principle open-sources Hydrogen-1.0, a 753B science model (MIT)",
-      "why": "Built on GLM-5.3. ‘Beats Astra’ science scores are lab-only; no AA or Epoch score yet.",
-      "url": "https://huggingface.co/deep-principle/Hydrogen-1.0",
-      "source": "Deep Principle / Hugging Face",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-02-04",
-      "date": "2026-11-01",
-      "tag": "News",
-      "headline": "OpenAI: ChatGPT and Codex will share one usage allowance in December",
-      "why": "Plus, Pro, and Business metered in tokens across both. Instant chat stays free of the allowance. No exact start day or sizes yet.",
-      "url": "https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits",
-      "source": "OpenAI Help Center",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-02-01",
-      "date": "2026-10-31",
-      "tag": "Deal",
-      "headline": "FT/WSJ: OpenAI cuts raise target to ~$20B from $30B after ~$11B in",
-      "why": "Reported only; OpenAI has not confirmed. Valuation cited around $1.25T, down from about $1.4T.",
-      "url": "https://www.cnbc.com/2026/10/31/openai-funding-target-cut-10-billion.html",
-      "source": "CNBC citing FT / WSJ",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-02-05",
-      "date": "2026-10-31",
-      "tag": "Labs",
-      "headline": "DeepSeek open-sources dsh-superagent coding-agent prototype (MIT)",
-      "why": "Harness-team research code for one GitHub repo. README says not an official product and not identical to the internal design article.",
-      "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
-      "source": "DeepSeek GitHub",
       "status": "confirmed"
     },
     {

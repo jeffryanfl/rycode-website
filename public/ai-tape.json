@@ -1,104 +1,114 @@
 {
-  "updated": "2026-11-06T08:40:00-05:00",
-  "asOfLabel": "Fri 6 Nov · morning",
+  "updated": "2026-11-09T08:42:00-05:00",
+  "asOfLabel": "Mon 9 Nov · morning",
   "lines": [
     {
-      "tag": "Release",
-      "text": "Thinking Machines ships Inkling 2 Small; AA Index 31; Apache 2.0 weights planned next week",
-      "url": "https://thinkingmachines.ai/news/inkling-2-small/"
+      "tag": "News",
+      "text": "AA Decision Index v2: decision models top out at 73; Haiku 5.5 Max 77 and GPT-6 Luna Max 76",
+      "url": "https://artificialanalysis.ai/articles/decision-index-v2"
     },
     {
       "tag": "Release",
-      "text": "OpenAI launches GPT-6 Cyber for Daybreak Red; Critical cyber under Preparedness Framework",
-      "url": "https://openai.com/index/introducing-gpt-6-cyber"
+      "text": "Meta ships Wonder-trained Muse and Meta AI models with Active Memory and Active Focus",
+      "url": "https://research.meta.ai/blog/specialized-models-for-muse-and-metaai"
     },
     {
-      "tag": "OpenWeight",
-      "text": "AA now labels Kimi K3.1 Pro open-weights; Index still 46, leads AA open-source table",
-      "url": "https://rycode.dev/ai/models/open-weight/kimi-k3-1-pro/"
+      "tag": "Labs",
+      "text": "Sapiens AI's Agnes 2.5 Pro Theta scores 24 on AA Intelligence Index at $0.10/$0.30",
+      "url": "https://artificialanalysis.ai/models/agnes-2-5-pro-theta"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-11-06",
+  "date": "2026-11-09",
   "feed": [
     {
-      "id": "2026-11-06-01",
-      "date": "2026-11-05",
-      "tag": "Release",
-      "headline": "Thinking Machines ships Inkling 2 Small; AA Index 31; Apache 2.0 weights next week",
-      "why": "594B MoE / 17B active, 1M context; Tinker now with closed weights. AA: would lead non-China open-weights once weights land.",
-      "url": "https://thinkingmachines.ai/news/inkling-2-small/",
-      "source": "Thinking Machines / AA",
+      "id": "2026-11-09-01",
+      "date": "2026-11-08",
+      "tag": "News",
+      "headline": "AA Decision Index v2: decision models top out at 73; Haiku 5.5 Max 77",
+      "why": "Drex Max and GLiDE tie at 73, Mammoth 72. Language models score higher but cost far more per task (Luna Max 76).",
+      "url": "https://artificialanalysis.ai/articles/decision-index-v2",
+      "source": "Artificial Analysis",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-06-02",
-      "date": "2026-11-05",
+      "id": "2026-11-09-02",
+      "date": "2026-11-06",
       "tag": "Release",
-      "headline": "OpenAI launches GPT-6 Cyber for approved Daybreak Red security customers",
-      "why": "OpenAI reports ExploitGym 48.5% vs 32.1%, a Critical cyber class, 81 novel Firefox highs, and 948 Linux exploits.",
-      "url": "https://openai.com/index/introducing-gpt-6-cyber",
+      "headline": "Meta rolls Wonder-trained models into Muse and Meta AI",
+      "why": "Meta's own eval: Active Memory 90% vs 76% on using critical context. Muse Spaces shipped the same day.",
+      "url": "https://research.meta.ai/blog/specialized-models-for-muse-and-metaai",
+      "source": "Meta",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-03",
+      "date": "2026-11-08",
+      "tag": "Labs",
+      "headline": "Sapiens AI's Agnes 2.5 Pro Theta scores 24 on AA Intelligence Index",
+      "why": "Proprietary, 1M context, $0.10/$0.30 per 1M tokens. Released Nov 7; no lab launch post found.",
+      "url": "https://artificialanalysis.ai/models/agnes-2-5-pro-theta",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-04",
+      "date": "2026-11-06",
+      "tag": "OpenWeight",
+      "headline": "Nous drops Arete-27B, an Apache 2.0 fine-tune of Qwen3.8-27B",
+      "why": "Post-trained to cut propaganda-style answers (lab: 22% to about 1%). No AA Index score yet.",
+      "url": "https://nousresearch.com/arete",
+      "source": "Nous Research",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-05",
+      "date": "2026-11-06",
+      "tag": "Safety",
+      "headline": "OpenAI partners with Hacktron and widens its Daybreak Red access",
+      "why": "Joint testing of how OpenAI systems touch third-party services, alongside higher bug bounties.",
+      "url": "https://openai.com/index/partnering-with-hacktron",
       "source": "OpenAI",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-06-03",
-      "date": "2026-11-05",
-      "tag": "OpenWeight",
-      "headline": "AA now labels Kimi K3.1 Pro as open-weights; Index still 46",
-      "why": "Live AA page says open weights and links Hugging Face. It leads AA's open-source comparison. No Index rescore.",
-      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-04",
-      "date": "2026-11-05",
-      "tag": "Release",
-      "headline": "Google Gemini Omni 1.2 Flash GA: 15-second video, 30% cheaper",
-      "why": "Price is $0.07/sec at 720p, with multi-turn edits. API and Cloud GA. Outputs carry a SynthID watermark.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
-      "source": "Google",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-05",
-      "date": "2026-11-05",
-      "tag": "News",
-      "headline": "Anthropic rolls out Claude Personal Finance beta in the US",
-      "why": "Read-only Plaid bank links on Pro, Max, and Ultra. Cannot move or invest money. Hub chats are not used for training.",
-      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-06",
-      "date": "2026-11-05",
-      "tag": "Labs",
-      "headline": "Mistral Studio adds Managed Agents, apps, and workflow builder",
-      "why": "Public preview dated 5 Nov. Python Agents SDK can run locally, self-hosted, or on Mistral, including durable background jobs.",
-      "url": "https://docs.mistral.ai/resources/release-notes.md",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-07",
-      "date": "2026-11-05",
-      "tag": "News",
-      "headline": "Perplexity launches Teammates, persistent agents for ongoing work",
-      "why": "Always-on work agents. The Verge says Max-plan access and compares them to OpenAI Dots and Claude Duet.",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work",
-      "source": "The Verge",
+      "id": "2026-11-09-06",
+      "date": "2026-11-08",
+      "tag": "Infra",
+      "headline": "FT: Anthropic bought ~$3.4B of gas generators, about 1.7 GW, from OnePWR",
+      "why": "Commitments from late September per FT. Anthropic and OnePWR did not comment.",
+      "url": "https://www.cnbc.com/2026/11/08/anthropic-generator-deal-ai-data-centers.html",
+      "source": "FT / CNBC",
       "status": "reported"
     },
     {
-      "id": "2026-11-06-08",
-      "date": "2026-11-05",
-      "tag": "OpenWeight",
-      "headline": "AA scores Nanbeige4.3-33B at 20 on Intelligence Index v5",
-      "why": "Apache 2.0 dense 33B model matching Qwen3.8 27B (xhigh). Weights have been on Hugging Face since late October.",
-      "url": "https://artificialanalysis.ai/articles/nanbeige-has-released-nanbeige4-3-33b-scoring-20-on-the-intelligence-index",
-      "source": "Artificial Analysis",
+      "id": "2026-11-09-07",
+      "date": "2026-11-07",
+      "tag": "Safety",
+      "headline": "xAI turns on default Grok API text watermarking",
+      "why": "Listed grok-4.x models from Nov 7. Admins can opt out per model; check the x-watermark header.",
+      "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
+      "source": "xAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-09-08",
+      "date": "2026-11-06",
+      "tag": "Deal",
+      "headline": "OpenAI reportedly closes ~$11B tranche at ~$1.25T valuation",
+      "why": "Bloomberg via TechCrunch. Full round may reach about $20B. OpenAI had not commented.",
+      "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+      "source": "Bloomberg / TechCrunch",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-09-09",
+      "date": "2026-11-06",
+      "tag": "News",
+      "headline": "Anthropic publishes agent-memory research on notes and dreaming",
+      "why": "How agents keep notes in session and consolidate memory offline, with Managed Agents case studies.",
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "source": "Anthropic",
       "status": "confirmed"
     }
   ]

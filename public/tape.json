@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-06T17:38:49-05:00",
-  "asOfLabel": "Fri 6 Nov · after-close",
+  "updated": "2026-11-09T08:15:37-05:00",
+  "asOfLabel": "Mon 9 Nov · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Nasdaq +1.1% to 24,579; S&P +0.3% to 7,377; Dow −0.5%. SMH +3.6% to 464, still under 535."
+      "text": "Futures bounce: ES +0.9%, NQ +1.0%, YM +1.2%. NVDA premkt ~−5% on Huang probe."
     },
     {
-      "tag": "Jobs",
-      "text": "October payrolls +165k; unemployment little changed at 4.1%. Hourly earnings +0.4%, +3.1% y/y."
+      "tag": "Oil",
+      "text": "Dec WTI ~$87.21 (−4%), well under $100 after Trump dials back Iran-strike talk."
     },
     {
       "tag": "Rates",
-      "text": "Official 11/6 CMT: 2y 4.51%, 10y 4.86%, 30y 5.26%. 10-year still under 5%."
+      "text": "Overnight 10y ~4.86%, still under 5%. Oct CPI Tue 8:30 ET; Fed speakers today."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-11-06"
+  "date": "2026-11-09"
 }
