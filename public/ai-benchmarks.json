@@ -472,9 +472,9 @@
     {
       "lab": "Google DeepMind",
       "model": "Gemini 4 Carbon",
-      "apiId": null,
+      "apiId": "gemini-4-carbon",
       "doorHref": "/ai/models/google/gemini-4-carbon/",
-      "role": "Google frontier model announced 28 Oct 2026. Fairwind cyber defenders first; not yet for developers, businesses, or consumers.",
+      "role": "Google frontier model, now available on the paid Gemini API and in Google AI Studio. Announced 28 Oct 2026.",
       "benches": {
         "cursorBench": null,
         "deepSwe": null,
@@ -490,12 +490,14 @@
           "source": "https://artificialanalysis.ai/leaderboards/models",
           "sourceKind": "aa",
           "fetched": "2026-11-09",
-          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (60.03 unrounded). Was 59 on v5.0 (fetched 28 Oct 2026). Second-highest model on Index v5.0.1 after Claude Fable 5.2 (max) at 65, counting each model once (Fable 5.2 has no #aiBench row). AA tested Carbon with high reasoning before public release. apiId is null because Google has not published one. Not a lab score.",
+          "notes": "AA Intelligence Index v5.0.1 (published 3 Nov 2026; same nine evals and weights as v5.0, every model regraded on CritPt v2) from the AA LLM leaderboard fetched 9 Nov 2026 (60.03 unrounded). Was 59 on v5.0 (fetched 28 Oct 2026). Second-highest model on Index v5.0.1 after Claude Fable 5.2 (max) at 65, counting each model once (Fable 5.2 has no #aiBench row). AA tested Carbon with high reasoning before public release. API id is gemini-4-carbon. Not a lab score.",
           "version": "v5.0.1"
         }
       },
       "sources": [
         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+        "https://aistudio.google.com/docs/models/gemini-4-carbon",
         "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1",
         "https://artificialanalysis.ai/models/gemini-4-carbon"
       ]
