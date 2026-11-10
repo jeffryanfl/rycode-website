@@ -46,9 +46,9 @@
         "/ai/models/google/gemini-4-carbon/",
         "/ai/models/google/gemini-omni-1-2-flash/",
         "/ai/models/openai/gpt-6-cyber/",
+        "/ai/models/xai/grok-4-7/",
         "/ai/models/anthropic/claude-fable-5-2/",
-        "/ai/models/anthropic/claude-mythos-5-2/",
-        "/ai/models/xai/grok-4-7/"
+        "/ai/models/anthropic/claude-mythos-5-2/"
       ],
       "links": [
         "open-weights",
@@ -84,8 +84,6 @@
         "/ai/models/openai/gpt-6-cyber/",
         "/ai/models/openai/gpt-6-astra/",
         "/ai/models/openai/gpt-6.1-terra/",
-        "/ai/models/anthropic/claude-fable-5-2/",
-        "/ai/models/anthropic/claude-mythos-5-2/",
         "/ai/models/anthropic/claude-opus-5-5/",
         "/ai/models/anthropic/claude-sonnet-5-5/",
         "/ai/models/anthropic/claude-haiku-5-5/",
@@ -93,7 +91,9 @@
         "/ai/models/meta/muse/wonder/",
         "/ai/models/typesafe/jev/",
         "/ai/glossary/",
-        "/ai/ai-regulation/"
+        "/ai/ai-regulation/",
+        "/ai/models/anthropic/claude-fable-5-2/",
+        "/ai/models/anthropic/claude-mythos-5-2/"
       ],
       "links": [
         "agent-swarms",
@@ -284,8 +284,6 @@
         "/ai/models/anthropic/claude-opus-5-5/",
         "/ai/models/anthropic/claude-sonnet-5-5/",
         "/ai/models/anthropic/claude-haiku-5-5/",
-        "/ai/models/anthropic/claude-fable-5-2/",
-        "/ai/models/anthropic/claude-mythos-5-2/",
         "/ai/models/openai/gpt-6-luna/",
         "/ai/models/openai/gpt-6.1-sol/",
         "/ai/models/open-weight/glm-5-3/",
@@ -340,7 +338,9 @@
         "/ai/models/more-labs/inkling/",
         "/ai/models/more-labs/apple-foundation-models/",
         "/ai/models/more-labs/amazon-nova-2/",
-        "/ai/models/archive/"
+        "/ai/models/archive/",
+        "/ai/models/anthropic/claude-fable-5-2/",
+        "/ai/models/anthropic/claude-mythos-5-2/"
       ],
       "links": [
         "open-weights",
