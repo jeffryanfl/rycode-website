@@ -1,6 +1,6 @@
 {
   "schema": "jobs-v1",
-  "updated": "2026-11-06T21:23:33.836Z",
+  "updated": "2026-11-10T21:13:11.482Z",
   "note": "Jobs feed for the Economics watch list and the jobs brief. Refresh with node scripts/update-jobs.mjs (after-close push). Each point carries status preliminary, revised, or final; a revision overwrites the value and keeps revisedFrom. Never hand-edit.",
   "series": [
     {
@@ -5431,11 +5431,6 @@
       "source": "https://fred.stlouisfed.org/series/ICSA",
       "sourceLabel": "Department of Labor via FRED ICSA, seasonally adjusted, week ending Saturday",
       "points": [
-        {
-          "date": "2024-11-09",
-          "claims": 218000,
-          "status": "revised"
-        },
         {
           "date": "2024-11-16",
           "claims": 216000,

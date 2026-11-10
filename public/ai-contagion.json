@@ -1,6 +1,6 @@
 {
   "schema": "ai-contagion-v1",
-  "updated": "2026-11-09T21:14:34.477Z",
+  "updated": "2026-11-10T21:10:46.897Z",
   "note": "Feed for the AI build-out contagion row on /risk/. Refresh with node scripts/update-ai-contagion.mjs. Not part of the tape ship. Daily prices are final closes only.",
   "series": [
     {
@@ -2636,6 +2636,10 @@
         {
           "date": "2026-11-09",
           "close": 487.41
+        },
+        {
+          "date": "2026-11-10",
+          "close": 483.63
         }
       ]
     },
@@ -4646,6 +4650,10 @@
         {
           "date": "2026-11-09",
           "close": 7549.94
+        },
+        {
+          "date": "2026-11-10",
+          "close": 7520.93
         }
       ]
     },
@@ -6733,6 +6741,83 @@
                 "TSLA"
               ],
               "weight": 1.5861
+            }
+          ]
+        },
+        {
+          "date": "2026-11-09",
+          "share": 38.93,
+          "companies": [
+            {
+              "name": "APPLE INC",
+              "tickers": [
+                "AAPL"
+              ],
+              "weight": 7.8573
+            },
+            {
+              "name": "NVIDIA CORP",
+              "tickers": [
+                "NVDA"
+              ],
+              "weight": 6.638
+            },
+            {
+              "name": "MICROSOFT CORP",
+              "tickers": [
+                "MSFT"
+              ],
+              "weight": 6.2149
+            },
+            {
+              "name": "ALPHABET INC",
+              "tickers": [
+                "GOOGL",
+                "GOOG"
+              ],
+              "weight": 4.6826
+            },
+            {
+              "name": "AMAZON.COM INC",
+              "tickers": [
+                "AMZN"
+              ],
+              "weight": 4.0223
+            },
+            {
+              "name": "BROADCOM INC",
+              "tickers": [
+                "AVGO"
+              ],
+              "weight": 2.3333
+            },
+            {
+              "name": "META PLATFORMS INC",
+              "tickers": [
+                "META"
+              ],
+              "weight": 2.1711
+            },
+            {
+              "name": "ELI LILLY + CO",
+              "tickers": [
+                "LLY"
+              ],
+              "weight": 1.7343
+            },
+            {
+              "name": "BERKSHIRE HATHAWAY INC",
+              "tickers": [
+                "BRK.B"
+              ],
+              "weight": 1.6446
+            },
+            {
+              "name": "TESLA INC",
+              "tickers": [
+                "TSLA"
+              ],
+              "weight": 1.6355
             }
           ]
         }

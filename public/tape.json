@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-10T08:18:51-05:00",
-  "asOfLabel": "Tue 10 Nov · pre-open",
+  "updated": "2026-11-10T16:09:29-05:00",
+  "asOfLabel": "Tue 10 Nov · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Futures mixed into CPI: ES flat ~7576, NQ −0.4%, YM +0.4%. NVDA premkt ~−1%."
-    },
-    {
-      "tag": "Oil",
-      "text": "Dec WTI ~$84.91 (−2.2%), well under $100 as the Iran risk premium keeps unwinding."
+      "text": "S&P −0.4% to 7,521; Nasdaq −0.7% to 25,066; Dow −0.3%. SMH −0.8% to 484; NVDA −5.5%."
     },
     {
       "tag": "Fed",
-      "text": "Overnight 10y ~4.89%, still under 5%. Oct CPI 8:30 ET; Waller leaning toward a Dec hike."
+      "text": "Oct CPI +0.4% m/m, core +0.3%, both above forecast. No y/y (Oct 2025 shutdown). Waller open to 50bp."
+    },
+    {
+      "tag": "Rates",
+      "text": "Official 11/10 CMT: 2y 4.73%, 10y 4.98%, 30y 5.35%. 10-year traded above 5%, settled under."
     }
   ],
   "doorHref": "/economics",
