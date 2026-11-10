@@ -1,7 +1,97 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-09T13:48:57.066Z",
+  "updated": "2026-11-10T13:52:04.991Z",
   "items": [
+    {
+      "id": "2026-11-10-02",
+      "date": "2026-11-10",
+      "tag": "Deal",
+      "headline": "Anthropic launches IPO roadshow at $70 to $78 a share, Nasdaq ticker ANT",
+      "why": "825M Class A shares, 801M of them new from Anthropic. Goldman Sachs and Morgan Stanley lead. Pricing date not on Anthropic's page.",
+      "url": "https://www.anthropic.com/news/roadshow-launch",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-07",
+      "date": "2026-11-10",
+      "tag": "Policy",
+      "headline": "Australia to legislate mandatory frontier AI safety rules and a new regulator",
+      "why": "Six duties incl. independent model evals and rapid incident reports, with significant penalties. Bill details still to come.",
+      "url": "https://www.pm.gov.au/media/new-australian-ai-safety-and-security-protections",
+      "source": "Australian Government",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-01",
+      "date": "2026-11-09",
+      "tag": "Release",
+      "headline": "Anthropic ships Claude Fable 5.2 and Mythos 5.2; AA puts Fable 5.2 #1 at 65",
+      "why": "Same model, two access levels. Fable is $8/$40, 20% below 5.1. AA: 65 vs Gemini 4 Carbon High 60; Epoch ECI also tops at 174.",
+      "url": "https://rycode.dev/ai/models/anthropic/claude-fable-5-2/",
+      "source": "Anthropic / Artificial Analysis / Epoch AI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-03",
+      "date": "2026-11-09",
+      "tag": "Infra",
+      "headline": "Google adds TPU 8tx and TPU 8i Max to its eighth-gen TPU lineup",
+      "why": "8tx keeps data and weights protected in use, up to 2x lower latency than 8t. 8i Max doubles 8i compute, SRAM and HBM bandwidth.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/",
+      "source": "Google",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-04",
+      "date": "2026-11-09",
+      "tag": "Labs",
+      "headline": "Meta's Muse Ember scores 36 on AA Intelligence Index at $0.14 per task",
+      "why": "Matches Claude Haiku 5.5 (max) at about a third of the cost per task, per AA. $0.10/$0.50 per 1M tokens on Meta's API.",
+      "url": "https://artificialanalysis.ai/articles/meta-s-muse-ember-is-the-cheapest-model-scoring-36-on-the-intelligence-index",
+      "source": "Artificial Analysis / Meta",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-05",
+      "date": "2026-11-09",
+      "tag": "OpenWeight",
+      "headline": "Meituan posts LongCat-2.5 weights under MIT on Hugging Face",
+      "why": "About 1.6T total, 48B active per Meituan. Meituan's own benches put it near older frontier models. No AA Index score yet.",
+      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+      "source": "Meituan",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-06",
+      "date": "2026-11-09",
+      "tag": "Safety",
+      "headline": "OpenAI details Control Room, a system to stop research model workloads fast",
+      "why": "OpenAI says it halts model output within 35 seconds of a stop decision and fails closed if the service goes down.",
+      "url": "https://openai.com/index/control-room",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-08",
+      "date": "2026-11-09",
+      "tag": "Infra",
+      "headline": "FT: Nvidia tells cloud partners at least 51% of services must go to non-Chinese firms",
+      "why": "Verbal rule for new deals, per FT via Tom's Hardware. Nvidia has not confirmed. Aimed at overseas GPU rentals by Chinese labs.",
+      "url": "https://www.tomshardware.com/tech-industry/policy/nvidia-cracks-down-on-overseas-cloud-ai-gpu-rentals-for-china-partners-face-51-percent-non-chinese-quota-as-black-market-b300-rack-prices-surge-to-usd2-8-million",
+      "source": "FT / Tom's Hardware",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-10-09",
+      "date": "2026-11-09",
+      "tag": "Safety",
+      "headline": "Fireworks AI says attackers reached some customers' datasets and incomplete model weights",
+      "why": "Update to its October incident. Billing data also hit. No impact found on inference, which is zero data retention by default.",
+      "url": "https://fireworks.ai/security/bulletins/october-2026-security-incident-update",
+      "source": "Fireworks AI",
+      "status": "confirmed"
+    },
     {
       "id": "2026-11-09-01",
       "date": "2026-11-08",
@@ -281,76 +371,6 @@
       "url": "https://s204.q4cdn.com/645488518/files/content_files/FY2026-4th-Quarter-Earnings-Presentation_Final.pdf",
       "source": "Qualcomm slides",
       "status": "confirmed"
-    },
-    {
-      "id": "2026-11-04-01",
-      "date": "2026-11-03",
-      "tag": "Infra",
-      "headline": "AMD Q3: revenue $13.4B; data center a record $8.5B, up 97%",
-      "why": "DC now 64% of sales. Q4 guide about $17B ±3%, non-GAAP GM about 55%. Instinct + EPYC led.",
-      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
-      "source": "AMD IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-04-02",
-      "date": "2026-11-03",
-      "tag": "Infra",
-      "headline": "AMD ships MI455X in volume; Anthropic, Meta, OpenAI run first Helios racks",
-      "why": "Su on the call. Helios to ramp in Q4 as HPE, Dell, Lenovo, Supermicro and others ship systems.",
-      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
-      "source": "AMD IR / call",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-04-03",
-      "date": "2026-11-03",
-      "tag": "Release",
-      "headline": "Apple opens Siri AI to any developer in iOS 27.3 beta",
-      "why": "App Intents + skills. App Store submissions open in spring. Daily usage limits restated; paid access later.",
-      "url": "https://developer.apple.com/news/?id=gdk2umrf",
-      "source": "Apple Developer",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-04-04",
-      "date": "2026-11-03",
-      "tag": "News",
-      "headline": "Apple Intelligence enters China developer beta with Qwen inside Siri",
-      "why": "Writing Tools and Visual Intelligence too. No Siri AI in China. Public release expected in December.",
-      "url": "https://www.macrumors.com/2026/11/03/ios-27-3-apple-intelligence-china-2/",
-      "source": "MacRumors / TechNode",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-04-06",
-      "date": "2026-11-03",
-      "tag": "Infra",
-      "headline": "NYT: Anthropic aims to double compute to over 7 GW in 2027",
-      "why": "About 3.5 GW by year-end. Sits behind the ~$895B commitments already on the S-1/A.",
-      "url": "https://www.investing.com/news/stock-market-news/anthropic-targets-doubling-computing-capacity-to-7-gigawatts-next-year-nyt-report-4994999",
-      "source": "NYT via Investing.com",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-04-07",
-      "date": "2026-11-03",
-      "tag": "News",
-      "headline": "Artificial Analysis moves speed headline to Time per Task; CritPt regrade",
-      "why": "Methodology change only. Gemini 4 Carbon High still #1 on Index v5 at 59.",
-      "url": "https://artificialanalysis.ai/changelog",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-10-23-08",
-      "date": "2026-11-09",
-      "tag": "Calendar",
-      "headline": "Anthropic is expected to start pitching its IPO to investors the week of 9 November",
-      "why": "Per Reuters' sources. Under SEC rules the S-1 must be public 15 days before that pitch starts, so it should land by late October.",
-      "url": "https://www.investing.com/news/economy-news/analysisanthropic-ipo-stands-alone-as-ai-market-jitters-sideline-others-4966313",
-      "source": "Reuters via Investing.com",
-      "status": "reported"
     }
   ]
 }

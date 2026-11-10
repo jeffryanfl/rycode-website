@@ -1,114 +1,114 @@
 {
-  "updated": "2026-11-09T08:42:00-05:00",
-  "asOfLabel": "Mon 9 Nov · morning",
+  "updated": "2026-11-10T08:42:00-05:00",
+  "asOfLabel": "Tue 10 Nov · morning",
   "lines": [
     {
-      "tag": "News",
-      "text": "AA Decision Index v2: decision models top out at 73; Haiku 5.5 Max 77 and GPT-6 Luna Max 76",
-      "url": "https://artificialanalysis.ai/articles/decision-index-v2"
-    },
-    {
       "tag": "Release",
-      "text": "Meta ships Wonder-trained Muse and Meta AI models with Active Memory and Active Focus",
-      "url": "https://research.meta.ai/blog/specialized-models-for-muse-and-metaai"
+      "text": "Anthropic ships Claude Fable 5.2 at $8/$40; AA ranks it #1 on Intelligence Index v5 at 65",
+      "url": "https://rycode.dev/ai/models/anthropic/claude-fable-5-2/"
     },
     {
-      "tag": "Labs",
-      "text": "Sapiens AI's Agnes 2.5 Pro Theta scores 24 on AA Intelligence Index at $0.10/$0.30",
-      "url": "https://artificialanalysis.ai/models/agnes-2-5-pro-theta"
+      "tag": "Deal",
+      "text": "Anthropic launches IPO roadshow: 825M shares at $70 to $78 on Nasdaq under ticker ANT",
+      "url": "https://www.anthropic.com/news/roadshow-launch"
+    },
+    {
+      "tag": "Infra",
+      "text": "Google adds TPU 8tx for confidential inference and dual-chip TPU 8i Max for long context",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "feed": [
     {
-      "id": "2026-11-09-01",
-      "date": "2026-11-08",
-      "tag": "News",
-      "headline": "AA Decision Index v2: decision models top out at 73; Haiku 5.5 Max 77",
-      "why": "Drex Max and GLiDE tie at 73, Mammoth 72. Language models score higher but cost far more per task (Luna Max 76).",
-      "url": "https://artificialanalysis.ai/articles/decision-index-v2",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-02",
-      "date": "2026-11-06",
+      "id": "2026-11-10-01",
+      "date": "2026-11-09",
       "tag": "Release",
-      "headline": "Meta rolls Wonder-trained models into Muse and Meta AI",
-      "why": "Meta's own eval: Active Memory 90% vs 76% on using critical context. Muse Spaces shipped the same day.",
-      "url": "https://research.meta.ai/blog/specialized-models-for-muse-and-metaai",
-      "source": "Meta",
+      "headline": "Anthropic ships Claude Fable 5.2 and Mythos 5.2; AA puts Fable 5.2 #1 at 65",
+      "why": "Same model, two access levels. Fable is $8/$40, 20% below 5.1. AA: 65 vs Gemini 4 Carbon High 60; Epoch ECI also tops at 174.",
+      "url": "https://rycode.dev/ai/models/anthropic/claude-fable-5-2/",
+      "source": "Anthropic / Artificial Analysis / Epoch AI",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-09-03",
-      "date": "2026-11-08",
+      "id": "2026-11-10-02",
+      "date": "2026-11-10",
+      "tag": "Deal",
+      "headline": "Anthropic launches IPO roadshow at $70 to $78 a share, Nasdaq ticker ANT",
+      "why": "825M Class A shares, 801M of them new from Anthropic. Goldman Sachs and Morgan Stanley lead. Pricing date not on Anthropic's page.",
+      "url": "https://www.anthropic.com/news/roadshow-launch",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-03",
+      "date": "2026-11-09",
+      "tag": "Infra",
+      "headline": "Google adds TPU 8tx and TPU 8i Max to its eighth-gen TPU lineup",
+      "why": "8tx keeps data and weights protected in use, up to 2x lower latency than 8t. 8i Max doubles 8i compute, SRAM and HBM bandwidth.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/",
+      "source": "Google",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-10-04",
+      "date": "2026-11-09",
       "tag": "Labs",
-      "headline": "Sapiens AI's Agnes 2.5 Pro Theta scores 24 on AA Intelligence Index",
-      "why": "Proprietary, 1M context, $0.10/$0.30 per 1M tokens. Released Nov 7; no lab launch post found.",
-      "url": "https://artificialanalysis.ai/models/agnes-2-5-pro-theta",
-      "source": "Artificial Analysis",
+      "headline": "Meta's Muse Ember scores 36 on AA Intelligence Index at $0.14 per task",
+      "why": "Matches Claude Haiku 5.5 (max) at about a third of the cost per task, per AA. $0.10/$0.50 per 1M tokens on Meta's API.",
+      "url": "https://artificialanalysis.ai/articles/meta-s-muse-ember-is-the-cheapest-model-scoring-36-on-the-intelligence-index",
+      "source": "Artificial Analysis / Meta",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-09-04",
-      "date": "2026-11-06",
+      "id": "2026-11-10-05",
+      "date": "2026-11-09",
       "tag": "OpenWeight",
-      "headline": "Nous drops Arete-27B, an Apache 2.0 fine-tune of Qwen3.8-27B",
-      "why": "Post-trained to cut propaganda-style answers (lab: 22% to about 1%). No AA Index score yet.",
-      "url": "https://nousresearch.com/arete",
-      "source": "Nous Research",
+      "headline": "Meituan posts LongCat-2.5 weights under MIT on Hugging Face",
+      "why": "About 1.6T total, 48B active per Meituan. Meituan's own benches put it near older frontier models. No AA Index score yet.",
+      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+      "source": "Meituan",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-09-05",
-      "date": "2026-11-06",
+      "id": "2026-11-10-06",
+      "date": "2026-11-09",
       "tag": "Safety",
-      "headline": "OpenAI partners with Hacktron and widens its Daybreak Red access",
-      "why": "Joint testing of how OpenAI systems touch third-party services, alongside higher bug bounties.",
-      "url": "https://openai.com/index/partnering-with-hacktron",
+      "headline": "OpenAI details Control Room, a system to stop research model workloads fast",
+      "why": "OpenAI says it halts model output within 35 seconds of a stop decision and fails closed if the service goes down.",
+      "url": "https://openai.com/index/control-room",
       "source": "OpenAI",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-09-06",
-      "date": "2026-11-08",
-      "tag": "Infra",
-      "headline": "FT: Anthropic bought ~$3.4B of gas generators, about 1.7 GW, from OnePWR",
-      "why": "Commitments from late September per FT. Anthropic and OnePWR did not comment.",
-      "url": "https://www.cnbc.com/2026/11/08/anthropic-generator-deal-ai-data-centers.html",
-      "source": "FT / CNBC",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-09-07",
-      "date": "2026-11-07",
-      "tag": "Safety",
-      "headline": "xAI turns on default Grok API text watermarking",
-      "why": "Listed grok-4.x models from Nov 7. Admins can opt out per model; check the x-watermark header.",
-      "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
-      "source": "xAI",
+      "id": "2026-11-10-07",
+      "date": "2026-11-10",
+      "tag": "Policy",
+      "headline": "Australia to legislate mandatory frontier AI safety rules and a new regulator",
+      "why": "Six duties incl. independent model evals and rapid incident reports, with significant penalties. Bill details still to come.",
+      "url": "https://www.pm.gov.au/media/new-australian-ai-safety-and-security-protections",
+      "source": "Australian Government",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-09-08",
-      "date": "2026-11-06",
-      "tag": "Deal",
-      "headline": "OpenAI reportedly closes ~$11B tranche at ~$1.25T valuation",
-      "why": "Bloomberg via TechCrunch. Full round may reach about $20B. OpenAI had not commented.",
-      "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
-      "source": "Bloomberg / TechCrunch",
+      "id": "2026-11-10-08",
+      "date": "2026-11-09",
+      "tag": "Infra",
+      "headline": "FT: Nvidia tells cloud partners at least 51% of services must go to non-Chinese firms",
+      "why": "Verbal rule for new deals, per FT via Tom's Hardware. Nvidia has not confirmed. Aimed at overseas GPU rentals by Chinese labs.",
+      "url": "https://www.tomshardware.com/tech-industry/policy/nvidia-cracks-down-on-overseas-cloud-ai-gpu-rentals-for-china-partners-face-51-percent-non-chinese-quota-as-black-market-b300-rack-prices-surge-to-usd2-8-million",
+      "source": "FT / Tom's Hardware",
       "status": "reported"
     },
     {
-      "id": "2026-11-09-09",
-      "date": "2026-11-06",
-      "tag": "News",
-      "headline": "Anthropic publishes agent-memory research on notes and dreaming",
-      "why": "How agents keep notes in session and consolidate memory offline, with Managed Agents case studies.",
-      "url": "https://www.anthropic.com/research/components-of-agent-memory",
-      "source": "Anthropic",
+      "id": "2026-11-10-09",
+      "date": "2026-11-09",
+      "tag": "Safety",
+      "headline": "Fireworks AI says attackers reached some customers' datasets and incomplete model weights",
+      "why": "Update to its October incident. Billing data also hit. No impact found on inference, which is zero data retention by default.",
+      "url": "https://fireworks.ai/security/bulletins/october-2026-security-incident-update",
+      "source": "Fireworks AI",
       "status": "confirmed"
     }
   ]
