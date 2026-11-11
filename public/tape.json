@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-10T16:09:29-05:00",
-  "asOfLabel": "Tue 10 Nov · after-close",
+  "updated": "2026-11-11T08:16:00-05:00",
+  "asOfLabel": "Wed 11 Nov · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "S&P −0.4% to 7,521; Nasdaq −0.7% to 25,066; Dow −0.3%. SMH −0.8% to 484; NVDA −5.5%."
-    },
-    {
-      "tag": "Fed",
-      "text": "Oct CPI +0.4% m/m, core +0.3%, both above forecast. No y/y (Oct 2025 shutdown). Waller open to 50bp."
+      "text": "Futures up on Veterans Day: ES ~7607 +0.8%, NQ ~28324 +1.8%, YM ~52408 +0.2%. NVDA premkt ~+4%."
     },
     {
       "tag": "Rates",
-      "text": "Official 11/10 CMT: 2y 4.73%, 10y 4.98%, 30y 5.35%. 10-year traded above 5%, settled under."
+      "text": "Cash Treasuries closed (Veterans Day). Official 11/10 CMT: 10y 4.98%. Futures a bit softer, still near 5%."
+    },
+    {
+      "tag": "Oil",
+      "text": "Dec WTI ~$87.29, up from a revised $86.04 Tuesday close, still well under $100."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-11-10"
+  "date": "2026-11-11"
 }

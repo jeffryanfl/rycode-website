@@ -1,7 +1,27 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-10T13:52:04.991Z",
+  "updated": "2026-11-11T13:48:58.864Z",
   "items": [
+    {
+      "id": "2026-11-11-03",
+      "date": "2026-11-11",
+      "tag": "Release",
+      "headline": "Baidu releases ERNIE 5.5 Flash Preview, a 280B MoE with 14B active, on Qianfan",
+      "why": "1M context. English post: Apache 2.0 weights coming soon. Chinese post: weights open by 25 Nov. Preview checkpoint; no AA or Epoch score yet.",
+      "url": "https://ernie.baidu.com/release/ernie-5-5-flash-preview/",
+      "source": "Baidu",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-04",
+      "date": "2026-11-11",
+      "tag": "Deal",
+      "headline": "Anthropic's IPO site says it expects to price on 18 Nov and trade on 19 Nov",
+      "why": "Per its FAQ, subject to regulatory clearance. Range remains $70 to $78 a share, listing on Nasdaq as ANT.",
+      "url": "https://ipo.anthropic.com/us/",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
     {
       "id": "2026-11-10-02",
       "date": "2026-11-10",
@@ -20,6 +40,76 @@
       "why": "Six duties incl. independent model evals and rapid incident reports, with significant penalties. Bill details still to come.",
       "url": "https://www.pm.gov.au/media/new-australian-ai-safety-and-security-protections",
       "source": "Australian Government",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-01",
+      "date": "2026-11-10",
+      "tag": "Infra",
+      "headline": "CoreWeave Q3 revenue is $3.66B with a $709M net loss; FY revenue guide rises to $13.0-$13.3B",
+      "why": "Official print: $3.661B revenue vs $1.365B a year earlier, adjusted operating income $379M, backlog about $132.5B. Interest expense was $846M.",
+      "url": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/default.aspx",
+      "source": "CoreWeave",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-02",
+      "date": "2026-11-10",
+      "tag": "Release",
+      "headline": "Google makes Gemini 4 Carbon available on the paid Gemini API at $2/$10 through 30 Nov",
+      "why": "API id gemini-4-carbon, 1,048,576-token context. Price steps to $4/$20 on 1 Dec. Not on the free tier. AA High remains 60, behind Fable 5.2 at 65.",
+      "url": "https://rycode.dev/ai/models/google/gemini-4-carbon/",
+      "source": "Google / Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-05",
+      "date": "2026-11-10",
+      "tag": "Policy",
+      "headline": "New York opens a RAISE Act portal for large frontier AI developers",
+      "why": "Register by 1 Jan 2027. From January: safety frameworks, 72-hour incident reports, and model transparency reports. A new state AI safety center also launched.",
+      "url": "https://www.governor.ny.gov/news/governor-hochul-declares-ny-will-lead-nation-ai-science-and-safety-launches-new-research",
+      "source": "New York State",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-06",
+      "date": "2026-11-10",
+      "tag": "Labs",
+      "headline": "AA launches MKA; Fable 5.2 leads at 57%, Gemini 4 Carbon is #2 at 54%",
+      "why": "200 visual knowledge-work tasks built with DeepMind. Carbon costs $6.29 per task vs $31.97 for Fable 5.2, per AA.",
+      "url": "https://artificialanalysis.ai/articles/google-deepmind-multimodal-knowledge-agent",
+      "source": "Artificial Analysis",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-07",
+      "date": "2026-11-10",
+      "tag": "News",
+      "headline": "OpenAI starts Businesses in ChatGPT in beta, including Business Agents",
+      "why": "Firms can claim a profile and add product feeds. Business Agents start with eligible US ecommerce and online-service businesses.",
+      "url": "https://openai.com/index/introducing-businesses-chatgpt",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-08",
+      "date": "2026-11-10",
+      "tag": "News",
+      "headline": "Anthropic adds Claude Sheets, Whiteboards, and generally available Claude Data",
+      "why": "Anthropic says these start today. Its own page still calls Claude Meetings coming soon, narrower than some press reports of a beta.",
+      "url": "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-11-09",
+      "date": "2026-11-10",
+      "tag": "Infra",
+      "headline": "NVIDIA donates OpenShell to CNCF and previews Kubernetes Engine and Snapshot",
+      "why": "Announced at KubeCon. Snapshot design partners report much faster GPU workload restores; those times are partner figures.",
+      "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/",
+      "source": "NVIDIA",
       "status": "confirmed"
     },
     {
@@ -270,106 +360,6 @@
       "why": "Apache 2.0 dense 33B model matching Qwen3.8 27B (xhigh). Weights have been on Hugging Face since late October.",
       "url": "https://artificialanalysis.ai/articles/nanbeige-has-released-nanbeige4-3-33b-scoring-20-on-the-intelligence-index",
       "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-04-05",
-      "date": "2026-11-04",
-      "tag": "OpenWeight",
-      "headline": "Tencent launches Hy4 (vision + computer use); weights in coming days",
-      "why": "Another big Chinese open-weight promise. No Artificial Analysis or Epoch score yet.",
-      "url": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
-      "source": "Tencent",
-      "status": "claim"
-    },
-    {
-      "id": "2026-11-04-08",
-      "date": "2026-11-04",
-      "tag": "OpenWeight",
-      "headline": "Kimi K3.1 Pro weights still absent on Hugging Face on Nov 4",
-      "why": "Moonshot promised by Nov 4. Newest moonshotai repo is still Kimi-K3 (2 Sep). Watch Beijing EOD.",
-      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
-      "source": "Moonshot / Hugging Face",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-01",
-      "date": "2026-11-04",
-      "tag": "OpenWeight",
-      "headline": "Moonshot posts Kimi K3.1 Pro full weights on Hugging Face on deadline day",
-      "why": "2.8T MoE / 104B active, 1M context; public ungated repo. AA Index v5 still 46 from the API-era score.",
-      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
-      "source": "Moonshot / Hugging Face",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-02",
-      "date": "2026-11-04",
-      "tag": "Infra",
-      "headline": "Qualcomm Q4: non-GAAP revenue $10.4B; reiterates $5B FY27 data-center target",
-      "why": "Handsets −26%; auto record $2B. Slides: Q1 DC $650M+, exit FY27 ~$7B annualized.",
-      "url": "https://investor.qualcomm.com/files/content_files/FY2026-4th-Quarter-Earnings-Release.pdf",
-      "source": "Qualcomm IR",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-03",
-      "date": "2026-11-04",
-      "tag": "Infra",
-      "headline": "Arm Q2 revenue $1.44B (+27%); data-center royalties double y/y",
-      "why": "Licensing +50%. AGI CPU confidence raised to up to $2B across FY27–28; first deliveries Q4 FY27.",
-      "url": "https://newsroom.arm.com/news/arm-q2-fye27-results",
-      "source": "Arm Newsroom",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-04",
-      "date": "2026-11-04",
-      "tag": "Release",
-      "headline": "OpenAI ships Images 2.6 with native GIFs and Flare/Sunburst API models",
-      "why": "Claims 50% faster gen; SVG + markup edits. Product release, not a new frontier LLM.",
-      "url": "https://openai.com/index/introducing-images-2-6/",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-05",
-      "date": "2026-11-04",
-      "tag": "Deal",
-      "headline": "Meta acquires Conductor, a multi-agent coding workspace startup",
-      "why": "Cloud shuts Nov 20; local app until early 2027; Meta says a new interface early 2027.",
-      "url": "https://www.conductor.build/announcement",
-      "source": "Conductor / Meta",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-06",
-      "date": "2026-11-04",
-      "tag": "OpenWeight",
-      "headline": "Artificial Analysis scores Tencent Hy4 at 35 on Intelligence Index v5",
-      "why": "First independent Hy4 read. Company still said weights in coming days as of Wed.",
-      "url": "https://artificialanalysis.ai/changelog",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-07",
-      "date": "2026-11-04",
-      "tag": "Safety",
-      "headline": "Google publishes end-to-end framework for evaluating health AI",
-      "why": "Accuracy, safety, usefulness via benchmarks, autoraters, and expert review.",
-      "url": "https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/",
-      "source": "Google",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-05-08",
-      "date": "2026-11-04",
-      "tag": "Infra",
-      "headline": "Qualcomm slides: Data Center Q1FY27 $650M+, exit FY27 ~$7B annualized",
-      "why": "Amazon multi-gen silicon + optical; warrants up to $60B potential purchases over 10 years.",
-      "url": "https://s204.q4cdn.com/645488518/files/content_files/FY2026-4th-Quarter-Earnings-Presentation_Final.pdf",
-      "source": "Qualcomm slides",
       "status": "confirmed"
     }
   ]
