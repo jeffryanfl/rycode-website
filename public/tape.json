@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-11T08:16:00-05:00",
-  "asOfLabel": "Wed 11 Nov · pre-open",
+  "updated": "2026-11-11T16:16:37-05:00",
+  "asOfLabel": "Wed 11 Nov · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Futures up on Veterans Day: ES ~7607 +0.8%, NQ ~28324 +1.8%, YM ~52408 +0.2%. NVDA premkt ~+4%."
+      "text": "S&P +1.3% to 7,619; Nasdaq +1.6% to 25,466; Dow +0.5%. SMH +4.8% to 507; NVDA +2.9%."
+    },
+    {
+      "tag": "Tape",
+      "text": "Chip bounce after CoreWeave raised its 2026 outlook. CoreWeave +25%; Micron +12%; AMD +7%."
     },
     {
       "tag": "Rates",
       "text": "Cash Treasuries closed (Veterans Day). Official 11/10 CMT: 10y 4.98%. Futures a bit softer, still near 5%."
-    },
-    {
-      "tag": "Oil",
-      "text": "Dec WTI ~$87.29, up from a revised $86.04 Tuesday close, still well under $100."
     }
   ],
   "doorHref": "/economics",
