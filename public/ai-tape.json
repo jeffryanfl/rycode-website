@@ -1,114 +1,84 @@
 {
-  "updated": "2026-11-11T08:40:00-05:00",
-  "asOfLabel": "Wed 11 Nov · morning",
+  "updated": "2026-11-12T08:40:00-05:00",
+  "asOfLabel": "Thu 12 Nov · morning",
   "lines": [
     {
+      "tag": "News",
+      "text": "NVIDIA board met overnight on CEO Jensen Huang's future; no outcome yet, shares down about 5% premarket",
+      "url": "https://www.cnbc.com/2026/11/12/nvidia-boards-crisis-meeting.html"
+    },
+    {
       "tag": "Infra",
-      "text": "CoreWeave Q3: $3.66B revenue and a $709M net loss; raises FY revenue guide to $13.0 to $13.3B",
-      "url": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/default.aspx"
+      "text": "Nebius Q3 revenue is $980.8M; company points to the low end of its $3.0 to $3.4B 2026 guide",
+      "url": "https://www.businesswire.com/news/home/20261112208769/en/Nebius-reports-third-quarter-2026-financial-results"
     },
     {
       "tag": "Release",
-      "text": "Google makes Gemini 4 Carbon available on the paid Gemini API at $2/$10 through 30 Nov",
-      "url": "https://rycode.dev/ai/models/google/gemini-4-carbon/"
-    },
-    {
-      "tag": "Release",
-      "text": "Baidu releases ERNIE 5.5 Flash Preview (280B/14B active); Apache 2.0 weights due by 25 Nov",
-      "url": "https://ernie.baidu.com/release/ernie-5-5-flash-preview/"
+      "text": "DeepMind releases AlphaGenome 2, trained on more than 100 million cell profiles across 68 tissues",
+      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "feed": [
     {
-      "id": "2026-11-11-01",
-      "date": "2026-11-10",
+      "id": "2026-11-12-01",
+      "date": "2026-11-12",
+      "tag": "News",
+      "headline": "NVIDIA board met overnight on CEO Jensen Huang's future; no outcome announced yet",
+      "why": "CNBC, at 6:06 AM ET, said shares were down about 5% premarket. WSJ reported the board was preparing to remove him. NVIDIA has not confirmed a change.",
+      "url": "https://www.cnbc.com/2026/11/12/nvidia-boards-crisis-meeting.html",
+      "source": "CNBC / Wall Street Journal",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-12-02",
+      "date": "2026-11-12",
       "tag": "Infra",
-      "headline": "CoreWeave Q3 revenue is $3.66B with a $709M net loss; FY revenue guide rises to $13.0-$13.3B",
-      "why": "Official print: $3.661B revenue vs $1.365B a year earlier, adjusted operating income $379M, backlog about $132.5B. Interest expense was $846M.",
-      "url": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/default.aspx",
-      "source": "CoreWeave",
+      "headline": "Nebius Q3 revenue is $980.8M; 2026 guide moves to the low end of $3.0-$3.4B",
+      "why": "Official print: $980.8M vs $146.1M a year earlier, $37.5M net loss, adjusted EBITDA $465.8M. 2026 capex rises to about $27B; 2027 revenue is $12-$13B.",
+      "url": "https://www.businesswire.com/news/home/20261112208769/en/Nebius-reports-third-quarter-2026-financial-results",
+      "source": "Nebius",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-11-02",
-      "date": "2026-11-10",
-      "tag": "Release",
-      "headline": "Google makes Gemini 4 Carbon available on the paid Gemini API at $2/$10 through 30 Nov",
-      "why": "API id gemini-4-carbon, 1,048,576-token context. Price steps to $4/$20 on 1 Dec. Not on the free tier. AA High remains 60, behind Fable 5.2 at 65.",
-      "url": "https://rycode.dev/ai/models/google/gemini-4-carbon/",
-      "source": "Google / Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-03",
+      "id": "2026-11-12-03",
       "date": "2026-11-11",
       "tag": "Release",
-      "headline": "Baidu releases ERNIE 5.5 Flash Preview, a 280B MoE with 14B active, on Qianfan",
-      "why": "1M context. English post: Apache 2.0 weights coming soon. Chinese post: weights open by 25 Nov. Preview checkpoint; no AA or Epoch score yet.",
-      "url": "https://ernie.baidu.com/release/ernie-5-5-flash-preview/",
-      "source": "Baidu",
+      "headline": "DeepMind releases AlphaGenome 2, trained on more than 100 million cell profiles",
+      "why": "DeepMind says it found nearly twice as many expression-changing variants as the prior model on TenK10K (30% vs 16%). Free for non-commercial research.",
+      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/",
+      "source": "Google DeepMind",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-11-04",
+      "id": "2026-11-12-04",
       "date": "2026-11-11",
-      "tag": "Deal",
-      "headline": "Anthropic's IPO site says it expects to price on 18 Nov and trade on 19 Nov",
-      "why": "Per its FAQ, subject to regulatory clearance. Range remains $70 to $78 a share, listing on Nasdaq as ANT.",
-      "url": "https://ipo.anthropic.com/us/",
-      "source": "Anthropic",
+      "tag": "Release",
+      "headline": "Google launches the Gemini Decisions API, powered by Gemini Decision 1",
+      "why": "Scores up to 1,000 yes/no, choice, or rubric questions on one shared multimodal input. $0.10 per 1M input tokens, with no output-token charge, per Google.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "source": "Google",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-11-05",
-      "date": "2026-11-10",
-      "tag": "Policy",
-      "headline": "New York opens a RAISE Act portal for large frontier AI developers",
-      "why": "Register by 1 Jan 2027. From January: safety frameworks, 72-hour incident reports, and model transparency reports. A new state AI safety center also launched.",
-      "url": "https://www.governor.ny.gov/news/governor-hochul-declares-ny-will-lead-nation-ai-science-and-safety-launches-new-research",
-      "source": "New York State",
+      "id": "2026-11-12-05",
+      "date": "2026-11-11",
+      "tag": "OpenWeight",
+      "headline": "Runway releases Praxis-1 open weights under Apache 2.0, including commercial use",
+      "why": "A 27B-parameter world-action model for robots, with weights and code on Hugging Face and GitHub. Runway's RoboLab-120 comparison is a lab claim.",
+      "url": "https://runway.com/news/company-news/praxis-1-is-now-available",
+      "source": "Runway",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-11-06",
-      "date": "2026-11-10",
+      "id": "2026-11-12-06",
+      "date": "2026-11-11",
       "tag": "Labs",
-      "headline": "AA launches MKA; Fable 5.2 leads at 57%, Gemini 4 Carbon is #2 at 54%",
-      "why": "200 visual knowledge-work tasks built with DeepMind. Carbon costs $6.29 per task vs $31.97 for Fable 5.2, per AA.",
-      "url": "https://artificialanalysis.ai/articles/google-deepmind-multimodal-knowledge-agent",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-07",
-      "date": "2026-11-10",
-      "tag": "News",
-      "headline": "OpenAI starts Businesses in ChatGPT in beta, including Business Agents",
-      "why": "Firms can claim a profile and add product feeds. Business Agents start with eligible US ecommerce and online-service businesses.",
-      "url": "https://openai.com/index/introducing-businesses-chatgpt",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-08",
-      "date": "2026-11-10",
-      "tag": "News",
-      "headline": "Anthropic adds Claude Sheets, Whiteboards, and generally available Claude Data",
-      "why": "Anthropic says these start today. Its own page still calls Claude Meetings coming soon, narrower than some press reports of a beta.",
-      "url": "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors",
+      "headline": "Anthropic finds group results worsen when each user has their own agent",
+      "why": "In four simulated shared-resource settings, one agent serving everyone beat a team of per-user agents. Three environments are released as MAMUBench.",
+      "url": "https://alignment.anthropic.com/2026/worse-together/",
       "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-09",
-      "date": "2026-11-10",
-      "tag": "Infra",
-      "headline": "NVIDIA donates OpenShell to CNCF and previews Kubernetes Engine and Snapshot",
-      "why": "Announced at KubeCon. Snapshot design partners report much faster GPU workload restores; those times are partner figures.",
-      "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/",
-      "source": "NVIDIA",
       "status": "confirmed"
     }
   ]

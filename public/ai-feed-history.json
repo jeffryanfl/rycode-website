@@ -1,7 +1,27 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-11T13:48:58.864Z",
+  "updated": "2026-11-12T13:52:21.819Z",
   "items": [
+    {
+      "id": "2026-11-12-01",
+      "date": "2026-11-12",
+      "tag": "News",
+      "headline": "NVIDIA board met overnight on CEO Jensen Huang's future; no outcome announced yet",
+      "why": "CNBC, at 6:06 AM ET, said shares were down about 5% premarket. WSJ reported the board was preparing to remove him. NVIDIA has not confirmed a change.",
+      "url": "https://www.cnbc.com/2026/11/12/nvidia-boards-crisis-meeting.html",
+      "source": "CNBC / Wall Street Journal",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-12-02",
+      "date": "2026-11-12",
+      "tag": "Infra",
+      "headline": "Nebius Q3 revenue is $980.8M; 2026 guide moves to the low end of $3.0-$3.4B",
+      "why": "Official print: $980.8M vs $146.1M a year earlier, $37.5M net loss, adjusted EBITDA $465.8M. 2026 capex rises to about $27B; 2027 revenue is $12-$13B.",
+      "url": "https://www.businesswire.com/news/home/20261112208769/en/Nebius-reports-third-quarter-2026-financial-results",
+      "source": "Nebius",
+      "status": "confirmed"
+    },
     {
       "id": "2026-11-11-03",
       "date": "2026-11-11",
@@ -19,6 +39,46 @@
       "headline": "Anthropic's IPO site says it expects to price on 18 Nov and trade on 19 Nov",
       "why": "Per its FAQ, subject to regulatory clearance. Range remains $70 to $78 a share, listing on Nasdaq as ANT.",
       "url": "https://ipo.anthropic.com/us/",
+      "source": "Anthropic",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-12-03",
+      "date": "2026-11-11",
+      "tag": "Release",
+      "headline": "DeepMind releases AlphaGenome 2, trained on more than 100 million cell profiles",
+      "why": "DeepMind says it found nearly twice as many expression-changing variants as the prior model on TenK10K (30% vs 16%). Free for non-commercial research.",
+      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/",
+      "source": "Google DeepMind",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-12-04",
+      "date": "2026-11-11",
+      "tag": "Release",
+      "headline": "Google launches the Gemini Decisions API, powered by Gemini Decision 1",
+      "why": "Scores up to 1,000 yes/no, choice, or rubric questions on one shared multimodal input. $0.10 per 1M input tokens, with no output-token charge, per Google.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "source": "Google",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-12-05",
+      "date": "2026-11-11",
+      "tag": "OpenWeight",
+      "headline": "Runway releases Praxis-1 open weights under Apache 2.0, including commercial use",
+      "why": "A 27B-parameter world-action model for robots, with weights and code on Hugging Face and GitHub. Runway's RoboLab-120 comparison is a lab claim.",
+      "url": "https://runway.com/news/company-news/praxis-1-is-now-available",
+      "source": "Runway",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-12-06",
+      "date": "2026-11-11",
+      "tag": "Labs",
+      "headline": "Anthropic finds group results worsen when each user has their own agent",
+      "why": "In four simulated shared-resource settings, one agent serving everyone beat a team of per-user agents. Three environments are released as MAMUBench.",
+      "url": "https://alignment.anthropic.com/2026/worse-together/",
       "source": "Anthropic",
       "status": "confirmed"
     },
@@ -280,86 +340,6 @@
       "why": "How agents keep notes in session and consolidate memory offline, with Managed Agents case studies.",
       "url": "https://www.anthropic.com/research/components-of-agent-memory",
       "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-01",
-      "date": "2026-11-05",
-      "tag": "Release",
-      "headline": "Thinking Machines ships Inkling 2 Small; AA Index 31; Apache 2.0 weights next week",
-      "why": "594B MoE / 17B active, 1M context; Tinker now with closed weights. AA: would lead non-China open-weights once weights land.",
-      "url": "https://thinkingmachines.ai/news/inkling-2-small/",
-      "source": "Thinking Machines / AA",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-02",
-      "date": "2026-11-05",
-      "tag": "Release",
-      "headline": "OpenAI launches GPT-6 Cyber for approved Daybreak Red security customers",
-      "why": "OpenAI reports ExploitGym 48.5% vs 32.1%, a Critical cyber class, 81 novel Firefox highs, and 948 Linux exploits.",
-      "url": "https://openai.com/index/introducing-gpt-6-cyber",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-03",
-      "date": "2026-11-05",
-      "tag": "OpenWeight",
-      "headline": "AA now labels Kimi K3.1 Pro as open-weights; Index still 46",
-      "why": "Live AA page says open weights and links Hugging Face. It leads AA's open-source comparison. No Index rescore.",
-      "url": "/ai/models/open-weight/kimi-k3-1-pro/",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-04",
-      "date": "2026-11-05",
-      "tag": "Release",
-      "headline": "Google Gemini Omni 1.2 Flash GA: 15-second video, 30% cheaper",
-      "why": "Price is $0.07/sec at 720p, with multi-turn edits. API and Cloud GA. Outputs carry a SynthID watermark.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
-      "source": "Google",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-05",
-      "date": "2026-11-05",
-      "tag": "News",
-      "headline": "Anthropic rolls out Claude Personal Finance beta in the US",
-      "why": "Read-only Plaid bank links on Pro, Max, and Ultra. Cannot move or invest money. Hub chats are not used for training.",
-      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-06",
-      "date": "2026-11-05",
-      "tag": "Labs",
-      "headline": "Mistral Studio adds Managed Agents, apps, and workflow builder",
-      "why": "Public preview dated 5 Nov. Python Agents SDK can run locally, self-hosted, or on Mistral, including durable background jobs.",
-      "url": "https://docs.mistral.ai/resources/release-notes.md",
-      "source": "Mistral",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-06-07",
-      "date": "2026-11-05",
-      "tag": "News",
-      "headline": "Perplexity launches Teammates, persistent agents for ongoing work",
-      "why": "Always-on work agents. The Verge says Max-plan access and compares them to OpenAI Dots and Claude Duet.",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work",
-      "source": "The Verge",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-06-08",
-      "date": "2026-11-05",
-      "tag": "OpenWeight",
-      "headline": "AA scores Nanbeige4.3-33B at 20 on Intelligence Index v5",
-      "why": "Apache 2.0 dense 33B model matching Qwen3.8 27B (xhigh). Weights have been on Hugging Face since late October.",
-      "url": "https://artificialanalysis.ai/articles/nanbeige-has-released-nanbeige4-3-33b-scoring-20-on-the-intelligence-index",
-      "source": "Artificial Analysis",
       "status": "confirmed"
     }
   ]

@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-11T16:16:37-05:00",
-  "asOfLabel": "Wed 11 Nov · after-close",
+  "updated": "2026-11-12T08:16:00-05:00",
+  "asOfLabel": "Thu 12 Nov · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "S&P +1.3% to 7,619; Nasdaq +1.6% to 25,466; Dow +0.5%. SMH +4.8% to 507; NVDA +2.9%."
+      "text": "Futures lower: ES ~7603 -0.5%, NQ ~28155 -1.1%, YM ~52579 flat. NVDA premkt ~-8.5% on CEO news."
     },
     {
       "tag": "Tape",
-      "text": "Chip bounce after CoreWeave raised its 2026 outlook. CoreWeave +25%; Micron +12%; AMD +7%."
+      "text": "Nebius ~-15% premkt after a weaker 2026 outlook and higher capex. CoreWeave ~-11%; SMH ~-4%."
     },
     {
       "tag": "Rates",
-      "text": "Cash Treasuries closed (Veterans Day). Official 11/10 CMT: 10y 4.98%. Futures a bit softer, still near 5%."
+      "text": "Bonds reopen. Live 10y ~5.05%, above the 5% line. Official 11/10 CMT still 10y 4.98%."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-11-11"
+  "date": "2026-11-12"
 }
