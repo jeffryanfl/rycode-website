@@ -1,0 +1,63 @@
+---
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Gemini 4 Hydrogen - A.I. - Rycode"
+  description="Gemini 4 Hydrogen, Google’s Gemini 4 model for everyday coding and agentic workflows, introduced 12 November 2026 on the free and paid tiers of the Gemini API, at $1.50 input and $7.50 output per million tokens on the paid tier."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Google · Gemini 4</p>
+    <h1 class="ai-model-title">Gemini 4 Hydrogen</h1>
+    <p class="ai-model-dek">Gemini 4 Hydrogen is a Google DeepMind model introduced 12 November 2026. In <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/">Introducing Gemini 4 Hydrogen</a>, Google says it brings “cutting-edge intelligence to everyone,” with speed and efficiency for everyday coding and agentic workflows [1]. Google says its frontier models, <a href="/ai/models/google/gemini-4-carbon/">Gemini 4 Carbon</a> and <a href="/ai/models/google/gemini-4-argon/">Gemini 4 Argon</a>, “excel at deep, long-horizon reasoning on your hardest problems,” while Hydrogen “is built for rapid execution across diverse agentic workflows” [1]. Google calls Hydrogen “a major standalone upgrade for teams migrating from Gemini 3.8 Flash” [1], and <a href="https://aistudio.google.com/docs/whats-new-gemini-4-hydrogen">What’s new in Gemini 4 Hydrogen</a> lists it as the “Recommended upgrade from Gemini 3.8 Flash and earlier Gemini 3 and 2.5 models” [2]. Neither page says Hydrogen replaces <a href="/ai/models/google/gemini-flash/">Gemini 3.8 Flash</a>, which is still listed on the <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini Developer API pricing</a> page [1][2][3]. Google says Hydrogen is “available to everyone today,” and that “Starting today, Hydrogen is rolling out globally across our developer, enterprise, and consumer surfaces” [1]. What’s new says it is “available on both the free and paid tiers in Google AI Studio and the Gemini API” [2]. The API id, the name a program uses to call the model, is <code>gemini-4-hydrogen</code>, a Stable version string, per the <a href="https://aistudio.google.com/docs/models/gemini-4-hydrogen">Gemini 4 Hydrogen model page</a> [4]. Context is a unified 1,048,576-token window for input and output. Max output is 65,536 tokens by default, or up to 1,048,576 with long decode [2][4]. On the paid tier, the Standard price is a flat $1.50 per million input tokens and $7.50 per million output tokens across the full 1M context window, with no step-up date listed [1][2][3]. Tokens are the word pieces models are billed by. Output price includes thinking tokens [3].</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Parameter count, training compute, dataset, and training method are not in the sources on this page.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Thinking is supported at four levels: <code>low</code>, <code>medium</code>, <code>high</code>, and a new <code>xhigh</code>. The default is <code>high</code> [2]. What’s new says Carbon and Argon “default to <code>medium</code> and cap at <code>high</code>” [2]. Thinking tokens are billed as output [2][3]. The model page lists inputs as text, image, video, audio, and PDF, and output as text [4]. Synchronous responses support up to 65,536 tokens per hop. Longer outputs run through background execution or client-side continuation [2]. Tokens per second and specific rate limits are not in the sources on this page.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context is how much text the model can take in and write in one job. The model page lists a unified input and output token limit of 1,048,576 tokens [4]. What’s new says “Input, thinking, and output tokens share one 1,048,576-token window” [2]. Max output is 65,536 tokens for a default synchronous response, or up to 1,048,576 with long decode [2][4]. To go past 65,536, a developer sets a higher output limit, up to 1,048,576 minus the input tokens [2]. The <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-hydrogen">Gemini 4 Hydrogen page on Google Cloud’s Gemini Enterprise Agent Platform</a> lists the same 1,048,576-token limit and the same model id [5].</p>
+    <h2 class="ai-model-section">Methods</h2>
+    <p>Google pitches Hydrogen as the fast execution model in the Gemini 4 lineup [1]. It says teams rely on frontier models like Carbon and Argon “for deep architectural judgment,” but “still need a fast, disciplined execution model for writing code, running tests, and verifying changes” [1]. Google says Hydrogen is built “to stand on its own as a model for everyday work,” or “to pair with Carbon and Argon as the high-efficiency execution engine in multi-model workflows” [1].</p>
+    <p>What’s new names the uses: “everyday coding, interactive web apps, tool-using agents, multimodal document workflows, and parallel subagent execution” [2]. It describes Carbon as “Our strongest frontier model,” and Argon as the pick “when you want a model that can handle the majority of advanced long-horizon tasks with lower token use than Carbon” [2]. It also says developers can “pair Carbon and Hydrogen in one workflow,” with Carbon planning or resolving hard roadblocks and Hydrogen taking code edits, parallel subagent tasks, and test runs [2].</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>This site has no independent score for Gemini 4 Hydrogen yet, and the model is not in this site’s benchmark table. Google’s launch post includes its own benchmark figures [1]. Those are Google’s claims, were not independently checked here, and are not repeated on this card.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>As of 12 November 2026, Google says [1]:</p>
+    <ul>
+      <li>Developers: build with the Gemini API in AI Studio and Android Studio, and try it in AI Studio. Paid Google AI Pro or Ultra subscribers can also try it in Google Antigravity [1].</li>
+      <li>Enterprises: deploy it in Gemini for business via the API or model drop down, Google Antigravity, and Gemini in Google Sheets for eligible business subscriptions [1].</li>
+      <li>Everyone: start using it in the Gemini app model drop down and in Google Search for all users, and in Gemini in Google Sheets starting with Google AI Pro and Ultra subscribers [1]. Google’s footnote says free Gemini app users “will get access to Gemini 4 Hydrogen via auto model selection when it’s the appropriate model for the prompt” [1].</li>
+    </ul>
+    <p>Google describes this as rolling out globally, starting today [1]. On Google Cloud, the Agent Platform model page lists “Launch stage: GA” and “Release date: November 12, 2026,” with the regions <code>global</code>, <code>us</code>, and <code>eu</code> [5].</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Free tier</th>
+            <th scope="col">Paid tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>Free of charge</td><td>$1.50</td></tr>
+          <tr><td>Cached input / MTok</td><td>Free of charge</td><td>$0.075</td></tr>
+          <tr><td>Output / MTok, including thinking tokens</td><td>Free of charge</td><td>$7.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>These are Standard-tier prices on the Gemini API [3]. Google prices Hydrogen flat across its full 1 million-token context window, and the pricing page lists no step-up date [1][2][3]. What’s new says the free tier is rate-limited, and that implicit caching gives cached input a 95% discount. Explicit caching is not supported [2][3]. The pricing page says free-tier content is used to improve Google’s products, and paid-tier content is not [3]. Every token the model processes is counted and billed, including thinking tokens and internal tool system instructions and function declarations when using grounding [2][3]. Batch and Flex are $0.75 input and $3.75 output, and are not available on the free tier. Priority is $2.70 input and $13.50 output. Contributor is an invite-only private preview at $0.75 input and $3.75 output; content on that tier is used to improve Google’s products [3].</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ol class="ai-model-sources">
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/">Introducing Gemini 4 Hydrogen</a> (The Keyword, 12 Nov 2026)</li>
+      <li><a href="https://aistudio.google.com/docs/whats-new-gemini-4-hydrogen">What’s new in Gemini 4 Hydrogen</a> (Gemini API docs)</li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini Developer API pricing</a> (redirects to Google AI Studio)</li>
+      <li><a href="https://aistudio.google.com/docs/models/gemini-4-hydrogen">Gemini 4 Hydrogen</a> (Gemini API model page)</li>
+      <li><a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-hydrogen">Gemini 4 Hydrogen</a> (Gemini Enterprise Agent Platform, Google Cloud)</li>
+    </ol>
+  </article>
+</Layout>

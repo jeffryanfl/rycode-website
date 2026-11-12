@@ -101,5 +101,6 @@
   "/ai/agents/dots/": "dots is OpenAI's always-on ChatGPT agent on GPT-6 Astra, with its own cloud computer and optional use of your desktop.",
   "/ai/agents/grok-bot/": "Grok Bot is SpaceXAI's named Bots product on a shared cloud computer, with parallel agents, routines, and desktop apps on paid X and Cursor plans.",
   "/ai/models/openai/gpt-6-cyber/": "GPT-6 Cyber is a security variant of GPT-6 Astra for authorized vulnerability research and exploit work, released 5 November 2026 to approved Daybreak Red customers at $20 input and $100 output per million tokens.",
-  "/ai/models/google/gemini-omni-1-2-flash/": "Gemini Omni 1.2 Flash is Google's generally available video model, released 5 November 2026, for clips up to 15 seconds with audio at about $0.07 a second for 720p."
+  "/ai/models/google/gemini-omni-1-2-flash/": "Gemini Omni 1.2 Flash is Google's generally available video model, released 5 November 2026, for clips up to 15 seconds with audio at about $0.07 a second for 720p.",
+  "/ai/models/google/gemini-4-hydrogen/": "Gemini 4 Hydrogen is Google's Gemini 4 model for fast everyday coding and agentic work, introduced 12 November 2026 on the free and paid tiers of the Gemini API, at a flat $1.50 input and $7.50 output per million tokens on the paid tier, with a 1M context window."
 }

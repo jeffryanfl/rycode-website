@@ -211,6 +211,9 @@ def article_from(row: dict, section: str, series: str, crumbs: list[dict]) -> di
     elif target.name == "claude-mythos-5-2.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-11-09"
+    elif target.name == "gemini-4-hydrogen.astro":
+        # Model card date is locked. A later catalog rebuild must not use the commit day.
+        date = "2026-11-12"
     elif target.name == "gpt-6-intelligent-ui.astro":
         # Model card date is locked. A later catalog rebuild must not use the commit day.
         date = "2026-10-08"

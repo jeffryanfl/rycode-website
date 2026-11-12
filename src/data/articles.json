@@ -2125,5 +2125,25 @@
     ],
     "file": "src/pages/ai/agents/grok-bot.astro",
     "slug": "ai-agents-grok-bot"
+  },
+  {
+    "href": "/ai/models/google/gemini-4-hydrogen/",
+    "title": "Gemini 4 Hydrogen",
+    "description": "Google says Hydrogen is built for rapid execution across diverse agentic workflows.",
+    "date": "2026-11-12",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-4-hydrogen.astro",
+    "slug": "ai-models-google-gemini-4-hydrogen"
   }
 ]
