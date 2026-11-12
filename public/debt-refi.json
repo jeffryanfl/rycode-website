@@ -1,6 +1,6 @@
 {
   "schema": "debt-refi-v1",
-  "updated": "2026-11-09T21:16:43.649Z",
+  "updated": "2026-11-12T21:20:02.244Z",
   "note": "Feed for the Debt refinancing row on /risk/. Refresh with node scripts/update-debt-refi.mjs. Not part of the tape ship. Final values only: borrowing points carry estimate or actual.",
   "series": [
     {
@@ -743,6 +743,10 @@
         {
           "date": "2026-11-05",
           "rate": 7.18
+        },
+        {
+          "date": "2026-11-12",
+          "rate": 7.11
         }
       ]
     }

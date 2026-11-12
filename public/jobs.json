@@ -1,6 +1,6 @@
 {
   "schema": "jobs-v1",
-  "updated": "2026-11-10T21:13:11.482Z",
+  "updated": "2026-11-12T21:20:23.790Z",
   "note": "Jobs feed for the Economics watch list and the jobs brief. Refresh with node scripts/update-jobs.mjs (after-close push). Each point carries status preliminary, revised, or final; a revision overwrites the value and keeps revisedFrom. Never hand-edit.",
   "series": [
     {
@@ -5958,7 +5958,15 @@
         },
         {
           "date": "2026-10-31",
-          "claims": 189000,
+          "claims": 191000,
+          "status": "revised",
+          "revisedFrom": {
+            "claims": 189000
+          }
+        },
+        {
+          "date": "2026-11-07",
+          "claims": 200000,
           "status": "preliminary"
         }
       ]
