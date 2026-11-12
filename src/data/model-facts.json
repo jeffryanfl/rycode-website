@@ -65,6 +65,7 @@
       "released": "5 Nov 2026",
       "checked": "5 Nov 2026"
     },
+    "/ai/models/google/gemini-4-hydrogen/": { "name": "Gemini 4 Hydrogen", "status": "current", "statusNote": "on the free and paid tiers of the Gemini API and in Google AI Studio", "price": "$1.50 in, $7.50 out", "released": "12 Nov 2026", "checked": "12 Nov 2026" },
 
     "/ai/models/meta/muse/wonder/": { "name": "Muse Wonder", "status": "current", "price": "$4 in, $20 out", "released": "12 Oct 2026", "checked": "12 Oct 2026" },
     "/ai/models/meta/muse/spark/": { "name": "Muse Spark", "status": "current", "statusNote": "Meta's lighter Muse model" },
