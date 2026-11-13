@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-13T08:16:00-05:00",
-  "asOfLabel": "Fri 13 Nov · pre-open",
+  "updated": "2026-11-13T16:16:00-05:00",
+  "asOfLabel": "Fri 13 Nov · after-close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Futures a bit higher: ES ~7639 +0.3%, NQ ~28409 +0.1%, YM ~52524 +0.3%. NVDA premkt ~+1.7%."
+      "text": "S&P -0.4% to 7,562; Nasdaq -0.9% to 25,136; Dow +0.1%. SMH -3.0% to 487; NVDA -2.0%."
     },
     {
       "tag": "Rates",
-      "text": "Live 10y ~5.15%, still above 5%. Official 11/12 CMT: 10y 5.10%. October PPI due 8:30 ET."
+      "text": "October PPI +0.3% m/m, below 0.4% forecast; core +0.3%. Y/Y +6.5%, highest since Nov 2022."
     },
     {
-      "tag": "Tape",
-      "text": "Nvidia ~+1.7% premkt after CEO change; earnings Tuesday. SMH little changed, still under ~535."
+      "tag": "Rates",
+      "text": "Official 11/13 CMT: 10y 5.15%, further above 5%. 2y 4.88%, 30y 5.47%."
     }
   ],
   "doorHref": "/economics",
