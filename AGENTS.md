@@ -36,7 +36,6 @@ Live routes: home (`/`), Economics (`/economics/saas/` tracker included), Risk, 
 | `src/styles/ai.css` | Charcoal A.I. landing, lab doors, model pages, and the agents digest. No cyan. |
 | `src/styles/risk.css` | Charcoal Risk index + digest analyses. Triangle raster. No cyan. |
 | `src/styles/economics.css` | Charcoal Economics index and essays. Bar-chart raster. No cyan. |
-| `src/styles/research.css` | Unused. Do not restore a Research door. Lens PNG stays at `public/landing/hub-research.png`. |
 
 **2. Static files** — `public/`
 
