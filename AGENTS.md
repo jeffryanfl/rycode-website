@@ -1,6 +1,6 @@
 # Rycode website
 
-Hub with five HOME marks in a row: Economics, Risk, Systems, A.I., and Opinions. A.I. is the brain mark. Opinions is the chat-bubble mark. Live at https://rycode.dev. Built with Astro 6, deployed on Netlify.
+Hub with five HOME marks in a row: Economics, Risk, Systems, A.I., and Opinions. A.I. is the brain mark. Opinions is the chat-bubble mark. Live at https://rycode.dev. Built with Astro 7, deployed on Netlify.
 
 This file is the map for Grok in T3 Code. Read `CONTEXT.md` for the site's words. Home is charcoal emptiness with five marks in a row, a quiet A.I. tape at the top from `public/ai-tape.json` (HOME only; links to `/ai`), and a quiet Macro tape at the bottom from `public/tape.json` (HOME only; links to `/economics`). The Systems door and the Systems nav item open https://systems.rycode.dev in a new tab. Do not copy openai.com, grok.com, or x.ai.
 

@@ -8,7 +8,7 @@
   --opinions-paper: #080a10;
   --opinions-ink: rgba(248, 250, 252, 0.92);
   --opinions-muted: #949aa2;
-  --opinions-faint: rgba(248, 250, 252, 0.4);
+  --opinions-faint: rgba(248, 250, 252, 0.56);
   --opinions-hair: rgba(248, 250, 252, 0.16);
   --opinions-pad: clamp(1.4rem, 5.2vw, 3.75rem);
   background: var(--opinions-paper);

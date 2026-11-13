@@ -818,7 +818,7 @@ a.hw-card:focus-visible .hw-card-title {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 560px), (hover: none) {
   .hw-chip-grid {
     grid-template-columns: 1fr;
     gap: 0.6rem;
@@ -863,17 +863,6 @@ a.hw-card:focus-visible .hw-card-title {
     opacity: 1;
     visibility: visible;
     transition: none;
-  }
-}
-
-@media (min-width: 561px) and (hover: none) {
-  .hw-chip-figures {
-    position: static;
-    aspect-ratio: auto;
-    background: none;
-    opacity: 1;
-    visibility: visible;
-    padding-top: 0;
   }
 }
 
