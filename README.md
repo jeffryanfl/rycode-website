@@ -23,7 +23,7 @@ npm run preview    # serves dist/
 ## What's here
 
 ```
-src/pages/     home (`/`, Economics, Risk, and the A.I. brain), Economics, Risk, A.I. (`/ai`), About, Contact, 404. Old `/research` URLs redirect.
+src/pages/     home (`/`): Economics, Risk, Systems (external), A.I., Opinions. Section landings: Economics, Risk, A.I. (`/ai`), Opinions (`/opinions/`). About, Contact, Map, Privacy, 404. Old `/research` URLs redirect.
 src/           layouts, components, styles
 public/        fonts, logo, chrome, og-hub.png. HTML apps go here when added.
 scripts/       local helpers, including og-card.html

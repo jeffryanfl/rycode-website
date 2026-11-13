@@ -8,6 +8,10 @@ import '../../styles/concept-map.css';
 const title = 'Concept map - Rycode';
 const description = 'Concepts on this site, and the articles that carry each one.';
 
+const mapAsOf = formatDate(
+  articles.reduce((latest, article) => (article.date > latest ? article.date : latest), articles[0]?.date ?? '1970-01-01'),
+);
+
 const byHref = new Map(articles.map((article) => [article.href, article]));
 const theses = thesesFile as Record<string, string>;
 
@@ -188,7 +192,7 @@ const legend = [
         Ring: links reach more than one cluster
       </li>
     </ul>
-    <p class="chart-caption">Source: rycode.dev · as of 23 Oct 2026</p>
+    <p class="chart-caption">Source: rycode.dev · as of {mapAsOf}</p>
 
     <div class="concept-map-stage">
       <div class="concept-map-canvas">
