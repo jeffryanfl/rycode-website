@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-12T16:16:00-05:00",
-  "asOfLabel": "Thu 12 Nov · after-close",
+  "updated": "2026-11-13T08:16:00-05:00",
+  "asOfLabel": "Fri 13 Nov · pre-open",
   "lines": [
     {
       "tag": "Tape",
-      "text": "S&P -0.4% to 7,592; Nasdaq -0.4% to 25,366; Dow -0.4%. SMH -1.0% to 502; NVDA -4.3%."
-    },
-    {
-      "tag": "Tape",
-      "text": "Nvidia confirmed Huang resigned as CEO; Kress is interim. NVDA -4.3%. Nebius -17%; CoreWeave -7%."
+      "text": "Futures a bit higher: ES ~7639 +0.3%, NQ ~28409 +0.1%, YM ~52524 +0.3%. NVDA premkt ~+1.7%."
     },
     {
       "tag": "Rates",
-      "text": "Official 11/12 CMT: 10y 5.10%, above 5%. 2y 4.86%, 30y 5.43%. Claims 200k vs revised 191k."
+      "text": "Live 10y ~5.15%, still above 5%. Official 11/12 CMT: 10y 5.10%. October PPI due 8:30 ET."
+    },
+    {
+      "tag": "Tape",
+      "text": "Nvidia ~+1.7% premkt after CEO change; earnings Tuesday. SMH little changed, still under ~535."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-11-12"
+  "date": "2026-11-13"
 }

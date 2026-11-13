@@ -1,83 +1,83 @@
 {
-  "updated": "2026-11-12T08:40:00-05:00",
-  "asOfLabel": "Thu 12 Nov · morning",
+  "updated": "2026-11-13T08:35:00-05:00",
+  "asOfLabel": "Fri 13 Nov · morning",
   "lines": [
     {
       "tag": "News",
-      "text": "NVIDIA board met overnight on CEO Jensen Huang's future; no outcome yet, shares down about 5% premarket",
-      "url": "https://www.cnbc.com/2026/11/12/nvidia-boards-crisis-meeting.html"
-    },
-    {
-      "tag": "Infra",
-      "text": "Nebius Q3 revenue is $980.8M; company points to the low end of its $3.0 to $3.4B 2026 guide",
-      "url": "https://www.businesswire.com/news/home/20261112208769/en/Nebius-reports-third-quarter-2026-financial-results"
+      "text": "NVIDIA: Jensen Huang resigns as CEO; Colette Kress is interim CEO, Harvey Jones first board chair",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition"
     },
     {
       "tag": "Release",
-      "text": "DeepMind releases AlphaGenome 2, trained on more than 100 million cell profiles across 68 tissues",
-      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/"
+      "text": "Google releases Gemini 4 Hydrogen at $1.50/$7.50 per 1M tokens, rolling out globally",
+      "url": "/ai/models/google/gemini-4-hydrogen/"
+    },
+    {
+      "tag": "OpenWeight",
+      "text": "Thinking Machines releases Inkling 2 Small open weights under Apache 2.0 (594B total, 17B active)",
+      "url": "https://thinkingmachines.ai/news/inkling-2-small/"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "feed": [
     {
-      "id": "2026-11-12-01",
+      "id": "2026-11-13-01",
       "date": "2026-11-12",
       "tag": "News",
-      "headline": "NVIDIA board met overnight on CEO Jensen Huang's future; no outcome announced yet",
-      "why": "CNBC, at 6:06 AM ET, said shares were down about 5% premarket. WSJ reported the board was preparing to remove him. NVIDIA has not confirmed a change.",
-      "url": "https://www.cnbc.com/2026/11/12/nvidia-boards-crisis-meeting.html",
-      "source": "CNBC / Wall Street Journal",
-      "status": "reported"
+      "headline": "NVIDIA: Jensen Huang resigns as CEO; Colette Kress named interim CEO, Harvey Jones first chair",
+      "why": "The board named CFO Colette Kress interim CEO and Harvey Jones its first chair. Shares closed at $166.19, down 4.34%, on 12 Nov. Earnings remain set for 17 Nov.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+      "source": "NVIDIA / SEC 8-K",
+      "status": "confirmed"
     },
     {
-      "id": "2026-11-12-02",
+      "id": "2026-11-13-02",
       "date": "2026-11-12",
-      "tag": "Infra",
-      "headline": "Nebius Q3 revenue is $980.8M; 2026 guide moves to the low end of $3.0-$3.4B",
-      "why": "Official print: $980.8M vs $146.1M a year earlier, $37.5M net loss, adjusted EBITDA $465.8M. 2026 capex rises to about $27B; 2027 revenue is $12-$13B.",
-      "url": "https://www.businesswire.com/news/home/20261112208769/en/Nebius-reports-third-quarter-2026-financial-results",
-      "source": "Nebius",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-12-03",
-      "date": "2026-11-11",
       "tag": "Release",
-      "headline": "DeepMind releases AlphaGenome 2, trained on more than 100 million cell profiles",
-      "why": "DeepMind says it found nearly twice as many expression-changing variants as the prior model on TenK10K (30% vs 16%). Free for non-commercial research.",
-      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/",
-      "source": "Google DeepMind",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-12-04",
-      "date": "2026-11-11",
-      "tag": "Release",
-      "headline": "Google launches the Gemini Decisions API, powered by Gemini Decision 1",
-      "why": "Scores up to 1,000 yes/no, choice, or rubric questions on one shared multimodal input. $0.10 per 1M input tokens, with no output-token charge, per Google.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "headline": "Google releases Gemini 4 Hydrogen at $1.50/$7.50 per 1M tokens, rolling out globally",
+      "why": "API id gemini-4-hydrogen, 1,048,576-token context, $1.50/$7.50 per 1M tokens. Google says it is rolling out globally; only Cloud pages say GA.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
       "source": "Google",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-12-05",
-      "date": "2026-11-11",
+      "id": "2026-11-13-03",
+      "date": "2026-11-12",
       "tag": "OpenWeight",
-      "headline": "Runway releases Praxis-1 open weights under Apache 2.0, including commercial use",
-      "why": "A 27B-parameter world-action model for robots, with weights and code on Hugging Face and GitHub. Runway's RoboLab-120 comparison is a lab claim.",
-      "url": "https://runway.com/news/company-news/praxis-1-is-now-available",
-      "source": "Runway",
+      "headline": "Thinking Machines releases Inkling 2 Small weights under Apache 2.0 (594B total, 17B active)",
+      "why": "Weights are on Hugging Face under Apache 2.0. The model is 594B total and 17B active. The main NVFP4 checkpoint needs at least 500GB of GPU memory.",
+      "url": "https://thinkingmachines.ai/news/inkling-2-small/",
+      "source": "Thinking Machines Lab",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-12-06",
-      "date": "2026-11-11",
-      "tag": "Labs",
-      "headline": "Anthropic finds group results worsen when each user has their own agent",
-      "why": "In four simulated shared-resource settings, one agent serving everyone beat a team of per-user agents. Three environments are released as MAMUBench.",
-      "url": "https://alignment.anthropic.com/2026/worse-together/",
+      "id": "2026-11-13-04",
+      "date": "2026-11-12",
+      "tag": "Infra",
+      "headline": "SpaceX plans more than $74B of supercompute campuses in Texas and Arizona",
+      "why": "More than $24B at Starbase in Texas, with on-site power, and about $50B in Cochise County, Arizona. The Texas site will not draw from the public grid.",
+      "url": "https://www.spacex.com/updates/terafab",
+      "source": "SpaceX",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-05",
+      "date": "2026-11-12",
+      "tag": "Policy",
+      "headline": "Nonprofits sue Anthropic, Google, Meta, OpenAI, and SpaceXSI to freeze more advanced models",
+      "why": "Four groups, including Public Citizen, filed in San Francisco Superior Court seeking a freeze on more advanced models. This is a filing, not a ruling.",
+      "url": "https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/",
+      "source": "Public Citizen / AP",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-06",
+      "date": "2026-11-12",
+      "tag": "Release",
+      "headline": "Anthropic opens self-hosted Claude Managed Agents in private beta",
+      "why": "Companies run the server and session history themselves, and can send model calls to Anthropic, Bedrock, Google, Microsoft Foundry, or their own gateway.",
+      "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
       "source": "Anthropic",
       "status": "confirmed"
     }

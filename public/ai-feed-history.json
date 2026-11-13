@@ -1,6 +1,6 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-12T13:52:21.819Z",
+  "updated": "2026-11-13T13:56:03.643Z",
   "items": [
     {
       "id": "2026-11-12-01",
@@ -20,6 +20,66 @@
       "why": "Official print: $980.8M vs $146.1M a year earlier, $37.5M net loss, adjusted EBITDA $465.8M. 2026 capex rises to about $27B; 2027 revenue is $12-$13B.",
       "url": "https://www.businesswire.com/news/home/20261112208769/en/Nebius-reports-third-quarter-2026-financial-results",
       "source": "Nebius",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-01",
+      "date": "2026-11-12",
+      "tag": "News",
+      "headline": "NVIDIA: Jensen Huang resigns as CEO; Colette Kress named interim CEO, Harvey Jones first chair",
+      "why": "The board named CFO Colette Kress interim CEO and Harvey Jones its first chair. Shares closed at $166.19, down 4.34%, on 12 Nov. Earnings remain set for 17 Nov.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+      "source": "NVIDIA / SEC 8-K",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-02",
+      "date": "2026-11-12",
+      "tag": "Release",
+      "headline": "Google releases Gemini 4 Hydrogen at $1.50/$7.50 per 1M tokens, rolling out globally",
+      "why": "API id gemini-4-hydrogen, 1,048,576-token context, $1.50/$7.50 per 1M tokens. Google says it is rolling out globally; only Cloud pages say GA.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+      "source": "Google",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-03",
+      "date": "2026-11-12",
+      "tag": "OpenWeight",
+      "headline": "Thinking Machines releases Inkling 2 Small weights under Apache 2.0 (594B total, 17B active)",
+      "why": "Weights are on Hugging Face under Apache 2.0. The model is 594B total and 17B active. The main NVFP4 checkpoint needs at least 500GB of GPU memory.",
+      "url": "https://thinkingmachines.ai/news/inkling-2-small/",
+      "source": "Thinking Machines Lab",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-04",
+      "date": "2026-11-12",
+      "tag": "Infra",
+      "headline": "SpaceX plans more than $74B of supercompute campuses in Texas and Arizona",
+      "why": "More than $24B at Starbase in Texas, with on-site power, and about $50B in Cochise County, Arizona. The Texas site will not draw from the public grid.",
+      "url": "https://www.spacex.com/updates/terafab",
+      "source": "SpaceX",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-05",
+      "date": "2026-11-12",
+      "tag": "Policy",
+      "headline": "Nonprofits sue Anthropic, Google, Meta, OpenAI, and SpaceXSI to freeze more advanced models",
+      "why": "Four groups, including Public Citizen, filed in San Francisco Superior Court seeking a freeze on more advanced models. This is a filing, not a ruling.",
+      "url": "https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/",
+      "source": "Public Citizen / AP",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-13-06",
+      "date": "2026-11-12",
+      "tag": "Release",
+      "headline": "Anthropic opens self-hosted Claude Managed Agents in private beta",
+      "why": "Companies run the server and session history themselves, and can send model calls to Anthropic, Bedrock, Google, Microsoft Foundry, or their own gateway.",
+      "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
+      "source": "Anthropic",
       "status": "confirmed"
     },
     {
@@ -290,56 +350,6 @@
       "why": "Listed grok-4.x models from Nov 7. Admins can opt out per model; check the x-watermark header.",
       "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
       "source": "xAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-02",
-      "date": "2026-11-06",
-      "tag": "Release",
-      "headline": "Meta rolls Wonder-trained models into Muse and Meta AI",
-      "why": "Meta's own eval: Active Memory 90% vs 76% on using critical context. Muse Spaces shipped the same day.",
-      "url": "https://research.meta.ai/blog/specialized-models-for-muse-and-metaai",
-      "source": "Meta",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-04",
-      "date": "2026-11-06",
-      "tag": "OpenWeight",
-      "headline": "Nous drops Arete-27B, an Apache 2.0 fine-tune of Qwen3.8-27B",
-      "why": "Post-trained to cut propaganda-style answers (lab: 22% to about 1%). No AA Index score yet.",
-      "url": "https://nousresearch.com/arete",
-      "source": "Nous Research",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-05",
-      "date": "2026-11-06",
-      "tag": "Safety",
-      "headline": "OpenAI partners with Hacktron and widens its Daybreak Red access",
-      "why": "Joint testing of how OpenAI systems touch third-party services, alongside higher bug bounties.",
-      "url": "https://openai.com/index/partnering-with-hacktron",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-08",
-      "date": "2026-11-06",
-      "tag": "Deal",
-      "headline": "OpenAI reportedly closes ~$11B tranche at ~$1.25T valuation",
-      "why": "Bloomberg via TechCrunch. Full round may reach about $20B. OpenAI had not commented.",
-      "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
-      "source": "Bloomberg / TechCrunch",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-09-09",
-      "date": "2026-11-06",
-      "tag": "News",
-      "headline": "Anthropic publishes agent-memory research on notes and dreaming",
-      "why": "How agents keep notes in session and consolidate memory offline, with Managed Agents case studies.",
-      "url": "https://www.anthropic.com/research/components-of-agent-memory",
-      "source": "Anthropic",
       "status": "confirmed"
     }
   ]
