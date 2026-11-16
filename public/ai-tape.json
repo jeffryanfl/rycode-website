@@ -1,85 +1,85 @@
 {
-  "updated": "2026-11-13T08:35:00-05:00",
-  "asOfLabel": "Fri 13 Nov · morning",
+  "updated": "2026-11-16T08:30:00-05:00",
+  "asOfLabel": "Mon 16 Nov · morning",
   "lines": [
     {
-      "tag": "News",
-      "text": "NVIDIA: Jensen Huang resigns as CEO; Colette Kress is interim CEO, Harvey Jones first board chair",
-      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition"
+      "tag": "Release",
+      "text": "OpenAI launches ChatGPT Wallet in dots for US ChatGPT Pro users, with a check on every purchase",
+      "url": "/ai/models/openai/"
     },
     {
       "tag": "Release",
-      "text": "Google releases Gemini 4 Hydrogen at $1.50/$7.50 per 1M tokens, rolling out globally",
-      "url": "/ai/models/google/gemini-4-hydrogen/"
+      "text": "Alibaba releases Qwen4-Max, a 2.4T-parameter MoE with 71B active and a 1M-token context",
+      "url": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-new-ai-teammate-for-work-creativity-and-discovery_603783"
     },
     {
-      "tag": "OpenWeight",
-      "text": "Thinking Machines releases Inkling 2 Small open weights under Apache 2.0 (594B total, 17B active)",
-      "url": "https://thinkingmachines.ai/news/inkling-2-small/"
+      "tag": "News",
+      "text": "Treasury Secretary Bessent calls for a dramatic NVIDIA shake-up and an outside CEO",
+      "url": "https://www.cnbc.com/2026/11/15/bessent-nvidia-ceo-lutnick-megaspeed.html"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-11-13",
+  "date": "2026-11-16",
   "feed": [
     {
-      "id": "2026-11-13-01",
-      "date": "2026-11-12",
+      "id": "2026-11-16-01",
+      "date": "2026-11-13",
+      "tag": "Release",
+      "headline": "OpenAI launches ChatGPT Wallet in dots for US ChatGPT Pro users",
+      "why": "US Pro users 18 and older with eligible US-issued cards. Each purchase needs a Face ID or fingerprint check. A payment token stands in for the card details.",
+      "url": "https://openai.com/index/introducing-chatgpt-wallet",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-16-02",
+      "date": "2026-11-16",
+      "tag": "Release",
+      "headline": "Alibaba releases Qwen4-Max, a 2.4T-parameter MoE with 71B active and a 1M-token context",
+      "why": "Alibaba says 2.4 trillion total parameters, 71 billion active, native vision, and a 1 million-token context. It is on QwenCloud's API. Lab charts are claims.",
+      "url": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-new-ai-teammate-for-work-creativity-and-discovery_603783",
+      "source": "Alibaba",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-16-03",
+      "date": "2026-11-15",
       "tag": "News",
-      "headline": "NVIDIA: Jensen Huang resigns as CEO; Colette Kress named interim CEO, Harvey Jones first chair",
-      "why": "The board named CFO Colette Kress interim CEO and Harvey Jones its first chair. Shares closed at $166.19, down 4.34%, on 12 Nov. Earnings remain set for 17 Nov.",
-      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
-      "source": "NVIDIA / SEC 8-K",
+      "headline": "Treasury Secretary Bessent calls for a dramatic NVIDIA shake-up and an outside CEO",
+      "why": "On Fox News Sunday he said the board should look outside the company. He also asked for answers in the next 10 days from the board and outside counsel.",
+      "url": "https://www.cnbc.com/2026/11/15/bessent-nvidia-ceo-lutnick-megaspeed.html",
+      "source": "CNBC / Fox Business",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-16-04",
+      "date": "2026-11-13",
+      "tag": "News",
+      "headline": "NVIDIA board says it has not formally engaged CEO candidates and is still picking a search firm",
+      "why": "The board told CNBC it is still selecting a search firm and has not formally engaged any candidates. It called speculation about individual names premature.",
+      "url": "https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html",
+      "source": "NVIDIA board / CNBC",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-13-02",
-      "date": "2026-11-12",
-      "tag": "Release",
-      "headline": "Google releases Gemini 4 Hydrogen at $1.50/$7.50 per 1M tokens, rolling out globally",
-      "why": "API id gemini-4-hydrogen, 1,048,576-token context, $1.50/$7.50 per 1M tokens. Google says it is rolling out globally; only Cloud pages say GA.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
-      "source": "Google",
+      "id": "2026-11-16-05",
+      "date": "2026-11-15",
+      "tag": "Labs",
+      "headline": "OpenAI starts a science blog; first post is a candidate lattice definition of the Standard Model",
+      "why": "Physicist Nathaniel Craig says GPT-6 Astra helped turn his strategy into a construction and proof. He still calls it a candidate that needs further checks.",
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "source": "OpenAI",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-13-03",
-      "date": "2026-11-12",
-      "tag": "OpenWeight",
-      "headline": "Thinking Machines releases Inkling 2 Small weights under Apache 2.0 (594B total, 17B active)",
-      "why": "Weights are on Hugging Face under Apache 2.0. The model is 594B total and 17B active. The main NVFP4 checkpoint needs at least 500GB of GPU memory.",
-      "url": "https://thinkingmachines.ai/news/inkling-2-small/",
-      "source": "Thinking Machines Lab",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-13-04",
-      "date": "2026-11-12",
-      "tag": "Infra",
-      "headline": "SpaceX plans more than $74B of supercompute campuses in Texas and Arizona",
-      "why": "More than $24B at Starbase in Texas, with on-site power, and about $50B in Cochise County, Arizona. The Texas site will not draw from the public grid.",
-      "url": "https://www.spacex.com/updates/terafab",
-      "source": "SpaceX",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-13-05",
-      "date": "2026-11-12",
-      "tag": "Policy",
-      "headline": "Nonprofits sue Anthropic, Google, Meta, OpenAI, and SpaceXSI to freeze more advanced models",
-      "why": "Four groups, including Public Citizen, filed in San Francisco Superior Court seeking a freeze on more advanced models. This is a filing, not a ruling.",
-      "url": "https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/",
-      "source": "Public Citizen / AP",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-13-06",
-      "date": "2026-11-12",
-      "tag": "Release",
-      "headline": "Anthropic opens self-hosted Claude Managed Agents in private beta",
-      "why": "Companies run the server and session history themselves, and can send model calls to Anthropic, Bedrock, Google, Microsoft Foundry, or their own gateway.",
-      "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
-      "source": "Anthropic",
-      "status": "confirmed"
+      "id": "2026-11-16-06",
+      "date": "2026-11-16",
+      "tag": "Deal",
+      "headline": "Anthropic IPO demand is reported near 7 times the shares on offer; range stays $70 to $78",
+      "why": "Bloomberg reported Sunday that orders were close to seven times the shares on offer. The official range is unchanged. Pricing is still expected 18 Nov.",
+      "url": "https://thenextweb.com/news/anthropic-ipo-orders-seven-times-spacex-pricing-week",
+      "source": "Bloomberg via The Next Web / Anthropic",
+      "status": "reported"
     }
   ]
 }

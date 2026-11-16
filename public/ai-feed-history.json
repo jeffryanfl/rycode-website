@@ -1,7 +1,67 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-13T13:56:03.643Z",
+  "updated": "2026-11-16T13:52:34.294Z",
   "items": [
+    {
+      "id": "2026-11-16-02",
+      "date": "2026-11-16",
+      "tag": "Release",
+      "headline": "Alibaba releases Qwen4-Max, a 2.4T-parameter MoE with 71B active and a 1M-token context",
+      "why": "Alibaba says 2.4 trillion total parameters, 71 billion active, native vision, and a 1 million-token context. It is on QwenCloud's API. Lab charts are claims.",
+      "url": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-new-ai-teammate-for-work-creativity-and-discovery_603783",
+      "source": "Alibaba",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-16-06",
+      "date": "2026-11-16",
+      "tag": "Deal",
+      "headline": "Anthropic IPO demand is reported near 7 times the shares on offer; range stays $70 to $78",
+      "why": "Bloomberg reported Sunday that orders were close to seven times the shares on offer. The official range is unchanged. Pricing is still expected 18 Nov.",
+      "url": "https://thenextweb.com/news/anthropic-ipo-orders-seven-times-spacex-pricing-week",
+      "source": "Bloomberg via The Next Web / Anthropic",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-16-03",
+      "date": "2026-11-15",
+      "tag": "News",
+      "headline": "Treasury Secretary Bessent calls for a dramatic NVIDIA shake-up and an outside CEO",
+      "why": "On Fox News Sunday he said the board should look outside the company. He also asked for answers in the next 10 days from the board and outside counsel.",
+      "url": "https://www.cnbc.com/2026/11/15/bessent-nvidia-ceo-lutnick-megaspeed.html",
+      "source": "CNBC / Fox Business",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-16-05",
+      "date": "2026-11-15",
+      "tag": "Labs",
+      "headline": "OpenAI starts a science blog; first post is a candidate lattice definition of the Standard Model",
+      "why": "Physicist Nathaniel Craig says GPT-6 Astra helped turn his strategy into a construction and proof. He still calls it a candidate that needs further checks.",
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-16-01",
+      "date": "2026-11-13",
+      "tag": "Release",
+      "headline": "OpenAI launches ChatGPT Wallet in dots for US ChatGPT Pro users",
+      "why": "US Pro users 18 and older with eligible US-issued cards. Each purchase needs a Face ID or fingerprint check. A payment token stands in for the card details.",
+      "url": "https://openai.com/index/introducing-chatgpt-wallet",
+      "source": "OpenAI",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-16-04",
+      "date": "2026-11-13",
+      "tag": "News",
+      "headline": "NVIDIA board says it has not formally engaged CEO candidates and is still picking a search firm",
+      "why": "The board told CNBC it is still selecting a search firm and has not formally engaged any candidates. It called speculation about individual names premature.",
+      "url": "https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html",
+      "source": "NVIDIA board / CNBC",
+      "status": "confirmed"
+    },
     {
       "id": "2026-11-12-01",
       "date": "2026-11-12",
@@ -230,126 +290,6 @@
       "why": "Announced at KubeCon. Snapshot design partners report much faster GPU workload restores; those times are partner figures.",
       "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/",
       "source": "NVIDIA",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-01",
-      "date": "2026-11-09",
-      "tag": "Release",
-      "headline": "Anthropic ships Claude Fable 5.2 and Mythos 5.2; AA puts Fable 5.2 #1 at 65",
-      "why": "Same model, two access levels. Fable is $8/$40, 20% below 5.1. AA: 65 vs Gemini 4 Carbon High 60; Epoch ECI also tops at 174.",
-      "url": "https://rycode.dev/ai/models/anthropic/claude-fable-5-2/",
-      "source": "Anthropic / Artificial Analysis / Epoch AI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-03",
-      "date": "2026-11-09",
-      "tag": "Infra",
-      "headline": "Google adds TPU 8tx and TPU 8i Max to its eighth-gen TPU lineup",
-      "why": "8tx keeps data and weights protected in use, up to 2x lower latency than 8t. 8i Max doubles 8i compute, SRAM and HBM bandwidth.",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/",
-      "source": "Google",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-04",
-      "date": "2026-11-09",
-      "tag": "Labs",
-      "headline": "Meta's Muse Ember scores 36 on AA Intelligence Index at $0.14 per task",
-      "why": "Matches Claude Haiku 5.5 (max) at about a third of the cost per task, per AA. $0.10/$0.50 per 1M tokens on Meta's API.",
-      "url": "https://artificialanalysis.ai/articles/meta-s-muse-ember-is-the-cheapest-model-scoring-36-on-the-intelligence-index",
-      "source": "Artificial Analysis / Meta",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-05",
-      "date": "2026-11-09",
-      "tag": "OpenWeight",
-      "headline": "Meituan posts LongCat-2.5 weights under MIT on Hugging Face",
-      "why": "About 1.6T total, 48B active per Meituan. Meituan's own benches put it near older frontier models. No AA Index score yet.",
-      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5",
-      "source": "Meituan",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-06",
-      "date": "2026-11-09",
-      "tag": "Safety",
-      "headline": "OpenAI details Control Room, a system to stop research model workloads fast",
-      "why": "OpenAI says it halts model output within 35 seconds of a stop decision and fails closed if the service goes down.",
-      "url": "https://openai.com/index/control-room",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-08",
-      "date": "2026-11-09",
-      "tag": "Infra",
-      "headline": "FT: Nvidia tells cloud partners at least 51% of services must go to non-Chinese firms",
-      "why": "Verbal rule for new deals, per FT via Tom's Hardware. Nvidia has not confirmed. Aimed at overseas GPU rentals by Chinese labs.",
-      "url": "https://www.tomshardware.com/tech-industry/policy/nvidia-cracks-down-on-overseas-cloud-ai-gpu-rentals-for-china-partners-face-51-percent-non-chinese-quota-as-black-market-b300-rack-prices-surge-to-usd2-8-million",
-      "source": "FT / Tom's Hardware",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-10-09",
-      "date": "2026-11-09",
-      "tag": "Safety",
-      "headline": "Fireworks AI says attackers reached some customers' datasets and incomplete model weights",
-      "why": "Update to its October incident. Billing data also hit. No impact found on inference, which is zero data retention by default.",
-      "url": "https://fireworks.ai/security/bulletins/october-2026-security-incident-update",
-      "source": "Fireworks AI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-01",
-      "date": "2026-11-08",
-      "tag": "News",
-      "headline": "AA Decision Index v2: decision models top out at 73; Haiku 5.5 Max 77",
-      "why": "Drex Max and GLiDE tie at 73, Mammoth 72. Language models score higher but cost far more per task (Luna Max 76).",
-      "url": "https://artificialanalysis.ai/articles/decision-index-v2",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-03",
-      "date": "2026-11-08",
-      "tag": "Labs",
-      "headline": "Sapiens AI's Agnes 2.5 Pro Theta scores 24 on AA Intelligence Index",
-      "why": "Proprietary, 1M context, $0.10/$0.30 per 1M tokens. Released Nov 7; no lab launch post found.",
-      "url": "https://artificialanalysis.ai/models/agnes-2-5-pro-theta",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-06",
-      "date": "2026-11-08",
-      "tag": "Infra",
-      "headline": "FT: Anthropic bought ~$3.4B of gas generators, about 1.7 GW, from OnePWR",
-      "why": "Commitments from late September per FT. Anthropic and OnePWR did not comment.",
-      "url": "https://www.cnbc.com/2026/11/08/anthropic-generator-deal-ai-data-centers.html",
-      "source": "FT / CNBC",
-      "status": "reported"
-    },
-    {
-      "id": "2026-11-02-07",
-      "date": "2026-11-07",
-      "tag": "Policy",
-      "headline": "xAI: Grok API text watermarking on by default from Sat 7 Nov",
-      "why": "Covers grok-4.7/4.6/4.5/4.3/4.20 plus tool-call arguments. Team admins can opt out per model.",
-      "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
-      "source": "xAI docs",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-09-07",
-      "date": "2026-11-07",
-      "tag": "Safety",
-      "headline": "xAI turns on default Grok API text watermarking",
-      "why": "Listed grok-4.x models from Nov 7. Admins can opt out per model; check the x-watermark header.",
-      "url": "https://docs.x.ai/developers/advanced-api-usage/watermarking",
-      "source": "xAI",
       "status": "confirmed"
     }
   ]
