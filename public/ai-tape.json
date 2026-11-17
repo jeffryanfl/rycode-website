@@ -1,85 +1,85 @@
 {
-  "updated": "2026-11-16T08:30:00-05:00",
-  "asOfLabel": "Mon 16 Nov · morning",
+  "updated": "2026-11-17T08:35:00-05:00",
+  "asOfLabel": "Tue 17 Nov · morning",
   "lines": [
     {
-      "tag": "Release",
-      "text": "OpenAI launches ChatGPT Wallet in dots for US ChatGPT Pro users, with a check on every purchase",
-      "url": "/ai/models/openai/"
+      "tag": "Policy",
+      "text": "US Commerce issues a rule on remote access to advanced AI chips through overseas data centers",
+      "url": "https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology"
     },
     {
-      "tag": "Release",
-      "text": "Alibaba releases Qwen4-Max, a 2.4T-parameter MoE with 71B active and a 1M-token context",
-      "url": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-new-ai-teammate-for-work-creativity-and-discovery_603783"
+      "tag": "Policy",
+      "text": "California Attorney General Bonta sues OpenAI over agent cybersecurity incidents",
+      "url": "https://oag.ca.gov/news/press-releases/it%E2%80%99s-golden-state-not-wild-west-attorney-general-bonta-sues-openai-over"
     },
     {
       "tag": "News",
-      "text": "Treasury Secretary Bessent calls for a dramatic NVIDIA shake-up and an outside CEO",
-      "url": "https://www.cnbc.com/2026/11/15/bessent-nvidia-ceo-lutnick-megaspeed.html"
+      "text": "NVIDIA reports Q3 today at 5:00 PM ET under Kress; shares $158.20 premarket as of 8:29 AM ET",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873"
     }
   ],
   "doorHref": "/ai",
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "feed": [
     {
-      "id": "2026-11-16-01",
-      "date": "2026-11-13",
-      "tag": "Release",
-      "headline": "OpenAI launches ChatGPT Wallet in dots for US ChatGPT Pro users",
-      "why": "US Pro users 18 and older with eligible US-issued cards. Each purchase needs a Face ID or fingerprint check. A payment token stands in for the card details.",
-      "url": "https://openai.com/index/introducing-chatgpt-wallet",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-16-02",
+      "id": "2026-11-17-01",
       "date": "2026-11-16",
-      "tag": "Release",
-      "headline": "Alibaba releases Qwen4-Max, a 2.4T-parameter MoE with 71B active and a 1M-token context",
-      "why": "Alibaba says 2.4 trillion total parameters, 71 billion active, native vision, and a 1 million-token context. It is on QwenCloud's API. Lab charts are claims.",
-      "url": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-new-ai-teammate-for-work-creativity-and-discovery_603783",
-      "source": "Alibaba",
+      "tag": "Policy",
+      "headline": "US Commerce issues a rule on remote access to advanced AI chips through overseas data centers",
+      "why": "Licenses are required for remote compute above a set threshold to D:5 or Macau firms, and for advanced chips sent to five countries, including Singapore.",
+      "url": "https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology",
+      "source": "US Commerce / BIS",
       "status": "confirmed"
     },
     {
-      "id": "2026-11-16-03",
-      "date": "2026-11-15",
+      "id": "2026-11-17-02",
+      "date": "2026-11-16",
+      "tag": "Policy",
+      "headline": "California Attorney General Bonta sues OpenAI over agent cybersecurity incidents",
+      "why": "Filed in San Francisco Superior Court. It alleges at least 80 incidents, including a July attack on Hugging Face. Those are allegations, not findings.",
+      "url": "https://oag.ca.gov/news/press-releases/it%E2%80%99s-golden-state-not-wild-west-attorney-general-bonta-sues-openai-over",
+      "source": "California Department of Justice",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-17-03",
+      "date": "2026-11-17",
       "tag": "News",
-      "headline": "Treasury Secretary Bessent calls for a dramatic NVIDIA shake-up and an outside CEO",
-      "why": "On Fox News Sunday he said the board should look outside the company. He also asked for answers in the next 10 days from the board and outside counsel.",
-      "url": "https://www.cnbc.com/2026/11/15/bessent-nvidia-ceo-lutnick-megaspeed.html",
-      "source": "CNBC / Fox Business",
+      "headline": "NVIDIA reports Q3 today at 5:00 PM ET, the first call under interim CEO Colette Kress",
+      "why": "Shares closed Monday at $156.14, down 4.12%. Premarket was $158.20, up 1.32%, as of 8:29 AM ET. Results are due after the close; the call is at 5:00 PM ET.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873",
+      "source": "NVIDIA / Yahoo Finance",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-17-04",
+      "date": "2026-11-17",
+      "tag": "News",
+      "headline": "NVIDIA board is not considering bringing Huang back, a person familiar tells CNBC",
+      "why": "CNBC reported this Monday. It is not a new official board statement. The board has said it has not formally engaged CEO candidates.",
+      "url": "https://www.cnbc.com/2026/11/17/nvidia-nvda-earnings-report-q3-2027.html",
+      "source": "CNBC",
       "status": "reported"
     },
     {
-      "id": "2026-11-16-04",
-      "date": "2026-11-13",
-      "tag": "News",
-      "headline": "NVIDIA board says it has not formally engaged CEO candidates and is still picking a search firm",
-      "why": "The board told CNBC it is still selecting a search firm and has not formally engaged any candidates. It called speculation about individual names premature.",
-      "url": "https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html",
-      "source": "NVIDIA board / CNBC",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-16-05",
-      "date": "2026-11-15",
-      "tag": "Labs",
-      "headline": "OpenAI starts a science blog; first post is a candidate lattice definition of the Standard Model",
-      "why": "Physicist Nathaniel Craig says GPT-6 Astra helped turn his strategy into a construction and proof. He still calls it a candidate that needs further checks.",
-      "url": "https://openai.com/index/our-new-blog-for-science",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-16-06",
-      "date": "2026-11-16",
+      "id": "2026-11-17-05",
+      "date": "2026-11-17",
       "tag": "Deal",
-      "headline": "Anthropic IPO demand is reported near 7 times the shares on offer; range stays $70 to $78",
-      "why": "Bloomberg reported Sunday that orders were close to seven times the shares on offer. The official range is unchanged. Pricing is still expected 18 Nov.",
-      "url": "https://thenextweb.com/news/anthropic-ipo-orders-seven-times-spacex-pricing-week",
-      "source": "Bloomberg via The Next Web / Anthropic",
-      "status": "reported"
+      "headline": "Anthropic says Nasdaq has approved its ANT listing; IPO range stays $70 to $78",
+      "why": "Its S-1 amendment, filed today, says the Class A shares have been approved to list on Nasdaq under ANT. The estimated price remains $70.00 to $78.00 a share.",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026074338/anthropicpbc-sx1ax3.htm",
+      "source": "Anthropic S-1/A",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-17-06",
+      "date": "2026-11-16",
+      "tag": "Labs",
+      "headline": "NVIDIA introduces Nemotron for Science, with an open chemistry dataset and post-training recipes",
+      "why": "It packages the open Nemotron 3.5 Super VL model with LitmusBench v0.2 and recipes for science agents. Both are on Hugging Face. Lab results are claims.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-introduces-nemotron-for-science-to-accelerate-discoveries-with-agents",
+      "source": "NVIDIA",
+      "status": "confirmed"
     }
   ]
 }

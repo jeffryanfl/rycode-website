@@ -1,7 +1,37 @@
 {
   "schema": "ai-feed-history-v1",
-  "updated": "2026-11-16T13:52:34.294Z",
+  "updated": "2026-11-17T13:52:25.916Z",
   "items": [
+    {
+      "id": "2026-11-17-03",
+      "date": "2026-11-17",
+      "tag": "News",
+      "headline": "NVIDIA reports Q3 today at 5:00 PM ET, the first call under interim CEO Colette Kress",
+      "why": "Shares closed Monday at $156.14, down 4.12%. Premarket was $158.20, up 1.32%, as of 8:29 AM ET. Results are due after the close; the call is at 5:00 PM ET.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873",
+      "source": "NVIDIA / Yahoo Finance",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-17-04",
+      "date": "2026-11-17",
+      "tag": "News",
+      "headline": "NVIDIA board is not considering bringing Huang back, a person familiar tells CNBC",
+      "why": "CNBC reported this Monday. It is not a new official board statement. The board has said it has not formally engaged CEO candidates.",
+      "url": "https://www.cnbc.com/2026/11/17/nvidia-nvda-earnings-report-q3-2027.html",
+      "source": "CNBC",
+      "status": "reported"
+    },
+    {
+      "id": "2026-11-17-05",
+      "date": "2026-11-17",
+      "tag": "Deal",
+      "headline": "Anthropic says Nasdaq has approved its ANT listing; IPO range stays $70 to $78",
+      "why": "Its S-1 amendment, filed today, says the Class A shares have been approved to list on Nasdaq under ANT. The estimated price remains $70.00 to $78.00 a share.",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026074338/anthropicpbc-sx1ax3.htm",
+      "source": "Anthropic S-1/A",
+      "status": "confirmed"
+    },
     {
       "id": "2026-11-16-02",
       "date": "2026-11-16",
@@ -21,6 +51,36 @@
       "url": "https://thenextweb.com/news/anthropic-ipo-orders-seven-times-spacex-pricing-week",
       "source": "Bloomberg via The Next Web / Anthropic",
       "status": "reported"
+    },
+    {
+      "id": "2026-11-17-01",
+      "date": "2026-11-16",
+      "tag": "Policy",
+      "headline": "US Commerce issues a rule on remote access to advanced AI chips through overseas data centers",
+      "why": "Licenses are required for remote compute above a set threshold to D:5 or Macau firms, and for advanced chips sent to five countries, including Singapore.",
+      "url": "https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology",
+      "source": "US Commerce / BIS",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-17-02",
+      "date": "2026-11-16",
+      "tag": "Policy",
+      "headline": "California Attorney General Bonta sues OpenAI over agent cybersecurity incidents",
+      "why": "Filed in San Francisco Superior Court. It alleges at least 80 incidents, including a July attack on Hugging Face. Those are allegations, not findings.",
+      "url": "https://oag.ca.gov/news/press-releases/it%E2%80%99s-golden-state-not-wild-west-attorney-general-bonta-sues-openai-over",
+      "source": "California Department of Justice",
+      "status": "confirmed"
+    },
+    {
+      "id": "2026-11-17-06",
+      "date": "2026-11-16",
+      "tag": "Labs",
+      "headline": "NVIDIA introduces Nemotron for Science, with an open chemistry dataset and post-training recipes",
+      "why": "It packages the open Nemotron 3.5 Super VL model with LitmusBench v0.2 and recipes for science agents. Both are on Hugging Face. Lab results are claims.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-introduces-nemotron-for-science-to-accelerate-discoveries-with-agents",
+      "source": "NVIDIA",
+      "status": "confirmed"
     },
     {
       "id": "2026-11-16-03",
@@ -200,96 +260,6 @@
       "why": "In four simulated shared-resource settings, one agent serving everyone beat a team of per-user agents. Three environments are released as MAMUBench.",
       "url": "https://alignment.anthropic.com/2026/worse-together/",
       "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-02",
-      "date": "2026-11-10",
-      "tag": "Deal",
-      "headline": "Anthropic launches IPO roadshow at $70 to $78 a share, Nasdaq ticker ANT",
-      "why": "825M Class A shares, 801M of them new from Anthropic. Goldman Sachs and Morgan Stanley lead. Pricing date not on Anthropic's page.",
-      "url": "https://www.anthropic.com/news/roadshow-launch",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-10-07",
-      "date": "2026-11-10",
-      "tag": "Policy",
-      "headline": "Australia to legislate mandatory frontier AI safety rules and a new regulator",
-      "why": "Six duties incl. independent model evals and rapid incident reports, with significant penalties. Bill details still to come.",
-      "url": "https://www.pm.gov.au/media/new-australian-ai-safety-and-security-protections",
-      "source": "Australian Government",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-01",
-      "date": "2026-11-10",
-      "tag": "Infra",
-      "headline": "CoreWeave Q3 revenue is $3.66B with a $709M net loss; FY revenue guide rises to $13.0-$13.3B",
-      "why": "Official print: $3.661B revenue vs $1.365B a year earlier, adjusted operating income $379M, backlog about $132.5B. Interest expense was $846M.",
-      "url": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/default.aspx",
-      "source": "CoreWeave",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-02",
-      "date": "2026-11-10",
-      "tag": "Release",
-      "headline": "Google makes Gemini 4 Carbon available on the paid Gemini API at $2/$10 through 30 Nov",
-      "why": "API id gemini-4-carbon, 1,048,576-token context. Price steps to $4/$20 on 1 Dec. Not on the free tier. AA High remains 60, behind Fable 5.2 at 65.",
-      "url": "https://rycode.dev/ai/models/google/gemini-4-carbon/",
-      "source": "Google / Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-05",
-      "date": "2026-11-10",
-      "tag": "Policy",
-      "headline": "New York opens a RAISE Act portal for large frontier AI developers",
-      "why": "Register by 1 Jan 2027. From January: safety frameworks, 72-hour incident reports, and model transparency reports. A new state AI safety center also launched.",
-      "url": "https://www.governor.ny.gov/news/governor-hochul-declares-ny-will-lead-nation-ai-science-and-safety-launches-new-research",
-      "source": "New York State",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-06",
-      "date": "2026-11-10",
-      "tag": "Labs",
-      "headline": "AA launches MKA; Fable 5.2 leads at 57%, Gemini 4 Carbon is #2 at 54%",
-      "why": "200 visual knowledge-work tasks built with DeepMind. Carbon costs $6.29 per task vs $31.97 for Fable 5.2, per AA.",
-      "url": "https://artificialanalysis.ai/articles/google-deepmind-multimodal-knowledge-agent",
-      "source": "Artificial Analysis",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-07",
-      "date": "2026-11-10",
-      "tag": "News",
-      "headline": "OpenAI starts Businesses in ChatGPT in beta, including Business Agents",
-      "why": "Firms can claim a profile and add product feeds. Business Agents start with eligible US ecommerce and online-service businesses.",
-      "url": "https://openai.com/index/introducing-businesses-chatgpt",
-      "source": "OpenAI",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-08",
-      "date": "2026-11-10",
-      "tag": "News",
-      "headline": "Anthropic adds Claude Sheets, Whiteboards, and generally available Claude Data",
-      "why": "Anthropic says these start today. Its own page still calls Claude Meetings coming soon, narrower than some press reports of a beta.",
-      "url": "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors",
-      "source": "Anthropic",
-      "status": "confirmed"
-    },
-    {
-      "id": "2026-11-11-09",
-      "date": "2026-11-10",
-      "tag": "Infra",
-      "headline": "NVIDIA donates OpenShell to CNCF and previews Kubernetes Engine and Snapshot",
-      "why": "Announced at KubeCon. Snapshot design partners report much faster GPU workload restores; those times are partner figures.",
-      "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/",
-      "source": "NVIDIA",
       "status": "confirmed"
     }
   ]
