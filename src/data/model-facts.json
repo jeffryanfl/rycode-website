@@ -21,7 +21,7 @@
       "released": "9 Nov 2026",
       "checked": "9 Nov 2026"
     },
-    "/ai/models/anthropic/claude-fable-5-1/": { "name": "Claude Fable 5.1", "status": "current", "price": "$10 in, $50 out", "released": "1 Sep 2026", "checked": "9 Nov 2026" },
+    "/ai/models/anthropic/claude-fable-5-1/": { "name": "Claude Fable 5.1", "status": "older", "recommended": { "by": "Anthropic", "name": "Claude Fable 5.2", "href": "/ai/models/anthropic/claude-fable-5-2/" }, "price": "$10 in, $50 out", "released": "1 Sep 2026", "checked": "16 Nov 2026" },
     "/ai/models/anthropic/claude-opus-5/": { "name": "Claude Opus 5", "status": "archived", "replacedBy": { "name": "Claude Opus 5.5", "href": "/ai/models/anthropic/claude-opus-5-5/" }, "price": "$5 in, $25 out" },
     "/ai/models/anthropic/claude-sonnet-5/": { "name": "Claude Sonnet 5", "status": "archived", "replacedBy": { "name": "Claude Sonnet 5.5", "href": "/ai/models/anthropic/claude-sonnet-5-5/" }, "price": "$2 in, $10 out" },
     "/ai/models/anthropic/claude-haiku-4-5/": { "name": "Claude Haiku 4.5", "status": "archived", "replacedBy": { "name": "Claude Haiku 5.5", "href": "/ai/models/anthropic/claude-haiku-5-5/" }, "price": "$1 in, $5 out" },
@@ -54,7 +54,7 @@
     "/ai/models/google/gemini-4-carbon/": { "name": "Gemini 4 Carbon", "status": "current", "statusNote": "on the paid Gemini API and in Google AI Studio", "price": "$2 in, $10 out through 30 Nov 2026, then $4 in, $20 out starting 1 Dec 2026", "released": "28 Oct 2026 (announced); available 10 Nov 2026", "checked": "10 Nov 2026" },
     "/ai/models/google/gemini-4-argon/": { "name": "Gemini 4 Argon", "status": "current", "price": "$2 in, $10 out (introductory, through 30 Nov 2026)", "released": "13 Oct 2026 (announced 30 Sep)", "checked": "28 Oct 2026" },
     "/ai/models/google/gemini-pro/": { "name": "Gemini 3.1 Pro Preview", "status": "older", "statusNote": "still on the Gemini API as a preview; Google names no successor", "aa": { "value": 30, "fetched": "22 Sep 2026" }, "price": "$2 in, $12 out (up to 200k)", "released": "19 Feb 2026 (announced)", "checked": "22 Sep 2026" },
-    "/ai/models/google/gemini-flash/": { "name": "Gemini 3.8 Flash", "status": "current", "aa": { "value": 41, "effort": "high", "fetched": "22 Sep 2026" }, "price": "$0.75 in, $3.75 out (through 31 Dec 2026)", "released": "2 Sep 2026 (announced)", "checked": "22 Sep 2026" },
+    "/ai/models/google/gemini-flash/": { "name": "Gemini 3.8 Flash", "status": "older", "recommended": { "by": "Google", "name": "Gemini 4 Hydrogen", "href": "/ai/models/google/gemini-4-hydrogen/" }, "statusNote": "Google's models page calls it \"Our previous-generation Flash model\"", "aa": { "value": 41, "effort": "high", "fetched": "22 Sep 2026" }, "price": "$0.75 in, $3.75 out (through 31 Dec 2026)", "released": "2 Sep 2026 (announced)", "checked": "16 Nov 2026" },
     "/ai/models/google/gemini-flash-lite/": { "name": "Gemini 3.5 Flash-Lite", "status": "current", "aa": { "value": 22, "fetched": "22 Sep 2026" }, "price": "$0.30 in, $2.50 out", "released": "21 Jul 2026 (announced)", "checked": "22 Sep 2026" },
     "/ai/models/google/gemma/": { "name": "Gemma 4", "status": "current", "statusNote": "open weights", "aa": { "value": 19, "label": "Gemma 4 31B", "fetched": "22 Sep 2026" }, "checked": "22 Sep 2026" },
     "/ai/models/google/gemini-omni-1-2-flash/": {

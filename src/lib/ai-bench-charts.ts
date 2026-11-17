@@ -117,7 +117,7 @@ const MODEL_STYLE: Record<
   'Claude Opus 5.5': { color: '#D97757', mark: 'claude', disc: '#D97757', glyph: '#ffffff' },
   'Claude Sonnet 5.5': { color: '#6A9BCC', mark: 'claude', disc: '#6A9BCC', glyph: '#ffffff' },
   'Claude Haiku 5.5': { color: '#B0AEA5', mark: 'claude', disc: '#B0AEA5', glyph: '#141413' },
-  'Claude Fable 5.1': { color: '#788C5D', mark: 'claude', disc: '#788C5D', glyph: '#ffffff' },
+  'Claude Fable 5.2': { color: '#788C5D', mark: 'claude', disc: '#788C5D', glyph: '#ffffff' },
   'GPT-6 Astra': { color: '#F4F4F5', mark: 'openai', disc: '#F4F4F5', glyph: '#141413' },
   'GPT-6.1 Sol': { color: '#B4B4BC', mark: 'openai', disc: '#D4D4D8', glyph: '#141413' },
   'GPT-6.1 Terra': { color: '#71717A', mark: 'openai', disc: '#A1A1AA', glyph: '#141413' },
@@ -130,7 +130,7 @@ function shortModel(model: string): string {
   if (model.includes('Opus 5.5')) return 'Opus 5.5';
   if (model.includes('Sonnet 5.5')) return 'Sonnet 5.5';
   if (model.includes('Haiku 5.5')) return 'Haiku 5.5';
-  if (model.includes('Fable')) return 'Fable 5.1';
+  if (model.includes('Fable')) return 'Fable 5.2';
   if (model.includes('Astra')) return 'Astra';
   if (model.includes('Terra')) return 'Terra';
   if (model.includes('6.1')) return 'GPT-6.1 Sol';

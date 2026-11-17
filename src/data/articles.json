@@ -694,7 +694,7 @@
   {
     "href": "/ai/models/anthropic/claude-fable-5-1/",
     "title": "Claude Fable 5.1",
-    "description": "Prior Fable, still Active.",
+    "description": "Archived. Prior Fable; Anthropic now recommends Fable 5.2.",
     "date": "2026-09-04",
     "section": "ai",
     "series": "ai-anthropic",
@@ -1090,7 +1090,7 @@
   {
     "href": "/ai/models/google/gemini-flash/",
     "title": "Gemini 3.8 Flash",
-    "description": "Current Flash workhorse for long-horizon agents.",
+    "description": "Archived. Previous-generation Flash; Google now recommends Gemini 4 Hydrogen.",
     "date": "2026-09-22",
     "section": "ai",
     "series": "ai-google",
