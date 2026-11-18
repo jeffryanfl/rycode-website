@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { LIVE_HUB_TAPES_ENABLED } from '../lib/live-hub-tapes';
 import '../styles/landing.css';
 import '../styles/hub.css';
 ---
@@ -12,27 +13,29 @@ import '../styles/hub.css';
   <section class="landing-stage landing-stage--charcoal landing-stage--doors">
     <h1 class="visually-hidden">Rycode</h1>
 
-    <div
-      class="hub-tape hub-tape--top"
-      id="hubAiTape"
-      role="region"
-      hidden
-      aria-label="A.I. tape"
-      data-tape-pause-label="Pause A.I. tape"
-      data-tape-play-label="Play A.I. tape"
-    >
-      <a class="hub-tape-asof" data-hub-ai-tape-asof href="/ai/"></a>
-      <button type="button" class="hub-tape-toggle" data-hub-tape-pause aria-pressed="false" aria-label="Pause A.I. tape" hidden>
-        <svg class="hub-tape-toggle-icon" data-hub-tape-toggle-icon width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-          <rect class="hub-tape-toggle-pause" x="2" y="1" width="2.5" height="10" fill="currentColor" />
-          <rect class="hub-tape-toggle-pause" x="7.5" y="1" width="2.5" height="10" fill="currentColor" />
-          <path class="hub-tape-toggle-play" d="M2.5 1.2 10.5 6 2.5 10.8z" fill="currentColor" hidden />
-        </svg>
-      </button>
-      <span class="hub-tape-viewport" data-hub-ai-tape-viewport>
-        <span class="hub-tape-track" data-hub-ai-tape-track></span>
-      </span>
-    </div>
+    {LIVE_HUB_TAPES_ENABLED && (
+      <div
+        class="hub-tape hub-tape--top"
+        id="hubAiTape"
+        role="region"
+        hidden
+        aria-label="A.I. tape"
+        data-tape-pause-label="Pause A.I. tape"
+        data-tape-play-label="Play A.I. tape"
+      >
+        <a class="hub-tape-asof" data-hub-ai-tape-asof href="/ai/"></a>
+        <button type="button" class="hub-tape-toggle" data-hub-tape-pause aria-pressed="false" aria-label="Pause A.I. tape" hidden>
+          <svg class="hub-tape-toggle-icon" data-hub-tape-toggle-icon width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+            <rect class="hub-tape-toggle-pause" x="2" y="1" width="2.5" height="10" fill="currentColor" />
+            <rect class="hub-tape-toggle-pause" x="7.5" y="1" width="2.5" height="10" fill="currentColor" />
+            <path class="hub-tape-toggle-play" d="M2.5 1.2 10.5 6 2.5 10.8z" fill="currentColor" hidden />
+          </svg>
+        </button>
+        <span class="hub-tape-viewport" data-hub-ai-tape-viewport>
+          <span class="hub-tape-track" data-hub-ai-tape-track></span>
+        </span>
+      </div>
+    )}
 
     <nav class="hub-cluster" aria-label="Doors">
       <ul class="hub-doors">
@@ -69,29 +72,35 @@ import '../styles/hub.css';
       </ul>
     </nav>
 
-    <div
-      class="hub-tape"
-      id="hubTape"
-      hidden
-      role="region"
-      aria-label="Economics tape"
-      data-tape-pause-label="Pause Economics tape"
-      data-tape-play-label="Play Economics tape"
-    >
-      <a class="hub-tape-asof" data-hub-tape-asof href="/economics/"></a>
-      <button type="button" class="hub-tape-toggle" data-hub-tape-pause aria-pressed="false" aria-label="Pause Economics tape" hidden>
-        <svg class="hub-tape-toggle-icon" data-hub-tape-toggle-icon width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-          <rect class="hub-tape-toggle-pause" x="2" y="1" width="2.5" height="10" fill="currentColor" />
-          <rect class="hub-tape-toggle-pause" x="7.5" y="1" width="2.5" height="10" fill="currentColor" />
-          <path class="hub-tape-toggle-play" d="M2.5 1.2 10.5 6 2.5 10.8z" fill="currentColor" hidden />
-        </svg>
-      </button>
-      <span class="hub-tape-viewport" data-hub-tape-viewport>
-        <span class="hub-tape-track" data-hub-tape-track></span>
-      </span>
-    </div>
+    {LIVE_HUB_TAPES_ENABLED && (
+      <div
+        class="hub-tape"
+        id="hubTape"
+        hidden
+        role="region"
+        aria-label="Economics tape"
+        data-tape-pause-label="Pause Economics tape"
+        data-tape-play-label="Play Economics tape"
+      >
+        <a class="hub-tape-asof" data-hub-tape-asof href="/economics/"></a>
+        <button type="button" class="hub-tape-toggle" data-hub-tape-pause aria-pressed="false" aria-label="Pause Economics tape" hidden>
+          <svg class="hub-tape-toggle-icon" data-hub-tape-toggle-icon width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+            <rect class="hub-tape-toggle-pause" x="2" y="1" width="2.5" height="10" fill="currentColor" />
+            <rect class="hub-tape-toggle-pause" x="7.5" y="1" width="2.5" height="10" fill="currentColor" />
+            <path class="hub-tape-toggle-play" d="M2.5 1.2 10.5 6 2.5 10.8z" fill="currentColor" hidden />
+          </svg>
+        </button>
+        <span class="hub-tape-viewport" data-hub-tape-viewport>
+          <span class="hub-tape-track" data-hub-tape-track></span>
+        </span>
+      </div>
+    )}
   </section>
-  <script is:inline src="/hub-tape-controls.js" defer></script>
-  <script is:inline src="/home-ai-tape.js" defer></script>
-  <script is:inline src="/home-tape.js" defer></script>
+  {LIVE_HUB_TAPES_ENABLED && (
+    <>
+      <script is:inline src="/hub-tape-controls.js" defer></script>
+      <script is:inline src="/home-ai-tape.js" defer></script>
+      <script is:inline src="/home-tape.js" defer></script>
+    </>
+  )}
 </Layout>

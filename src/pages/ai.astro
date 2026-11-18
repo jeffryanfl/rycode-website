@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import AiBenchCharts from '../components/AiBenchCharts.astro';
 import AiWeekTicker from '../components/AiWeekTicker.astro';
 import { agentToolsForDoor } from '../lib/agent-tools';
+import { LIVE_HUB_TAPES_ENABLED } from '../lib/live-hub-tapes';
 import '../styles/ai.css';
 import '../styles/hub.css';
 
@@ -94,7 +95,7 @@ const agentDoorRows = agentToolsForDoor();
     </ul>
   </nav>
 
-  <AiWeekTicker />
+  {LIVE_HUB_TAPES_ENABLED && <AiWeekTicker />}
 
   <AiBenchCharts />
 
