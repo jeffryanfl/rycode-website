@@ -75,21 +75,27 @@ function benchAddedDate(note: string, model: string): string | null {
   return m?.[1] ?? null;
 }
 
+function benchAddedSortKey(added: string): number {
+  const m = added.match(/^(\d{1,2}) (\w+) (\d{4})$/);
+  if (!m) return 0;
+  const month = MONTHS.indexOf(m[2]);
+  if (month < 0) return 0;
+  return Number(m[3]) * 10_000 + (month + 1) * 100 + Number(m[1]);
+}
+
 /**
- * "Latest additions" line for #aiBench: the last two living-table rows whose
- * full model name carries an "(added …)" clause in the feed note.
+ * "Latest additions" line for #aiBench: living-table rows whose full model name
+ * carries an "(added …)" clause in the feed note, for the newest added date.
  */
 export function benchLatestAdditionsLine(): string {
   const note = String((feed as { note?: string }).note ?? '');
-  const latest = data.labs.filter((lab) => benchAddedDate(note, lab.model));
-  const pair = latest.slice(-2);
-  if (pair.length < 2) return `Board as of ${benchAsOf()}.`;
-  const list = pair
-    .map((lab) => {
-      const added = benchAddedDate(note, lab.model);
-      return `${lab.model} (added ${added})`;
-    })
-    .join('; ');
+  const withAdded = data.labs
+    .map((lab) => ({ lab, added: benchAddedDate(note, lab.model) }))
+    .filter((row): row is { lab: Lab; added: string } => row.added != null);
+  if (withAdded.length < 1) return `Board as of ${benchAsOf()}.`;
+  const maxKey = Math.max(...withAdded.map((row) => benchAddedSortKey(row.added)));
+  const newest = withAdded.filter((row) => benchAddedSortKey(row.added) === maxKey);
+  const list = newest.map((row) => `${row.lab.model} (added ${row.added})`).join('; ');
   return `Latest additions: ${list}. Board as of ${benchAsOf()}.`;
 }
 
