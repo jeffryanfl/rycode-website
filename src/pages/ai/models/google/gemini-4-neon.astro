@@ -1,0 +1,55 @@
+---
+import ModelFacts from '../../../../components/ModelFacts.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/ai.css';
+---
+
+<Layout
+  title="Gemini 4 Neon - A.I. - Rycode"
+  description="Gemini 4 Neon, Google’s Gemini 4 model between Hydrogen and Carbon for complex coding and enterprise work, introduced 18 November 2026 on the paid tier of the Gemini API at $3 input and $15 output per million tokens."
+  variant="ai"
+>
+  <article class="ai-model">
+    <p class="ai-model-kicker">Google · Gemini 4</p>
+    <h1 class="ai-model-title">Gemini 4 Neon</h1>
+    <p class="ai-model-dek">Gemini 4 Neon is a Google DeepMind model introduced 18 November 2026. In <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/">Introducing Gemini 4 Neon</a>, Google says it brings “frontier-level intelligence with fast end-to-end task completion across complex software engineering, knowledge work, and science workflows” [1]. Google places it between its other Gemini 4 models: “While Carbon tackles your hardest, long-horizon projects and Hydrogen handles fast everyday execution, Neon balances depth and efficiency” [1]. See <a href="/ai/models/google/gemini-4-carbon/">Gemini 4 Carbon</a> and <a href="/ai/models/google/gemini-4-hydrogen/">Gemini 4 Hydrogen</a>. <a href="https://aistudio.google.com/docs/whats-new-gemini-4-neon">What’s new in Gemini 4 Neon</a> says it is available on the paid tier of the Gemini API only, not the free tier [2]. The API id, the name a program uses to call the model, is <code>gemini-4-neon</code>, a Stable version string, per the <a href="https://aistudio.google.com/docs/models/gemini-4-neon">Gemini 4 Neon model page</a> [3]. Context is a unified 1,048,576-token window for input and output. Max output is 65,536 tokens by default, or up to 1,048,576 with long decode [3]. The paid Standard price is $3 per million input tokens and $15 per million output tokens, with cached input at $0.15 [1][4]. Tokens are the word pieces models are billed by. Output price includes thinking tokens [4].</p>
+    <hr class="ai-model-rule" />
+    <ModelFacts />
+    <h2 class="ai-model-section">Training</h2>
+    <p>Parameter count, training compute, dataset, and training method are not in the sources on this page.</p>
+    <h2 class="ai-model-section">Inference</h2>
+    <p>Thinking is supported at four levels: <code>low</code>, <code>medium</code>, <code>high</code>, and <code>xhigh</code>. The default is <code>high</code> [2][3]. What’s new says Neon “defaults to <code>high</code> and supports <code>xhigh</code>, like Hydrogen,” while Carbon and Argon “default to <code>medium</code> and cap at <code>high</code>” [2]. The model page lists inputs as text, image, video, audio, and PDF, and output as text [3]. Tokens per second and rate limits are not in the sources on this page.</p>
+    <h2 class="ai-model-section">Context</h2>
+    <p>Context is how much text the model can take in and write in one job. The model page lists a unified input and output token limit of 1,048,576 tokens. Max output is 65,536 tokens for a default synchronous response, or up to 1,048,576 with long decode [3].</p>
+    <h2 class="ai-model-section">Benchmarking</h2>
+    <p>Artificial Analysis, an independent tester, scores Gemini 4 Neon 61 on its Intelligence Index v5.0.1 at <code>xhigh</code>, and 60 at the default <code>high</code> [5]. Google’s launch post also cites this 61 and calls it “#3 overall” [1]. The xhigh score is on this site’s <a href="/ai/#aiBench">benchmark table</a>.</p>
+    <p>The rest are Google-reported figures, not independently checked here: 70.9% on the Vals Index (#2), 58.6 on the Artificial Analysis Coding Agent Index (#1 overall), 56.3% on Zapier’s AutomationBench (#1), 65.2% on Terminal-Bench 4.1, and 71.3% on HLE-Diamond [1]. Only AutomationBench matches a column of this site’s benchmark table, where it is shown as Google’s claim.</p>
+    <h2 class="ai-model-section">Access and pricing</h2>
+    <p>As of 18 November 2026, Google says Neon “is rolling out today in the Gemini API in Google AI Studio, Gemini for business (via API and model dropdown), for paid Google AI Pro and Ultra subscribers in Google Antigravity, and for Pro and Ultra subscribers in the Gemini app” [1]. Google says a cyber version, Gemini 4 Neon for cyber, is “rolling out to trusted defenders in the coming days as part of the Fairwind Program” [1].</p>
+    <div class="ai-model-table-wrap">
+      <table class="ai-model-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Free tier</th>
+            <th scope="col">Paid tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Input / MTok</td><td>Not available</td><td>$3.00</td></tr>
+          <tr><td>Cached input / MTok</td><td>Not available</td><td>$0.15</td></tr>
+          <tr><td>Output / MTok, including thinking tokens</td><td>Not available</td><td>$15.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>These are Standard-tier prices on the Gemini API [4]. Google says Neon uses flat pricing across the full 1M context window, and that cached input is a 95% discount through implicit caching only. Explicit caching is not supported [1][2][4].</p>
+    <h2 class="ai-model-section">Sources</h2>
+    <ol class="ai-model-sources">
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/">Introducing Gemini 4 Neon</a> (The Keyword, 18 Nov 2026)</li>
+      <li><a href="https://aistudio.google.com/docs/whats-new-gemini-4-neon">What’s new in Gemini 4 Neon</a> (Gemini API docs)</li>
+      <li><a href="https://aistudio.google.com/docs/models/gemini-4-neon">Gemini 4 Neon</a> (Gemini API model page)</li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini Developer API pricing</a> (redirects to Google AI Studio)</li>
+      <li><a href="https://artificialanalysis.ai/models/gemini-4-neon">Gemini 4 Neon</a> (Artificial Analysis model page, checked 19 Nov 2026)</li>
+    </ol>
+  </article>
+</Layout>

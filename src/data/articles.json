@@ -2145,5 +2145,65 @@
     ],
     "file": "src/pages/ai/models/google/gemini-4-hydrogen.astro",
     "slug": "ai-models-google-gemini-4-hydrogen"
+  },
+  {
+    "href": "/ai/models/openai/gpt-6-2-astra/",
+    "title": "GPT-6.2 Astra",
+    "description": "New frontier model for the hardest professional work.",
+    "date": "2026-11-17",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6-2-astra.astro",
+    "slug": "ai-models-openai-gpt-6-2-astra"
+  },
+  {
+    "href": "/ai/models/openai/gpt-6-2-sol/",
+    "title": "GPT-6.2 Sol",
+    "description": "Everyday model at GPT-6.1 Sol prices.",
+    "date": "2026-11-17",
+    "section": "ai",
+    "series": "ai-openai",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/openai/",
+        "label": "OpenAI"
+      }
+    ],
+    "file": "src/pages/ai/models/openai/gpt-6-2-sol.astro",
+    "slug": "ai-models-openai-gpt-6-2-sol"
+  },
+  {
+    "href": "/ai/models/google/gemini-4-neon/",
+    "title": "Gemini 4 Neon",
+    "description": "Google says Neon balances depth and efficiency, between Carbon and Hydrogen.",
+    "date": "2026-11-18",
+    "section": "ai",
+    "series": "ai-google",
+    "crumbs": [
+      {
+        "href": "/ai/",
+        "label": "A.I."
+      },
+      {
+        "href": "/ai/models/google/",
+        "label": "Google"
+      }
+    ],
+    "file": "src/pages/ai/models/google/gemini-4-neon.astro",
+    "slug": "ai-models-google-gemini-4-neon"
   }
 ]

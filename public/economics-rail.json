@@ -1,6 +1,6 @@
 {
   "schema": "economics-rail-v1",
-  "updated": "2026-11-16T22:46:16.884Z",
+  "updated": "2026-11-19T10:06:10.854Z",
   "append": "node scripts/update-economics-rail.mjs (after-close push) appends each new date and corrects a recent date only when its source value changed (for example a final futures close). It never rewrites points outside the fetched window, does not rebuild weekly/monthly/yearly, and does not edit essay pages. Those tabs are views of points. Oil points are the Yahoo bar. Do not splice the after-close tape over them.",
   "series": [
     {
@@ -55382,6 +55382,18 @@
           "y2": 4.83,
           "y10": 5.12,
           "y30": 5.46
+        },
+        {
+          "date": "2026-11-17",
+          "y2": 4.8,
+          "y10": 5.1,
+          "y30": 5.46
+        },
+        {
+          "date": "2026-11-18",
+          "y2": 4.8,
+          "y10": 5.07,
+          "y30": 5.41
         }
       ]
     },
@@ -88343,6 +88355,21 @@
           "date": "2026-11-13",
           "wti": 88.56,
           "brent": 95.84
+        },
+        {
+          "date": "2026-11-16",
+          "wti": 85.72,
+          "brent": 92.44
+        },
+        {
+          "date": "2026-11-17",
+          "wti": 86.01,
+          "brent": 93.14
+        },
+        {
+          "date": "2026-11-18",
+          "wti": 83.26,
+          "brent": 91.95
         }
       ]
     },
@@ -130539,6 +130566,16 @@
           "date": "2026-11-13",
           "tpdo": 40616678827092.07,
           "public": 32825322014326.67
+        },
+        {
+          "date": "2026-11-16",
+          "tpdo": 40662417395617.43,
+          "public": 32852881286592.8
+        },
+        {
+          "date": "2026-11-17",
+          "tpdo": 40714946316573.34,
+          "public": 32887006494499.79
         }
       ]
     },
@@ -135144,6 +135181,14 @@
         {
           "date": "2026-11-12",
           "tga": 933127000000
+        },
+        {
+          "date": "2026-11-13",
+          "tga": 924618000000
+        },
+        {
+          "date": "2026-11-16",
+          "tga": 895774000000
         }
       ]
     }
