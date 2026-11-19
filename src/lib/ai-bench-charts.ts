@@ -108,7 +108,7 @@ const LINE_BENCHES: { id: string; version: string; label: string; name?: string 
  * One look per model. Claude colors are Anthropic's published accents
  * (orange on the mark, then blue, green, and mid gray) so the Claude lines stay apart.
  * OpenAI's blossom stays black. Astra, Sol, and Terra differ by a step of gray.
- * Grok is the black-and-white xAI mark. Gemini uses Google's four colors: Argon blue, Carbon yellow.
+ * Grok is the black-and-white xAI mark. Gemini uses Google's four colors: Argon blue, Carbon yellow, Neon red.
  */
 const MODEL_STYLE: Record<
   string,
@@ -118,12 +118,13 @@ const MODEL_STYLE: Record<
   'Claude Sonnet 5.5': { color: '#6A9BCC', mark: 'claude', disc: '#6A9BCC', glyph: '#ffffff' },
   'Claude Haiku 5.5': { color: '#B0AEA5', mark: 'claude', disc: '#B0AEA5', glyph: '#141413' },
   'Claude Fable 5.2': { color: '#788C5D', mark: 'claude', disc: '#788C5D', glyph: '#ffffff' },
-  'GPT-6 Astra': { color: '#F4F4F5', mark: 'openai', disc: '#F4F4F5', glyph: '#141413' },
-  'GPT-6.1 Sol': { color: '#B4B4BC', mark: 'openai', disc: '#D4D4D8', glyph: '#141413' },
+  'GPT-6.2 Astra': { color: '#F4F4F5', mark: 'openai', disc: '#F4F4F5', glyph: '#141413' },
+  'GPT-6.2 Sol': { color: '#B4B4BC', mark: 'openai', disc: '#D4D4D8', glyph: '#141413' },
   'GPT-6.1 Terra': { color: '#71717A', mark: 'openai', disc: '#A1A1AA', glyph: '#141413' },
   'Grok 4.7': { color: '#F8FAFC', mark: 'xai', disc: '#141413', glyph: '#ffffff', ring: '#F8FAFC' },
   'Gemini 4 Argon': { color: '#4285F4', mark: 'gemini', disc: '#141413', glyph: 'url(#bc-gemini)', ring: '#F8FAFC' },
   'Gemini 4 Carbon': { color: '#FBBC04', mark: 'gemini', disc: '#141413', glyph: 'url(#bc-gemini)', ring: '#FBBC04' },
+  'Gemini 4 Neon': { color: '#EA4335', mark: 'gemini', disc: '#141413', glyph: 'url(#bc-gemini)', ring: '#EA4335' },
 };
 
 function shortModel(model: string): string {
@@ -131,12 +132,13 @@ function shortModel(model: string): string {
   if (model.includes('Sonnet 5.5')) return 'Sonnet 5.5';
   if (model.includes('Haiku 5.5')) return 'Haiku 5.5';
   if (model.includes('Fable')) return 'Fable 5.2';
-  if (model.includes('Astra')) return 'Astra';
+  if (model.includes('Astra')) return 'Astra 6.2';
   if (model.includes('Terra')) return 'Terra';
-  if (model.includes('6.1')) return 'GPT-6.1 Sol';
+  if (model.includes('Sol')) return 'Sol 6.2';
   if (model.includes('Grok')) return 'Grok 4.7';
   if (model.includes('Argon')) return 'Argon';
   if (model.includes('Carbon')) return 'Carbon';
+  if (model.includes('Neon')) return 'Neon';
   return model;
 }
 

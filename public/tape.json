@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-17T08:20:00-05:00",
-  "asOfLabel": "Tue 17 Nov · pre-open",
+  "updated": "2026-11-18T16:15:00-05:00",
+  "asOfLabel": "Wed 18 Nov · after close",
   "lines": [
     {
       "tag": "Tape",
-      "text": "Futures mixed: ES ~7436 flat, NQ ~27400 +0.4%, YM ~51356 -0.6%. NVDA premkt ~+1% before earnings."
+      "text": "S&P -0.2% to 7,324; Nasdaq +0.4% to 24,430; Dow -1.1%. SMH -0.1% to 460; NVDA -2.9% despite a beat."
     },
     {
-      "tag": "Rates",
-      "text": "Live 10y ~5.12%, still above 5%. Retail sales 8:30 ET; Waller 9:10 ET; Williams 2:25 ET."
+      "tag": "Fed",
+      "text": "Minutes: almost all see more hikes likely; Waller floats 50bp in Dec. 10y 5.07%, still above 5%."
     },
     {
-      "tag": "Tape",
-      "text": "Nvidia reports after the close, first quarter since Huang quit; SMH ~468, still under ~535."
+      "tag": "Oil",
+      "text": "WTI ~$83.3, down ~3.2% on a big US crude build; Brent ~$92.0. Dollar index near 103.9."
     }
   ],
   "doorHref": "/economics",
-  "date": "2026-11-17"
+  "date": "2026-11-18"
 }

@@ -26,8 +26,10 @@
     "/ai/models/anthropic/claude-sonnet-5/": { "name": "Claude Sonnet 5", "status": "archived", "replacedBy": { "name": "Claude Sonnet 5.5", "href": "/ai/models/anthropic/claude-sonnet-5-5/" }, "price": "$2 in, $10 out" },
     "/ai/models/anthropic/claude-haiku-4-5/": { "name": "Claude Haiku 4.5", "status": "archived", "replacedBy": { "name": "Claude Haiku 5.5", "href": "/ai/models/anthropic/claude-haiku-5-5/" }, "price": "$1 in, $5 out" },
 
-    "/ai/models/openai/gpt-6-astra/": { "name": "GPT-6 Astra", "status": "current", "price": "$10 in, $50 out" },
-    "/ai/models/openai/gpt-6.1-sol/": { "name": "GPT-6.1 Sol", "status": "current", "price": "$2 in, $10 out", "released": "29 Sep 2026", "checked": "5 Oct 2026" },
+    "/ai/models/openai/gpt-6-2-astra/": { "name": "GPT-6.2 Astra", "status": "current", "price": "$8 in, $40 out", "released": "17 Nov 2026", "checked": "19 Nov 2026" },
+    "/ai/models/openai/gpt-6-2-sol/": { "name": "GPT-6.2 Sol", "status": "current", "price": "$2 in, $10 out", "released": "17 Nov 2026", "checked": "19 Nov 2026" },
+    "/ai/models/openai/gpt-6-astra/": { "name": "GPT-6 Astra", "status": "current", "aa": { "value": 57, "effort": "max", "fetched": "19 Nov 2026" }, "price": "$10 in, $50 out" },
+    "/ai/models/openai/gpt-6.1-sol/": { "name": "GPT-6.1 Sol", "status": "current", "aa": { "value": 55, "effort": "max", "fetched": "19 Nov 2026" }, "price": "$2 in, $10 out", "released": "29 Sep 2026", "checked": "5 Oct 2026" },
     "/ai/models/openai/gpt-6.1-terra/": { "name": "GPT-6.1 Terra", "status": "current", "price": "$1 in, $5 out", "released": "26 Oct 2026", "checked": "26 Oct 2026" },
     "/ai/models/openai/gpt-6-luna/": { "name": "GPT-6 Luna", "status": "current", "aa": { "value": 38, "effort": "max", "fetched": "8 Oct 2026" }, "price": "$0.10 in, $0.50 out", "released": "22 Sep 2026", "checked": "12 Oct 2026" },
     "/ai/models/openai/gpt-6-sol/": { "name": "GPT-6 Sol", "status": "archived", "replacedBy": { "name": "GPT-6.1 Sol", "href": "/ai/models/openai/gpt-6.1-sol/" }, "statusNote": "on the API; it still powers GPT-6 in ChatGPT for paid plans", "aa": { "value": 48, "effort": "max", "fetched": "22 Sep 2026" }, "price": "$2 in, $10 out", "released": "22 Sep 2026" },
@@ -66,6 +68,7 @@
       "checked": "5 Nov 2026"
     },
     "/ai/models/google/gemini-4-hydrogen/": { "name": "Gemini 4 Hydrogen", "status": "current", "statusNote": "on the free and paid tiers of the Gemini API and in Google AI Studio", "price": "$1.50 in, $7.50 out", "released": "12 Nov 2026", "checked": "12 Nov 2026" },
+    "/ai/models/google/gemini-4-neon/": { "name": "Gemini 4 Neon", "status": "current", "statusNote": "on the paid tier of the Gemini API only", "price": "$3 in, $15 out", "released": "18 Nov 2026", "checked": "19 Nov 2026" },
 
     "/ai/models/meta/muse/wonder/": { "name": "Muse Wonder", "status": "current", "price": "$4 in, $20 out", "released": "12 Oct 2026", "checked": "12 Oct 2026" },
     "/ai/models/meta/muse/spark/": { "name": "Muse Spark", "status": "current", "statusNote": "Meta's lighter Muse model" },

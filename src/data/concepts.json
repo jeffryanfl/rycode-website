@@ -49,7 +49,10 @@
         "/ai/models/xai/grok-4-7/",
         "/ai/models/anthropic/claude-fable-5-2/",
         "/ai/models/anthropic/claude-mythos-5-2/",
-        "/ai/models/google/gemini-4-hydrogen/"
+        "/ai/models/google/gemini-4-hydrogen/",
+        "/ai/models/openai/gpt-6-2-astra/",
+        "/ai/models/openai/gpt-6-2-sol/",
+        "/ai/models/google/gemini-4-neon/"
       ],
       "links": [
         "open-weights",
@@ -342,7 +345,10 @@
         "/ai/models/archive/",
         "/ai/models/anthropic/claude-fable-5-2/",
         "/ai/models/anthropic/claude-mythos-5-2/",
-        "/ai/models/google/gemini-4-hydrogen/"
+        "/ai/models/google/gemini-4-hydrogen/",
+        "/ai/models/openai/gpt-6-2-astra/",
+        "/ai/models/openai/gpt-6-2-sol/",
+        "/ai/models/google/gemini-4-neon/"
       ],
       "links": [
         "open-weights",
