@@ -1554,7 +1554,7 @@
   {
     "href": "/ai/models/openai/gpt-6-astra/",
     "title": "GPT-6 Astra",
-    "description": "Flagship for hard end-to-end work.",
+    "description": "Archived. Earlier Astra; OpenAI now recommends GPT-6.2 Astra.",
     "date": "2026-09-04",
     "section": "ai",
     "series": "ai-openai",
@@ -1614,7 +1614,7 @@
   {
     "href": "/ai/models/openai/gpt-6.1-sol/",
     "title": "GPT-6.1 Sol",
-    "description": "Near-Astra mid-tier at Sol list price.",
+    "description": "Archived. Earlier Sol; OpenAI now recommends GPT-6.2 Sol.",
     "date": "2026-09-29",
     "section": "ai",
     "series": "ai-openai",
